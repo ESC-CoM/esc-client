@@ -1,0 +1,39 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "ignorePatterns": ["node_modules/", "build/**"],
+    "rules": {
+        "linebreak-style": 0,
+        "semi": [1, "always"],
+        "no-array-constructor": "error",
+        "no-new-object": "error",
+        "quotes": ["error", "single"],
+        "no-nested-ternary": "error",
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+        "no-use-before-define": 0,
+        "no-shadow": 0,
+        "react/prop-types": 0,
+        "react/react-in-jsx-scope": 0,
+        "react/self-closing-comp": 0
+    }
+}
