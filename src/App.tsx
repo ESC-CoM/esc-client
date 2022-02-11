@@ -4,7 +4,7 @@ import Counter from './components/Counter/Counter';
 console.log(classnames('foo', 'bar'));
 
 function App() {
-    return <Counter />;
+  return <Counter />;
 }
 
 export default App;
