@@ -1,0 +1,46 @@
+@import '../../../styles/_color.scss';
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  width: 100%;
+  padding: 7px 0px;
+  border-top: 1px solid $gray-300;
+  background: $white;
+
+  .menus {
+    width: 100%;
+    max-width: 758px;
+    display: flex;
+    margin: 0 auto;
+
+    .menu {
+      width: 25%;
+      min-width: 25%;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+
+      .icon {
+        font-size: 23px;
+        color: $gray-400;
+      }
+      .text {
+        font-size: 12px;
+        color: $gray-400;
+      }
+
+      &.active {
+        .icon {
+          color: $primary;
+        }
+        .text {
+          color: $black;
+        }
+      }
+    }
+  }
+}
