@@ -4,17 +4,15 @@
   position: fixed;
   bottom: 0px;
   left: 0px;
-  right: 0px;
-  display: flex;
   width: 100%;
   padding: 7px 0px;
   border-top: 1px solid $gray-300;
   background: $white;
 
   .menus {
+    display: flex;
     width: 100%;
     max-width: 758px;
-    display: flex;
     margin: 0 auto;
 
     .menu {
