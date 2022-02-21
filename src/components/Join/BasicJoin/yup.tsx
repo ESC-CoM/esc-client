@@ -13,10 +13,10 @@ const JoinSchema = yup.object({
   passwordConfirm: yup
     .string()
     .oneOf([yup.ref('password'), null], '비밀번호가 일치하지 않습니다.'),
-  sex: yup.string().required(),
-  year: yup.string().required(),
-  month: yup.string().required(),
-  day: yup.string().required(),
+  sex: yup.string().required('성별을 선택해주세요.'),
+  year: yup.string().required('생년월일을 선택해주세요.'),
+  month: yup.string().required('생년월일을 선택해주세요.'),
+  day: yup.string().required('생년월일을 선택해주세요.'),
 });
 
 export default JoinSchema;
