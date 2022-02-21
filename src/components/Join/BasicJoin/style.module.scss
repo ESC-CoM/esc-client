@@ -9,55 +9,112 @@
   padding: 20px;
 
   .form{
-    // display: ;
     margin: 0 auto;
+    font-weight: 500;
 
     h1{
-      font-size: 20px;
+      font-size: 30px;
       font-weight: 500;
     }
 
-    &_item{
-      // display: table-cell;
-      // vertical-align: middle;
+    .item{
+      display: flex;
+      flex-direction: column;
       line-height: 20px;
-      // height: 50px;
-      border: 1px solid red;
-      // background-color: aqua;
-      margin: 5% auto;
+      margin: 8% auto;
       width: 100%;
+      height: 70px;
+      font-size: 20px;
 
-      &_input{
-        width: 240px;
+      label{
+        margin: 10px 0;
       }
-      &_btn{
-        height: 30px;
-        border: 1px solid $gray-400;
-        border-radius: 15px 15px;
+
+      .input{
+        width: 270px;
+        height: 40px;
+        margin-right: 10px;
+        font-size: 18px;
+        border: 1.5px solid $gray-400;
+        border-radius: 5px;
+
+        &_password{
+          width: 97%;
+          height: 40px;
+          font-size: 18px;
+          border: 1.5px solid $gray-400;
+          border-radius: 5px;
+        }
+      }
+
+      .btn{
+        width: 80px;
+        height: 45px;
+        border: 1.5px solid $gray-400;
+        border-radius: 15px;
         background-color: $white;
+        font-size: 16px;
+      }
+
+      .showicon{
+        position: absolute;
+        margin-left: 330px;
+        margin-top: -35px;
+        font-size: 25px;
+        cursor: pointer;
       }
 
       .sex_btn{
-        width: 50%;
-        height: 30px;
+        width: 48%;
+        height: 40px;
         border: 2px solid $gray-400;
-        border-radius: 15px 15px;
+        border-radius: 20px;
         background-color: $white;
+        font-size: 18px;
+        margin: 0 2px;
 
         &.active{
           background-color: $primary-transparent;
           border: 2px solid $primary;
         }
       }
-    }
-  }
 
-  .next_btn{
-    width: 100%;
-    height: 30px;
-    border: 1px solid $primary;
-    border-radius: 15px 15px;
-    background-color: $primary;
-    color: $white;
+      .select{
+        &_year{
+          width: 110px;
+          height: 40px;
+          margin: 5px 0;
+          font-size: 18px;
+          background-color: $white;
+          border: 1.5px solid $gray-400;
+          border-radius: 5px;
+        }
+
+        &_month, &_day{
+          width: 70px;
+          height: 40px;
+          margin: 5px 0;
+          font-size: 18px;
+          background-color: $white;
+          border: 1.5px solid $gray-400;
+          border-radius: 5px;
+        }
+      }
+
+      .label{
+        margin: 0 18px 0 5px;
+      }
+    }
+
+    .next_btn{
+      width: 100%;
+      height: 45px;
+      margin-top: 20px;
+      border: 1px solid $primary;
+      border-radius: 15px;
+      background-color: $primary;
+      color: $white;
+      font-size: 20px;
+    }
   }
 }
