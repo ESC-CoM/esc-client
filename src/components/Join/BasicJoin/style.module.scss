@@ -1,20 +1,13 @@
 @import '../../../styles/_color.scss';
 
 .join{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  height: 100%;
-  margin: 0 auto;
-  padding: 60px 0;
 
   .form{
     margin: 0 auto;
     font-weight: 500;
 
     h1{
-      font-size: 30px;
+      font-size: 170%;
       font-weight: 500;
     }
 
@@ -31,79 +24,97 @@
         margin: 10px 0;
       }
 
-      .input{
-        width: 270px;
-        height: 40px;
-        margin-right: 10px;
-        font-size: 18px;
-        border: 1.5px solid $gray-400;
-        border-radius: 5px;
-
-        &_password{
-          width: 97%;
+      .row{
+        display: flex;
+        text-align: center;
+      
+        .input{
+          width: 80%;
           height: 40px;
+          margin-right: 5px;
           font-size: 18px;
           border: 1.5px solid $gray-400;
           border-radius: 5px;
+
+          &_password{
+            width: 100%;
+            min-width: 100%;
+            height: 40px;
+            font-size: 18px;
+            border: 1.5px solid $gray-400;
+            border-radius: 5px;
+
+            &.active{
+              border: 1.5px solid $error;
+              box-shadow: 0 0 2.5px 0.2px $error;
+            }
+          }
+
+          &.active{
+            border: 1.5px solid $error;
+            box-shadow: 0 0 2.5px 0.2px $error;
+          }
+        }
+
+        .showicon{
+          position: relative;
+          left: -35px;
+          vertical-align: middle;
+          line-height: 55px;
+          font-size: 25px;
+          cursor: pointer;
+        }
+
+        .year{
+          width: 40%;
+          height: 40px;
+          margin: 0 auto;
+          font-size: 18px;
+          background-color: $white;
+          border: 1.5px solid $gray-400;
+          border-radius: 5px;
+        }
+
+        .month, .day{
+          width: 25%;
+          height: 40px;
+          margin: 0 auto;
+          font-size: 18px;
+          background-color: $white;
+          border: 1.5px solid $gray-400;
+          border-radius: 5px;
+        }
+
+        .active{
+          border: 1.5px solid $error;
+          box-shadow: 0 0 2.5px 0.2px $error;
         }
       }
 
       .btn{
-        width: 80px;
+        width: 20%;
+        min-width: 70px;
         height: 45px;
-        border: 1.5px solid $gray-400;
+        border: 1px solid $primary;
         border-radius: 15px;
-        background-color: $white;
         font-size: 16px;
-      }
-
-      .showicon{
-        position: absolute;
-        margin-left: 330px;
-        margin-top: -35px;
-        font-size: 25px;
-        cursor: pointer;
+        background-color: $primary;
+        color: $white;
       }
 
       .sex_btn{
         width: 48%;
-        height: 40px;
+        height: 45px;
         border: 2px solid $gray-400;
-        border-radius: 20px;
+        border-radius: 15px;
         background-color: $white;
         font-size: 18px;
         margin: 0 2px;
 
-        &.active{
+        &.sex_active{
           background-color: $primary-transparent;
           border: 2px solid $primary;
         }
-      }
-
-      .select{
-        &_year{
-          width: 110px;
-          height: 40px;
-          margin: 5px 0;
-          font-size: 18px;
-          background-color: $white;
-          border: 1.5px solid $gray-400;
-          border-radius: 5px;
-        }
-
-        &_month, &_day{
-          width: 70px;
-          height: 40px;
-          margin: 5px 0;
-          font-size: 18px;
-          background-color: $white;
-          border: 1.5px solid $gray-400;
-          border-radius: 5px;
-        }
-      }
-
-      .label{
-        margin: 0 18px 0 5px;
       }
     }
 

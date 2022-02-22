@@ -27,9 +27,12 @@ export default function BasicInfo() {
     resolver: yupResolver(JoinSchema),
   });
   const [showPassword, setShowPassword] = useState(false);
-  const yearList = Array.from({ length: 10 }, (_, index) => 1995 + index + '');
-  const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '');
-  const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '');
+  const yearList = Array.from(
+    { length: 10 },
+    (_, index) => 1995 + index + '년'
+  );
+  const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
+  const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
   const onSubmit = (data: UserSchema) => console.log(data);
 
   return (
@@ -38,9 +41,11 @@ export default function BasicInfo() {
         <h1>회원님의 정보를 입력해주세요.</h1>
         <div className={style.item}>
           <label>{errors.email ? errors.email?.message : '이메일'}</label>
-          <div>
+          <div className={style.row}>
             <input
-              className={style.input}
+              className={cx(style.input, {
+                [style.active]: errors.email,
+              })}
               type="text"
               placeholder="abc@email.com"
               {...register('email')}
@@ -53,9 +58,11 @@ export default function BasicInfo() {
           <label>
             {errors.password ? errors.password?.message : '비밀번호'}
           </label>
-          <div>
+          <div className={style.row}>
             <input
-              className={style.input_password}
+              className={cx(style.input_password, {
+                [style.active]: errors.password,
+              })}
               type={showPassword ? 'text' : 'password'}
               placeholder="영문, 숫자 포함 8자 이상"
               {...register('password')}
@@ -75,23 +82,32 @@ export default function BasicInfo() {
               ? errors.passwordConfirm?.message
               : '비밀번호 확인'}
           </label>
-          <div>
+          <div className={style.row}>
             <input
-              className={style.input_password}
-              type="password"
+              className={cx(style.input_password, {
+                [style.active]: errors.passwordConfirm,
+              })}
+              type={showPassword ? 'text' : 'password'}
+              placeholder="영문, 숫자 포함 8자 이상"
               {...register('passwordConfirm')}
             />
+            <span
+              className={style.showicon}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <IoEyeOff /> : <IoEye />}
+            </span>
           </div>
         </div>
 
         <div className={style.item}>
           <label>{errors.sex ? errors.sex?.message : '성별'}</label>
-          <div>
+          <div className={style.row}>
             <button
               className={cx(style.sex_btn, {
-                [style.active]: getValues('sex') === '남자',
+                [style.sex_active]: getValues('sex') === '남자',
               })}
-              onClick={(e) => {
+              onClick={() => {
                 setValue('sex', '남자');
               }}
             >
@@ -99,7 +115,7 @@ export default function BasicInfo() {
             </button>
             <button
               className={cx(style.sex_btn, {
-                [style.active]: getValues('sex') === '여자',
+                [style.sex_active]: getValues('sex') === '여자',
               })}
               onClick={() => {
                 setValue('sex', '여자');
@@ -111,37 +127,53 @@ export default function BasicInfo() {
         </div>
         <div className={style.item}>
           <label>
-            {errors.year || errors.month || errors.day // TODO: 기본 값으로도 required가 만족되는 이슈 해결해야함
-              ? errors.year?.message
-              : '생년월일'}
+            {!errors.year && !errors.month && !errors.day
+              ? '생년월일'
+              : '생년월일을 선택해주세요.'}
           </label>
-          <div>
-            <select className={style.select_year} {...register('year')}>
+          <div className={style.row}>
+            <select
+              className={cx(style.year, {
+                // todo : select 부분 오류 스타일 적용 안됨
+                [style.active]: getValues('year') === '---',
+              })}
+              {...register('year')}
+            >
+              <option value={''}>---</option>
               {yearList.map((year) => (
                 <option key={year} value={year}>
                   {year}
                 </option>
               ))}
             </select>
-            <label className={style.label}>년</label>
 
-            <select className={style.select_month} {...register('month')}>
+            <select
+              className={cx(style.month, {
+                [style.active]: getValues('month') === '---',
+              })}
+              {...register('month')}
+            >
+              <option value={''}>---</option>
               {monthList.map((month) => (
                 <option key={month} value={month}>
                   {month}
                 </option>
               ))}
             </select>
-            <label className={style.label}>월</label>
 
-            <select className={style.select_day} {...register('day')}>
+            <select
+              className={cx(style.day, {
+                [style.active]: getValues('day') === '---',
+              })}
+              {...register('day')}
+            >
+              <option value={''}>---</option>
               {dayList.map((day) => (
                 <option key={day} value={day}>
                   {day}
                 </option>
               ))}
             </select>
-            <label className={style.label}>일</label>
           </div>
         </div>
         <input className={style.next_btn} type="submit" value="다음" />
