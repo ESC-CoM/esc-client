@@ -1,12 +1,13 @@
 @import '../../../styles/_color.scss';
 
 .join{
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   height: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 60px 0;
 
   .form{
     margin: 0 auto;
