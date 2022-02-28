@@ -1,0 +1,51 @@
+@import '../../styles/_color.scss';
+@import '../../styles/_variables.scss';
+.meeting {
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+  padding: 15px;
+  border: 0.5px solid $gray-250;
+  background-color: $white;
+
+  .meetingInfo {
+    margin-bottom: auto;
+    .kind {
+      margin-right: auto;
+      font-size: 16px;
+      font-weight: 600;
+      color: $primary;
+    }
+    .text,
+    .num {
+      width: 33.3%;
+      margin: auto;
+      text-align: center;
+      font-size: 15px;
+    }
+    .num {
+      text-align: right;
+    }
+  }
+
+  .btnBox {
+    .btn {
+      width: calc(50% - 5px);
+      height: 30px;
+      border: none;
+      border-radius: $borderButtonRadius;
+      background-color: $gray-200;
+      font-size: 15px;
+      font-weight: 500;
+      color: $darkmodeBackground;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary;
+        color: $white;
+      }
+      &:first-of-type {
+        margin-right: 10px;
+      }
+    }
+  }
+}
