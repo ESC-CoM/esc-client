@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { MeetingType } from '../../types/meeting';
 import style from './style.module.scss';
 
@@ -12,13 +11,15 @@ export default function Meeting({ meeting }: Props) {
   return (
     <li className={style.meeting}>
       <table className={style.meetingInfo}>
-        <tr>
-          <span className={style.kind}>{kind}</span>
-          <td className={style.text}>{college}</td>
-          <td className={style.num}>
-            {gender} {num}명
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td className={style.kind}>{kind}</td>
+            <td className={style.text}>{college}</td>
+            <td className={style.num}>
+              {gender} {num}명
+            </td>
+          </tr>
+        </tbody>
       </table>
       <div className={style.btnBox}>
         <button
