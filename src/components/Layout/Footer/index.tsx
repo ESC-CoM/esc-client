@@ -43,10 +43,7 @@ export default function Footer() {
     },
   ];
 
-  const handleClick = (url: string) => {
-    window.navigator.vibrate && window.navigator.vibrate(200);
-    navigate(url);
-  };
+  const handleClick = (url: string) => navigate(url);
 
   return (
     <footer className={style.footer}>

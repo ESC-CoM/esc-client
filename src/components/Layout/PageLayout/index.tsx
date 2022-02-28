@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function PageLayout({ children, decreaseHeight = 0 }: Props) {
-  const footerHeight = 87;
+  const footerHeight = 54;
 
   useEffect(() => {
     window.document.body.style.overflow = 'hidden';
@@ -19,16 +19,16 @@ export default function PageLayout({ children, decreaseHeight = 0 }: Props) {
   }, []);
 
   return (
-    <section className={style.layout}>
-      <div
-        className={style.body}
+    <>
+      <main
+        className={style.layout}
         style={{
           maxHeight: `calc(100vh - ${footerHeight + decreaseHeight}px)`,
         }}
       >
-        {children}
-      </div>
+        <div className={style.body}>{children}</div>
+      </main>
       <Footer />
-    </section>
+    </>
   );
 }

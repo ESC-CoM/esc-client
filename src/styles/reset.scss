@@ -1,4 +1,4 @@
-@import "./color.scss";
+@import './color.scss';
 html,
 body,
 div,
@@ -106,6 +106,7 @@ section {
 
 body {
   line-height: 1;
+  background-color: $gray-200;
 }
 
 ol,
@@ -121,7 +122,7 @@ q {
 blockquote {
   &:before,
   &:after {
-    content: "";
+    content: '';
     content: none;
   }
 }
@@ -129,7 +130,7 @@ blockquote {
 q {
   &:before,
   &:after {
-    content: "";
+    content: '';
     content: none;
   }
 }
