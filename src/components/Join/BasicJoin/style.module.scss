@@ -1,5 +1,26 @@
 @import '../../../styles/_color.scss';
 
+@mixin input($width) {
+  width: $width;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px $gray-300;
+}
+
+@mixin button($width, $border, $bg, $color, $font-size) {
+  width: $width;
+  height: 45px;
+  border: $border;
+  border-radius: 15px;
+  background-color: $bg;
+  color: $color;
+  font-size: $font-size;
+  box-shadow: 0 0 5px 1px $gray-300;
+}
+
 .join{
 
   .form{
@@ -12,12 +33,12 @@
     }
 
     .item{
+      width: 100%;
+      height: 70px;
       display: flex;
       flex-direction: column;
       line-height: 20px;
       margin: 8% auto;
-      width: 100%;
-      height: 70px;
       font-size: 20px;
 
       label{
@@ -25,24 +46,17 @@
       }
 
       .row{
+        width: 100%;
+        position: relative;
         display: flex;
         text-align: center;
       
         .input{
-          width: 80%;
-          height: 40px;
+          @include input(72%);
           margin-right: 5px;
-          font-size: 18px;
-          border: 1.5px solid $gray-400;
-          border-radius: 5px;
 
           &_password{
-            width: 100%;
-            min-width: 100%;
-            height: 40px;
-            font-size: 18px;
-            border: 1.5px solid $gray-400;
-            border-radius: 5px;
+            @include input(100%);
 
             &.active{
               border: 1.5px solid $error;
@@ -57,76 +71,48 @@
         }
 
         .showicon{
-          position: relative;
-          left: -35px;
-          vertical-align: middle;
+          position: absolute;
+          right: 20px;
           line-height: 55px;
           font-size: 25px;
           cursor: pointer;
         }
 
         .year{
-          width: 40%;
-          height: 40px;
+          @include input(40%);
           margin: 0 auto;
-          font-size: 18px;
-          background-color: $white;
-          border: 1.5px solid $gray-400;
-          border-radius: 5px;
         }
 
         .month, .day{
-          width: 25%;
-          height: 40px;
+          @include input(25%);
           margin: 0 auto;
-          font-size: 18px;
-          background-color: $white;
-          border: 1.5px solid $gray-400;
-          border-radius: 5px;
         }
 
-        .active{
+        .error{
           border: 1.5px solid $error;
           box-shadow: 0 0 2.5px 0.2px $error;
         }
       }
 
       .btn{
-        width: 20%;
+        @include button(28%, none, $primary, white, 16px);
         min-width: 70px;
-        height: 45px;
-        border: 1px solid $primary;
-        border-radius: 15px;
-        font-size: 16px;
-        background-color: $primary;
-        color: $white;
       }
 
       .sex_btn{
-        width: 48%;
-        height: 45px;
-        border: 2px solid $gray-400;
-        border-radius: 15px;
-        background-color: $white;
-        font-size: 18px;
+        @include button(148%, none, $white, black, 18px);
         margin: 0 2px;
 
         &.sex_active{
           background-color: $primary-transparent;
-          border: 2px solid $primary;
+          box-shadow: 0 0 5px 1px $primary;
         }
       }
     }
 
     .next_btn{
-      width: 100%;
-      height: 45px;
+      @include button(100%, none, $primary, white, 20px);
       margin-top: 20px;
-      border: 1px solid $primary;
-      border-radius: 15px;
-      background-color: $primary;
-      color: $white;
-      font-size: 20px;
     }
   }
 }
