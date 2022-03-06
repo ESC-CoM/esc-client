@@ -11,8 +11,20 @@ function Start() {
         alt="demo logo"
       />
       <div className={style.buttonContainer}>
-        <button className={style.button}>시작하기</button>
-        <button className={style.button}>로그인</button>
+        <button
+          className={style.button}
+          type="button"
+          aria-label="start button"
+        >
+          시작하기
+        </button>
+        <button
+          className={style.button}
+          type="button"
+          aria-label="login button"
+        >
+          로그인
+        </button>
       </div>
     </div>
   );
