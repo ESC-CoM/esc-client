@@ -10,6 +10,8 @@ interface UserSchema {
   email: string;
   password: string;
   passwordConfirm: string;
+  phoneNumber: number;
+  authNumber: number;
   sex: string;
   year: string;
   month: string;
@@ -33,6 +35,14 @@ export default function BasicInfo() {
   );
   const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
   const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
+
+  const onAuthSending = (phoneNumber: number) => {
+    console.log(phoneNumber);
+  };
+  const onAuthEntering = (authNumber: number) => {
+    console.log(authNumber);
+  };
+
   const onSubmit = (data: UserSchema) => console.log(data);
 
   return (
@@ -44,7 +54,7 @@ export default function BasicInfo() {
           <div className={style.row}>
             <input
               className={cx(style.input, {
-                [style.active]: errors.email,
+                [style.error]: errors.email,
               })}
               type="text"
               placeholder="abc@email.com"
@@ -61,18 +71,18 @@ export default function BasicInfo() {
           <div className={style.row}>
             <input
               className={cx(style.input_password, {
-                [style.active]: errors.password,
+                [style.error]: errors.password,
               })}
               type={showPassword ? 'text' : 'password'}
               placeholder="영문, 숫자 포함 8자 이상"
               {...register('password')}
             />
-            <div
+            <span
               className={style.showicon}
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <IoEyeOff /> : <IoEye />}
-            </div>
+            </span>
           </div>
         </div>
 
@@ -85,7 +95,7 @@ export default function BasicInfo() {
           <div className={style.row}>
             <input
               className={cx(style.input_password, {
-                [style.active]: errors.passwordConfirm,
+                [style.error]: errors.passwordConfirm,
               })}
               type={showPassword ? 'text' : 'password'}
               placeholder="영문, 숫자 포함 8자 이상"
@@ -97,6 +107,51 @@ export default function BasicInfo() {
             >
               {showPassword ? <IoEyeOff /> : <IoEye />}
             </span>
+          </div>
+        </div>
+
+        <div className={style.item}>
+          <label>
+            {errors.phoneNumber ? errors.phoneNumber?.message : '휴대폰 번호'}
+          </label>
+          <div className={style.row}>
+            <input
+              type="text"
+              className={style.input}
+              placeholder="01011112222"
+              {...register('phoneNumber')}
+            />
+            <button
+              className={style.btn}
+              type="button"
+              onClick={() => {
+                onAuthSending(getValues('phoneNumber'));
+              }}
+            >
+              인증번호 받기
+            </button>
+          </div>
+        </div>
+        <div className={style.item}>
+          <label>
+            {errors.authNumber ? errors.authNumber?.message : '인증번호'}
+          </label>
+          <div className={style.row}>
+            <input
+              type="text"
+              className={style.input}
+              placeholder="인증번호를 입력하세요."
+              {...register('authNumber')}
+            />
+            <button
+              type="button"
+              className={style.btn}
+              onClick={() => {
+                onAuthEntering(getValues('authNumber'));
+              }}
+            >
+              인증하기
+            </button>
           </div>
         </div>
 
@@ -125,6 +180,7 @@ export default function BasicInfo() {
             </button>
           </div>
         </div>
+
         <div className={style.item}>
           <label>
             {!errors.year && !errors.month && !errors.day
@@ -135,7 +191,7 @@ export default function BasicInfo() {
             <select
               className={cx(style.year, {
                 // todo : select 부분 오류 스타일 적용 안됨
-                [style.active]: getValues('year') === '---',
+                [style.error]: getValues('year') === '---',
               })}
               {...register('year')}
             >
@@ -146,10 +202,9 @@ export default function BasicInfo() {
                 </option>
               ))}
             </select>
-
             <select
               className={cx(style.month, {
-                [style.active]: getValues('month') === '---',
+                [style.error]: getValues('month') === '---',
               })}
               {...register('month')}
             >
@@ -160,10 +215,9 @@ export default function BasicInfo() {
                 </option>
               ))}
             </select>
-
             <select
               className={cx(style.day, {
-                [style.active]: getValues('day') === '---',
+                [style.error]: getValues('day') === '---',
               })}
               {...register('day')}
             >
