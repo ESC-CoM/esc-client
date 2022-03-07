@@ -188,27 +188,24 @@ export default function BasicInfo() {
               : '생년월일을 선택해주세요.'}
           </label>
           <div className={style.row}>
-            <select
+            <input
+              type="text"
               className={cx(style.year, {
-                // todo : select 부분 오류 스타일 적용 안됨
-                [style.error]: getValues('year') === '---',
+                [style.error]: errors.year,
               })}
+              placeholder="년(4자)"
               {...register('year')}
-            >
-              <option value={''}>---</option>
-              {yearList.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
+            />
             <select
+              defaultValue=""
               className={cx(style.month, {
                 [style.error]: getValues('month') === '---',
               })}
               {...register('month')}
             >
-              <option value={''}>---</option>
+              <option disabled value="">
+                ---
+              </option>
               {monthList.map((month) => (
                 <option key={month} value={month}>
                   {month}
@@ -216,12 +213,15 @@ export default function BasicInfo() {
               ))}
             </select>
             <select
+              defaultValue=""
               className={cx(style.day, {
                 [style.error]: getValues('day') === '---',
               })}
               {...register('day')}
             >
-              <option value={''}>---</option>
+              <option disabled value="">
+                ---
+              </option>
               {dayList.map((day) => (
                 <option key={day} value={day}>
                   {day}
