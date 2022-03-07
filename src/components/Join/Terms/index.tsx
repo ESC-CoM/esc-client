@@ -5,8 +5,8 @@ import TermsSchema from './yup';
 import { IoIosCheckboxOutline, IoIosCheckbox } from 'react-icons/io';
 
 interface Terms {
-  c1: boolean;
-  c2: boolean;
+  personalAgree: boolean;
+  acceptAgree: boolean;
 }
 
 export default function Terms() {
@@ -20,10 +20,11 @@ export default function Terms() {
     resolver: yupResolver(TermsSchema),
   });
 
-  const watchCondition = watch(['c1', 'c2'], {
-    c1: false,
-    c2: false,
+  const watchCondition = watch(['personalAgree', 'acceptAgree'], {
+    personalAgree: false,
+    acceptAgree: false,
   });
+  const [personalAgree, acceptAgree] = watchCondition;
 
   const onSubmit = (data: Terms) => console.log(data);
 
@@ -33,27 +34,29 @@ export default function Terms() {
         <h1>회원가입 약관동의</h1>
         <section className={style.item}>
           <Controller
-            name="c1"
+            name="personalAgree"
             control={control}
             render={({ field }) =>
-              !watchCondition[0] ? (
+              !personalAgree ? (
                 <IoIosCheckboxOutline
                   className={style.checkbox}
-                  onClick={() => setValue('c1', !watchCondition[0])}
+                  onClick={() => setValue('personalAgree', !personalAgree)}
                   {...field}
                 />
               ) : (
                 <IoIosCheckbox
                   className={style.checkbox}
-                  onClick={() => setValue('c1', !watchCondition[0])}
+                  onClick={() => setValue('personalAgree', !personalAgree)}
                   {...field}
                 />
               )
             }
           />
-          <label>이용약관 동의</label>
+          <strong>이용약관 동의</strong>
           <span>(필수)</span>
-          <span className={style.error}>{errors.c1 && errors.c1?.message}</span>
+          <span className={style.error}>
+            {errors.personalAgree && errors.personalAgree?.message}
+          </span>
           <div className={style.content}>
             <p>약관 내용</p>
           </div>
@@ -61,33 +64,35 @@ export default function Terms() {
 
         <section className={style.item}>
           <Controller
-            name="c2"
+            name="acceptAgree"
             control={control}
             render={({ field }) =>
-              !watchCondition[1] ? (
+              !acceptAgree ? (
                 <IoIosCheckboxOutline
                   className={style.checkbox}
-                  onClick={() => setValue('c2', !watchCondition[1])}
+                  onClick={() => setValue('acceptAgree', !acceptAgree)}
                   {...field}
                 />
               ) : (
                 <IoIosCheckbox
                   className={style.checkbox}
-                  onClick={() => setValue('c2', !watchCondition[1])}
+                  onClick={() => setValue('acceptAgree', !acceptAgree)}
                   {...field}
                 />
               )
             }
           />
-          <label>개인정보 수집 및 이용 동의</label>
+          <strong>개인정보 수집 및 이용 동의</strong>
           <span>(필수)</span>
-          <span className={style.error}>{errors.c2 && errors.c2?.message}</span>
+          <span className={style.error}>
+            {errors.acceptAgree && errors.acceptAgree?.message}
+          </span>
           <div className={style.content}>
             <p>약관내용</p>
           </div>
         </section>
 
-        <button type="submit" className={style.next_btn}>
+        <button type="submit" className={style.next_btn} aria-labelledby="next">
           다음
         </button>
       </form>

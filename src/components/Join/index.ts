@@ -1,3 +1,3 @@
-export { default as BasicInfo } from './BasicJoin';
-export { default as Personality } from './PersonalityJoin';
+export { default as BasicJoin } from './BasicJoin';
+export { default as Personality } from './Personality';
 export { default as Terms } from './Terms';

@@ -18,7 +18,7 @@ interface UserSchema {
   day: string;
 }
 
-export default function BasicInfo() {
+export default function BasicJoin() {
   const {
     register,
     setValue,
@@ -29,10 +29,6 @@ export default function BasicInfo() {
     resolver: yupResolver(JoinSchema),
   });
   const [showPassword, setShowPassword] = useState(false);
-  const yearList = Array.from(
-    { length: 10 },
-    (_, index) => 1995 + index + '년'
-  );
   const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
   const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
 
@@ -50,13 +46,16 @@ export default function BasicInfo() {
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
         <div className={style.item}>
-          <label>{errors.email ? errors.email?.message : '이메일'}</label>
+          <label htmlFor="email">
+            {errors.email ? errors.email?.message : '이메일'}
+          </label>
           <div className={style.row}>
             <input
               className={cx(style.input, {
                 [style.error]: errors.email,
               })}
               type="text"
+              id="email"
               placeholder="abc@email.com"
               {...register('email')}
             />
@@ -65,7 +64,7 @@ export default function BasicInfo() {
         </div>
 
         <div className={style.item}>
-          <label>
+          <label htmlFor="password">
             {errors.password ? errors.password?.message : '비밀번호'}
           </label>
           <div className={style.row}>
@@ -74,6 +73,7 @@ export default function BasicInfo() {
                 [style.error]: errors.password,
               })}
               type={showPassword ? 'text' : 'password'}
+              id="password"
               placeholder="영문, 숫자 포함 8자 이상"
               {...register('password')}
             />
@@ -87,7 +87,7 @@ export default function BasicInfo() {
         </div>
 
         <div className={style.item}>
-          <label>
+          <label htmlFor="passwordConfirm">
             {errors.passwordConfirm
               ? errors.passwordConfirm?.message
               : '비밀번호 확인'}
@@ -98,6 +98,7 @@ export default function BasicInfo() {
                 [style.error]: errors.passwordConfirm,
               })}
               type={showPassword ? 'text' : 'password'}
+              id="passwordConfirm"
               placeholder="영문, 숫자 포함 8자 이상"
               {...register('passwordConfirm')}
             />
@@ -111,7 +112,7 @@ export default function BasicInfo() {
         </div>
 
         <div className={style.item}>
-          <label>
+          <label htmlFor="phponeNumber">
             {errors.phoneNumber ? errors.phoneNumber?.message : '휴대폰 번호'}
           </label>
           <div className={style.row}>
@@ -119,6 +120,7 @@ export default function BasicInfo() {
               type="text"
               className={style.input}
               placeholder="01011112222"
+              id="phponeNumber"
               {...register('phoneNumber')}
             />
             <button
@@ -133,7 +135,7 @@ export default function BasicInfo() {
           </div>
         </div>
         <div className={style.item}>
-          <label>
+          <label htmlFor="authNumber">
             {errors.authNumber ? errors.authNumber?.message : '인증번호'}
           </label>
           <div className={style.row}>
@@ -141,6 +143,7 @@ export default function BasicInfo() {
               type="text"
               className={style.input}
               placeholder="인증번호를 입력하세요."
+              id="authNumber"
               {...register('authNumber')}
             />
             <button
@@ -165,6 +168,7 @@ export default function BasicInfo() {
               onClick={() => {
                 setValue('sex', '남자');
               }}
+              aria-labelledby="sex"
             >
               남자
             </button>
@@ -175,6 +179,7 @@ export default function BasicInfo() {
               onClick={() => {
                 setValue('sex', '여자');
               }}
+              aria-labelledby="sex"
             >
               여자
             </button>
@@ -182,7 +187,7 @@ export default function BasicInfo() {
         </div>
 
         <div className={style.item}>
-          <label>
+          <label htmlFor="birthDate">
             {!errors.year && !errors.month && !errors.day
               ? '생년월일'
               : '생년월일을 선택해주세요.'}
@@ -193,6 +198,7 @@ export default function BasicInfo() {
               className={cx(style.year, {
                 [style.error]: errors.year,
               })}
+              id="birthDate"
               placeholder="년(4자)"
               {...register('year')}
             />
@@ -230,6 +236,25 @@ export default function BasicInfo() {
             </select>
           </div>
         </div>
+
+        <div className={style.item}>
+          <label htmlFor="">키, 몸무게</label>
+          <div className={style.row}>
+            {/* Todo : cm, kg 보여주도록 변경할 것 */}
+            <input type="text" className={style.input} />
+            <span className={style.unit}>cm</span>
+            <input type="text" className={style.input} />
+            <span className={style.unit}>kg</span>
+          </div>
+        </div>
+
+        <div className={style.item}>
+          <label htmlFor="">MBTI</label>
+          <div className={style.row}>
+            <input type="text" className={style.input} placeholder="예) ISFP" />
+          </div>
+        </div>
+
         <input className={style.next_btn} type="submit" value="다음" />
       </form>
     </div>
