@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
-const ToSSchema = yup.object({
+const TermsSchema = yup.object({
   condition1: yup.boolean().oneOf([true], '필수 약관에 동의해주세요.'),
   condition2: yup.boolean().oneOf([true], '필수 약관에 동의해주세요.'),
 });
 
-export default ToSSchema;
+export default TermsSchema;

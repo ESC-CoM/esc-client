@@ -1,23 +1,23 @@
 import style from './style.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import ToSSchema from './yup';
+import TermsSchema from './yup';
 import { IoIosCheckboxOutline, IoIosCheckbox } from 'react-icons/io';
 
-interface TOS {
+interface Terms {
   c1: boolean;
   c2: boolean;
 }
 
-export default function ToS() {
+export default function Terms() {
   const {
     control,
     watch,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<TOS>({
-    resolver: yupResolver(ToSSchema),
+  } = useForm<Terms>({
+    resolver: yupResolver(TermsSchema),
   });
 
   const watchCondition = watch(['c1', 'c2'], {
@@ -25,10 +25,10 @@ export default function ToS() {
     c2: false,
   });
 
-  const onSubmit = (data: TOS) => console.log(data);
+  const onSubmit = (data: Terms) => console.log(data);
 
   return (
-    <main className={style.tos}>
+    <main className={style.terms}>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원가입 약관동의</h1>
         <section className={style.item}>
