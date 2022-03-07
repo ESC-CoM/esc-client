@@ -17,3 +17,28 @@
     @content;
   }
 }
+
+@mixin input($width) {
+  width: $width;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 18px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px $gray-300;
+  -webkit-appearance: none;
+  -moz-appearance: none; 
+  appearance: none;
+}
+
+@mixin button($width, $border, $bg, $color, $font-size) {
+  width: $width;
+  height: 45px;
+  border: $border;
+  border-radius: 15px;
+  background-color: $bg;
+  color: $color;
+  font-size: $font-size;
+  box-shadow: 0 0 5px 1px $gray-300;
+}
