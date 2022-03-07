@@ -1,0 +1,53 @@
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    font: 40px/53px Nirmala UI;
+    letter-spacing: 0px;
+    color: #191919;
+  }
+
+  .subTitle {
+    margin-top: 4px;
+    font: 24px/35px Noto Sans CJK KR;
+    letter-spacing: 0px;
+    color: #191919;
+  }
+
+  .mainImage {
+    margin-top: 60px;
+    width: 100vw;
+    max-width: 500px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+
+    .button {
+      width: 186px;
+      height: 56px;
+      background: #ff5c66 0% 0% no-repeat padding-box;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+      font: normal normal normal 30px/44px Noto Sans CJK KR;
+      letter-spacing: 0px;
+      color: #ffffff;
+      cursor: pointer;
+
+      &:first-child {
+        margin-top: 100px;
+      }
+
+      &:nth-child(2) {
+        margin-top: 14px;
+      }
+    }
+  }
+}
