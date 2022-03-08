@@ -1,0 +1,144 @@
+.header {
+  width: 100vw;
+  height: 64px;
+  box-shadow: 0px 1px 10px #00000029;
+
+  .backIcon {
+    margin-top: 19.94px;
+    margin-left: 23.92px;
+    font-size: 23.88px;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    margin-top: 120px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ff8189;
+  }
+
+  .inputContainer {
+    position: relative;
+
+    .input {
+      display: block;
+      width: 490px;
+      height: 30px;
+      padding: 15px;
+      border: 1px solid #c7c7c7;
+      border-radius: 10px;
+      font-size: 20px;
+
+      &::placeholder {
+        color: #bfbfbf;
+      }
+    }
+
+    &:first-child {
+      margin-top: 120px;
+    }
+
+    &:nth-child(2) {
+      margin-top: 12px;
+    }
+
+    .button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      font-size: 24px;
+      color: #7a7a7a;
+      cursor: pointer;
+    }
+
+    .viewPasswordButton {
+      right: 53px;
+    }
+  }
+
+  .checkboxContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      margin: 0 0 0 8px;
+      border: 1px solid #7a7a7a;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .checkboxLabel {
+      display: flex;
+      align-items: center;
+      height: 24px;
+      font-size: 22px;
+      color: #7a7a7a;
+
+      &:nth-child(2) {
+        margin-left: 30px;
+      }
+    }
+  }
+
+  .submitButton {
+    width: 490px;
+    height: 66px;
+    margin-top: 20px;
+    background: #ff5c66 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 33px;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .separateLine {
+    width: 296px;
+    height: 1px;
+    margin-top: 40px;
+    background-color: #bfbfbf;
+  }
+
+  .linkContainer {
+    margin-top: 9px;
+
+    .link {
+      font-size: 18px;
+      color: #7a7a7a;
+      text-decoration: none;
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .socialLoginContainer {
+    margin-top: 40px;
+
+    .socialLoginButton {
+      width: 54px;
+      height: 54px;
+      border: none;
+      border-radius: 27px;
+      cursor: pointer;
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-left: 30px;
+      }
+    }
+  }
+}
