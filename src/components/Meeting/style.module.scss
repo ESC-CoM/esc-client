@@ -1,30 +1,36 @@
 @import '../../styles/_color.scss';
 @import '../../styles/_variables.scss';
+@import '../../styles/_mixin.scss';
+
 .meeting {
   display: flex;
   flex-direction: column;
-  min-height: 80px;
+  min-height: 60px;
   padding: 15px;
   border: 0.5px solid $gray-250;
   background-color: $white;
+  &:first-child,
+  &:last-child {
+    margin: 0;
+  }
 
   .meetingInfo {
     margin-bottom: auto;
     .kind {
-      margin-right: auto;
+      display: block;
+      margin-bottom: 10px;
       font-size: 16px;
       font-weight: 600;
       color: $primary;
     }
-    .text,
+    .college,
     .num {
-      width: 33.3%;
-      margin: auto;
-      text-align: center;
+      display: block;
+      margin-bottom: 5px;
       font-size: 15px;
     }
-    .num {
-      text-align: right;
+    .college {
+      font-weight: 540;
     }
   }
 
@@ -32,6 +38,7 @@
     .btn {
       width: calc(50% - 5px);
       height: 30px;
+      margin-top: 10px;
       border: none;
       border-radius: $borderButtonRadius;
       background-color: $gray-200;
