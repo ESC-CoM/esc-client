@@ -27,9 +27,6 @@
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 5px 1px $gray-300;
-  -webkit-appearance: none;
-  -moz-appearance: none; 
-  appearance: none;
 }
 
 @mixin button($width, $border, $bg, $color, $font-size) {
