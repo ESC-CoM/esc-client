@@ -20,7 +20,7 @@ export default function InfiniteScroll(props: Props) {
 
   useEffect(() => {
     if (isIntersecting) trigger();
-  }, [ isIntersecting ]);
+  }, [isIntersecting]);
 
   return (
     <>

@@ -8,7 +8,7 @@ interface Props {
 
 export default function Meeting({ meeting }: Props) {
   const { kind, college, gender, num } = meeting;
-  const [ isClicked, setClicked ] = useState(false);
+  const [isClicked, setClicked] = useState(false);
 
   return (
     <li className={style.meeting}>
