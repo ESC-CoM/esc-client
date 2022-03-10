@@ -1,47 +1,82 @@
 @import '../../../styles/_color.scss';
 
 .terms{
-  h1{
-    font-size: 170%;
-    font-weight: 500;
-  }
-  
-  .item{
-    margin: 0 auto;
-    font-weight: 500;
-     
-    .checkbox{
-      width: 15px;
-      height: 15px;
-      margin-right: 5px;
-    }
-    
-    label{
-      margin: 10px 0;
-    }
-    
-    span{
-      color: red;
-      margin: 0 5px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  background-color: rgba(80, 80, 80, 0.589);
 
-      &.error{
-        color: orange;
+  .form{
+    position: fixed;
+    bottom: 3em;
+    left: 0;
+    right: 0;
+    padding: 30px 0;
+    z-index: 200;
+    text-align: center;
+    background-color: white;
+    border-radius: 1em 1em 0 0;
+    transition: all 0.2s ease-out;
+    animation: FadeIn .3s ease-in;
+
+    h1{
+      font-size: 120%;
+      font-weight: 600;
+    }
+    
+    .item{
+      margin: 0 auto;
+      font-weight: 500;
+      
+      .checkbox{
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        font-size: 40em;
+      }
+      
+      label{
+        margin: 10px 0;
+      }
+      
+      span{
+        color: red;
+        margin: 0 5px;
+
+        // &.error{
+        //   color: orange;
+        //   font-size: 14px;
+        // }
+      }
+      
+      .content{
+        width: 90%;
+        height: 200px;
+        padding: 10px;
+        color: $gray-600;
         font-size: 14px;
+        line-height: 120%;
       }
     }
-    
-    .content{
-      width: 90%;
-      height: 200px;
-      overflow: scroll;
-      border-radius: 5px;
-      box-shadow: 0 0 2.5px 0.2px $gray-400;
-      padding: 10px;
-      color: $gray-600;
+
+    .error{
+      color: orange;
       font-size: 14px;
-      line-height: 120%;
+    }
+
+    &Close{
+      animation: FadeOut .3s ease-out;
     }
   }
+
+  .back{
+    width: 100vw;
+    height: 100vh;
+  }
+
   .next_btn{
     width: 100%;
     height: 45px;
@@ -51,5 +86,27 @@
     background-color: $primary;
     color: $white;
     font-size: 20px;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  1%{
+    opacity: 0;
+    transform:translateY(100%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes FadeOut {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
