@@ -3,8 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {
   IoHomeOutline,
   IoHome,
-  IoDocumentTextOutline,
-  IoDocumentText,
   IoChatbubbleEllipsesOutline,
   IoChatbubbleEllipses,
   IoPersonOutline,

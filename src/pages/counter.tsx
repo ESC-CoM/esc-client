@@ -3,7 +3,7 @@ import Counter from '../components/Counter/Counter';
 
 function CounterPage() {
   return (
-    <PageLayout decreaseHeight={0}>
+    <PageLayout isNeedFooter={true} decreaseHeight={0}>
       <Counter />
       <Counter />
     </PageLayout>

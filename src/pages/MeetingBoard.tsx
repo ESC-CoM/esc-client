@@ -15,7 +15,7 @@ function MeetingBoardPage() {
   };
 
   return (
-    <PageLayout decreaseHeight={0}>
+    <PageLayout isNeedFooter={true} decreaseHeight={0}>
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
           {meetingList.map((meeting, i) => (
