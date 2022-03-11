@@ -1,3 +1,5 @@
+@import '/src/styles/color';
+
 .header {
   width: 100vw;
   height: 64px;
@@ -16,10 +18,10 @@
   align-items: center;
 
   .title {
-    margin-top: 120px;
+    margin-top: 9vh;
     font-size: 40px;
     font-weight: bold;
-    color: #ff8189;
+    color: $primary;
   }
 
   .inputContainer {
@@ -28,19 +30,20 @@
     .input {
       display: block;
       width: 490px;
+      max-width: 80vw;
       height: 30px;
       padding: 15px;
-      border: 1px solid #c7c7c7;
+      border: 1px solid $gray-300;
       border-radius: 10px;
       font-size: 20px;
 
       &::placeholder {
-        color: #bfbfbf;
+        color: $gray-400;
       }
     }
 
     &:first-child {
-      margin-top: 120px;
+      margin-top: 9vh;
     }
 
     &:nth-child(2) {
@@ -55,7 +58,7 @@
       border: none;
       background-color: transparent;
       font-size: 24px;
-      color: #7a7a7a;
+      color: $gray-600;
       cursor: pointer;
     }
 
@@ -73,7 +76,7 @@
       width: 24px;
       height: 24px;
       margin: 0 0 0 8px;
-      border: 1px solid #7a7a7a;
+      border: 1px solid $gray-600;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -83,7 +86,7 @@
       align-items: center;
       height: 24px;
       font-size: 22px;
-      color: #7a7a7a;
+      color: $gray-600;
 
       &:nth-child(2) {
         margin-left: 30px;
@@ -93,13 +96,14 @@
 
   .submitButton {
     width: 490px;
+    max-width: 90vw;
     height: 66px;
     margin-top: 20px;
-    background: #ff5c66 0% 0% no-repeat padding-box;
+    background: $primary;
     border: none;
     border-radius: 33px;
     font-size: 26px;
-    color: white;
+    color: $white;
     cursor: pointer;
   }
 
@@ -107,7 +111,7 @@
     width: 296px;
     height: 1px;
     margin-top: 40px;
-    background-color: #bfbfbf;
+    background-color: $gray-400;
   }
 
   .linkContainer {
@@ -115,12 +119,16 @@
 
     .link {
       font-size: 18px;
-      color: #7a7a7a;
+      color: $gray-600;
       text-decoration: none;
 
       &:nth-child(2),
       &:nth-child(3) {
         margin-left: 20px;
+      }
+
+      &:hover {
+        font-weight: bold;
       }
     }
   }
