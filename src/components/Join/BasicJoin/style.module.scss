@@ -1,7 +1,11 @@
-@import '../../../styles/_color.scss';
-@import '../../../styles/mixin';
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
 
 .join{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
 
   .form{
     margin: 0 auto;
@@ -83,12 +87,12 @@
       }
 
       .btn{
-        @include button(28%, none, $primary, white, 16px);
+        @include button(28%, none, $primary, $white, 16px);
         min-width: 70px;
       }
 
       .sex_btn{
-        @include button(148%, none, $white, black, 18px);
+        @include button(148%, none, $white, $black, 18px);
         margin: 0 2px;
 
         &.sex_active{
@@ -99,7 +103,7 @@
     }
 
     .next_btn{
-      @include button(100%, none, $primary, white, 20px);
+      @include button(100%, none, $primary, $white, 20px);
       margin-top: 20px;
     }
   }

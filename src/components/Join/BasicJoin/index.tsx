@@ -4,7 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import JoinSchema from './yup';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import cx from 'classnames';
-import { useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { Terms } from '../index';
 
 interface UserSchema {
   email: string;
@@ -16,18 +17,23 @@ interface UserSchema {
   year: string;
   month: string;
   day: string;
+  height?: number;
+  weight?: number;
+  mbti?: string;
 }
 
 export default function BasicJoin() {
   const {
+    watch,
     register,
     setValue,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm<UserSchema>({
     resolver: yupResolver(JoinSchema),
   });
+
+  const [termsOpen, setTermsOpen] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(false);
   const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
   const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
@@ -39,7 +45,19 @@ export default function BasicJoin() {
     console.log(authNumber);
   };
 
-  const onSubmit = (data: UserSchema) => console.log(data);
+  const onClickToggleModal = useCallback(() => {
+    setTermsOpen(!termsOpen);
+  }, [termsOpen]);
+
+  // useEffect(() => {
+  //   console.log(getValues('sex'), man);
+  // }, [man]);
+
+  const onSubmit = (data: UserSchema) => {
+    console.log(data);
+    // Todo: mbti 대문자 or 소문자로 통일해서 보내주기
+    setTermsOpen(true);
+  };
 
   return (
     <div className={style.join}>
@@ -59,7 +77,9 @@ export default function BasicJoin() {
               placeholder="abc@email.com"
               {...register('email')}
             />
-            <button className={style.btn}>중복확인</button>
+            <button className={style.btn} type="button">
+              중복확인
+            </button>
           </div>
         </div>
 
@@ -86,7 +106,7 @@ export default function BasicJoin() {
           </div>
         </div>
 
-        <div className={style.item}>
+        {/* <div className={style.item}>
           <label htmlFor="passwordConfirm">
             {errors.passwordConfirm
               ? errors.passwordConfirm?.message
@@ -109,7 +129,7 @@ export default function BasicJoin() {
               {showPassword ? <IoEyeOff /> : <IoEye />}
             </span>
           </div>
-        </div>
+        </div> */}
 
         <div className={style.item}>
           <label htmlFor="phponeNumber">
@@ -127,7 +147,7 @@ export default function BasicJoin() {
               className={style.btn}
               type="button"
               onClick={() => {
-                onAuthSending(getValues('phoneNumber'));
+                onAuthSending(watch('phoneNumber'));
               }}
             >
               인증번호 받기
@@ -150,7 +170,7 @@ export default function BasicJoin() {
               type="button"
               className={style.btn}
               onClick={() => {
-                onAuthEntering(getValues('authNumber'));
+                onAuthEntering(watch('authNumber'));
               }}
             >
               인증하기
@@ -163,22 +183,24 @@ export default function BasicJoin() {
           <div className={style.row}>
             <button
               className={cx(style.sex_btn, {
-                [style.sex_active]: getValues('sex') === '남자',
+                [style.sex_active]: watch('sex') === '남자',
               })}
               onClick={() => {
                 setValue('sex', '남자');
               }}
+              type="button"
               aria-labelledby="sex"
             >
               남자
             </button>
             <button
               className={cx(style.sex_btn, {
-                [style.sex_active]: getValues('sex') === '여자',
+                [style.sex_active]: watch('sex') === '여자',
               })}
               onClick={() => {
                 setValue('sex', '여자');
               }}
+              type="button"
               aria-labelledby="sex"
             >
               여자
@@ -205,7 +227,7 @@ export default function BasicJoin() {
             <select
               defaultValue=""
               className={cx(style.month, {
-                [style.error]: getValues('month') === '---',
+                [style.error]: watch('month') === '---',
               })}
               {...register('month')}
             >
@@ -221,7 +243,7 @@ export default function BasicJoin() {
             <select
               defaultValue=""
               className={cx(style.day, {
-                [style.error]: getValues('day') === '---',
+                [style.error]: watch('day') === '---',
               })}
               {...register('day')}
             >
@@ -241,9 +263,17 @@ export default function BasicJoin() {
           <label htmlFor="">키, 몸무게</label>
           <div className={style.row}>
             {/* Todo : cm, kg 보여주도록 변경할 것 */}
-            <input type="text" className={style.input} />
+            <input
+              type="text"
+              className={style.input}
+              {...register('height')}
+            />
             <span className={style.unit}>cm</span>
-            <input type="text" className={style.input} />
+            <input
+              type="text"
+              className={style.input}
+              {...register('weight')}
+            />
             <span className={style.unit}>kg</span>
           </div>
         </div>
@@ -251,12 +281,24 @@ export default function BasicJoin() {
         <div className={style.item}>
           <label htmlFor="">MBTI</label>
           <div className={style.row}>
-            <input type="text" className={style.input} placeholder="예) ISFP" />
+            <input
+              type="text"
+              className={style.input}
+              placeholder="예) ISFP"
+              {...register('mbti')}
+            />
           </div>
         </div>
 
         <input className={style.next_btn} type="submit" value="다음" />
       </form>
+      {termsOpen && (
+        <Terms
+          // key={getValues('email')}
+          onClickToggleModal={onClickToggleModal}
+          onState={termsOpen}
+        />
+      )}
     </div>
   );
 }

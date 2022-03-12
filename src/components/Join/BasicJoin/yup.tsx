@@ -1,5 +1,8 @@
 import * as yup from 'yup';
 
+const mbtiReg =
+  /(ENFP|ENFJ|ENTP|ENTJ|ESFP|ESFJ|ESTP|ESTJ|INFP|INFJ|INTP|INTJ|ISFP|ISFJ|ISTP|ISTJ|enfp|enfj|entp|entj|esfp|esfj|estp|estj|infp|infj|intp|intj|isfp|isfj|istp|istj)/;
+
 const JoinSchema = yup.object({
   email: yup
     .string()
@@ -25,6 +28,9 @@ const JoinSchema = yup.object({
   year: yup.string().required('생년월일을 선택해주세요.'),
   month: yup.string().required('생년월일을 선택해주세요.'),
   day: yup.string().required('생년월일을 선택해주세요.'),
+  height: yup.number(),
+  weight: yup.number(),
+  mbti: yup.string().matches(mbtiReg).length(4),
 });
 
 export default JoinSchema;
