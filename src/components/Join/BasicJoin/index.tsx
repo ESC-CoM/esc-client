@@ -4,23 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import JoinSchema from './yup';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import cx from 'classnames';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Terms } from '../index';
-
-interface UserSchema {
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  phoneNumber: number;
-  authNumber: number;
-  sex: string;
-  year: string;
-  month: string;
-  day: string;
-  height?: number;
-  weight?: number;
-  mbti?: string;
-}
+import { UserInterface } from '../../../types/join';
 
 export default function BasicJoin() {
   const {
@@ -29,7 +15,7 @@ export default function BasicJoin() {
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserSchema>({
+  } = useForm<UserInterface>({
     resolver: yupResolver(JoinSchema),
   });
 
@@ -53,7 +39,7 @@ export default function BasicJoin() {
   //   console.log(getValues('sex'), man);
   // }, [man]);
 
-  const onSubmit = (data: UserSchema) => {
+  const onSubmit = (data: UserInterface) => {
     console.log(data);
     // Todo: mbti 대문자 or 소문자로 통일해서 보내주기
     setTermsOpen(true);

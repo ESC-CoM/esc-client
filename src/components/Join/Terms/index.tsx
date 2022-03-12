@@ -4,21 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import TermsSchema from './yup';
 import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { watch } from 'fs';
+import { TermsInterface, Props } from '../../../types/join';
 
-interface Terms {
-  // Todo: types 파일에 옮기기
-  [index: string]: boolean;
-  personalAgree: boolean;
-  acceptAgree: boolean;
-}
-
-type State = {
-  onState: boolean;
-  onClickToggleModal: () => void;
-};
-
-export default function Terms({ onState, onClickToggleModal }: State) {
+export default function Terms({ onState, onClickToggleModal }: Props) {
   const {
     control,
     watch,
@@ -27,7 +15,7 @@ export default function Terms({ onState, onClickToggleModal }: State) {
     // getValues,
     setValue,
     formState: { errors },
-  } = useForm<Terms>({
+  } = useForm<TermsInterface>({
     defaultValues: {
       personalAgree: false,
       acceptAgree: false,
@@ -75,7 +63,7 @@ export default function Terms({ onState, onClickToggleModal }: State) {
     itemsLen === trueLen ? setAllChecked(true) : setAllChecked(false);
   }, [watch()]);
 
-  const onSubmit = (data: Terms) => console.log(data);
+  const onSubmit = (data: TermsInterface) => console.log(data);
 
   return (
     <main className={style.terms}>
