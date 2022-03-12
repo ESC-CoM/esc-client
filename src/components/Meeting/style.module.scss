@@ -1,0 +1,58 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixin.scss';
+
+.meeting {
+  display: flex;
+  flex-direction: column;
+  min-height: 60px;
+  padding: 15px;
+  border: 0.5px solid $gray-250;
+  background-color: $white;
+  &:first-child,
+  &:last-child {
+    margin: 0;
+  }
+
+  .meetingInfo {
+    margin-bottom: auto;
+    .kind {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: $primary;
+    }
+    .college,
+    .num {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+    .college {
+      font-weight: 540;
+    }
+  }
+
+  .btnBox {
+    .btn {
+      width: calc(50% - 5px);
+      height: 30px;
+      margin-top: 10px;
+      border: none;
+      border-radius: $borderButtonRadius;
+      background-color: $gray-200;
+      font-size: 15px;
+      font-weight: 500;
+      color: $darkmodeBackground;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary;
+        color: $white;
+      }
+      &:first-of-type {
+        margin-right: 10px;
+      }
+    }
+  }
+}
