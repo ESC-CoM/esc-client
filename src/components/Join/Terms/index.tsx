@@ -5,6 +5,7 @@ import TermsSchema from './yup';
 import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { TermsInterface, Props } from '../../../types/join';
+import { useNavigate } from 'react-router-dom';
 
 export default function Terms({ onState, onClickToggleModal }: Props) {
   const {
@@ -22,6 +23,8 @@ export default function Terms({ onState, onClickToggleModal }: Props) {
     },
     resolver: yupResolver(TermsSchema),
   });
+
+  const navigate = useNavigate();
 
   const terms = [
     // Todo: mocks데이터로 옮기기
@@ -63,7 +66,10 @@ export default function Terms({ onState, onClickToggleModal }: Props) {
     itemsLen === trueLen ? setAllChecked(true) : setAllChecked(false);
   }, [watch()]);
 
-  const onSubmit = (data: TermsInterface) => console.log(data);
+  const onSubmit = (data: TermsInterface) => {
+    console.log(data);
+    navigate('/concern');
+  };
 
   return (
     <main className={style.terms}>
