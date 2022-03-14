@@ -1,4 +1,3 @@
-/* eslint-disable array-bracket-spacing */
 import { useEffect, useState } from 'react';
 import { PageLayout, InfiniteScroll } from '../components/Layout';
 import Meeting from '../components/Meeting';

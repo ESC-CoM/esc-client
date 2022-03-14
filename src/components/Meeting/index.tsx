@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useExtractColleges } from '../../hooks';
 import { MeetingType } from '../../types/meeting';
 import style from './style.module.scss';
 
@@ -7,19 +8,27 @@ interface Props {
 }
 
 export default function Meeting({ meeting }: Props) {
-  const { kind, college, gender, num } = meeting;
+  const { kind, gender, profiles } = meeting;
   const [isClicked, setClicked] = useState(false);
+  const colleges = useExtractColleges(profiles, meeting);
 
   return (
     <li className={style.meeting}>
+      <ul>
+        {profiles.map(({ url }, i) => (
+          <li key={i + url}>
+            <img src={url} alt="익명 이미지" width="50px" height="50px" />
+          </li>
+        ))}
+      </ul>
       <div
         className={style.meetingInfo}
         onClick={() => setClicked((state) => !state)}
       >
         <span className={style.kind}>{kind}</span>
-        <span className={style.college}>{college.join(', ')}</span>
+        <span className={style.college}>{colleges.join(', ')}</span>
         <span className={style.num}>
-          {gender} {num}명
+          {gender} {profiles.length}명
         </span>
       </div>
       {isClicked && (
