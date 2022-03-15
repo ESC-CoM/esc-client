@@ -1,3 +1,23 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
 .word{
-    padding-right: 10px;
+    display: inline-flex;
+    padding: 5px 8px;
+    margin: 5px;
+    // border: 1px solid $gray-300;
+    // box-shadow: 0 0 2px 1px $gray-200;
+    border-radius: 15px;
+    font-size: 16px;
+    background-color: $white;
+    align-items: center;
+
+    .close{
+        margin-left: 4px;
+        color: $gray-500;
+    }
+
+    &:hover{
+        background-color: $gray-100;
+    }
 }
