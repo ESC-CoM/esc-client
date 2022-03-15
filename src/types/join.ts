@@ -4,7 +4,7 @@ export interface UserInterface {
   passwordConfirm: string;
   phoneNumber: number;
   authNumber: number;
-  sex: string;
+  gender: string;
   year: string;
   month: string;
   day: string;
