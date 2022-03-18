@@ -4,19 +4,40 @@
 
 .meeting {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   min-height: 60px;
   padding: 15px;
   border: 0.5px solid $gray-250;
   background-color: $white;
-  cursor: pointer;
-  &:first-child,
-  &:last-child {
+  :first-child,
+  :last-child {
     margin: 0;
   }
 
+  .imageList {
+    display: flex;
+    width: 50%;
+    // max-width: 160px;
+    // overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+    .profileImg {
+      padding: 10px;
+      font-size: 10px;
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 40% 40% 40% 40%;
+      }
+    }
+  }
+
   .meetingInfo {
-    margin-bottom: auto;
+    max-width: 164px;
+    margin: auto 0;
+    cursor: pointer;
     .kind {
       display: block;
       margin-bottom: 10px;
@@ -27,10 +48,10 @@
     .college,
     .num {
       display: block;
-      margin-bottom: 5px;
       font-size: 15px;
     }
     .college {
+      margin-bottom: 5px;
       font-weight: 540;
     }
   }
@@ -47,11 +68,11 @@
       font-weight: 500;
       color: $darkmodeBackground;
       cursor: pointer;
-      &:hover {
+      :hover {
         background-color: $primary;
         color: $white;
       }
-      &:first-of-type {
+      :first-of-type {
         margin-right: 10px;
       }
     }
