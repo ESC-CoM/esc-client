@@ -4,7 +4,7 @@ export interface UserInterface {
   passwordConfirm: string;
   phoneNumber: number;
   authNumber: number;
-  sex: string;
+  gender: string;
   year: string;
   month: string;
   day: string;
@@ -23,3 +23,11 @@ export type Props = {
   onState: boolean;
   onClickToggleModal: () => void;
 };
+
+export interface MoreInterface {
+  height: number;
+  weight: number;
+  mbti: string;
+  hobby: Array<string>;
+  drink: number;
+}

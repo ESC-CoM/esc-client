@@ -3,16 +3,18 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import JoinSchema from './yup';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
+import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Terms } from '../index';
 import { UserInterface } from '../../../types/join';
 
-export default function BasicJoin() {
+export default function BasicInfo() {
   const {
     watch,
     register,
     setValue,
+    setFocus,
     handleSubmit,
     formState: { errors },
   } = useForm<UserInterface>({
@@ -23,9 +25,32 @@ export default function BasicJoin() {
   const [showPassword, setShowPassword] = useState(false);
   const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
   const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
+  const mbti = [
+    'ENFP',
+    'ENFJ',
+    'ENTP',
+    'ENTJ',
+    'ESFP',
+    'ESFJ',
+    'ESTP',
+    'ESTJ',
+    'INFP',
+    'INFJ',
+    'INTP',
+    'INTJ',
+    'ISFP',
+    'ISFJ',
+    'ISTP',
+    'ISTJ',
+  ];
 
+  const onCheck = (email: string) => {
+    console.log(email);
+    setFocus('password');
+  };
   const onAuthSending = (phoneNumber: number) => {
     console.log(phoneNumber);
+    setFocus('authNumber');
   };
   const onAuthEntering = (authNumber: number) => {
     console.log(authNumber);
@@ -34,10 +59,6 @@ export default function BasicJoin() {
   const onClickToggleModal = useCallback(() => {
     setTermsOpen(!termsOpen);
   }, [termsOpen]);
-
-  // useEffect(() => {
-  //   console.log(getValues('sex'), man);
-  // }, [man]);
 
   const onSubmit = (data: UserInterface) => {
     console.log(data);
@@ -61,9 +82,15 @@ export default function BasicJoin() {
               type="text"
               id="email"
               placeholder="abc@email.com"
+              autoFocus
               {...register('email')}
             />
-            <button className={style.btn} type="button">
+            {/* <span className={style.seperator}></span> */}
+            <button
+              className={style.btn}
+              type="button"
+              onClick={() => onCheck(watch('email'))}
+            >
               중복확인
             </button>
           </div>
@@ -89,6 +116,7 @@ export default function BasicJoin() {
             >
               {showPassword ? <IoEyeOff /> : <IoEye />}
             </span>
+            {/* <span className={style.seperator}></span> */}
           </div>
         </div>
 
@@ -129,6 +157,7 @@ export default function BasicJoin() {
               id="phponeNumber"
               {...register('phoneNumber')}
             />
+            {/* <span className={style.seperator}></span> */}
             <button
               className={style.btn}
               type="button"
@@ -152,6 +181,7 @@ export default function BasicJoin() {
               id="authNumber"
               {...register('authNumber')}
             />
+            {/* <span className={style.seperator}></span> */}
             <button
               type="button"
               className={style.btn}
@@ -165,29 +195,29 @@ export default function BasicJoin() {
         </div>
 
         <div className={style.item}>
-          <label>{errors.sex ? errors.sex?.message : '성별'}</label>
+          <label>{errors.gender ? errors.gender?.message : '성별'}</label>
           <div className={style.row}>
             <button
-              className={cx(style.sex_btn, {
-                [style.sex_active]: watch('sex') === '남자',
+              className={cx(style.gender_btn, {
+                [style.gender_active]: watch('gender') === '남자',
               })}
               onClick={() => {
-                setValue('sex', '남자');
+                setValue('gender', '남자');
               }}
               type="button"
-              aria-labelledby="sex"
+              aria-labelledby="gender"
             >
               남자
             </button>
             <button
-              className={cx(style.sex_btn, {
-                [style.sex_active]: watch('sex') === '여자',
+              className={cx(style.gender_btn, {
+                [style.gender_active]: watch('gender') === '여자',
               })}
               onClick={() => {
-                setValue('sex', '여자');
+                setValue('gender', '여자');
               }}
               type="button"
-              aria-labelledby="sex"
+              aria-labelledby="gender"
             >
               여자
             </button>
@@ -210,9 +240,10 @@ export default function BasicJoin() {
               placeholder="년(4자)"
               {...register('year')}
             />
+            {/* <span className={style.seperator}></span> */}
             <select
               defaultValue=""
-              className={cx(style.month, {
+              className={cx(style.col, {
                 [style.error]: watch('month') === '---',
               })}
               {...register('month')}
@@ -226,9 +257,12 @@ export default function BasicJoin() {
                 </option>
               ))}
             </select>
+            <span className={style.drop}>
+              <IoMdArrowDropdown />
+            </span>
             <select
               defaultValue=""
-              className={cx(style.day, {
+              className={cx(style.col, {
                 [style.error]: watch('day') === '---',
               })}
               {...register('day')}
@@ -242,48 +276,49 @@ export default function BasicJoin() {
                 </option>
               ))}
             </select>
+            <span className={style.drop}>
+              <IoMdArrowDropdown />
+            </span>
           </div>
         </div>
 
         <div className={style.item}>
-          <label htmlFor="">키, 몸무게</label>
+          <label htmlFor="height">키</label>
           <div className={style.row}>
             {/* Todo : cm, kg 보여주도록 변경할 것 */}
-            <input
-              type="text"
-              className={style.input}
-              {...register('height')}
-            />
-            <span className={style.unit}>cm</span>
-            <input
-              type="text"
-              className={style.input}
-              {...register('weight')}
-            />
-            <span className={style.unit}>kg</span>
-          </div>
-        </div>
+            <input type="text" className={style.col} {...register('height')} />
+            <span className={style.h_unit}>cm</span>
 
-        <div className={style.item}>
-          <label htmlFor="">MBTI</label>
-          <div className={style.row}>
-            <input
-              type="text"
-              className={style.input}
-              placeholder="예) ISFP"
+            <label htmlFor="weight">몸무게</label>
+            <input type="text" className={style.col} {...register('weight')} />
+            <span className={style.w_unit}>kg</span>
+
+            <label>MBTI</label>
+            <select
+              className={cx(style.col, {
+                [style.error]: watch('mbti') === '---',
+              })}
+              defaultValue=""
               {...register('mbti')}
-            />
+            >
+              <option disabled value="">
+                ---
+              </option>
+              {mbti.map((value) => (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        <input className={style.next_btn} type="submit" value="다음" />
+        <button className={style.next_btn} type="submit" aria-labelledby="next">
+          다음
+        </button>
       </form>
       {termsOpen && (
-        <Terms
-          // key={getValues('email')}
-          onClickToggleModal={onClickToggleModal}
-          onState={termsOpen}
-        />
+        <Terms onClickToggleModal={onClickToggleModal} onState={termsOpen} />
       )}
     </div>
   );
