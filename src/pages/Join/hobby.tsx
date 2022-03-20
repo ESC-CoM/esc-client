@@ -1,12 +1,12 @@
 import { PageLayout } from '../../components/Layout';
-import { BasicInfo } from '../../components/Join';
+import { MoreInfo } from '../../components/Join';
 
-function BasicInfoPage() {
+function HobbyPage() {
   return (
     <PageLayout isNeedFooter={true} decreaseHeight={0}>
-      <BasicInfo />
+      <MoreInfo />
     </PageLayout>
   );
 }
 
-export default BasicInfoPage;
+export default HobbyPage;

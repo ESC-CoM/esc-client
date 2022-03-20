@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './styles/reset.scss';
 import CounterPage from './pages/counter';
 import MeetingBoardPage from './pages/MeetingBoard';
-import { BasicJoinPage, ConcernPage } from './pages/Join';
+import { BasicJoinPage, MoreInfoPage } from './pages/Join';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/chat" element={<CounterPage />} />
           <Route path="/mypage" element={<CounterPage />} />
           <Route path="/join" element={<BasicJoinPage />} />
-          <Route path="/concern" element={<ConcernPage />} />
+          <Route path="/more" element={<MoreInfoPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
