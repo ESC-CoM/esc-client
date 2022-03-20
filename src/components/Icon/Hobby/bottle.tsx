@@ -1,5 +1,3 @@
-import style from './style.module.scss';
-
 type Props = {
   degree: string;
 };
@@ -12,7 +10,6 @@ export default function Bottle({ degree }: Props) {
       width="30"
       height="65"
       fill="none"
-      className={style.svg}
     >
       <g data-name="레이어 2">
         <g data-name="레이어 1">

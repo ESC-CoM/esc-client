@@ -23,3 +23,11 @@ export type Props = {
   onState: boolean;
   onClickToggleModal: () => void;
 };
+
+export interface MoreInterface {
+  height: number;
+  weight: number;
+  mbti: string;
+  hobby: Array<string>;
+  drink: number;
+}
