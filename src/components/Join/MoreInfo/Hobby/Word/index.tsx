@@ -11,8 +11,7 @@ export default function Word({ index, word, remove }: Props) {
   return (
     <>
       <span className={style.word} onClick={() => remove(index)}>
-        <span className={style.hashtag}>#</span>
-        <b className={style.text}>{word}</b>
+        <b className={style.text}>#{word}</b>
         <span className={style.close}>
           <IoClose />
         </span>

@@ -1,0 +1,119 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.more{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px 0;
+  background-color: $white;
+
+  .form{
+    margin: 0 auto;
+    padding: 20px;
+    font-weight: 500;
+
+    h1{
+      font-size: 170%;
+      font-weight: 500;
+    }
+
+    .item{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 20px;
+      margin: 8% auto;
+      font-size: 20px;
+
+      .row{
+        display: inline-flex;
+      }
+
+      .input{
+        @include range();
+        margin-right: 5px;
+      }
+
+      .select{
+        @include input(100%);
+        margin-right: 5px;
+      }
+      .box {
+        display: inline-block;
+        position: relative;
+        width: 150px;
+
+        .select {
+          position: relative;
+          border: 2px solid #ccc;
+          box-sizing: border-box;
+          padding: 0 10px;
+          height: 40px;
+          line-height: 35px;
+          font-size: 16px;
+          background-color: #fff;
+          cursor: pointer;
+
+          &:after {
+            content: '▼';
+            position: absolute;
+            top: 0;
+            right: 10px;
+          }
+        }
+      }
+
+      .error{
+        border: 1.5px solid $error;
+        box-shadow: 0 0 2.5px 0.2px $error;
+      }
+
+      .info{
+        position: absolute;
+        right: 0;
+        color: $primary;
+      }
+
+      .drink{
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    .next_btn{
+      @include button(100%, none, $primary, $white, 20px);
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+  }
+}
+
+// .star {
+//     position: relative;
+//     font-size: 2rem;
+//     color: #ddd;
+
+//     .star2 {
+//         width: 0;
+//         position: absolute; 
+//         left: 0;
+//         color: red;
+//         pointer-events: none;
+//     }
+
+//     input {
+//       width: 100%;
+//       height: 100%;
+//       position: absolute;
+//       left: 0;
+//       opacity: 0;
+//       cursor: pointer;
+//     }
+// }
