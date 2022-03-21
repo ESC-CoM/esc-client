@@ -6,8 +6,7 @@ import Header from '../Header';
 import cx from 'classnames';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-
+import schema from './yup';
 import styles from './style.module.scss';
 
 type Inputs = {
@@ -16,19 +15,6 @@ type Inputs = {
   isSaveId: boolean;
   isAutoLogin: boolean;
 };
-
-const schema = yup
-  .object()
-  .shape({
-    email: yup
-      .string()
-      .email('이메일을 양식을 확인해주세요')
-      .required('필수 입력사항입니다.'),
-    password: yup.string().required('필수 입력사항입니다.'),
-    isSaveId: yup.boolean(),
-    isAutoLogin: yup.boolean(),
-  })
-  .required();
 
 function Login() {
   const [isEncrypted, setIsEncrypted] = useState(true);
@@ -75,9 +61,7 @@ function Login() {
               </button>
             )}
           </div>
-          {errors.email && (
-            <span className={styles.errorMessage}>{errors.email.message}</span>
-          )}
+
           <div className={styles.inputContainer}>
             <input
               className={styles.input}
@@ -106,7 +90,10 @@ function Login() {
               </>
             )}
           </div>
-          {errors.password && (
+          {errors.email && (
+            <span className={styles.errorMessage}>{errors.email.message}</span>
+          )}
+          {!errors.email && errors.password && (
             <span className={styles.errorMessage}>
               {errors.password.message}
             </span>

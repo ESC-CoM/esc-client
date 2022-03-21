@@ -1,4 +1,5 @@
 @import '/src/styles/color';
+@import '/src/styles/mixin';
 
 .main {
   display: flex;
@@ -29,14 +30,7 @@
       position: relative;
 
       .input {
-        display: block;
-        width: 490px;
-        max-width: 80vw;
-        height: 30px;
-        padding: 15px;
-        border: 1px solid $gray-300;
-        border-radius: 10px;
-        font-size: 20px;
+        @include input(490px);
 
         &::placeholder {
           color: $gray-400;
@@ -110,15 +104,8 @@
     }
 
     .submitButton {
-      width: 490px;
-      max-width: 90vw;
-      height: 66px;
+      @include button(490px, none, $primary, $white, 26px);
       margin-top: 20px;
-      background: $primary;
-      border: none;
-      border-radius: 33px;
-      font-size: 26px;
-      color: $white;
       cursor: pointer;
     }
   }
