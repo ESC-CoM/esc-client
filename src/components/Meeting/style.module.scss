@@ -1,6 +1,7 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_variables.scss';
 @import 'src/styles/_mixin.scss';
+@import 'src/styles/font.scss';
 
 .meeting {
   display: flex;
@@ -42,7 +43,7 @@
       display: block;
       margin-bottom: 10px;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 500;
       color: $primary;
     }
     .college,
@@ -52,7 +53,7 @@
     }
     .college {
       margin-bottom: 5px;
-      font-weight: 540;
+      font-weight: 500;
     }
   }
 
