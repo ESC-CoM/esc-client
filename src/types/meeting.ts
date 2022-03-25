@@ -1,6 +1,11 @@
+export type MeetingProfileType = {
+  email: string;
+  college: string;
+  url: string;
+};
+
 export type MeetingType = {
   kind: string;
-  college: string[];
   gender: string;
-  num: number;
+  profiles: MeetingProfileType[];
 };

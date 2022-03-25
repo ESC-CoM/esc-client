@@ -1,4 +1,6 @@
 @import './color.scss';
+@import './font.scss';
+
 html,
 body,
 div,
@@ -107,6 +109,8 @@ section {
 body {
   line-height: 1;
   background-color: $gray-200;
+  font-family: 'Nanum Square';
+  font-weight: 300;
 }
 
 ol,
@@ -140,8 +144,9 @@ table {
   border-spacing: 0;
 }
 
-input, select{
+input,
+select {
   -webkit-appearance: none;
-  -moz-appearance: none; 
+  -moz-appearance: none;
   appearance: none;
 }
