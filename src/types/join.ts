@@ -19,11 +19,6 @@ export interface TermsInterface {
   acceptAgree: boolean;
 }
 
-export type Props = {
-  onState: boolean;
-  onClickToggleModal: () => void;
-};
-
 export interface MoreInterface {
   height: number;
   weight: number;

@@ -10,6 +10,7 @@
 
   .form{
     margin: 0 auto;
+    padding: 20px;
     font-weight: 500;
 
     h1{
@@ -28,15 +29,6 @@
 
       label{
         margin: 10px 0;
-        // content:"";
-        // position:absolute;
-        // left:0;
-        // bottom:-1px;
-        // width:0;
-        // height:100%;
-        // border: none;
-        // border-bottom:3px solid #e6cf4e;
-        // transition:all .3s ease;
       }
 
       .row{
@@ -56,36 +48,13 @@
               border: 1.5px solid $error;
               box-shadow: 0 0 2.5px 0.2px $error;
             }
-
-            // &:focus + .seperator{
-            //   transform: scaleX(1) translateY(-2px);   
-            //   opacity: 1;
-            // }
           }
 
           &.active{
             border: 1.5px solid $error;
             box-shadow: 0 0 2.5px 0.2px $error;
           }
-          
-          // &:focus + .seperator{
-          //   transform: scaleX(1) translateY(-2px);   
-          //   opacity: 1;
-          // }
         }
-
-        // .seperator {
-        //   position: absolute;
-        //   bottom: 0;
-        //   height: 2px;
-        //   width: 72%;
-        //   background: $primary;
-        //   display: block;
-        //   transform: scaleX(0) translateY(-2px);
-        //   transform-origin: 50%;
-        //   opacity: 0;
-        //   transition: all .15s linear;
-        // }  
 
         .showicon{
           position: absolute;
@@ -106,36 +75,9 @@
           margin: 0 auto;
         }
 
-          .h_unit{
-            position: absolute;
-            left: 20%;
-            line-height: 45px;
-            font-size: 20px;
-            color: $gray-600;
-            cursor: pointer;
-          }
-  
-          .w_unit{
-            position: absolute;
-            left: 60%;
-            line-height: 45px;
-            font-size: 20px;
-            color: $gray-600;
-            cursor: pointer;
-          }
-
-        .mbti{
-          @include input(100%);
-        }
-
         .error{
           border: 1.5px solid $error;
           box-shadow: 0 0 2.5px 0.2px $error;
-        }
-
-        .drop{
-          // position: absolute;
-          // right: inherit;
         }
       }
 
@@ -150,9 +92,6 @@
 
         &.gender_active{
           border: 2.5px solid $primary;
-          // color: $white;
-          // background-color: $primary-transparent;
-          // box-shadow: 0 0 5px 1px $primary;
         }
       }
     }

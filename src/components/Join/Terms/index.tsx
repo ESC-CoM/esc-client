@@ -4,9 +4,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import TermsSchema from './yup';
 import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { TermsInterface, Props } from '../../../types/join';
+import { TermsInterface } from '../../../types/join';
 import { useNavigate } from 'react-router-dom';
 import { terms } from '../../../__mocks__/join';
+
+export type Props = {
+  onState: boolean;
+  onClickToggleModal: () => void;
+};
 
 export default function Terms({ onState, onClickToggleModal }: Props) {
   const {
@@ -52,7 +57,7 @@ export default function Terms({ onState, onClickToggleModal }: Props) {
 
   const onSubmit = (data: TermsInterface) => {
     console.log(data);
-    navigate('/concern');
+    navigate('/more');
   };
 
   return (

@@ -44,7 +44,6 @@ export default function Hobby({ onSetHobby }: Props) {
           className={style.input}
           id="hobby"
           placeholder="관심사"
-          autoFocus
           onChange={(e) =>
             setNewWord({
               name: e.target.value,

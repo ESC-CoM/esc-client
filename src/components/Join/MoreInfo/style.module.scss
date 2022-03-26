@@ -1,5 +1,5 @@
 @import 'src/styles/_color.scss';
-@import 'src/styles/mixin';
+@import 'src/styles/_mixin.scss';
 
 .more{
   position: relative;
@@ -8,7 +8,7 @@
   overflow-y: auto;
   padding: 20px 0;
   background-color: $white;
-
+  
   .form{
     margin: 0 auto;
     padding: 20px;
@@ -26,11 +26,16 @@
       display: inline-flex;
       flex-direction: column;
       line-height: 20px;
-      margin: 8% auto;
+      margin: 5% auto;
       font-size: 20px;
+
+      label{
+        padding: 10px 0;
+      }
 
       .row{
         display: inline-flex;
+        margin: 10px 0;
       }
 
       .input{
@@ -41,29 +46,12 @@
       .select{
         @include input(100%);
         margin-right: 5px;
-      }
-      .box {
-        display: inline-block;
-        position: relative;
-        width: 150px;
+        padding: 5px;
+        border: 1.5px solid $gray-400;
+        border-radius: 5px;
 
-        .select {
-          position: relative;
-          border: 2px solid #ccc;
-          box-sizing: border-box;
-          padding: 0 10px;
-          height: 40px;
-          line-height: 35px;
-          font-size: 16px;
-          background-color: #fff;
-          cursor: pointer;
-
-          &:after {
-            content: '▼';
-            position: absolute;
-            top: 0;
-            right: 10px;
-          }
+        &:focus {
+          border-color: $primary;
         }
       }
 
@@ -76,11 +64,8 @@
         position: absolute;
         right: 0;
         color: $primary;
-      }
-
-      .drink{
-        position: absolute;
-        right: 0;
+        padding: 10px 0;
+        font-size: 16px;
       }
     }
 
@@ -94,26 +79,3 @@
     }
   }
 }
-
-// .star {
-//     position: relative;
-//     font-size: 2rem;
-//     color: #ddd;
-
-//     .star2 {
-//         width: 0;
-//         position: absolute; 
-//         left: 0;
-//         color: red;
-//         pointer-events: none;
-//     }
-
-//     input {
-//       width: 100%;
-//       height: 100%;
-//       position: absolute;
-//       left: 0;
-//       opacity: 0;
-//       cursor: pointer;
-//     }
-// }
