@@ -6,7 +6,7 @@ const meetingBoardMocks = [
       {
         email: 'abc@gmail.com',
         college: '전자정보대학',
-        url: 'https://mblogthumb-phinf.pstatic.net/20141204_276/firstgjp_14176838057819gNtv_JPEG/___.jpg?type=w2',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
       },
       {
         email: 'abcd@gmail.com',
@@ -16,7 +16,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -27,7 +27,7 @@ const meetingBoardMocks = [
       {
         email: 'abc@gmail.com',
         college: '전자정보대학',
-        url: 'https://mblogthumb-phinf.pstatic.net/20141204_276/firstgjp_14176838057819gNtv_JPEG/___.jpg?type=w2',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
       },
       {
         email: 'abcd@gmail.com',
@@ -37,7 +37,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '전자정보대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
       {
         email: 'abbc@gmail.com',
@@ -47,7 +47,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -58,7 +58,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
       {
         email: 'abbc@gmail.com',
@@ -74,7 +74,7 @@ const meetingBoardMocks = [
       {
         email: 'abc@gmail.com',
         college: '전자정보대학',
-        url: 'https://mblogthumb-phinf.pstatic.net/20141204_276/firstgjp_14176838057819gNtv_JPEG/___.jpg?type=w2',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
       },
       {
         email: 'abcd@gmail.com',
@@ -84,7 +84,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '전자정보대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -95,7 +95,7 @@ const meetingBoardMocks = [
       {
         email: 'abc@gmail.com',
         college: '공과대학',
-        url: 'https://mblogthumb-phinf.pstatic.net/20141204_276/firstgjp_14176838057819gNtv_JPEG/___.jpg?type=w2',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
       },
       {
         email: 'abcd@gmail.com',
@@ -105,7 +105,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
       {
         email: 'abbc@gmail.com',
@@ -115,7 +115,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -126,7 +126,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '경영대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -137,7 +137,7 @@ const meetingBoardMocks = [
       {
         email: 'abc@gmail.com',
         college: '전자정보대학',
-        url: 'https://mblogthumb-phinf.pstatic.net/20141204_276/firstgjp_14176838057819gNtv_JPEG/___.jpg?type=w2',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
       },
       {
         email: 'abcd@gmail.com',
@@ -147,7 +147,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -158,7 +158,7 @@ const meetingBoardMocks = [
       {
         email: 'abc@gmail.com',
         college: '공과대학',
-        url: 'https://mblogthumb-phinf.pstatic.net/20141204_276/firstgjp_14176838057819gNtv_JPEG/___.jpg?type=w2',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
       },
       {
         email: 'abcd@gmail.com',
@@ -168,7 +168,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
       {
         email: 'abbc@gmail.com',
@@ -178,7 +178,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '공과대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
     ],
   },
@@ -189,7 +189,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '경영대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
       {
         email: 'abbc@gmail.com',
@@ -205,7 +205,7 @@ const meetingBoardMocks = [
       {
         email: 'aebc@gmail.com',
         college: '경영대학',
-        url: 'https://s2.best-wallpaper.net/wallpaper/1920x1200/1409/Cute-kittens-furry-flowers_1920x1200.jpg',
+        url: 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F89%2F33%2F08%2F893308757648e936ddd06e4e68b03ce7.jpg&type=a340',
       },
       {
         email: 'abbc@gmail.com',
