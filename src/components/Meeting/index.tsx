@@ -5,6 +5,12 @@ import { MeetingType } from '../../types/meeting';
 import style from './style.module.scss';
 import { AiFillCamera } from 'react-icons/ai';
 
+const FALLBACK_IMAGE =
+  'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
+const LEFT_VALUE = 35;
+const IMG_SIZE = 60;
+const IMGLIST_SIZE = 344;
+
 interface Props {
   meeting: MeetingType;
 }
@@ -16,17 +22,11 @@ export default function Meeting({
   const [imgListWidth, setImgListWidth] = useState(0);
   const colleges = useExtractColleges(profiles);
   const [width] = useWindowResize();
+  let leftValue = -LEFT_VALUE;
 
   useEffect(() => {
     setImgListWidth(imgListRef.current?.clientWidth ?? IMGLIST_SIZE);
   }, [width]);
-
-  const FALLBACK_IMAGE =
-    'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
-  const LEFT_VALUE = 35;
-  const IMG_SIZE = 60;
-  const IMGLIST_SIZE = 344;
-  let leftValue = -LEFT_VALUE;
 
   return (
     <li className={style.meeting}>
@@ -39,7 +39,8 @@ export default function Meeting({
       </div>
       <ul className={style.imageList} ref={imgListRef}>
         {profiles.map(({ url }, i) => {
-          if (leftValue + LEFT_VALUE + IMG_SIZE >= imgListWidth) return <></>;
+          const isOverFlow = leftValue + LEFT_VALUE + IMG_SIZE >= imgListWidth;
+          if (isOverFlow) return <></>;
           return (
             <li
               key={i + url}
