@@ -7,12 +7,12 @@ export default function Bottle({ degree }: Props) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 123.06 384"
-      width="30"
-      height="65"
+      width="40"
+      height="85"
       fill="none"
     >
-      <g data-name="레이어 2">
-        <g data-name="레이어 1">
+      <g data-name="layer 2">
+        <g data-name="layer 1">
           <path
             d="M120 353V188c0-31-25-50-25-50L84 32H39L28 138S3 157 3 188v165s-2 27 28 27h61c30 0 28-27 28-27Z"
             stroke="#0a8a3c"

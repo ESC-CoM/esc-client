@@ -1,1 +1,1 @@
-export { default as HalfBottle } from './Hobby/bottle';
+export { default as Bottle } from './Hobby/bottle';

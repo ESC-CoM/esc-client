@@ -5,7 +5,7 @@ import JoinSchema from './yup';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { Terms } from '../index';
 import { UserInterface } from '../../../types/join';
 
@@ -25,24 +25,6 @@ export default function BasicInfo() {
   const [showPassword, setShowPassword] = useState(false);
   const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
   const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
-  const mbti = [
-    'ENFP',
-    'ENFJ',
-    'ENTP',
-    'ENTJ',
-    'ESFP',
-    'ESFJ',
-    'ESTP',
-    'ESTJ',
-    'INFP',
-    'INFJ',
-    'INTP',
-    'INTJ',
-    'ISFP',
-    'ISFJ',
-    'ISTP',
-    'ISTJ',
-  ];
 
   const onCheck = (email: string) => {
     console.log(email);
@@ -85,7 +67,6 @@ export default function BasicInfo() {
               autoFocus
               {...register('email')}
             />
-            {/* <span className={style.seperator}></span> */}
             <button
               className={style.btn}
               type="button"
@@ -116,34 +97,8 @@ export default function BasicInfo() {
             >
               {showPassword ? <IoEyeOff /> : <IoEye />}
             </span>
-            {/* <span className={style.seperator}></span> */}
           </div>
         </div>
-
-        {/* <div className={style.item}>
-          <label htmlFor="passwordConfirm">
-            {errors.passwordConfirm
-              ? errors.passwordConfirm?.message
-              : '비밀번호 확인'}
-          </label>
-          <div className={style.row}>
-            <input
-              className={cx(style.input_password, {
-                [style.error]: errors.passwordConfirm,
-              })}
-              type={showPassword ? 'text' : 'password'}
-              id="passwordConfirm"
-              placeholder="영문, 숫자 포함 8자 이상"
-              {...register('passwordConfirm')}
-            />
-            <span
-              className={style.showicon}
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <IoEyeOff /> : <IoEye />}
-            </span>
-          </div>
-        </div> */}
 
         <div className={style.item}>
           <label htmlFor="phponeNumber">
@@ -157,7 +112,6 @@ export default function BasicInfo() {
               id="phponeNumber"
               {...register('phoneNumber')}
             />
-            {/* <span className={style.seperator}></span> */}
             <button
               className={style.btn}
               type="button"
@@ -181,7 +135,6 @@ export default function BasicInfo() {
               id="authNumber"
               {...register('authNumber')}
             />
-            {/* <span className={style.seperator}></span> */}
             <button
               type="button"
               className={style.btn}
@@ -240,7 +193,6 @@ export default function BasicInfo() {
               placeholder="년(4자)"
               {...register('year')}
             />
-            {/* <span className={style.seperator}></span> */}
             <select
               defaultValue=""
               className={cx(style.col, {
@@ -279,37 +231,6 @@ export default function BasicInfo() {
             <span className={style.drop}>
               <IoMdArrowDropdown />
             </span>
-          </div>
-        </div>
-
-        <div className={style.item}>
-          <label htmlFor="height">키</label>
-          <div className={style.row}>
-            {/* Todo : cm, kg 보여주도록 변경할 것 */}
-            <input type="text" className={style.col} {...register('height')} />
-            <span className={style.h_unit}>cm</span>
-
-            <label htmlFor="weight">몸무게</label>
-            <input type="text" className={style.col} {...register('weight')} />
-            <span className={style.w_unit}>kg</span>
-
-            <label>MBTI</label>
-            <select
-              className={cx(style.col, {
-                [style.error]: watch('mbti') === '---',
-              })}
-              defaultValue=""
-              {...register('mbti')}
-            >
-              <option disabled value="">
-                ---
-              </option>
-              {mbti.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
 
