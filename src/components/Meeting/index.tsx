@@ -1,45 +1,81 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useExtractColleges } from '../../hooks';
+import useWindowResize from '../../hooks/useWindowResize';
 import { MeetingType } from '../../types/meeting';
 import style from './style.module.scss';
+import { AiFillCamera } from 'react-icons/ai';
+
+const FALLBACK_IMAGE =
+  'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
+const LEFT_VALUE = 35;
+const IMG_SIZE = 60;
+const IMGLIST_SIZE = 344;
 
 interface Props {
   meeting: MeetingType;
 }
 
-export default function Meeting({ meeting }: Props) {
-  const { kind, college, gender, num } = meeting;
-  const [isClicked, setClicked] = useState(false);
+export default function Meeting({
+  meeting: { kind, gender, profiles },
+}: Props) {
+  const imgListRef = useRef<HTMLUListElement | null>(null);
+  const [imgListWidth, setImgListWidth] = useState(0);
+  const colleges = useExtractColleges(profiles);
+  const [width] = useWindowResize();
+  let leftValue = -LEFT_VALUE;
+
+  useEffect(() => {
+    setImgListWidth(imgListRef.current?.clientWidth ?? IMGLIST_SIZE);
+  }, [width]);
 
   return (
     <li className={style.meeting}>
-      <div
-        className={style.meetingInfo}
-        onClick={() => setClicked((state) => !state)}
-      >
+      <div className={style.meetingInfo}>
         <span className={style.kind}>{kind}</span>
-        <span className={style.college}>{college.join(', ')}</span>
+        <span className={style.college}>{colleges.join(', ')}</span>
         <span className={style.num}>
-          {gender} {num}명
+          {gender} {profiles.length}명
         </span>
       </div>
-      {isClicked && (
-        <div className={style.btnBox}>
-          <button
-            className={style.btn}
-            type="button"
-            aria-label="프로필 보기 버튼입니다."
-          >
-            프로필 보기
-          </button>
-          <button
-            className={style.btn}
-            type="button"
-            aria-label="미팅 신청하기 버튼입니다."
-          >
-            신청하기
-          </button>
-        </div>
-      )}
+      <ul className={style.imageList} ref={imgListRef}>
+        {profiles.map(({ url }, i) => {
+          const isOverFlow = leftValue + LEFT_VALUE + IMG_SIZE >= imgListWidth;
+          if (isOverFlow) return <></>;
+          return (
+            <li
+              key={i + url}
+              style={{
+                left: `${(leftValue += LEFT_VALUE)}px`,
+                width: IMG_SIZE,
+                height: IMG_SIZE,
+              }}
+              className={style.profileImg}
+            >
+              <img
+                src={url}
+                alt="익명"
+                width={IMG_SIZE}
+                height={IMG_SIZE}
+                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = FALLBACK_IMAGE;
+                }}
+              />
+            </li>
+          );
+        })}
+        <li
+          style={{
+            left: leftValue,
+            width: IMG_SIZE,
+            height: IMG_SIZE,
+            lineHeight: `${IMG_SIZE + 7}px`,
+          }}
+          className={style.profileBtn}
+        >
+          <AiFillCamera />
+        </li>
+      </ul>
     </li>
   );
 }
