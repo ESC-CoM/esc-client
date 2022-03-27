@@ -95,84 +95,80 @@ export default function MoreInfo() {
 
   return (
     <>
-      <div className={style.more}>
-        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-          <h1>추가적인 정보</h1>
-          <div className={style.item}>
-            <label htmlFor="height">키</label>
-            <span className={style.info}>
-              {hLabel.filter((mark) => watch('height') == mark.value)[0].label}
-            </span>
-            <input
-              type="range"
-              className={style.input}
-              id="height"
-              min="145"
-              max="190"
-              step="5"
-              // onInput={coloring}
-              {...register('height')}
-            />
-          </div>
-          <div className={style.item}>
-            <label htmlFor="weight">몸무게</label>
-            <span className={style.info}>
-              {wLabel.filter((mark) => watch('weight') == mark.value)[0].label}
-            </span>
-            <input
-              type="range"
-              className={style.input}
-              id="weight"
-              min="35"
-              max="90"
-              step="5"
-              // onInput={coloring}
-              {...register('weight')}
-            />
-          </div>
-          <div className={style.item}>
-            <label htmlFor="mbti">Mbti</label>
-            <select
-              className={style.select}
-              defaultValue=""
-              {...register('mbti')}
-            >
-              <option disabled value="">
-                ---선택---
+      {/* <div className={style.more}> */}
+      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+        <h1>추가적인 정보</h1>
+        <div className={style.item}>
+          <label htmlFor="height">키</label>
+          <span className={style.info}>
+            {hLabel.filter((mark) => watch('height') == mark.value)[0].label}
+          </span>
+          <input
+            type="range"
+            className={style.input}
+            id="height"
+            min="145"
+            max="190"
+            step="5"
+            // onInput={coloring}
+            {...register('height')}
+          />
+        </div>
+        <div className={style.item}>
+          <label htmlFor="weight">몸무게</label>
+          <span className={style.info}>
+            {wLabel.filter((mark) => watch('weight') == mark.value)[0].label}
+          </span>
+          <input
+            type="range"
+            className={style.input}
+            id="weight"
+            min="35"
+            max="90"
+            step="5"
+            // onInput={coloring}
+            {...register('weight')}
+          />
+        </div>
+        <div className={style.item}>
+          <label htmlFor="mbti">Mbti</label>
+          <select
+            className={style.select}
+            defaultValue=""
+            {...register('mbti')}
+          >
+            <option disabled value="">
+              ---선택---
+            </option>
+            {mbtiList.map((value) => (
+              <option key={value} value={value}>
+                {value}
               </option>
-              {mbtiList.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-            {/* <span className={style.drop}> // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈
+            ))}
+          </select>
+          {/* <span className={style.drop}> // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈
               <IoMdArrowDropdown />
             </span> */}
-          </div>
+        </div>
 
-          <div className={style.item}>
-            <label>주량</label>
-            <div className={style.row} draggable="false">
-              <Drink onSetDrink={(count: number) => setValue('drink', count)} />
-              <span className={style.info}>
-                {watch('drink') ? watch('drink') + '병' : '못마셔요'}
-              </span>
-            </div>
+        <div className={style.item}>
+          <label>주량</label>
+          <div>
+            <Drink onSetDrink={(count: number) => setValue('drink', count)} />
+            <span className={style.info}>
+              {watch('drink') ? watch('drink') + '병' : '못마셔요'}
+            </span>
           </div>
-          <div className={style.item}>
-            <label>취미</label>
-            <Hobby onSetHobby={onSetHobby} />
-          </div>
-          <button
-            className={style.next_btn}
-            type="submit"
-            aria-labelledby="next"
-          >
-            확인
-          </button>
-        </form>
-      </div>
+        </div>
+        <div className={style.item}>
+          <label>취미</label>
+          <Hobby onSetHobby={onSetHobby} />
+        </div>
+        <button className={style.next_btn} type="submit" aria-labelledby="next">
+          확인
+        </button>
+      </form>
+      {/* </div> */}
     </>
   );
 }

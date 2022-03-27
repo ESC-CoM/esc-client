@@ -43,7 +43,7 @@ export default function Hobby({ onSetHobby }: Props) {
           value={newWord.name}
           className={style.input}
           id="hobby"
-          placeholder="관심사"
+          placeholder="취미를 입력해주세요."
           onChange={(e) =>
             setNewWord({
               name: e.target.value,

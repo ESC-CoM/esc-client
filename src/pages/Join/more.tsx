@@ -1,12 +1,12 @@
 import { PageLayout } from '../../components/Layout';
 import { MoreInfo } from '../../components/Join';
 
-function MoreInfosPage() {
+function MoreInfoPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0}>
+    <PageLayout isNeedFooter={false} decreaseHeight={0}>
       <MoreInfo />
     </PageLayout>
   );
 }
 
-export default MoreInfosPage;
+export default MoreInfoPage;

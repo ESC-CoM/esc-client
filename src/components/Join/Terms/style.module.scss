@@ -8,14 +8,14 @@
   left: 0;
   right: 0;
   background-color: $modalBackground;
+  z-index: 2;
 
   .form{
     position: fixed;
-    bottom: 50px;
+    bottom: 0;
     left: 0;
     right: 0;
-    padding: 30px 15px;
-    z-index: 200;
+    padding: 30px 15px 10px 15px;
     background-color: $white;
     border-radius: 20px 20px 0 0;
     transition: all 0.2s ease-out;
@@ -29,9 +29,9 @@
     
     .allChecked{
       margin: 0 auto;
-      font-weight: 600;
+      font-weight: 500;
       padding: 10px 0;
-      font-size: 18px;
+      font-size: 16px;
       border-bottom: 1px solid $gray-300;
 
       .text{
@@ -55,7 +55,7 @@
           }
 
           .title{
-            font-size: 15px;
+            font-size: 14px;
           }
 
           .url{

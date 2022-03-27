@@ -2,21 +2,22 @@
 @import 'src/styles/mixin';
 
 .word{
-    display: inline-flex;
-    padding: 5px 8px;
-    margin:  5px;
-    border: 1.5px solid $primary;
-    border-radius: 15px;
-    font-size: 16px;
-    background-color: $white;
-    align-items: center;
-
-    .close{
-        margin-left: 4px;
-        color: $gray-500;
-    }
-
-    &:hover{
-        background-color: $gray-100;
-    }
+  display: inline-flex;
+  padding: 6px;
+  margin:  5px;
+  border: 1.2px solid $primary;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: $white;
+  align-items: center;
+  
+  .close{
+    margin: 4px 0 0 2px;
+    color: $gray-600;
+    font-size: 18px;
+  }
+  
+  &:hover{
+    background-color: $gray-100;
+  }
 }

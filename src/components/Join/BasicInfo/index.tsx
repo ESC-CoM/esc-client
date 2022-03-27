@@ -49,7 +49,7 @@ export default function BasicInfo() {
   };
 
   return (
-    <div className={style.join}>
+    <>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
         <div className={style.item}>
@@ -119,7 +119,7 @@ export default function BasicInfo() {
                 onAuthSending(watch('phoneNumber'));
               }}
             >
-              인증번호 받기
+              인증번호<br></br>받기
             </button>
           </div>
         </div>
@@ -241,6 +241,6 @@ export default function BasicInfo() {
       {termsOpen && (
         <Terms onClickToggleModal={onClickToggleModal} onState={termsOpen} />
       )}
-    </div>
+    </>
   );
 }

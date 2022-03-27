@@ -3,7 +3,7 @@ import { BasicInfo } from '../../components/Join';
 
 function BasicInfoPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0}>
+    <PageLayout isNeedFooter={false} decreaseHeight={0}>
       <BasicInfo />
     </PageLayout>
   );
