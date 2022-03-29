@@ -1,8 +1,5 @@
 import * as yup from 'yup';
 
-const mbtiReg =
-  /(ENFP|ENFJ|ENTP|ENTJ|ESFP|ESFJ|ESTP|ESTJ|INFP|INFJ|INTP|INTJ|ISFP|ISFJ|ISTP|ISTJ|enfp|enfj|entp|entj|esfp|esfj|estp|estj|infp|infj|intp|intj|isfp|isfj|istp|istj)/;
-
 const JoinSchema = yup.object({
   // 원활한 테스트를 위해 임시 주석처리
   // email: yup

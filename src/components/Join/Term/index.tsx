@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import TermsSchema from './yup';
 import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { TermsInterface } from '../../../types/join';
+import { Terms } from '../../../types/join';
 import { useNavigate } from 'react-router-dom';
 import { terms } from '../../../__mocks__/join';
 
@@ -13,7 +13,7 @@ export type Props = {
   onClickToggleModal: () => void;
 };
 
-export default function Terms({ onState, onClickToggleModal }: Props) {
+export default function Term({ onState, onClickToggleModal }: Props) {
   const {
     control,
     watch,
@@ -21,7 +21,7 @@ export default function Terms({ onState, onClickToggleModal }: Props) {
     reset,
     setValue,
     formState: { errors },
-  } = useForm<TermsInterface>({
+  } = useForm<Terms>({
     defaultValues: {
       personalAgree: false,
       acceptAgree: false,
@@ -55,7 +55,7 @@ export default function Terms({ onState, onClickToggleModal }: Props) {
     itemsLen === trueLen ? setAllChecked(true) : setAllChecked(false);
   }, [watch()]);
 
-  const onSubmit = (data: TermsInterface) => {
+  const onSubmit = (data: Terms) => {
     console.log(data);
     navigate('/more');
   };

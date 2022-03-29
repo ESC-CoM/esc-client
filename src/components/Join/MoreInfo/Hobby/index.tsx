@@ -3,25 +3,26 @@ import { useState } from 'react';
 import style from './style.module.scss';
 import { HiPlus } from 'react-icons/hi';
 import Word from './Word';
+import { Words } from '../../../../types/join';
 
-interface Words {
-  name: string;
-  onRemove: (id: number) => void;
-}
+// interface Words {
+//   name: string;
+//   onRemove: (id: number) => void;
+// }
 
 export type Props = {
-  onSetHobby: (hobby: string) => void;
+  addHobby: (hobby: string) => void;
 };
 
-export default function Hobby({ onSetHobby }: Props) {
-  const RemoveWord = (id: number) => {
+export default function Hobby({ addHobby }: Props) {
+  const removeWord = (id: number) => {
     setWords((words) => words.filter((_, index) => index !== id));
   };
 
   const [words, setWords] = useState<Array<Words>>([]);
   const [newWord, setNewWord] = useState<Words>({
     name: '',
-    onRemove: () => RemoveWord,
+    onRemove: () => removeWord,
   });
 
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -30,7 +31,7 @@ export default function Hobby({ onSetHobby }: Props) {
       if (newWord.name !== '') {
         setWords([...words, newWord]);
         setNewWord({ ...newWord, name: '' });
-        onSetHobby(newWord.name);
+        addHobby(newWord.name);
       }
     }
   };
@@ -47,7 +48,7 @@ export default function Hobby({ onSetHobby }: Props) {
           onChange={(e) =>
             setNewWord({
               name: e.target.value,
-              onRemove: RemoveWord,
+              onRemove: removeWord,
             })
           }
           onKeyPress={onEnter}

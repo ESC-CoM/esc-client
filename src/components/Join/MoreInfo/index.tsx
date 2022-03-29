@@ -1,73 +1,22 @@
 import style from './style.module.scss';
 import { useForm } from 'react-hook-form';
-import { MoreInterface } from '../../../types/join';
+import { MoreInfos } from '../../../types/join';
 // import { IoMdArrowDropdown } from 'react-icons/io'; // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈 -> 158line 참고
 import Hobby from './Hobby';
 import { useState } from 'react';
 import Drink from './Drink/drink';
+import { mbtiList, heightInfo, weightInfo } from './data';
 
 export default function MoreInfo() {
-  const { watch, register, setValue, handleSubmit } = useForm<MoreInterface>({
+  const { watch, register, setValue, handleSubmit } = useForm<MoreInfos>({
     defaultValues: {
       height: 170,
       weight: 65,
     },
   });
 
-  const mbtiList = [
-    'ENFP',
-    'ENFJ',
-    'ENTP',
-    'ENTJ',
-    'ESFP',
-    'ESFJ',
-    'ESTP',
-    'ESTJ',
-    'INFP',
-    'INFJ',
-    'INTP',
-    'INTJ',
-    'ISFP',
-    'ISFJ',
-    'ISTP',
-    'ISTJ',
-  ];
-
-  const hLabel = Array.from({ length: 10 }, (_, index) => {
-    if (!index)
-      return {
-        value: 145,
-        label: '150cm 이하',
-      };
-    else if (index === 9)
-      return {
-        value: 190,
-        label: '190cm 이상',
-      };
-    return {
-      value: 145 + 5 * index,
-      label: `${145 + 5 * index}cm ~ ${145 + 5 * (index + 1)}cm`,
-    };
-  });
-
-  const wLabel = Array.from({ length: 12 }, (_, index) => {
-    if (!index)
-      return {
-        value: 35,
-        label: '40kg 이하',
-      };
-    else if (index === 11)
-      return {
-        value: 90,
-        label: '90kg 이상',
-      };
-    return {
-      value: 35 + 5 * index,
-      label: `${35 + 5 * index}kg ~ ${35 + 5 * (index + 1)}kg`,
-    };
-  });
   const [hobbyList, setHobbyList] = useState<Array<string>>([]);
-  const onSetHobby = (hobby: string) => {
+  const addHobby = (hobby: string) => {
     setHobbyList([...hobbyList, hobby]);
     setValue('hobby', hobbyList);
   };
@@ -91,17 +40,19 @@ export default function MoreInfo() {
   //   ')';
   // };
 
-  const onSubmit = (data: MoreInterface) => console.log(data);
+  const onSubmit = (data: MoreInfos) => console.log(data);
 
   return (
     <>
-      {/* <div className={style.more}> */}
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>추가적인 정보</h1>
         <div className={style.item}>
           <label htmlFor="height">키</label>
           <span className={style.info}>
-            {hLabel.filter((mark) => watch('height') == mark.value)[0].label}
+            {
+              heightInfo.filter((mark) => watch('height') == mark.value)[0]
+                .label
+            }
           </span>
           <input
             type="range"
@@ -117,7 +68,10 @@ export default function MoreInfo() {
         <div className={style.item}>
           <label htmlFor="weight">몸무게</label>
           <span className={style.info}>
-            {wLabel.filter((mark) => watch('weight') == mark.value)[0].label}
+            {
+              weightInfo.filter((mark) => watch('weight') == mark.value)[0]
+                .label
+            }
           </span>
           <input
             type="range"
@@ -154,7 +108,7 @@ export default function MoreInfo() {
         <div className={style.item}>
           <label>주량</label>
           <div>
-            <Drink onSetDrink={(count: number) => setValue('drink', count)} />
+            <Drink setDrinkNum={(count: number) => setValue('drink', count)} />
             <span className={style.info}>
               {watch('drink') ? watch('drink') + '병' : '못마셔요'}
             </span>
@@ -162,13 +116,12 @@ export default function MoreInfo() {
         </div>
         <div className={style.item}>
           <label>취미</label>
-          <Hobby onSetHobby={onSetHobby} />
+          <Hobby addHobby={addHobby} />
         </div>
         <button className={style.next_btn} type="submit" aria-labelledby="next">
           확인
         </button>
       </form>
-      {/* </div> */}
     </>
   );
 }

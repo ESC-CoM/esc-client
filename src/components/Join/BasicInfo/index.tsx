@@ -6,8 +6,8 @@ import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
 import { useState, useCallback } from 'react';
-import { Terms } from '../index';
-import { UserInterface } from '../../../types/join';
+import { Term } from '../index';
+import { UserInfos } from '../../../types/join';
 
 export default function BasicInfo() {
   const {
@@ -17,7 +17,7 @@ export default function BasicInfo() {
     setFocus,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserInterface>({
+  } = useForm<UserInfos>({
     resolver: yupResolver(JoinSchema),
   });
 
@@ -26,15 +26,15 @@ export default function BasicInfo() {
   const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
   const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
 
-  const onCheck = (email: string) => {
+  const isEmailDuplicated = (email: string) => {
     console.log(email);
     setFocus('password');
   };
-  const onAuthSending = (phoneNumber: number) => {
+  const sendPhoneNum = (phoneNumber: number) => {
     console.log(phoneNumber);
     setFocus('authNumber');
   };
-  const onAuthEntering = (authNumber: number) => {
+  const sendAuthNum = (authNumber: number) => {
     console.log(authNumber);
   };
 
@@ -42,7 +42,7 @@ export default function BasicInfo() {
     setTermsOpen(!termsOpen);
   }, [termsOpen]);
 
-  const onSubmit = (data: UserInterface) => {
+  const onSubmit = (data: UserInfos) => {
     console.log(data);
     // Todo: mbti 대문자 or 소문자로 통일해서 보내주기
     setTermsOpen(true);
@@ -53,9 +53,7 @@ export default function BasicInfo() {
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
         <div className={style.item}>
-          <label htmlFor="email">
-            {errors.email ? errors.email?.message : '이메일'}
-          </label>
+          <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
           <div className={style.row}>
             <input
               className={cx(style.input, {
@@ -70,7 +68,7 @@ export default function BasicInfo() {
             <button
               className={style.btn}
               type="button"
-              onClick={() => onCheck(watch('email'))}
+              onClick={() => isEmailDuplicated(watch('email'))}
             >
               중복확인
             </button>
@@ -79,7 +77,7 @@ export default function BasicInfo() {
 
         <div className={style.item}>
           <label htmlFor="password">
-            {errors.password ? errors.password?.message : '비밀번호'}
+            {errors.password?.message ?? '비밀번호'}
           </label>
           <div className={style.row}>
             <input
@@ -102,7 +100,7 @@ export default function BasicInfo() {
 
         <div className={style.item}>
           <label htmlFor="phponeNumber">
-            {errors.phoneNumber ? errors.phoneNumber?.message : '휴대폰 번호'}
+            {errors.phoneNumber?.message ?? '휴대폰 번호'}
           </label>
           <div className={style.row}>
             <input
@@ -116,7 +114,7 @@ export default function BasicInfo() {
               className={style.btn}
               type="button"
               onClick={() => {
-                onAuthSending(watch('phoneNumber'));
+                sendPhoneNum(watch('phoneNumber'));
               }}
             >
               인증번호<br></br>받기
@@ -125,7 +123,7 @@ export default function BasicInfo() {
         </div>
         <div className={style.item}>
           <label htmlFor="authNumber">
-            {errors.authNumber ? errors.authNumber?.message : '인증번호'}
+            {errors.authNumber?.message ?? '인증번호'}
           </label>
           <div className={style.row}>
             <input
@@ -139,7 +137,7 @@ export default function BasicInfo() {
               type="button"
               className={style.btn}
               onClick={() => {
-                onAuthEntering(watch('authNumber'));
+                sendAuthNum(watch('authNumber'));
               }}
             >
               인증하기
@@ -148,7 +146,7 @@ export default function BasicInfo() {
         </div>
 
         <div className={style.item}>
-          <label>{errors.gender ? errors.gender?.message : '성별'}</label>
+          <label>{errors.gender?.message ?? '성별'}</label>
           <div className={style.row}>
             <button
               className={cx(style.gender_btn, {
@@ -239,7 +237,7 @@ export default function BasicInfo() {
         </button>
       </form>
       {termsOpen && (
-        <Terms onClickToggleModal={onClickToggleModal} onState={termsOpen} />
+        <Term onClickToggleModal={onClickToggleModal} onState={termsOpen} />
       )}
     </>
   );

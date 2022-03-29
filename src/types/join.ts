@@ -1,4 +1,4 @@
-export interface UserInterface {
+export interface UserInfos {
   email: string;
   password: string;
   passwordConfirm: string;
@@ -13,16 +13,21 @@ export interface UserInterface {
   mbti?: string;
 }
 
-export interface TermsInterface {
+export interface Terms {
   [index: string]: boolean;
   personalAgree: boolean;
   acceptAgree: boolean;
 }
 
-export interface MoreInterface {
+export interface MoreInfos {
   height: number;
   weight: number;
   mbti: string;
   hobby: Array<string>;
   drink: number;
+}
+
+export interface Words {
+  name: string;
+  onRemove: (id: number) => void;
 }
