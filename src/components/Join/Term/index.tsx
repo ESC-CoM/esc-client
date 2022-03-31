@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import TermsSchema from './yup';
 import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { Terms } from '../../../types/join';
+import { TermSchema } from '../../../types/join';
 import { useNavigate } from 'react-router-dom';
 import { terms } from '../../../__mocks__/join';
 
@@ -21,14 +21,13 @@ export default function Term({ onState, onClickToggleModal }: Props) {
     reset,
     setValue,
     formState: { errors },
-  } = useForm<Terms>({
+  } = useForm<TermSchema>({
     defaultValues: {
       personalAgree: false,
       acceptAgree: false,
     },
     resolver: yupResolver(TermsSchema),
   });
-
   const navigate = useNavigate();
 
   const termItems = watch();
@@ -47,21 +46,21 @@ export default function Term({ onState, onClickToggleModal }: Props) {
   useEffect(() => {
     let trueLen = 0;
     for (const item in termItems) {
-      const state = termItems[item];
-      if (state) {
+      const checked = termItems[item];
+      if (checked) {
         trueLen++;
       }
     }
-    itemsLen === trueLen ? setAllChecked(true) : setAllChecked(false);
+    setAllChecked(itemsLen === trueLen ? true : false);
   }, [watch()]);
 
-  const onSubmit = (data: Terms) => {
+  const onSubmit = (data: TermSchema) => {
     console.log(data);
     navigate('/more');
   };
 
   return (
-    <main className={style.terms}>
+    <main className={style.screen}>
       <form
         className={onState ? style.form : style.formClose}
         onSubmit={handleSubmit(onSubmit)}

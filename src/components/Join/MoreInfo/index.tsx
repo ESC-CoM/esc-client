@@ -1,6 +1,6 @@
 import style from './style.module.scss';
 import { useForm } from 'react-hook-form';
-import { MoreInfos } from '../../../types/join';
+import { MoreSchema } from '../../../types/join';
 // import { IoMdArrowDropdown } from 'react-icons/io'; // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈 -> 158line 참고
 import Hobby from './Hobby';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import Drink from './Drink/drink';
 import { mbtiList, heightInfo, weightInfo } from './data';
 
 export default function MoreInfo() {
-  const { watch, register, setValue, handleSubmit } = useForm<MoreInfos>({
+  const { watch, register, setValue, handleSubmit } = useForm<MoreSchema>({
     defaultValues: {
       height: 170,
       weight: 65,
@@ -21,6 +21,7 @@ export default function MoreInfo() {
     setValue('hobby', hobbyList);
   };
 
+  // Todo: 입력한 range범위까지 색상채울 지 말지 결정하기
   // const coloring = (e: React.FormEvent<HTMLInputElement>) => {
   //   console.log(e.currentTarget.value);
   //   const value =
@@ -28,7 +29,6 @@ export default function MoreInfo() {
   //     (+e.currentTarget.max - +e.currentTarget.min);
   //   console.log(value);
 
-  // Todo: 입력한 range범위까지 색상채울 지 말지 결정하기
   // e.currentTarget.style.backgroundImage =
   //   '-webkit-gradient(linear, left top, right top, ' +
   //   'color-stop(' +
@@ -40,7 +40,7 @@ export default function MoreInfo() {
   //   ')';
   // };
 
-  const onSubmit = (data: MoreInfos) => console.log(data);
+  const onSubmit = (data: MoreSchema) => console.log(data);
 
   return (
     <>

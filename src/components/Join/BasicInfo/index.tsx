@@ -5,9 +5,10 @@ import JoinSchema from './yup';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { Term } from '../index';
-import { UserInfos } from '../../../types/join';
+import { UserSchema } from '../../../types/join';
+import { monthList, dayList } from '../../../__mocks__/join';
 
 export default function BasicInfo() {
   const {
@@ -17,34 +18,33 @@ export default function BasicInfo() {
     setFocus,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserInfos>({
+  } = useForm<UserSchema>({
     resolver: yupResolver(JoinSchema),
   });
 
   const [termsOpen, setTermsOpen] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(false);
-  const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
-  const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
 
-  const isEmailDuplicated = (email: string) => {
+  const onEmailDuplicated = (email: string) => {
     console.log(email);
     setFocus('password');
   };
-  const sendPhoneNum = (phoneNumber: number) => {
+  const onSendPhoneNum = (phoneNumber: number) => {
     console.log(phoneNumber);
     setFocus('authNumber');
   };
-  const sendAuthNum = (authNumber: number) => {
+  const onSendAuthNum = (authNumber: number) => {
     console.log(authNumber);
   };
 
-  const onClickToggleModal = useCallback(() => {
+  // Todo: Modal기능의 useCallback 사용여부 재검토
+  const onClickToggleModal = () => {
     setTermsOpen(!termsOpen);
-  }, [termsOpen]);
+  };
 
-  const onSubmit = (data: UserInfos) => {
+  const onSubmit = (data: UserSchema) => {
     console.log(data);
-    setTermsOpen(true);
+    if (!termsOpen) setTermsOpen(true);
   };
 
   return (
@@ -67,7 +67,7 @@ export default function BasicInfo() {
             <button
               className={style.btn}
               type="button"
-              onClick={() => isEmailDuplicated(watch('email'))}
+              onClick={() => onEmailDuplicated(watch('email'))}
             >
               중복확인
             </button>
@@ -113,7 +113,7 @@ export default function BasicInfo() {
               className={style.btn}
               type="button"
               onClick={() => {
-                sendPhoneNum(watch('phoneNumber'));
+                onSendPhoneNum(watch('phoneNumber'));
               }}
             >
               인증번호<br></br>받기
@@ -136,7 +136,7 @@ export default function BasicInfo() {
               type="button"
               className={style.btn}
               onClick={() => {
-                sendAuthNum(watch('authNumber'));
+                onSendAuthNum(watch('authNumber'));
               }}
             >
               인증하기

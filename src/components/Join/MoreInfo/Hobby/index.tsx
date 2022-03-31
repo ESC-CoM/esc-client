@@ -5,11 +5,6 @@ import { HiPlus } from 'react-icons/hi';
 import Word from './Word';
 import { Words } from '../../../../types/join';
 
-// interface Words {
-//   name: string;
-//   onRemove: (id: number) => void;
-// }
-
 export type Props = {
   addHobby: (hobby: string) => void;
 };
@@ -30,7 +25,9 @@ export default function Hobby({ addHobby }: Props) {
       e.preventDefault();
       if (newWord.name !== '') {
         setWords([...words, newWord]);
-        setNewWord({ ...newWord, name: '' });
+        setNewWord((word) => {
+          return { ...word, name: '' };
+        });
         addHobby(newWord.name);
       }
     }

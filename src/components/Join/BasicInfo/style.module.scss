@@ -2,9 +2,10 @@
 @import 'src/styles/mixin';
 
 .form{
+  display: flex;
+  flex-direction: column;
   position: relative;
-  height: 100vh;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   font-weight: 500;
   background-color: $white;
 
@@ -86,16 +87,9 @@
       }
     }
   }
-
   .next_btn{
-    // @include button(100%, none, $primary, $white, 20px);
-    // margin-top: 20px;
-    @include button(95%, none, $primary, $white, 20px);
-    position: fixed;
-    margin: 0 auto;
-    bottom: 5px;
-    left: 10px;
-    right: 10px;
-    z-index: 1;
+    @include button(100%, none, $primary, $white, 20px);
+    position: sticky;
+    bottom: 10px;
   }
 }

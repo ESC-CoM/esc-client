@@ -1,4 +1,4 @@
-export interface UserInfos {
+export interface UserSchema {
   email: string;
   password: string;
   passwordConfirm: string;
@@ -13,13 +13,13 @@ export interface UserInfos {
   mbti?: string;
 }
 
-export interface Terms {
+export interface TermSchema {
   [index: string]: boolean;
   personalAgree: boolean;
   acceptAgree: boolean;
 }
 
-export interface MoreInfos {
+export interface MoreSchema {
   height: number;
   weight: number;
   mbti: string;

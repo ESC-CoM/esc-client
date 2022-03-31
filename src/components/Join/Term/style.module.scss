@@ -1,23 +1,26 @@
 @import '../../../styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.terms{
+.screen{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  margin: 0 auto;
   background-color: $modalBackground;
-  z-index: 2;
+  z-index: 1;
 
   .form{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
+    max-width: 758px;
     padding: 30px 15px 10px 15px;
-    background-color: $white;
     border-radius: 20px 20px 0 0;
+    background-color: $white;
+    z-index: 3;
     transition: all 0.2s ease-out;
     animation: FadeIn .3s ease-in;
 
@@ -28,7 +31,6 @@
     }
     
     .allChecked{
-      margin: 0 auto;
       font-weight: 500;
       padding: 10px 0;
       font-size: 16px;
@@ -69,20 +71,24 @@
     }
 
     .error{
-      position: inherit;
+      position: absolute;
       color: $orange;
       font-size: 14px;
+    }
+
+    .next_btn{
+      @include button(100%, none, $primary, $white, 20px);
+      margin-top: 30px;
     }
   }
 
   .back{
-    width: 100%;
-    height: 100%;
-  }
-
-  .next_btn{
-    @include button(100%, none, $primary, $white, 20px);
-    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
   }
 }
 

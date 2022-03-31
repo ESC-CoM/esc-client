@@ -1,10 +1,13 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_mixin.scss';
+@import 'src/styles/_variables';
 
 .form{
+  display: flex;
+  flex-direction: column;
   position: relative;
-  height: auto;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
+  height: 100em;
   font-weight: 500;
   background-color: $white;
 
@@ -24,7 +27,7 @@
     }
 
     .input{
-      @include range();
+      @include inputRange();
     }
 
     .select{
@@ -50,14 +53,9 @@
       font-size: 16px;
     }
   }
-
-  .next_btn{
-    @include button(95%, none, $primary, $white, 20px);
-    position: fixed;
-    margin: 0 auto;
-    bottom: 5px;
-    left: 10px;
-    right: 10px;
-    z-index: 10;
-  }
+    .next_btn{
+      @include button(100%, none, $primary, $white, 20px);
+      position: sticky;
+      bottom: 10px;
+    }
 }

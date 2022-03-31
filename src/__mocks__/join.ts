@@ -1,4 +1,4 @@
-const terms = [
+export const terms = [
   {
     title: '이용약관 동의(필수)',
     url: 'http://1',
@@ -9,4 +9,11 @@ const terms = [
   },
 ];
 
-export { terms };
+export const monthList = Array.from(
+  { length: 12 },
+  (_, index) => 1 + index + '월'
+);
+export const dayList = Array.from(
+  { length: 31 },
+  (_, index) => 1 + index + '일'
+);
