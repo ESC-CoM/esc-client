@@ -235,9 +235,7 @@ export default function BasicInfo() {
           다음
         </button>
       </form>
-      {termsOpen && (
-        <Term toggleModal={toggleModal} onState={termsOpen} />
-      )}
+      {termsOpen && <Term toggleModal={toggleModal} onState={termsOpen} />}
     </>
   );
 }
