@@ -11,14 +11,14 @@ import {
 export const adjustDrink = (
   e: React.MouseEvent<HTMLElement>,
   index: number,
-  setIsDrinking: React.Dispatch<React.SetStateAction<number[]>>,
+  setDrinkNum: React.Dispatch<React.SetStateAction<number[]>>,
   setdrinkDegree: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
   e.preventDefault();
   const currX = e.nativeEvent.offsetX;
 
   if (currX <= half_offset_x) {
-    setIsDrinking((drinks) =>
+    setDrinkNum((drinks) =>
       drinks.map((_, idx) => (idx < index ? f_point : e_point))
     );
     setdrinkDegree((degree) =>
@@ -31,7 +31,7 @@ export const adjustDrink = (
   }
 
   if (currX > half_offset_x && currX <= full_offset_x) {
-    setIsDrinking((drinks) =>
+    setDrinkNum((drinks) =>
       drinks.map((_, idx) => {
         if (idx < index) return f_point;
         if (idx === index) return h_point;
@@ -49,7 +49,7 @@ export const adjustDrink = (
   }
 
   if (currX > full_offset_x) {
-    setIsDrinking((drinks) =>
+    setDrinkNum((drinks) =>
       drinks.map((_, idx) => (idx <= index ? f_point : e_point))
     );
     setdrinkDegree((degree) =>

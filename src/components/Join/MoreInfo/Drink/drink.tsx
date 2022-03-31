@@ -4,11 +4,11 @@ import { Bottle } from '../../../Icon';
 import { adjustDrink } from '../../../../utils/adjustDrink';
 
 export type Props = {
-  setDrinkNum: (count: number) => void;
+  setTotalDrinkNum: (count: number) => void;
 };
 
-export default function Drink({ setDrinkNum }: Props) {
-  const [isDrinking, setIsDrinking] = useState<Array<number>>(
+export default function Drink({ setTotalDrinkNum }: Props) {
+  const [drinkNum, setDrinkNum] = useState<Array<number>>(
     Array.from({ length: 6 }, () => 0)
   );
   const [drinkDegree, setdrinkDegree] = useState<Array<string>>(
@@ -16,18 +16,18 @@ export default function Drink({ setDrinkNum }: Props) {
   );
 
   useEffect(() => {
-    const count = isDrinking.reduce((acc, curr) => acc + curr, 0);
-    setDrinkNum(count);
-  }, [isDrinking, drinkDegree]);
+    const count = drinkNum.reduce((acc, curr) => acc + curr, 0);
+    setTotalDrinkNum(count);
+  }, [drinkNum, drinkDegree]);
 
   const fillBottle = (e: React.MouseEvent<HTMLElement>, index: number) => {
     e.preventDefault();
-    adjustDrink(e, index, setIsDrinking, setdrinkDegree);
+    adjustDrink(e, index, setDrinkNum, setdrinkDegree);
   };
 
   return (
     <ul className={style.drink}>
-      {isDrinking.map((_, index) => (
+      {drinkNum.map((_, index) => (
         <li
           className={style.icon}
           key={index}

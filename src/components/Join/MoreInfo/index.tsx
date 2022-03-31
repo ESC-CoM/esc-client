@@ -108,7 +108,9 @@ export default function MoreInfo() {
         <div className={style.item}>
           <label>주량</label>
           <div>
-            <Drink setDrinkNum={(count: number) => setValue('drink', count)} />
+            <Drink
+              setTotalDrinkNum={(count: number) => setValue('drink', count)}
+            />
             <span className={style.info}>
               {watch('drink') ? watch('drink') + '병' : '못마셔요'}
             </span>
