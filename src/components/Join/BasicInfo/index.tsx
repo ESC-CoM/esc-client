@@ -25,20 +25,20 @@ export default function BasicInfo() {
   const [termsOpen, setTermsOpen] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const onEmailDuplicated = (email: string) => {
+  const checkDuplicatedEmail = (email: string) => {
     console.log(email);
     setFocus('password');
   };
-  const onSendPhoneNum = (phoneNumber: number) => {
+  const sendPhoneNum = (phoneNumber: number) => {
     console.log(phoneNumber);
     setFocus('authNumber');
   };
-  const onSendAuthNum = (authNumber: number) => {
+  const sendAuthNum = (authNumber: number) => {
     console.log(authNumber);
   };
 
   // Todo: Modal기능의 useCallback 사용여부 재검토
-  const onClickToggleModal = () => {
+  const toggleModal = () => {
     setTermsOpen(!termsOpen);
   };
 
@@ -67,7 +67,7 @@ export default function BasicInfo() {
             <button
               className={style.btn}
               type="button"
-              onClick={() => onEmailDuplicated(watch('email'))}
+              onClick={() => checkDuplicatedEmail(watch('email'))}
             >
               중복확인
             </button>
@@ -113,7 +113,7 @@ export default function BasicInfo() {
               className={style.btn}
               type="button"
               onClick={() => {
-                onSendPhoneNum(watch('phoneNumber'));
+                sendPhoneNum(watch('phoneNumber'));
               }}
             >
               인증번호<br></br>받기
@@ -136,7 +136,7 @@ export default function BasicInfo() {
               type="button"
               className={style.btn}
               onClick={() => {
-                onSendAuthNum(watch('authNumber'));
+                sendAuthNum(watch('authNumber'));
               }}
             >
               인증하기
@@ -236,7 +236,7 @@ export default function BasicInfo() {
         </button>
       </form>
       {termsOpen && (
-        <Term onClickToggleModal={onClickToggleModal} onState={termsOpen} />
+        <Term toggleModal={toggleModal} onState={termsOpen} />
       )}
     </>
   );

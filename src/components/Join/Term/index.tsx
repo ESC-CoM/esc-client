@@ -10,10 +10,10 @@ import { terms } from '../../../__mocks__/join';
 
 export type Props = {
   onState: boolean;
-  onClickToggleModal: () => void;
+  toggleModal: () => void;
 };
 
-export default function Term({ onState, onClickToggleModal }: Props) {
+export default function Term({ onState, toggleModal }: Props) {
   const {
     control,
     watch,
@@ -127,7 +127,7 @@ export default function Term({ onState, onClickToggleModal }: Props) {
         onClick={(e: React.MouseEvent) => {
           e.preventDefault();
           if (onState) {
-            onClickToggleModal();
+            toggleModal();
           }
         }}
       />
