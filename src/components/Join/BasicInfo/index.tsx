@@ -44,7 +44,6 @@ export default function BasicInfo() {
 
   const onSubmit = (data: UserInfos) => {
     console.log(data);
-    // Todo: mbti 대문자 or 소문자로 통일해서 보내주기
     setTermsOpen(true);
   };
 
@@ -106,7 +105,7 @@ export default function BasicInfo() {
             <input
               type="text"
               className={style.input}
-              placeholder="01011112222"
+              placeholder="' - ' 없이 입력"
               id="phponeNumber"
               {...register('phoneNumber')}
             />
