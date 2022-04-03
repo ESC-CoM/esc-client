@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { store } from './app/store';
+import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import './styles/reset.scss';
 import CounterPage from './pages/counter';
@@ -20,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(module)(App);
