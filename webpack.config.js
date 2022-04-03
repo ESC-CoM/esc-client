@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isAnalyze = process.argv.includes('--analyze');
@@ -18,6 +19,7 @@ module.exports = {
   entry: {
     main: './src/index',
   },
+  devtool: production ? 'cheap-source-map' : 'eval-cheap-source-map',
   output: {
     publicPath: '/',
     filename: '[name].[chunkhash:8].bundle.js',
@@ -40,7 +42,7 @@ module.exports = {
         use: ['babel-loader', 'ts-loader'],
       },
       {
-        test: /\.(jp(e)?g|gif|png|svg|ico)$/,
+        test: /\.(jpe?g|gif|png|svg|ico)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -53,21 +55,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff(2)?|ttf|eot|otf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              fallback: 'file-loader',
-              name: 'assets/fonts/[name].[ext]?[hash]',
-            },
-          },
-        ],
-      },
-      {
         test: /\.(sc|c)ss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          production ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
@@ -85,6 +78,13 @@ module.exports = {
           }
         : false,
     }),
+    ...(production
+      ? [
+          new MiniCssExtractPlugin({
+            filename: '[name].[chunkhash:8].bundle.css',
+          }),
+        ]
+      : []),
     ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
     new webpack.HotModuleReplacementPlugin(),
   ],

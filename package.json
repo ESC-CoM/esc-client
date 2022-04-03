@@ -14,8 +14,8 @@
     "url": "https://github.com/ESC-CoM/esc-client/issues"
   },
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack --progress --mode production",
+    "dev": "webpack-dev-server --mode=development",
+    "build": "webpack --progress --mode=production",
     "analyze": "yarn build --analyze",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -60,7 +60,9 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.5.1",
+    "react-hot-loader": "^4.13.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.8",
