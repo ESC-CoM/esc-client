@@ -58,7 +58,7 @@ export default function Footer() {
             <div className={style.icon}>
               {location.pathname === menu.url ? menu.active : menu.icon}
             </div>
-            <p className={style.text}>{menu.text}</p>
+            <span className={style.text}>{menu.text}</span>
           </div>
         ))}
       </div>
