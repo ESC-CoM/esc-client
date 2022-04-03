@@ -3,4 +3,6 @@ export const [adj_full, adj_half] = [
   'M120 247.74a12.8 12.8 0 0 1-7.68 2.26c-4.91 0-7.31-1.89-9.85-3.89S97.28 242 92 242s-7.91 2.09-10.48 4.11S76.6 250 71.68 250s-7.31-1.89-9.85-3.89S56.61 242 51.35 242s-7.91 2.09-10.47 4.11S35.93 250 31 250s-7.31-1.89-9.86-3.89-5.2-4.11-10.45-4.11A13.8 13.8 0 0 0 3 244.07V354s-2 27 28 27h61c30 0 28-27 28-27Z',
 ];
 export const [f_point, h_point, e_point] = [1, 0.5, 0];
-export const [half_offset_x, full_offset_x] = [13, 25];
+export const [half_offset_x, full_offset_x, half_offset_y, full_offset_y] = [
+  13, 35, 62, 18,
+];

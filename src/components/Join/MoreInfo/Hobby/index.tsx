@@ -3,7 +3,6 @@ import { useState } from 'react';
 import style from './style.module.scss';
 import { HiPlus } from 'react-icons/hi';
 import Word from './Word';
-import { Words } from '../../../../types/join';
 
 export type Props = {
   addHobby: (hobby: string) => void;
@@ -14,21 +13,16 @@ export default function Hobby({ addHobby }: Props) {
     setWords((words) => words.filter((_, index) => index !== id));
   };
 
-  const [words, setWords] = useState<Array<Words>>([]);
-  const [newWord, setNewWord] = useState<Words>({
-    name: '',
-    onRemove: () => removeWord,
-  });
+  const [words, setWords] = useState<Array<string>>([]);
+  const [newWord, setNewWord] = useState<string>('');
 
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (newWord.name !== '') {
+      if (newWord !== '') {
         setWords([...words, newWord]);
-        setNewWord((word) => {
-          return { ...word, name: '' };
-        });
-        addHobby(newWord.name);
+        setNewWord('');
+        addHobby(newWord);
       }
     }
   };
@@ -38,24 +32,20 @@ export default function Hobby({ addHobby }: Props) {
       <div className={style.item}>
         <input
           type="text"
-          value={newWord.name}
+          value={newWord}
           className={style.input}
           id="hobby"
           placeholder="취미를 입력해주세요."
-          onChange={(e) =>
-            setNewWord({
-              name: e.target.value,
-              onRemove: removeWord,
-            })
-          }
+          onChange={(e) => setNewWord(e.target.value)}
           onKeyPress={onEnter}
         />
         <span
           className={style.plus}
           onClick={() => {
-            if (newWord.name !== '') {
+            if (newWord !== '') {
               setWords([...words, newWord]);
-              setNewWord({ ...newWord, name: '' });
+              setNewWord('');
+              addHobby(newWord);
             }
           }}
         >
@@ -66,9 +56,9 @@ export default function Hobby({ addHobby }: Props) {
         {words.map((word, index) => (
           <Word
             key={index}
-            word={word.name}
+            word={word}
             index={index}
-            remove={word.onRemove}
+            removeWord={() => removeWord(index)}
           />
         ))}
       </div>

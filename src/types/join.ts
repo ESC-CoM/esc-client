@@ -26,8 +26,3 @@ export interface MoreSchema {
   hobby: Array<string>;
   drink: number;
 }
-
-export interface Words {
-  name: string;
-  onRemove: (id: number) => void;
-}

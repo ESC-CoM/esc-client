@@ -6,6 +6,8 @@ import {
   f_point,
   half_offset_x,
   full_offset_x,
+  half_offset_y,
+  full_offset_y,
 } from '../components/Join/MoreInfo/Drink/data';
 
 export const adjustDrink = (
@@ -15,9 +17,23 @@ export const adjustDrink = (
   setdrinkDegree: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
   e.preventDefault();
-  const currX = e.nativeEvent.offsetX;
+  const [currX, currY] = [e.nativeEvent.offsetX, e.nativeEvent.offsetY];
 
-  if (currX <= half_offset_x) {
+  // full
+  if (currX > full_offset_x || currY <= full_offset_y) {
+    setDrinkNum((drinks) =>
+      drinks.map((_, idx) => (idx <= index ? f_point : e_point))
+    );
+    setdrinkDegree((degree) =>
+      degree.map((_, idx) => {
+        if (idx <= index) return adj_full;
+        return '';
+      })
+    );
+    return;
+  }
+  // empty
+  if (currY >= half_offset_y || currX <= half_offset_x) {
     setDrinkNum((drinks) =>
       drinks.map((_, idx) => (idx < index ? f_point : e_point))
     );
@@ -30,7 +46,11 @@ export const adjustDrink = (
     return;
   }
 
-  if (currX > half_offset_x && currX <= full_offset_x) {
+  // half
+  if (
+    (currX > half_offset_x && currX <= full_offset_x) ||
+    (currY > full_offset_y && currY < half_offset_y)
+  ) {
     setDrinkNum((drinks) =>
       drinks.map((_, idx) => {
         if (idx < index) return f_point;
@@ -42,19 +62,6 @@ export const adjustDrink = (
       degree.map((_, idx) => {
         if (idx < index) return adj_full;
         if (idx === index) return adj_half;
-        return '';
-      })
-    );
-    return;
-  }
-
-  if (currX > full_offset_x) {
-    setDrinkNum((drinks) =>
-      drinks.map((_, idx) => (idx <= index ? f_point : e_point))
-    );
-    setdrinkDegree((degree) =>
-      degree.map((_, idx) => {
-        if (idx <= index) return adj_full;
         return '';
       })
     );

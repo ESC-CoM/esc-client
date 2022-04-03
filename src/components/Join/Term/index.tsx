@@ -56,7 +56,7 @@ export default function Term({ onState, toggleModal }: Props) {
 
   const onSubmit = (data: TermSchema) => {
     console.log(data);
-    navigate('/more');
+    navigate('/join/more');
   };
 
   return (
