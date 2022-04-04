@@ -3,52 +3,56 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import JoinSchema from './yup';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
+import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
 import { useState } from 'react';
+import { Term } from '../index';
+import { UserSchema } from '../../../types/join';
+import { monthList, dayList } from '../../../__mocks__/join';
 
-interface UserSchema {
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  phoneNumber: number;
-  authNumber: number;
-  sex: string;
-  year: string;
-  month: string;
-  day: string;
-}
-
-export default function BasicJoin() {
+export default function BasicInfo() {
   const {
+    watch,
     register,
     setValue,
+    setFocus,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm<UserSchema>({
     resolver: yupResolver(JoinSchema),
   });
-  const [showPassword, setShowPassword] = useState(false);
-  const monthList = Array.from({ length: 12 }, (_, index) => 1 + index + '월');
-  const dayList = Array.from({ length: 31 }, (_, index) => 1 + index + '일');
 
-  const onAuthSending = (phoneNumber: number) => {
-    console.log(phoneNumber);
+  const [termsOpen, setTermsOpen] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const checkDuplicatedEmail = (email: string) => {
+    console.log(email);
+    setFocus('password');
   };
-  const onAuthEntering = (authNumber: number) => {
+  const sendPhoneNum = (phoneNumber: number) => {
+    console.log(phoneNumber);
+    setFocus('authNumber');
+  };
+  const sendAuthNum = (authNumber: number) => {
     console.log(authNumber);
   };
 
-  const onSubmit = (data: UserSchema) => console.log(data);
+  // Todo: Modal기능의 useCallback 사용여부 재검토
+  const toggleModal = () => {
+    setTermsOpen(!termsOpen);
+  };
+
+  const onSubmit = (data: UserSchema) => {
+    console.log(data);
+    if (!termsOpen) setTermsOpen(true);
+  };
 
   return (
-    <div className={style.join}>
+    <>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
         <div className={style.item}>
-          <label htmlFor="email">
-            {errors.email ? errors.email?.message : '이메일'}
-          </label>
+          <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
           <div className={style.row}>
             <input
               className={cx(style.input, {
@@ -57,15 +61,22 @@ export default function BasicJoin() {
               type="text"
               id="email"
               placeholder="abc@email.com"
+              autoFocus
               {...register('email')}
             />
-            <button className={style.btn}>중복확인</button>
+            <button
+              className={style.btn}
+              type="button"
+              onClick={() => checkDuplicatedEmail(watch('email'))}
+            >
+              중복확인
+            </button>
           </div>
         </div>
 
         <div className={style.item}>
           <label htmlFor="password">
-            {errors.password ? errors.password?.message : '비밀번호'}
+            {errors.password?.message ?? '비밀번호'}
           </label>
           <div className={style.row}>
             <input
@@ -87,39 +98,14 @@ export default function BasicJoin() {
         </div>
 
         <div className={style.item}>
-          <label htmlFor="passwordConfirm">
-            {errors.passwordConfirm
-              ? errors.passwordConfirm?.message
-              : '비밀번호 확인'}
-          </label>
-          <div className={style.row}>
-            <input
-              className={cx(style.input_password, {
-                [style.error]: errors.passwordConfirm,
-              })}
-              type={showPassword ? 'text' : 'password'}
-              id="passwordConfirm"
-              placeholder="영문, 숫자 포함 8자 이상"
-              {...register('passwordConfirm')}
-            />
-            <span
-              className={style.showicon}
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <IoEyeOff /> : <IoEye />}
-            </span>
-          </div>
-        </div>
-
-        <div className={style.item}>
           <label htmlFor="phponeNumber">
-            {errors.phoneNumber ? errors.phoneNumber?.message : '휴대폰 번호'}
+            {errors.phoneNumber?.message ?? '휴대폰 번호'}
           </label>
           <div className={style.row}>
             <input
               type="text"
               className={style.input}
-              placeholder="01011112222"
+              placeholder="' - ' 없이 입력"
               id="phponeNumber"
               {...register('phoneNumber')}
             />
@@ -127,16 +113,16 @@ export default function BasicJoin() {
               className={style.btn}
               type="button"
               onClick={() => {
-                onAuthSending(getValues('phoneNumber'));
+                sendPhoneNum(watch('phoneNumber'));
               }}
             >
-              인증번호 받기
+              인증번호<br></br>받기
             </button>
           </div>
         </div>
         <div className={style.item}>
           <label htmlFor="authNumber">
-            {errors.authNumber ? errors.authNumber?.message : '인증번호'}
+            {errors.authNumber?.message ?? '인증번호'}
           </label>
           <div className={style.row}>
             <input
@@ -150,7 +136,7 @@ export default function BasicJoin() {
               type="button"
               className={style.btn}
               onClick={() => {
-                onAuthEntering(getValues('authNumber'));
+                sendAuthNum(watch('authNumber'));
               }}
             >
               인증하기
@@ -159,27 +145,29 @@ export default function BasicJoin() {
         </div>
 
         <div className={style.item}>
-          <label>{errors.sex ? errors.sex?.message : '성별'}</label>
+          <label>{errors.gender?.message ?? '성별'}</label>
           <div className={style.row}>
             <button
-              className={cx(style.sex_btn, {
-                [style.sex_active]: getValues('sex') === '남자',
+              className={cx(style.gender_btn, {
+                [style.gender_active]: watch('gender') === '남자',
               })}
               onClick={() => {
-                setValue('sex', '남자');
+                setValue('gender', '남자');
               }}
-              aria-labelledby="sex"
+              type="button"
+              aria-labelledby="gender"
             >
               남자
             </button>
             <button
-              className={cx(style.sex_btn, {
-                [style.sex_active]: getValues('sex') === '여자',
+              className={cx(style.gender_btn, {
+                [style.gender_active]: watch('gender') === '여자',
               })}
               onClick={() => {
-                setValue('sex', '여자');
+                setValue('gender', '여자');
               }}
-              aria-labelledby="sex"
+              type="button"
+              aria-labelledby="gender"
             >
               여자
             </button>
@@ -204,8 +192,8 @@ export default function BasicJoin() {
             />
             <select
               defaultValue=""
-              className={cx(style.month, {
-                [style.error]: getValues('month') === '---',
+              className={cx(style.col, {
+                [style.error]: watch('month') === '---',
               })}
               {...register('month')}
             >
@@ -218,10 +206,13 @@ export default function BasicJoin() {
                 </option>
               ))}
             </select>
+            <span className={style.drop}>
+              <IoMdArrowDropdown />
+            </span>
             <select
               defaultValue=""
-              className={cx(style.day, {
-                [style.error]: getValues('day') === '---',
+              className={cx(style.col, {
+                [style.error]: watch('day') === '---',
               })}
               {...register('day')}
             >
@@ -234,29 +225,17 @@ export default function BasicJoin() {
                 </option>
               ))}
             </select>
+            <span className={style.drop}>
+              <IoMdArrowDropdown />
+            </span>
           </div>
         </div>
 
-        <div className={style.item}>
-          <label htmlFor="">키, 몸무게</label>
-          <div className={style.row}>
-            {/* Todo : cm, kg 보여주도록 변경할 것 */}
-            <input type="text" className={style.input} />
-            <span className={style.unit}>cm</span>
-            <input type="text" className={style.input} />
-            <span className={style.unit}>kg</span>
-          </div>
-        </div>
-
-        <div className={style.item}>
-          <label htmlFor="">MBTI</label>
-          <div className={style.row}>
-            <input type="text" className={style.input} placeholder="예) ISFP" />
-          </div>
-        </div>
-
-        <input className={style.next_btn} type="submit" value="다음" />
+        <button className={style.next_btn} type="submit" aria-labelledby="next">
+          다음
+        </button>
       </form>
-    </div>
+      {termsOpen && <Term toggleModal={toggleModal} onState={termsOpen} />}
+    </>
   );
 }
