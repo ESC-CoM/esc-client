@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { store } from './app/store';
+import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import './styles/reset.scss';
 import CounterPage from './pages/counter';
@@ -11,6 +12,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route path="*" element={<Navigate to="/home" />} />
           <Route path="/home" element={<MeetingBoardPage />} />
           <Route path="/mymeeting" element={<CounterPage />} />
           <Route path="/chat" element={<CounterPage />} />
@@ -22,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(module)(App);
