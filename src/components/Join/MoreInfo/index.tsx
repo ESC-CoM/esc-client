@@ -48,6 +48,7 @@ export default function MoreInfo() {
         <h1>추가적인 정보</h1>
         <div className={style.item}>
           <label htmlFor="height">키</label>
+          <span className={style.required}>*</span>
           <span className={style.info}>
             {
               heightInfo.filter((mark) => watch('height') == mark.value)[0]
@@ -67,6 +68,7 @@ export default function MoreInfo() {
         </div>
         <div className={style.item}>
           <label htmlFor="weight">몸무게</label>
+          <span className={style.required}>*</span>
           <span className={style.info}>
             {
               weightInfo.filter((mark) => watch('weight') == mark.value)[0]
@@ -86,6 +88,7 @@ export default function MoreInfo() {
         </div>
         <div className={style.item}>
           <label htmlFor="mbti">Mbti</label>
+          <span className={style.required}>*</span>
           <select
             className={style.select}
             defaultValue=""
@@ -107,6 +110,7 @@ export default function MoreInfo() {
 
         <div className={style.item}>
           <label>주량</label>
+          <span className={style.required}>*</span>
           <div>
             <Drink
               setTotalDrinkNum={(count: number) => setValue('drink', count)}
@@ -120,9 +124,15 @@ export default function MoreInfo() {
           <label>취미</label>
           <Hobby addHobby={addHobby} />
         </div>
-        <button className={style.next_btn} type="submit" aria-labelledby="next">
-          확인
-        </button>
+        <div className={style.footer}>
+          <button
+            className={style.next_btn}
+            type="submit"
+            aria-labelledby="next"
+          >
+            확인
+          </button>
+        </div>
       </form>
     </>
   );
