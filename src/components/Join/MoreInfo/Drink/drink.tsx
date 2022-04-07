@@ -8,10 +8,10 @@ export type Props = {
 };
 
 export default function Drink({ setTotalDrinkNum }: Props) {
-  const [drinkNum, setDrinkNum] = useState<Array<number>>(
+  const [drinkNum, setDrinkNum] = useState<number[]>(
     Array.from({ length: 6 }, () => 0)
   );
-  const [drinkDegree, setdrinkDegree] = useState<Array<string>>(
+  const [drinkDegree, setdrinkDegree] = useState<string[]>(
     Array.from({ length: 6 }, () => '')
   );
 

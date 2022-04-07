@@ -13,7 +13,7 @@ export default function Hobby({ addHobby }: Props) {
     setWords((words) => words.filter((_, index) => index !== id));
   };
 
-  const [words, setWords] = useState<Array<string>>([]);
+  const [words, setWords] = useState<string[]>([]);
   const [newWord, setNewWord] = useState<string>('');
 
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {

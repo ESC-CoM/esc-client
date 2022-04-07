@@ -21,5 +21,5 @@ export interface MoreSchema {
   weight: number;
   mbti: string;
   drink: number;
-  hobby?: Array<string>;
+  hobbies: string[];
 }
