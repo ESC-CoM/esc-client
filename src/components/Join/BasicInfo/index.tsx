@@ -21,8 +21,9 @@ export default function BasicInfo() {
   } = useForm<UserSchema>({
     resolver: yupResolver(JoinSchema),
   });
-  const [email, phoneNumber, authNumber, gender, month, day] = watch(
-    ['email', 'phoneNumber', 'authNumber', 'gender', 'month', 'day'],
+
+  const [email, phoneNumber, authNumber, gender] = watch(
+    ['email', 'phoneNumber', 'authNumber', 'gender'],
     {}
   );
 
@@ -53,7 +54,6 @@ export default function BasicInfo() {
   const toggleModal = () => {
     setTermsOpen(!termsOpen);
   };
-
   const [isSubmit, setIsSubmit] = useState(false);
   const onSubmit = (data: UserSchema) => {
     console.log(data);
@@ -71,7 +71,6 @@ export default function BasicInfo() {
     }
     setIsAuthed('');
     if (!termsOpen) setTermsOpen(true);
-    console.log(termsOpen);
   };
 
   return (
@@ -81,7 +80,6 @@ export default function BasicInfo() {
         <div className={style.item}>
           <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
           <span className={style.required}>*</span>
-
           <div className={style.row}>
             <input
               className={cx(style.input, {

@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { useExtractColleges } from '../../hooks';
-import useWindowResize from '../../hooks/useWindowResize';
-import { MeetingType } from '../../types/meeting';
+import { useExtractColleges, useWindowResize } from 'src/hooks';
+import { MeetingType } from 'src/types/meeting';
 import style from './style.module.scss';
 import { AiFillCamera } from 'react-icons/ai';
 
