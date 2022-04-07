@@ -21,20 +21,32 @@ export default function BasicInfo() {
   } = useForm<UserSchema>({
     resolver: yupResolver(JoinSchema),
   });
+  const [email, phoneNumber, authNumber, gender, month, day] = watch(
+    ['email', 'phoneNumber', 'authNumber', 'gender', 'month', 'day'],
+    {}
+  );
 
   const [termsOpen, setTermsOpen] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [isEncrypted, setIsEncrypted] = useState(false);
+  const [isEmailDuplicated, setIsEmailDuplicated] =
+    useState('이메일 중복확인을 해주세요.');
+  const [isPhoneDuplicated, setIsPhoneDuplicated] =
+    useState('휴대폰 인증을 해주세요.');
+  const [isAuthed, setIsAuthed] = useState('인증번호를 입력해주세요.');
 
-  const checkDuplicatedEmail = (email: string) => {
+  const checkDuplicatedEmail = () => {
     console.log(email);
+    setIsEmailDuplicated('');
     setFocus('password');
   };
-  const sendPhoneNum = (phoneNumber: number) => {
+  const sendPhoneNum = () => {
     console.log(phoneNumber);
+    setIsPhoneDuplicated('');
     setFocus('authNumber');
   };
-  const sendAuthNum = (authNumber: number) => {
+  const sendAuthNum = () => {
     console.log(authNumber);
+    if (!isPhoneDuplicated) setIsAuthed('');
   };
 
   // Todo: Modal기능의 useCallback 사용여부 재검토
@@ -42,9 +54,24 @@ export default function BasicInfo() {
     setTermsOpen(!termsOpen);
   };
 
+  const [isSubmit, setIsSubmit] = useState(false);
   const onSubmit = (data: UserSchema) => {
     console.log(data);
+    setIsSubmit(true);
+    if (isEmailDuplicated) {
+      return;
+    }
+    setIsEmailDuplicated('');
+    if (isPhoneDuplicated) {
+      return;
+    }
+    setIsPhoneDuplicated('');
+    if (isAuthed) {
+      return;
+    }
+    setIsAuthed('');
     if (!termsOpen) setTermsOpen(true);
+    console.log(termsOpen);
   };
 
   return (
@@ -53,6 +80,8 @@ export default function BasicInfo() {
         <h1>회원님의 정보를 입력해주세요.</h1>
         <div className={style.item}>
           <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
+          <span className={style.required}>*</span>
+
           <div className={style.row}>
             <input
               className={cx(style.input, {
@@ -60,39 +89,41 @@ export default function BasicInfo() {
               })}
               type="text"
               id="email"
-              placeholder="abc@email.com"
+              placeholder="abcd@email.com"
               autoFocus
               {...register('email')}
             />
             <button
               className={style.btn}
               type="button"
-              onClick={() => checkDuplicatedEmail(watch('email'))}
+              onClick={checkDuplicatedEmail}
             >
               중복확인
             </button>
           </div>
+          {isSubmit && <span>{isEmailDuplicated}</span>}
         </div>
 
         <div className={style.item}>
           <label htmlFor="password">
             {errors.password?.message ?? '비밀번호'}
           </label>
+          <span className={style.required}>*</span>
           <div className={style.row}>
             <input
-              className={cx(style.input_password, {
+              className={cx(style.input, {
                 [style.error]: errors.password,
               })}
-              type={showPassword ? 'text' : 'password'}
+              type={isEncrypted ? 'text' : 'password'}
               id="password"
               placeholder="영문, 숫자 포함 8자 이상"
               {...register('password')}
             />
             <span
               className={style.showicon}
-              onClick={() => setShowPassword(!showPassword)}
+              onClick={() => setIsEncrypted(!isEncrypted)}
             >
-              {showPassword ? <IoEyeOff /> : <IoEye />}
+              {isEncrypted ? <IoEyeOff /> : <IoEye />}
             </span>
           </div>
         </div>
@@ -101,55 +132,51 @@ export default function BasicInfo() {
           <label htmlFor="phponeNumber">
             {errors.phoneNumber?.message ?? '휴대폰 번호'}
           </label>
+          <span className={style.required}>*</span>
           <div className={style.row}>
             <input
               type="text"
-              className={style.input}
-              placeholder="' - ' 없이 입력"
+              className={cx(style.input, {
+                [style.error]: errors.phoneNumber,
+              })}
+              placeholder="' - ' 없이 입력해주세요."
               id="phponeNumber"
               {...register('phoneNumber')}
             />
-            <button
-              className={style.btn}
-              type="button"
-              onClick={() => {
-                sendPhoneNum(watch('phoneNumber'));
-              }}
-            >
+            <button className={style.btn} type="button" onClick={sendPhoneNum}>
               인증번호<br></br>받기
             </button>
           </div>
+          {isSubmit && <span>{isPhoneDuplicated}</span>}
         </div>
         <div className={style.item}>
           <label htmlFor="authNumber">
             {errors.authNumber?.message ?? '인증번호'}
           </label>
+          <span className={style.required}>*</span>
           <div className={style.row}>
             <input
               type="text"
-              className={style.input}
-              placeholder="인증번호를 입력하세요."
+              className={cx(style.input, {
+                [style.error]: errors.phoneNumber,
+              })}
               id="authNumber"
               {...register('authNumber')}
             />
-            <button
-              type="button"
-              className={style.btn}
-              onClick={() => {
-                sendAuthNum(watch('authNumber'));
-              }}
-            >
+            <button type="button" className={style.btn} onClick={sendAuthNum}>
               인증하기
             </button>
           </div>
+          {isSubmit && <span>{isAuthed}</span>}
         </div>
 
         <div className={style.item}>
           <label>{errors.gender?.message ?? '성별'}</label>
+          <span className={style.required}>*</span>
           <div className={style.row}>
             <button
               className={cx(style.gender_btn, {
-                [style.gender_active]: watch('gender') === '남자',
+                [style.gender_active]: gender === '남자',
               })}
               onClick={() => {
                 setValue('gender', '남자');
@@ -161,7 +188,7 @@ export default function BasicInfo() {
             </button>
             <button
               className={cx(style.gender_btn, {
-                [style.gender_active]: watch('gender') === '여자',
+                [style.gender_active]: gender === '여자',
               })}
               onClick={() => {
                 setValue('gender', '여자');
@@ -180,6 +207,7 @@ export default function BasicInfo() {
               ? '생년월일'
               : '생년월일을 선택해주세요.'}
           </label>
+          <span className={style.required}>*</span>
           <div className={style.row}>
             <input
               type="text"
@@ -187,13 +215,13 @@ export default function BasicInfo() {
                 [style.error]: errors.year,
               })}
               id="birthDate"
-              placeholder="년(4자)"
+              placeholder="년도(4자)"
               {...register('year')}
             />
             <select
               defaultValue=""
               className={cx(style.col, {
-                [style.error]: watch('month') === '---',
+                [style.error]: errors.month,
               })}
               {...register('month')}
             >
@@ -212,7 +240,7 @@ export default function BasicInfo() {
             <select
               defaultValue=""
               className={cx(style.col, {
-                [style.error]: watch('day') === '---',
+                [style.error]: errors.day,
               })}
               {...register('day')}
             >
@@ -231,9 +259,15 @@ export default function BasicInfo() {
           </div>
         </div>
 
-        <button className={style.next_btn} type="submit" aria-labelledby="next">
-          다음
-        </button>
+        <div className={style.footer}>
+          <button
+            className={style.next_btn}
+            type="submit"
+            aria-labelledby="next"
+          >
+            다음
+          </button>
+        </div>
       </form>
       {termsOpen && <Term toggleModal={toggleModal} onState={termsOpen} />}
     </>

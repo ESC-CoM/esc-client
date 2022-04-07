@@ -8,9 +8,6 @@ export interface UserSchema {
   year: string;
   month: string;
   day: string;
-  height?: number;
-  weight?: number;
-  mbti?: string;
 }
 
 export interface TermSchema {
@@ -23,6 +20,6 @@ export interface MoreSchema {
   height: number;
   weight: number;
   mbti: string;
-  hobby: Array<string>;
   drink: number;
+  hobby?: Array<string>;
 }

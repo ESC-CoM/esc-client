@@ -21,7 +21,6 @@
 @mixin input($width) {
   width: $width;
   height: 40px;
-  padding-left: 10px;
   font-size: 18px;
   color: $black;
   background-color: $white;
@@ -41,6 +40,7 @@
   background-color: $bg;
   color: $color;
   font-size: $font-size;
+  margin: 0 auto;
 }
 
 @mixin inputRange() {
