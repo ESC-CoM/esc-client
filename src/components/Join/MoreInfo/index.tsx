@@ -13,18 +13,17 @@ export default function MoreInfo() {
       weight: 60,
     },
   });
-  const [height, weight, drink, hobbies] = watch(
+  const [height, weight, drink] = watch(
     ['height', 'weight', 'drink', 'hobbies'],
     {
       height: 165,
       weight: 60,
       drink: 0,
-      hobbies: [],
     }
   );
 
-  const addHobby = (hobby: string) => {
-    setValue('hobbies', [...hobbies, hobby]);
+  const setHobby = (hobbyList: string[]) => {
+    setValue('hobbies', [...hobbyList]);
   };
 
   const onSubmit = (data: MoreSchema) => console.log(data);
@@ -96,11 +95,11 @@ export default function MoreInfo() {
       </div>
       <div className={style.item}>
         <label>취미</label>
-        <Hobby addHobby={addHobby} />
+        <Hobby setHobby={setHobby} />
       </div>
       <div className={style.footer}>
         <button className={style.next_btn} type="submit" aria-labelledby="next">
-          확인
+          다음
         </button>
       </div>
     </form>

@@ -3,16 +3,23 @@
 
 .word{
   display: inline-flex;
-  padding: 6px;
+  padding: 2px 6px;
   margin:  5px;
   border: 1.2px solid $primary;
   border-radius: 5px;
   font-size: 15px;
   background-color: $white;
   align-items: center;
+
+  .text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .close{
     margin: 4px 0 0 2px;
+    align-items: center;
     color: $gray-600;
     font-size: 18px;
   }

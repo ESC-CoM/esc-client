@@ -1,51 +1,88 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import style from './style.module.scss';
 import { HiPlus } from 'react-icons/hi';
-import Word from './Word';
+import { hobbyData } from 'src/__mocks__/join';
+import Self from './Self';
+import Mock from './Mock';
 
-export type Props = {
-  addHobby: (hobby: string) => void;
+type Props = {
+  setHobby: (hobby: string[]) => void;
 };
 
-export default function Hobby({ addHobby }: Props) {
-  const removeWord = (id: number) => {
-    setWords((words) => words.filter((_, index) => index !== id));
+export default function Hobby({ setHobby }: Props) {
+  const [enteredWordList, setEnteredWordList] = useState<string[]>([]); // 직접 입력한 word
+  const [enteringWord, setEnteringWord] = useState<string>('');
+
+  const [selectedMockWordList, setSelectedMockWordList] = useState<
+    { id: number; name: string }[]
+  >([]); // 클릭한 word
+
+  const selectItem = (selectedId: number) => {
+    const { id, name } = hobbyData.filter(({ id }) => selectedId === id)[0];
+    const selectedHobby = { id, name };
+    setSelectedMockWordList((words) => [...words, selectedHobby]);
   };
 
-  const [words, setWords] = useState<string[]>([]);
-  const [newWord, setNewWord] = useState<string>('');
+  const removeItem = (trigger: string, removeId: number) => {
+    if (trigger === 'self') {
+      setEnteredWordList((words) =>
+        words.filter((_, index) => index !== removeId)
+      );
+      return;
+    }
+    if (trigger === 'mock') {
+      setSelectedMockWordList((words) =>
+        words.filter(({ id }) => id !== removeId)
+      );
+      return;
+    }
+  };
 
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (newWord !== '') {
-        setWords([...words, newWord]);
-        setNewWord('');
-        addHobby(newWord);
+      if (enteringWord !== '') {
+        setEnteredWordList([...enteredWordList, enteringWord]);
+        setEnteringWord('');
       }
     }
   };
 
+  useEffect(() => {
+    const selectedHobby = selectedMockWordList.map(({ name }) => name);
+    setHobby([...selectedHobby, ...enteredWordList]);
+  }, [enteredWordList, selectedMockWordList]);
+
   return (
     <main className={style.hobby}>
-      <div className={style.item}>
+      <div>
+        {hobbyData.map(({ id, ...info }) => (
+          <Mock
+            key={id}
+            id={id}
+            info={info}
+            selectItem={selectItem}
+            removeItem={() => removeItem('mock', id)}
+          />
+        ))}
+      </div>
+      <div className={style.self_input}>
         <input
           type="text"
-          value={newWord}
+          value={enteringWord}
           className={style.input}
           id="hobby"
-          placeholder="취미를 입력해주세요."
-          onChange={(e) => setNewWord(e.target.value)}
+          placeholder="추가하고 싶은 취미를 입력해주세요."
+          onChange={(e) => setEnteringWord(e.target.value)}
           onKeyPress={onEnter}
         />
         <span
           className={style.plus}
           onClick={() => {
-            if (newWord !== '') {
-              setWords([...words, newWord]);
-              setNewWord('');
-              addHobby(newWord);
+            if (enteringWord !== '') {
+              setEnteredWordList([...enteredWordList, enteringWord]);
+              setEnteringWord('');
             }
           }}
         >
@@ -53,12 +90,12 @@ export default function Hobby({ addHobby }: Props) {
         </span>
       </div>
       <div className={style.word_bx}>
-        {words.map((word, index) => (
-          <Word
+        {enteredWordList.map((word, index) => (
+          <Self
             key={index}
             word={word}
             index={index}
-            removeWord={() => removeWord(index)}
+            removeItem={() => removeItem('self', index)}
           />
         ))}
       </div>
