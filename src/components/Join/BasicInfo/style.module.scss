@@ -4,9 +4,7 @@
 .form{
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  height: 100%;
-  min-height: 900px;
+  padding: 20px 20px 50px 20px;
   background-color: $white;
 
   h1{
@@ -77,13 +75,6 @@
       }
     }
   }
-
-  // 버튼이 붕 뜨는 이슈
-  // .next_btn{
-  //   @include button(100%, none, $primary, $white, 20px);
-  //   position: sticky;
-  //   bottom: 0;
-  // }
 
   .footer{
     display: flex;

@@ -4,9 +4,7 @@
 .form{
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  height: 100%;
-  min-height: 900px;
+  padding: 20px 20px 70px 20px;
   background-color: $white;
 
   h1{
@@ -32,6 +30,7 @@
       @include input(100%);
       border: 1.5px solid $gray-400;
       border-radius: 5px;
+      padding: 0 10px;
 
       &:focus {
         border-color: $primary;
@@ -68,9 +67,4 @@
       }
     }
   }
-    // .next_btn{
-    //   @include button(100%, none, $primary, $white, 20px);
-    //   position: sticky;
-    //   bottom: 10px;
-    // }
 }
