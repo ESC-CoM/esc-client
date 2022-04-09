@@ -1,44 +1,44 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/mixin';
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
   padding: 20px 20px 50px 20px;
   background-color: $white;
 
-  h1{
+  h1 {
     font-size: 24px;
     font-weight: bold;
   }
 
-  .item{
+  .item {
     position: relative;
     height: 60px;
     line-height: 20px;
     margin: 30px 0 40px 0;
 
-    label{
+    label {
       font-size: 16px;
       font-weight: 500;
       padding: 10px 0;
     }
 
-    .required{
+    .required {
       color: $red;
     }
 
-    .row{
+    .row {
       position: relative;
       display: flex;
       text-align: center;
 
-      .input{
+      .input {
         @include input(100%);
         margin-right: 5px;
       }
 
-      .showicon{
+      .showicon {
         position: absolute;
         right: 20px;
         line-height: 55px;
@@ -47,36 +47,36 @@
         cursor: pointer;
       }
 
-      .year{
+      .year {
         @include input(30%);
         margin: 0 auto;
       }
 
-      .col{
+      .col {
         @include input(25%);
         margin: 0 auto;
       }
 
-      .error{
+      .error {
         border-bottom: 1.5px solid $red;
       }
     }
 
-    .btn{
+    .btn {
       @include button(120px, none, $primary, $white, 16px);
     }
 
-    .gender_btn{
+    .gender_btn {
       @include button(148%, 2.5px solid $gray-500, $white, $black, 18px);
       margin: 0 2px;
 
-      &.gender_active{
+      &.gender_active {
         border: 2.5px solid $primary;
       }
     }
   }
 
-  .footer{
+  .footer {
     display: flex;
     justify-content: center;
     padding: 7px 0;
@@ -84,11 +84,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    
-    .next_btn{
+
+    .next_btn {
       @include button(calc(100% - 50px), none, $primary, $white, 20px);
 
-      @media screen and (min-width: 48em){
+      @media screen and (min-width: 48em) {
         width: 720px;
       }
     }

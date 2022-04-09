@@ -1,30 +1,30 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/mixin';
 
-.word{
+.word {
   display: inline-flex;
   padding: 2px 6px;
-  margin:  5px;
+  margin: 5px;
   border: 1.2px solid $primary;
   border-radius: 5px;
   font-size: 15px;
   background-color: $white;
   align-items: center;
 
-  .text{
+  .text {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
-  .close{
+
+  .close {
     margin: 4px 0 0 2px;
     align-items: center;
     color: $gray-600;
     font-size: 18px;
   }
-  
-  &:hover{
+
+  &:hover {
     background-color: $gray-100;
   }
 }

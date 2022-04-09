@@ -1,18 +1,18 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/mixin';
 
-.hobby{
+.hobby {
   position: relative;
   height: 100%;
 
-  .self_input{
+  .self_input {
     position: relative;
 
-    .input{
+    .input {
       @include input(98%);
     }
 
-    .plus{
+    .plus {
       position: absolute;
       top: 0;
       right: 5px;
