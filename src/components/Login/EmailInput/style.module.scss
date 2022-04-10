@@ -1,0 +1,11 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    .delete {
+        position: absolute;
+        right: 10px;
+        height: 100%;
+    }
+}

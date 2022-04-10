@@ -1,0 +1,19 @@
+@import '/src/styles/color';
+
+.input {
+  max-width: 80vw;
+  padding-left: 10px;
+  font-size: 18px;
+  background-color: $white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px $gray-300;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    outline: 2px solid $primary;
+  }
+}
