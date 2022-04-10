@@ -10,13 +10,18 @@ type Props = {
   setHobby: (hobby: string[]) => void;
 };
 
+type MockWord = {
+  id: number;
+  name: string;
+};
+
 export default function Hobby({ setHobby }: Props) {
   const [enteredWordList, setEnteredWordList] = useState<string[]>([]); // 직접 입력한 word
-  const [enteringWord, setEnteringWord] = useState<string>('');
+  const [wordInput, setWordInput] = useState<string>('');
 
-  const [selectedMockWordList, setSelectedMockWordList] = useState<
-    { id: number; name: string }[]
-  >([]); // 클릭한 word
+  const [selectedMockWordList, setSelectedMockWordList] = useState<MockWord[]>(
+    []
+  ); // 클릭한 word
 
   const selectItem = (selectedId: number) => {
     const { id, name } = hobbyData.filter(({ id }) => selectedId === id)[0];
@@ -42,9 +47,9 @@ export default function Hobby({ setHobby }: Props) {
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (enteringWord !== '') {
-        setEnteredWordList([...enteredWordList, enteringWord]);
-        setEnteringWord('');
+      if (wordInput !== '') {
+        setEnteredWordList([...enteredWordList, wordInput]);
+        setWordInput('');
       }
     }
   };
@@ -70,19 +75,19 @@ export default function Hobby({ setHobby }: Props) {
       <div className={style.self_input}>
         <input
           type="text"
-          value={enteringWord}
+          value={wordInput}
           className={style.input}
           id="hobby"
           placeholder="추가하고 싶은 취미를 입력해주세요."
-          onChange={(e) => setEnteringWord(e.target.value)}
+          onChange={(e) => setWordInput(e.target.value)}
           onKeyPress={onEnter}
         />
         <span
           className={style.plus}
           onClick={() => {
-            if (enteringWord !== '') {
-              setEnteredWordList([...enteredWordList, enteringWord]);
-              setEnteringWord('');
+            if (wordInput !== '') {
+              setEnteredWordList([...enteredWordList, wordInput]);
+              setWordInput('');
             }
           }}
         >

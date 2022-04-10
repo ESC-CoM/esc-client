@@ -30,7 +30,6 @@ export default function Term({ onState, toggleModal }: Props) {
   });
   const navigate = useNavigate();
 
-  const { personalAgree, acceptAgree } = watch();
   const [allChecked, setAllChecked] = useState<boolean>(false);
 
   const getTermsTitle = (idx: number) =>
@@ -112,8 +111,7 @@ export default function Term({ onState, toggleModal }: Props) {
             );
           })}
         </ul>
-        {/* && !allChecked */}
-        {(errors.personalAgree || errors.acceptAgree) && (
+        {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
           <span className={style.error}>필수 약관에 동의해주세요.</span>
         )}
         <button type="submit" className={style.next_btn} aria-labelledby="next">

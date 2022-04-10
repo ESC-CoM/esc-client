@@ -23,7 +23,7 @@ export default function MoreInfo() {
   );
 
   const setHobby = (hobbyList: string[]) => {
-    setValue('hobbies', [...hobbyList]);
+    setValue('hobbies', hobbyList);
   };
 
   const onSubmit = (data: MoreSchema) => console.log(data);
