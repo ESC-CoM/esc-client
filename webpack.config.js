@@ -2,12 +2,14 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LinkTypePlugin =
+  require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isAnalyze = process.argv.includes('--analyze');
-const production = process.env.NODE_ENV || 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   devServer: {
@@ -19,7 +21,7 @@ module.exports = {
   entry: {
     main: './src/index',
   },
-  devtool: production ? 'cheap-source-map' : 'eval-cheap-source-map',
+  devtool: isProduction ? 'cheap-source-map' : 'eval-cheap-source-map',
   output: {
     publicPath: '/',
     filename: '[name].[chunkhash:8].bundle.js',
@@ -30,6 +32,7 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
+      'react-dom': '@hot-loader/react-dom',
       src: path.resolve(__dirname, './src'),
       extensions: ['.tsx', '.ts', '.js'],
     },
@@ -57,7 +60,7 @@ module.exports = {
       {
         test: /\.(sc|c)ss$/,
         use: [
-          production ? MiniCssExtractPlugin.loader : 'style-loader',
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'sass-loader',
         ],
@@ -65,20 +68,24 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({}),
     new CleanWebpackPlugin(),
+    new LinkTypePlugin({
+      '**/*.css': 'text/css',
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       templateParameters: {
-        env: production ? '' : '(develop)',
+        env: isProduction ? '' : '(develop)',
       },
-      minify: production
+      minify: isProduction
         ? {
             collapseWhitespace: true,
             removeComments: true,
           }
         : false,
     }),
-    ...(production
+    ...(isProduction
       ? [
           new MiniCssExtractPlugin({
             filename: '[name].[chunkhash:8].bundle.css',
@@ -86,6 +93,5 @@ module.exports = {
         ]
       : []),
     ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 };
