@@ -30,11 +30,18 @@
       padding-bottom: 10px;
     }
 
-    .allChecked {
+    .allCheck {
       font-weight: 500;
       padding: 10px 0;
       font-size: 16px;
       border-bottom: 1px solid $gray-300;
+
+      .allCheckBox {
+        color: $gray-500;
+      }
+      .checked {
+        color: $primary;
+      }
 
       .text {
         padding: 10px;
@@ -54,6 +61,10 @@
           .checkbox {
             font-size: 18px;
             padding-right: 10px;
+            color: $gray-500;
+          }
+          .checked {
+            color: $primary;
           }
 
           .title {

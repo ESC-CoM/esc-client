@@ -34,7 +34,7 @@
 
 @mixin button($width, $border, $bg, $color, $font-size) {
   width: $width;
-  height: 45px;
+  height: 40px;
   border: $border;
   border-radius: 15px;
   background-color: $bg;

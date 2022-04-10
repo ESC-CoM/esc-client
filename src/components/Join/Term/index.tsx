@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { TermSchema } from '../../../types/join';
 import { useNavigate } from 'react-router-dom';
 import { terms } from '../../../__mocks__/join';
-import { $gray, $primary } from './color';
+import cx from 'classnames';
 
 export type Props = {
   onState: boolean;
@@ -30,9 +30,11 @@ export default function Term({ onState, toggleModal }: Props) {
   });
   const navigate = useNavigate();
 
+  const { personalAgree, acceptAgree } = watch();
   const [allChecked, setAllChecked] = useState<boolean>(false);
 
-  const termsValue = (idx: number) => (!idx ? 'personalAgree' : 'acceptAgree');
+  const getTermsTitle = (idx: number) =>
+    !idx ? 'personalAgree' : 'acceptAgree';
 
   const onHandleAllCheck = (check: boolean) => {
     reset({
@@ -65,16 +67,22 @@ export default function Term({ onState, toggleModal }: Props) {
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>서비스 이용을 위해 동의가 필요해요</h1>
         <section
-          className={style.allChecked}
+          className={style.allCheck}
           onClick={() => onHandleAllCheck(allChecked)}
         >
-          <FiCheck color={!allChecked ? $gray : $primary} />
+          <span
+            className={cx(style.allCheckBox, {
+              [style.checked]: allChecked,
+            })}
+          >
+            <FiCheck />
+          </span>
           <em className={style.text}>모두 동의하기</em>
         </section>
         <ul className={style.terms_list}>
           {terms.map((term, idx) => {
             const { title, url } = term;
-            const named = termsValue(idx);
+            const named = getTermsTitle(idx);
             return (
               <li
                 className={style.terms_bx}
@@ -83,8 +91,12 @@ export default function Term({ onState, toggleModal }: Props) {
               >
                 <ul className={style.terms_item}>
                   <li>
-                    <span className={style.checkbox}>
-                      <FiCheck color={!watch(named) ? $gray : $primary} />
+                    <span
+                      className={cx(style.checkbox, {
+                        [style.checked]: watch(named),
+                      })}
+                    >
+                      <FiCheck />
                     </span>
                   </li>
                   <li>
@@ -100,7 +112,8 @@ export default function Term({ onState, toggleModal }: Props) {
             );
           })}
         </ul>
-        {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
+        {/* && !allChecked */}
+        {(errors.personalAgree || errors.acceptAgree) && (
           <span className={style.error}>필수 약관에 동의해주세요.</span>
         )}
         <button type="submit" className={style.next_btn} aria-labelledby="next">
