@@ -76,14 +76,9 @@
   }
 
   .footer {
-    position: fixed;
+    @include footer();
     display: flex;
     justify-content: center;
-    padding: 7px 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: $white;
 
     .next_btn {
       @include button(calc(100% - 50px), none, $primary, $white, 20px);
