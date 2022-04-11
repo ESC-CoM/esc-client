@@ -23,6 +23,9 @@ const JoinSchema = yup.object({
   // year: yup.string().required('생년월일을 선택해주세요.'),
   // month: yup.string().required('생년월일을 선택해주세요.'),
   // day: yup.string().required('생년월일을 선택해주세요.'),
+  isEmailDuplicated: yup.boolean().required('이메일 중복확인을 해주세요.'),
+  isPhoneDuplicated: yup.boolean().required('휴대폰 인증을 해주세요.'),
+  isAuthed: yup.boolean().required('인증번호를 입력해주세요.'),
 });
 
 export default JoinSchema;

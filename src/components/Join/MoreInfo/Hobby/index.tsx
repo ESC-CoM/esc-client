@@ -4,42 +4,33 @@ import style from './style.module.scss';
 import { HiPlus } from 'react-icons/hi';
 import { hobbyData } from 'src/__mocks__/join';
 import Self from './Self';
-import Mock from './Mock';
+import Example from './Example';
+import { ExampleWord } from 'src/types/join';
 
 type Props = {
   setHobby: (hobby: string[]) => void;
 };
 
-type MockWord = {
-  id: number;
-  name: string;
-};
-
 export default function Hobby({ setHobby }: Props) {
-  const [enteredWordList, setEnteredWordList] = useState<string[]>([]); // 직접 입력한 word
+  const [inputedWordList, setInputedWordList] = useState<string[]>([]); // 직접 입력한 word
   const [wordInput, setWordInput] = useState<string>('');
 
-  const [selectedMockWordList, setSelectedMockWordList] = useState<MockWord[]>(
-    []
-  ); // 클릭한 word
+  const [selectedWordList, setSelectedWordList] = useState<ExampleWord[]>([]); // 클릭한 word
 
   const selectItem = (selectedId: number) => {
     const { id, name } = hobbyData.filter(({ id }) => selectedId === id)[0];
-    const selectedHobby = { id, name };
-    setSelectedMockWordList((words) => [...words, selectedHobby]);
+    setSelectedWordList((words) => [...words, { id, name }]);
   };
 
   const removeItem = (trigger: string, removeId: number) => {
     if (trigger === 'self') {
-      setEnteredWordList((words) =>
+      setInputedWordList((words) =>
         words.filter((_, index) => index !== removeId)
       );
       return;
     }
-    if (trigger === 'mock') {
-      setSelectedMockWordList((words) =>
-        words.filter(({ id }) => id !== removeId)
-      );
+    if (trigger === 'example') {
+      setSelectedWordList((words) => words.filter(({ id }) => id !== removeId));
       return;
     }
   };
@@ -48,30 +39,31 @@ export default function Hobby({ setHobby }: Props) {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (wordInput !== '') {
-        setEnteredWordList([...enteredWordList, wordInput]);
+        setInputedWordList([...inputedWordList, wordInput]);
         setWordInput('');
       }
     }
   };
 
   useEffect(() => {
-    const selectedHobby = selectedMockWordList.map(({ name }) => name);
-    setHobby([...selectedHobby, ...enteredWordList]);
-  }, [enteredWordList, selectedMockWordList]);
+    const selectedHobby = selectedWordList.map(({ name }) => name);
+    setHobby([...selectedHobby, ...inputedWordList]);
+  }, [inputedWordList, selectedWordList]);
 
   return (
     <main className={style.hobby}>
       <div>
         {hobbyData.map(({ id, ...info }) => (
-          <Mock
+          <Example
             key={id}
             id={id}
             info={info}
             selectItem={selectItem}
-            removeItem={() => removeItem('mock', id)}
+            removeItem={() => removeItem('example', id)}
           />
         ))}
       </div>
+
       <div className={style.self_input}>
         <input
           type="text"
@@ -86,7 +78,7 @@ export default function Hobby({ setHobby }: Props) {
           className={style.plus}
           onClick={() => {
             if (wordInput !== '') {
-              setEnteredWordList([...enteredWordList, wordInput]);
+              setInputedWordList([...inputedWordList, wordInput]);
               setWordInput('');
             }
           }}
@@ -94,8 +86,9 @@ export default function Hobby({ setHobby }: Props) {
           <HiPlus />
         </span>
       </div>
+
       <div className={style.word_bx}>
-        {enteredWordList.map((word, index) => (
+        {inputedWordList.map((word, index) => (
           <Self
             key={index}
             word={word}

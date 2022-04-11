@@ -64,7 +64,8 @@ export default function Term({ onState, toggleModal }: Props) {
   return (
     <main className={style.screen}>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-        <h1>서비스 이용을 위해 동의가 필요해요</h1>
+        <h2>서비스 이용을 위해 동의가 필요해요</h2>
+
         <section
           className={style.allCheck}
           onClick={() => onHandleAllCheck(allChecked)}
@@ -78,6 +79,7 @@ export default function Term({ onState, toggleModal }: Props) {
           </span>
           <em className={style.text}>모두 동의하기</em>
         </section>
+
         <ul className={style.terms_list}>
           {terms.map((term, idx) => {
             const { title, url } = term;
@@ -114,10 +116,12 @@ export default function Term({ onState, toggleModal }: Props) {
         {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
           <span className={style.error}>필수 약관에 동의해주세요.</span>
         )}
+
         <button type="submit" className={style.next_btn} aria-labelledby="next">
           다음
         </button>
       </form>
+
       <div
         className={style.back}
         onClick={(e: React.MouseEvent) => {

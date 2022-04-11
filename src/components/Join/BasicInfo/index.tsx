@@ -22,54 +22,52 @@ export default function BasicInfo() {
     resolver: yupResolver(JoinSchema),
   });
 
-  const [email, phoneNumber, authNumber, gender] = watch(
-    ['email', 'phoneNumber', 'authNumber', 'gender'],
-    {}
-  );
+  const [
+    email,
+    phoneNumber,
+    authNumber,
+    gender,
+    isEmailDuplicated,
+    isPhoneDuplicated,
+    isAuthed,
+  ] = watch([
+    'email',
+    'phoneNumber',
+    'authNumber',
+    'gender',
+    'isEmailDuplicated',
+    'isPhoneDuplicated',
+    'isAuthed',
+  ]);
 
   const [termsOpen, setTermsOpen] = useState<boolean>(false);
   const [isEncrypted, setIsEncrypted] = useState(false);
-  const [isEmailDuplicated, setIsEmailDuplicated] =
-    useState('이메일 중복확인을 해주세요.');
-  const [isPhoneDuplicated, setIsPhoneDuplicated] =
-    useState('휴대폰 인증을 해주세요.');
-  const [isAuthed, setIsAuthed] = useState('인증번호를 입력해주세요.');
 
   const checkDuplicatedEmail = () => {
     console.log(email);
-    setIsEmailDuplicated('');
+    setValue('isEmailDuplicated', !isEmailDuplicated);
     setFocus('password');
   };
   const sendPhoneNum = () => {
     console.log(phoneNumber);
-    setIsPhoneDuplicated('');
+    setValue('isPhoneDuplicated', !isPhoneDuplicated);
     setFocus('authNumber');
   };
   const sendAuthNum = () => {
     console.log(authNumber);
-    if (!isPhoneDuplicated) setIsAuthed('');
+    if (isPhoneDuplicated) setValue('isAuthed', !isAuthed);
   };
 
   // Todo: Modal기능의 useCallback 사용여부 재검토
   const toggleModal = () => {
     setTermsOpen(!termsOpen);
   };
-  const [isSubmit, setIsSubmit] = useState(false);
+
   const onSubmit = (data: UserSchema) => {
     console.log(data);
-    setIsSubmit(true);
-    if (isEmailDuplicated) {
+    if (!isEmailDuplicated || !isPhoneDuplicated || !isAuthed) {
       return;
     }
-    setIsEmailDuplicated('');
-    if (isPhoneDuplicated) {
-      return;
-    }
-    setIsPhoneDuplicated('');
-    if (isAuthed) {
-      return;
-    }
-    setIsAuthed('');
     if (!termsOpen) setTermsOpen(true);
   };
 
@@ -77,6 +75,7 @@ export default function BasicInfo() {
     <>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
+
         <div className={style.item}>
           <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
           <span className={style.required}>*</span>
@@ -99,7 +98,9 @@ export default function BasicInfo() {
               중복확인
             </button>
           </div>
-          {isSubmit && <span>{isEmailDuplicated}</span>}
+          {errors.isEmailDuplicated &&
+            !isEmailDuplicated &&
+            errors.isEmailDuplicated?.message}
         </div>
 
         <div className={style.item}>
@@ -145,8 +146,11 @@ export default function BasicInfo() {
               인증번호<br></br>받기
             </button>
           </div>
-          {isSubmit && <span>{isPhoneDuplicated}</span>}
+          {errors.isPhoneDuplicated &&
+            !isPhoneDuplicated &&
+            errors.isPhoneDuplicated.message}
         </div>
+
         <div className={style.item}>
           <label htmlFor="authNumber">
             {errors.authNumber?.message ?? '인증번호'}
@@ -165,7 +169,7 @@ export default function BasicInfo() {
               인증하기
             </button>
           </div>
-          {isSubmit && <span>{isAuthed}</span>}
+          {errors.isAuthed && !isAuthed && errors.isAuthed.message}
         </div>
 
         <div className={style.item}>
@@ -176,21 +180,18 @@ export default function BasicInfo() {
               className={cx(style.gender_btn, {
                 [style.gender_active]: gender === '남자',
               })}
-              onClick={() => {
-                setValue('gender', '남자');
-              }}
+              onClick={() => setValue('gender', '남자')}
               type="button"
               aria-labelledby="gender"
             >
               남자
             </button>
+
             <button
               className={cx(style.gender_btn, {
                 [style.gender_active]: gender === '여자',
               })}
-              onClick={() => {
-                setValue('gender', '여자');
-              }}
+              onClick={() => setValue('gender', '여자')}
               type="button"
               aria-labelledby="gender"
             >
@@ -206,6 +207,7 @@ export default function BasicInfo() {
               : '생년월일을 선택해주세요.'}
           </label>
           <span className={style.required}>*</span>
+
           <div className={style.row}>
             <input
               type="text"
@@ -216,6 +218,7 @@ export default function BasicInfo() {
               placeholder="년도(4자)"
               {...register('year')}
             />
+
             <select
               defaultValue=""
               className={cx(style.col, {
@@ -235,6 +238,7 @@ export default function BasicInfo() {
             <span className={style.drop}>
               <IoMdArrowDropdown />
             </span>
+
             <select
               defaultValue=""
               className={cx(style.col, {
@@ -251,6 +255,7 @@ export default function BasicInfo() {
                 </option>
               ))}
             </select>
+
             <span className={style.drop}>
               <IoMdArrowDropdown />
             </span>

@@ -17,21 +17,20 @@
   .form {
     width: 100%;
     max-width: 758px;
-    padding: 30px 15px 10px 15px;
+    padding: 30px 15px 10px;
     border-radius: 20px 20px 0 0;
     background-color: $white;
     z-index: 3;
     transition: all 0.2s ease-out;
     animation: FadeIn 0.3s ease-in;
 
-    h1 {
+    h2 {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       padding-bottom: 10px;
     }
 
     .allCheck {
-      font-weight: 500;
       padding: 10px 0;
       font-size: 16px;
       border-bottom: 1px solid $gray-300;
@@ -115,13 +114,3 @@
     opacity: 1;
   }
 }
-
-// Todo: 렌더링 이슈 해결할 것
-// @keyframes FadeOut {
-//   0% {
-//     transform: translateY(-100%);
-//   }
-//   100% {
-//     transform: translateY(0);
-//   }
-// }

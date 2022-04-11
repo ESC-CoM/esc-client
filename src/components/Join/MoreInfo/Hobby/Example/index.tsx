@@ -12,7 +12,7 @@ type Props = {
   removeItem: (id: number) => void;
 };
 
-export default function Mock({ id, info, selectItem, removeItem }: Props) {
+export default function Example({ id, info, selectItem, removeItem }: Props) {
   const { name, icon } = info;
   const [clicked, setClicked] = useState(false);
 

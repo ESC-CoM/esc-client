@@ -31,9 +31,11 @@ export default function MoreInfo() {
   return (
     <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
       <h1>추가적인 정보</h1>
+
       <div className={style.item}>
         <label htmlFor="height">키</label>
         <span className={style.required}>*</span>
+
         <span className={style.info}>
           {heightInfo.filter((mark) => height == mark.value)[0].label}
         </span>
@@ -47,9 +49,11 @@ export default function MoreInfo() {
           {...register('height')}
         />
       </div>
+
       <div className={style.item}>
         <label htmlFor="weight">몸무게</label>
         <span className={style.required}>*</span>
+
         <span className={style.info}>
           {weightInfo.filter((mark) => weight == mark.value)[0].label}
         </span>
@@ -63,9 +67,11 @@ export default function MoreInfo() {
           {...register('weight')}
         />
       </div>
+
       <div className={style.item}>
         <label htmlFor="mbti">Mbti</label>
         <span className={style.required}>*</span>
+
         <select className={style.select} defaultValue="" {...register('mbti')}>
           <option disabled value="">
             ---선택---
@@ -84,6 +90,7 @@ export default function MoreInfo() {
       <div className={style.item}>
         <label>주량</label>
         <span className={style.required}>*</span>
+
         <div>
           <Drink
             setTotalDrinkNum={(count: number) => setValue('drink', count)}
@@ -93,10 +100,12 @@ export default function MoreInfo() {
           </span>
         </div>
       </div>
+
       <div className={style.item}>
         <label>취미</label>
         <Hobby setHobby={setHobby} />
       </div>
+
       <div className={style.footer}>
         <button className={style.next_btn} type="submit" aria-labelledby="next">
           다음
