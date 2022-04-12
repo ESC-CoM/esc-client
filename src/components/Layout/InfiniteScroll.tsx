@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function InfiniteScroll(props: Props) {
-  const { trigger, pageNumber, totalPageCount, isLoaded } = props;
+  const { trigger } = props;
 
   const target = useRef<HTMLDivElement>(null);
   const isIntersecting = useIntersectObserver<HTMLDivElement>(

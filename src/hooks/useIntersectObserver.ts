@@ -21,13 +21,13 @@ export default function useIntersectObserver<T extends Element>(
     options
   );
 
-  const [ isIntersect, setIntersect ] = useState(false);
+  const [isIntersect, setIntersect] = useState(false);
   useEffect(() => {
     if (target?.current) observer.observe(target.current);
     return () => {
       observer.disconnect();
     };
-  }, [ observer, target ]);
-  
+  }, [observer, target]);
+
   return isIntersect;
 }
