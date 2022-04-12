@@ -5,13 +5,13 @@
     @content;
   }
 }
-  
+
 @mixin tablet {
   @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
     @content;
   }
 }
-  
+
 @mixin desktop {
   @media (min-width: #{$breakpoint-desktop}) {
     @content;
@@ -66,7 +66,13 @@
     margin-top: -5px;
   }
 
-  &:focus{
+  &:focus {
     outline: none;
   }
+}
+
+@mixin textOverFlow() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
