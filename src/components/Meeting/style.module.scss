@@ -1,12 +1,15 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_variables.scss';
+@import 'src/styles/_mixin.scss';
 
 .meeting {
   display: flex;
   min-height: 65px;
   padding: 15px;
+  align-items: center;
   border-bottom: 1px solid $gray-250;
   background-color: $white;
+  cursor: pointer;
   &:last-child {
     border-bottom: none;
   }
@@ -15,46 +18,71 @@
     width: 50%;
     margin: auto 0;
     margin-right: 20px;
-    cursor: pointer;
-    .kind {
+    font-size: 15px;
+
+    .title {
+      @include textOverFlow;
       display: block;
       margin-bottom: 10px;
-      font-size: 16px;
       font-weight: 700;
-      color: $primary;
     }
     .college,
     .num {
       display: block;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 300;
     }
     .college {
+      @include textOverFlow;
       margin-bottom: 5px;
       font-weight: 400;
     }
   }
 
   .imageList {
-    position: relative;
-    display: flex;
     width: calc(50% - 20px);
-    overflow: hidden;
-    align-items: center;
-    .profileImg {
-      position: absolute;
-      font-size: 10px;
-      img {
-        border-radius: 50%;
+    @include mobile {
+      div {
+        height: $boardMobileImage;
+        flex-direction: row-reverse;
+        .profileImg {
+          img {
+            width: $boardMobileImage;
+            height: $boardMobileImage;
+          }
+          &:last-child {
+            margin: 0;
+          }
+        }
       }
     }
-    .profileBtn {
-      position: absolute;
-      border-radius: 50%;
-      background-color: $camera;
-      text-align: center;
-      font-size: 20px;
-      cursor: pointer;
+    @media (min-width: #{$breakpoint-tablet}) {
+      div {
+        height: $boardDesktopImage;
+        .profileImg {
+          img {
+            width: $boardDesktopImage;
+            height: $boardDesktopImage;
+          }
+          &:first-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+    div {
+      display: flex;
+      .profileImg {
+        display: inline-block;
+        margin-left: -20px;
+        img {
+          border-radius: 20%;
+        }
+        .alone {
+          width: $boardDesktopImage;
+          height: $boardDesktopImage;
+        }
+      }
     }
   }
 }
