@@ -1,0 +1,65 @@
+@import '/src/styles/color';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: $white;
+
+  .demoImage {
+    width: 150px;
+    height: 150px;
+    margin-top: 100px;
+    background-color: $gray-500;
+    text-align: center;
+    line-height: 150px;
+    font-weight: 700;
+    color: $white;
+  }
+
+  .discription {
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  .layoutContainer {
+    max-width: 90%;
+
+    .informationContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 90px;
+      margin-top: 20px;
+
+      .line {
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .information {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .text {
+          color: $gray-600;
+        }
+      }
+    }
+
+    .buttonContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      width: 100%;
+
+      .button {
+        width: 47%;
+      }
+    }
+  }
+}
