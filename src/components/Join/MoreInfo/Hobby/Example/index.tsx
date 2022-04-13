@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
 
@@ -25,11 +25,9 @@ export default function Example({ id, info, selectItem, removeItem }: Props) {
   }, [clicked]);
 
   return (
-    <div className={style.item} onClick={clickItem}>
-      <span className={cx(style.icon, { [style.clicked]: clicked })}>
-        {icon}
-      </span>
-      <span className={style.name}>{name}</span>
+    <div className={$['item']} onClick={clickItem}>
+      <span className={cx($['icon'], { [$['clicked']]: clicked })}>{icon}</span>
+      <span className={$['name']}>{name}</span>
     </div>
   );
 }

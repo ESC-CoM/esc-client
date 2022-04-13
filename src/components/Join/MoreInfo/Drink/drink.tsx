@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
 import { Bottle } from '../../../Icon';
 import { adjustDrink } from '../../../../utils/adjustDrink';
@@ -26,10 +26,10 @@ export default function Drink({ setTotalDrinkNum }: Props) {
   };
 
   return (
-    <ul className={style.drink}>
+    <ul className={$['drink']}>
       {drinkNum.map((_, index) => (
         <li
-          className={style.icon}
+          className={$['icon']}
           key={index}
           draggable="true"
           onClick={(e) => fillBottle(e, index)}

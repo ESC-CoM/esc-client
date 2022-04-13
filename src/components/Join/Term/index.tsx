@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TermsSchema from './yup';
@@ -62,49 +62,49 @@ export default function Term({ onState, toggleModal }: Props) {
   };
 
   return (
-    <main className={style.screen}>
-      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+    <main className={$['screen']}>
+      <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
         <h2>서비스 이용을 위해 동의가 필요해요</h2>
 
         <section
-          className={style.allCheck}
+          className={$['all-check']}
           onClick={() => onHandleAllCheck(allChecked)}
         >
           <span
-            className={cx(style.allCheckBox, {
-              [style.checked]: allChecked,
+            className={cx($['all-check-box'], {
+              [$['checked']]: allChecked,
             })}
           >
             <FiCheck />
           </span>
-          <em className={style.text}>모두 동의하기</em>
+          <em className={$['text']}>모두 동의하기</em>
         </section>
 
-        <ul className={style.terms_list}>
+        <ul className={$['terms-list']}>
           {terms.map((term, idx) => {
             const { title, url } = term;
             const named = getTermsTitle(idx);
             return (
               <li
-                className={style.terms_bx}
+                className={$['terms-bx']}
                 key={idx}
                 onClick={() => setValue(named, !watch(named))}
               >
-                <ul className={style.terms_item}>
+                <ul className={$['terms-item']}>
                   <li>
                     <span
-                      className={cx(style.checkbox, {
-                        [style.checked]: watch(named),
+                      className={cx($['check-box'], {
+                        [$['checked']]: watch(named),
                       })}
                     >
                       <FiCheck />
                     </span>
                   </li>
                   <li>
-                    <strong className={style.title}>{title}</strong>
+                    <strong className={$['title']}>{title}</strong>
                   </li>
                   <li>
-                    <a href={url} className={style.url}>
+                    <a href={url} className={$['url']}>
                       <FiChevronRight />
                     </a>
                   </li>
@@ -114,16 +114,16 @@ export default function Term({ onState, toggleModal }: Props) {
           })}
         </ul>
         {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
-          <span className={style.error}>필수 약관에 동의해주세요.</span>
+          <span className={$['error']}>필수 약관에 동의해주세요.</span>
         )}
 
-        <button type="submit" className={style.next_btn} aria-labelledby="next">
+        <button type="submit" className={$['next-btn']} aria-labelledby="next">
           다음
         </button>
       </form>
 
       <div
-        className={style.back}
+        className={$['back']}
         onClick={(e: React.MouseEvent) => {
           e.preventDefault();
           if (onState) {

@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import JoinSchema from './yup';
@@ -73,16 +73,16 @@ export default function BasicInfo() {
 
   return (
     <>
-      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
-          <span className={style.required}>*</span>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
-              className={cx(style.input, {
-                [style.error]: errors.email,
+              className={cx($['input'], {
+                [$['error']]: errors.email,
               })}
               type="text"
               id="email"
@@ -91,27 +91,25 @@ export default function BasicInfo() {
               {...register('email')}
             />
             <button
-              className={style.btn}
+              className={$['btn']}
               type="button"
               onClick={checkDuplicatedEmail}
             >
               중복확인
             </button>
           </div>
-          {errors.isEmailDuplicated &&
-            !isEmailDuplicated &&
-            errors.isEmailDuplicated?.message}
+          {!isEmailDuplicated && errors.isEmailDuplicated?.message}
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="password">
             {errors.password?.message ?? '비밀번호'}
           </label>
-          <span className={style.required}>*</span>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
-              className={cx(style.input, {
-                [style.error]: errors.password,
+              className={cx($['input'], {
+                [$['error']]: errors.password,
               })}
               type={isEncrypted ? 'text' : 'password'}
               id="password"
@@ -119,7 +117,7 @@ export default function BasicInfo() {
               {...register('password')}
             />
             <span
-              className={style.showicon}
+              className={$['encrypt-icon']}
               onClick={() => setIsEncrypted(!isEncrypted)}
             >
               {isEncrypted ? <IoEyeOff /> : <IoEye />}
@@ -127,58 +125,56 @@ export default function BasicInfo() {
           </div>
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="phponeNumber">
             {errors.phoneNumber?.message ?? '휴대폰 번호'}
           </label>
-          <span className={style.required}>*</span>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
               type="text"
-              className={cx(style.input, {
-                [style.error]: errors.phoneNumber,
+              className={cx($['input'], {
+                [$['error']]: errors.phoneNumber,
               })}
               placeholder="' - ' 없이 입력해주세요."
               id="phponeNumber"
               {...register('phoneNumber')}
             />
-            <button className={style.btn} type="button" onClick={sendPhoneNum}>
+            <button className={$['btn']} type="button" onClick={sendPhoneNum}>
               인증번호<br></br>받기
             </button>
           </div>
-          {errors.isPhoneDuplicated &&
-            !isPhoneDuplicated &&
-            errors.isPhoneDuplicated.message}
+          {!isPhoneDuplicated && errors.isPhoneDuplicated?.message}
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="authNumber">
             {errors.authNumber?.message ?? '인증번호'}
           </label>
-          <span className={style.required}>*</span>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
               type="text"
-              className={cx(style.input, {
-                [style.error]: errors.phoneNumber,
+              className={cx($['input'], {
+                [$['error']]: errors.phoneNumber,
               })}
               id="authNumber"
               {...register('authNumber')}
             />
-            <button type="button" className={style.btn} onClick={sendAuthNum}>
+            <button type="button" className={$['btn']} onClick={sendAuthNum}>
               인증하기
             </button>
           </div>
-          {errors.isAuthed && !isAuthed && errors.isAuthed.message}
+          {!isAuthed && errors.isAuthed?.message}
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label>{errors.gender?.message ?? '성별'}</label>
-          <span className={style.required}>*</span>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <button
-              className={cx(style.gender_btn, {
-                [style.gender_active]: gender === '남자',
+              className={cx($['gender-btn'], {
+                [$['gender-active']]: gender === '남자',
               })}
               onClick={() => setValue('gender', '남자')}
               type="button"
@@ -188,8 +184,8 @@ export default function BasicInfo() {
             </button>
 
             <button
-              className={cx(style.gender_btn, {
-                [style.gender_active]: gender === '여자',
+              className={cx($['gender-btn'], {
+                [$['gender-active']]: gender === '여자',
               })}
               onClick={() => setValue('gender', '여자')}
               type="button"
@@ -200,19 +196,19 @@ export default function BasicInfo() {
           </div>
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="birthDate">
             {!errors.year && !errors.month && !errors.day
               ? '생년월일'
               : '생년월일을 선택해주세요.'}
           </label>
-          <span className={style.required}>*</span>
+          <span className={$['required']}>*</span>
 
-          <div className={style.row}>
+          <div className={$['row']}>
             <input
               type="text"
-              className={cx(style.year, {
-                [style.error]: errors.year,
+              className={cx($['year'], {
+                [$['error']]: errors.year,
               })}
               id="birthDate"
               placeholder="년도(4자)"
@@ -221,8 +217,8 @@ export default function BasicInfo() {
 
             <select
               defaultValue=""
-              className={cx(style.col, {
-                [style.error]: errors.month,
+              className={cx($['col'], {
+                [$['error']]: errors.month,
               })}
               {...register('month')}
             >
@@ -235,14 +231,14 @@ export default function BasicInfo() {
                 </option>
               ))}
             </select>
-            <span className={style.drop}>
+            <span className={$['drop']}>
               <IoMdArrowDropdown />
             </span>
 
             <select
               defaultValue=""
-              className={cx(style.col, {
-                [style.error]: errors.day,
+              className={cx($['col'], {
+                [$['error']]: errors.day,
               })}
               {...register('day')}
             >
@@ -256,15 +252,15 @@ export default function BasicInfo() {
               ))}
             </select>
 
-            <span className={style.drop}>
+            <span className={$['drop']}>
               <IoMdArrowDropdown />
             </span>
           </div>
         </div>
 
-        <div className={style.footer}>
+        <div className={$['footer']}>
           <button
-            className={style.next_btn}
+            className={$['next-btn']}
             type="submit"
             aria-labelledby="next"
           >

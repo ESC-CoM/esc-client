@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { IoClose } from 'react-icons/io5';
 
 type Props = {
@@ -9,9 +9,9 @@ type Props = {
 
 export default function Self({ index, word, removeItem }: Props) {
   return (
-    <span className={style.word} onClick={() => removeItem(index)}>
-      <b className={style.text}>#{word}</b>
-      <span className={style.close}>
+    <span className={$['word']} onClick={() => removeItem(index)}>
+      <b className={$['text']}>#{word}</b>
+      <span className={$['close']}>
         <IoClose />
       </span>
     </span>

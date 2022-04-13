@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import style from './style.module.scss';
+import $ from './style.module.scss';
+import React, { useEffect, useState } from 'react';
 import { HiPlus } from 'react-icons/hi';
 import { hobbyData } from 'src/__mocks__/join';
 import Self from './Self';
@@ -51,7 +50,7 @@ export default function Hobby({ setHobby }: Props) {
   }, [inputedWordList, selectedWordList]);
 
   return (
-    <main className={style.hobby}>
+    <main className={$['hobby']}>
       <div>
         {hobbyData.map(({ id, ...info }) => (
           <Example
@@ -64,18 +63,18 @@ export default function Hobby({ setHobby }: Props) {
         ))}
       </div>
 
-      <div className={style.self_input}>
+      <div>
         <input
           type="text"
           value={wordInput}
-          className={style.input}
+          className={$['input']}
           id="hobby"
           placeholder="추가하고 싶은 취미를 입력해주세요."
           onChange={(e) => setWordInput(e.target.value)}
           onKeyPress={onEnter}
         />
         <span
-          className={style.plus}
+          className={$['plus']}
           onClick={() => {
             if (wordInput !== '') {
               setInputedWordList([...inputedWordList, wordInput]);
@@ -85,17 +84,17 @@ export default function Hobby({ setHobby }: Props) {
         >
           <HiPlus />
         </span>
-      </div>
 
-      <div className={style.word_bx}>
-        {inputedWordList.map((word, index) => (
-          <Self
-            key={index}
-            word={word}
-            index={index}
-            removeItem={() => removeItem('self', index)}
-          />
-        ))}
+        <div>
+          {inputedWordList.map((word, index) => (
+            <Self
+              key={index}
+              word={word}
+              index={index}
+              removeItem={() => removeItem('self', index)}
+            />
+          ))}
+        </div>
       </div>
     </main>
   );

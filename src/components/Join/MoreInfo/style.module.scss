@@ -55,7 +55,7 @@
     display: flex;
     justify-content: center;
 
-    .next_btn {
+    .next-btn {
       @include button(calc(100% - 50px), none, $primary, $white, 20px);
 
       @media screen and (min-width: 758px) {

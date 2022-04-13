@@ -30,12 +30,12 @@
       padding-bottom: 10px;
     }
 
-    .allCheck {
+    .all-check {
       padding: 10px 0;
       font-size: 16px;
       border-bottom: 1px solid $gray-300;
 
-      .allCheckBox {
+      .all-check-box {
         color: $gray-500;
       }
       .checked {
@@ -47,17 +47,17 @@
       }
     }
 
-    .terms_list {
+    .terms-list {
       padding: 10px 0;
 
-      .terms_bx {
+      .terms-bx {
         padding: 5px 0;
 
-        .terms_item {
+        .terms-item {
           position: relative;
           display: flex;
 
-          .checkbox {
+          .check-box {
             font-size: 18px;
             padding-right: 10px;
             color: $gray-500;
@@ -86,7 +86,7 @@
       font-size: 14px;
     }
 
-    .next_btn {
+    .next-btn {
       @include button(100%, none, $primary, $white, 20px);
       margin-top: 30px;
     }

@@ -61,7 +61,7 @@ export const hobbyData = [
   },
   {
     id: 8,
-    name: '춤추기',
+    name: '댄스',
     icon: '💃',
   },
   {
@@ -71,7 +71,7 @@ export const hobbyData = [
   },
   {
     id: 10,
-    name: '운동',
+    name: '헬스',
     icon: '🏋️‍♂️',
   },
   {
@@ -98,5 +98,30 @@ export const hobbyData = [
     id: 15,
     name: '축구',
     icon: '⚽️',
+  },
+  {
+    id: 16,
+    name: '농구',
+    icon: '🏀',
+  },
+  {
+    id: 17,
+    name: '웹툰',
+    icon: '📱',
+  },
+  {
+    id: 18,
+    name: '쇼핑',
+    icon: '🛍',
+  },
+  {
+    id: 19,
+    name: '여행',
+    icon: '✈️',
+  },
+  {
+    id: 20,
+    name: '사진 찍기',
+    icon: '📷',
   },
 ];

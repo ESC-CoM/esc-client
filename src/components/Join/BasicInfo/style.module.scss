@@ -37,7 +37,7 @@
         margin-right: 5px;
       }
 
-      .showicon {
+      .encrypt-icon {
         position: absolute;
         right: 20px;
         line-height: 55px;
@@ -65,11 +65,11 @@
       @include button(120px, none, $primary, $white, 16px);
     }
 
-    .gender_btn {
+    .gender-btn {
       @include button(148%, 2.5px solid $gray-500, $white, $black, 18px);
       margin: 0 2px;
 
-      &.gender_active {
+      &.gender-active {
         border: 2.5px solid $primary;
       }
     }
@@ -80,7 +80,7 @@
     display: flex;
     justify-content: center;
 
-    .next_btn {
+    .next-btn {
       @include button(calc(100% - 50px), none, $primary, $white, 20px);
 
       @media screen and (min-width: 758px) {

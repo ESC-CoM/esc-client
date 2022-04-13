@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useForm } from 'react-hook-form';
 import { MoreSchema } from '../../../types/join';
 // import { IoMdArrowDropdown } from 'react-icons/io'; // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈 -> 158line 참고
@@ -29,19 +29,19 @@ export default function MoreInfo() {
   const onSubmit = (data: MoreSchema) => console.log(data);
 
   return (
-    <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
       <h1>추가적인 정보</h1>
 
-      <div className={style.item}>
+      <div className={$['item']}>
         <label htmlFor="height">키</label>
-        <span className={style.required}>*</span>
+        <span className={$['required']}>*</span>
 
-        <span className={style.info}>
+        <span className={$['info']}>
           {heightInfo.filter((mark) => height == mark.value)[0].label}
         </span>
         <input
           type="range"
-          className={style.input}
+          className={$['input']}
           id="height"
           min="145"
           max="190"
@@ -50,16 +50,16 @@ export default function MoreInfo() {
         />
       </div>
 
-      <div className={style.item}>
+      <div className={$['item']}>
         <label htmlFor="weight">몸무게</label>
-        <span className={style.required}>*</span>
+        <span className={$['required']}>*</span>
 
-        <span className={style.info}>
+        <span className={$['info']}>
           {weightInfo.filter((mark) => weight == mark.value)[0].label}
         </span>
         <input
           type="range"
-          className={style.input}
+          className={$['input']}
           id="weight"
           min="35"
           max="90"
@@ -68,11 +68,11 @@ export default function MoreInfo() {
         />
       </div>
 
-      <div className={style.item}>
+      <div className={$['item']}>
         <label htmlFor="mbti">Mbti</label>
-        <span className={style.required}>*</span>
+        <span className={$['required']}>*</span>
 
-        <select className={style.select} defaultValue="" {...register('mbti')}>
+        <select className={$['select']} defaultValue="" {...register('mbti')}>
           <option disabled value="">
             ---선택---
           </option>
@@ -82,32 +82,30 @@ export default function MoreInfo() {
             </option>
           ))}
         </select>
-        {/* <span className={style.drop}> // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈
+        {/* <span className={$['drop}> // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈
               <IoMdArrowDropdown />
             </span> */}
       </div>
 
-      <div className={style.item}>
+      <div className={$['item']}>
         <label>주량</label>
-        <span className={style.required}>*</span>
+        <span className={$['required']}>*</span>
 
         <div>
           <Drink
             setTotalDrinkNum={(count: number) => setValue('drink', count)}
           />
-          <span className={style.info}>
-            {drink ? `${drink}병` : '못마셔요'}
-          </span>
+          <span className={$['info']}>{drink ? `${drink}병` : '못마셔요'}</span>
         </div>
       </div>
 
-      <div className={style.item}>
+      <div className={$['item']}>
         <label>취미</label>
         <Hobby setHobby={setHobby} />
       </div>
 
-      <div className={style.footer}>
-        <button className={style.next_btn} type="submit" aria-labelledby="next">
+      <div className={$['footer']}>
+        <button className={$['next-btn']} type="submit" aria-labelledby="next">
           다음
         </button>
       </div>
