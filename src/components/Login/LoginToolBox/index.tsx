@@ -9,15 +9,15 @@ interface Props {
 const linkInfos = [
   {
     textContent: '아이디 찾기',
-    href: '',
+    href: '/find/email',
   },
   {
     textContent: '비밀번호 찾기',
-    href: '',
+    href: '/find/password',
   },
   {
     textContent: '회원가입',
-    href: '',
+    href: '/join',
   },
 ];
 

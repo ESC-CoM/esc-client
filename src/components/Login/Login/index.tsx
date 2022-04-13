@@ -46,7 +46,6 @@ function Login() {
           <EmailInput
             register={() => register('email')}
             resetField={() => resetField('email')}
-            className={styles.email}
             isValueExists={watch('email') ? true : false}
           />
           <PasswordInput
