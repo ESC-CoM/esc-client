@@ -1,0 +1,10 @@
+@import '/src/styles/color';
+
+.container {
+  height: 100vh;
+  background-color: $white;
+
+  .authenticationBox {
+    margin-top: 100px;
+  }
+}
