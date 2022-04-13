@@ -1,11 +1,10 @@
-import { LoginTitle, MainButton } from '../../atoms';
+import { Header, LoginTitle, MainButton } from '../../atoms';
 import styles from './style.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schema from './yup';
 import EmailInput from '../EmailInput';
 import ErrorMessageBox from '../ErrorMessageBox';
-import Header from '../Header';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
 import PasswordInput from '../PasswordInput';
@@ -18,7 +17,7 @@ export interface Inputs {
   isAutoLogin: boolean;
 }
 
-function Login() {
+export default function Login() {
   const {
     register,
     handleSubmit,
@@ -39,11 +38,12 @@ function Login() {
 
   return (
     <>
-      <Header />
-      <main className={styles.main}>
+      <div className={styles.container}>
+        <Header />
         <LoginTitle className={styles.title} />
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <EmailInput
+            className={styles.email}
             register={() => register('email')}
             resetField={() => resetField('email')}
             isValueExists={watch('email') ? true : false}
@@ -65,16 +65,12 @@ function Login() {
             buttonType="submit"
             ariaLabel="로그인 버튼"
             textContent="로그인"
-            width={490}
-            height={45}
-            fontSize={26}
+            onClick={() => handleSubmit(onSubmit)}
           />
         </form>
         <LoginToolBox className={styles.links} />
         <SocialLoginBox className={styles.socialLogin} />
-      </main>
+      </div>
     </>
   );
 }
-
-export default Login;

@@ -1,27 +1,40 @@
-.main {
+@import '/src/styles/color';
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 64px;
+  height: 100vh;
+  background-color: $white;
 
   .title {
-    margin-top: 9vh;
+    margin-top: 100px;
   }
 
-  .email {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 50px;
-  }
+    width: 100%;
 
-  .error {
-    margin-top: 10px;
-  }
+    .error {
+      margin-top: 10px;
+    }
 
-  .password {
-    margin-top: 12px;
-  }
+    .email {
+      max-width: 90%;
+    }
 
-  .submit {
-    margin-top: 20px;
+    .password {
+      margin-top: 12px;
+      max-width: 90%;
+    }
+
+    .submit {
+      margin-top: 20px;
+      max-width: 80%;
+    }
   }
 
   .links {

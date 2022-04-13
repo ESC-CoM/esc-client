@@ -149,4 +149,10 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }
