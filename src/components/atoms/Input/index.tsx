@@ -3,25 +3,15 @@ import styles from './style.module.scss';
 
 interface Props {
   className: string;
-  type: string;
+  type: 'text' | 'email' | 'password';
   placeholder?: string;
-  width: number;
-  height: number;
   register: () => void;
 }
 
-function Input({
-  className,
-  type,
-  placeholder,
-  register,
-  width,
-  height,
-}: Props) {
+function Input({ className, type, placeholder, register }: Props) {
   return (
     <input
       className={cx(className, styles.input)}
-      style={{ width: `${width}px`, height: `${height}px` }}
       type={type}
       placeholder={placeholder}
       {...register()}

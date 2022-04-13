@@ -9,7 +9,7 @@ interface Props {
   onClick: () => void;
 }
 
-function MainButton({
+function BorderButton({
   className,
   buttonType,
   ariaLabel,
@@ -28,4 +28,4 @@ function MainButton({
   );
 }
 
-export default MainButton;
+export default BorderButton;
