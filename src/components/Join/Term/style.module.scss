@@ -1,7 +1,7 @@
 @import '../../../styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.screen{
+.screen {
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -14,53 +14,63 @@
   background-color: $modalBackground;
   z-index: 1;
 
-  .form{
+  .form {
     width: 100%;
     max-width: 758px;
-    padding: 30px 15px 10px 15px;
+    padding: 30px 15px 10px;
     border-radius: 20px 20px 0 0;
     background-color: $white;
     z-index: 3;
     transition: all 0.2s ease-out;
-    animation: FadeIn .3s ease-in;
+    animation: FadeIn 0.3s ease-in;
 
-    h1{
+    h2 {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       padding-bottom: 10px;
     }
-    
-    .allChecked{
-      font-weight: 500;
+
+    .all-check {
       padding: 10px 0;
       font-size: 16px;
       border-bottom: 1px solid $gray-300;
 
-      .text{
+      .all-check-box {
+        color: $gray-500;
+      }
+      .checked {
+        color: $primary;
+      }
+
+      .text {
         padding: 10px;
       }
     }
 
-    .terms_list{
+    .terms-list {
       padding: 10px 0;
 
-      .terms_bx{
+      .terms-bx {
         padding: 5px 0;
 
-        .terms_item{
+        .terms-item {
           position: relative;
           display: flex;
 
-          .checkbox{
+          .check-box {
             font-size: 18px;
             padding-right: 10px;
+            color: $gray-500;
+          }
+          .checked {
+            color: $primary;
           }
 
-          .title{
+          .title {
             font-size: 14px;
           }
 
-          .url{
+          .url {
             position: absolute;
             right: 0;
             font-size: 18px;
@@ -70,19 +80,19 @@
       }
     }
 
-    .error{
+    .error {
       position: absolute;
       color: $orange;
       font-size: 14px;
     }
 
-    .next_btn{
+    .next-btn {
       @include button(100%, none, $primary, $white, 20px);
       margin-top: 30px;
     }
   }
 
-  .back{
+  .back {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -96,21 +106,11 @@
   0% {
     opacity: 0;
   }
-  1%{
+  1% {
     opacity: 0;
-    transform:translateY(100%);
+    transform: translateY(100%);
   }
   100% {
     opacity: 1;
   }
 }
-
-// Todo: 렌더링 이슈 해결할 것
-// @keyframes FadeOut {
-//   0% {
-//     transform: translateY(-100%);
-//   }
-//   100% {
-//     transform: translateY(0);
-//   }
-// }
