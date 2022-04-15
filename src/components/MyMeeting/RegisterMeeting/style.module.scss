@@ -1,0 +1,40 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+
+.my-meeting {
+  position: relative;
+  top: 45px;
+  padding: 15px;
+  border-bottom: 1px solid $gray-250;
+  background-color: $white;
+  cursor: pointer;
+
+  .my-meeting-info {
+    .title {
+      font-size: 16px;
+      font-weight: 700;
+      float: left;
+    }
+
+    .icon {
+      float: right;
+      color: $gray-600;
+      margin: 0 5px;
+    }
+  }
+
+  .profile-img-list {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .profile-img {
+      margin-left: -20px;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 20%;
+      }
+    }
+  }
+}
