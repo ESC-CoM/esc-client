@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import TermsSchema from './yup';
 import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { TermSchema } from '../../../types/join';
+import { TermSchema } from 'src/types/join';
 import { useNavigate } from 'react-router-dom';
-import { terms } from '../../../__mocks__/join';
+import { terms } from 'src/__mocks__/join';
 import cx from 'classnames';
 
 export type Props = {
