@@ -1,6 +1,6 @@
 import $ from './style.module.scss';
 import { useForm } from 'react-hook-form';
-import { MoreSchema } from '../../../types/join';
+import { MoreSchema } from 'src/types/join';
 // import { IoMdArrowDropdown } from 'react-icons/io'; // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈 -> 158line 참고
 import Hobby from './Hobby';
 import Drink from './Drink/drink';

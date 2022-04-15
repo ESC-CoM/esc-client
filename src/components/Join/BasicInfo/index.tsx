@@ -7,8 +7,8 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
 import { useState } from 'react';
 import { Term } from '../index';
-import { UserSchema } from '../../../types/join';
-import { monthList, dayList } from '../../../__mocks__/join';
+import { UserSchema } from 'src/types/join';
+import { monthList, dayList } from 'src/__mocks__/join';
 
 export default function BasicInfo() {
   const {

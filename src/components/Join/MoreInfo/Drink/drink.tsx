@@ -1,7 +1,7 @@
 import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
-import { Bottle } from '../../../Icon';
-import { adjustDrink } from '../../../../utils/adjustDrink';
+import { Bottle } from 'src/components/Icon';
+import { adjustDrink } from 'src/utils/adjustDrink';
 
 export type Props = {
   setTotalDrinkNum: (count: number) => void;
