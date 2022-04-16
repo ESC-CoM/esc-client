@@ -24,7 +24,7 @@ const linkInfos = [
 function LoginToolArea({ className }: Props) {
   return (
     <div className={cx(className, styles.mainContainer)}>
-      <SaparateLine width={296} height={1} />
+      <SaparateLine width={296} />
       <div>
         {linkInfos.map(({ textContent, href }) => (
           <GrayLink

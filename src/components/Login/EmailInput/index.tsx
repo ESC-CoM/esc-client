@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 interface Props {
   register: () => void;
   resetField: () => void;
-  className: string;
+  className?: string;
   isValueExists: boolean;
 }
 
@@ -14,8 +14,6 @@ function EmailInput({ register, resetField, className, isValueExists }: Props) {
     <div className={cx(styles.container, className)}>
       <Input
         className=""
-        width={490}
-        height={40}
         placeholder="이메일"
         type="text"
         register={register}

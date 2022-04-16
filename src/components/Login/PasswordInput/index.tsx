@@ -22,8 +22,6 @@ function PasswordInput({
     <div className={cx(styles.container, className)}>
       <Input
         className=""
-        width={490}
-        height={40}
         placeholder="비밀번호"
         type={isEncrypted ? 'password' : 'text'}
         register={register}
