@@ -1,11 +1,7 @@
 @import '/src/styles/color';
+@import '/src/styles/mixin';
 
 .button {
-  max-width: 80vw;
-  border: none;
-  border-radius: 15px;
-  background-color: $primary;
-  color: $white;
-  box-shadow: 0 0 5px 1px $gray-300;
-  cursor: pointer;
+  @include button(490px, 0, $primary, $white, 20px);
+  max-width: 80%;
 }

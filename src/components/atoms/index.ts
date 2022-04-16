@@ -10,6 +10,8 @@ import ResetFieldButton from './ResetFieldButton';
 import ViewPasswordButton from './ViewPasswordButton';
 import LoginTitle from './LoginTitle';
 import BackButton from './BackButton';
+import Header from './Header';
+import BorderButton from './BorderButton';
 
 export {
   SocialLoginButton,
@@ -24,4 +26,6 @@ export {
   ViewPasswordButton,
   LoginTitle,
   BackButton,
+  Header,
+  BorderButton,
 };

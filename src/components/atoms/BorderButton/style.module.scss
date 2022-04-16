@@ -1,7 +1,7 @@
 @import '/src/styles/color';
 @import '/src/styles/mixin';
 
-.input {
-  @include input(490px);
+.button {
+  @include button(490px, 2px solid $gray-400, $white, $black, 18px);
   max-width: 80%;
 }
