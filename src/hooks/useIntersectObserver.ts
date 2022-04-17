@@ -10,6 +10,8 @@ export default function useIntersectObserver<T extends Element>(
   customOptions?: IntersectionObserverInit,
   target?: React.RefObject<T>
 ): boolean {
+  const [isIntersect, setIntersect] = useState(false);
+
   const options = {
     ...defaultOptions,
     customOptions,
@@ -21,7 +23,6 @@ export default function useIntersectObserver<T extends Element>(
     options
   );
 
-  const [isIntersect, setIntersect] = useState(false);
   useEffect(() => {
     if (target?.current) observer.observe(target.current);
     return () => {

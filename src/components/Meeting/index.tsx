@@ -1,13 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import { useExtractColleges, useWindowResize } from 'src/hooks';
+import { useExtractColleges } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 import style from './style.module.scss';
+import cx from 'classnames';
 
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
-const MARGIN_VALUE = 20;
 const IMG_SIZE = 60;
-const IMGLIST_SIZE = 344;
 
 interface Props {
   meeting: MeetingType;
@@ -17,20 +16,11 @@ export default function Meeting({
   meeting: { title, gender, profiles },
 }: Props) {
   const meetingRef = useRef<HTMLLIElement | null>(null);
-  const imgListRef = useRef<HTMLUListElement | null>(null);
+  const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
-  const [imgListWidth, setImgListWidth] = useState(IMGLIST_SIZE);
-  const [imgSize, setImgSize] = useState(IMG_SIZE);
-  const [imgNum, setImgNum] = useState(0);
+  const [isImgClick, setIsImgClick] = useState(false);
   const colleges = useExtractColleges(profiles);
-  const [width] = useWindowResize();
   let zIndex = profiles.length;
-
-  useEffect(() => {
-    // setImgNum(imgRefs.current.filter((x) => x !== null).length);
-    setImgListWidth(imgListRef.current?.clientWidth ?? IMGLIST_SIZE);
-    setImgSize(imgListRef.current?.clientHeight ?? IMG_SIZE);
-  }, [width]);
 
   useEffect(() => {
     const option = {};
@@ -61,12 +51,24 @@ export default function Meeting({
         </span>
       </div>
 
-      <ul className={style.imageList} ref={imgListRef}>
-        <div style={profiles.length === 1 ? { height: IMG_SIZE } : {}}>
+      <ul className={style.imageList}>
+        <div
+          style={profiles.length === 1 ? { height: IMG_SIZE } : {}}
+          ref={imgListRef}
+        >
+          <li
+            className={cx(style.profileBtn, {
+              [style.isClicked]: isImgClick,
+            })}
+            onClick={() => {
+              if (meetingRef.current && meetingRef.current.clientWidth < 758)
+                setIsImgClick(!isImgClick);
+            }}
+          >
+            +
+          </li>
           {profiles.map(({ url }, i) => {
-            const isOverFlow =
-              imgSize + i * (imgSize - MARGIN_VALUE) >= imgListWidth;
-            if (!isOverFlow)
+            if (i < 4)
               return (
                 <li
                   key={url}
