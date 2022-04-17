@@ -1,4 +1,4 @@
-import { Header, LoginTitle, MainButton } from '../../atoms';
+import { Header, LoginTitle } from '../../atoms';
 import styles from './style.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -56,17 +56,19 @@ export default function Login() {
           />
           <ErrorMessageBox errors={errors} className={styles.error} />
           <LoginCheckBoxArea
+            className={styles.checkbox}
             isSaveId={isSaveId}
             isAutoLogin={isAutoLogin}
             setValue={setValue}
           />
-          <MainButton
+          <button
             className={styles.submit}
-            buttonType="submit"
-            ariaLabel="로그인 버튼"
-            textContent="로그인"
+            type="submit"
+            aria-label="로그인 버튼"
             onClick={() => handleSubmit(onSubmit)}
-          />
+          >
+            로그인
+          </button>
         </form>
         <LoginToolBox className={styles.links} />
         <SocialLoginBox className={styles.socialLogin} />

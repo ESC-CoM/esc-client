@@ -2,14 +2,12 @@ import EmailFinder from './EmailFinder';
 import EmailConfirm from './FindResult';
 import PasswrodFinder from './PasswordFinder';
 import FindResult from './FindResult';
-import EmailAuthentication from './EmailAuthentication';
-import PhoneAuthentication from './PhoneAuthentication';
+import Authentication from './Authentication';
 
 export {
   EmailFinder,
   EmailConfirm,
   PasswrodFinder,
-  EmailAuthentication,
-  PhoneAuthentication,
   FindResult,
+  Authentication,
 };

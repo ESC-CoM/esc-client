@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import './styles/reset.scss';
 import MeetingBoardPage from './pages/MeetingBoard';
 import JoinRoute from './routes/JoinRoute';
-import Login from './components/Login';
+import LoginPage from './pages/loginPage';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<Navigate to="/home" />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<MeetingBoardPage />} />
           <Route path="/mymeeting" element={<h1>hello</h1>} />
           <Route path="/chat" element={<h1>hello</h1>} />

@@ -1,10 +1,12 @@
 @import '/src/styles/color';
+@import '/src/styles/mixin';
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  padding: 20px;
   background-color: $white;
 
   .title {
@@ -15,25 +17,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
     width: 100%;
+    margin-top: 50px;
+
+    .email {
+      width: 100%;
+    }
+
+    .password {
+      margin-top: 12px;
+      width: 100%;
+    }
 
     .error {
       margin-top: 10px;
     }
 
-    .email {
-      max-width: 90%;
-    }
-
-    .password {
-      margin-top: 12px;
-      max-width: 90%;
+    .checkbox {
+      margin-top: 20px;
     }
 
     .submit {
+      @include button(100%, none, $primary, $white, 16px);
       margin-top: 20px;
-      max-width: 80%;
     }
   }
 

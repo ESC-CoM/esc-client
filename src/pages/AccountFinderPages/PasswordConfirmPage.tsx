@@ -4,7 +4,7 @@ import { PageLayout } from '../../components/Layout';
 export default function PasswordConfirmPage() {
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={0}>
-      <FindResult findType="password" />
+      <FindResult type="password" />
     </PageLayout>
   );
 }

@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Header } from 'src/components/atoms';
-import EmailAuthentication from '../EmailAuthentication';
-import PhoneAuthentication from '../PhoneAuthentication';
+import Authentication from '../Authentication';
 import styles from './style.module.scss';
 
 type AuthenticationType = 'email' | 'phone';
@@ -45,14 +44,10 @@ export default function PasswrodFinder() {
           휴대폰
         </label>
       </div>
-      {authenticationMethod === 'email' ? (
-        <EmailAuthentication className={styles.emailAuthentication} />
-      ) : (
-        <PhoneAuthentication
-          className={styles.phoneAuthentication}
-          findType="password"
-        />
-      )}
+      <Authentication
+        type={authenticationMethod}
+        className={styles.authentication}
+      />
     </div>
   );
 }
