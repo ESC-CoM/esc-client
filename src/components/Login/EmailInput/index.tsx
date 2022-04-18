@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { Input, ResetFieldButton } from '../../atoms';
+import { ResetFieldButton } from '../../atoms';
 import styles from './style.module.scss';
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 function EmailInput({ register, resetField, className, isValueExists }: Props) {
   return (
     <div className={cx(styles.container, className)}>
-      <Input
-        className=""
+      <input
+        className={styles.input}
         placeholder="이메일"
         type="text"
-        register={register}
+        {...register()}
       />
       {isValueExists && (
         <ResetFieldButton

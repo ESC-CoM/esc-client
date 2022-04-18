@@ -1,7 +1,0 @@
-@import '/src/styles/color';
-@import '/src/styles/mixin';
-
-.input {
-  @include input(490px);
-  max-width: 80%;
-}

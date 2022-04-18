@@ -1,7 +1,14 @@
+@import '/src/styles/mixin';
+@import '/src/styles/color';
+
 .container {
   position: relative;
   display: flex;
   justify-content: center;
+
+  .input {
+    @include input(100%);
+  }
 
   .delete {
     position: absolute;
