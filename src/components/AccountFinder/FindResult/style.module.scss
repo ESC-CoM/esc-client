@@ -44,6 +44,7 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
+      margin: 40px 0;
 
       .text {
         color: $gray-600;
@@ -63,6 +64,10 @@
 
     .grayButton {
       @include button(47%, 2px solid $gray-500, $white, $gray-500, 16px);
+    }
+
+    .button {
+      margin: 0;
     }
   }
 }

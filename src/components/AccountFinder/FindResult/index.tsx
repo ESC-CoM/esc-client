@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header, SaparateLine } from 'src/components/atoms';
@@ -53,24 +54,24 @@ export default function FindResult({ type }: Props) {
           <span className={styles.text}>가입일 2022 02 02</span>
         </div>
         <SaparateLine width={490} className={styles.line} />
-      </div>
-      <div className={styles.buttonContainer}>
-        <button
-          className={styles.primaryButton}
-          type="button"
-          aria-label="로그인으로 이동하기"
-          onClick={() => navigate('/login')}
-        >
-          로그인하러 가기
-        </button>
-        <button
-          className={styles.grayButton}
-          type="button"
-          aria-label={pageData.secondButtonAction}
-          onClick={() => navigate(pageData.url)}
-        >
-          {pageData.secondButtonAction}
-        </button>
+        <div className={styles.buttonContainer}>
+          <button
+            className={cx(styles.primaryButton, styles.button)}
+            type="button"
+            aria-label="로그인으로 이동하기"
+            onClick={() => navigate('/login')}
+          >
+            로그인하러 가기
+          </button>
+          <button
+            className={cx(styles.grayButton, styles.button)}
+            type="button"
+            aria-label={pageData.secondButtonAction}
+            onClick={() => navigate(pageData.url)}
+          >
+            {pageData.secondButtonAction}
+          </button>
+        </div>
       </div>
     </div>
   );
