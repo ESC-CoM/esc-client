@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import cx from 'classnames';
 import styles from './style.module.scss';
-import { Input, ViewPasswordButton, ResetFieldButton } from '../../atoms';
+import { ViewPasswordButton, ResetFieldButton } from '../../atoms';
 
 interface Props {
   register: () => void;
@@ -20,13 +20,11 @@ function PasswordInput({
 
   return (
     <div className={cx(styles.container, className)}>
-      <Input
-        className=""
-        width={490}
-        height={40}
+      <input
+        className={styles.input}
         placeholder="비밀번호"
         type={isEncrypted ? 'password' : 'text'}
-        register={register}
+        {...register()}
       />
       {isValueExists && (
         <>

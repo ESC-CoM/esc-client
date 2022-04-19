@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import JoinSchema from './yup';
@@ -7,8 +7,8 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import cx from 'classnames';
 import { useState } from 'react';
 import { Term } from '../index';
-import { UserSchema } from '../../../types/join';
-import { monthList, dayList } from '../../../__mocks__/join';
+import { UserSchema } from 'src/types/join';
+import { monthList, dayList } from 'src/__mocks__/join';
 
 export default function BasicInfo() {
   const {
@@ -22,19 +22,40 @@ export default function BasicInfo() {
     resolver: yupResolver(JoinSchema),
   });
 
-  const [termsOpen, setTermsOpen] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [
+    email,
+    phoneNumber,
+    authNumber,
+    gender,
+    isEmailDuplicated,
+    isPhoneDuplicated,
+    isAuthed,
+  ] = watch([
+    'email',
+    'phoneNumber',
+    'authNumber',
+    'gender',
+    'isEmailDuplicated',
+    'isPhoneDuplicated',
+    'isAuthed',
+  ]);
 
-  const checkDuplicatedEmail = (email: string) => {
+  const [termsOpen, setTermsOpen] = useState<boolean>(false);
+  const [isEncrypted, setIsEncrypted] = useState(false);
+
+  const checkDuplicatedEmail = () => {
     console.log(email);
+    setValue('isEmailDuplicated', !isEmailDuplicated);
     setFocus('password');
   };
-  const sendPhoneNum = (phoneNumber: number) => {
+  const sendPhoneNum = () => {
     console.log(phoneNumber);
+    setValue('isPhoneDuplicated', !isPhoneDuplicated);
     setFocus('authNumber');
   };
-  const sendAuthNum = (authNumber: number) => {
+  const sendAuthNum = () => {
     console.log(authNumber);
+    if (isPhoneDuplicated) setValue('isAuthed', !isAuthed);
   };
 
   // Todo: Modal기능의 useCallback 사용여부 재검토
@@ -44,128 +65,129 @@ export default function BasicInfo() {
 
   const onSubmit = (data: UserSchema) => {
     console.log(data);
+    if (!isEmailDuplicated || !isPhoneDuplicated || !isAuthed) {
+      return;
+    }
     if (!termsOpen) setTermsOpen(true);
   };
 
   return (
     <>
-      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
         <h1>회원님의 정보를 입력해주세요.</h1>
-        <div className={style.item}>
+
+        <div className={$['item']}>
           <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
-              className={cx(style.input, {
-                [style.error]: errors.email,
+              className={cx($['input'], {
+                [$['error']]: errors.email,
               })}
               type="text"
               id="email"
-              placeholder="abc@email.com"
+              placeholder="abcd@email.com"
               autoFocus
               {...register('email')}
             />
             <button
-              className={style.btn}
+              className={$['btn']}
               type="button"
-              onClick={() => checkDuplicatedEmail(watch('email'))}
+              onClick={checkDuplicatedEmail}
             >
               중복확인
             </button>
           </div>
+          {!isEmailDuplicated && errors.isEmailDuplicated?.message}
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="password">
             {errors.password?.message ?? '비밀번호'}
           </label>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
-              className={cx(style.input_password, {
-                [style.error]: errors.password,
+              className={cx($['input'], {
+                [$['error']]: errors.password,
               })}
-              type={showPassword ? 'text' : 'password'}
+              type={isEncrypted ? 'text' : 'password'}
               id="password"
               placeholder="영문, 숫자 포함 8자 이상"
               {...register('password')}
             />
             <span
-              className={style.showicon}
-              onClick={() => setShowPassword(!showPassword)}
+              className={$['encrypt-icon']}
+              onClick={() => setIsEncrypted(!isEncrypted)}
             >
-              {showPassword ? <IoEyeOff /> : <IoEye />}
+              {isEncrypted ? <IoEyeOff /> : <IoEye />}
             </span>
           </div>
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="phponeNumber">
             {errors.phoneNumber?.message ?? '휴대폰 번호'}
           </label>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
               type="text"
-              className={style.input}
-              placeholder="' - ' 없이 입력"
+              className={cx($['input'], {
+                [$['error']]: errors.phoneNumber,
+              })}
+              placeholder="' - ' 없이 입력해주세요."
               id="phponeNumber"
               {...register('phoneNumber')}
             />
-            <button
-              className={style.btn}
-              type="button"
-              onClick={() => {
-                sendPhoneNum(watch('phoneNumber'));
-              }}
-            >
+            <button className={$['btn']} type="button" onClick={sendPhoneNum}>
               인증번호<br></br>받기
             </button>
           </div>
+          {!isPhoneDuplicated && errors.isPhoneDuplicated?.message}
         </div>
-        <div className={style.item}>
+
+        <div className={$['item']}>
           <label htmlFor="authNumber">
             {errors.authNumber?.message ?? '인증번호'}
           </label>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <input
               type="text"
-              className={style.input}
-              placeholder="인증번호를 입력하세요."
+              className={cx($['input'], {
+                [$['error']]: errors.phoneNumber,
+              })}
               id="authNumber"
               {...register('authNumber')}
             />
-            <button
-              type="button"
-              className={style.btn}
-              onClick={() => {
-                sendAuthNum(watch('authNumber'));
-              }}
-            >
+            <button type="button" className={$['btn']} onClick={sendAuthNum}>
               인증하기
             </button>
           </div>
+          {!isAuthed && errors.isAuthed?.message}
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label>{errors.gender?.message ?? '성별'}</label>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+          <div className={$['row']}>
             <button
-              className={cx(style.gender_btn, {
-                [style.gender_active]: watch('gender') === '남자',
+              className={cx($['gender-btn'], {
+                [$['gender-active']]: gender === '남자',
               })}
-              onClick={() => {
-                setValue('gender', '남자');
-              }}
+              onClick={() => setValue('gender', '남자')}
               type="button"
               aria-labelledby="gender"
             >
               남자
             </button>
+
             <button
-              className={cx(style.gender_btn, {
-                [style.gender_active]: watch('gender') === '여자',
+              className={cx($['gender-btn'], {
+                [$['gender-active']]: gender === '여자',
               })}
-              onClick={() => {
-                setValue('gender', '여자');
-              }}
+              onClick={() => setValue('gender', '여자')}
               type="button"
               aria-labelledby="gender"
             >
@@ -174,26 +196,29 @@ export default function BasicInfo() {
           </div>
         </div>
 
-        <div className={style.item}>
+        <div className={$['item']}>
           <label htmlFor="birthDate">
             {!errors.year && !errors.month && !errors.day
               ? '생년월일'
               : '생년월일을 선택해주세요.'}
           </label>
-          <div className={style.row}>
+          <span className={$['required']}>*</span>
+
+          <div className={$['row']}>
             <input
               type="text"
-              className={cx(style.year, {
-                [style.error]: errors.year,
+              className={cx($['year'], {
+                [$['error']]: errors.year,
               })}
               id="birthDate"
-              placeholder="년(4자)"
+              placeholder="년도(4자)"
               {...register('year')}
             />
+
             <select
               defaultValue=""
-              className={cx(style.col, {
-                [style.error]: watch('month') === '---',
+              className={cx($['col'], {
+                [$['error']]: errors.month,
               })}
               {...register('month')}
             >
@@ -206,13 +231,14 @@ export default function BasicInfo() {
                 </option>
               ))}
             </select>
-            <span className={style.drop}>
+            <span className={$['drop']}>
               <IoMdArrowDropdown />
             </span>
+
             <select
               defaultValue=""
-              className={cx(style.col, {
-                [style.error]: watch('day') === '---',
+              className={cx($['col'], {
+                [$['error']]: errors.day,
               })}
               {...register('day')}
             >
@@ -225,15 +251,22 @@ export default function BasicInfo() {
                 </option>
               ))}
             </select>
-            <span className={style.drop}>
+
+            <span className={$['drop']}>
               <IoMdArrowDropdown />
             </span>
           </div>
         </div>
 
-        <button className={style.next_btn} type="submit" aria-labelledby="next">
-          다음
-        </button>
+        <div className={$['footer']}>
+          <button
+            className={$['next-btn']}
+            type="submit"
+            aria-labelledby="next"
+          >
+            다음
+          </button>
+        </div>
       </form>
       {termsOpen && <Term toggleModal={toggleModal} onState={termsOpen} />}
     </>

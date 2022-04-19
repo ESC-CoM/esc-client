@@ -1,17 +1,17 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
-import { Bottle } from '../../../Icon';
-import { adjustDrink } from '../../../../utils/adjustDrink';
+import { Bottle } from 'src/components/Icon';
+import { adjustDrink } from 'src/utils/adjustDrink';
 
 export type Props = {
   setTotalDrinkNum: (count: number) => void;
 };
 
 export default function Drink({ setTotalDrinkNum }: Props) {
-  const [drinkNum, setDrinkNum] = useState<Array<number>>(
+  const [drinkNum, setDrinkNum] = useState<number[]>(
     Array.from({ length: 6 }, () => 0)
   );
-  const [drinkDegree, setdrinkDegree] = useState<Array<string>>(
+  const [drinkDegree, setdrinkDegree] = useState<string[]>(
     Array.from({ length: 6 }, () => '')
   );
 
@@ -26,10 +26,10 @@ export default function Drink({ setTotalDrinkNum }: Props) {
   };
 
   return (
-    <ul className={style.drink}>
+    <ul className={$['drink']}>
       {drinkNum.map((_, index) => (
         <li
-          className={style.icon}
+          className={$['icon']}
           key={index}
           draggable="true"
           onClick={(e) => fillBottle(e, index)}

@@ -8,9 +8,9 @@ export interface UserSchema {
   year: string;
   month: string;
   day: string;
-  height?: number;
-  weight?: number;
-  mbti?: string;
+  isEmailDuplicated: boolean;
+  isPhoneDuplicated: boolean;
+  isAuthed: boolean;
 }
 
 export interface TermSchema {
@@ -23,6 +23,11 @@ export interface MoreSchema {
   height: number;
   weight: number;
   mbti: string;
-  hobby: Array<string>;
   drink: number;
+  hobbies: string[];
 }
+
+export type ExampleWord = {
+  id: number;
+  name: string;
+};

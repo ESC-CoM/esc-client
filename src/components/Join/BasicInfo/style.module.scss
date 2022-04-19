@@ -1,55 +1,43 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/mixin';
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding: 20px 20px 0 20px;
-  font-weight: 500;
+  padding: 20px 20px 50px;
   background-color: $white;
 
-  h1{
+  h1 {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 700;
   }
 
-  .item{
+  .item {
     position: relative;
     height: 60px;
     line-height: 20px;
-    margin: 30px 0 40px 0;
+    margin: 30px 0 40px;
 
-    label{
+    label {
       font-size: 16px;
       padding: 10px 0;
     }
 
-    .row{
+    .required {
+      color: $red;
+    }
+
+    .row {
       position: relative;
       display: flex;
       text-align: center;
 
-      .input{
+      .input {
         @include input(100%);
         margin-right: 5px;
-
-        &_password{
-          @include input(100%);
-
-          &.active{
-            border: 1.5px solid $error;
-            box-shadow: 0 0 2.5px 0.2px $error;
-          }
-        }
-
-        &.active{
-          border: 1.5px solid $error;
-          box-shadow: 0 0 2.5px 0.2px $error;
-        }
       }
 
-      .showicon{
+      .encrypt-icon {
         position: absolute;
         right: 20px;
         line-height: 55px;
@@ -58,38 +46,46 @@
         cursor: pointer;
       }
 
-      .year{
+      .year {
         @include input(30%);
         margin: 0 auto;
       }
 
-      .col{
+      .col {
         @include input(25%);
         margin: 0 auto;
       }
 
-      .error{
-        border: 1.5px solid $error;
-        box-shadow: 0 0 2.5px 0.2px $error;
+      .error {
+        border-bottom: 1.5px solid $red;
       }
     }
 
-    .btn{
+    .btn {
       @include button(120px, none, $primary, $white, 16px);
     }
 
-    .gender_btn{
+    .gender-btn {
       @include button(148%, 2.5px solid $gray-500, $white, $black, 18px);
       margin: 0 2px;
 
-      &.gender_active{
+      &.gender-active {
         border: 2.5px solid $primary;
       }
     }
   }
-  .next_btn{
-    @include button(100%, none, $primary, $white, 20px);
-    position: sticky;
-    bottom: 10px;
+
+  .footer {
+    @include footer();
+    display: flex;
+    justify-content: center;
+
+    .next-btn {
+      @include button(calc(100% - 50px), none, $primary, $white, 20px);
+
+      @media screen and (min-width: 758px) {
+        width: 720px;
+      }
+    }
   }
 }

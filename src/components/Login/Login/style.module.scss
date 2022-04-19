@@ -1,27 +1,46 @@
-.main {
+@import '/src/styles/color';
+@import '/src/styles/mixin';
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 64px;
+  height: 100vh;
+  padding: 20px;
+  background-color: $white;
 
   .title {
-    margin-top: 9vh;
+    margin-top: 100px;
   }
 
-  .email {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     margin-top: 50px;
-  }
 
-  .error {
-    margin-top: 10px;
-  }
+    .email {
+      width: 100%;
+    }
 
-  .password {
-    margin-top: 12px;
-  }
+    .password {
+      margin-top: 12px;
+      width: 100%;
+    }
 
-  .submit {
-    margin-top: 20px;
+    .error {
+      margin-top: 10px;
+    }
+
+    .checkbox {
+      margin-top: 20px;
+    }
+
+    .submit {
+      @include button(100%, none, $primary, $white, 16px);
+      margin-top: 20px;
+    }
   }
 
   .links {

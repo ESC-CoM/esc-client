@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import { UseFormSetValue } from 'react-hook-form';
 import { Label, CheckBox } from '../../atoms';
 import { Inputs } from '../Login';
@@ -6,12 +7,18 @@ import styles from './style.module.scss';
 interface Props {
   isSaveId: boolean;
   isAutoLogin: boolean;
+  className?: string;
   setValue: UseFormSetValue<Inputs>;
 }
 
-function LoginCheckBoxArea({ isSaveId, isAutoLogin, setValue }: Props) {
+function LoginCheckBoxArea({
+  isSaveId,
+  isAutoLogin,
+  setValue,
+  className,
+}: Props) {
   return (
-    <div className={styles.container}>
+    <div className={cx(styles.container, className)}>
       <Label
         className=""
         textContent="아이디 저장"

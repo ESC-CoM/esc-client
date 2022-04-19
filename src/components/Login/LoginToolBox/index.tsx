@@ -9,22 +9,22 @@ interface Props {
 const linkInfos = [
   {
     textContent: '아이디 찾기',
-    href: '',
+    href: '/find/email',
   },
   {
     textContent: '비밀번호 찾기',
-    href: '',
+    href: '/find/password',
   },
   {
     textContent: '회원가입',
-    href: '',
+    href: '/join',
   },
 ];
 
 function LoginToolArea({ className }: Props) {
   return (
     <div className={cx(className, styles.mainContainer)}>
-      <SaparateLine width={296} height={1} />
+      <SaparateLine width={296} />
       <div>
         {linkInfos.map(({ textContent, href }) => (
           <GrayLink
