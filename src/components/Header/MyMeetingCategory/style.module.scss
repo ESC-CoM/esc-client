@@ -1,0 +1,33 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+
+.tab-list {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+
+  .tab-item {
+    width: 33.3%;
+    cursor: pointer;
+    padding: 0 30px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .item-active {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      left: 0;
+      bottom: 0;
+      content: '';
+      border-radius: $borderBoxRadius;
+      background-color: $primary;
+    }
+  }
+}

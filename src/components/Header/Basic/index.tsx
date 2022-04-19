@@ -9,8 +9,13 @@ import {
   IoReorderThreeOutline,
   IoSettingsOutline,
 } from 'react-icons/io5';
+import { ReactNode } from 'react';
 
-export default function Header() {
+interface Props {
+  children: ReactNode;
+}
+
+export default function Header({ children }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -29,12 +34,16 @@ export default function Header() {
       url: '/home/oto',
       text: '소개팅',
     },
+    {
+      url: '/mymeeting',
+      text: 'Blue Spring',
+    },
   ];
 
   const menusRight = [
     {
       icon: <IoNotificationsOutline />,
-      url: '/home',
+      url: '/mymeeting',
     },
     {
       icon: <IoSearchOutline />,
@@ -59,32 +68,30 @@ export default function Header() {
   };
 
   return (
-    <header className={style.header}>
-      <div className={style.menus_left}>
-        {menusLeft.map((menu) => (
-          <div key={menu.url} onClick={() => handleClick(menu.url)}>
-            <div className={style.icon}>
-              {location.pathname === menu.url ? (
-                <div>
-                  <p>
-                    {menu.text}
-                    {menu.icon}
-                  </p>
-                </div>
-              ) : null}
-            </div>
+    <section className={style.fixed}>
+      <header className={style.header}>
+        <div className={style.searchbar}>
+          <div className={style.left}>
+            {menusLeft.map((menu) => (
+              <span key={menu.url} onClick={() => handleClick(menu.url)}>
+                {location.pathname === menu.url ? (
+                  <span>{menu.text}</span>
+                ) : null}
+              </span>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className={style.menus_right}>
-        {menusRight.map((menu) => (
-          <div key={menu.url} onClick={() => handleClick(menu.url)}>
-            <div className={style.icon}>
-              {location.pathname.match(menu.url) ? menu.icon : null}
-            </div>
+          <div className={style.right}>
+            {menusRight.map((menu) => (
+              <span key={menu.url} onClick={() => handleClick(menu.url)}>
+                {location.pathname.match(menu.url) ? menu.icon : null}
+              </span>
+            ))}
           </div>
-        ))}
-      </div>
-    </header>
+        </div>
+        <nav className={style.nav}>
+          <div>{children}</div>
+        </nav>
+      </header>
+    </section>
   );
 }

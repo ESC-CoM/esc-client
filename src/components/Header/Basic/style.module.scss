@@ -1,0 +1,44 @@
+@import 'src/styles/_color.scss';
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 7px 0 0;
+  box-shadow: inset 0 -1px 0 0 $gray-250;
+  background-color: $white;
+  height: 76px;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 758px;
+    margin: 0 auto;
+
+    .searchbar {
+      display: flex;
+      width: 100%;
+      max-width: 758px;
+      margin-top: 5px;
+
+      .left {
+        font-weight: 800;
+        margin-left: 10px;
+        margin-right: auto;
+      }
+
+      .right {
+        font-size: 24px;
+        margin-right: 10px;
+        margin-left: auto;
+      }
+    }
+
+    .nav {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
