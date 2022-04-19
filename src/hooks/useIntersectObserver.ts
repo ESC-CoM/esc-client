@@ -31,7 +31,6 @@ export default function useIntersectObserver<T extends Element>(
   );
 
   useEffect(() => {
-    console.log(observer.thresholds[0]);
     if (target?.current) {
       observer.observe(target.current);
     }
