@@ -6,6 +6,7 @@ import './styles/reset.scss';
 import MeetingBoardPage from './pages/MeetingBoard';
 import JoinRoute from './routes/JoinRoute';
 import Login from './components/Login';
+import MyMeetingPage from './pages/MyMeetingPage';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="*" element={<Navigate to="/home" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<MeetingBoardPage />} />
-          <Route path="/mymeeting" element={<h1>hello</h1>} />
+          <Route path="/mymeeting" element={<MyMeetingPage />} />
           <Route path="/chat" element={<h1>hello</h1>} />
           <Route path="/mypage" element={<h1>hello</h1>} />
           <Route path="/join/*" element={<JoinRoute />} />
