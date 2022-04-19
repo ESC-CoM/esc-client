@@ -1,0 +1,11 @@
+@import '/src/styles/color';
+
+.container {
+  height: 100vh;
+  padding: 20px;
+  background-color: $white;
+
+  .authentication {
+    margin-top: 100px;
+  }
+}

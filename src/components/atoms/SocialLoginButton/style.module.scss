@@ -1,5 +1,7 @@
+@import '/src/styles/color';
+
 .socialLoginButton {
-  background-color: white;
+  background-color: $gray-300;
   width: 54px;
   height: 54px;
   border: none;
