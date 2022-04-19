@@ -12,11 +12,11 @@ export default function MyMeetingCategory() {
   ]);
 
   return (
-    <ul className={$['tab-list']}>
+    <ul className={$['nav-list']}>
       {category.map((name, index1) => (
         <li
-          key={index1}
-          className={cx($['tab-item'], {
+          key={`nav-item-${index1}`}
+          className={cx($['nav-item'], {
             [$['item-active']]: isCategoryActive[index1],
           })}
           onClick={() =>
