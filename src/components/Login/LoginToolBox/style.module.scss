@@ -1,0 +1,10 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .link:nth-child(2),
+  .link:nth-child(3) {
+    margin-left: 20px;
+  }
+}

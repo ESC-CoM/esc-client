@@ -1,0 +1,116 @@
+@import '../../../styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.screen {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: $modalBackground;
+  z-index: 1;
+
+  .form {
+    width: 100%;
+    max-width: 758px;
+    padding: 30px 15px 10px;
+    border-radius: 20px 20px 0 0;
+    background-color: $white;
+    z-index: 3;
+    transition: all 0.2s ease-out;
+    animation: FadeIn 0.3s ease-in;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      padding-bottom: 10px;
+    }
+
+    .all-check {
+      padding: 10px 0;
+      font-size: 16px;
+      border-bottom: 1px solid $gray-300;
+
+      .all-check-box {
+        color: $gray-500;
+      }
+      .checked {
+        color: $primary;
+      }
+
+      .text {
+        padding: 10px;
+      }
+    }
+
+    .terms-list {
+      padding: 10px 0;
+
+      .terms-bx {
+        padding: 5px 0;
+
+        .terms-item {
+          position: relative;
+          display: flex;
+
+          .check-box {
+            font-size: 18px;
+            padding-right: 10px;
+            color: $gray-500;
+          }
+          .checked {
+            color: $primary;
+          }
+
+          .title {
+            font-size: 14px;
+          }
+
+          .url {
+            position: absolute;
+            right: 0;
+            font-size: 18px;
+            color: $gray-600;
+          }
+        }
+      }
+    }
+
+    .error {
+      position: absolute;
+      color: $orange;
+      font-size: 14px;
+    }
+
+    .next-btn {
+      @include button(100%, none, $primary, $white, 20px);
+      margin-top: 30px;
+    }
+  }
+
+  .back {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+  }
+}

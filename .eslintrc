@@ -22,8 +22,7 @@
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
     "react/self-closing-comp": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "array-bracket-spacing": ["error", "always", { "arraysInArrays": false }]
+    "@typescript-eslint/explicit-module-boundary-types": 0
   },
   "parserOptions": {
     "ecmaVersion": 2017

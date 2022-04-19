@@ -1,0 +1,66 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 70px;
+  background-color: $white;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .item {
+    position: relative;
+    line-height: 20px;
+    margin: 30px 0 40px;
+
+    label {
+      font-size: 18px;
+      padding: 10px 0;
+    }
+
+    .input {
+      @include inputRange();
+    }
+
+    .select {
+      @include input(100%);
+      border: 1.5px solid $gray-400;
+      border-radius: 5px;
+      padding: 0 10px;
+
+      &:focus {
+        border-color: $primary;
+      }
+    }
+
+    .required {
+      color: $red;
+    }
+
+    .info {
+      position: absolute;
+      right: 0;
+      color: $primary;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+  }
+
+  .footer {
+    @include footer();
+    display: flex;
+    justify-content: center;
+
+    .next-btn {
+      @include button(calc(100% - 50px), none, $primary, $white, 20px);
+
+      @media screen and (min-width: 758px) {
+        width: 720px;
+      }
+    }
+  }
+}

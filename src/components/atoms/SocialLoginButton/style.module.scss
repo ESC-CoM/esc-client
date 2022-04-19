@@ -1,0 +1,10 @@
+@import '/src/styles/color';
+
+.socialLoginButton {
+  background-color: $gray-300;
+  width: 54px;
+  height: 54px;
+  border: none;
+  border-radius: 27px;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+@import '/src/styles/color';
+
+.link {
+  font-size: 18px;
+  color: $gray-600;
+  text-decoration: none;
+
+  &:hover {
+    font-weight: bold;
+  }
+}

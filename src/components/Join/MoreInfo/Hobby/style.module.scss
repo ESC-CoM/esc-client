@@ -1,0 +1,32 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.hobby {
+  position: relative;
+  height: 100%;
+
+  div {
+    &:first-child {
+      margin-top: 10px;
+    }
+
+    &:nth-child(2) {
+      position: relative;
+      margin-top: 10px;
+
+      .input {
+        @include input(98%);
+      }
+
+      .plus {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        line-height: 55px;
+        font-size: 18px;
+        color: $gray-500;
+        cursor: pointer;
+      }
+    }
+  }
+}

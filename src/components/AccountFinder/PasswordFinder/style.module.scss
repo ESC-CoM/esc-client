@@ -1,0 +1,38 @@
+@import '/src/styles/color';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: $white;
+
+  .title {
+    margin-top: 100px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    width: 80%;
+    margin-top: 30px;
+
+    .radioLabel {
+      display: block;
+      width: 50%;
+      height: 40px;
+      border: 1px solid $gray-400;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .radioButton:checked + .radioLabel {
+      border: 1px solid $primary;
+      color: $primary;
+    }
+  }
+
+  .authentication {
+    margin-top: 30px;
+  }
+}

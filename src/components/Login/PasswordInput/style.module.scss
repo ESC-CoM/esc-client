@@ -1,0 +1,24 @@
+@import '/src/styles/mixin';
+@import '/src/styles/color';
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .input {
+    @include input(100%);
+  }
+
+  .delete {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+  }
+
+  .view {
+    position: absolute;
+    right: 40px;
+    height: 100%;
+  }
+}

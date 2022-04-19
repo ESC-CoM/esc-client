@@ -3,13 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {
   IoHomeOutline,
   IoHome,
-  IoDocumentTextOutline,
-  IoDocumentText,
   IoChatbubbleEllipsesOutline,
   IoChatbubbleEllipses,
   IoPersonOutline,
   IoPerson,
 } from 'react-icons/io5';
+import { BsSuitHeartFill, BsSuitHeart } from 'react-icons/bs';
 import cx from 'classnames';
 
 export default function Footer() {
@@ -24,8 +23,8 @@ export default function Footer() {
       url: '/home',
     },
     {
-      icon: <IoDocumentTextOutline />,
-      active: <IoDocumentText />,
+      icon: <BsSuitHeart />,
+      active: <BsSuitHeartFill />,
       text: 'MY 과팅',
       url: '/mymeeting',
     },
@@ -43,10 +42,7 @@ export default function Footer() {
     },
   ];
 
-  const handleClick = (url: string) => {
-    window.navigator.vibrate && window.navigator.vibrate(200);
-    navigate(url);
-  };
+  const handleClick = (url: string) => navigate(url);
 
   return (
     <footer className={style.footer}>
@@ -62,7 +58,7 @@ export default function Footer() {
             <div className={style.icon}>
               {location.pathname === menu.url ? menu.active : menu.icon}
             </div>
-            <p className={style.text}>{menu.text}</p>
+            <span className={style.text}>{menu.text}</span>
           </div>
         ))}
       </div>

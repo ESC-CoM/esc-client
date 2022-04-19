@@ -1,0 +1,30 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.word {
+  display: inline-flex;
+  padding: 2px 6px;
+  margin: 8px 8px 0 0;
+  border: 1.2px solid $primary;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: $white;
+  align-items: center;
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .close {
+    margin: 4px 0 0 2px;
+    align-items: center;
+    color: $gray-600;
+    font-size: 18px;
+  }
+
+  &:hover {
+    background-color: $gray-100;
+  }
+}

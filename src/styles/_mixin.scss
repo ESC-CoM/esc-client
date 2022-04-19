@@ -1,19 +1,83 @@
-@import './_variables';
+@import './_variables.scss';
 
 @mixin mobile {
   @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
-  
+
 @mixin tablet {
   @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
     @content;
   }
 }
-  
+
 @mixin desktop {
   @media (min-width: #{$breakpoint-desktop}) {
     @content;
   }
+}
+
+@mixin input($width) {
+  width: $width;
+  height: 40px;
+  font-size: 18px;
+  color: $black;
+  background-color: $white;
+  border: none;
+  border-bottom: 2px solid $gray-300;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin button($width, $border, $bg, $color, $font-size) {
+  width: $width;
+  height: 40px;
+  border: $border;
+  border-radius: 15px;
+  background-color: $bg;
+  color: $color;
+  font-size: $font-size;
+  margin: 0 auto;
+}
+
+@mixin inputRange() {
+  width: 100%;
+  margin: 5px 0;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track {
+    height: 5px;
+    border-radius: 5px;
+    background-color: #ffd2d5;
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background-color: $white;
+    box-shadow: 0 0 1px 1px $gray-400;
+    cursor: pointer;
+    margin-top: -5px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin footer() {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 7px 0px;
+  border-radius: $borderBoxRadius $borderBoxRadius 0 0;
+  box-shadow: 0 1px 4px $shadow;
+  background: $white;
 }

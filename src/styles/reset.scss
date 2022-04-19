@@ -1,4 +1,6 @@
-@import "./color.scss";
+@import './color.scss';
+@import './font.scss';
+
 html,
 body,
 div,
@@ -105,7 +107,10 @@ section {
 }
 
 body {
-  line-height: 1;
+  line-height: normal;
+  background-color: $gray-200;
+  font-family: 'Nanum Square Round', sans-serif;
+  font-weight: 400;
 }
 
 ol,
@@ -121,7 +126,7 @@ q {
 blockquote {
   &:before,
   &:after {
-    content: "";
+    content: '';
     content: none;
   }
 }
@@ -129,7 +134,7 @@ blockquote {
 q {
   &:before,
   &:after {
-    content: "";
+    content: '';
     content: none;
   }
 }
@@ -137,4 +142,17 @@ q {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+input,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }
