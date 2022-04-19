@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import { useExtractColleges } from 'src/hooks';
+import { useState, useRef, useEffect } from 'react';
+import { useExtractColleges, useIntersectObserver } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 import style from './style.module.scss';
 import cx from 'classnames';
@@ -22,24 +22,24 @@ export default function Meeting({
   const colleges = useExtractColleges(profiles);
   let zIndex = profiles.length;
 
-  useEffect(() => {
-    const option = {};
-    const trigger = (
-      entries: IntersectionObserverEntry[],
-      observer: IntersectionObserver
-    ) => {
-      const targetBox = entries[0];
-      if (targetBox.isIntersecting) {
-        imgRefs.current.forEach((img) => {
-          if (img && img.dataset.src) img.src = img.dataset.src;
-        });
-        observer.unobserve(targetBox.target);
-      }
-    };
+  const lazyLoadCallback = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    const targetBox = entries[0];
+    if (targetBox.isIntersecting) {
+      imgRefs.current.forEach((img) => {
+        if (img && img.dataset.src) img.src = img.dataset.src;
+      });
+      observer.unobserve(targetBox.target);
+    }
+  };
 
-    const observer = new IntersectionObserver(trigger, option);
-    if (meetingRef.current) observer.observe(meetingRef.current);
-  }, []);
+  useIntersectObserver<HTMLLIElement>(
+    { threshold: 0.1 },
+    meetingRef,
+    lazyLoadCallback
+  );
 
   return (
     <li className={style.meeting} ref={meetingRef}>
