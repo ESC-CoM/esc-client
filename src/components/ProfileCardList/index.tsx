@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
@@ -42,23 +42,25 @@ function ProfileCardList({ friends }: Props) {
     setImgCurrentNo(index);
   };
 
-  const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    setMouseDownClientX(e.clientX);
-  };
-  const onMouseUp = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    setMouseUpClientX(e.clientX);
-  };
+  const onTouchDown = (num: number) => setMouseDownClientX(num);
+  const onTouchUp = (num: number) => setMouseUpClientX(num);
 
   return (
-    <section className={$['friends-slides']}>
+    <section
+      className={$['friends-slides']}
+      onTouchStart={(e: React.TouchEvent) =>
+        onTouchDown(e.changedTouches[0].pageX)
+      }
+      onTouchEnd={(e: React.TouchEvent) => onTouchUp(e.changedTouches[0].pageX)}
+      onMouseDown={(e: React.MouseEvent) => onTouchDown(e.clientX)}
+      onMouseUp={(e: React.MouseEvent) => onTouchUp(e.clientX)}
+    >
       <ul
         ref={slideRef}
         style={{
           transform: `translateX(
                 ${imgCurrentNo * -110}%`,
         }}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
       >
         {friends.map((friend, index) => (
           <ProfileCard
