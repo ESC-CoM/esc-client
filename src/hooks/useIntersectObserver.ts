@@ -8,26 +8,36 @@ const defaultOptions: IntersectionObserverInit = {
 
 export default function useIntersectObserver<T extends Element>(
   customOptions?: IntersectionObserverInit,
-  target?: React.RefObject<T>
-): boolean {
+  target?: React.RefObject<T>,
+  callback?: (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => void
+) {
+  const [isIntersect, setIntersect] = useState(false);
+
   const options = {
     ...defaultOptions,
-    customOptions,
+    ...customOptions,
   };
+
   const observer = new IntersectionObserver(
-    (entries: IntersectionObserverEntry[]) => {
-      setIntersect(entries[0].isIntersecting);
-    },
+    callback
+      ? callback
+      : (entries: IntersectionObserverEntry[]) => {
+          setIntersect(entries[0].isIntersecting);
+        },
     options
   );
 
-  const [ isIntersect, setIntersect ] = useState(false);
   useEffect(() => {
-    if (target?.current) observer.observe(target.current);
+    if (target?.current) {
+      observer.observe(target.current);
+    }
     return () => {
       observer.disconnect();
     };
-  }, [ observer, target ]);
-  
-  return isIntersect;
+  }, [target]);
+
+  if (!callback) return isIntersect;
 }

@@ -13,7 +13,7 @@ export default function PageLayout({
   children,
   decreaseHeight = 0,
 }: Props) {
-  const footerHeight = isNeedFooter ? 54 : 0;
+  const footerHeight = isNeedFooter ? 55 : 0;
 
   useEffect(() => {
     window.document.body.style.overflow = 'hidden';

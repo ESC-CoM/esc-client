@@ -5,7 +5,7 @@ export type MeetingProfileType = {
 };
 
 export type MeetingType = {
-  kind: string;
+  title: string;
   gender: string;
   profiles: MeetingProfileType[];
 };

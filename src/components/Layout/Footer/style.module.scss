@@ -13,12 +13,14 @@
 
     .menu {
       width: 25%;
+      height: fit-content;
       min-width: 25%;
       text-align: center;
       display: block;
       cursor: pointer;
 
       .icon {
+        height: 23px;
         font-size: 23px;
         color: $gray-500;
       }
