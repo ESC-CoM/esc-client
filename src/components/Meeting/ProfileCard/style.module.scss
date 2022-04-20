@@ -1,0 +1,17 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.profile-card {
+  position: absolute;
+  height: 100%;
+  border-radius: $borderBoxRadius;
+  box-shadow: $headerShadow;
+  background-color: $white;
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  span {
+    display: block;
+  }
+}

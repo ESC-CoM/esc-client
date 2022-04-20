@@ -1,0 +1,49 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .friends-slides {
+    position: relative;
+    overflow: hidden;
+    height: 60%;
+    padding: 5% 8%;
+    background-color: $gray-100;
+
+    ul {
+      position: relative;
+      height: 100%;
+      transition: all 300ms ease 0s;
+    }
+
+    .button-prev,
+    .button-next {
+      position: absolute;
+      top: 45%;
+      font-size: 30px;
+      color: $gray-500;
+    }
+    .button-prev {
+      left: 1%;
+    }
+    .button-next {
+      right: 1%;
+    }
+  }
+  .content-box {
+    height: 40%;
+  }
+  .apply-btn {
+    @include footer();
+    @include button(calc(100% - 50px), none, $primary, $white, 20px);
+    bottom: 20px;
+    @media screen and (min-width: 758px) {
+      width: 720px;
+    }
+  }
+}

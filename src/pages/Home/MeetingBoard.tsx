@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { PageLayout, InfiniteScroll } from '../components/Layout';
-import Meeting from '../components/Meeting';
-import { MeetingType } from '../types/meeting';
-import { meetingBoardMocks } from '../__mocks__/meetingBoardMocks';
+import { PageLayout, InfiniteScroll } from '../../components/Layout';
+import Meeting from '../../components/Meeting';
+import { MeetingType } from '../../types/meeting';
+import { meetingBoardMocks } from '../../__mocks__/meetingBoardMocks';
 
 function MeetingBoardPage() {
   const [meetingList, setMeetingList] = useState<MeetingType[]>([]);
