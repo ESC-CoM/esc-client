@@ -16,7 +16,7 @@ function MeetingBoardPage() {
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
           {meetingList.map((meeting, i) => (
-            <Meeting key={i} meeting={meeting} />
+            <Meeting key={`meeting-${i}`} meeting={meeting} />
           ))}
         </ul>
       </InfiniteScroll>

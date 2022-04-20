@@ -56,7 +56,7 @@ export default function Meeting({
           style={profiles.length === 1 ? { height: IMG_SIZE } : {}}
           ref={imgListRef}
         >
-          <li
+          <button
             className={cx(style.profileBtn, {
               [style.isClicked]: isImgClick,
             })}
@@ -66,7 +66,7 @@ export default function Meeting({
             }}
           >
             +
-          </li>
+          </button>
           {profiles.map(({ url }, i) => {
             if (i < 4)
               return (
