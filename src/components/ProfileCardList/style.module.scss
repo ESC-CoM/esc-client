@@ -1,0 +1,29 @@
+@import 'src/styles/_color.scss';
+
+.friends-slides {
+  position: relative;
+  overflow: hidden;
+  height: 60%;
+  padding: 5% 8%;
+  background-color: $gray-100;
+
+  ul {
+    position: relative;
+    height: 100%;
+    transition: all 300ms ease 0s;
+  }
+
+  .button-prev,
+  .button-next {
+    position: absolute;
+    top: 45%;
+    font-size: 30px;
+    color: $gray-500;
+  }
+  .button-prev {
+    left: 1%;
+  }
+  .button-next {
+    right: 1%;
+  }
+}
