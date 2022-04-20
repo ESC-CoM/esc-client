@@ -8,7 +8,6 @@
   padding: 7px 0 0;
   box-shadow: inset 0 -1px 0 0 $gray-250;
   background-color: $white;
-  height: 76px;
 
   .header {
     display: flex;
@@ -17,7 +16,7 @@
     max-width: 758px;
     margin: 0 auto;
 
-    .searchbar {
+    .fixed-bar {
       display: flex;
       width: 100%;
       max-width: 758px;
@@ -36,7 +35,7 @@
       }
     }
 
-    .nav {
+    .nav-bar {
       width: 100%;
       margin: 0 auto;
     }
