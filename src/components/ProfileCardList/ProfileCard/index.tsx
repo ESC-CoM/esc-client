@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo, useRef } from 'react';
+import { useIntersectObserver } from 'src/hooks';
 import { Profile } from 'src/types/meeting';
 import $ from './style.module.scss';
 
@@ -9,13 +10,35 @@ type Props = {
 };
 
 function ProfileCard({ friend, profileWidth, left }: Props) {
+  const profileRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  const lazyLoadCallback = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    const targetBox = entries[0];
+    const targetImg = imgRef.current;
+    if (targetBox.isIntersecting && targetImg && targetImg.dataset.src) {
+      targetImg.src = targetImg.dataset.src;
+      observer.unobserve(targetBox.target);
+    }
+  };
+
+  useIntersectObserver<HTMLDivElement>(
+    { threshold: 0.1 },
+    profileRef,
+    lazyLoadCallback
+  );
+
   return (
     <div
       className={$['profile-card']}
       style={{ width: `${profileWidth}px`, left: left }}
+      ref={profileRef}
     >
       <div className={$['img-wrapper']}>
-        <img src={friend.img} alt="사진" />
+        <img data-src={friend.img} alt="사진" ref={imgRef} />
       </div>
       <table>
         <tbody>
