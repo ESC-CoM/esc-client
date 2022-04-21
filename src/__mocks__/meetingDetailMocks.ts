@@ -13,7 +13,7 @@ const meetingDetailMocks = {
       height: 170,
       weight: 65,
       mbti: 'ISFJ',
-      hobbies: '#롤#코딩#커피',
+      hobbies: '#롤롤롤하기 #코코딩하기 #자전거타기',
       drink: 5,
     },
     {
@@ -26,7 +26,7 @@ const meetingDetailMocks = {
       height: 175,
       weight: 70,
       mbti: 'ISFP',
-      hobbies: '#롤#코딩#마라탕',
+      hobbies: '#롤 #코딩 #마라탕',
       drink: 1,
     },
     {
@@ -39,7 +39,7 @@ const meetingDetailMocks = {
       height: 170,
       weight: 68,
       mbti: 'ENFP',
-      hobbies: '#축구#맛집탐방#커피',
+      hobbies: '#축구 #맛집탐방 #커피',
       drink: 1.5,
     },
   ],

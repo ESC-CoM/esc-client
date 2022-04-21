@@ -42,18 +42,18 @@ function ProfileCardList({ friends }: Props) {
     setImgCurrentNo(index);
   };
 
-  const onTouchDown = (num: number) => setMouseDownClientX(num);
-  const onTouchUp = (num: number) => setMouseUpClientX(num);
+  const onMouseDown = (num: number) => setMouseDownClientX(num);
+  const onMouseUp = (num: number) => setMouseUpClientX(num);
 
   return (
     <section
       className={$['friends-slides']}
       onTouchStart={(e: React.TouchEvent) =>
-        onTouchDown(e.changedTouches[0].pageX)
+        onMouseDown(e.changedTouches[0].pageX)
       }
-      onTouchEnd={(e: React.TouchEvent) => onTouchUp(e.changedTouches[0].pageX)}
-      onMouseDown={(e: React.MouseEvent) => onTouchDown(e.clientX)}
-      onMouseUp={(e: React.MouseEvent) => onTouchUp(e.clientX)}
+      onTouchEnd={(e: React.TouchEvent) => onMouseUp(e.changedTouches[0].pageX)}
+      onMouseDown={(e: React.MouseEvent) => onMouseDown(e.clientX)}
+      onMouseUp={(e: React.MouseEvent) => onMouseUp(e.clientX)}
     >
       <ul
         ref={slideRef}
@@ -66,7 +66,7 @@ function ProfileCardList({ friends }: Props) {
           <ProfileCard
             key={friend.img}
             friend={friend}
-            width={ulWidth}
+            profileWidth={ulWidth}
             left={`calc(${index * ulWidth}px + ${index * 10}%`}
           />
         ))}
