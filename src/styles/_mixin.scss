@@ -71,6 +71,12 @@
   }
 }
 
+@mixin textOverFlow() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @mixin footer() {
   position: fixed;
   bottom: 0px;
