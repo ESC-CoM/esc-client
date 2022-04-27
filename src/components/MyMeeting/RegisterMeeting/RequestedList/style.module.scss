@@ -1,0 +1,77 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+@import 'src/styles/mixin';
+
+.request-meeting {
+  position: relative;
+  top: 85px;
+  padding: 15px;
+  border-bottom: 1px solid $gray-250;
+  cursor: pointer;
+
+  .request-meeting-info {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+
+    .title {
+      @include textOverFlow;
+      font-size: 15px;
+      font-weight: 700;
+      margin-right: auto;
+    }
+    .date {
+      font-size: 12px;
+      color: $gray-600;
+      margin-left: auto;
+    }
+  }
+
+  .profile-img-list {
+    width: calc(30% - 10px);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+    .profile-img {
+      margin-right: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 20%;
+      }
+    }
+  }
+
+  .content {
+    @include textOverFlow;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: $gray-700;
+  }
+
+  .request-btn {
+    display: flex;
+    flex-direction: row;
+    .btn {
+      @include button(
+        calc(100% - 50px),
+        2px solid $primary,
+        $white,
+        $black,
+        15px
+      );
+      margin-right: 10px;
+      letter-spacing: 1px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}
