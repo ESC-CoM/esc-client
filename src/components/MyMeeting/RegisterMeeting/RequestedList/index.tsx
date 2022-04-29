@@ -1,39 +1,31 @@
 import $ from './style.module.scss';
 
 interface Props {
-  title: string;
-  content: string;
+  comment: string;
   profileImg: string[];
   date: string;
 }
 
-export default function RequestedList({
-  title,
-  content,
-  profileImg,
-  date,
-}: Props) {
+export default function RequestedList({ comment, profileImg, date }: Props) {
   return (
-    <li className={$['request-meeting']}>
-      <div className={$['request-meeting-info']}>
-        <span className={$['title']}>{title}</span>
-        <span className={$['date']}>{date}</span>
-      </div>
-
-      <ul className={$['profile-img-list']}>
+    <li className={$['request-meeting-info']}>
+      <ul className={$['info-list']}>
         {profileImg.map((imgUri, index) => (
           <li key={`profile-img-${index}`} className={$['profile-img']}>
             <img src={imgUri} alt="profile-img" />
           </li>
         ))}
+
+        <li className={$['info']}>
+          <span className={$['title']}>{comment}</span>
+          <span className={$['date']}>•{date}</span>
+        </li>
+
+        <li className={$['request-btn']}>
+          <button className={$['btn']}>수락</button>
+          <button className={$['btn']}>거절</button>
+        </li>
       </ul>
-
-      <span className={$['content']}>{content}</span>
-
-      <div className={$['request-btn']}>
-        <button className={$['btn']}>수락</button>
-        <button className={$['btn']}>거절</button>
-      </div>
     </li>
   );
 }

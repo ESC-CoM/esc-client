@@ -1,21 +1,18 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_variables.scss';
-@import 'src/styles/_mixin.scss';
+@import 'src/styles/mixin';
 
-.my-meeting {
+.detail-info {
   position: relative;
-  top: 85px;
+  top: 36px;
   display: flex;
   padding: 15px;
   border-bottom: 1px solid $gray-250;
-  background-color: $white;
-  cursor: pointer;
 
-  .profile-img-list {
+  .friends-image-list {
     display: flex;
-    margin: 0 15px;
-    .profile-img {
-      margin-left: -20px;
+
+    .friends-image {
       img {
         width: 50px;
         height: 50px;
@@ -24,7 +21,8 @@
     }
   }
 
-  .my-meeting-info {
+  .info {
+    margin-left: 10px;
     .title {
       @include textOverFlow;
       font-size: 15px;

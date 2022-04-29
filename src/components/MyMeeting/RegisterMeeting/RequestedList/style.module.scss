@@ -2,41 +2,14 @@
 @import 'src/styles/_variables.scss';
 @import 'src/styles/mixin';
 
-.request-meeting {
+.request-meeting-info {
   position: relative;
-  top: 85px;
+  top: 30px;
   padding: 15px;
-  border-bottom: 1px solid $gray-250;
   cursor: pointer;
-
-  .request-meeting-info {
+  .info-list {
     display: flex;
-    width: 100%;
-    margin-bottom: 10px;
-
-    .title {
-      @include textOverFlow;
-      font-size: 15px;
-      font-weight: 700;
-      margin-right: auto;
-    }
-    .date {
-      font-size: 12px;
-      color: $gray-600;
-      margin-left: auto;
-    }
-  }
-
-  .profile-img-list {
-    width: calc(30% - 10px);
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    margin-left: 10px;
-
     .profile-img {
-      margin-right: 10px;
-
       img {
         width: 50px;
         height: 50px;
@@ -45,32 +18,31 @@
     }
   }
 
-  .content {
-    @include textOverFlow;
+  .info {
+    display: flex;
     margin-left: 10px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: $gray-700;
+    .title {
+      @include textOverFlow;
+      font-size: 14px;
+    }
+    .date {
+      font-size: 12px;
+      color: $gray-600;
+      margin-left: 5px;
+    }
   }
 
-  .request-btn {
-    display: flex;
-    flex-direction: row;
-    .btn {
-      @include button(
-        calc(100% - 50px),
-        2px solid $primary,
-        $white,
-        $black,
-        15px
-      );
+  li:last-child {
+    margin-left: auto;
+    button {
+      @include button(80px, 2px solid $primary, $primary, $white, 15px);
       margin-right: 10px;
+      margin-left: auto;
       letter-spacing: 1px;
       cursor: pointer;
-
       &:hover {
-        background-color: $primary;
-        color: $white;
+        background-color: $white;
+        color: $black;
       }
     }
   }
