@@ -18,7 +18,7 @@ export default function RequestedList({ comment, profileImg, date }: Props) {
 
         <li className={$['info']}>
           <span className={$['title']}>{comment}</span>
-          <span className={$['date']}>•{date}</span>
+          <span className={$['date']}>{date}</span>
         </li>
 
         <li className={$['request-btn']}>

@@ -20,26 +20,28 @@
 
   .info {
     display: flex;
+    flex-direction: column;
     margin-left: 10px;
+    width: 35%;
     .title {
       @include textOverFlow;
       font-size: 14px;
+      margin-bottom: 5px;
     }
     .date {
       font-size: 12px;
       color: $gray-600;
-      margin-left: 5px;
     }
   }
 
   li:last-child {
     margin-left: auto;
     button {
-      @include button(80px, 2px solid $primary, $primary, $white, 15px);
-      margin-right: 10px;
-      margin-left: auto;
-      letter-spacing: 1px;
+      @include button(70px, 2px solid $primary, $primary, $white, 15px);
       cursor: pointer;
+      &:first-child {
+        margin-right: 5px;
+      }
       &:hover {
         background-color: $white;
         color: $black;

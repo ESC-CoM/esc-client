@@ -25,8 +25,6 @@ export const requestList = [
   {
     comment: '공대도 받아주세요 !',
     profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-H2QsziFrKn2TtEjTvNYuf6YOVUAjEaPAlg&usqp=CAU',
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
     ],
     date: '27초 전',
@@ -34,8 +32,6 @@ export const requestList = [
   {
     comment: '술 잘 먹어요 ㅎㅎ',
     profileImg: [
-      'https://news.nateimg.co.kr/orgImg/hm/2021/07/12/202107122029102758505_20210712203801_01.jpg',
-      'https://src.hidoc.co.kr/image/lib/2021/1/20/1611132055778_0.jpg',
       'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
     ],
     date: '30분 전',
@@ -44,8 +40,6 @@ export const requestList = [
     comment: '전정대랑 과팅합시다앙',
     profileImg: [
       'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-      'https://news.nateimg.co.kr/orgImg/hm/2021/07/12/202107122029102758505_20210712203801_01.jpg',
     ],
     date: '2일 전',
   },
