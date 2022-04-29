@@ -7,7 +7,7 @@ import MeetingBoardPage from './pages/MeetingBoard';
 import JoinRoute from './routes/JoinRoute';
 import LoginPage from './pages/loginPage';
 import AccountFinderRauter from './routes/AccountFinderRoute';
-import MyMeetingPage from './pages/MyMeetingPage';
+import MyMeetingRoute from './routes/MyMeetingRoute';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/find/*" element={<AccountFinderRauter />} />
           <Route path="/home" element={<MeetingBoardPage />} />
-          <Route path="/mymeeting" element={<MyMeetingPage />} />
+          <Route path="/mymeeting/*" element={<MyMeetingRoute />} />
           <Route path="/chat" element={<h1>hello</h1>} />
           <Route path="/mypage" element={<h1>hello</h1>} />
           <Route path="/join/*" element={<JoinRoute />} />
