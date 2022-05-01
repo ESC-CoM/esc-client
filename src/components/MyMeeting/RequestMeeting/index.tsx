@@ -6,9 +6,9 @@ interface Props {
   date: string;
 }
 
-export default function RequestedList({ comment, profileImg, date }: Props) {
+export default function RequestMeeting({ comment, profileImg, date }: Props) {
   return (
-    <li className={$['requested-info']}>
+    <li className={$['request-meeting-info']}>
       <ul className={$['info-list']}>
         {profileImg.map((imgUri, index) => (
           <li key={`profile-img-${index}`} className={$['profile-img']}>
@@ -22,8 +22,7 @@ export default function RequestedList({ comment, profileImg, date }: Props) {
         </li>
 
         <li className={$['request-btn']}>
-          <button className={$['btn']}>수락</button>
-          <button className={$['btn']}>거절</button>
+          <button className={$['btn']}>재요청</button>
         </li>
       </ul>
     </li>
