@@ -8,7 +8,7 @@ import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
 import PasswordInput from '../PasswordInput';
-import SocialLoginBox from '../SocialLoginBox';
+import KakaoLogin from '../KakaoLogin';
 
 export interface Inputs {
   email: string;
@@ -71,7 +71,7 @@ export default function Login() {
           </button>
         </form>
         <LoginToolBox className={styles.links} />
-        <SocialLoginBox className={styles.socialLogin} />
+        <KakaoLogin className={styles['kakao-login']} />
       </div>
     </>
   );
