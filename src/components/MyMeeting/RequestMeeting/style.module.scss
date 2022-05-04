@@ -1,31 +1,37 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.request-meeting-info {
+.info-list {
   position: relative;
   top: 55px;
+  display: flex;
   padding: 15px;
   cursor: pointer;
-  .info-list {
-    display: flex;
-    .profile-img {
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 20%;
-      }
+
+  .profile-img {
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 20%;
     }
   }
 
   .info {
-    display: flex;
-    flex-direction: column;
     margin-left: 10px;
     width: 35%;
     .title {
       @include textOverFlow;
       font-size: 14px;
       margin-bottom: 5px;
+    }
+    .state {
+      font-size: 12px;
+      padding: 3px 6px;
+      margin-left: 6px;
+      border-radius: 5px;
+      background-color: $gray-200;
+      color: $primary;
+      font-weight: 700;
     }
     .date {
       font-size: 12px;
@@ -36,7 +42,7 @@
   li:last-child {
     margin-left: auto;
     button {
-      @include button(70px, 2px solid $primary, $primary, $white, 15px);
+      @include button(100px, 2px solid $primary, $primary, $white, 15px);
       cursor: pointer;
       margin-right: 5px;
       &:hover {

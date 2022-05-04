@@ -52,6 +52,7 @@ export const requestMeeting = [
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
     ],
     date: '52분 전',
+    state: true,
   },
   {
     comment: '신청2',
@@ -59,5 +60,6 @@ export const requestMeeting = [
       'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
     ],
     date: '22.04.29',
+    state: false,
   },
 ];

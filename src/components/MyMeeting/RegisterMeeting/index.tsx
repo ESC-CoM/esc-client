@@ -45,7 +45,9 @@ export default function RegisterMeeting({
         <div className={$['my-meeting-info']}>
           <span className={$['title']}>{title}</span>
           <span className={$['date']}>•{date}</span>
-          <span className={$['content']}>{content}</span>
+          <div>
+            <span className={$['content']}>{content}</span>
+          </div>
         </div>
       </div>
     </>
