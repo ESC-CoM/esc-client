@@ -4,7 +4,8 @@
 
 .requested-info {
   position: relative;
-  top: 55px;
+  top: 24%;
+  display: flex;
   padding: 15px;
   cursor: pointer;
   .info-list {
@@ -34,7 +35,7 @@
     }
   }
 
-  li:last-child {
+  div:last-child {
     margin-left: auto;
     button {
       @include button(70px, 2px solid $primary, $primary, $white, 15px);

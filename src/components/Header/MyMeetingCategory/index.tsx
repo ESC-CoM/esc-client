@@ -6,7 +6,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const category = [
   { name: '등록한 미팅', path: 'register' },
   { name: '신청한 미팅', path: 'request' },
-  { name: '매칭된 미팅', path: 'matching' },
 ];
 
 export default function MyMeetingCategory() {
@@ -25,17 +24,12 @@ export default function MyMeetingCategory() {
     );
     if (index1 === 0) navigate('/mymeeting/register-basic');
     else if (index1 === 1) navigate('/mymeeting/request-basic');
-    else if (index1 === 2) navigate('/mymeeting/matching-basic');
   };
 
   useEffect(() => {
     if (currPath === '/mymeeting/request-basic')
       setIsCategoryActive(
         isCategoryActive.map((_, index) => (index === 1 ? true : false))
-      );
-    else if (currPath === '/mymeeting/matching-basic')
-      setIsCategoryActive(
-        isCategoryActive.map((_, index) => (index === 2 ? true : false))
       );
   }, []);
 

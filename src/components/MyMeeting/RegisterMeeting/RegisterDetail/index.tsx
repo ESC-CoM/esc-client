@@ -24,7 +24,10 @@ export default function RegisterDetail() {
       <div className={$['detail-info']}>
         <ul className={$['friends-image-list']}>
           {friends.map((imgUri, index) => (
-            <li key={`friends-image-${index}`} className={$['friends-image']}>
+            <li
+              key={`friends-image-${imgUri}-${index}`}
+              className={$['friends-image']}
+            >
               <img src={imgUri} alt="friends-image" />
             </li>
           ))}

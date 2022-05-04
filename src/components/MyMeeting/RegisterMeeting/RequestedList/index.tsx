@@ -15,17 +15,17 @@ export default function RequestedList({ comment, profileImg, date }: Props) {
             <img src={imgUri} alt="profile-img" />
           </li>
         ))}
-
-        <li className={$['info']}>
-          <span className={$['comment']}>{comment}</span>
-          <span className={$['date']}>{date}</span>
-        </li>
-
-        <li className={$['request-btn']}>
-          <button className={$['btn']}>수락</button>
-          <button className={$['btn']}>거절</button>
-        </li>
       </ul>
+
+      <div className={$['info']}>
+        <span className={$['comment']}>{comment}</span>
+        <span className={$['date']}>{date}</span>
+      </div>
+
+      <div className={$['request-btn']}>
+        <button className={$['btn']}>수락</button>
+        <button className={$['btn']}>거절</button>
+      </div>
     </li>
   );
 }
