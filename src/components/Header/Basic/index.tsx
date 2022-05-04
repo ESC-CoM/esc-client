@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import $ from './style.module.scss';
 import { useLocation } from 'react-router-dom';
 import {
   IoChevronBackOutline,
@@ -10,6 +10,7 @@ import {
   IoSettingsOutline,
 } from 'react-icons/io5';
 import { ReactNode } from 'react';
+import { Logo } from 'src/components/Icon';
 
 interface Props {
   children?: ReactNode;
@@ -17,29 +18,30 @@ interface Props {
 
 type MenuType = {
   icon?: JSX.Element;
-  url?: string;
   text?: string;
+  url?: string;
 };
 
 const menusLeft: MenuType[] = [
   {
     icon: <IoChevronBackOutline />,
-    url: '',
     text: '이전',
+    url: '',
   },
   {
     icon: <IoChevronDownOutline />,
-    url: '/home',
     text: '과팅',
+    url: '/home',
   },
   {
     icon: <IoChevronDownOutline />,
-    url: '/home/personal',
     text: '소개팅',
+    url: '/home/personal',
   },
   {
-    url: '/mymeeting',
+    icon: <Logo />,
     text: 'Blue Spring',
+    url: '/mymeeting',
   },
 ];
 
@@ -70,19 +72,19 @@ export default function Header({ children }: Props) {
   const location = useLocation();
 
   return (
-    <section className={style.fixed}>
-      <header className={style.header}>
-        <div className={style.searchbar}>
+    <section className={$['fixed']}>
+      <header className={$['header']}>
+        <div className={$['fixed-bar']}>
           {[menusLeft, menusRight].map((menus, index1) => (
             <div
               key={`header-parent-${index1}`}
-              className={!index1 ? style.left : style.right}
+              className={!index1 ? $['left'] : $['right']}
             >
               {menus.map((menu, index2) => {
                 if (location.pathname === menu.url)
                   return (
                     <span key={`header-${index1}-${index2}`}>
-                      {!index1 ? menu.text : menu.icon}
+                      {!index1 ? menu.icon : menu.icon}
                     </span>
                   );
               })}
@@ -90,9 +92,7 @@ export default function Header({ children }: Props) {
           ))}
         </div>
 
-        <nav className={style.nav}>
-          <div>{children}</div>
-        </nav>
+        <nav className={$['nav-bar']}>{children}</nav>
       </header>
     </section>
   );
