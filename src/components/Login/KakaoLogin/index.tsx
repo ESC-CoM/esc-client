@@ -3,7 +3,7 @@ import { kakaoLoginButton } from 'src/assets';
 import cx from 'classnames';
 import $ from './style.module.scss';
 
-const JAVASCRIPT_KEY = '5daa5d678c0ec8f94943517a3567e8aa';
+const JAVASCRIPT_KEY = process.env.KAKAO_JAVASCRIPT_KEY as string;
 
 const REQUEST_PROPERTY_KEYS = [
   'kakao_account.email',

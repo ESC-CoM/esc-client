@@ -11,6 +11,8 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const isAnalyze = process.argv.includes('--analyze');
 const isProduction = process.env.NODE_ENV === 'production';
 
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
   devServer: {
     port: 3000,
@@ -93,5 +95,6 @@ module.exports = {
         ]
       : []),
     ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
+    new Dotenv(),
   ],
 };
