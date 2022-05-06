@@ -4,12 +4,11 @@
 .detail-box {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow: auto;
 
   .content-box {
-    height: 30%;
+    min-height: 200px;
     padding: 15px;
+    background-color: $white;
     font-size: 16px;
     h2 {
       margin-bottom: 15px;

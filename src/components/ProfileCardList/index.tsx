@@ -62,12 +62,11 @@ function ProfileCardList({ friends }: Props) {
                 ${imgCurrentNo * -110}%`,
         }}
       >
-        {friends.map((friend, index) => (
+        {friends.map((friend) => (
           <ProfileCard
             key={friend.img}
             friend={friend}
             profileWidth={ulWidth}
-            left={`calc(${index * ulWidth}px + ${index * 10}%`}
           />
         ))}
       </ul>
