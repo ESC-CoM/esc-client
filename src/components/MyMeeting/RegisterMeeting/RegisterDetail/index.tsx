@@ -1,6 +1,6 @@
 import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
-import { registerMeeting, requestList } from 'src/__mocks__/myMeeting';
+import { registerMeetingMocks, requestList } from 'src/__mocks__/myMeeting';
 import RequestedList from '../RequestedList';
 
 type meetingInfo = {
@@ -9,7 +9,7 @@ type meetingInfo = {
   date: string;
 };
 
-const { title, content, friends, date } = registerMeeting[0];
+const { title, content, friends, date } = registerMeetingMocks[0];
 
 export default function RegisterDetail() {
   const [requestedList, setRequestedList] = useState<meetingInfo[]>([]);

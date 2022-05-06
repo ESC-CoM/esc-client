@@ -1,24 +1,33 @@
 import { RegisterMeeting } from 'src/components/MyMeeting';
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout, InfiniteScroll } from 'src/components/Layout';
 import { Header, MyMeetingCategory } from 'src/components/Header';
-import { registerMeeting } from 'src/__mocks__/myMeeting';
+import { registerMeetingMocks } from 'src/__mocks__/myMeeting';
+import { MyMeetingType } from 'src/types/myMeeting';
+import { useState } from 'react';
 
 export default function MyMeetingPage() {
+  const [registerMeeting, setRegisterMeeting] = useState<MyMeetingType[]>([]);
+
+  const fetchMoreMeetingFeeds = () => {
+    setRegisterMeeting([...registerMeeting, ...registerMeetingMocks]);
+  };
+
   return (
     <PageLayout isNeedFooter={true} decreaseHeight={0}>
       <Header children={<MyMeetingCategory />} />
-      <ul>
-        {registerMeeting.map(({ title, content, friends, date }, index) => (
-          <li key={`register-meeting-${index}`}>
+      <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
+        <ul>
+          {registerMeeting.map(({ title, content, friends, date }, index) => (
             <RegisterMeeting
+              key={`${date}-${index}`}
               title={title}
               content={content}
               friends={friends}
               date={date}
             />
-          </li>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </InfiniteScroll>
     </PageLayout>
   );
 }
