@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import './styles/reset.scss';
 import JoinRoute from './routes/JoinRoute';
 import LoginPage from './pages/loginPage';
-import AccountFinderRauter from './routes/AccountFinderRoute';
+import AccountFinderRoute from './routes/AccountFinderRoute';
 import HomeRoute from './routes/HomeRoute';
+import MyMeetingRoute from './routes/MyMeetingRoute';
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
         <Routes>
           <Route path="*" element={<Navigate to="/home" />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/find/*" element={<AccountFinderRauter />} />
+          <Route path="/find/*" element={<AccountFinderRoute />} />
           <Route path="/home/*" element={<HomeRoute />} />
-          <Route path="/mymeeting" element={<h1>hello</h1>} />
+          <Route path="/mymeeting/*" element={<MyMeetingRoute />} />
           <Route path="/chat" element={<h1>hello</h1>} />
           <Route path="/mypage" element={<h1>hello</h1>} />
           <Route path="/join/*" element={<JoinRoute />} />
