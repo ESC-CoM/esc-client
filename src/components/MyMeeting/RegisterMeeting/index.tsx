@@ -32,24 +32,22 @@ export default function RegisterMeeting({
   };
 
   return (
-    <>
-      <div className={$['my-meeting']} onClick={getRequestList}>
-        <ul className={$['profile-img-list']}>
-          {friends.map((imgUri, index) => (
-            <li className={$['profile-img']} key={`profile-img-${index}`}>
-              <img src={imgUri} alt="friends" />
-            </li>
-          ))}
-        </ul>
+    <div className={$['my-meeting']} onClick={getRequestList}>
+      <ul className={$['profile-img-list']}>
+        {friends.map((imgUri, index) => (
+          <li className={$['profile-img']} key={`profile-img-${index}`}>
+            <img src={imgUri} alt="friends" />
+          </li>
+        ))}
+      </ul>
 
-        <div className={$['my-meeting-info']}>
-          <span className={$['title']}>{title}</span>
-          <span className={$['date']}>•{date}</span>
-          <div>
-            <span className={$['content']}>{content}</span>
-          </div>
+      <div className={$['my-meeting-info']}>
+        <span className={$['title']}>{title}</span>
+        <span className={$['date']}>•{date}</span>
+        <div>
+          <span className={$['content']}>{content}</span>
         </div>
       </div>
-    </>
+    </div>
   );
 }
