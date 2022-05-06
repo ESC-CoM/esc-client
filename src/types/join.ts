@@ -1,7 +1,6 @@
 export interface UserSchema {
   email: string;
   password: string;
-  passwordConfirm: string;
   phoneNumber: number;
   authNumber: number;
   gender: string;

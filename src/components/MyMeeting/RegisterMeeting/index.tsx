@@ -2,6 +2,7 @@ import $ from './style.module.scss';
 import { useState } from 'react';
 import { requestList } from 'src/__mocks__/myMeeting';
 import { useNavigate } from 'react-router-dom';
+import useStore from 'src/store/useStore';
 
 interface Props {
   title: string;
@@ -22,6 +23,7 @@ export default function RegisterMeeting({
   friends,
   date,
 }: Props) {
+  const { basicInfo, moreInfo } = useStore();
   const navigate = useNavigate();
   const [requestedList, setRequestedList] = useState<meetingInfo[]>([]);
 
@@ -32,22 +34,20 @@ export default function RegisterMeeting({
   };
 
   return (
-    <>
-      <div className={$['my-meeting']} onClick={getRequestList}>
-        <ul className={$['profile-img-list']}>
-          {friends.map((imgUri, index) => (
-            <li className={$['profile-img']} key={`profile-img-${index}`}>
-              <img src={imgUri} alt="friends" />
-            </li>
-          ))}
-        </ul>
+    <div className={$['my-meeting']} onClick={getRequestList}>
+      <ul className={$['profile-img-list']}>
+        {friends.map((imgUri, index) => (
+          <li className={$['profile-img']} key={`profile-img-${index}`}>
+            <img src={imgUri} alt="friends" />
+          </li>
+        ))}
+      </ul>
 
-        <div className={$['my-meeting-info']}>
-          <span className={$['title']}>{title}</span>
-          <span className={$['date']}>•{date}</span>
-          <span className={$['content']}>{content}</span>
-        </div>
+      <div className={$['my-meeting-info']}>
+        <span className={$['title']}>{title}</span>
+        <span className={$['date']}>•{date}</span>
+        <span className={$['content']}>{content}</span>
       </div>
-    </>
+    </div>
   );
 }

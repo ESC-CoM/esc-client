@@ -9,8 +9,10 @@ import { useState } from 'react';
 import { Term } from '../index';
 import { UserSchema } from 'src/types/join';
 import { monthList, dayList } from 'src/__mocks__/join';
+import useStore from 'src/store/useStore';
 
 export default function BasicInfo() {
+  const { setBasicInfo } = useStore();
   const {
     watch,
     register,
@@ -22,18 +24,7 @@ export default function BasicInfo() {
     resolver: yupResolver(JoinSchema),
   });
 
-  const [
-    email,
-    phoneNumber,
-    authNumber,
-    gender,
-    isEmailDuplicated,
-    isPhoneDuplicated,
-    isAuthed,
-  ] = watch([
-    'email',
-    'phoneNumber',
-    'authNumber',
+  const [gender, isEmailDuplicated, isPhoneDuplicated, isAuthed] = watch([
     'gender',
     'isEmailDuplicated',
     'isPhoneDuplicated',
@@ -44,17 +35,14 @@ export default function BasicInfo() {
   const [isEncrypted, setIsEncrypted] = useState(false);
 
   const checkDuplicatedEmail = () => {
-    console.log(email);
     setValue('isEmailDuplicated', !isEmailDuplicated);
     setFocus('password');
   };
   const sendPhoneNum = () => {
-    console.log(phoneNumber);
     setValue('isPhoneDuplicated', !isPhoneDuplicated);
     setFocus('authNumber');
   };
   const sendAuthNum = () => {
-    console.log(authNumber);
     if (isPhoneDuplicated) setValue('isAuthed', !isAuthed);
   };
 
@@ -64,11 +52,13 @@ export default function BasicInfo() {
   };
 
   const onSubmit = (data: UserSchema) => {
-    console.log(data);
     if (!isEmailDuplicated || !isPhoneDuplicated || !isAuthed) {
       return;
     }
-    if (!termsOpen) setTermsOpen(true);
+    if (!termsOpen) {
+      setTermsOpen(true);
+      setBasicInfo(data);
+    }
   };
 
   return (
@@ -86,7 +76,6 @@ export default function BasicInfo() {
               })}
               type="text"
               id="email"
-              placeholder="abcd@email.com"
               autoFocus
               {...register('email')}
             />

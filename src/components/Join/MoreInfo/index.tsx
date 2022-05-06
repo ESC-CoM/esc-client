@@ -5,8 +5,12 @@ import { MoreSchema } from 'src/types/join';
 import Hobby from './Hobby';
 import Drink from './Drink/drink';
 import { mbtiList, heightInfo, weightInfo } from './data';
+import useStore from 'src/store/useStore';
+import { useNavigate } from 'react-router-dom';
 
 export default function MoreInfo() {
+  const { setMoreInfo } = useStore();
+  const navigate = useNavigate();
   const { watch, setValue, register, handleSubmit } = useForm<MoreSchema>({
     defaultValues: {
       height: 165,
@@ -26,7 +30,10 @@ export default function MoreInfo() {
     setValue('hobbies', hobbyList);
   };
 
-  const onSubmit = (data: MoreSchema) => console.log(data);
+  const onSubmit = (data: MoreSchema) => {
+    setMoreInfo(data);
+    navigate('/mymeeting');
+  };
 
   return (
     <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
@@ -69,7 +76,7 @@ export default function MoreInfo() {
       </div>
 
       <div className={$['item']}>
-        <label htmlFor="mbti">Mbti</label>
+        <label htmlFor="mbti">MBTI</label>
         <span className={$['required']}>*</span>
 
         <select className={$['select']} defaultValue="" {...register('mbti')}>

@@ -15,6 +15,7 @@ export type Props = {
 };
 
 export default function Term({ onState, toggleModal }: Props) {
+  const navigate = useNavigate();
   const {
     watch,
     handleSubmit,
@@ -28,7 +29,6 @@ export default function Term({ onState, toggleModal }: Props) {
     },
     resolver: yupResolver(TermsSchema),
   });
-  const navigate = useNavigate();
 
   const [allChecked, setAllChecked] = useState<boolean>(false);
 
@@ -57,7 +57,6 @@ export default function Term({ onState, toggleModal }: Props) {
   }, [watch()]);
 
   const onSubmit = (data: TermSchema) => {
-    console.log(data);
     if (allChecked) navigate('/join/more');
   };
 
