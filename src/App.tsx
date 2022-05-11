@@ -3,10 +3,10 @@ import { store } from './app/store';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import './styles/reset.scss';
-import MeetingBoardPage from './pages/MeetingBoard';
 import JoinRoute from './routes/JoinRoute';
 import LoginPage from './pages/loginPage';
-import AccountFinderRauter from './routes/AccountFinderRoute';
+import AccountFinderRoute from './routes/AccountFinderRoute';
+import HomeRoute from './routes/HomeRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
         <Routes>
           <Route path="*" element={<Navigate to="/home" />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/find/*" element={<AccountFinderRauter />} />
-          <Route path="/home" element={<MeetingBoardPage />} />
+          <Route path="/find/*" element={<AccountFinderRoute />} />
+          <Route path="/home/*" element={<HomeRoute />} />
           <Route path="/mymeeting/*" element={<MyMeetingPage />} />
           <Route path="/chat" element={<h1>hello</h1>} />
           <Route path="/mypage" element={<h1>hello</h1>} />

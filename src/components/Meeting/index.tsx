@@ -3,6 +3,7 @@ import { useExtractColleges, useIntersectObserver } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 import style from './style.module.scss';
 import cx from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
@@ -20,6 +21,7 @@ export default function Meeting({
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const [isImgClick, setIsImgClick] = useState(false);
   const colleges = useExtractColleges(profiles);
+  const navigate = useNavigate();
   let zIndex = profiles.length;
 
   const lazyLoadCallback = (
@@ -42,7 +44,11 @@ export default function Meeting({
   );
 
   return (
-    <li className={style.meeting} ref={meetingRef}>
+    <li
+      className={style.meeting}
+      ref={meetingRef}
+      onClick={() => navigate('./detail')}
+    >
       <div className={style.meetingInfo}>
         <span className={style.title}>{title}</span>
         <span className={style.college}>{colleges}</span>
