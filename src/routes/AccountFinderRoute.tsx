@@ -6,7 +6,7 @@ import {
   PasswordFinderPage,
 } from 'src/pages/AccountFinderPages';
 
-function AccountFinderRauter() {
+function AccountFinderRoute() {
   return (
     <Routes>
       <Route path="email" element={<EmailFinderPage />} />
@@ -17,4 +17,4 @@ function AccountFinderRauter() {
   );
 }
 
-export default AccountFinderRauter;
+export default AccountFinderRoute;
