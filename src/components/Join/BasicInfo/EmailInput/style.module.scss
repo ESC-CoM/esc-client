@@ -1,0 +1,25 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.item {
+  margin: 35px 0 0;
+  label {
+    font-size: 15px;
+    color: $gray-700;
+    padding: 10px 0;
+  }
+  .row {
+    display: flex;
+    text-align: center;
+    .input {
+      @include input(100%);
+      margin-right: 5px;
+    }
+    .btn {
+      @include button(160px, none, $primary, $white, 16px);
+    }
+    .error {
+      border-bottom: 1.5px solid $red;
+    }
+  }
+}

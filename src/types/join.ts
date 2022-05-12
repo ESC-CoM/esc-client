@@ -1,7 +1,7 @@
 export interface UserSchema {
   email: string;
   password: string;
-  phoneNumber: number;
+  phoneNumber: string;
   authNumber: number;
   gender: string;
   year: string;
@@ -19,14 +19,24 @@ export interface TermSchema {
 }
 
 export interface MoreSchema {
-  height: number;
-  weight: number;
+  gender: string;
+  year: string;
+  month: string;
+  day: string;
   mbti: string;
-  drink: number;
-  hobbies: string[];
+  //   height: number;
+  //   weight: number;
+  //   drink: number;
 }
 
 export type ExampleWord = {
   id: number;
   name: string;
+};
+
+export type PhoneAuthType = {
+  phoneNumber: string;
+  authNumber: number;
+  isPhoneDuplicated: boolean;
+  isAuthed: boolean;
 };
