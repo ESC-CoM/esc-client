@@ -1,0 +1,23 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.item {
+  margin: 40px 0 0;
+  label {
+    font-size: 15px;
+    color: $gray-700;
+    padding: 10px 0;
+  }
+
+  .select {
+    @include input(100%);
+    padding: 0 10px;
+    margin: 10px 2px;
+    border: 1.5px solid $gray-400;
+    border-radius: 5px;
+
+    &:focus {
+      border-color: $primary;
+    }
+  }
+}

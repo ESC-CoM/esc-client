@@ -3,16 +3,16 @@ import { UserSchema, MoreSchema } from 'src/types/join';
 
 interface SetUserInfo {
   basicInfo: UserSchema;
-  setBasicInfo: (userInfo: UserSchema) => void;
+  setBasicInfo: (element: any) => void;
   moreInfo: MoreSchema;
-  setMoreInfo: (moreInfo: MoreSchema) => void;
+  setMoreInfo: (element: any) => void;
 }
 
-export const useStore = create<SetUserInfo>((set) => ({
+export const useStore = create<SetUserInfo>((set, get) => ({
   basicInfo: {
     email: '',
     password: '',
-    phoneNumber: 0,
+    phoneNumber: '',
     authNumber: 0,
     gender: '',
     year: '',
@@ -22,17 +22,17 @@ export const useStore = create<SetUserInfo>((set) => ({
     isPhoneDuplicated: false,
     isAuthed: false,
   },
-  setBasicInfo: (basicInfo: UserSchema) => {
+  setBasicInfo: (element: any) => {
     set((state) => ({
       ...state,
-      basicInfo: basicInfo,
+      basicInfo: { ...get().basicInfo, ...element },
     }));
   },
-  moreInfo: { height: 0, weight: 0, mbti: '', drink: 0, hobbies: [] },
-  setMoreInfo: (moreInfo: MoreSchema) => {
+  moreInfo: { gender: '', year: '', month: '', day: '', mbti: '' },
+  setMoreInfo: (element: any) => {
     set((state) => ({
       ...state,
-      moreInfo: moreInfo,
+      moreInfo: { ...get().moreInfo, ...element },
     }));
   },
 }));
