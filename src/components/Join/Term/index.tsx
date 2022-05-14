@@ -8,13 +8,18 @@ import { TermSchema } from 'src/types/join';
 import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import cx from 'classnames';
+import useStore from 'src/store/useStore';
 
 export type Props = {
   onState: boolean;
   toggleModal: () => void;
 };
 
+const NEXT_PATH = '/login';
+
 export default function Term({ onState, toggleModal }: Props) {
+  const { basicInfo, moreInfo } = useStore();
+  console.log(basicInfo, moreInfo);
   const navigate = useNavigate();
   const {
     watch,
@@ -57,7 +62,7 @@ export default function Term({ onState, toggleModal }: Props) {
   }, [watch()]);
 
   const onSubmit = (data: TermSchema) => {
-    if (allChecked) navigate('/join/more');
+    if (allChecked) navigate(NEXT_PATH);
   };
 
   return (

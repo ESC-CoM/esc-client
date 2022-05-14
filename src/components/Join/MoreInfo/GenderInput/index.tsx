@@ -4,21 +4,19 @@ import { UseFormWatch, UseFormSetValue, FieldError } from 'react-hook-form';
 import { MoreSchema } from 'src/types/join';
 
 interface Props {
-  watch: UseFormWatch<MoreSchema>;
+  value: string;
   setValue: UseFormSetValue<MoreSchema>;
   errors?: FieldError;
 }
 
-export default function GenderInput({ watch, setValue, errors }: Props) {
-  const gender = watch('gender');
-
+export default function GenderInput({ value, setValue, errors }: Props) {
   return (
     <div className={$['item']}>
       <label>{errors?.message ?? '성별'}</label>
       <div className={$['row']}>
         <button
           className={cx($['gender-btn'], {
-            [$['gender-active']]: gender === '남자',
+            [$['gender-active']]: value === '남자',
           })}
           onClick={() => setValue('gender', '남자')}
           type="button"
@@ -29,7 +27,7 @@ export default function GenderInput({ watch, setValue, errors }: Props) {
 
         <button
           className={cx($['gender-btn'], {
-            [$['gender-active']]: gender === '여자',
+            [$['gender-active']]: value === '여자',
           })}
           onClick={() => setValue('gender', '여자')}
           type="button"

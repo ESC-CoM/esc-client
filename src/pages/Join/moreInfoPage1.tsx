@@ -1,21 +1,23 @@
 import './style.module.scss';
 import { PageLayout } from '../../components/Layout';
-import GenderInput from '../../components/Join/MoreInfo/GenderInput';
-import BirthInput from '../../components/Join/MoreInfo/BirthInput';
-import MbtiInput from '../../components/Join/MoreInfo//MbtiInput';
-import NextButton from 'src/components/Join/NextButton';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { MoreSchema } from 'src/types/join';
-import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 import useStore from 'src/store/useStore';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {
+  GenderInput,
+  BirthInput,
+  MbtiInput,
+  NextButton,
+} from '../../components/Join';
+import { MoreSchema } from 'src/types/join';
+import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 
-const NEXT_PATH = '/';
+const NEXT_PATH = '/join/more2';
 
-function MoreInfoPage() {
-  const { setBasicInfo, basicInfo } = useStore();
-  console.log(basicInfo);
+export default function MoreInfoPage1() {
+  const { setMore1Info } = useStore();
+
   const navigate = useNavigate();
   const {
     watch,
@@ -26,12 +28,17 @@ function MoreInfoPage() {
   } = useForm<MoreSchema>({
     resolver: yupResolver(MoreJoinSchema),
   });
+  const [gender, year, month, day, mbti] = watch([
+    'gender',
+    'year',
+    'month',
+    'day',
+    'mbti',
+  ]);
   const onSubmit = (data: MoreSchema) => {
-    setBasicInfo(watch());
+    const more1Info = { gender, year, month, day, mbti };
+    setMore1Info(more1Info);
     navigate(NEXT_PATH);
-    //   if (!termsOpen) {
-    //     setTermsOpen(true);
-    //   }
   };
 
   return (
@@ -40,7 +47,7 @@ function MoreInfoPage() {
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <GenderInput
-            watch={watch}
+            value={gender}
             setValue={setValue}
             errors={errors.gender}
           />
@@ -52,5 +59,3 @@ function MoreInfoPage() {
     </PageLayout>
   );
 }
-
-export default MoreInfoPage;
