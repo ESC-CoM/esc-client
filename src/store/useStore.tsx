@@ -1,11 +1,21 @@
 import create from 'zustand';
-import { UserSchema, MoreSchema } from 'src/types/join';
+import {
+  UserSchema,
+  MoreSchema,
+  EmailPassword,
+  PhoneAuthType,
+  More1Type,
+  More2Type,
+  // BirthType,
+} from 'src/types/join';
 
 interface SetUserInfo {
   basicInfo: UserSchema;
-  setBasicInfo: (element: any) => void;
   moreInfo: MoreSchema;
-  setMoreInfo: (element: any) => void;
+  setPhoneInfo: (data: PhoneAuthType) => void;
+  setEmailPasswordInfo: (data: EmailPassword) => void;
+  setMore1Info: (data: More1Type) => void;
+  setMore2Info: (data: More2Type) => void;
 }
 
 export const useStore = create<SetUserInfo>((set, get) => ({
@@ -14,25 +24,69 @@ export const useStore = create<SetUserInfo>((set, get) => ({
     password: '',
     phoneNumber: '',
     authNumber: 0,
-    gender: '',
-    year: '',
-    month: '',
-    day: '',
     isEmailDuplicated: false,
     isPhoneDuplicated: false,
     isAuthed: false,
   },
-  setBasicInfo: (element: any) => {
+  moreInfo: {
+    gender: '',
+    year: '',
+    month: '',
+    day: '',
+    mbti: '',
+    height: 0,
+    weight: 0,
+    drink: 0,
+  },
+  setPhoneInfo: (data) => {
+    const { phoneNumber, authNumber, isPhoneDuplicated, isAuthed } = data;
     set((state) => ({
       ...state,
-      basicInfo: { ...get().basicInfo, ...element },
+      basicInfo: {
+        ...get().basicInfo,
+        phoneNumber,
+        authNumber,
+        isPhoneDuplicated,
+        isAuthed,
+      },
     }));
   },
-  moreInfo: { gender: '', year: '', month: '', day: '', mbti: '' },
-  setMoreInfo: (element: any) => {
+  setEmailPasswordInfo: (data) => {
+    const { email, isEmailDuplicated, password } = data;
     set((state) => ({
       ...state,
-      moreInfo: { ...get().moreInfo, ...element },
+      basicInfo: {
+        ...get().basicInfo,
+        email,
+        isEmailDuplicated,
+        password,
+      },
+    }));
+  },
+  setMore1Info: (data) => {
+    const { gender, year, month, day, mbti } = data;
+    set((state) => ({
+      ...state,
+      moreInfo: {
+        ...get().moreInfo,
+        gender,
+        year,
+        month,
+        day,
+        mbti,
+      },
+    }));
+  },
+  setMore2Info: (data) => {
+    const { height, weight, drink } = data;
+    set((state) => ({
+      ...state,
+      moreInfo: {
+        ...get().moreInfo,
+        height,
+        weight,
+        drink,
+      },
     }));
   },
 }));
