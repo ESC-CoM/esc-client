@@ -1,24 +1,17 @@
 import './style.module.scss';
 import { PageLayout } from '../../components/Layout';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import EmailInput from '../../components/Join/BasicInfo/EmailInput';
-import PasswordInput from '../../components/Join/BasicInfo/PasswordInput';
-import BaiscJoinSchema from 'src/components/Join/BasicInfo/yup';
-import NextButton from 'src/components/Join/NextButton';
 import { useNavigate } from 'react-router-dom';
 import useStore from 'src/store/useStore';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { EmailInput, PasswordInput, NextButton } from '../../components/Join';
+import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
+import { EmailPassword } from 'src/types/join';
 
-export type EmailPassword = {
-  email: string;
-  isEmailDuplicated: boolean;
-  password: string;
-};
-
-const NEXT_PATH = '/join/more';
+const NEXT_PATH = '/join/more1';
 
 export default function EmailPasswordInputPage() {
-  const { setBasicInfo } = useStore();
+  const { setEmailPasswordInfo } = useStore();
   const {
     watch,
     register,
@@ -26,31 +19,34 @@ export default function EmailPasswordInputPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<EmailPassword>({
-    resolver: yupResolver(BaiscJoinSchema),
+    resolver: yupResolver(EmailPasswordYup),
   });
   const navigate = useNavigate();
+  const [email, isEmailDuplicated, password] = watch([
+    'email',
+    'isEmailDuplicated',
+    'password',
+  ]);
 
   const onSubmit = (data: EmailPassword) => {
-    const { isEmailDuplicated } = data;
-    if (isEmailDuplicated && !errors.password) {
-      setBasicInfo({ email: watch('email'), password: watch('password') });
-      navigate(NEXT_PATH);
-    }
+    const emailPasswordInfo = { email, isEmailDuplicated, password };
+    setEmailPasswordInfo(emailPasswordInfo);
+    navigate(NEXT_PATH);
   };
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
       <section>
         <h1>이메일, 비밀번호를 입력해주세요</h1>
-        <form onSubmit={handleSubmit(() => onSubmit(watch()))}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <EmailInput
-            watch={watch}
-            register={register}
+            isEmailDuplicated={isEmailDuplicated}
+            register={register('email')}
             setValue={setValue}
             errors={errors}
           />
-          <PasswordInput register={register} errors={errors} />
-          <NextButton text={'다음'} onClick={() => onSubmit(watch())} />
+          <PasswordInput register={register('password')} errors={errors} />
+          <NextButton text={'다음'} />
         </form>
       </section>
     </PageLayout>

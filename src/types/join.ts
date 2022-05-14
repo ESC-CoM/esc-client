@@ -3,10 +3,6 @@ export interface UserSchema {
   password: string;
   phoneNumber: string;
   authNumber: number;
-  gender: string;
-  year: string;
-  month: string;
-  day: string;
   isEmailDuplicated: boolean;
   isPhoneDuplicated: boolean;
   isAuthed: boolean;
@@ -24,9 +20,9 @@ export interface MoreSchema {
   month: string;
   day: string;
   mbti: string;
-  //   height: number;
-  //   weight: number;
-  //   drink: number;
+  height: number;
+  weight: number;
+  drink: number;
 }
 
 export type ExampleWord = {
@@ -34,9 +30,21 @@ export type ExampleWord = {
   name: string;
 };
 
-export type PhoneAuthType = {
-  phoneNumber: string;
-  authNumber: number;
-  isPhoneDuplicated: boolean;
-  isAuthed: boolean;
-};
+export type EmailPassword = Pick<
+  UserSchema,
+  'email' | 'isEmailDuplicated' | 'password'
+>;
+
+export type PhoneAuthType = Pick<
+  UserSchema,
+  'phoneNumber' | 'authNumber' | 'isPhoneDuplicated' | 'isAuthed'
+>;
+
+export type More1Type = Pick<
+  MoreSchema,
+  'gender' | 'year' | 'month' | 'day' | 'mbti'
+>;
+
+export type More2Type = Pick<MoreSchema, 'height' | 'weight' | 'drink'>;
+
+// export type BirthType = Pick<MoreSchema, 'year' | 'month' | 'day'>;
