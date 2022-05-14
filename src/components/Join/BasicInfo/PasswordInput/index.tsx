@@ -2,11 +2,11 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
-import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { EmailPassword } from 'src/pages/Join/emailPasswordInputPage';
+import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
+import { EmailPassword } from 'src/types/join';
 
 interface Props {
-  register: UseFormRegister<EmailPassword>;
+  register: UseFormRegisterReturn;
   errors: FieldErrors<EmailPassword>;
 }
 
@@ -20,12 +20,12 @@ export default function PasswordInput({ register, errors }: Props) {
       <div className={$['row']}>
         <input
           className={cx($['input'], {
-            [$['error']]: errors.password,
+            [$['error']]: errors.password?.message,
           })}
           type={isEncrypted ? 'text' : 'password'}
           id="password"
           placeholder="영문, 숫자 포함 8자 이상"
-          {...register('password')}
+          {...register}
         />
         <span
           className={$['encrypt-icon']}

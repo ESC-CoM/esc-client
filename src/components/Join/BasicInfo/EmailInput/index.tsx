@@ -1,27 +1,25 @@
 import $ from './style.module.scss';
 import cx from 'classnames';
 import {
-  UseFormWatch,
-  UseFormRegister,
+  UseFormRegisterReturn,
   UseFormSetValue,
   FieldErrors,
 } from 'react-hook-form';
-import { EmailPassword } from 'src/pages/Join/emailPasswordInputPage';
+import { EmailPassword } from 'src/types/join';
 
 interface Props {
-  watch: UseFormWatch<EmailPassword>;
-  register: UseFormRegister<EmailPassword>;
+  isEmailDuplicated: boolean;
+  register: UseFormRegisterReturn;
   setValue: UseFormSetValue<EmailPassword>;
   errors: FieldErrors<EmailPassword>;
 }
 
 export default function EmailInput({
-  watch,
+  isEmailDuplicated,
   register,
   setValue,
   errors,
 }: Props) {
-  const isEmailDuplicated = watch('isEmailDuplicated', false);
   const checkDuplicatedEmail = () => {
     setValue('isEmailDuplicated', true);
   };
@@ -37,7 +35,7 @@ export default function EmailInput({
           type="text"
           id="email"
           autoFocus
-          {...register('email')}
+          {...register}
         />
         <button
           className={$['btn']}

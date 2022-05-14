@@ -8,7 +8,7 @@ import {
   FieldErrors,
 } from 'react-hook-form';
 import useStore from 'src/store/useStore';
-import NextButton from '../../NextButton';
+import { NextButton } from '../../index';
 import { useState } from 'react';
 import AuthTimer from './authTimer';
 import { useEffect } from 'react';
@@ -20,7 +20,6 @@ interface Props {
   setValue: UseFormSetValue<PhoneAuthType>;
   setFocus: UseFormSetFocus<PhoneAuthType>;
   errors: FieldErrors<PhoneAuthType>;
-  onClick: (data: PhoneAuthType) => void;
 }
 
 export default function PhoneAuth({
@@ -29,9 +28,7 @@ export default function PhoneAuth({
   setValue,
   setFocus,
   errors,
-  onClick,
 }: Props) {
-  const { setBasicInfo } = useStore();
   const [phoneNumber, isPhoneDuplicated, isAuthed] = watch(
     ['phoneNumber', 'isPhoneDuplicated', 'isAuthed'],
     { phoneNumber: '', isPhoneDuplicated: false, isAuthed: false }
@@ -41,7 +38,6 @@ export default function PhoneAuth({
   const sendPhoneNum = () => {
     setSendCount(sendCount + 1);
     setValue('isPhoneDuplicated', true);
-    setBasicInfo({ phoneNumber: phoneNumber });
 
     setFocus('authNumber');
   };
@@ -49,7 +45,6 @@ export default function PhoneAuth({
   const sendAuthNum = () => {
     if (isPhoneDuplicated) {
       setValue('isAuthed', true);
-      onClick(watch());
     }
   };
 
@@ -135,7 +130,7 @@ export default function PhoneAuth({
 
         {!isAuthed && errors.isAuthed?.message}
       </div>
-      <NextButton text={'인증하기'} onClick={sendAuthNum} />
+      {/* <NextButton text={'인증하기'} onClick={sendAuthNum} /> */}
     </section>
   );
 }
