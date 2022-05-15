@@ -26,7 +26,7 @@ export default function Footer() {
       icon: <BsSuitHeart />,
       active: <BsSuitHeartFill />,
       text: 'MY 과팅',
-      url: '/mymeeting',
+      url: '/mymeeting/register/basic',
     },
     {
       icon: <IoChatbubbleEllipsesOutline />,
