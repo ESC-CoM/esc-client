@@ -28,7 +28,7 @@ export default function RegisterMeeting({
   const getRequestList = () => {
     // 요청 리스트 fetch
     setRequestedList(requestList);
-    navigate('/mymeeting/register-detail');
+    navigate('/mymeeting/register/detail');
   };
 
   return (

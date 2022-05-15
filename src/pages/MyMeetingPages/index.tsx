@@ -12,9 +12,9 @@ export default function MyMeetingPage() {
   return (
     <PageLayout isNeedFooter={true} decreaseHeight={0}>
       <Header children={<MyMeetingCategory />} />
-      {path === '/mymeeting/register-basic' && <RegisterPage />}
-      {path === '/mymeeting/register-detail' && <RegisterDetail />}
-      {path === '/mymeeting/request-basic' && <RequestPage />}
+      {path === '/mymeeting/register/basic' && <RegisterPage />}
+      {path === '/mymeeting/register/detail' && <RegisterDetail />}
+      {path === '/mymeeting/request/basic' && <RequestPage />}
     </PageLayout>
   );
 }

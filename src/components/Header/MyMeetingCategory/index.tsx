@@ -22,12 +22,12 @@ export default function MyMeetingCategory() {
     setIsCategoryActive(
       isCategoryActive.map((_, index2) => (index1 === index2 ? true : false))
     );
-    if (index1 === 0) navigate('/mymeeting/register-basic');
-    else if (index1 === 1) navigate('/mymeeting/request-basic');
+    if (index1 === 0) navigate('/mymeeting/register/basic');
+    else if (index1 === 1) navigate('/mymeeting/request/basic');
   };
 
   useEffect(() => {
-    if (currPath === '/mymeeting/request-basic')
+    if (currPath === '/mymeeting/request/basic')
       setIsCategoryActive(
         isCategoryActive.map((_, index) => (index === 1 ? true : false))
       );
