@@ -1,6 +1,7 @@
 import $ from './style.module.scss';
 import { useLocation } from 'react-router-dom';
 import {
+  IoCloseOutline,
   IoChevronBackOutline,
   IoChevronDownOutline,
   IoNotificationsOutline,
@@ -9,7 +10,7 @@ import {
   IoReorderThreeOutline,
   IoSettingsOutline,
 } from 'react-icons/io5';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Logo } from 'src/components/Icon';
 
 interface Props {
@@ -39,8 +40,13 @@ const menusLeft: MenuType[] = [
     url: '/home/personal',
   },
   {
+    icon: <IoCloseOutline />,
+    text: '과팅 신청하기',
+    url: '/home/register',
+  },
+  {
     icon: <Logo />,
-    text: 'Blue Spring',
+    text: '',
     url: '/mymeeting',
   },
 ];
@@ -83,9 +89,10 @@ export default function Header({ children }: Props) {
               {menus.map((menu, index2) => {
                 if (location.pathname === menu.url)
                   return (
-                    <span key={`header-${index1}-${index2}`}>
-                      {!index1 ? menu.icon : menu.icon}
-                    </span>
+                    <React.Fragment key={`header-${index1}-${index2}`}>
+                      <span>{menu.icon}</span>
+                      <em>{menu.text}</em>
+                    </React.Fragment>
                   );
               })}
             </div>
