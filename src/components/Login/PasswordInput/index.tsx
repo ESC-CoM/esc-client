@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import cx from 'classnames';
-import styles from './style.module.scss';
+import $ from './style.module.scss';
 import { ViewPasswordButton, ResetFieldButton } from '../../atoms';
 
 interface Props {
@@ -19,9 +19,9 @@ function PasswordInput({
   const [isEncrypted, setIsEncrypted] = useState(true);
 
   return (
-    <div className={cx(styles.container, className)}>
+    <div className={cx($.container, className)}>
       <input
-        className={styles.input}
+        className={$.input}
         placeholder="비밀번호"
         type={isEncrypted ? 'password' : 'text'}
         {...register()}
@@ -29,12 +29,12 @@ function PasswordInput({
       {isValueExists && (
         <>
           <ViewPasswordButton
-            className={styles.view}
+            className={$.view}
             isEncrypted={isEncrypted}
             onClick={() => setIsEncrypted(!isEncrypted)}
           />
           <ResetFieldButton
-            className={styles.delete}
+            className={$.delete}
             ariaLabel="비밀번호 입력 초기화하기"
             onClick={resetField}
           />

@@ -8,8 +8,6 @@ const JAVASCRIPT_KEY = process.env.KAKAO_JAVASCRIPT_KEY as string;
 const REQUEST_PROPERTY_KEYS = [
   'kakao_account.email',
   'kakao_account.gender',
-  'properties.nickname',
-  'properties.profile_image',
   'kakao_account.birthday',
   'kakao_account.age_range',
 ];
