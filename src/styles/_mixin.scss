@@ -88,3 +88,8 @@
   box-shadow: 0 1px 4px $shadow;
   background: $white;
 }
+
+@mixin border-bottom-box($height) {
+  height: $height;
+  border-bottom: 1.5px solid $gray-200;
+}

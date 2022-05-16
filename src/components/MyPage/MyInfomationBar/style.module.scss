@@ -1,0 +1,71 @@
+@import '/src/styles/color';
+@import '/src/styles/mixin';
+
+.container {
+  @include border-bottom-box(114px);
+  display: flex;
+
+  .profile-image-container {
+    flex: 4.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+
+    .profile-image {
+      width: 60px;
+      border-radius: calc(60px / 2);
+    }
+
+    .change-profile-image-button {
+      width: 80px;
+      height: 15px;
+      margin-top: 6px;
+      padding: 0 2px;
+      border-radius: calc(15px / 2);
+      background-color: $gray-200;
+      font-weight: 700;
+      font-size: 5px;
+      line-height: 13px;
+    }
+  }
+
+  .information-container {
+    flex: 4.5;
+    margin-top: 15px;
+
+    .name-container {
+      display: flex;
+
+      .name {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+      }
+
+      .icon {
+        margin-left: 7px;
+        font-size: 18px;
+        color: blue;
+      }
+    }
+
+    .detail-information {
+      display: block;
+      margin-top: 5px;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  .button-container {
+    flex: 1;
+    margin-top: 15px;
+
+    .icon {
+      font-size: 18px;
+    }
+  }
+}
