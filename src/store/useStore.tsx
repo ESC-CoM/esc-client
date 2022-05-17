@@ -6,7 +6,6 @@ import {
   PhoneAuthType,
   More1Type,
   More2Type,
-  // BirthType,
 } from 'src/types/join';
 
 interface SetUserInfo {

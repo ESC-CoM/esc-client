@@ -46,5 +46,3 @@ export type More1Type = Pick<
 >;
 
 export type More2Type = Pick<MoreSchema, 'height' | 'weight' | 'drink'>;
-
-// export type BirthType = Pick<MoreSchema, 'year' | 'month' | 'day'>;
