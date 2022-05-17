@@ -5,7 +5,7 @@ import JoinRoute from './routes/JoinRoute';
 import LoginPage from './pages/loginPage';
 import AccountFinderRoute from './routes/AccountFinderRoute';
 import HomeRoute from './routes/HomeRoute';
-import MyMeetingRoute from './routes/MyMeetingRoute';
+import MyMeetingPage from './pages/MyMeetingPages';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/find/*" element={<AccountFinderRoute />} />
         <Route path="/home/*" element={<HomeRoute />} />
-        <Route path="/mymeeting/*" element={<MyMeetingRoute />} />
+        <Route path="/mymeeting/*" element={<MyMeetingPage />} />
         <Route path="/chat" element={<h1>hello</h1>} />
         <Route path="/mypage" element={<h1>hello</h1>} />
         <Route path="/join/*" element={<JoinRoute />} />

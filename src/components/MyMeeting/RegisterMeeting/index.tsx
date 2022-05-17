@@ -30,7 +30,7 @@ export default function RegisterMeeting({
   const getRequestList = () => {
     // 요청 리스트 fetch
     setRequestedList(requestList);
-    navigate('/mymeeting/detail');
+    navigate('/mymeeting/register/detail');
   };
 
   return (
@@ -46,7 +46,9 @@ export default function RegisterMeeting({
       <div className={$['my-meeting-info']}>
         <span className={$['title']}>{title}</span>
         <span className={$['date']}>•{date}</span>
-        <span className={$['content']}>{content}</span>
+        <div>
+          <span className={$['content']}>{content}</span>
+        </div>
       </div>
     </div>
   );

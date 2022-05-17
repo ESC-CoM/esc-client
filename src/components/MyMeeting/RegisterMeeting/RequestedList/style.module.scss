@@ -2,9 +2,10 @@
 @import 'src/styles/_variables.scss';
 @import 'src/styles/mixin';
 
-.request-meeting-info {
+.requested-info {
   position: relative;
-  top: 30px;
+  top: 24%;
+  display: flex;
   padding: 15px;
   cursor: pointer;
   .info-list {
@@ -23,7 +24,7 @@
     flex-direction: column;
     margin-left: 10px;
     width: 35%;
-    .title {
+    .comment {
       @include textOverFlow;
       font-size: 14px;
       margin-bottom: 5px;
@@ -34,7 +35,7 @@
     }
   }
 
-  li:last-child {
+  div:last-child {
     margin-left: auto;
     button {
       @include button(70px, 2px solid $primary, $primary, $white, 15px);
