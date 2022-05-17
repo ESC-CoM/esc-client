@@ -17,7 +17,7 @@ export const EmailPasswordYup = yup.object({
 export const PhoneYup = yup.object({
   // 원활한 테스트를 위해 임시 주석처리
   phoneNumber: yup
-    .number()
+    .string()
     .typeError('올바른 휴대폰 번호를 입력해주세요.')
     .required('휴대폰 인증을 해주세요.'),
   authNumber: yup
