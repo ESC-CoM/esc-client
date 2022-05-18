@@ -10,13 +10,11 @@
   }
   .row {
     display: flex;
-    text-align: center;
-    margin: 10px 2px;
+    margin: 10px 0;
     .gender-btn {
-      @include button(148%, 2.5px solid $gray-500, $white, $gray-500, 18px);
+      @include button(100%, 2.5px solid $gray-500, $white, $gray-500, 17px);
       font-weight: 700;
       margin: 0 2px;
-
       &.gender-active {
         border: 2.5px solid $primary;
         color: $primary;

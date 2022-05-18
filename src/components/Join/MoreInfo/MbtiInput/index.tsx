@@ -1,4 +1,5 @@
 import $ from './style.module.scss';
+import cx from 'classnames';
 import { UseFormRegister, FieldError } from 'react-hook-form';
 import { mbtiList } from '../data';
 import { MoreSchema } from 'src/types/join';
@@ -13,9 +14,15 @@ export default function MbtiInput({ register, errors }: Props) {
     <div className={$['item']}>
       <label htmlFor="mbti">{errors?.message ?? 'MBTI'}</label>
 
-      <select className={$['select']} defaultValue="" {...register('mbti')}>
+      <select
+        className={cx($[''], {
+          [$['error']]: errors?.message,
+        })}
+        defaultValue=""
+        {...register('mbti')}
+      >
         <option disabled value="">
-          ---선택---
+          --- 선택 ---
         </option>
         {mbtiList.map((value) => (
           <option key={value} value={value}>
@@ -23,9 +30,6 @@ export default function MbtiInput({ register, errors }: Props) {
           </option>
         ))}
       </select>
-      {/* <span className={$['drop}> // Todo: icon이 select위로 올라와서 클릭이 안먹히는 이슈
-        <IoMdArrowDropdown />
-      </span> */}
     </div>
   );
 }

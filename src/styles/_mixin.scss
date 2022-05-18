@@ -1,3 +1,4 @@
+@import './color';
 @import './_variables.scss';
 
 @mixin mobile {
@@ -32,15 +33,21 @@
   }
 }
 
-@mixin button($width, $border, $bg, $color, $font-size) {
+@mixin select($width, $height, $iconWidth, $borderBottom) {
   width: $width;
-  height: 45px;
-  border: $border;
-  border-radius: 15px;
-  background-color: $bg;
-  color: $color;
-  font-size: $font-size;
-  margin: 0 auto;
+  height: $height;
+  font-size: 18px;
+  color: $black;
+  background-color: $white;
+  border: none;
+  border-bottom: $borderBottom;
+  background-image: url('https://img.icons8.com/fluency-systems-filled/48/9e9e9e/sort-down.png');
+  background-repeat: no-repeat;
+  background-size: $iconWidth;
+  background-position: 98% 50%;
+  &:focus {
+    outline: none;
+  }
 }
 
 @mixin inputRange() {
@@ -69,6 +76,17 @@
   &:focus {
     outline: none;
   }
+}
+
+@mixin button($width, $border, $bg, $color, $font-size) {
+  width: $width;
+  height: 45px;
+  border: $border;
+  border-radius: 15px;
+  background-color: $bg;
+  color: $color;
+  font-size: $font-size;
+  margin: 0 auto;
 }
 
 @mixin textOverFlow() {

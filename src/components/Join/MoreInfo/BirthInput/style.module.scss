@@ -9,17 +9,26 @@
     padding: 10px 0;
   }
   .row {
-    position: relative;
     display: flex;
-    text-align: center;
-    margin: 10px 2px;
-    .year {
-      @include input(30%);
-      margin: 0 auto;
-    }
-    .col {
-      @include input(25%);
-      margin: 0 auto;
+    margin: 15px auto;
+    span {
+      width: 33.3%;
+      height: 20px;
+      padding: 6px 0;
+      border: none;
+      border-bottom: 2px solid $gray-300;
+
+      input {
+        width: 100%;
+        border: none;
+        font-size: 18px;
+        &:focus {
+          outline: none;
+        }
+      }
+      select {
+        @include select(100%, 100%, 14px, none);
+      }
     }
     .error {
       border-bottom: 1.5px solid $red;
