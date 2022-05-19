@@ -1,6 +1,5 @@
 import { RegisterDetail } from 'src/components/MyMeeting';
 import { PageLayout } from 'src/components/Layout';
-import { Header, MyMeetingCategory } from 'src/components/Header';
 import { useLocation } from 'react-router-dom';
 import RequestPage from './RequestPage';
 import RegisterPage from './RegisterPage';
@@ -11,7 +10,6 @@ export default function MyMeetingPage() {
 
   return (
     <PageLayout isNeedFooter={true} headerHeight={84}>
-      <Header children={<MyMeetingCategory />} />
       {path === '/mymeeting/register/basic' && <RegisterPage />}
       {path === '/mymeeting/register/detail' && <RegisterDetail />}
       {path === '/mymeeting/request/basic' && <RequestPage />}

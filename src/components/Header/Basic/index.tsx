@@ -24,7 +24,7 @@ export default function Header({ children }: Props) {
                   location.pathname === menu.url ||
                   (menu.isPathBeIncluded &&
                     menu.url &&
-                    location.pathname.match(RegExp(menu.url)))
+                    location.pathname.match(menu.url))
                 )
                   return (
                     <React.Fragment key={`header-${index1}-${index2}`}>
