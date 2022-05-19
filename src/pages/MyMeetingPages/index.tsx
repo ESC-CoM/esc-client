@@ -10,7 +10,7 @@ export default function MyMeetingPage() {
   const path = location.pathname;
 
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0}>
+    <PageLayout isNeedFooter={true} headerHeight={84}>
       <Header children={<MyMeetingCategory />} />
       {path === '/mymeeting/register/basic' && <RegisterPage />}
       {path === '/mymeeting/register/detail' && <RegisterDetail />}
