@@ -31,10 +31,12 @@ export default function PageLayout({
 
   return (
     <>
-      {headerChildren.map(({ children, url }) => {
-        if (location.pathname.match(url)) return <Header children={children} />;
-        return <Header />;
-      })}
+      {headerHeight > 0 &&
+        headerChildren.map(({ children, url }) => {
+          if (location.pathname.match(url))
+            return <Header key={url} children={children} />;
+          return <Header key={url} />;
+        })}
       <main
         className={style.layout}
         style={{
