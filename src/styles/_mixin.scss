@@ -93,3 +93,9 @@
   height: $height;
   border-bottom: 1.5px solid $gray-200;
 }
+
+@mixin profile-card($height) {
+  height: $height;
+  background-color: $gray-100;
+  border-radius: 20px;
+}

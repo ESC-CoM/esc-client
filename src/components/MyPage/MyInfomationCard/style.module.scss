@@ -2,44 +2,37 @@
 @import '/src/styles/mixin';
 
 .container {
-  @include border-bottom-box(114px);
+  @include profile-card(114px);
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 25px 0;
 
   .profile-image-container {
-    flex: 4.5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 12px;
+    width: 60px;
 
     .profile-image {
       width: 60px;
       border-radius: calc(60px / 2);
     }
 
-    .change-profile-image-button {
-      width: 80px;
-      height: 15px;
-      margin-top: 6px;
-      padding: 0 2px;
-      border-radius: calc(15px / 2);
-      background-color: $gray-200;
-      font-weight: 700;
-      font-size: 5px;
-      line-height: 13px;
+    .mbti {
+      margin-top: 10px;
+      font-weight: bold;
     }
   }
 
   .information-container {
-    flex: 4.5;
-    margin-top: 15px;
+    width: 50%;
 
     .name-container {
       display: flex;
 
       .name {
         display: block;
-        font-weight: 700;
         font-size: 16px;
         line-height: 21px;
       }
@@ -52,20 +45,23 @@
     }
 
     .detail-information {
-      display: block;
-      margin-top: 5px;
-      font-weight: 700;
+      margin-top: 10px;
       font-size: 14px;
       line-height: 18px;
+      word-break: keep-all;
+    }
+
+    .body-information {
+      margin-top: 15px;
+      font-size: 14px;
+
+      span:nth-child(2) {
+        margin-left: 10px;
+      }
     }
   }
 
-  .button-container {
-    flex: 1;
-    margin-top: 15px;
-
-    .icon {
-      font-size: 18px;
-    }
+  .button {
+    height: 100%;
   }
 }

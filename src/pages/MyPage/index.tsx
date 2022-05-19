@@ -1,24 +1,12 @@
-import {
-  Header,
-  MannerScoreBar,
-  Menus,
-  MyInformationBar,
-} from 'src/components/MyPage';
+import { CardBox } from 'src/components/MyPage';
+import { MyPage as Header } from 'src/components/Header';
 import { PageLayout } from '../../components/Layout';
 
 export default function MyPage() {
   return (
     <PageLayout isNeedFooter={true} decreaseHeight={0}>
       <Header />
-      <section>
-        <MyInformationBar />
-      </section>
-      <section>
-        <MannerScoreBar />
-      </section>
-      <section>
-        <Menus />
-      </section>
+      <CardBox />
     </PageLayout>
   );
 }
