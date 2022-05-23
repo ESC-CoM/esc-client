@@ -58,7 +58,6 @@ export default function RegisterMeeting({
   );
 
   return (
-    // <>
     <li className={$['my-meeting']} onClick={getRequestList} ref={myMeetingRef}>
       <ul className={$['profile-img-list']} ref={imgListRef}>
         {friends.map((imgUri, index) => (
@@ -82,6 +81,5 @@ export default function RegisterMeeting({
         <span className={$['content']}>{content}</span>
       </div>
     </li>
-    // </>
   );
 }
