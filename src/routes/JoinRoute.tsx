@@ -9,7 +9,7 @@ import {
 function JoinRoute() {
   return (
     <Routes>
-      <Route index element={<Navigate to="/join/basic" />} />
+      <Route index element={<Navigate to="/join/basic/phone" />} />
       <Route path="basic/phone" element={<PhoneAuthPage />} />
       <Route path="basic/email" element={<EmailInputPage />} />
       <Route path="more1" element={<MoreInfoPage1 />} />

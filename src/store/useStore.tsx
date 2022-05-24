@@ -9,10 +9,17 @@ import {
 } from 'src/types/join';
 
 interface SetUserInfo {
-  basicInfo: UserSchema;
+  basicInfo: Pick<
+    UserSchema,
+    'email' | 'password' | 'phoneNumber' | 'authNumber'
+  >;
   moreInfo: MoreSchema;
-  setPhoneInfo: (data: PhoneAuthType) => void;
-  setEmailPasswordInfo: (data: EmailPassword) => void;
+  setPhoneInfo: (
+    data: Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'>
+  ) => void;
+  setEmailPasswordInfo: (
+    data: Pick<EmailPassword, 'email' | 'password'>
+  ) => void;
   setMore1Info: (data: More1Type) => void;
   setMore2Info: (data: More2Type) => void;
 }
@@ -23,9 +30,6 @@ export const useStore = create<SetUserInfo>((set, get) => ({
     password: '',
     phoneNumber: '',
     authNumber: 0,
-    isEmailDuplicated: false,
-    isPhoneDuplicated: false,
-    isAuthed: false,
   },
   moreInfo: {
     gender: '',
@@ -38,26 +42,23 @@ export const useStore = create<SetUserInfo>((set, get) => ({
     drink: 0,
   },
   setPhoneInfo: (data) => {
-    const { phoneNumber, authNumber, isPhoneDuplicated, isAuthed } = data;
+    const { phoneNumber, authNumber } = data;
     set((state) => ({
       ...state,
       basicInfo: {
         ...get().basicInfo,
         phoneNumber,
         authNumber,
-        isPhoneDuplicated,
-        isAuthed,
       },
     }));
   },
   setEmailPasswordInfo: (data) => {
-    const { email, isEmailDuplicated, password } = data;
+    const { email, password } = data;
     set((state) => ({
       ...state,
       basicInfo: {
         ...get().basicInfo,
         email,
-        isEmailDuplicated,
         password,
       },
     }));

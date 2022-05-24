@@ -2,7 +2,7 @@
 @import 'src/styles/mixin';
 
 .item {
-  margin: 50px 0 0;
+  margin-top: 50px;
   label {
     font-size: 15px;
     color: $gray-700;
@@ -12,7 +12,7 @@
     display: flex;
     margin: 15px auto;
     span {
-      width: 33.3%;
+      flex: 1;
       height: 20px;
       padding: 6px 0;
       border: none;

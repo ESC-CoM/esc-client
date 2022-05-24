@@ -1,7 +1,7 @@
 import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
 import { Bottle } from 'src/components/Icon';
-import { adjustDrink } from 'src/utils/adjustDrink';
+import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
 import { MoreSchema } from 'src/types/join';
 
@@ -30,7 +30,7 @@ export default function Drink({ value, setValue }: Props) {
 
   return (
     <div className={$['item']}>
-      <label>성별</label>
+      <label>주량</label>
 
       <div className={$['row']}>
         {drinkNum.map((_, index) => (

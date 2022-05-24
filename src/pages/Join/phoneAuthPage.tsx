@@ -30,19 +30,16 @@ export default function PhoneAuthPage() {
   ]);
 
   const sendAuthNum = () => {
-    console.log(1);
     if (isPhoneDuplicated) {
       setValue('isAuthed', true);
     }
   };
   const onSubmit = (data: PhoneAuthType) => {
-    console.log(2);
-    const PhoneInfo = { phoneNumber, isPhoneDuplicated, authNumber, isAuthed };
+    const PhoneInfo = { phoneNumber, authNumber };
     setPhoneInfo(PhoneInfo);
     navigate(NEXT_PATH);
   };
 
-  console.log(errors);
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
       <form onSubmit={handleSubmit(onSubmit)}>

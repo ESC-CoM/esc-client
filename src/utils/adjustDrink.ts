@@ -10,12 +10,12 @@ import {
   full_offset_y,
 } from '../components/Join/MoreInfo/Drink/data';
 
-export const adjustDrink = (
+export default function adjustDrink(
   e: React.MouseEvent<HTMLElement>,
   index: number,
   setDrinkNum: React.Dispatch<React.SetStateAction<number[]>>,
   setdrinkDegree: React.Dispatch<React.SetStateAction<string[]>>
-) => {
+) {
   e.preventDefault();
   const [currX, currY] = [e.nativeEvent.offsetX, e.nativeEvent.offsetY];
 
@@ -67,4 +67,4 @@ export const adjustDrink = (
     );
     return;
   }
-};
+}

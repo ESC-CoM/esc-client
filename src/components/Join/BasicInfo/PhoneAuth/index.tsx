@@ -7,12 +7,11 @@ import {
   UseFormSetFocus,
   FieldErrors,
 } from 'react-hook-form';
-import useStore from 'src/store/useStore';
-import { NextButton } from '../../index';
 import { useState } from 'react';
 import AuthTimer from './authTimer';
 import { useEffect } from 'react';
 import { PhoneAuthType } from 'src/types/join';
+import { insertAutoHyphen } from 'src/utils';
 
 interface Props {
   watch: UseFormWatch<PhoneAuthType>;
@@ -42,12 +41,6 @@ export default function PhoneAuth({
     setFocus('authNumber');
   };
 
-  const sendAuthNum = () => {
-    if (isPhoneDuplicated) {
-      setValue('isAuthed', true);
-    }
-  };
-
   const handleNumber = (e: React.FormEvent<HTMLInputElement>) => {
     const regex = /^[0-9\b -]{0,13}$/;
     const currValue = e.currentTarget.value;
@@ -57,31 +50,7 @@ export default function PhoneAuth({
   };
 
   useEffect(() => {
-    if (phoneNumber.length === 4) {
-      setValue(
-        'phoneNumber',
-        phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{1})/, '$1-$2')
-      );
-      return;
-    }
-    if (phoneNumber.length === 10) {
-      setValue(
-        'phoneNumber',
-        phoneNumber
-          .replace(/-/g, '')
-          .replace(/(\d{3})(\d{4})(\d{2})/, '$1-$2-$3')
-      );
-      return;
-    }
-    if (phoneNumber.length === 13) {
-      setValue(
-        'phoneNumber',
-        phoneNumber
-          .replace(/-/g, '')
-          .replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
-      );
-      return;
-    }
+    insertAutoHyphen({ phoneNumber, setValue });
   }, [phoneNumber]);
 
   return (
@@ -107,7 +76,10 @@ export default function PhoneAuth({
             {sendCount > 0 ? '다시 받기' : '인증번호 받기'}
           </button>
         </div>
-        {!isPhoneDuplicated && errors.isPhoneDuplicated?.message}
+
+        <span className={$['error-msg']}>
+          {!isPhoneDuplicated && errors.isPhoneDuplicated?.message}
+        </span>
       </div>
 
       <div className={$['item']}>
@@ -128,9 +100,10 @@ export default function PhoneAuth({
           </span>
         </div>
 
-        {!isAuthed && errors.isAuthed?.message}
+        <span className={$['error-msg']}>
+          {!isAuthed && errors.isAuthed?.message}
+        </span>
       </div>
-      {/* <NextButton text={'인증하기'} onClick={sendAuthNum} /> */}
     </section>
   );
 }

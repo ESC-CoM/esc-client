@@ -29,7 +29,7 @@ export default function EmailPasswordInputPage() {
   ]);
 
   const onSubmit = (data: EmailPassword) => {
-    const emailPasswordInfo = { email, isEmailDuplicated, password };
+    const emailPasswordInfo = { email, password };
     setEmailPasswordInfo(emailPasswordInfo);
     navigate(NEXT_PATH);
   };

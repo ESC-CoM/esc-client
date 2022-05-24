@@ -45,7 +45,10 @@ export default function EmailInput({
           중복확인
         </button>
       </div>
-      {!isEmailDuplicated && errors.isEmailDuplicated?.message}
+
+      <span className={$['error-msg']}>
+        {!isEmailDuplicated && errors.isEmailDuplicated?.message}
+      </span>
     </div>
   );
 }

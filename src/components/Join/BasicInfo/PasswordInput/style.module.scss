@@ -2,7 +2,7 @@
 @import 'src/styles/mixin';
 
 .item {
-  margin: 35px 0 0;
+  margin-top: 35px;
   label {
     font-size: 15px;
     color: $gray-700;
@@ -12,8 +12,6 @@
   .row {
     position: relative;
     display: flex;
-    text-align: center;
-
     .input {
       @include input(100%);
       margin-right: 5px;
