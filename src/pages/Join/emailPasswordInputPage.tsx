@@ -6,19 +6,19 @@ import useStore from 'src/store/useStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { EmailInput, PasswordInput, NextButton } from '../../components/Join';
 import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
-import { EmailPassword } from 'src/types/join';
+import { EmailPasswordType } from 'src/types/join';
 
 const NEXT_PATH = '/join/more1';
 
 export default function EmailPasswordInputPage() {
-  const { setEmailPasswordInfo } = useStore();
+  const { setJoinInfo } = useStore();
   const {
     watch,
     register,
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<EmailPassword>({
+  } = useForm<EmailPasswordType>({
     resolver: yupResolver(EmailPasswordYup),
   });
   const navigate = useNavigate();
@@ -28,9 +28,9 @@ export default function EmailPasswordInputPage() {
     'password',
   ]);
 
-  const onSubmit = (data: EmailPassword) => {
+  const onSubmit = (data: EmailPasswordType) => {
     const emailPasswordInfo = { email, password };
-    setEmailPasswordInfo(emailPasswordInfo);
+    setJoinInfo(emailPasswordInfo);
     navigate(NEXT_PATH);
   };
 

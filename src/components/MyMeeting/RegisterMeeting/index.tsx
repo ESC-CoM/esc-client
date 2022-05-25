@@ -2,7 +2,6 @@ import $ from './style.module.scss';
 import { useState } from 'react';
 import { requestList } from 'src/__mocks__/myMeeting';
 import { useNavigate } from 'react-router-dom';
-import useStore from 'src/store/useStore';
 
 interface Props {
   title: string;
@@ -23,7 +22,6 @@ export default function RegisterMeeting({
   friends,
   date,
 }: Props) {
-  const { basicInfo, moreInfo } = useStore();
   const navigate = useNavigate();
   const [requestedList, setRequestedList] = useState<meetingInfo[]>([]);
 

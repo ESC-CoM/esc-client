@@ -3,22 +3,22 @@ import { PageLayout } from '../../components/Layout';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useStore from 'src/store/useStore';
-import { MoreSchema } from 'src/types/join';
+import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term, NextButton } from 'src/components/Join';
 
 export default function MoreInfoPage2() {
-  const { setMore2Info } = useStore();
-  const { watch, register, setValue, handleSubmit } = useForm<MoreSchema>({
+  const { setJoinInfo } = useStore();
+  const { watch, register, setValue, handleSubmit } = useForm<More2Type>({
     defaultValues: { height: 165, weight: 60, drink: 0 },
   });
 
   const [height, weight, drink] = watch(['height', 'weight', 'drink']);
   const [termsOpen, setTermsOpen] = useState<boolean>(false);
 
-  const onSubmit = (data: MoreSchema) => {
+  const onSubmit = (data: More2Type) => {
     const more2Info = { height, weight, drink };
-    setMore2Info(more2Info);
+    setJoinInfo(more2Info);
 
     if (!termsOpen) {
       setTermsOpen(true);

@@ -10,13 +10,13 @@ import {
   MbtiInput,
   NextButton,
 } from '../../components/Join';
-import { MoreSchema } from 'src/types/join';
+import { More1Type } from 'src/types/join';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 
 const NEXT_PATH = '/join/more2';
 
 export default function MoreInfoPage1() {
-  const { setMore1Info } = useStore();
+  const { setJoinInfo } = useStore();
 
   const navigate = useNavigate();
   const {
@@ -25,7 +25,7 @@ export default function MoreInfoPage1() {
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<MoreSchema>({
+  } = useForm<More1Type>({
     resolver: yupResolver(MoreJoinSchema),
   });
   const [gender, year, month, day, mbti] = watch([
@@ -35,9 +35,9 @@ export default function MoreInfoPage1() {
     'day',
     'mbti',
   ]);
-  const onSubmit = (data: MoreSchema) => {
+  const onSubmit = (data: More1Type) => {
     const more1Info = { gender, year, month, day, mbti };
-    setMore1Info(more1Info);
+    setJoinInfo(more1Info);
     navigate(NEXT_PATH);
   };
 

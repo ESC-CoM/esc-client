@@ -1,37 +1,28 @@
 import create from 'zustand';
 import {
-  UserSchema,
-  MoreSchema,
-  EmailPassword,
+  EmailPasswordType,
   PhoneAuthType,
   More1Type,
   More2Type,
 } from 'src/types/join';
 
+type UserInfo =
+  | Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'>
+  | Pick<EmailPasswordType, 'email' | 'password'>
+  | More1Type
+  | More2Type;
+
 interface SetUserInfo {
-  basicInfo: Pick<
-    UserSchema,
-    'email' | 'password' | 'phoneNumber' | 'authNumber'
-  >;
-  moreInfo: MoreSchema;
-  setPhoneInfo: (
-    data: Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'>
-  ) => void;
-  setEmailPasswordInfo: (
-    data: Pick<EmailPassword, 'email' | 'password'>
-  ) => void;
-  setMore1Info: (data: More1Type) => void;
-  setMore2Info: (data: More2Type) => void;
+  userInfo: UserInfo;
+  setJoinInfo: (info: UserInfo) => void;
 }
 
 export const useStore = create<SetUserInfo>((set, get) => ({
-  basicInfo: {
+  userInfo: {
     email: '',
     password: '',
     phoneNumber: '',
     authNumber: 0,
-  },
-  moreInfo: {
     gender: '',
     year: '',
     month: '',
@@ -41,51 +32,12 @@ export const useStore = create<SetUserInfo>((set, get) => ({
     weight: 0,
     drink: 0,
   },
-  setPhoneInfo: (data) => {
-    const { phoneNumber, authNumber } = data;
+  setJoinInfo: (newInfo) => {
     set((state) => ({
       ...state,
-      basicInfo: {
-        ...get().basicInfo,
-        phoneNumber,
-        authNumber,
-      },
-    }));
-  },
-  setEmailPasswordInfo: (data) => {
-    const { email, password } = data;
-    set((state) => ({
-      ...state,
-      basicInfo: {
-        ...get().basicInfo,
-        email,
-        password,
-      },
-    }));
-  },
-  setMore1Info: (data) => {
-    const { gender, year, month, day, mbti } = data;
-    set((state) => ({
-      ...state,
-      moreInfo: {
-        ...get().moreInfo,
-        gender,
-        year,
-        month,
-        day,
-        mbti,
-      },
-    }));
-  },
-  setMore2Info: (data) => {
-    const { height, weight, drink } = data;
-    set((state) => ({
-      ...state,
-      moreInfo: {
-        ...get().moreInfo,
-        height,
-        weight,
-        drink,
+      newInfo: {
+        ...get().userInfo,
+        ...newInfo,
       },
     }));
   },

@@ -1,11 +1,11 @@
 import $ from './style.module.scss';
 import cx from 'classnames';
-import { UseFormWatch, UseFormSetValue, FieldError } from 'react-hook-form';
-import { MoreSchema } from 'src/types/join';
+import { UseFormSetValue, FieldError } from 'react-hook-form';
+import { More1Type } from 'src/types/join';
 
 interface Props {
   value: string;
-  setValue: UseFormSetValue<MoreSchema>;
+  setValue: UseFormSetValue<More1Type>;
   errors?: FieldError;
 }
 

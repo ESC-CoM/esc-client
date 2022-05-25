@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { Bottle } from 'src/components/Icon';
 import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
-import { MoreSchema } from 'src/types/join';
+import { More2Type } from 'src/types/join';
 
 interface Props {
   value: number;
-  setValue: UseFormSetValue<MoreSchema>;
+  setValue: UseFormSetValue<More2Type>;
 }
 
 export default function Drink({ value, setValue }: Props) {

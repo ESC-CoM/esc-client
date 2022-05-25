@@ -5,13 +5,13 @@ import {
   UseFormSetValue,
   FieldErrors,
 } from 'react-hook-form';
-import { EmailPassword } from 'src/types/join';
+import { EmailPasswordType } from 'src/types/join';
 
 interface Props {
   isEmailDuplicated: boolean;
   register: UseFormRegisterReturn;
-  setValue: UseFormSetValue<EmailPassword>;
-  errors: FieldErrors<EmailPassword>;
+  setValue: UseFormSetValue<EmailPasswordType>;
+  errors: FieldErrors<EmailPasswordType>;
 }
 
 export default function EmailInput({

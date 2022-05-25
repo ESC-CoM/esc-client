@@ -2,10 +2,10 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { UseFormRegister, FieldError } from 'react-hook-form';
 import { mbtiList } from '../data';
-import { MoreSchema } from 'src/types/join';
+import { More1Type } from 'src/types/join';
 
 interface Props {
-  register: UseFormRegister<MoreSchema>;
+  register: UseFormRegister<More1Type>;
   errors?: FieldError;
 }
 

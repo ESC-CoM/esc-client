@@ -3,11 +3,11 @@ import cx from 'classnames';
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
-import { EmailPassword } from 'src/types/join';
+import { EmailPasswordType } from 'src/types/join';
 
 interface Props {
   register: UseFormRegisterReturn;
-  errors: FieldErrors<EmailPassword>;
+  errors: FieldErrors<EmailPasswordType>;
 }
 
 export default function PasswordInput({ register, errors }: Props) {

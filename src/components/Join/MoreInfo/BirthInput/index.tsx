@@ -1,12 +1,12 @@
 import $ from './style.module.scss';
 import cx from 'classnames';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { MoreSchema } from 'src/types/join';
+import { More1Type } from 'src/types/join';
 import { monthList, dayList } from 'src/__mocks__/join';
 
 interface Props {
-  register: UseFormRegister<MoreSchema>;
-  errors: FieldErrors<MoreSchema>;
+  register: UseFormRegister<More1Type>;
+  errors: FieldErrors<More1Type>;
 }
 export default function BirthInput({ register, errors }: Props) {
   return (

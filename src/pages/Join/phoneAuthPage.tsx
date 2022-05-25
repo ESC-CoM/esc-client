@@ -10,7 +10,7 @@ import useStore from 'src/store/useStore';
 const NEXT_PATH = '/join/basic/email';
 
 export default function PhoneAuthPage() {
-  const { setPhoneInfo } = useStore();
+  const { setJoinInfo } = useStore();
   const {
     watch,
     register,
@@ -36,7 +36,7 @@ export default function PhoneAuthPage() {
   };
   const onSubmit = (data: PhoneAuthType) => {
     const PhoneInfo = { phoneNumber, authNumber };
-    setPhoneInfo(PhoneInfo);
+    setJoinInfo(PhoneInfo);
     navigate(NEXT_PATH);
   };
 
