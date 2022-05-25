@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import { SaparateLine, GrayLink } from '../../atoms';
-import styles from './style.module.scss';
+import $ from './style.module.scss';
 
 interface Props {
   className: string;
@@ -23,13 +23,13 @@ const linkInfos = [
 
 function LoginToolArea({ className }: Props) {
   return (
-    <div className={cx(className, styles.mainContainer)}>
+    <div className={cx(className, $.mainContainer)}>
       <SaparateLine width={296} />
       <div>
         {linkInfos.map(({ textContent, href }) => (
           <GrayLink
             key={textContent}
-            className={styles.link}
+            className={$.link}
             href={href}
             textContent={textContent}
           />

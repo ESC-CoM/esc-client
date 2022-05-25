@@ -1,5 +1,5 @@
 import { Header, LoginTitle } from '../../atoms';
-import styles from './style.module.scss';
+import $ from './style.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schema from './yup';
@@ -8,7 +8,7 @@ import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
 import PasswordInput from '../PasswordInput';
-import SocialLoginBox from '../SocialLoginBox';
+import KakaoLogin from '../KakaoLogin';
 
 export interface Inputs {
   email: string;
@@ -38,12 +38,12 @@ export default function Login() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={$.container}>
         <Header />
-        <LoginTitle className={styles.title} />
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <LoginTitle className={$.title} />
+        <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
           <EmailInput
-            className={styles.email}
+            className={$.email}
             register={() => register('email')}
             resetField={() => resetField('email')}
             isValueExists={watch('email') ? true : false}
@@ -51,18 +51,18 @@ export default function Login() {
           <PasswordInput
             register={() => register('password')}
             resetField={() => resetField('password')}
-            className={styles.password}
+            className={$.password}
             isValueExists={watch('password') ? true : false}
           />
-          <ErrorMessageBox errors={errors} className={styles.error} />
+          <ErrorMessageBox errors={errors} className={$.error} />
           <LoginCheckBoxArea
-            className={styles.checkbox}
+            className={$.checkbox}
             isSaveId={isSaveId}
             isAutoLogin={isAutoLogin}
             setValue={setValue}
           />
           <button
-            className={styles.submit}
+            className={$.submit}
             type="submit"
             aria-label="로그인 버튼"
             onClick={() => handleSubmit(onSubmit)}
@@ -70,8 +70,8 @@ export default function Login() {
             로그인
           </button>
         </form>
-        <LoginToolBox className={styles.links} />
-        <SocialLoginBox className={styles.socialLogin} />
+        <LoginToolBox className={$.links} />
+        <KakaoLogin className={$['kakao-login']} />
       </div>
     </>
   );
