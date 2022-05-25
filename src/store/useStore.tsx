@@ -35,7 +35,7 @@ export const useStore = create<SetUserInfo>((set, get) => ({
   setJoinInfo: (newInfo) => {
     set((state) => ({
       ...state,
-      newInfo: {
+      userInfo: {
         ...get().userInfo,
         ...newInfo,
       },
