@@ -1,0 +1,20 @@
+@import 'src/styles/_color.scss';
+
+.msg-content {
+  display: flex;
+  margin: 5px 0;
+  &.me {
+    flex-direction: row-reverse;
+  }
+  .friend-image {
+    align-self: flex-end;
+  }
+  .date {
+    align-self: flex-end;
+    flex-basis: 50px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 10px;
+    color: $gray-700;
+  }
+}

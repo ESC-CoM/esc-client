@@ -8,6 +8,7 @@ import LoginPage from './pages/loginPage';
 import AccountFinderRoute from './routes/AccountFinderRoute';
 import HomeRoute from './routes/HomeRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
+import ChatRoomPage from './pages/Chat/ChatRoomPage';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="/find/*" element={<AccountFinderRoute />} />
           <Route path="/home/*" element={<HomeRoute />} />
           <Route path="/mymeeting/*" element={<MyMeetingPage />} />
-          <Route path="/chat" element={<h1>hello</h1>} />
+          <Route path="/chat" element={<ChatRoomPage />} />
           <Route path="/mypage" element={<h1>hello</h1>} />
           <Route path="/join/*" element={<JoinRoute />} />
         </Routes>
