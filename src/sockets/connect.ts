@@ -1,21 +1,16 @@
-import { Client, IFrame } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
+import { IFrame, Stomp } from '@stomp/stompjs';
 
-const client = new Client({
-  brokerURL: 'ws://local.corsmarket.ml/api/ws',
-  connectHeaders: {
-    login: 'user',
-    passcode: 'password',
-  },
-  debug: (str: string) => {
-    console.log(str);
-  },
-  reconnectDelay: 5000, //자동 재 연결
-  heartbeatIncoming: 4000,
-  heartbeatOutgoing: 4000,
-});
+const sockJS = new SockJS('http://localhost:8080/webSocket');
+const client = Stomp.over(sockJS);
+
+client.reconnectDelay = 300;
 
 client.onConnect = (frame: IFrame) => {
-  console.log(frame);
+  console.log('f', frame);
+  const subscription = client.subscribe('/queue/test', (message) => {
+    if (message.body) console.log(message.body);
+  });
 };
 
 client.onStompError = (frame: IFrame) => {
