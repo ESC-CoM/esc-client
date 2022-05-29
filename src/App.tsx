@@ -9,6 +9,7 @@ import AccountFinderRoute from './routes/AccountFinderRoute';
 import HomeRoute from './routes/HomeRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
 import MyPage from './pages/MyPage';
+import SettingRouter from './routes/SettingRouter';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/chat" element={<h1>hello</h1>} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/join/*" element={<JoinRoute />} />
+          <Route path="/setting/*" element={<SettingRouter />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

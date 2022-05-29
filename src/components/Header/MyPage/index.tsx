@@ -1,5 +1,6 @@
 import { BsGear } from 'react-icons/bs';
 import { MdPeopleOutline } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import $ from './style.module.scss';
 
 export default function MyPage() {
@@ -10,9 +11,9 @@ export default function MyPage() {
         <button type="button" aria-label="친구 보기">
           <MdPeopleOutline className={$.icon} />
         </button>
-        <button type="button" aria-label="설정">
+        <Link to={'/setting'}>
           <BsGear className={$.icon} />
-        </button>
+        </Link>
       </div>
     </header>
   );

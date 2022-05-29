@@ -5,25 +5,25 @@
   @include border-bottom-box(30px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 10px 0;
+
+  .link {
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+
+    .icon {
+      margin-right: 10px;
+      font-size: 25px;
+      color: $black;
+    }
+  }
 
   .page-title {
     margin-left: 10px;
     font-weight: 700;
     font-size: 16px;
     line-height: 26px;
-  }
-
-  .icon-container {
-    margin-right: 10px;
-
-    .icon {
-      font-size: 25px;
-
-      &:first-child {
-        margin-right: 10px;
-      }
-    }
   }
 }
