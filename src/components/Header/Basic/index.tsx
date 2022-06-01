@@ -11,9 +11,9 @@ export default function Header({ children }: Props) {
   const location = useLocation();
 
   return (
-    <section className={$['fixed']}>
-      <header className={$['header']}>
-        <div className={$['fixed-bar']}>
+    <header className={$['fixed']}>
+      <div className={$['header']}>
+        <nav className={$['fixed-bar']}>
           {headerMenus.map((menus, index1) => (
             <div
               key={`header-parent-${index1}`}
@@ -35,10 +35,10 @@ export default function Header({ children }: Props) {
               })}
             </div>
           ))}
-        </div>
+        </nav>
 
         <nav className={$['nav-bar']}>{children}</nav>
-      </header>
-    </section>
+      </div>
+    </header>
   );
 }

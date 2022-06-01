@@ -19,7 +19,6 @@
     .fixed-bar {
       display: flex;
       width: 100%;
-      max-width: 758px;
       font-size: 24px;
       padding: 10px 0;
 
@@ -40,8 +39,6 @@
         cursor: pointer;
       }
       em {
-        display: inline-block;
-        height: fit-content;
         font-size: 18px;
         font-weight: 700;
         line-height: 24px;
