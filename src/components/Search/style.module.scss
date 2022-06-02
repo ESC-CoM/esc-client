@@ -1,0 +1,31 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.search-box {
+  width: calc(100% - 14px);
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  border-radius: 8px;
+  background: $gray-50 0% 0% no-repeat padding-box;
+
+  input {
+    width: 100%;
+    background-color: transparent;
+    font-size: 16px;
+    &::placeholder {
+      color: $gray-450;
+    }
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+  svg {
+    color: $black-100;
+    font-size: 23px;
+    cursor: pointer;
+  }
+}
