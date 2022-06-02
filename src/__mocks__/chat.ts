@@ -10,6 +10,7 @@ export const messageInfo = [
   {
     sender: {
       id: 'other',
+      name: '프렌즈1',
       imagePath:
         'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
     },
@@ -19,6 +20,7 @@ export const messageInfo = [
   {
     sender: {
       id: 'other',
+      name: '프렌즈2',
       imagePath:
         'https://media.bunjang.co.kr/product/166788639_1_1634025108_w360.jpg',
     },
@@ -28,6 +30,7 @@ export const messageInfo = [
   {
     sender: {
       id: 'other',
+      name: '프렌즈3',
       imagePath:
         'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
     },

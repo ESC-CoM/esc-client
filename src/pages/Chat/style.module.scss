@@ -3,11 +3,11 @@
 .msg-content {
   display: flex;
   margin: 5px 0;
+  margin-right: 20%;
   &.me {
     flex-direction: row-reverse;
-  }
-  .friend-image {
-    align-self: flex-end;
+    margin-right: 5px;
+    margin-left: 20%;
   }
   .date {
     align-self: flex-end;

@@ -2,6 +2,9 @@
 
 @mixin messageBox($color, $backgroundColor) {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
   padding: 8px 10px;
   border-radius: 22px;
   font-size: 12px;
@@ -9,17 +12,15 @@
   background-color: $backgroundColor;
 }
 
-.msg-info {
-  align-self: flex-end;
-  max-width: 70%;
+.name {
+  font-size: 12px;
+}
+
+.msg {
   &.me {
-    span {
-      @include messageBox($white, $primary);
-    }
+    @include messageBox($white, $primary);
   }
   &.other {
-    span {
-      @include messageBox($black, $gray-200);
-    }
+    @include messageBox($black, $gray-200);
   }
 }

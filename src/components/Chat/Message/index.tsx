@@ -2,17 +2,18 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 
 interface Props {
-  sender: string;
+  id: string;
+  name: string | undefined;
   content: string;
-  date: string;
 }
 
-export default function Message({ sender, content, date }: Props) {
+export default function Message({ id, name, content }: Props) {
   return (
-    <div
-      className={cx($['msg-info'], $[sender === 'loginid' ? 'me' : 'other'])}
-    >
-      <span className={$.text}>{content}</span>
+    <div>
+      <span className={$.name}>{name}</span>
+      <div className={cx($['msg'], $[id === 'loginid' ? 'me' : 'other'])}>
+        <span className={$.text}>{content}</span>
+      </div>
     </div>
   );
 }
