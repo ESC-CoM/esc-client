@@ -1,0 +1,11 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.wrap {
+  padding: 24px 15px;
+  h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

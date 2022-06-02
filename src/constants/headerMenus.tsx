@@ -36,7 +36,7 @@ const menusLeft: MenuType[] = [
   {
     icon: <IoCloseOutline />,
     text: '과팅 신청하기',
-    url: '/home/register',
+    url: '/home/apply',
   },
   {
     icon: <Logo />,
