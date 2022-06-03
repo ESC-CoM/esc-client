@@ -13,7 +13,7 @@ export default function MyMeetingPage() {
   };
 
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0}>
+    <PageLayout isNeedFooter={true}>
       <Header children={<MyMeetingCategory />} />
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>

@@ -4,7 +4,7 @@ import { Header } from 'src/components/Header';
 
 export default function RegisterMeetingDetailPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0}>
+    <PageLayout isNeedFooter={true}>
       <Header />
       <RegisterDetail />
     </PageLayout>
