@@ -12,7 +12,6 @@ export default function RequestedList({
   date,
 }: MyMeetingRequestType) {
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
-  const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
   const lazyLoadCallback = (
@@ -36,7 +35,7 @@ export default function RequestedList({
 
   return (
     <li className={$['requested-info']} ref={requestedMeetingRef}>
-      <div className={$['info-list']} ref={imgListRef}>
+      <div className={$['info-list']}>
         {profileImg.map((imgUri, index) => (
           <img
             key={`${imgUri}-${index}`}

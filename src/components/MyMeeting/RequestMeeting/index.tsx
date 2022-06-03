@@ -1,5 +1,7 @@
 import $ from './style.module.scss';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
+import { useIntersectObserver } from 'src/hooks';
+import { useRef } from 'react';
 
 export default function RequestMeeting({
   comment,
@@ -7,11 +9,38 @@ export default function RequestMeeting({
   date,
   state,
 }: MyMeetingRequestType) {
+  const requestRef = useRef<HTMLLIElement | null>(null);
+  const imgRefs = useRef<HTMLImageElement[]>([]);
+
+  const lazyLoadCallback = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    const targetBox = entries[0];
+    if (targetBox.isIntersecting) {
+      imgRefs.current.forEach((img) => {
+        if (img && img.dataset.src) img.src = img.dataset.src;
+      });
+      observer.unobserve(targetBox.target);
+    }
+  };
+
+  useIntersectObserver<HTMLLIElement>(
+    { threshold: 0.1 },
+    requestRef,
+    lazyLoadCallback
+  );
+
   return (
-    <li className={$['request-meeting-info']}>
+    <li className={$['request-meeting-info']} ref={requestRef}>
       <div className={$['image-list']}>
         {profileImg.map((imgUri, index) => (
-          <img key={`${imgUri}-${index}`} src={imgUri} alt="profile-img" />
+          <img
+            key={`${imgUri}-${index}`}
+            src={imgUri}
+            alt="profile-img"
+            ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
+          />
         ))}
       </div>
 
