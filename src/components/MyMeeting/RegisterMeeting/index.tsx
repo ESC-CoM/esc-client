@@ -1,21 +1,8 @@
 import $ from './style.module.scss';
-import { useRef, useState } from 'react';
-import { requestList } from 'src/__mocks__/myMeeting';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useIntersectObserver } from 'src/hooks';
-
-interface Props {
-  title: string;
-  content: string;
-  friends: string[];
-  date: string;
-}
-
-type meetingInfo = {
-  comment: string;
-  profileImg: string[];
-  date: string;
-};
+import { MyMeetingType } from 'src/types/myMeeting';
 
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
@@ -25,16 +12,14 @@ export default function RegisterMeeting({
   content,
   friends,
   date,
-}: Props) {
+}: MyMeetingType) {
   const navigate = useNavigate();
-  const [requestedList, setRequestedList] = useState<meetingInfo[]>([]);
   const myMeetingRef = useRef<HTMLLIElement | null>(null);
-  const imgListRef = useRef<HTMLUListElement | null>(null);
+  const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
   const getRequestList = () => {
     // 요청 리스트 fetch
-    setRequestedList(requestList);
     navigate('/mymeeting/register/detail');
   };
 
@@ -59,25 +44,26 @@ export default function RegisterMeeting({
 
   return (
     <li className={$['my-meeting']} onClick={getRequestList} ref={myMeetingRef}>
-      <ul className={$['profile-img-list']} ref={imgListRef}>
+      <div className={$['profile-img-list']} ref={imgListRef}>
         {friends.map((imgUri, index) => (
-          <li className={$['profile-img']} key={`profile-img-${index}`}>
-            <img
-              data-src={imgUri}
-              alt="friends"
-              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = FALLBACK_IMAGE;
-              }}
-              ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
-            />
-          </li>
+          <img
+            key={`${imgUri}-${index}`}
+            data-src={imgUri}
+            alt="friends"
+            onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = FALLBACK_IMAGE;
+            }}
+            ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
+          />
         ))}
-      </ul>
+      </div>
 
       <div className={$['my-meeting-info']}>
-        <span className={$['title']}>{title}</span>
-        <span className={$['date']}>•{date}</span>
+        <div>
+          <span className={$['title']}>{title}</span>
+          <span className={$['date']}>•{date}</span>
+        </div>
         <span className={$['content']}>{content}</span>
       </div>
     </li>

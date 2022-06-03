@@ -6,7 +6,10 @@
   padding: 15px;
   cursor: pointer;
   .image-list {
+    display: flex;
+    margin: 0 15px;
     img {
+      margin-left: -20px;
       width: 50px;
       height: 50px;
       border-radius: 20%;
@@ -14,8 +17,6 @@
   }
 
   .info {
-    margin-left: 10px;
-    width: 35%;
     .title {
       @include textOverFlow;
       font-size: 14px;

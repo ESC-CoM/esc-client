@@ -1,18 +1,18 @@
 import $ from './style.module.scss';
 import { useIntersectObserver } from 'src/hooks';
 import { useRef } from 'react';
+import { MyMeetingRequestType } from 'src/types/myMeeting';
 
-interface Props {
-  comment: string;
-  profileImg: string[];
-  date: string;
-}
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
 
-export default function RequestedList({ comment, profileImg, date }: Props) {
+export default function RequestedList({
+  comment,
+  profileImg,
+  date,
+}: MyMeetingRequestType) {
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
-  const imgListRef = useRef<HTMLUListElement | null>(null);
+  const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
   const lazyLoadCallback = (
@@ -35,22 +35,21 @@ export default function RequestedList({ comment, profileImg, date }: Props) {
   );
 
   return (
-    <li className={$['request-meeting-info']} ref={requestedMeetingRef}>
-      <ul className={$['info-list']} ref={imgListRef}>
+    <li className={$['requested-info']} ref={requestedMeetingRef}>
+      <div className={$['info-list']} ref={imgListRef}>
         {profileImg.map((imgUri, index) => (
-          <li key={imgUri} className={$['profile-img']}>
-            <img
-              data-src={imgUri}
-              alt="profile-img"
-              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = FALLBACK_IMAGE;
-              }}
-              ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
-            />
-          </li>
+          <img
+            key={`${imgUri}-${index}`}
+            data-src={imgUri}
+            alt="profile-img"
+            onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = FALLBACK_IMAGE;
+            }}
+            ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
+          />
         ))}
-      </ul>
+      </div>
 
       <div className={$['info']}>
         <span className={$['comment']}>{comment}</span>
