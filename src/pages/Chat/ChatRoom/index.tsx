@@ -2,12 +2,12 @@ import { PageLayout } from 'src/components/Layout';
 import $ from './style.module.scss';
 import cx from 'classnames';
 import { Message, ProfileImage } from 'src/components/Chat';
-import { messageInfo } from 'src/__mocks__/chat';
+import { messageInfoMocks } from 'src/__mocks__/chat';
 
 export default function ChatRoomPage() {
   return (
     <PageLayout isNeedFooter={true} decreaseHeight={54}>
-      {messageInfo.map(({ sender, content, date }, index) => {
+      {messageInfoMocks.map(({ sender, content, date }, index) => {
         const { id, name, imagePath } = sender;
         return (
           <div

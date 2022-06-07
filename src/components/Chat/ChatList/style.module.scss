@@ -1,0 +1,49 @@
+@import 'src/styles/_color.scss';
+
+li {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid $gray-250;
+  background-color: $white;
+  padding: 0 10px;
+  cursor: pointer;
+
+  .pri-info {
+    display: flex;
+    flex-direction: column;
+    strong {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    span {
+      font-size: 14px;
+      color: $gray-700;
+    }
+  }
+  .more-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right: 0;
+    time {
+      font-size: 14px;
+      color: $gray-700;
+      margin-bottom: 5px;
+    }
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 10px;
+      height: 10px;
+      padding: 5px;
+      background-color: $primary;
+      border-radius: 10px;
+      font-size: 12px;
+      color: $white;
+    }
+  }
+}
