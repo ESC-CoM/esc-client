@@ -4,8 +4,7 @@ import { BasicInfoPage, MoreInfoPage } from '../pages/Join';
 function JoinRoute() {
   return (
     <Routes>
-      <Route index element={<Navigate to="/join/basic" />} />
-      <Route path="basic" element={<BasicInfoPage />} />
+      <Route index element={<BasicInfoPage />} />
       <Route path="more" element={<MoreInfoPage />} />
     </Routes>
   );

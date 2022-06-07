@@ -19,7 +19,7 @@ export default function ChatList({
 }: Props) {
   const navigate = useNavigate();
   const fetchChatRoom = () => {
-    navigate('/chat/room');
+    navigate('./room');
   };
   return (
     <li onClick={() => fetchChatRoom()}>
