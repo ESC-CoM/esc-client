@@ -5,7 +5,7 @@ import { registerMeeting } from 'src/__mocks__/myMeeting';
 
 export default function MyMeetingPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0}>
+    <PageLayout isNeedFooter={true}>
       <Header children={<MyMeetingCategory />} />
       <ul>
         {registerMeeting.map(({ title, content, friends, date }, index) => (
