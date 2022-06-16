@@ -1,11 +1,15 @@
 import $ from './style.module.scss';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Menu } from 'src/types/setting';
 import Container from '../Container';
 import getBarClassName from 'src/utils/getBarClassName';
 
 export default function SettingBox() {
   const [isNotificationOn, setIsNotificationOn] = useState(true);
+  const onNotificationClick = useCallback(
+    () => setIsNotificationOn((pre) => !pre),
+    [isNotificationOn]
+  );
 
   const SETTING_MENU: Menu[] = [
     {
@@ -15,7 +19,7 @@ export default function SettingBox() {
           text: '푸시 알람',
           type: 'toggle',
           value: isNotificationOn,
-          onClick: () => setIsNotificationOn((pre) => !pre),
+          onClick: onNotificationClick,
         },
       ],
     },
@@ -64,7 +68,7 @@ export default function SettingBox() {
           <ul>
             {items.map((item, index) => {
               const barClassName = getBarClassName(index, items.length);
-              return <Container {...{ item, barClassName }} />;
+              return <Container key={item.text} {...{ item, barClassName }} />;
             })}
           </ul>
         </li>
