@@ -24,7 +24,7 @@ function App() {
           <Route path="/chat" element={<h1>hello</h1>} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/join/*" element={<JoinRoute />} />
-          <Route path="/setting/*" element={<SettingRouter />}></Route>
+          <Route path="/setting/*" element={<SettingRouter />} />
         </Routes>
       </BrowserRouter>
     </Provider>
