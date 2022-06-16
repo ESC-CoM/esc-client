@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { FieldError } from 'react-hook-form';
 import { ErrorMessage } from '../../atoms';
-import $ from './style.module.scss';
+import styles from './style.module.scss';
 
 interface Props {
   className: string;
@@ -15,7 +15,7 @@ interface Props {
 
 function ErrorMessageBox({ className, errors }: Props) {
   return (
-    <div className={cx($.container, className)}>
+    <div className={cx(styles.container, className)}>
       {errors.email && <ErrorMessage errorText={errors.email.message} />}
       {!errors.email && errors.password && (
         <ErrorMessage errorText={errors.password.message} />
