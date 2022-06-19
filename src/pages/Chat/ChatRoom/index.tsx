@@ -1,7 +1,7 @@
 import { PageLayout } from 'src/components/Layout';
 import $ from './style.module.scss';
 import cx from 'classnames';
-import { Message, ProfileImage } from 'src/components/Chat';
+import { Message, ProfileImage, MessageInput } from 'src/components/Chat';
 import { messageInfoMocks } from 'src/__mocks__/chat';
 
 export default function ChatRoomPage() {
@@ -30,6 +30,9 @@ export default function ChatRoomPage() {
           </div>
         );
       })}
+      <div className={$['msg-input']}>
+        <MessageInput />
+      </div>
     </PageLayout>
   );
 }

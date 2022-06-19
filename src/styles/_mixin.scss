@@ -32,9 +32,9 @@
   }
 }
 
-@mixin button($width, $border, $bg, $color, $font-size) {
+@mixin button($width, $border, $bg, $color, $font-size, $height: 40px) {
   width: $width;
-  height: 40px;
+  height: $height;
   border: $border;
   border-radius: 15px;
   background-color: $bg;

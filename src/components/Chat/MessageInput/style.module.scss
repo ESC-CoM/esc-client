@@ -1,0 +1,32 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.message-input-box {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid $gray-300;
+  border-radius: 10px;
+  button[type='button'] {
+    @include button(30px, none, $primary, $white, 20px, 30px);
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    textarea {
+      border: none;
+      overflow: auto;
+      padding: 8px;
+      resize: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  button[type='submit'] {
+    @include button(40px, none, $primary, $white, 14px, 30px);
+  }
+}
