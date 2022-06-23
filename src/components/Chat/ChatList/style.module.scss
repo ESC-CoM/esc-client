@@ -9,41 +9,43 @@ li {
   padding: 0 10px;
   cursor: pointer;
 
-  .pri-info {
+  .chat-info {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    strong {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    span {
-      font-size: 14px;
-      color: $gray-700;
-    }
-  }
-  .more-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-left: auto;
-    margin-right: 0;
-    time {
-      font-size: 14px;
-      color: $gray-700;
-      margin-bottom: 5px;
-    }
-    span {
+    margin: 5px 0;
+    div {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 10px;
-      height: 10px;
-      padding: 5px;
-      background-color: $primary;
-      border-radius: 10px;
-      font-size: 12px;
-      color: $white;
+      justify-content: space-between;
+      &:nth-child(1) {
+        strong {
+          font-size: 16px;
+          font-weight: 700;
+        }
+        time {
+          font-size: 14px;
+          color: $gray-700;
+        }
+      }
+
+      &:nth-child(2) {
+        span:nth-child(1) {
+          font-size: 14px;
+          color: $gray-700;
+        }
+        span:nth-child(2) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 10px;
+          height: 10px;
+          padding: 5px;
+          background-color: $primary;
+          border-radius: 10px;
+          font-size: 12px;
+          color: $white;
+        }
+      }
     }
   }
 }
