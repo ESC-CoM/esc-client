@@ -1,0 +1,25 @@
+@import 'src/styles/_color.scss';
+
+.friend {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: $gray-300;
+      object-fit: contain;
+      -webkit-user-drag: none;
+    }
+  }
+}
+.vertical-shape {
+  flex-direction: column;
+}
