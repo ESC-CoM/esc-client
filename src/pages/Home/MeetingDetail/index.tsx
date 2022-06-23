@@ -7,7 +7,7 @@ function MeetingDetailPage() {
   const { title, content, friends } = meetingDetailMocks;
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={0}>
+    <PageLayout isNeedFooter={false}>
       <main className={$['detail-box']}>
         <ProfileCardList friends={friends} />
         <section className={$['content-box']}>

@@ -15,8 +15,8 @@ export default function Logo() {
           y2="1"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#ff5c66" />
-          <stop offset="1" stop-color="#ff8b92" />
+          <stop offset="0" stopColor="#ff5c66" />
+          <stop offset="1" stopColor="#ff8b92" />
         </linearGradient>
       </defs>
       <g id="그룹_8" data-name="그룹 8" transform="translate(-9006.205 -6330)">
