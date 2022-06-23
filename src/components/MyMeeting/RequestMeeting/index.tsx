@@ -37,7 +37,7 @@ export default function RequestMeeting({
         {profileImg.map((imgUri, index) => (
           <img
             key={`${imgUri}-${index}`}
-            src={imgUri}
+            data-src={imgUri}
             alt="profile-img"
             ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
           />
