@@ -1,11 +1,31 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/mixin';
 
-.wrap {
-  padding: 24px 15px;
+.top {
+  padding: 24px 15px 0 15px;
   h2 {
-    margin-bottom: 10px;
     font-size: 18px;
     font-weight: 700;
   }
+}
+.friends-list {
+  height: 320px;
+  overflow: auto;
+  padding-left: 8px;
+  border: 0.5px solid $gray-300;
+  border-width: 0.5px 0;
+  .friend {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 0.5px solid $gray-300;
+    &:first-child {
+      border-top-width: 0px;
+    }
+    &:last-child {
+      border-bottom-width: 0px;
+    }
+  }
+}
+.added-friends {
 }
