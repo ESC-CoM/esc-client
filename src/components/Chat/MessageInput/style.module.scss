@@ -24,6 +24,9 @@
       &:focus {
         outline: none;
       }
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
   button[type='submit'] {
