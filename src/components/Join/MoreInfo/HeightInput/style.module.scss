@@ -1,0 +1,23 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.item {
+  position: relative;
+  margin-top: 50px;
+
+  label {
+    font-size: 15px;
+    color: $gray-700;
+  }
+  .input {
+    @include inputRange();
+    padding: 10px 0;
+  }
+  .info {
+    position: absolute;
+    right: 0;
+    color: $primary;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
