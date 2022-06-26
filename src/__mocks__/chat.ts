@@ -43,6 +43,15 @@ export const messageInfoMocks = [
     content: '안녕하세요안녕하세요안녕하세요안녕하세요',
     date: '오전 09:15',
   },
+  {
+    sender: {
+      id: 'loginid',
+      imagePath: '',
+    },
+    content:
+      '어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?',
+    date: '오후 06:20',
+  },
 ];
 
 export const chatListMocks = [
