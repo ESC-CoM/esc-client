@@ -41,7 +41,7 @@
   .cancel-btn {
     margin-left: auto;
     button {
-      @include button(100px, 2px solid $primary, $primary, $white, 15px);
+      @include button(100px, 2px solid $primary, $primary, $white, 15px, 35px);
       cursor: pointer;
       margin-right: 5px;
       &:hover {
