@@ -22,7 +22,7 @@ export default function ChatList({
     navigate('./room');
   };
   return (
-    <li onClick={() => fetchChatRoom()}>
+    <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
       <ProfileImage imagePath={roomImage} />
       <div className={$['chat-info']}>
         <div>
