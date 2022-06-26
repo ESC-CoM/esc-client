@@ -8,13 +8,19 @@ import { TermSchema } from 'src/types/join';
 import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import cx from 'classnames';
+import useStore from 'src/store/useStore';
 
 export type Props = {
   onState: boolean;
   toggleModal: () => void;
 };
 
+const NEXT_PATH = '/login';
+
 export default function Term({ onState, toggleModal }: Props) {
+  const { userInfo } = useStore();
+  console.log(userInfo);
+  const navigate = useNavigate();
   const {
     watch,
     handleSubmit,
@@ -28,7 +34,6 @@ export default function Term({ onState, toggleModal }: Props) {
     },
     resolver: yupResolver(TermsSchema),
   });
-  const navigate = useNavigate();
 
   const [allChecked, setAllChecked] = useState<boolean>(false);
 
@@ -57,8 +62,7 @@ export default function Term({ onState, toggleModal }: Props) {
   }, [watch()]);
 
   const onSubmit = (data: TermSchema) => {
-    console.log(data);
-    if (allChecked) navigate('/join/more');
+    if (allChecked) navigate(NEXT_PATH);
   };
 
   return (
@@ -66,7 +70,7 @@ export default function Term({ onState, toggleModal }: Props) {
       <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
         <h2>서비스 이용을 위해 동의가 필요해요</h2>
 
-        <section
+        <div
           className={$['all-check']}
           onClick={() => onHandleAllCheck(allChecked)}
         >
@@ -77,8 +81,8 @@ export default function Term({ onState, toggleModal }: Props) {
           >
             <FiCheck />
           </span>
-          <em className={$['text']}>모두 동의하기</em>
-        </section>
+          <em className={$['title']}>모두 동의하기</em>
+        </div>
 
         <ul className={$['terms-list']}>
           {terms.map((term, idx) => {
@@ -90,25 +94,17 @@ export default function Term({ onState, toggleModal }: Props) {
                 key={idx}
                 onClick={() => setValue(named, !watch(named))}
               >
-                <ul className={$['terms-item']}>
-                  <li>
-                    <span
-                      className={cx($['check-box'], {
-                        [$['checked']]: watch(named),
-                      })}
-                    >
-                      <FiCheck />
-                    </span>
-                  </li>
-                  <li>
-                    <strong className={$['title']}>{title}</strong>
-                  </li>
-                  <li>
-                    <a href={url} className={$['url']}>
-                      <FiChevronRight />
-                    </a>
-                  </li>
-                </ul>
+                <span
+                  className={cx($['check-box'], {
+                    [$['checked']]: watch(named),
+                  })}
+                >
+                  <FiCheck />
+                </span>
+                <strong className={$['title']}>{title}</strong>
+                <a href={url} className={$['url']}>
+                  <FiChevronRight />
+                </a>
               </li>
             );
           })}
