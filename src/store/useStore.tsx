@@ -12,12 +12,12 @@ type UserInfo =
   | More1Type
   | More2Type;
 
-interface SetUserInfo {
+interface UserInfoSlice {
   userInfo: UserInfo;
   setJoinInfo: (info: UserInfo) => void;
 }
 
-export const useStore = create<SetUserInfo>((set, get) => ({
+export const useStore = create<UserInfoSlice>((set, get) => ({
   userInfo: {
     email: '',
     password: '',
