@@ -42,9 +42,7 @@ export default function RegisterDetailPage() {
           {requestedMeeting.map(({ comment, profileImg, date }, index) => (
             <RequestedList
               key={`requested-list-${index}`}
-              comment={comment}
-              profileImg={profileImg}
-              date={date}
+              {...{ comment, profileImg, date }}
             />
           ))}
         </ul>

@@ -19,10 +19,7 @@ export default function RequestPage() {
         {requestMeeting.map(({ comment, profileImg, date, state }, index) => (
           <RequestMeeting
             key={`${profileImg}-${index}`}
-            comment={comment}
-            profileImg={profileImg}
-            date={date}
-            state={state}
+            {...{ comment, profileImg, date, state }}
           />
         ))}
       </ul>

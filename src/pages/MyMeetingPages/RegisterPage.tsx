@@ -17,10 +17,7 @@ export default function RegisterPage() {
         {registerMeeting.map(({ title, content, friends, date }, index) => (
           <RegisterMeeting
             key={`${date}-${index}`}
-            title={title}
-            content={content}
-            friends={friends}
-            date={date}
+            {...{ title, content, friends, date }}
           />
         ))}
       </ul>
