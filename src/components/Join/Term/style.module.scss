@@ -31,19 +31,20 @@
     }
 
     .all-check {
-      padding: 10px 0;
-      font-size: 16px;
+      display: flex;
+      padding: 5px 0;
       border-bottom: 1px solid $gray-300;
 
       .all-check-box {
+        padding-right: 10px;
+        font-size: 18px;
         color: $gray-500;
       }
       .checked {
         color: $primary;
       }
-
-      .text {
-        padding: 10px;
+      .title {
+        font-size: 16px;
       }
     }
 
@@ -51,47 +52,38 @@
       padding: 10px 0;
 
       .terms-bx {
+        position: relative;
+        display: flex;
         padding: 5px 0;
 
-        .terms-item {
-          position: relative;
-          display: flex;
-
-          .check-box {
-            font-size: 18px;
-            padding-right: 10px;
-            color: $gray-500;
-          }
-          .checked {
-            color: $primary;
-          }
-
-          .title {
-            font-size: 14px;
-          }
-
-          .url {
-            position: absolute;
-            right: 0;
-            font-size: 18px;
-            color: $gray-600;
-          }
+        .check-box {
+          padding-right: 10px;
+          font-size: 18px;
+          color: $gray-500;
+        }
+        .checked {
+          color: $primary;
+        }
+        .title {
+          font-size: 14px;
+        }
+        .url {
+          position: absolute;
+          right: 0;
+          color: $gray-600;
         }
       }
     }
-
     .error {
       position: absolute;
       color: $orange;
       font-size: 14px;
     }
-
     .next-btn {
       @include button(100%, none, $primary, $white, 20px);
       margin-top: 30px;
     }
   }
-
   .back {
     position: fixed;
     top: 0;
