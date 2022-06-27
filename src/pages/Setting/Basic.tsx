@@ -3,7 +3,7 @@ import SettingBox from 'src/components/Setting/SettingBox';
 
 export default function BasicSettingPage() {
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={0} headerHeight={44}>
+    <PageLayout isNeedFooter={false} headerHeight={44}>
       <SettingBox />
     </PageLayout>
   );

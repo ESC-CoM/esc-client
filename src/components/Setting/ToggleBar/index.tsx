@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cx from 'classnames';
 import { MouseEventHandler } from 'react';
 import $ from './style.module.scss';
 
@@ -13,15 +13,12 @@ export default function ToggleBar({ text, value, onClick }: Props) {
     <div className={$.container}>
       <span>{text}</span>
       <button
-        className={classNames($['slider'], value ? $['activate'] : '')}
+        className={cx($['slider'], value ? $['activate'] : '')}
         type="button"
         onClick={onClick}
       >
         <div
-          className={classNames(
-            $['left-circle'],
-            value ? $['right-circle'] : ''
-          )}
+          className={cx($['left-circle'], value ? $['right-circle'] : '')}
         ></div>
       </button>
     </div>
