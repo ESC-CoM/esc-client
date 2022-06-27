@@ -8,12 +8,11 @@
   cursor: pointer;
   .info-list {
     display: flex;
-    .profile-img {
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 20%;
-      }
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 20%;
+      object-fit: contain;
     }
   }
 
@@ -36,7 +35,7 @@
   div:last-child {
     margin-left: auto;
     button {
-      @include button(70px, 2px solid $primary, $primary, $white, 15px);
+      @include button(70px, 2px solid $primary, $primary, $white, 15px, 35px);
       cursor: pointer;
       &:first-child {
         margin-right: 5px;
