@@ -1,19 +1,26 @@
+import { useState } from 'react';
+import { InfiniteScroll } from 'src/components/Layout';
 import { RegisterMeeting } from 'src/components/MyMeeting';
-import { registerMeeting } from 'src/__mocks__/myMeeting';
+import { registerMeetingMocks } from 'src/__mocks__/myMeeting';
+import { MyMeetingType } from 'src/types/myMeeting';
 
 export default function RegisterPage() {
+  const [registerMeeting, setRegisterMeeting] = useState<MyMeetingType[]>([]);
+
+  const fetchMoreMeetingFeeds = () => {
+    setRegisterMeeting([...registerMeeting, ...registerMeetingMocks]);
+  };
+
   return (
-    <ul>
-      {registerMeeting.map(({ title, content, friends, date }, index) => (
-        <li key={`register-meeting-${index}`}>
+    <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
+      <ul>
+        {registerMeeting.map(({ title, content, friends, date }, index) => (
           <RegisterMeeting
-            title={title}
-            content={content}
-            friends={friends}
-            date={date}
+            key={`${date}-${index}`}
+            {...{ title, content, friends, date }}
           />
-        </li>
-      ))}
-    </ul>
+        ))}
+      </ul>
+    </InfiniteScroll>
   );
 }
