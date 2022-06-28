@@ -7,6 +7,7 @@ import {
   IoPeopleOutline,
   IoReorderThreeOutline,
   IoSettingsOutline,
+  IoChevronBack,
 } from 'react-icons/io5';
 import { Logo } from 'src/components/Icon';
 
@@ -43,6 +44,11 @@ const menusLeft: MenuType[] = [
     text: '',
     url: '/mymeeting',
     isPathBeIncluded: true,
+  },
+  {
+    icon: <IoChevronBack />,
+    text: '내 정보',
+    url: '/setting',
   },
 ];
 
