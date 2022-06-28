@@ -6,6 +6,7 @@ import LoginPage from './pages/loginPage';
 import AccountFinderRoute from './routes/AccountFinderRoute';
 import HomeRoute from './routes/HomeRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
+import MyPage from './pages/MyPage';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/home/*" element={<HomeRoute />} />
         <Route path="/mymeeting/*" element={<MyMeetingPage />} />
         <Route path="/chat" element={<h1>hello</h1>} />
-        <Route path="/mypage" element={<h1>hello</h1>} />
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="/join/*" element={<JoinRoute />} />
       </Routes>
     </BrowserRouter>
