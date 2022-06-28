@@ -6,7 +6,7 @@ import { messageInfoMocks } from 'src/__mocks__/chat';
 
 export default function ChatRoomPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={54}>
+    <PageLayout isNeedFooter={true}>
       <section>
         {messageInfoMocks.map(({ sender, content, date }, index) => {
           const { id, name, imagePath } = sender;

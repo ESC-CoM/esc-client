@@ -1,9 +1,6 @@
 @import 'src/styles/_color.scss';
 
 @mixin messageBox($color, $backgroundColor) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-top: 5px;
   padding: 8px 10px;
   border-radius: 22px;

@@ -4,17 +4,13 @@ import { chatListMocks } from 'src/__mocks__/chat';
 
 export default function ChatListPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={54}>
+    <PageLayout isNeedFooter={true}>
       <ul>
         {chatListMocks.map(
           ({ roomImage, title, content, time, count }, index) => (
             <ChatList
               key={roomImage + index}
-              roomImage={roomImage}
-              title={title}
-              content={content}
-              time={time}
-              count={count}
+              {...{ roomImage, title, content, time, count }}
             />
           )
         )}

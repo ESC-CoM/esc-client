@@ -1,39 +1,44 @@
 @import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
 
 .chat-list {
   display: flex;
   align-items: center;
   height: 70px;
   border-bottom: 1px solid $gray-250;
-  background-color: $white;
   padding: 0 10px;
   cursor: pointer;
 
   .chat-info {
-    width: 100%;
+    width: calc(100% - 45px);
     display: flex;
-    flex-direction: column;
-    margin: 5px 0;
+
     div {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+
       &:nth-child(1) {
+        max-width: 60%;
         strong {
           font-size: 16px;
           font-weight: 700;
+          @include textOverFlow;
         }
-        time {
+        .content {
           font-size: 14px;
           color: $gray-700;
+          @include textOverFlow;
         }
       }
 
       &:nth-child(2) {
-        span:nth-child(1) {
+        margin-left: auto;
+        align-items: flex-end;
+        time {
           font-size: 14px;
           color: $gray-700;
         }
-        span:nth-child(2) {
+        .count {
           display: flex;
           align-items: center;
           justify-content: center;

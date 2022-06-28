@@ -27,11 +27,11 @@ export default function ChatList({
       <div className={$['chat-info']}>
         <div>
           <strong>{title}</strong>
-          <time>{time}</time>
+          <span className={$.content}>{content}</span>
         </div>
         <div>
-          <span>{content}</span>
-          <span>{count}</span>
+          <time>{time}</time>
+          <span className={$.count}>{count}</span>
         </div>
       </div>
     </li>

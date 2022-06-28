@@ -3,7 +3,6 @@
 
 .message-input-box {
   display: flex;
-  justify-content: center;
   height: 30px;
   padding: 5px;
   border: 1px solid $gray-300;
@@ -14,7 +13,6 @@
   .text {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     flex: 1 1 auto;
     textarea {
       border: none;

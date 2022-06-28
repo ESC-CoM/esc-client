@@ -58,8 +58,10 @@ export const chatListMocks = [
   {
     roomImage:
       'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
-    title: '소프트웨어학과 남자 3명',
-    content: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ',
+    title:
+      '소프트웨어학과 남자 3명 소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명',
+    content:
+      'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ',
     time: '오후 12:25',
     count: '26',
   },
