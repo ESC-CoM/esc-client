@@ -1,0 +1,38 @@
+@import '/src/styles/color';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+
+  .slider {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    background-color: $gray-400;
+    border-radius: calc(24px);
+
+    .left-circle {
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: calc(24px);
+      background-color: $white;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      transition: 0.1s;
+      transform: translateX(0);
+    }
+
+    .right-circle {
+      transition: 0.1s;
+      transform: translateX(24px);
+    }
+  }
+
+  .activate {
+    background-color: $primary;
+  }
+}

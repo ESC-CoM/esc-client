@@ -1,0 +1,14 @@
+@import '/src/styles/color';
+
+.container {
+  padding: 10px;
+
+  .card-title {
+    margin: 15px 0 0 15px;
+    color: $gray-600;
+  }
+
+  .card {
+    margin-top: 10px;
+  }
+}
