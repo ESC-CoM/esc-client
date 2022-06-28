@@ -1,0 +1,24 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
+
+.item {
+  margin-top: 50px;
+  label {
+    font-size: 15px;
+    color: $gray-700;
+    padding: 10px 0;
+  }
+  .row {
+    display: flex;
+    margin: 10px 0;
+    .gender-btn {
+      @include button(100%, 2.5px solid $gray-500, $white, $gray-500, 17px);
+      font-weight: 700;
+      margin: 0 2px;
+      &.gender-active {
+        border: 2.5px solid $primary;
+        color: $primary;
+      }
+    }
+  }
+}

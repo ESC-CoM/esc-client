@@ -3,7 +3,7 @@ import { PageLayout } from '../../components/Layout';
 
 export default function MyPage() {
   return (
-    <PageLayout isNeedFooter={true} decreaseHeight={0} headerHeight={44}>
+    <PageLayout isNeedFooter={true} headerHeight={44}>
       <CardBox />
     </PageLayout>
   );
