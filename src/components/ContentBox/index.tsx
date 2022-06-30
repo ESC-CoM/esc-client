@@ -17,9 +17,10 @@ function ContentBox({ title, content, isReadMode, contentTitle }: Props) {
   const handleContentChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => {
       handleContent(e.target.value);
-      if (contentRef.current) {
-        contentRef.current.style.height = 'auto';
-        contentRef.current.style.height = `${contentRef.current.scrollHeight}px`;
+      const textareaContent = contentRef.current;
+      if (textareaContent) {
+        textareaContent.style.height = 'auto';
+        textareaContent.style.height = `${textareaContent.scrollHeight}px`;
       }
     },
     []

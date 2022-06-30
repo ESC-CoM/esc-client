@@ -7,10 +7,12 @@
   padding: 24px 15px 0;
   background-color: $white;
 }
+
 .sub-title {
   font-size: 18px;
   font-weight: 700;
 }
+
 .friends-list {
   min-height: 320px;
   overflow: auto;
@@ -29,6 +31,7 @@
     }
   }
 }
+
 .added {
   h2 {
     padding: 24px 15px 0;
@@ -47,5 +50,12 @@
   }
   .no-added {
     height: 89px;
+  }
+}
+
+.apply-btn {
+  @include stickyFooter();
+  button {
+    @include button(calc(100% - 50px), none, $primary, $white, 20px);
   }
 }

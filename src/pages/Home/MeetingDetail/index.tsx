@@ -12,8 +12,10 @@ function MeetingDetailPage() {
       <main className={$['detail-box']}>
         <ProfileCardList friends={friends} />
         <ContentBox {...{ title, content }} isReadMode />
-        <button className={$['apply-btn']}>신청하기</button>
       </main>
+      <footer className={$['apply-btn']}>
+        <button type="button">신청하기</button>
+      </footer>
     </PageLayout>
   );
 }

@@ -70,6 +70,9 @@ export default function MeetingApplyPage() {
         </ul>
       </div>
       <ContentBox {...{ title, content }} contentTitle={MeetingTitle.apply} />
+      <footer className={$['apply-btn']}>
+        <button type="button">신청하기</button>
+      </footer>
     </PageLayout>
   );
 }

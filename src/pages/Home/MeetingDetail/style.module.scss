@@ -16,12 +16,10 @@
       font-size: 23px;
     }
   }
-  .apply-btn {
-    @include footer();
+}
+.apply-btn {
+  @include stickyFooter();
+  button {
     @include button(calc(100% - 50px), none, $primary, $white, 20px);
-    bottom: 20px;
-    @media screen and (min-width: 758px) {
-      width: 720px;
-    }
   }
 }
