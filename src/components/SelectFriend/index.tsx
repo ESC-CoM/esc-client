@@ -2,28 +2,24 @@ import Friend from 'src/components/Friend';
 import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
 import cx from 'classnames';
 import $ from './style.module.scss';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 interface Props {
   src: string;
   name: string;
   isVertical: boolean;
+  isSelected: boolean;
 }
 
-function SelectFriend({ src, name, isVertical }: Props) {
-  const [isClicked, setIsClicked] = useState(false);
-
+function SelectFriend({ src, name, isVertical, isSelected }: Props) {
   return (
-    <div
-      className={$['wrap']}
-      onClick={() => setIsClicked((isClicked) => !isClicked)}
-    >
-      <Friend {...{ src, name, isVertical }} padding={7} />
+    <div className={$['wrap']}>
+      <Friend {...{ src, name, isVertical }} padding={7} paddingLeft={15} />
       <button
         type="button"
-        className={cx($['select-btn'], { [$['clicked']]: isClicked })}
+        className={cx($['select-btn'], { [$['selected']]: isSelected })}
       >
-        {isClicked ? <BsCheckCircleFill /> : <BsCircle />}
+        {isSelected ? <BsCheckCircleFill /> : <BsCircle />}
       </button>
     </div>
   );

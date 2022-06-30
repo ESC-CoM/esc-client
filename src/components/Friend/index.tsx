@@ -7,13 +7,20 @@ interface Props {
   name: string;
   isVertical: boolean;
   padding?: number;
+  paddingLeft?: number;
 }
 
-function Friend({ src, name, isVertical, padding = 0 }: Props) {
+function Friend({
+  src,
+  name,
+  isVertical,
+  padding = 0,
+  paddingLeft = 0,
+}: Props) {
   return (
     <div
-      style={{ padding: `${padding}px` }}
-      className={cx($['friend'], { ['vertical-shape']: isVertical })}
+      style={{ padding: `${padding}px`, paddingLeft: `${paddingLeft}px` }}
+      className={cx($['friend'], { [$['vertical-shape']]: isVertical })}
       onClick={(e) => {
         e.stopPropagation();
         console.log('profile');

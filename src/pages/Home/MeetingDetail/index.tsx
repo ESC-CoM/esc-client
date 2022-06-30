@@ -1,3 +1,4 @@
+import ContentBox from 'src/components/ContentBox';
 import { PageLayout } from 'src/components/Layout';
 import ProfileCardList from 'src/components/ProfileCardList';
 import { meetingDetailMocks } from 'src/__mocks__/meetingDetailMocks';
@@ -10,10 +11,7 @@ function MeetingDetailPage() {
     <PageLayout isNeedFooter={false}>
       <main className={$['detail-box']}>
         <ProfileCardList friends={friends} />
-        <section className={$['content-box']}>
-          <h2>{title}</h2>
-          <span>{content}</span>
-        </section>
+        <ContentBox {...{ title, content }} isReadMode />
         <button className={$['apply-btn']}>신청하기</button>
       </main>
     </PageLayout>
