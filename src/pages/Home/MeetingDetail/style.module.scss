@@ -18,8 +18,9 @@
   }
 }
 .apply-btn {
-  @include stickyFooter();
+  display: flex;
+  @include footer();
   button {
-    @include button(calc(100% - 50px), none, $primary, $white, 20px);
+    @include button(720px, none, $primary, $white, 20px);
   }
 }

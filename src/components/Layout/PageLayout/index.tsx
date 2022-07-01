@@ -40,18 +40,12 @@ export default function PageLayout({
       <main
         className={style.layout}
         style={{
-          maxHeight: `calc(100vh - ${footerHeight + decreaseHeight}px)`,
+          maxHeight: `calc(100vh - ${
+            headerHeight + footerHeight + decreaseHeight
+          }px)`,
         }}
       >
-        <div
-          className={style.body}
-          style={{
-            height: `calc(100% - ${headerHeight}px)`,
-            marginTop: `${headerHeight}px`,
-          }}
-        >
-          {children}
-        </div>
+        <div className={style.body}>{children}</div>
       </main>
       {isNeedFooter && <Footer />}
     </>
