@@ -4,14 +4,13 @@ import cx from 'classnames';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const category = [
-  { name: '등록한 미팅', path: 'register' },
+  { name: '등록한 미팅', path: '' },
   { name: '신청한 미팅', path: 'request' },
 ];
 
 export default function MyMeetingCategory() {
   const [isCategoryActive, setIsCategoryActive] = useState<boolean[]>([
     true,
-    false,
     false,
   ]);
   const navigate = useNavigate();
@@ -22,12 +21,12 @@ export default function MyMeetingCategory() {
     setIsCategoryActive(
       isCategoryActive.map((_, index2) => (index1 === index2 ? true : false))
     );
-    if (index1 === 0) navigate('/mymeeting/register/basic');
-    else if (index1 === 1) navigate('/mymeeting/request/basic');
+    if (index1 === 0) navigate('/mymeeting');
+    else if (index1 === 1) navigate('/mymeeting/request');
   };
 
   useEffect(() => {
-    if (currPath === '/mymeeting/request/basic')
+    if (currPath === '/mymeeting/request')
       setIsCategoryActive(
         isCategoryActive.map((_, index) => (index === 1 ? true : false))
       );

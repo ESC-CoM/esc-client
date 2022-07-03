@@ -5,7 +5,7 @@ import {
   requestListMocks,
 } from 'src/__mocks__/myMeeting';
 import { RequestedList } from 'src/components/MyMeeting';
-import { InfiniteScroll } from 'src/components/Layout';
+import { InfiniteScroll, PageLayout } from 'src/components/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 const { title, content, friends, date } = registerMeetingMocks[0];
@@ -20,7 +20,7 @@ export default function RegisterDetailPage() {
   };
 
   return (
-    <>
+    <PageLayout isNeedFooter={true} headerHeight={84}>
       <div className={$['detail-info']}>
         <div className={$['friends-image-list']}>
           {friends.map((imgUri, index) => (
@@ -47,6 +47,6 @@ export default function RegisterDetailPage() {
           ))}
         </ul>
       </InfiniteScroll>
-    </>
+    </PageLayout>
   );
 }

@@ -27,7 +27,6 @@ export default function Footer() {
       active: <BsSuitHeartFill />,
       text: 'MY 과팅',
       url: '/mymeeting',
-      goto: '/mymeeting/register/basic',
     },
     {
       icon: <IoChatbubbleEllipsesOutline />,
@@ -48,13 +47,13 @@ export default function Footer() {
   return (
     <footer className={style.footer}>
       <div className={style.menus}>
-        {menus.map(({ icon, active, text, url, goto }) => (
+        {menus.map(({ icon, active, text, url }) => (
           <div
             className={cx(style.menu, {
               [style.active]: location.pathname.match(url),
             })}
             key={text}
-            onClick={() => handleClick(goto ? goto : url)}
+            onClick={() => handleClick(url)}
           >
             <div className={style.icon}>
               {location.pathname.match(url) ? active : icon}

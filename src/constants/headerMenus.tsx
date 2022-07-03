@@ -41,9 +41,27 @@ const menusLeft: MenuType[] = [
   },
   {
     icon: <Logo />,
-    text: '',
     url: '/mymeeting',
-    isPathBeIncluded: true,
+  },
+  {
+    icon: <IoChevronBackOutline />,
+    url: '/mymeeting/detail',
+  },
+  {
+    icon: <Logo />,
+    url: '/mymeeting/request',
+  },
+  {
+    text: '채팅',
+    url: '/chat',
+  },
+  {
+    icon: <IoChevronBack />,
+    url: '/chat/room',
+  },
+  {
+    icon: <Logo />,
+    url: '/mypage',
   },
   {
     icon: <IoChevronBack />,
@@ -63,16 +81,24 @@ const menusRight: MenuType[] = [
     url: '/home',
   },
   {
+    icon: <IoNotificationsOutline />,
+    url: '/home',
+  },
+  {
     icon: <IoPeopleOutline />,
     url: '/mypage',
   },
   {
-    icon: <IoReorderThreeOutline />,
+    icon: <IoSettingsOutline />,
+    url: '/mypage',
+  },
+  {
+    icon: <IoNotificationsOutline />,
     url: '/chat',
   },
   {
-    icon: <IoSettingsOutline />,
-    url: '/mypage',
+    icon: <IoReorderThreeOutline />,
+    url: '/chat/room',
   },
 ];
 
