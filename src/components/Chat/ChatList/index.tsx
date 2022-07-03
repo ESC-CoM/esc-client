@@ -19,8 +19,9 @@ export default function ChatList({
 }: Props) {
   const navigate = useNavigate();
   const fetchChatRoom = () => {
-    navigate('./room');
+    navigate(`./room/${12345}`);
   };
+
   return (
     <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
       <ProfileImage imagePath={roomImage} />

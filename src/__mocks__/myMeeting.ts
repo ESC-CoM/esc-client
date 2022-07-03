@@ -101,8 +101,11 @@ export const registerMeetingMocks = [
   },
 ];
 
-export const requestListMocks = [
+export const requestedListMocks = [
+  // 요청받은 리스트
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '전자정보대학 20, 21학번',
     comment: '공대도 받아주세요 !',
     profileImg: [
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
@@ -110,6 +113,8 @@ export const requestListMocks = [
     date: '27초 전',
   },
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '사회과학대학 20, 21학번',
     comment: '술 잘 먹어요 ㅎㅎ',
     profileImg: [
       'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
@@ -117,6 +122,8 @@ export const requestListMocks = [
     date: '30분 전',
   },
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '전자정보대학 20, 21학번',
     comment: '전정대랑 과팅합시다앙',
     profileImg: [
       'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
@@ -124,6 +131,8 @@ export const requestListMocks = [
     date: '2일 전',
   },
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '전자정보대학 20, 21학번',
     comment: '공대도 받아주세요 !',
     profileImg: [
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
@@ -131,51 +140,21 @@ export const requestListMocks = [
     date: '27초 전',
   },
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '전자정보대학 20, 21학번',
     comment: '술 잘 먹어요 ㅎㅎ',
     profileImg: [
       'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
     ],
     date: '30분 전',
-  },
-  {
-    comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-    ],
-    date: '2일 전',
-  },
-  {
-    comment: '공대도 받아주세요 !',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-    ],
-    date: '27초 전',
-  },
-  {
-    comment: '술 잘 먹어요 ㅎㅎ',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '30분 전',
-  },
-  {
-    comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-    ],
-    date: '2일 전',
-  },
-  {
-    comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-    ],
-    date: '2일 전',
   },
 ];
 
 export const requestMeetingMocks = [
+  // 내가 요청한 미팅 리스트
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '전자정보대학 20, 21학번',
     comment: '내가 신청함',
     profileImg: [
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
@@ -184,6 +163,8 @@ export const requestMeetingMocks = [
     state: true,
   },
   {
+    chatterIds: [1, 2, 3, 5],
+    chattingRoomName: '사회과학대학 20, 21학번',
     comment: '신청2',
     profileImg: [
       'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
@@ -192,6 +173,8 @@ export const requestMeetingMocks = [
     state: false,
   },
   {
+    chatterIds: [1, 2, 3, 6],
+    chattingRoomName: '경영대학 20, 21학번',
     comment: '내가 신청함',
     profileImg: [
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
@@ -200,6 +183,8 @@ export const requestMeetingMocks = [
     state: true,
   },
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '공과대학 20, 21학번',
     comment: '신청2',
     profileImg: [
       'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
@@ -208,51 +193,13 @@ export const requestMeetingMocks = [
     state: false,
   },
   {
+    chatterIds: [1, 2, 3, 4],
+    chattingRoomName: '약학대학 20, 21학번',
     comment: '내가 신청함',
     profileImg: [
       'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
     ],
     date: '52분 전',
     state: true,
-  },
-  {
-    comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '22.04.29',
-    state: false,
-  },
-  {
-    comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-    ],
-    date: '52분 전',
-    state: true,
-  },
-  {
-    comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '22.04.29',
-    state: false,
-  },
-  {
-    comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-    ],
-    date: '52분 전',
-    state: true,
-  },
-  {
-    comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '22.04.29',
-    state: false,
   },
 ];

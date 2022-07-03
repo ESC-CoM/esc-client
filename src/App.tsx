@@ -9,22 +9,27 @@ import MyMeetingPage from './pages/MyMeetingPages';
 import ChatRoute from './routes/ChatRoute';
 import MyPage from './pages/MyPage';
 import SettingRouter from './routes/SettingRouter';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<Navigate to="/home" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/find/*" element={<AccountFinderRoute />} />
-        <Route path="/home/*" element={<HomeRoute />} />
-        <Route path="/mymeeting/*" element={<MyMeetingPage />} />
-        <Route path="/chat/*" element={<ChatRoute />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/join/*" element={<JoinRoute />} />
-        <Route path="/setting/*" element={<SettingRouter />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/find/*" element={<AccountFinderRoute />} />
+          <Route path="/home/*" element={<HomeRoute />} />
+          <Route path="/mymeeting/*" element={<MyMeetingPage />} />
+          <Route path="/chat/*" element={<ChatRoute />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/join/*" element={<JoinRoute />} />
+          <Route path="/setting/*" element={<SettingRouter />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

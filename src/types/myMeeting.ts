@@ -6,6 +6,8 @@ export type MyMeetingType = {
 };
 
 export type MyMeetingRequestType = {
+  chatterIds: number[];
+  chattingRoomName: string;
   comment: string;
   profileImg: string[];
   date: string;

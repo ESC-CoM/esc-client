@@ -2,15 +2,22 @@ import $ from './style.module.scss';
 import { useIntersectObserver } from 'src/hooks';
 import { useRef } from 'react';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
+import { createChatRoom } from 'src/api/chat';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { CHAT_ROOM_DATA } from 'src/constants/queryKeys';
 
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
 
 export default function RequestedList({
+  chatterIds,
+  chattingRoomName,
   comment,
   profileImg,
   date,
 }: MyMeetingRequestType) {
+  const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
@@ -32,6 +39,19 @@ export default function RequestedList({
     requestedMeetingRef,
     lazyLoadCallback
   );
+
+  const acceptRequest = () => {
+    const chatInfo = { chatterIds, chattingRoomName };
+    // fetch
+    // useQuery(CHAT_ROOM_DATA, () => createChatRoom(chatInfo), {
+    //   onSuccess: (data) => {
+    //     const chattingRoomId = data.chattingRoomId;
+    //     const [searchParams, setSearchParams] = useSearchParams();
+    //     setSearchParams({ roomId: '12345' }); // 임시
+    navigate(`/chat/room/${12345}`);
+    //   },
+    // });
+  };
 
   return (
     <li className={$['requested-info']} ref={requestedMeetingRef}>
@@ -56,7 +76,9 @@ export default function RequestedList({
       </div>
 
       <div className={$['request-btn']}>
-        <button className={$['btn']}>수락</button>
+        <button className={$['btn']} onClick={() => acceptRequest()}>
+          수락
+        </button>
         <button className={$['btn']}>거절</button>
       </div>
     </li>

@@ -2,7 +2,7 @@ import $ from './style.module.scss';
 import { useState } from 'react';
 import {
   registerMeetingMocks,
-  requestListMocks,
+  requestedListMocks,
 } from 'src/__mocks__/myMeeting';
 import { RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/Layout';
@@ -16,7 +16,7 @@ export default function RegisterDetailPage() {
   >([]);
 
   const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
+    setRegisterMeeting([...requestedMeeting, ...requestedListMocks]);
   };
 
   return (
@@ -39,12 +39,23 @@ export default function RegisterDetailPage() {
 
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
-          {requestedMeeting.map(({ comment, profileImg, date }, index) => (
-            <RequestedList
-              key={`requested-list-${index}`}
-              {...{ comment, profileImg, date }}
-            />
-          ))}
+          {requestedMeeting.map(
+            (
+              { chatterIds, chattingRoomName, comment, profileImg, date },
+              index
+            ) => (
+              <RequestedList
+                key={`requested-list-${index}`}
+                {...{
+                  chatterIds,
+                  chattingRoomName,
+                  comment,
+                  profileImg,
+                  date,
+                }}
+              />
+            )
+          )}
         </ul>
       </InfiniteScroll>
     </>
