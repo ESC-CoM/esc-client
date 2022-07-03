@@ -3,8 +3,34 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { Message, ProfileImage, MessageInput } from 'src/components/Chat';
 import { messageInfoMocks } from 'src/__mocks__/chat';
+import { getChatRoom } from 'src/api/chat';
+import { useQuery } from 'react-query';
+import { CHAT_ROOM_DATA } from 'src/constants/queryKeys';
+import { useParams } from 'react-router-dom';
+import socketClient from 'src/common/socket';
 
 export default function ChatRoomPage() {
+  const { roomId } = useParams();
+  console.log(roomId);
+  // socket
+  // socketClient.publish({
+  //   destination: '/chat/general',
+  //   body: '안녕하세요',
+  //   headers: { priority: '9' },
+  // });
+
+  // fetch
+  // const { isLoading, isError, data, error } = useQuery(
+  //   [CHAT_ROOM_DATA, roomId],
+  //   () => {
+  //     if (roomId) getChatRoom(roomId);
+  //   }
+  // );
+
+  // if (isLoading) {
+  //   return <span>Loading</span>;
+  // }
+
   return (
     <PageLayout isNeedFooter={true}>
       <section>

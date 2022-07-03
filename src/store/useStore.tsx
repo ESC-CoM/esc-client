@@ -1,4 +1,4 @@
-import create from 'zustand';
+import create, { StateCreator } from 'zustand';
 import {
   EmailPasswordType,
   PhoneAuthType,
@@ -17,7 +17,7 @@ interface UserInfoSlice {
   setJoinInfo: (info: UserInfo) => void;
 }
 
-export const useStore = create<UserInfoSlice>((set, get) => ({
+const createUser: StateCreator<UserInfoSlice> = (set) => ({
   userInfo: {
     email: '',
     password: '',
@@ -34,13 +34,16 @@ export const useStore = create<UserInfoSlice>((set, get) => ({
   },
   setJoinInfo: (newInfo) => {
     set((state) => ({
-      ...state,
       userInfo: {
-        ...get().userInfo,
+        ...state.userInfo,
         ...newInfo,
       },
     }));
   },
+});
+
+export const userStore = create<UserInfoSlice>()((...a) => ({
+  ...createUser(...a),
 }));
 
-export default useStore;
+export default userStore;
