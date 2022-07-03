@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import headerMenus from 'src/constants/headerMenus';
 import React, { ReactNode } from 'react';
 
@@ -9,6 +9,11 @@ interface Props {
 
 export default function Header({ children }: Props) {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const goToPage = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <header className={$['fixed']}>
@@ -28,7 +33,9 @@ export default function Header({ children }: Props) {
                 )
                   return (
                     <React.Fragment key={`header-${index1}-${index2}`}>
-                      <span>{menu.icon}</span>
+                      <span onClick={() => menu.goto && goToPage(menu.goto)}>
+                        {menu.icon}
+                      </span>
                       {menu.text && <em>{menu.text}</em>}
                     </React.Fragment>
                   );

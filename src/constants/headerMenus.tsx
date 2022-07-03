@@ -15,24 +15,22 @@ type MenuType = {
   icon?: JSX.Element;
   text?: string;
   url?: string;
+  goto?: string;
   isPathBeIncluded?: boolean;
 };
 
 const menusLeft: MenuType[] = [
   {
-    icon: <IoChevronBackOutline />,
-    text: '이전',
-    url: '',
-  },
-  {
     icon: <IoChevronDownOutline />,
     text: '과팅',
     url: '/home',
+    goto: '/home/personal',
   },
   {
     icon: <IoChevronDownOutline />,
     text: '소개팅',
     url: '/home/personal',
+    goto: '/home',
   },
   {
     icon: <IoCloseOutline />,
@@ -46,6 +44,7 @@ const menusLeft: MenuType[] = [
   {
     icon: <IoChevronBackOutline />,
     url: '/mymeeting/detail',
+    goto: '/mymeeting',
   },
   {
     icon: <Logo />,
@@ -58,6 +57,7 @@ const menusLeft: MenuType[] = [
   {
     icon: <IoChevronBack />,
     url: '/chat/room',
+    goto: '/chat',
   },
   {
     icon: <Logo />,
@@ -67,6 +67,7 @@ const menusLeft: MenuType[] = [
     icon: <IoChevronBack />,
     text: '내 정보',
     url: '/setting',
+    goto: '/mypage',
   },
 ];
 
@@ -91,6 +92,7 @@ const menusRight: MenuType[] = [
   {
     icon: <IoSettingsOutline />,
     url: '/mypage',
+    goto: '/setting',
   },
   {
     icon: <IoNotificationsOutline />,
