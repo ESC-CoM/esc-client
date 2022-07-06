@@ -23,13 +23,13 @@ export default function ChatList({
   };
   return (
     <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
-      <ProfileImage imagePath={roomImage} />
+      <ProfileImage altValue={title} imagePath={roomImage} />
       <div className={$['chat-info']}>
-        <div>
+        <div className={$['main-info']}>
           <strong>{title}</strong>
           <span className={$.content}>{content}</span>
         </div>
-        <div>
+        <div className={$['more-info']}>
           <time>{time}</time>
           <span className={$.count}>{count}</span>
         </div>

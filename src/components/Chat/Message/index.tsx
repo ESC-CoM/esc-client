@@ -8,10 +8,12 @@ interface Props {
 }
 
 export default function Message({ id, name, content }: Props) {
+  const isMe = id === 'loginid';
+
   return (
-    <div>
-      <span className={$.name}>{name}</span>
-      <div className={cx($['msg'], $[id === 'loginid' ? 'me' : 'other'])}>
+    <div className={$['chat-msg']}>
+      {!isMe && <span className={$.name}>{name}</span>}
+      <div className={cx($['msg'], $[isMe ? 'me' : 'other'])}>
         <span className={$.text}>{content}</span>
       </div>
     </div>

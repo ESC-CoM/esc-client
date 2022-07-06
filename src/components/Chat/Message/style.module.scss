@@ -9,15 +9,17 @@
   background-color: $backgroundColor;
 }
 
-.name {
-  font-size: 12px;
-}
-
-.msg {
-  &.me {
-    @include messageBox($white, $primary);
+.chat-msg {
+  .name {
+    font-size: 12px;
   }
-  &.other {
-    @include messageBox($black, $gray-200);
+
+  .msg {
+    &.me {
+      @include messageBox($white, $primary);
+    }
+    &.other {
+      @include messageBox($black, $gray-200);
+    }
   }
 }
