@@ -145,11 +145,14 @@ table {
 }
 
 input,
-select {
+select,
+textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
 }
 
 button {

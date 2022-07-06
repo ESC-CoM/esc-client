@@ -1,0 +1,27 @@
+@import 'src/styles/_color.scss';
+
+.chat-content {
+  padding: 0 12px;
+  .msg-content {
+    display: flex;
+    margin: 5px 0;
+    margin-right: 20%;
+    &.me {
+      flex-direction: row-reverse;
+      margin-right: 0;
+      margin-left: 20%;
+    }
+    .date {
+      align-self: flex-end;
+      flex-basis: 50px;
+      flex-shrink: 0;
+      text-align: center;
+      font-size: 10px;
+      color: $gray-700;
+    }
+  }
+}
+.msg-input {
+  margin-top: auto;
+  padding: 10px;
+}

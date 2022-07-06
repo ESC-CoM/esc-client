@@ -6,6 +6,7 @@ import LoginPage from './pages/loginPage';
 import AccountFinderRoute from './routes/AccountFinderRoute';
 import HomeRoute from './routes/HomeRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
+import ChatRoute from './routes/ChatRoute';
 import MyPage from './pages/MyPage';
 import SettingRouter from './routes/SettingRouter';
 
@@ -18,7 +19,7 @@ function App() {
         <Route path="/find/*" element={<AccountFinderRoute />} />
         <Route path="/home/*" element={<HomeRoute />} />
         <Route path="/mymeeting/*" element={<MyMeetingPage />} />
-        <Route path="/chat" element={<h1>hello</h1>} />
+        <Route path="/chat/*" element={<ChatRoute />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/join/*" element={<JoinRoute />} />
         <Route path="/setting/*" element={<SettingRouter />} />
