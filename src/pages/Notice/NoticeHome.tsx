@@ -7,8 +7,11 @@ export default function NoticeHome() {
   return (
     <PageLayout isNeedFooter headerHeight={44}>
       <div className={$['notice-box']}>
-        {noticeList.map((notice) => (
-          <NoticeCard {...notice} />
+        {noticeList.map(({ title, content, imageURL, date }) => (
+          <NoticeCard
+            key={`${title}${date}`}
+            {...{ title, content, imageURL, date }}
+          />
         ))}
       </div>
     </PageLayout>
