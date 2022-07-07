@@ -78,9 +78,9 @@
   }
 }
 
-@mixin button($width, $border, $bg, $color, $font-size) {
+@mixin button($width, $border, $bg, $color, $font-size, $height: 40px) {
   width: $width;
-  height: 45px;
+  height: $height;
   border: $border;
   border-radius: 15px;
   background-color: $bg;
@@ -105,4 +105,15 @@
   border-radius: $borderBoxRadius $borderBoxRadius 0 0;
   box-shadow: 0 1px 4px $shadow;
   background: $white;
+}
+
+@mixin border-bottom-box($height) {
+  height: $height;
+  border-bottom: 1.5px solid $gray-200;
+}
+
+@mixin profile-card($height) {
+  height: $height;
+  background-color: $gray-100;
+  border-radius: 20px;
 }

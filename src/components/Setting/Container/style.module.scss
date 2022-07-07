@@ -1,0 +1,29 @@
+@import '/src/styles/color';
+
+@mixin bar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: $gray-200;
+}
+
+.single-bar {
+  @include bar();
+  border-radius: 10px;
+}
+
+.top-bar {
+  @include bar();
+  border-radius: 10px 10px 0 0;
+}
+
+.middle-bar {
+  @include bar();
+  border-top: 2px solid $white;
+}
+
+.bottom-bar {
+  @include bar();
+  border-top: 2px solid $white;
+  border-radius: 0 0 10px 10px;
+}
