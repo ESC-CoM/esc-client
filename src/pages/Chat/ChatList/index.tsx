@@ -9,7 +9,7 @@ export default function ChatListPage() {
         {chatListMocks.map(
           ({ roomImage, title, content, time, count }, index) => (
             <ChatList
-              key={roomImage + index}
+              key={title + index}
               {...{ roomImage, title, content, time, count }}
             />
           )

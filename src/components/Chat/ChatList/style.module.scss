@@ -6,19 +6,25 @@
   align-items: center;
   height: 70px;
   border-bottom: 1px solid $gray-250;
-  padding: 0 10px;
+  padding: 0 5px;
   cursor: pointer;
+
+  .profile-info {
+    margin: 5px;
+  }
 
   .chat-info {
     width: calc(100% - 45px);
     display: flex;
+    overflow: hidden;
 
     div {
       display: flex;
       flex-direction: column;
 
       &.main-info {
-        max-width: 60%;
+        max-width: 80%;
+
         strong {
           font-size: 16px;
           font-weight: 700;
@@ -33,6 +39,7 @@
 
       &.more-info {
         margin-left: auto;
+        margin-right: 0;
         align-items: flex-end;
         time {
           font-size: 14px;
