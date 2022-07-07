@@ -33,10 +33,9 @@ export default function ChatList({
   const profileLen = profileList.length;
 
   const getProfileClassName = () => {
-    if (profileLen === 1) return 'single';
-    else if (profileLen === 2) return 'double';
+    if (profileLen === 2) return 'double';
     else if (profileLen === 3) return 'triple';
-    return 'single';
+    else return 'single';
   };
 
   const fetchChatRoom = () => {
@@ -44,12 +43,10 @@ export default function ChatList({
   };
   return (
     <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
-      <div className={$['profile-info']}>
-        <ProfileImage
-          profileList={profileList}
-          className={getProfileClassName()}
-        />
-      </div>
+      <ProfileImage
+        profileList={profileList}
+        className={getProfileClassName()}
+      />
       <div className={$['chat-info']}>
         <div className={$['main-info']}>
           <strong>{title}</strong>
