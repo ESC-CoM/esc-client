@@ -2,6 +2,7 @@ export const messageInfoMocks = [
   {
     sender: {
       id: 'loginid',
+      name: '나',
       imagePath: '',
     },
     content: '안녕하세요',
@@ -39,13 +40,14 @@ export const messageInfoMocks = [
     date: '오후 06:20',
   },
   {
-    sender: { id: 'loginid', imagePath: '' },
+    sender: { id: 'loginid', name: '나', imagePath: '' },
     content: '안녕하세요안녕하세요안녕하세요안녕하세요',
     date: '오전 09:15',
   },
   {
     sender: {
       id: 'loginid',
+      name: '나',
       imagePath: '',
     },
     content:

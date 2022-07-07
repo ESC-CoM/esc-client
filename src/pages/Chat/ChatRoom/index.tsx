@@ -7,7 +7,7 @@ import { messageInfoMocks } from 'src/__mocks__/chat';
 export default function ChatRoomPage() {
   return (
     <PageLayout isNeedFooter={true} headerHeight={44}>
-      <section>
+      <section className={$['chat-content']}>
         {messageInfoMocks.map(({ sender, content, date }, index) => {
           const { id, name, imagePath } = sender;
           return (
@@ -20,7 +20,7 @@ export default function ChatRoomPage() {
             >
               {sender.id === 'other' && (
                 <span className={$['friend-image']}>
-                  <ProfileImage imagePath={imagePath} />
+                  <ProfileImage altValue={name} imagePath={imagePath} />
                 </span>
               )}
               <Message id={id} name={name} content={content} />
