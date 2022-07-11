@@ -32,7 +32,7 @@ export default function MeetingApplyPage() {
   };
 
   return (
-    <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={59}>
+    <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <div className={$['top']}>
         <h2 className={$['sub-title']}>친구 추가하기</h2>
         <Search />

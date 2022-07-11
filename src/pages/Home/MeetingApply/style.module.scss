@@ -56,8 +56,10 @@
 
 .apply-btn {
   display: flex;
+  justify-content: center;
   @include footer();
   button {
     @include button(720px, none, $primary, $white, 20px);
+    margin: 0 25px;
   }
 }
