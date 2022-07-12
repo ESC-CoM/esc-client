@@ -1,3 +1,5 @@
+import { profileList } from './mutiProfile';
+
 export const messageInfoMocks = [
   {
     sender: {
@@ -58,8 +60,7 @@ export const messageInfoMocks = [
 
 export const chatListMocks = [
   {
-    roomImage:
-      'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
+    roomImage: profileList,
     title:
       '소프트웨어학과 남자 3명 소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명',
     content:
@@ -68,24 +69,22 @@ export const chatListMocks = [
     count: '26',
   },
   {
-    roomImage:
-      'https://media.bunjang.co.kr/product/166788639_1_1634025108_w360.jpg',
-    title: '심리학과 여자 4명',
+    roomImage: profileList,
+    title:
+      '심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명',
     content: '언제가 좋을까요?',
     time: '오후 2:18',
     count: '38',
   },
   {
-    roomImage:
-      'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
-    title: '간호학과 여자 3명',
+    roomImage: profileList,
+    title: '간호학과 여자 3명 간호학과 여자 3명',
     content: '안녕하세용',
     time: '오전 1:35',
     count: '5',
   },
   {
-    roomImage:
-      'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+    roomImage: profileList,
     title: '화학과 남자 3명',
     content: ':):D',
     time: '오전 3:05',
