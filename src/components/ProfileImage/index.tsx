@@ -1,7 +1,7 @@
 import $ from './style.module.scss';
 type ProfileInfo = {
-  altValue: string;
-  imageUrl: string;
+  alt: string;
+  src: string;
 };
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
 export default function ProfileImage({ profileList, className }: Props) {
   return (
     <div className={$[`${className}`]}>
-      {profileList.map(({ altValue, imageUrl }, index) => (
-        <div key={`${imageUrl}${index}`} className={$['personal-img']}>
-          <img src={imageUrl} alt={`${altValue}의 프로필 사진`} />
+      {profileList.map(({ alt, src }, index) => (
+        <div key={`${src}${index}`} className={$['personal-img']}>
+          <img src={src} alt={`${alt}의 프로필 사진`} />
         </div>
       ))}
     </div>

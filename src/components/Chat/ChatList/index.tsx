@@ -25,8 +25,8 @@ export default function ChatList({
   const profileList = roomImage
     .map(({ name, imageUrl }) => {
       return {
-        altValue: name,
-        imageUrl: imageUrl,
+        alt: name,
+        src: imageUrl,
       };
     })
     .slice(0, 3);
@@ -35,7 +35,7 @@ export default function ChatList({
   const getProfileClassName = () => {
     if (profileLen === 2) return 'double';
     else if (profileLen === 3) return 'triple';
-    else return 'single';
+    return 'single';
   };
 
   const fetchChatRoom = () => {
