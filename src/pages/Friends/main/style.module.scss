@@ -1,0 +1,27 @@
+@import '../../../styles/color';
+
+.search-box {
+  position: relative;
+  padding: 20px;
+
+  .input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: $gray-200;
+    font-size: 17px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .icon {
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+  }
+}
