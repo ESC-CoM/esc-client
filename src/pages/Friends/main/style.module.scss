@@ -20,8 +20,9 @@
   }
 
   .icon {
-    font-size: 20px;
     position: absolute;
-    top: 30px;
+    top: calc(85px / 2 - 20px / 2);
+    right: 30px;
+    font-size: 20px;
   }
 }
