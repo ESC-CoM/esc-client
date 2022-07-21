@@ -26,3 +26,26 @@
     font-size: 20px;
   }
 }
+
+.friend-bar {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  border-top: 1px solid $gray-300;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: $black;
+
+  &:last-child {
+    border-bottom: 1px solid $gray-300;
+  }
+
+  .profile-image {
+    width: 46px;
+    height: 46px;
+    margin: 0 12px;
+    border-radius: 23px;
+    object-fit: cover;
+  }
+}
