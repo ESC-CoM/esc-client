@@ -3,6 +3,7 @@
 @import 'src/styles/_mixin.scss';
 
 .footer {
+  z-index: 99;
   @include footer();
 
   .menus {
