@@ -17,7 +17,7 @@ export default function NoticeCard({ imageURL, title, content, date }: Props) {
         <img
           className={$['profile-image']}
           src={imageURL}
-          alt="profile image"
+          alt={`${title}의 프로필`}
         />
         <div className={$['text-box']}>
           <h1 className={$.title}>{title}</h1>
