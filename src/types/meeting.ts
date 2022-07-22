@@ -18,11 +18,11 @@ export type Profile = {
   birthDate: string;
   college: string;
   department?: string;
-  studentNum: number;
+  studentNum: string;
   height: number;
   weight: number;
   mbti: string;
-  hobbies: string;
+  hobbies?: string;
   drink: number;
 };
 
