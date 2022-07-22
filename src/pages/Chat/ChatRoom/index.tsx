@@ -68,7 +68,7 @@ export default function ChatRoomPage() {
     <PageLayout isNeedFooter={true}>
       {isClickProfile && (
         <div
-          className={cx($['hidden'], !isOverHalf && $['active'])}
+          className={cx($['profile-active'], isOverHalf && $['profile-hidden'])}
           style={{
             transform: getTranslate(),
           }}

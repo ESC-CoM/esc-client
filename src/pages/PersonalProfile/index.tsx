@@ -36,25 +36,21 @@ export default function PersonalProfilePage({ closeModal }: Props) {
   }, []);
 
   return (
-    <PageLayout isNeedFooter={false} headerHeight={0}>
-      <section className={$['personal-profile-box']}>
-        <div className={$['profile-box']}>
-          <div className={$['close-profile']} onClick={closeModal}>
-            <button className={$['close-btn']}>
-              <IoClose size={25} />
-            </button>
-          </div>
-          <div className={$['profile']}>
-            <ProfileImage
-              src={profile.img}
-              alt={profile.name}
-              width={80}
-              height={80}
-            />
-            <ProfileInfo profile={profile} />
-          </div>
-        </div>
-      </section>
-    </PageLayout>
+    <section className={$['profile-box']}>
+      <div className={$['close-profile']} onClick={closeModal}>
+        <button className={$['close-btn']}>
+          <IoClose size={25} />
+        </button>
+      </div>
+      <div className={$['profile']}>
+        <ProfileImage
+          src={profile.img}
+          alt={profile.name}
+          width={80}
+          height={80}
+        />
+        <ProfileInfo profile={profile} />
+      </div>
+    </section>
   );
 }

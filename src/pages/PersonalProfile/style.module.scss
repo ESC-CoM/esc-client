@@ -1,36 +1,27 @@
 @import 'src/styles/_color.scss';
 
-.personal-profile-box {
+.profile-box {
   position: relative;
-  width: 100%;
   height: 100%;
-  background-color: $darkmodeBackground;
-  opacity: 0.85;
-  padding: 0;
-  overflow: hidden;
-  .profile-box {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  background-color: $gray-700;
+  padding: 10px;
 
-    .close-profile {
-      display: flex;
-      justify-content: flex-end;
-      margin: 10px;
-      .close-btn {
-        margin-left: auto;
-        margin-right: 0;
-        font-size: 20px;
-        color: $gray-400;
-      }
+  .close-profile {
+    display: flex;
+    justify-content: flex-end;
+    .close-btn {
+      margin-left: auto;
+      margin-right: 0;
+      font-size: 20px;
+      color: $gray-400;
     }
+  }
 
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 70%;
-      margin-top: 80px;
-    }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+    margin-top: 80px;
   }
 }
