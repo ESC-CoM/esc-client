@@ -1,30 +1,27 @@
 import { PageLayout } from 'src/components/Layout';
-import { BiSearch } from 'react-icons/bi';
-import friends from 'src/__mocks__/friends';
+import { friendMocks } from 'src/__mocks__/friendMocks';
 import $ from './style.module.scss';
-import { NavLink } from 'react-router-dom';
+import Search from 'src/components/Search';
+import Friend from 'src/components/Friend';
 
 export default function Friends() {
   return (
     <PageLayout isNeedFooter headerHeight={44}>
       <div className={$['search-box']}>
-        <input className={$.input} type="text" placeholder="검색" />
-        <BiSearch className={$.icon} />
+        <Search />
       </div>
-      {friends.map(({ imageURL, name }, index) => (
-        <NavLink
-          to="./detail"
-          className={$['friend-bar']}
-          key={`${name}${index}`}
-        >
-          <img
-            className={$['profile-image']}
-            src={imageURL}
-            alt={`${name}의 프로필 사진`}
-          />
-          <span className={$.name}>{name}</span>
-        </NavLink>
-      ))}
+      <ul>
+        {friendMocks.map(({ src, name }, index) => (
+          <li key={`${name}${index}`} className={$['friend-bar']}>
+            <Friend
+              {...{ src, name }}
+              isVertical={false}
+              padding={10}
+              paddingLeft={10}
+            />
+          </li>
+        ))}
+      </ul>
     </PageLayout>
   );
 }

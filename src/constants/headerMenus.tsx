@@ -81,7 +81,7 @@ const menusRight: MenuType[] = [
     url: '/mypage',
   },
   {
-    icon: <BsPersonPlus />,
+    icon: <BsPersonPlus style={{ marginRight: '20px' }} />,
     url: '/friends',
   },
   {

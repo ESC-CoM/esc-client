@@ -2,55 +2,13 @@
 @import '../../../styles/mixin';
 
 .search-box {
-  position: relative;
-  padding: 20px;
-
-  .input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 45px;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: $gray-200;
-    font-size: 17px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  .icon {
-    position: absolute;
-    top: calc(85px / 2 - 20px / 2);
-    right: 30px;
-    font-size: 20px;
-  }
+  padding: 10px;
 }
 
 .friend-bar {
-  display: flex;
-  align-items: center;
-  height: 70px;
-  border-top: 1px solid $gray-300;
-  text-decoration: none;
-
-  .name {
-    @include textOverFlow();
-    font-size: 20px;
-    font-weight: 700;
-    color: $black;
-  }
+  border-top: 1px solid $gray-200;
 
   &:last-child {
-    border-bottom: 1px solid $gray-300;
-  }
-
-  .profile-image {
-    width: 46px;
-    height: 46px;
-    margin: 0 12px;
-    border-radius: 23px;
-    object-fit: cover;
+    border-bottom: 1px solid $gray-200;
   }
 }
