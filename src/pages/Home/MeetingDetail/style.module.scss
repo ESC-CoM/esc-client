@@ -16,12 +16,11 @@
       font-size: 23px;
     }
   }
-  .apply-btn {
-    @include footer();
-    @include button(calc(100% - 50px), none, $primary, $white, 20px);
-    bottom: 20px;
-    @media screen and (min-width: 758px) {
-      width: 720px;
-    }
+}
+.apply-btn {
+  display: flex;
+  @include footer();
+  button {
+    @include button(720px, none, $primary, $white, 20px);
   }
 }
