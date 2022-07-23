@@ -1,0 +1,23 @@
+@import 'src/styles/_color.scss';
+
+.chat-card {
+  display: flex;
+  margin: 5px 0;
+  margin-right: 20%;
+  &.me {
+    flex-direction: row-reverse;
+    margin-right: 0;
+    margin-left: 20%;
+  }
+  .friend-image {
+    cursor: pointer;
+  }
+  .date {
+    align-self: flex-end;
+    flex-basis: 50px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 10px;
+    color: $gray-700;
+  }
+}

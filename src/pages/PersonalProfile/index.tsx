@@ -1,11 +1,11 @@
 import $ from './style.module.scss';
-import { PageLayout } from 'src/components/Layout';
 import { useEffect, useState } from 'react';
 import { Profile } from 'src/types/profile';
 import { profileInfo } from './profile';
 import { ProfileImage } from 'src/components/Chat';
 import ProfileInfo from 'src/components/ProfileInfo';
 import { IoClose } from 'react-icons/io5';
+import { memo } from 'react';
 
 const initProfile = () => {
   return {
@@ -28,7 +28,7 @@ interface Props {
   closeModal: () => void;
 }
 
-export default function PersonalProfilePage({ closeModal }: Props) {
+export function PersonalProfilePage({ closeModal }: Props) {
   const [profile, setProfile] = useState<Profile>(initProfile());
 
   useEffect(() => {
@@ -54,3 +54,5 @@ export default function PersonalProfilePage({ closeModal }: Props) {
     </section>
   );
 }
+
+export default memo(PersonalProfilePage);

@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import $ from './style.module.scss';
 
-export default function MessageInput() {
+export function MessageInput() {
   return (
     <div className={$['message-input-box']}>
       <button type="button">+</button>
@@ -11,3 +12,5 @@ export default function MessageInput() {
     </div>
   );
 }
+
+export default memo(MessageInput);
