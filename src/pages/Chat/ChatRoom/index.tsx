@@ -1,18 +1,29 @@
 import { PageLayout } from 'src/components/Layout';
 import $ from './style.module.scss';
 import cx from 'classnames';
-import { Message, ProfileImage, MessageInput } from 'src/components/Chat';
+import { MessageInput } from 'src/components/Chat';
 import { messageInfoMocks } from 'src/__mocks__/chat';
-import { useEffect, useState } from 'react';
+import { useEffect, useCallback, useRef, useState } from 'react';
 import PersonalProfilePage from 'src/pages/PersonalProfile';
+import { ChatCard } from 'src/components/Chat';
 
 export default function ChatRoomPage() {
   const [isClickProfile, setIsClickProfile] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [clientY, setClientY] = useState(0);
+  const [startClientY, setStartClientY] = useState(0);
   const [scrollY, setScrollY] = useState(0);
-  const [isMouseUp, setIsMouseUp] = useState(true);
   const [isOverHalf, setIsOverHalf] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  const getTranslate = () => {
+    if (isDragging || isOverHalf) return `translateY(${scrollY}px)`;
+  };
+
+  const lazyAnimation = () => {
+    setTimeout(() => {
+      setIsClickProfile(false);
+    }, 300);
+  };
 
   const clickProfile = (userId: string) => {
     // 개인 프로필 정보 불러오기
@@ -20,49 +31,79 @@ export default function ChatRoomPage() {
     setIsOverHalf(false);
   };
 
-  const onMouseDown = (e: React.MouseEvent<HTMLElement>) => {
-    setClientY(e.clientY);
+  const closeModal = useCallback(() => {
+    setIsOverHalf(true);
+    lazyAnimation();
+  }, []);
+
+  const onMouseDown = (e: TouchEvent | MouseEvent) => {
     setIsDragging(true);
-    setIsMouseUp(false);
+    if (e.type === 'touchstart' && 'touches' in e) {
+      setStartClientY(e.touches[0].clientY);
+    }
+    if (e.type === 'mousedown' && 'clientY' in e) {
+      setStartClientY(e.clientY);
+    }
   };
 
   const onMouseUp = () => {
     setIsDragging(false);
-    setIsMouseUp(true);
 
-    if (scrollY > 600) {
+    if (scrollY >= 300) {
       setIsOverHalf(true);
+      lazyAnimation();
     } else {
       setIsOverHalf(false);
       setScrollY(0);
     }
   };
 
-  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const onMouseMove = (e: TouchEvent | MouseEvent) => {
     if (isDragging) {
-      setScrollY(scrollY + e.clientY - clientY);
-      setClientY(e.clientY);
-    }
-  };
+      let clientY = 0;
+      if (e.type === 'touchmove' && 'touches' in e) {
+        clientY = e.touches[0].clientY;
+      } else if (e.type === 'mousemove' && 'clientY' in e) {
+        clientY = e.clientY;
+      } else return;
 
-  const closeModal = () => {
-    setIsClickProfile(false);
-    setScrollY(0);
-  };
-
-  const getTranslate = () => {
-    if (!isMouseUp) {
-      return `translateY(${scrollY}px)`;
+      const updateScrollY = scrollY + clientY - startClientY;
+      if (updateScrollY > 0) {
+        setScrollY(updateScrollY);
+        setStartClientY(clientY);
+      }
     }
-    return isOverHalf ? `translateY(100%)` : `translateY(0%)`;
   };
 
   useEffect(() => {
-    if (isOverHalf) {
-      setIsClickProfile(false);
+    if (!isClickProfile) {
+      setIsOverHalf(false);
       setScrollY(0);
     }
-  }, [isOverHalf]);
+  }, [isClickProfile]);
+
+  useEffect(() => {
+    if (profileRef.current) {
+      const element = profileRef.current;
+      (() => {
+        element.addEventListener('touchstart', onMouseDown);
+        element.addEventListener('touchmove', onMouseMove);
+        element.addEventListener('touchend', onMouseUp);
+        element.addEventListener('mousedown', onMouseDown);
+        element.addEventListener('mousemove', onMouseMove);
+        element.addEventListener('mouseup', onMouseUp);
+      })();
+
+      return () => {
+        element.removeEventListener('touchstart', onMouseDown);
+        element.removeEventListener('touchmove', onMouseMove);
+        element.removeEventListener('touchend', onMouseUp);
+        element.removeEventListener('mousedown', onMouseDown);
+        element.removeEventListener('mousemove', onMouseMove);
+        element.removeEventListener('mouseup', onMouseUp);
+      };
+    }
+  });
 
   return (
     <PageLayout isNeedFooter={true}>
@@ -72,9 +113,7 @@ export default function ChatRoomPage() {
           style={{
             transform: getTranslate(),
           }}
-          onMouseDown={onMouseDown}
-          onMouseUp={onMouseUp}
-          onMouseMove={onMouseMove}
+          ref={profileRef}
         >
           <PersonalProfilePage closeModal={closeModal} />
         </div>
@@ -84,32 +123,10 @@ export default function ChatRoomPage() {
         {messageInfoMocks.map(({ sender, content, date }, index) => {
           const { id, name, imagePath } = sender;
           return (
-            <div
-              key={sender + date + index}
-              className={cx(
-                $['msg-content'],
-                $[sender.id === 'loginid' ? 'me' : 'other']
-              )}
-            >
-              {sender.id === 'other' && (
-                <span
-                  className={$['friend-image']}
-                  onClick={() => clickProfile(sender.id)}
-                >
-                  <ProfileImage
-                    alt={name}
-                    src={imagePath}
-                    width={35}
-                    height={35}
-                  />
-                </span>
-              )}
-              <Message id={id} name={name} content={content} />
-
-              <time className={$.date} dateTime={date}>
-                {date}
-              </time>
-            </div>
+            <ChatCard
+              key={`${sender.id}${date}${index}`}
+              {...{ id, name, imagePath, content, date, clickProfile }}
+            />
           );
         })}
       </section>
