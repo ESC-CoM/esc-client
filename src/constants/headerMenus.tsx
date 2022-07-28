@@ -9,6 +9,7 @@ import {
   IoSettingsOutline,
   IoChevronBack,
 } from 'react-icons/io5';
+import { BsPersonPlus, BsPersonDash } from 'react-icons/bs';
 import { Logo } from 'src/components/Icon';
 
 type MenuType = {
@@ -52,6 +53,11 @@ const menusLeft: MenuType[] = [
   },
   {
     icon: <IoChevronBack />,
+    text: '친구',
+    url: '/friends',
+  },
+  {
+    icon: <IoChevronBack />,
     text: '홈',
     url: '/notice',
   },
@@ -80,9 +86,14 @@ const menusRight: MenuType[] = [
     url: '/mypage',
   },
   {
-    text: '모두 삭제',
-    url: '/notice',
+    icon: <BsPersonPlus style={{ marginRight: '20px' }} />,
+    url: '/friends',
   },
+  {
+    icon: <BsPersonDash />,
+    url: '/friends',
+  },
+  { text: '모두 삭제', url: '/notice' },
 ];
 
 export default [menusLeft, menusRight];

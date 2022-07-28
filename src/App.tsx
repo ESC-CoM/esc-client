@@ -9,6 +9,7 @@ import MyMeetingPage from './pages/MyMeetingPages';
 import ChatRoute from './routes/ChatRoute';
 import MyPage from './pages/MyPage';
 import SettingRouter from './routes/SettingRouter';
+import FriendsRouter from './routes/FriendsRouter';
 import NoticeRouter from './routes/NoticeRouter';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/join/*" element={<JoinRoute />} />
         <Route path="/setting/*" element={<SettingRouter />} />
+        <Route path="/friends/*" element={<FriendsRouter />}></Route>
         <Route path="/notice/*" element={<NoticeRouter />} />
       </Routes>
     </BrowserRouter>
