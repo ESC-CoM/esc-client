@@ -56,6 +56,11 @@ const menusLeft: MenuType[] = [
     text: '친구',
     url: '/friends',
   },
+  {
+    icon: <IoChevronBack />,
+    text: '홈',
+    url: '/notice',
+  },
 ];
 
 const menusRight: MenuType[] = [
@@ -88,6 +93,7 @@ const menusRight: MenuType[] = [
     icon: <BsPersonDash />,
     url: '/friends',
   },
+  { text: '모두 삭제', url: '/notice' },
 ];
 
 export default [menusLeft, menusRight];
