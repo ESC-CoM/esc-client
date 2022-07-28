@@ -50,6 +50,11 @@ const menusLeft: MenuType[] = [
     text: '내 정보',
     url: '/setting',
   },
+  {
+    icon: <IoChevronBack />,
+    text: '홈',
+    url: '/notice',
+  },
 ];
 
 const menusRight: MenuType[] = [
@@ -73,6 +78,10 @@ const menusRight: MenuType[] = [
   {
     icon: <IoSettingsOutline />,
     url: '/mypage',
+  },
+  {
+    text: '모두 삭제',
+    url: '/notice',
   },
 ];
 
