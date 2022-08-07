@@ -1,12 +1,6 @@
 @import 'src/styles/_color.scss';
 
-.school-info,
-.birth-info,
-.drink-info,
-.body-info,
-.chat-box {
-  display: flex;
-  justify-content: center;
+.info {
   margin: 5px 0;
   span {
     margin: 0 3px;
