@@ -23,10 +23,10 @@ export type PhoneAuthType = {
 };
 
 export type More1Type = {
+  nickName: string;
+  isNicknameDuplicated: boolean;
   gender: string;
   year: string;
-  month: string;
-  day: string;
   mbti: string;
 };
 
