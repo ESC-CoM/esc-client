@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Bottle } from 'src/components/Icon';
 import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
@@ -10,7 +10,7 @@ interface Props {
   setValue: UseFormSetValue<More2Type>;
 }
 
-export default function Drink({ value, setValue }: Props) {
+export function Drink({ value, setValue }: Props) {
   const [drinkNum, setDrinkNum] = useState<number[]>(
     Array.from({ length: 6 }, () => 0)
   );
@@ -50,3 +50,5 @@ export default function Drink({ value, setValue }: Props) {
     </div>
   );
 }
+
+export default memo(Drink);

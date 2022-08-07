@@ -58,7 +58,7 @@ export default function PhoneAuth({
       <h1>휴대폰 인증을 해주세요</h1>
 
       <div className={$['item']}>
-        <label htmlFor="phponeNumber">
+        <label htmlFor="phoneNumber">
           {errors.phoneNumber?.message ?? '휴대폰 번호'}
         </label>
         <div className={$['row']}>
@@ -67,7 +67,7 @@ export default function PhoneAuth({
             className={cx($['input'], {
               [$['error']]: errors.phoneNumber,
             })}
-            id="phponeNumber"
+            id="phoneNumber"
             {...register('phoneNumber')}
             value={phoneNumber}
             onChange={handleNumber}

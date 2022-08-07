@@ -1,13 +1,14 @@
 import $ from './style.module.scss';
 import { weightInfo } from '../data';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import { memo } from 'react';
 
 interface Props {
   value: number;
   register: UseFormRegisterReturn;
 }
 
-export default function WeightInput({ value, register }: Props) {
+export function WeightInput({ value, register }: Props) {
   return (
     <div className={$['item']}>
       <label htmlFor="weight">몸무게</label>
@@ -27,3 +28,5 @@ export default function WeightInput({ value, register }: Props) {
     </div>
   );
 }
+
+export default memo(WeightInput);

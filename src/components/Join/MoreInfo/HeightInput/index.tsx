@@ -1,13 +1,14 @@
 import $ from './style.module.scss';
 import { heightInfo } from '../data';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import { memo } from 'react';
 
 interface Props {
   value: number;
   register: UseFormRegisterReturn;
 }
 
-export default function HeightInput({ value, register }: Props) {
+export function HeightInput({ value, register }: Props) {
   return (
     <div className={$['item']}>
       <label htmlFor="height">키</label>
@@ -27,3 +28,5 @@ export default function HeightInput({ value, register }: Props) {
     </div>
   );
 }
+
+export default memo(HeightInput);
