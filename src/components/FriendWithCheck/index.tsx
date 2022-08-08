@@ -47,7 +47,7 @@ function FriendWithCheck({
     >
       <div className={$['left-box']}>
         <div className={$['img-wrapper']}>
-          <img alt={name + '프로필 이미지'} src={src} />
+          <img draggable={false} alt={name + '프로필 이미지'} src={src} />
         </div>
         <em>{name}</em>
       </div>

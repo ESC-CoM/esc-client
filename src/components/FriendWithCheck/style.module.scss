@@ -22,7 +22,6 @@
         border-radius: 50%;
         background-color: $gray-300;
         object-fit: contain;
-        -webkit-user-drag: none;
       }
     }
   }
@@ -42,7 +41,7 @@
   font-size: 14px;
 
   .img-wrapper {
-    margin: 0 0 8px 0;
+    margin-bottom: 8px;
 
     img {
       width: 65px;
