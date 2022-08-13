@@ -61,6 +61,10 @@ const menusLeft: MenuType[] = [
     text: '홈',
     url: '/notice',
   },
+  {
+    text: '내 정보',
+    url: '/mypage',
+  },
 ];
 
 const menusRight: MenuType[] = [
