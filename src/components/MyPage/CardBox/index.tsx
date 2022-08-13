@@ -1,5 +1,4 @@
 import MyInformationCard from '../MyInfomationCard';
-import PrivateInformationCard from '../PrivateInformationCard';
 import $ from './style.module.scss';
 
 export default function CardBox() {
