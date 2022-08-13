@@ -1,14 +1,28 @@
 import $ from './style.module.scss';
+import BasicProfile from 'src/components/Icon/BasicProfile';
+import { memo } from 'react';
 
 interface Props {
-  altValue: string;
-  imagePath: string;
+  id?: string;
+  alt: string;
+  src: string;
+  width: number;
+  height: number;
+  onClick?: (userId: string) => void;
 }
 
-export default function ProfileImage({ altValue, imagePath }: Props) {
+export function ProfileImage({ id, alt, src, width, height, onClick }: Props) {
   return (
-    <div className={$['profile-img']}>
-      <img src={imagePath} alt={`${altValue}의 프로필 사진`} />
+    <div
+      className={$['profile-img']}
+      style={{ width: width, height: height }}
+      onClick={() => {
+        if (onClick && id) onClick(id);
+      }}
+    >
+      {src ? <img src={src} alt={`${alt}의 프로필 사진`} /> : <BasicProfile />}
     </div>
   );
 }
+
+export default memo(ProfileImage);

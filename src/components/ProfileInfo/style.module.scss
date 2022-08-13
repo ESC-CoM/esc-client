@@ -1,0 +1,24 @@
+@import 'src/styles/_color.scss';
+
+.info {
+  margin: 5px 0;
+  span {
+    margin: 0 3px;
+    color: $white;
+  }
+}
+
+.body-info {
+  span {
+    margin: 0 15px;
+  }
+}
+.chat-box {
+  margin-top: auto;
+  margin-bottom: 0;
+  .chat-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
