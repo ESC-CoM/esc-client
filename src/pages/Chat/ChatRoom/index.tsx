@@ -11,12 +11,17 @@ export default function ChatRoomPage() {
   const [isClickProfile, setIsClickProfile] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startClientY, setStartClientY] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
   const [isOverHalf, setIsOverHalf] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
 
-  const getTranslate = () => {
-    if (isDragging || isOverHalf) return `translateY(${scrollY}px)`;
+  const initTransform = () => {
+    if (profileRef.current)
+      profileRef.current.style.transform = 'translateY(0px)';
+  };
+
+  const getTransform = () => {
+    if (profileRef.current)
+      return +profileRef.current?.style.transform.replace(/[^\d.]/g, '');
   };
 
   const lazyAnimation = () => {
@@ -46,20 +51,9 @@ export default function ChatRoomPage() {
     }
   };
 
-  const onMouseUp = () => {
-    setIsDragging(false);
-
-    if (scrollY >= 300) {
-      setIsOverHalf(true);
-      lazyAnimation();
-    } else {
-      setIsOverHalf(false);
-      setScrollY(0);
-    }
-  };
-
   const onMouseMove = (e: TouchEvent | MouseEvent) => {
-    if (isDragging) {
+    const translateY = getTransform();
+    if (isDragging && profileRef.current && translateY !== undefined) {
       let clientY = 0;
       if (e.type === 'touchmove' && 'touches' in e) {
         clientY = e.touches[0].clientY;
@@ -67,10 +61,26 @@ export default function ChatRoomPage() {
         clientY = e.clientY;
       } else return;
 
-      const updateScrollY = scrollY + clientY - startClientY;
-      if (updateScrollY > 0) {
-        setScrollY(updateScrollY);
+      const updateTranslateY = translateY + (clientY - startClientY);
+
+      if (updateTranslateY > 0) {
+        profileRef.current.style.transform = `translateY(${updateTranslateY}px)`;
         setStartClientY(clientY);
+      }
+    }
+  };
+
+  const onMouseUp = () => {
+    setIsDragging(false);
+    const translateY = getTransform();
+
+    if (translateY !== undefined) {
+      if (translateY >= 300) {
+        setIsOverHalf(true);
+        lazyAnimation();
+      } else {
+        setIsOverHalf(false);
+        initTransform();
       }
     }
   };
@@ -78,21 +88,20 @@ export default function ChatRoomPage() {
   useEffect(() => {
     if (!isClickProfile) {
       setIsOverHalf(false);
-      setScrollY(0);
+      initTransform();
     }
   }, [isClickProfile]);
 
   useEffect(() => {
     if (profileRef.current) {
       const element = profileRef.current;
-      (() => {
-        element.addEventListener('touchstart', onMouseDown);
-        element.addEventListener('touchmove', onMouseMove);
-        element.addEventListener('touchend', onMouseUp);
-        element.addEventListener('mousedown', onMouseDown);
-        element.addEventListener('mousemove', onMouseMove);
-        element.addEventListener('mouseup', onMouseUp);
-      })();
+
+      element.addEventListener('touchstart', onMouseDown);
+      element.addEventListener('touchmove', onMouseMove);
+      element.addEventListener('touchend', onMouseUp);
+      element.addEventListener('mousedown', onMouseDown);
+      element.addEventListener('mousemove', onMouseMove);
+      element.addEventListener('mouseup', onMouseUp);
 
       return () => {
         element.removeEventListener('touchstart', onMouseDown);
@@ -106,13 +115,10 @@ export default function ChatRoomPage() {
   });
 
   return (
-    <PageLayout isNeedFooter={true}>
+    <PageLayout isNeedFooter={false}>
       {isClickProfile && (
         <div
           className={cx($['profile-active'], isOverHalf && $['profile-hidden'])}
-          style={{
-            transform: getTranslate(),
-          }}
           ref={profileRef}
         >
           <PersonalProfilePage closeModal={closeModal} />
