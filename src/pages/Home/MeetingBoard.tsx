@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PageLayout, InfiniteScroll } from 'src/components/Layout';
-import Meeting from 'src/components/Meeting';
+import HomeMeeting from 'src/components/HomeMeeting';
 import { MeetingType } from 'src/types/meeting';
 import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 
@@ -16,7 +16,7 @@ function MeetingBoardPage() {
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
           {meetingList.map((meeting, i) => (
-            <Meeting key={`meeting-${i}`} meeting={meeting} />
+            <HomeMeeting key={`meeting-${i}`} meeting={meeting} />
           ))}
         </ul>
       </InfiniteScroll>
