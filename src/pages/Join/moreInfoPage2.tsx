@@ -1,4 +1,4 @@
-import './style.module.scss';
+import $ from './style.module.scss';
 import { PageLayout } from '../../components/Layout';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -27,7 +27,7 @@ export default function MoreInfoPage2() {
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
-      <section>
+      <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <HeightInput value={height} register={register('height')} />

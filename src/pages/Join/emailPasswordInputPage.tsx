@@ -1,4 +1,4 @@
-import './style.module.scss';
+import $ from './style.module.scss';
 import { PageLayout } from '../../components/Layout';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -36,7 +36,7 @@ export default function EmailPasswordInputPage() {
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
-      <section>
+      <section className={$.container}>
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <EmailInput
