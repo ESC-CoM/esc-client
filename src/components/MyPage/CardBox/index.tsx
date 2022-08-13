@@ -9,10 +9,6 @@ export default function CardBox() {
         <h2 className={$['card-title']}>기본 프로필</h2>
         <MyInformationCard className={$.card} />
       </section>
-      <section>
-        <h2 className={$['card-title']}>계정 정보</h2>
-        <PrivateInformationCard className={$.card} />
-      </section>
     </div>
   );
 }

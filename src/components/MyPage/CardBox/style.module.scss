@@ -1,10 +1,10 @@
 @import '/src/styles/color';
 
 .container {
-  padding: 10px;
+  padding: 0 10px;
 
   .card-title {
-    margin: 15px 0 0 15px;
+    margin-top: 15px;
     color: $gray-600;
   }
 
