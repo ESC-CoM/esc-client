@@ -13,11 +13,14 @@ export default function DeleteFriends() {
     console.log(selectedFriends);
   }, [selectedFriends]);
 
-  const addSelectedFriends = (id: number) =>
-    setSelectedFriends((pre) => [...pre, id]);
-
-  const removeSelectedFriends = (id: number) =>
-    setSelectedFriends((pre) => pre.filter((value) => value !== id));
+  const handleClick = (targetId: number) => {
+    const isExists = selectedFriends.includes(targetId);
+    if (isExists) {
+      setSelectedFriends((pre) => pre.filter((id) => id !== targetId));
+      return;
+    }
+    setSelectedFriends((pre) => [...pre, targetId]);
+  };
 
   return (
     <PageLayout isNeedFooter headerHeight={44}>
@@ -28,9 +31,10 @@ export default function DeleteFriends() {
         {friendMocks.map(({ src, name, id }) => (
           <li key={id} className={$['friend-bar']}>
             <FriendWithCheck
-              {...{ id, src, name, addSelectedFriends, removeSelectedFriends }}
+              isChecked={selectedFriends.includes(id)}
               isVertical={false}
-              padding={10}
+              onClick={() => handleClick(id)}
+              {...{ src, name }}
             />
           </li>
         ))}

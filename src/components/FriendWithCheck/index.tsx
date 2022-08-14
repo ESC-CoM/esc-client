@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import cx from 'classnames';
 import {
   RiCheckboxCircleFill,
@@ -7,43 +7,18 @@ import {
 import $ from './style.module.scss';
 
 interface Props {
-  id: number;
+  isChecked: boolean;
   src: string;
   name: string;
   isVertical: boolean;
-  addSelectedFriends: (id: number) => void;
-  removeSelectedFriends: (id: number) => void;
-  padding?: number;
-  paddingLeft?: number;
+  onClick: () => void;
 }
 
-function FriendWithCheck({
-  id,
-  src,
-  name,
-  isVertical,
-  padding = 0,
-  paddingLeft = 0,
-  addSelectedFriends,
-  removeSelectedFriends,
-}: Props) {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheck = () => {
-    if (isChecked) {
-      removeSelectedFriends(id);
-      setIsChecked(false);
-      return;
-    }
-    addSelectedFriends(id);
-    setIsChecked(true);
-  };
-
+function FriendWithCheck({ isChecked, src, name, isVertical, onClick }: Props) {
   return (
     <div
-      style={{ padding: `${padding}px`, paddingLeft: `${paddingLeft}px` }}
       className={cx($['friend'], { [$['vertical-shape']]: isVertical })}
-      onClick={handleCheck}
+      onClick={onClick}
     >
       <div className={$['left-box']}>
         <div className={$['img-wrapper']}>
