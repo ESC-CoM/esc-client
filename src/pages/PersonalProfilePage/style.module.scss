@@ -10,16 +10,15 @@
     display: flex;
     justify-content: flex-end;
     .close-btn {
-      font-size: 20px;
-      color: $gray-400;
+      font-size: 25px;
+      color: $gray-500;
     }
   }
 
   .profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 70%;
-    margin-top: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }

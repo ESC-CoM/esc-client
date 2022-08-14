@@ -1,0 +1,9 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.more-section {
+  min-height: 300px;
+  padding: 15px;
+  background-color: $white;
+  border-radius: 15px 15px 0 0;
+}
