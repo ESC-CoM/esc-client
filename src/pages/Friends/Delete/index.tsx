@@ -31,7 +31,6 @@ export default function DeleteFriends() {
               {...{ id, src, name, addSelectedFriends, removeSelectedFriends }}
               isVertical={false}
               padding={10}
-              paddingLeft={10}
             />
           </li>
         ))}
