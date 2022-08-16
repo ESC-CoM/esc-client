@@ -45,10 +45,10 @@ export default function RegisterMeeting({
   return (
     <li className={$['my-meeting']} onClick={getRequestList} ref={myMeetingRef}>
       <div className={$['profile-img-list']} ref={imgListRef}>
-        {friends.map((imgUri, index) => (
+        {friends.map(({ src }, index) => (
           <img
-            key={`${imgUri}-${index}`}
-            data-src={imgUri}
+            key={`${src}-${index}`}
+            data-src={src}
             alt="friends"
             onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
               e.currentTarget.onerror = null;
