@@ -66,6 +66,11 @@ const menusLeft: MenuType[] = [
     text: '친구',
     url: '/friends/delete',
   },
+  {
+    icon: <IoChevronBack />,
+    text: '친구 찾기',
+    url: '/friends/add',
+  },
 ];
 
 const menusRight: MenuType[] = [
@@ -103,6 +108,10 @@ const menusRight: MenuType[] = [
     url: '/friends/delete',
   },
   { text: '모두 삭제', url: '/notice' },
+  {
+    text: '추가',
+    url: '/friends/add',
+  },
 ];
 
 export default [menusLeft, menusRight];
