@@ -17,7 +17,7 @@ export default function CardBox() {
           <IoIosArrowForward className={$.button} />
         </Link>
         <Link to="" className={$['setting-bar']}>
-          <span className={$.title}>기본 정보 수정</span>
+          <span className={$.title}>학사 정보 수정</span>
           <IoIosArrowForward className={$.button} />
         </Link>
       </section>
