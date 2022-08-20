@@ -24,9 +24,14 @@ export function ChatCard({
   return (
     <div className={cx($['chat-card'], $[id === 'loginid' ? 'me' : 'other'])}>
       {id === 'other' && (
-        <span className={$['friend-image']} onClick={() => clickProfile(id)}>
-          <ProfileImage alt={name} src={imagePath} width={35} height={35} />
-        </span>
+        <ProfileImage
+          id={id}
+          alt={name}
+          src={imagePath}
+          width={35}
+          height={35}
+          onClick={clickProfile}
+        />
       )}
       <Message id={id} name={name} content={content} />
       <time className={$.date} dateTime={date}>

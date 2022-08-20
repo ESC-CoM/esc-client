@@ -1,0 +1,15 @@
+@import '/src/styles/color';
+@import '/src/styles/mixin';
+
+.search-box {
+  padding: 10px;
+}
+
+.friend-bar {
+  border-top: 1px solid $gray-200;
+
+  &:last-child {
+    margin-bottom: 100px;
+    border-bottom: 1px solid $gray-200;
+  }
+}

@@ -1,7 +1,5 @@
 import $ from './style.module.scss';
-import { Link } from 'react-router-dom';
 import { Profile } from 'src/types/profile';
-import ChatIcon from 'src/components/Icon/ChatIcon';
 
 interface Props {
   profile: Profile;
@@ -10,35 +8,28 @@ interface Props {
 export default function ProfileInfo({ profile }: Props) {
   return (
     <>
-      <article className={$['school-info']}>
+      <div className={$['info']}>
         <span>{profile.name}</span>
-      </article>
+      </div>
 
-      <article className={$['school-info']}>
+      <div className={$['info']}>
         <span>{profile.college}</span>
         <span>{profile.department}</span>
         <span>{profile.studentNum}</span>
-      </article>
+      </div>
 
-      <article className={$['birth-info']}>
+      <div className={$['info']}>
         <span>{profile.birthDate}</span>
-      </article>
+      </div>
 
-      <article className={$['drink-info']}>
+      <div className={$['info']}>
         <span>{profile.drink ? `${profile.drink}병` : '못마셔요'}</span>
-      </article>
+      </div>
 
-      <article className={$['body-info']}>
+      <div className={($['body-info'], $['info'])}>
         <span>{profile.height}cm</span>
         <span>{profile.weight}kg</span>
-      </article>
-
-      <article className={$['chat-box']}>
-        <Link to="chat/" className={$['chat-link']}>
-          <span>{<ChatIcon />}</span>
-          <span>대화하기</span>
-        </Link>
-      </article>
+      </div>
     </>
   );
 }

@@ -4,15 +4,16 @@
 
 .detail-info {
   position: sticky;
-  top: 84px;
+  top: 0;
   display: flex;
   padding: 15px;
-  border-bottom: 1px solid $gray-250;
+  box-shadow: 0 5px 3px -2px $gray-300;
   background-color: $white;
 
   .friends-image-list {
     display: flex;
     margin: 0 15px;
+    cursor: pointer;
     img {
       margin-left: -20px;
       width: 50px;
@@ -40,6 +41,25 @@
     }
   }
 }
-.requested {
-  overflow: scroll;
+
+.requested-list {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    // border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: black;
+    border-radius: 10px;
+  }
+
+  // &::-webkit-scrollbar-thumb:hover {
+  //   background: rgb(54, 56, 58);
+  // }
 }

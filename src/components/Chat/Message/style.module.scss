@@ -3,7 +3,7 @@
 @mixin messageBox($color, $backgroundColor) {
   margin-top: 5px;
   padding: 8px 10px;
-  border-radius: 22px;
+  border-radius: 20px;
   font-size: 12px;
   color: $color;
   background-color: $backgroundColor;
