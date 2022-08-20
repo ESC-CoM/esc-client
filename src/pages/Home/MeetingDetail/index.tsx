@@ -8,7 +8,7 @@ function MeetingDetailPage() {
   const { title, content, friends } = meetingDetailMocks;
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={59}>
+    <PageLayout isNeedFooter={false} decreaseHeight={54}>
       <main className={$['detail-box']}>
         <ProfileCardList friends={friends} />
         <ContentBox {...{ title, content }} isReadMode />
