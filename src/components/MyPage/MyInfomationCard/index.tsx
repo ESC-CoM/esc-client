@@ -1,5 +1,9 @@
 import cx from 'classnames';
 import { AiOutlineMan } from 'react-icons/ai';
+import { MdOutlineSchool } from 'react-icons/md';
+import { RiCake2Fill } from 'react-icons/ri';
+import { IoBeer, IoBody } from 'react-icons/io5';
+import { GiWeightScale } from 'react-icons/gi';
 import EditButton from '../EditButton';
 import $ from './style.module.scss';
 
@@ -25,13 +29,23 @@ export default function MyInformationCard({ className }: Prop) {
             <AiOutlineMan className={$.icon} />
           </div>
           <ul className={$['detail-information']}>
-            <li>🎓 사회과학대학 심리학과 19학번</li>
-            <li>🎂 2000년 2월 6일</li>
-            <li>🍺 못 마셔요</li>
+            <li>
+              <MdOutlineSchool /> 사회과학대학 심리학과 19학번
+            </li>
+            <li>
+              <RiCake2Fill /> 2000년 2월 6일
+            </li>
+            <li>
+              <IoBeer /> 못 마셔요
+            </li>
           </ul>
           <div className={$['body-information']}>
-            <span>키: 175cm</span>
-            <span>몸무게: 59kg</span>
+            <span>
+              <IoBody /> 175cm
+            </span>
+            <span>
+              <GiWeightScale /> 59kg
+            </span>
           </div>
         </div>
       </div>

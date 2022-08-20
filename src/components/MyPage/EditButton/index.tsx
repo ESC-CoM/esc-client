@@ -1,4 +1,4 @@
-import { GrNext } from 'react-icons/gr';
+import { IoIosArrowForward } from 'react-icons/io';
 import $ from './style.module.scss';
 
 type Prop = {
@@ -12,7 +12,7 @@ export default function EditButton({ className }: Prop) {
       type="button"
       aria-label="프로필 정보 상세보기"
     >
-      <GrNext className={$.icon} />
+      <IoIosArrowForward className={$.icon} />
     </button>
   );
 }
