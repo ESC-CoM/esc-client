@@ -2,6 +2,12 @@
 
 .add-meeting {
   @include floating-Btn(auto, 17px, 72px, auto);
+  @include tablet() {
+    right: calc((100vw - 758px) / 2 + 17px);
+  }
+  @include desktop() {
+    right: calc((100vw - 758px) / 2 + 17px);
+  }
   display: flex;
   align-items: center;
   justify-content: center;
