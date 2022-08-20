@@ -1,5 +1,6 @@
 import $ from './style.module.scss';
 import cx from 'classnames';
+import { memo } from 'react';
 
 interface Props {
   id: string;
@@ -7,7 +8,7 @@ interface Props {
   content: string;
 }
 
-export default function Message({ id, name, content }: Props) {
+export function Message({ id, name, content }: Props) {
   const isMe = id === 'loginid';
 
   return (
@@ -19,3 +20,5 @@ export default function Message({ id, name, content }: Props) {
     </div>
   );
 }
+
+export default memo(Message);

@@ -65,6 +65,7 @@ const menusLeft: MenuType[] = [
     text: '내 정보',
     url: '/mypage',
   },
+  { icon: <IoChevronBack />, text: '친구' },
 ];
 
 const menusRight: MenuType[] = [
@@ -96,6 +97,10 @@ const menusRight: MenuType[] = [
   {
     icon: <BsPersonDash />,
     url: '/friends',
+  },
+  {
+    text: '삭제',
+    url: '/friends/delete',
   },
   { text: '모두 삭제', url: '/notice' },
 ];
