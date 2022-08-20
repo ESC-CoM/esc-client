@@ -168,3 +168,12 @@
   }
   animation: FadeOut 0.4s ease-out;
 }
+
+@mixin floating-Btn($top, $right, $bottom, $left) {
+  z-index: 99;
+  position: fixed;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
