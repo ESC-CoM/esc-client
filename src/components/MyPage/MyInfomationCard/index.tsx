@@ -3,8 +3,8 @@ import { AiOutlineMan } from 'react-icons/ai';
 import { MdOutlineSchool } from 'react-icons/md';
 import { RiCake2Fill } from 'react-icons/ri';
 import { IoBeer, IoBody } from 'react-icons/io5';
+import { IoIosArrowForward } from 'react-icons/io';
 import { GiWeightScale } from 'react-icons/gi';
-import EditButton from '../EditButton';
 import $ from './style.module.scss';
 
 type Prop = {
@@ -49,7 +49,7 @@ export default function MyInformationCard({ className }: Prop) {
           </div>
         </div>
       </div>
-      <EditButton className={$.button} />
+      <IoIosArrowForward className={$.button} />
     </div>
   );
 }

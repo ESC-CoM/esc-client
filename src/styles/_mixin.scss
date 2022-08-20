@@ -115,7 +115,7 @@
 @mixin profile-card($height) {
   height: $height;
   background-color: $white;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 @mixin FadeIn() {
