@@ -6,6 +6,7 @@ import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term, NextButton } from 'src/components/Join';
+import Modal from 'src/components/Modal';
 
 export default function MoreInfoPage2() {
   const { setJoinInfo } = useStore();
@@ -14,7 +15,7 @@ export default function MoreInfoPage2() {
   });
 
   const [height, weight, drink] = watch(['height', 'weight', 'drink']);
-  const [termsOpen, setTermsOpen] = useState<boolean>(false);
+  const [termsOpen, setTermsOpen] = useState(false);
 
   const onSubmit = (data: More2Type) => {
     const more2Info = { height, weight, drink };
@@ -36,7 +37,8 @@ export default function MoreInfoPage2() {
           <NextButton text={'다음'} onClick={() => onSubmit(watch())} />
         </form>
         {termsOpen && (
-          <Term
+          <Modal
+            children={<Term />}
             toggleModal={() => setTermsOpen(!termsOpen)}
             onState={termsOpen}
           />

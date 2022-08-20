@@ -1,0 +1,18 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+
+.mbti-list {
+  display: flex;
+  flex-direction: column;
+
+  .mbti-element {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 0;
+    margin: 5px 0;
+    background-color: $gray-200;
+    border-radius: $borderBoxRadius;
+    cursor: pointer;
+  }
+}

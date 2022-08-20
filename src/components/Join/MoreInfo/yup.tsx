@@ -10,7 +10,7 @@ const MoreJoinSchema = yup.object({
     .required('생년월일을 선택해주세요.'),
   month: yup.string().required('생년월일을 선택해주세요.'),
   day: yup.string().required('생년월일을 선택해주세요.'),
-  mbti: yup.string().min(4, 'MBTI를 선택해주세요.'),
+  mbti: yup.string().required('MBTI를 선택해주세요'),
 });
 
 export default MoreJoinSchema;

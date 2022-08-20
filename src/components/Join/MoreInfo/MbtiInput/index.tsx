@@ -1,35 +1,48 @@
 import $ from './style.module.scss';
 import cx from 'classnames';
-import { UseFormRegister, FieldError } from 'react-hook-form';
-import { mbtiList } from '../data';
+import { FieldError, UseFormSetValue } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
+import Modal from 'src/components/Modal';
+import { useState } from 'react';
+import MbtiList from './List';
 
 interface Props {
-  register: UseFormRegister<More1Type>;
+  mbti: string;
+  setValue: UseFormSetValue<More1Type>;
   errors?: FieldError;
 }
 
-export default function MbtiInput({ register, errors }: Props) {
+export default function MbtiInput({ mbti, setValue, errors }: Props) {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
     <div className={$['item']}>
       <label htmlFor="mbti">{errors?.message ?? 'MBTI'}</label>
+      <div className={$['item-btn']}>
+        <input
+          type="button"
+          className={cx($[''], {
+            [$['error']]: errors?.message,
+            [$['mbti']]: mbti,
+          })}
+          value={mbti || '선택'}
+          onClick={() => setIsClicked(true)}
+        />
+      </div>
 
-      <select
-        className={cx($[''], {
-          [$['error']]: errors?.message,
-        })}
-        defaultValue=""
-        {...register('mbti')}
-      >
-        <option disabled value="">
-          --- 선택 ---
-        </option>
-        {mbtiList.map((value) => (
-          <option key={value} value={value}>
-            {value}
-          </option>
-        ))}
-      </select>
+      {isClicked && (
+        <Modal
+          children={
+            <MbtiList
+              setValue={setValue}
+              toggleModal={() => setIsClicked(!isClicked)}
+              onState={isClicked}
+            />
+          }
+          toggleModal={() => setIsClicked(!isClicked)}
+          onState={isClicked}
+        />
+      )}
     </div>
   );
 }

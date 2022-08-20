@@ -9,11 +9,18 @@
     padding: 10px 0;
   }
 
-  select {
-    @include select(100%, 40px, 14px, 2px solid $gray-300);
+  .item-btn {
     margin: 10px 0;
-  }
-  .error {
-    border-bottom: 1.5px solid $red;
+    input {
+      @include input(100%);
+      color: $gray-600;
+    }
+    .mbti {
+      color: $primary;
+      border-bottom: 2px solid $primary;
+    }
+    .error {
+      border-bottom: 1.5px solid $red;
+    }
   }
 }

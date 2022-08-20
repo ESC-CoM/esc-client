@@ -1,41 +1,40 @@
-@import '../../../styles/_color.scss';
+@import 'src/styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.screen {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  background-color: $modalBackground;
-  z-index: 1;
+.term-form {
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 10px;
+  }
 
-  .form {
-    width: 100%;
-    max-width: 758px;
-    padding: 30px 15px 10px;
-    border-radius: 20px 20px 0 0;
-    background-color: $white;
-    z-index: 3;
-    transition: all 0.2s ease-out;
-    animation: FadeIn 0.3s ease-in;
+  .all-check {
+    display: flex;
+    padding: 5px 0;
+    border-bottom: 1px solid $gray-300;
 
-    h2 {
-      font-size: 20px;
-      font-weight: 700;
-      padding-bottom: 10px;
+    .all-check-box {
+      padding-right: 10px;
+      font-size: 18px;
+      color: $gray-500;
     }
+    .checked {
+      color: $primary;
+    }
+    .title {
+      font-size: 16px;
+    }
+  }
 
-    .all-check {
+  .terms-list {
+    padding: 10px 0;
+
+    .terms-bx {
+      position: relative;
       display: flex;
       padding: 5px 0;
-      border-bottom: 1px solid $gray-300;
 
-      .all-check-box {
+      .check-box {
         padding-right: 10px;
         font-size: 18px;
         color: $gray-500;
@@ -44,65 +43,22 @@
         color: $primary;
       }
       .title {
-        font-size: 16px;
+        font-size: 14px;
+      }
+      .url {
+        position: absolute;
+        right: 0;
+        color: $gray-600;
       }
     }
-
-    .terms-list {
-      padding: 10px 0;
-
-      .terms-bx {
-        position: relative;
-        display: flex;
-        padding: 5px 0;
-
-        .check-box {
-          padding-right: 10px;
-          font-size: 18px;
-          color: $gray-500;
-        }
-        .checked {
-          color: $primary;
-        }
-        .title {
-          font-size: 14px;
-        }
-        .url {
-          position: absolute;
-          right: 0;
-          color: $gray-600;
-        }
-      }
-    }
-    .error {
-      position: absolute;
-      color: $orange;
-      font-size: 14px;
-    }
-    .next-btn {
-      @include button(100%, none, $primary, $white, 20px);
-      margin-top: 30px;
-    }
   }
-  .back {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+  .error {
+    position: absolute;
+    color: $orange;
+    font-size: 14px;
   }
-}
-
-@keyframes FadeIn {
-  0% {
-    opacity: 0;
-  }
-  1% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  100% {
-    opacity: 1;
+  .next-btn {
+    @include button(100%, none, $primary, $white, 20px);
+    margin-top: 30px;
   }
 }
