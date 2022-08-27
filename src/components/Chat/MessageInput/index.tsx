@@ -1,10 +1,14 @@
-import { memo, useCallback, useRef, useState } from 'react';
+import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import $ from './style.module.scss';
 // import ContentBox from 'src/components/ContentBox';
 import useAutoHeightChange from 'src/hooks/useAutoHeightChange';
 import { IoSend, IoImages } from 'react-icons/io5';
 
-export function MessageInput() {
+interface Props {
+  setAlbums: React.Dispatch<React.SetStateAction<FileList | null | undefined>>;
+}
+
+export function MessageInput({ setAlbums }: Props) {
   const [newContent, setNewContent] = useState('');
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
@@ -24,13 +28,18 @@ export function MessageInput() {
     }
   }, []);
 
+  const loadAlbum = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.currentTarget.files);
+    setAlbums(e.currentTarget.files);
+  };
+
   return (
     <div className={$['message-input-box']} ref={parentRef}>
-      <div className={$['img-btn']}>
-        <button type="button">
-          <IoImages />
-        </button>
-      </div>
+      <label htmlFor="file">
+        <IoImages className={$['img-btn']} />
+      </label>
+      <input type="file" name="file" id="file" multiple onChange={loadAlbum} />
+
       <div className={$.text}>
         <textarea
           name="message"
