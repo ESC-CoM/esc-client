@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import { UseFormSetValue } from 'react-hook-form';
-import { Label, CheckBox } from '../../atoms';
+import { Label, CheckBox } from '../atoms';
 import { Inputs } from '../Login';
 import styles from './style.module.scss';
 

@@ -16,14 +16,14 @@
 
   .children {
     z-index: 3;
+    overflow-y: auto;
     width: 100%;
     max-width: 758px;
     max-height: 300px;
     padding: 25px;
     border-radius: 20px 20px 0 0;
     background-color: $white;
-    @include FadeIn();
-    overflow-y: auto;
+    @include FadeUp();
     &::-webkit-scrollbar {
       display: none;
     }
