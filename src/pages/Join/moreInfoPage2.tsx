@@ -40,7 +40,7 @@ export default function MoreInfoPage2() {
           <Modal
             children={<Term />}
             toggleModal={() => setIsTermsOpen(!isTermsOpen)}
-            onState={isTermsOpen}
+            isModalOpen={isTermsOpen}
           />
         )}
       </section>

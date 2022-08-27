@@ -25,7 +25,7 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
       <div className={$['item-btn']}>
         <input
           type="button"
-          className={cx($[''], {
+          className={cx({
             [$['error']]: errors?.message,
             [$['mbti']]: mbti,
           })}
@@ -43,7 +43,7 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
             />
           }
           toggleModal={() => setIsOpen(!isOpen)}
-          onState={isOpen}
+          isModalOpen={isOpen}
         />
       )}
     </div>

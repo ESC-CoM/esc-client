@@ -2,7 +2,6 @@
 @import 'src/styles/_mixin.scss';
 
 .modal {
-  z-index: 1;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -11,11 +10,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
   background-color: $modalBackground;
 
   .children {
-    z-index: 3;
+    z-index: 1;
     overflow-y: auto;
     width: 100%;
     max-width: 758px;
@@ -30,7 +28,6 @@
   }
 
   .back {
-    z-index: 2;
     position: fixed;
     top: 0;
     bottom: 0;

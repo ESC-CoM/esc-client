@@ -2,21 +2,19 @@ import $ from './style.module.scss';
 
 interface Props {
   children: JSX.Element;
-  onState: boolean;
+  isModalOpen: boolean;
   toggleModal: () => void;
 }
 
-export default function Modal({ children, onState, toggleModal }: Props) {
+export default function Modal({ children, isModalOpen, toggleModal }: Props) {
+  const handleClick = () => {
+    if (isModalOpen) toggleModal();
+  };
+
   return (
     <div className={$.modal}>
       <div className={$.children}>{children}</div>
-      <div
-        className={$['back']}
-        onClick={(e: React.MouseEvent) => {
-          e.preventDefault();
-          if (onState) toggleModal();
-        }}
-      />
+      <div className={$['back']} onClick={handleClick} />
     </div>
   );
 }

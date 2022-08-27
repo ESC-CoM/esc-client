@@ -15,16 +15,16 @@ export default function MbtiList({ setValue, toggleModal }: Props) {
   };
 
   return (
-    <div className={$['mbti-list']}>
+    <ul className={$['mbti-list']}>
       {mbtiList.map((value, index) => (
-        <span
+        <li
           key={value + index}
           className={$['mbti-element']}
           onClick={() => handleClick(value)}
         >
           {value}
-        </span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
