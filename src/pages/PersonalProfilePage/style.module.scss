@@ -3,8 +3,9 @@
 .profile-box {
   position: relative;
   height: 100%;
-  background-color: $gray-700;
   padding: 10px;
+  background-repeat: no-repeat;
+  background-size: 100%;
 
   .close-profile {
     display: flex;

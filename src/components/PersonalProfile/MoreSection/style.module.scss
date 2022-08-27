@@ -3,6 +3,9 @@
 
 .more-section {
   min-height: 300px;
+  @include desktop() {
+    min-height: 360px;
+  }
   padding: 15px;
   background-color: $white;
   border-radius: 15px 15px 0 0;

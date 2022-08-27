@@ -5,6 +5,7 @@ import { IoClose } from 'react-icons/io5';
 import { memo } from 'react';
 import { BasicSection, MoreSection } from 'src/components/PersonalProfile';
 import { BasicInfoType, MoreInfoType } from 'src/types/profile';
+import ProfileBackgound from 'src/components/Icon/ProfileBackgound.svg';
 
 interface Props {
   closeModal: () => void;
@@ -33,7 +34,12 @@ export function PersonalProfilePage({ closeModal }: Props) {
   }, []);
 
   return (
-    <section className={$['profile-box']}>
+    <section
+      className={$['profile-box']}
+      style={{
+        backgroundImage: `url(${ProfileBackgound})`,
+      }}
+    >
       <div className={$['close-profile']} onClick={closeModal}>
         <button className={$['close-btn']}>
           <IoClose />
