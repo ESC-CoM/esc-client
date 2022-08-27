@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { PageLayout, InfiniteScroll } from 'src/components/shared/Layout';
-import HomeMeeting from 'src/components/MeetingHome';
+import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import { MeetingType } from 'src/types/meeting';
 import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 import $ from './style.module.scss';
