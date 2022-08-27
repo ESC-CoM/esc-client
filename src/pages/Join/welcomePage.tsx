@@ -1,4 +1,4 @@
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 import { Welcome } from 'src/components/Join';
 
 export default function WelcomePage() {
