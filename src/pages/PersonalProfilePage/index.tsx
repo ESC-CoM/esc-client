@@ -5,7 +5,7 @@ import { IoClose } from 'react-icons/io5';
 import { memo } from 'react';
 import { BasicSection, MoreSection } from 'src/components/PersonalProfile';
 import { BasicInfoType, MoreInfoType } from 'src/types/profile';
-import ProfileBackgound from 'src/components/Icon/ProfileBackgound.svg';
+import ProfileBackgound from 'src/components/shared/Icon/ProfileBackgound.svg';
 
 interface Props {
   closeModal: () => void;
