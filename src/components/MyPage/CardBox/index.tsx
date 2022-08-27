@@ -12,19 +12,22 @@ export default function CardBox() {
       </section>
       <section>
         <h2 className={$['card-title']}>계정 정보</h2>
-        <Link to="" className={$['setting-bar']}>
-          <span className={$.title}>기본 정보 수정</span>
-          <IoIosArrowForward className={$.button} />
-        </Link>
-        <Link to="" className={$['setting-bar']}>
-          <span className={$.title}>학사 정보 수정</span>
-          <IoIosArrowForward className={$.button} />
-        </Link>
+        <div className={$['setting-group']}>
+          <Link to="" className={$['item']}>
+            <span className={$['setting-title']}>기본 정보 수정</span>
+            <IoIosArrowForward className={$.button} />
+          </Link>
+          <hr className={$.line} />
+          <Link to="" className={$['item']}>
+            <span className={$['setting-title']}>학사 정보 수정</span>
+            <IoIosArrowForward className={$.button} />
+          </Link>
+        </div>
       </section>
       <section>
         <h2 className={$['card-title']}>기타</h2>
         <Link to="" className={$['setting-bar']}>
-          <span className={$.title}>친구 초대</span>
+          <span className={$['setting-title']}>친구 초대</span>
           <IoIosArrowForward className={$.button} />
         </Link>
       </section>

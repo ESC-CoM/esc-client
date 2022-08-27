@@ -1,19 +1,18 @@
 import cx from 'classnames';
 import { AiOutlineMan } from 'react-icons/ai';
-import { MdOutlineSchool } from 'react-icons/md';
-import { RiCake2Fill } from 'react-icons/ri';
-import { IoBeer, IoBody } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io';
-import { GiWeightScale } from 'react-icons/gi';
 import $ from './style.module.scss';
 import { ProfileImage } from 'src/components/Chat/ProfileImage';
+import InformationBar from '../InformationBar';
+import {
+  MOCK_BASIC_INFORMATION,
+  MOCK_BODY_DATA,
+  MOCK_URL,
+} from 'src/__mocks__/mypageMocks';
 
 type Prop = {
   className: string;
 };
-
-const MOCK_URL =
-  'https://img.freepik.com/free-photo/3d-rendering-zoom-call-avatar_23-2149556779.jpg?w=2000&t=st=1661578223~exp=1661578823~hmac=fcbafec28b2bc396b64f33424ed8fb434b852ba0e36ecddada0b49950562de78' as const;
 
 export default function MyInformationCard({ className }: Prop) {
   return (
@@ -28,25 +27,16 @@ export default function MyInformationCard({ className }: Prop) {
             <em className={$.name}>최현오</em>
             <AiOutlineMan className={$.icon} />
           </div>
-          <ul className={$['detail-information']}>
-            <li>
-              <MdOutlineSchool /> 사회과학대학 심리학과 19학번
-            </li>
-            <li>
-              <RiCake2Fill /> 2000년 2월 6일
-            </li>
-            <li>
-              <IoBeer /> 못 마셔요
-            </li>
+          <ul>
+            {MOCK_BASIC_INFORMATION.map(({ icon, text }) => (
+              <InformationBar {...{ icon, text }} />
+            ))}
           </ul>
-          <div className={$['body-information']}>
-            <span>
-              <IoBody /> 175cm
-            </span>
-            <span>
-              <GiWeightScale /> 59kg
-            </span>
-          </div>
+          <ul className={$['body-information']}>
+            {MOCK_BODY_DATA.map(({ icon, text }) => (
+              <InformationBar className={$.item} {...{ icon, text }} />
+            ))}
+          </ul>
         </div>
       </div>
       <IoIosArrowForward className={$.button} />

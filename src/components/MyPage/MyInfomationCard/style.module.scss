@@ -49,27 +49,13 @@
         }
       }
 
-      .detail-information {
-        margin-top: 10px;
-        font-size: 14px;
-        line-height: 20px;
-        word-break: keep-all;
-
-        & > li {
-          color: $gray-700;
-        }
-      }
-
       .body-information {
+        display: flex;
         margin-top: 15px;
         font-size: 14px;
 
-        & > span {
-          color: $gray-700;
-
-          &:nth-child(2) {
-            margin-left: 10px;
-          }
+        .item:first-child {
+          margin-right: 29px;
         }
       }
     }
