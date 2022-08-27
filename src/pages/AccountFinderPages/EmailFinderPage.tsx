@@ -1,5 +1,5 @@
 import { EmailFinder } from 'src/components/AccountFinder';
-import { PageLayout } from '../../components/Layout';
+import { PageLayout } from '../../components/shared/Layout';
 
 export default function EmailFinderPage() {
   return (

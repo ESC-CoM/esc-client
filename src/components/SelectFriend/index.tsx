@@ -1,4 +1,4 @@
-import Friend from 'src/components/Friend';
+import Friend from 'src/components/shared/Friend';
 import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
 import cx from 'classnames';
 import $ from './style.module.scss';

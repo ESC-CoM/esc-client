@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { PageLayout } from 'src/components/Layout';
-import Search from 'src/components/Search';
+import { PageLayout } from 'src/components/shared/Layout';
+import Search from 'src/components/shared/Search';
 import { friendMocks, meetingApplyContent } from 'src/__mocks__/friendMocks';
 import $ from './style.module.scss';
 import SelectFriend from 'src/components/SelectFriend';
 import { FriendType, MeetingTitle } from 'src/types/meeting';
-import Friend from 'src/components/Friend';
-import ContentBox from 'src/components/ContentBox';
+import Friend from 'src/components/shared/Friend';
+import ContentBox from 'src/components/shared/ContentBox';
 
 export default function MeetingApplyPage() {
   const [friendFetchData, setFriendFetchData] = useState<FriendType[]>([]);

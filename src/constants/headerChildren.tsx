@@ -1,4 +1,4 @@
-import MyMeetingCategory from 'src/components/Header/MyMeetingCategory';
+import MyMeetingCategory from 'src/components/shared/Header/MyMeetingCategory';
 
 type ChildrenType = {
   children: JSX.Element;

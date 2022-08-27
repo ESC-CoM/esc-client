@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import BasicProfile from 'src/components/Icon/BasicProfile';
+import BasicProfile from 'src/components/shared/Icon/BasicProfile';
 import { memo } from 'react';
 
 interface Props {

@@ -1,8 +1,8 @@
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 import { friendMocks } from 'src/__mocks__/friendMocks';
 import $ from './style.module.scss';
-import Search from 'src/components/Search';
-import Friend from 'src/components/Friend';
+import Search from 'src/components/shared/Search';
+import Friend from 'src/components/shared/Friend';
 
 export default function Friends() {
   return (

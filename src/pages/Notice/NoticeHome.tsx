@@ -1,4 +1,4 @@
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 import NoticeCard from 'src/components/Notice/NoticeCard';
 import noticeList from 'src/__mocks__/notice';
 import $ from './style.module.scss';

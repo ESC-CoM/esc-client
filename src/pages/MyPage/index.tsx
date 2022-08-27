@@ -1,5 +1,5 @@
 import { CardBox } from 'src/components/MyPage';
-import { PageLayout } from '../../components/Layout';
+import { PageLayout } from '../../components/shared/Layout';
 
 export default function MyPage() {
   return (
