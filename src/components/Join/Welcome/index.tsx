@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import $ from './style.module.scss';
 
+const NEXT_PATH = '/login';
 export default function Welcome() {
   // TODO: 배경 이미지 바꾸기
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(NEXT_PATH);
+  };
+
   return (
     <section className={$.welcome}>
       <img
@@ -14,7 +21,9 @@ export default function Welcome() {
           <p>블루스프링 가입이 완료되었습니다. </p>
           <p>내정보에서 원하는 항목의 공개유무를 설정해보세요!</p>
         </div>
-        <button className={$['start-btn']}>블루스프링 시작하기</button>
+        <button className={$['start-btn']} onClick={handleClick}>
+          블루스프링 시작하기
+        </button>
       </div>
     </section>
   );
