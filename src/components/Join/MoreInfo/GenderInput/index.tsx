@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { UseFormSetValue, FieldError } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
 import { memo } from 'react';
+import { Label } from 'src/components/Join';
 
 interface Props {
   value: string;
@@ -13,7 +14,8 @@ interface Props {
 export function GenderInput({ value, setValue, errors }: Props) {
   return (
     <div className={$['item']}>
-      <label>{errors?.message ?? '성별'}</label>
+      <Label label={'성별'} errorMsg={errors?.message} />
+
       <div className={$['row']}>
         <button
           className={cx($['gender-btn'], {

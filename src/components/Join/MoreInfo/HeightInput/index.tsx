@@ -2,6 +2,7 @@ import $ from './style.module.scss';
 import { heightInfo } from '../data';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { memo } from 'react';
+import { Label } from 'src/components/Join';
 
 interface Props {
   value: number;
@@ -11,7 +12,7 @@ interface Props {
 export function HeightInput({ value, register }: Props) {
   return (
     <div className={$['item']}>
-      <label htmlFor="height">키</label>
+      <Label label={'키'} htmlFor={'height'} />
 
       <span className={$['info']}>
         {heightInfo.filter((mark) => value == mark.value)[0].label}

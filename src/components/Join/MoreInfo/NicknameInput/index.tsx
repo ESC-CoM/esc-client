@@ -8,6 +8,7 @@ import {
 } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
 import { memo } from 'react';
+import { Label } from 'src/components/Join';
 
 interface Props {
   watch: UseFormWatch<More1Type>;
@@ -16,7 +17,7 @@ interface Props {
   errors: FieldErrors<More1Type>;
 }
 
-export function Nickname({ watch, register, setValue, errors }: Props) {
+export function NicknameInput({ watch, register, setValue, errors }: Props) {
   const isNicknameDuplicated = watch('isNicknameDuplicated', false);
 
   const checkDuplication = () => {
@@ -26,7 +27,12 @@ export function Nickname({ watch, register, setValue, errors }: Props) {
 
   return (
     <div className={$['item']}>
-      <label htmlFor="nickName">{errors.nickName?.message ?? '별명'}</label>
+      <Label
+        label={'별명'}
+        htmlFor={'nickName'}
+        errorMsg={errors.nickName?.message}
+      />
+
       <div className={$['row']}>
         <input
           type="text"
@@ -48,4 +54,4 @@ export function Nickname({ watch, register, setValue, errors }: Props) {
   );
 }
 
-export default memo(Nickname);
+export default memo(NicknameInput);

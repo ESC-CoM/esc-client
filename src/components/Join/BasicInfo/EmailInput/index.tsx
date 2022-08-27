@@ -6,6 +6,7 @@ import {
   FieldErrors,
 } from 'react-hook-form';
 import { EmailPasswordType } from 'src/types/join';
+import { Label } from 'src/components/Join';
 
 interface Props {
   isEmailDuplicated: boolean;
@@ -26,7 +27,12 @@ export default function EmailInput({
 
   return (
     <div className={$['item']}>
-      <label htmlFor="email">{errors.email?.message ?? '이메일'}</label>
+      <Label
+        label={'이메일'}
+        htmlFor={'email'}
+        errorMsg={errors.email?.message}
+      />
+
       <div className={$['row']}>
         <input
           className={cx($['input'], {

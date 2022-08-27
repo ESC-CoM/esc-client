@@ -12,6 +12,7 @@ import AuthTimer from './authTimer';
 import { useEffect } from 'react';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
+import { Label } from 'src/components/Join';
 
 interface Props {
   watch: UseFormWatch<PhoneAuthType>;
@@ -58,9 +59,12 @@ export default function PhoneAuth({
       <h1>휴대폰 인증을 해주세요</h1>
 
       <div className={$['item']}>
-        <label htmlFor="phoneNumber">
-          {errors.phoneNumber?.message ?? '휴대폰 번호'}
-        </label>
+        <Label
+          label={'휴대폰 번호'}
+          htmlFor={'phoneNumber'}
+          errorMsg={errors.phoneNumber?.message}
+        />
+
         <div className={$['row']}>
           <input
             type="text"

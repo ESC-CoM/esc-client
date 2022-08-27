@@ -9,7 +9,7 @@ import {
   BirthInput,
   MbtiInput,
   NextButton,
-  Nickname,
+  NicknameInput,
 } from '../../components/Join';
 import { More1Type } from 'src/types/join';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
@@ -46,7 +46,7 @@ export default function MoreInfoPage1() {
       <section>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Nickname
+          <NicknameInput
             watch={watch}
             register={register}
             setValue={setValue}

@@ -4,6 +4,7 @@ import { UseFormRegister, FieldError } from 'react-hook-form';
 import { mbtiList } from '../data';
 import { More1Type } from 'src/types/join';
 import { memo } from 'react';
+import { Label } from 'src/components/Join';
 
 interface Props {
   register: UseFormRegister<More1Type>;
@@ -13,7 +14,7 @@ interface Props {
 export function MbtiInput({ register, errors }: Props) {
   return (
     <div className={$['item']}>
-      <label htmlFor="mbti">{errors?.message ?? 'MBTI'}</label>
+      <Label label={'MBTI'} errorMsg={errors?.message} />
 
       <select
         className={cx($[''], {
