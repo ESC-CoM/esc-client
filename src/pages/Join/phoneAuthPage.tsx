@@ -1,4 +1,4 @@
-import { PageLayout } from '../../components/Layout';
+import { PageLayout } from '../../components/shared/Layout';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { NextButton, PhoneAuth } from '../../components/Join';

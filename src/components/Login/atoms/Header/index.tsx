@@ -1,4 +1,4 @@
-import BackButton from '../BackButton';
+import BackButton from '../../../shared/BackButton';
 import styles from './style.module.scss';
 
 type Props = {

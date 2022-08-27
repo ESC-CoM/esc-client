@@ -1,4 +1,4 @@
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 import $ from './style.module.scss';
 import cx from 'classnames';
 import { MessageInput } from 'src/components/Chat';

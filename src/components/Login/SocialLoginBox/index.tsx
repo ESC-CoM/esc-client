@@ -1,4 +1,4 @@
-import { SocialLoginButton } from '../../atoms';
+import { SocialLoginButton } from '../atoms';
 import styles from './style.module.scss';
 
 interface Props {

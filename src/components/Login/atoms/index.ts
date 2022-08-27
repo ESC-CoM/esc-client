@@ -1,13 +1,13 @@
 import SocialLoginButton from './SocialLoginButton';
-import GrayLink from './GrayLink';
-import SaparateLine from './SaparateLine';
-import Label from './Label';
-import CheckBox from './CheckBox';
-import ErrorMessage from './ErrorMessage';
+import GrayLink from '../../shared/GrayLink';
+import SaparateLine from '../../shared/SaparateLine';
+import Label from '../../shared/Label';
+import CheckBox from '../../shared/CheckBox';
+import ErrorMessage from '../../shared/ErrorMessage';
 import ResetFieldButton from './ResetFieldButton';
 import ViewPasswordButton from './ViewPasswordButton';
 import LoginTitle from './LoginTitle';
-import BackButton from './BackButton';
+import BackButton from '../../shared/BackButton';
 import Header from './Header';
 
 export {

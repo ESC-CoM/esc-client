@@ -1,7 +1,7 @@
 import Footer from '../Footer';
-import { useEffect, ReactNode } from 'react';
+import { forwardRef, useEffect, ReactNode, ForwardedRef } from 'react';
 import style from './style.module.scss';
-import Header from 'src/components/Header/Basic';
+import Header from 'src/components/shared/Layout/Header/Basic';
 import { useLocation } from 'react-router-dom';
 import headerChildren from 'src/constants/headerChildren';
 
@@ -12,12 +12,10 @@ interface Props {
   decreaseHeight?: number;
 }
 
-export default function PageLayout({
-  isNeedFooter,
-  children,
-  headerHeight = 0,
-  decreaseHeight = 0,
-}: Props) {
+function PageLayout(
+  { isNeedFooter, children, headerHeight = 0, decreaseHeight = 0 }: Props,
+  ref: ForwardedRef<HTMLDivElement> | null
+) {
   const location = useLocation();
   const footerHeight = isNeedFooter ? 55 : 0;
 
@@ -39,6 +37,7 @@ export default function PageLayout({
         })}
       <main
         className={style.layout}
+        ref={ref}
         style={{
           maxHeight: `calc(100vh - ${
             headerHeight + footerHeight + decreaseHeight
@@ -51,3 +50,4 @@ export default function PageLayout({
     </>
   );
 }
+export default forwardRef(PageLayout);

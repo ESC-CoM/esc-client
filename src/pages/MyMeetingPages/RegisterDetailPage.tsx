@@ -5,7 +5,7 @@ import {
   requestListMocks,
 } from 'src/__mocks__/myMeeting';
 import { RequestedList } from 'src/components/MyMeeting';
-import { InfiniteScroll } from 'src/components/Layout';
+import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 const { title, content, friends, date } = registerMeetingMocks[0];

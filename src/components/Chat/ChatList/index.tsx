@@ -1,6 +1,6 @@
 import $ from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
-import ProfileImage from 'src/components/ProfileImage';
+import ProfileImage from 'src/components/shared/ProfileImage';
 import getProfileClassName from 'src/utils/getProfileClassName';
 
 interface Props {
