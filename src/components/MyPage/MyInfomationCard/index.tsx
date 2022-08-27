@@ -6,21 +6,21 @@ import { IoBeer, IoBody } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io';
 import { GiWeightScale } from 'react-icons/gi';
 import $ from './style.module.scss';
+import { ProfileImage } from 'src/components/Chat/ProfileImage';
 
 type Prop = {
   className: string;
 };
+
+const MOCK_URL =
+  'https://img.freepik.com/free-photo/3d-rendering-zoom-call-avatar_23-2149556779.jpg?w=2000&t=st=1661578223~exp=1661578823~hmac=fcbafec28b2bc396b64f33424ed8fb434b852ba0e36ecddada0b49950562de78' as const;
 
 export default function MyInformationCard({ className }: Prop) {
   return (
     <div className={cx($.container, className)}>
       <div className={$['left-box']}>
         <div className={$['profile-image-container']}>
-          <img
-            className={$['profile-image']}
-            src="https://ifh.cc/g/RstlOs.jpg"
-            alt="프로필 이미지"
-          />
+          <ProfileImage alt={''} src={MOCK_URL} width={60} height={60} />
           <span className={$.mbti}>INFP</span>
         </div>
         <div className={$['information-container']}>

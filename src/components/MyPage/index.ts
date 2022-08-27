@@ -1,4 +1,2 @@
-import MyInformationCard from './MyInfomationCard';
-import CardBox from './CardBox';
-
-export { MyInformationCard, CardBox };
+export { default as MyInfomationCard } from './MyInfomationCard';
+export { default as CardBox } from './CardBox';
