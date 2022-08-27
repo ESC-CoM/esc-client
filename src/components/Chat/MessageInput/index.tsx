@@ -36,9 +36,7 @@ export function MessageInput({ setAlbums }: Props) {
   return (
     <div className={$['message-input-box']} ref={parentRef}>
       <label htmlFor="file">
-        <div className={$['img-btn']}>
-          <IoImages />
-        </div>
+        <IoImages className={$['img-btn']} />
       </label>
       <input type="file" name="file" id="file" multiple onChange={loadAlbum} />
 
