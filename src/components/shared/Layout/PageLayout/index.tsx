@@ -1,7 +1,7 @@
 import Footer from '../Footer';
 import { forwardRef, useEffect, ReactNode, ForwardedRef } from 'react';
 import style from './style.module.scss';
-import Header from 'src/components/shared/Header/Basic';
+import Header from 'src/components/shared/Layout/Header/Basic';
 import { useLocation } from 'react-router-dom';
 import headerChildren from 'src/constants/headerChildren';
 
