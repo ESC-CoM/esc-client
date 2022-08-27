@@ -1,14 +1,57 @@
 @import '/src/styles/color';
+@import '/src/styles/mixin';
 
 .container {
-  padding: 10px;
+  height: calc(100vh - 99px);
+  padding: 0 20px;
+  background-color: $gray-50;
 
   .card-title {
-    margin: 15px 0 0 15px;
+    margin-top: 30px;
     color: $gray-600;
   }
 
   .card {
-    margin-top: 10px;
+    margin-top: 20px;
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+    border-radius: 10px;
+    background-color: $white;
+
+    .line {
+      width: 100%;
+      margin: 0;
+      border: 1px solid $gray-100;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 10px 12px 15px;
+    }
+  }
+
+  .setting-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding: 12px 10px 12px 15px;
+    border-radius: 10px;
+    background-color: $white;
+  }
+
+  .setting-title {
+    color: $gray-700;
+  }
+
+  .button {
+    font-size: 25px;
+    color: $gray-400;
   }
 }
