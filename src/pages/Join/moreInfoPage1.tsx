@@ -1,4 +1,4 @@
-import './style.module.scss';
+import $ from './style.module.scss';
 import { PageLayout } from '../../components/shared/Layout';
 import useStore from 'src/store/useStore';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +43,7 @@ export default function MoreInfoPage1() {
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
-      <section>
+      <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <NicknameInput

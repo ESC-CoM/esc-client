@@ -62,10 +62,10 @@ const menusLeft: MenuType[] = [
     url: '/notice',
   },
   {
-    icon: <IoChevronBack />,
-    text: '친구',
-    url: '/friends/delete',
+    text: '내 정보',
+    url: '/mypage',
   },
+  { icon: <IoChevronBack />, text: '친구' },
 ];
 
 const menusRight: MenuType[] = [
