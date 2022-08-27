@@ -1,5 +1,5 @@
 import './style.module.scss';
-import { PageLayout } from '../../components/Layout';
+import { PageLayout } from '../../components/shared/Layout';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useStore from 'src/store/useStore';

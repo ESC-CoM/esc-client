@@ -1,4 +1,4 @@
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 import { useLocation } from 'react-router-dom';
 import RequestPage from './RequestPage';
 import RegisterPage from './RegisterPage';

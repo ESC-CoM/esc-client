@@ -1,5 +1,5 @@
 import { useEffect, useRef, ReactNode } from 'react';
-import { useIntersectObserver } from '../../hooks';
+import { useIntersectObserver } from '../../../hooks';
 
 interface Props {
   children: ReactNode;

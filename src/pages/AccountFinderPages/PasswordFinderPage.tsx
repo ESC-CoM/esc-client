@@ -1,5 +1,5 @@
 import PasswordFinder from 'src/components/AccountFinder/PasswordFinder';
-import { PageLayout } from 'src/components/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 
 export default function PasswordFinderPage() {
   return (
