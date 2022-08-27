@@ -1,10 +1,10 @@
 export type MeetingProfileType = {
-  email: string;
   college: string;
   url: string;
 };
 
 export type MeetingType = {
+  id: number;
   title: string;
   gender: string;
   profiles: MeetingProfileType[];
