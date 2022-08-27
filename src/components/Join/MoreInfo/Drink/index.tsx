@@ -1,6 +1,6 @@
 import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
-import { Bottle } from 'src/components/Icon';
+import { Bottle } from 'src/components/shared/Icon';
 import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
 import { More2Type } from 'src/types/join';

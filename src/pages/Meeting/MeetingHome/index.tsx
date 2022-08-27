@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { PageLayout, InfiniteScroll } from 'src/components/Layout';
-import HomeMeeting from 'src/components/HomeMeeting';
+import { PageLayout, InfiniteScroll } from 'src/components/shared/Layout';
+import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import { MeetingType } from 'src/types/meeting';
 import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 import $ from './style.module.scss';
-import Plus from 'src/components/Icon/Plus';
+import Plus from 'src/components/shared/Icon/Plus';
 import useDetectScroll from 'src/hooks/useDetectScroll';
 import { useNavigate } from 'react-router-dom';
 import cx from 'classnames';
 
-function MeetingBoardPage() {
+function MeetingHomePage() {
   const [meetingList, setMeetingList] = useState<MeetingType[]>([]);
   const [isDown, setIsDown] = useState(false);
   const layoutRef = useRef<HTMLDivElement>(null);
@@ -55,4 +55,4 @@ function MeetingBoardPage() {
   );
 }
 
-export default MeetingBoardPage;
+export default MeetingHomePage;
