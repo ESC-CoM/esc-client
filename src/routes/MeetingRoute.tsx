@@ -1,14 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import MeetingDetail from 'src/pages/MeetingDetail';
-import MeetingHome from 'src/pages/MeetingHome';
-import MeetingApplyPage from 'src/pages/MeetingApply';
+import { MeetingHome, MeetingApply, MeetingDetail } from 'src/pages/Meeting';
 
 function HomeRoute() {
   return (
     <Routes>
       <Route index element={<MeetingHome />} />
       <Route path="detail" element={<MeetingDetail />} />
-      <Route path="apply" element={<MeetingApplyPage />} />
+      <Route path="apply" element={<MeetingApply />} />
     </Routes>
   );
 }

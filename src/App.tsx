@@ -4,7 +4,7 @@ import './styles/reset.scss';
 import JoinRoute from './routes/JoinRoute';
 import LoginPage from './pages/Login';
 import AccountFinderRoute from './routes/AccountFinderRoute';
-import HomeRoute from './routes/HomeRoute';
+import HomeRoute from './routes/MeetingRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
 import ChatRoute from './routes/ChatRoute';
 import MyPage from './pages/MyPage';
