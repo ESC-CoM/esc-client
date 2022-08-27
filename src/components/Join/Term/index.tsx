@@ -19,7 +19,6 @@ const NEXT_PATH = '/login';
 
 export default function Term() {
   const { userInfo } = useStore();
-  console.log(userInfo);
   const navigate = useNavigate();
   const {
     watch,
@@ -40,7 +39,12 @@ export default function Term() {
   const getTermsTitle = (idx: number) =>
     !idx ? 'personalAgree' : 'acceptAgree';
 
-  const onHandleAllCheck = (check: boolean) => {
+  const handleCheck = (index: number) => {
+    const named = getTermsTitle(index);
+    setValue(named, !watch(named));
+  };
+
+  const handleAllCheck = (check: boolean) => {
     reset({
       personalAgree: !check,
       acceptAgree: !check,
@@ -71,7 +75,7 @@ export default function Term() {
 
       <div
         className={$['all-check']}
-        onClick={() => onHandleAllCheck(allChecked)}
+        onClick={() => handleAllCheck(allChecked)}
       >
         <span
           className={cx($['all-check-box'], {
@@ -90,8 +94,8 @@ export default function Term() {
           return (
             <li
               className={$['terms-bx']}
-              key={idx}
-              onClick={() => setValue(named, !watch(named))}
+              key={term.url}
+              onClick={() => handleCheck(idx)}
             >
               <span
                 className={cx($['check-box'], {
@@ -112,7 +116,11 @@ export default function Term() {
         <span className={$['error']}>필수 약관에 동의해주세요.</span>
       )}
 
-      <button type="submit" className={$['next-btn']} aria-labelledby="next">
+      <button
+        type="submit"
+        className={$['next-btn']}
+        aria-labelledby="다음 버튼"
+      >
         다음
       </button>
     </form>

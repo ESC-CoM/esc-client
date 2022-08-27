@@ -15,14 +15,14 @@ export default function MoreInfoPage2() {
   });
 
   const [height, weight, drink] = watch(['height', 'weight', 'drink']);
-  const [termsOpen, setTermsOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
 
   const onSubmit = (data: More2Type) => {
     const more2Info = { height, weight, drink };
     setJoinInfo(more2Info);
 
-    if (!termsOpen) {
-      setTermsOpen(true);
+    if (!isTermsOpen) {
+      setIsTermsOpen(true);
     }
   };
 
@@ -36,11 +36,11 @@ export default function MoreInfoPage2() {
           <Drink value={drink} setValue={setValue} />
           <NextButton text={'다음'} onClick={() => onSubmit(watch())} />
         </form>
-        {termsOpen && (
+        {isTermsOpen && (
           <Modal
             children={<Term />}
-            toggleModal={() => setTermsOpen(!termsOpen)}
-            onState={termsOpen}
+            toggleModal={() => setIsTermsOpen(!isTermsOpen)}
+            onState={isTermsOpen}
           />
         )}
       </section>

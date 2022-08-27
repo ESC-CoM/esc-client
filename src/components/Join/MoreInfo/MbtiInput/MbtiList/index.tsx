@@ -5,23 +5,22 @@ import { mbtiList } from '../../data';
 
 interface Props {
   setValue: UseFormSetValue<More1Type>;
-  onState: boolean;
   toggleModal: () => void;
 }
 
-export default function MbtiList({ setValue, onState, toggleModal }: Props) {
+export default function MbtiList({ setValue, toggleModal }: Props) {
+  const handleClick = (value: string) => {
+    toggleModal();
+    setValue('mbti', value);
+  };
+
   return (
     <div className={$['mbti-list']}>
       {mbtiList.map((value, index) => (
         <span
           key={value + index}
           className={$['mbti-element']}
-          onClick={() => {
-            if (onState) {
-              toggleModal();
-              setValue('mbti', value);
-            }
-          }}
+          onClick={() => handleClick(value)}
         >
           {value}
         </span>

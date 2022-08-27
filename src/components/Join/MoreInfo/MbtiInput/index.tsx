@@ -4,7 +4,7 @@ import { FieldError, UseFormSetValue } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
 import Modal from 'src/components/Modal';
 import { useState } from 'react';
-import MbtiList from './List';
+import MbtiList from './MbtiList';
 
 interface Props {
   mbti: string;
@@ -13,7 +13,11 @@ interface Props {
 }
 
 export default function MbtiInput({ mbti, setValue, errors }: Props) {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(true);
+  };
 
   return (
     <div className={$['item']}>
@@ -26,21 +30,20 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
             [$['mbti']]: mbti,
           })}
           value={mbti || '선택'}
-          onClick={() => setIsClicked(true)}
+          onClick={handleClick}
         />
       </div>
 
-      {isClicked && (
+      {isOpen && (
         <Modal
           children={
             <MbtiList
               setValue={setValue}
-              toggleModal={() => setIsClicked(!isClicked)}
-              onState={isClicked}
+              toggleModal={() => setIsOpen(!isOpen)}
             />
           }
-          toggleModal={() => setIsClicked(!isClicked)}
-          onState={isClicked}
+          toggleModal={() => setIsOpen(!isOpen)}
+          onState={isOpen}
         />
       )}
     </div>

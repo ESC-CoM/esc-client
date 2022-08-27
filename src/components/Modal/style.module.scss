@@ -1,6 +1,8 @@
 @import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
 
 .modal {
+  z-index: 1;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -11,18 +13,16 @@
   right: 0;
   margin: 0 auto;
   background-color: $modalBackground;
-  z-index: 1;
 
   .children {
+    z-index: 3;
     width: 100%;
     max-width: 758px;
     max-height: 300px;
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px 20px 0 0;
     background-color: $white;
-    z-index: 3;
-    transition: all 0.2s ease-out;
-    animation: FadeIn 0.3s ease-in;
+    @include FadeIn();
     overflow-y: auto;
     &::-webkit-scrollbar {
       display: none;
@@ -30,20 +30,11 @@
   }
 
   .back {
+    z-index: 2;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 2;
-  }
-}
-
-@keyframes FadeIn {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    opacity: 1;
   }
 }
