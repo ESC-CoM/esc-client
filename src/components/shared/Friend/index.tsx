@@ -10,13 +10,8 @@ interface Props {
   paddingLeft?: number;
 }
 
-function Friend({
-  src,
-  name,
-  isVertical,
-  padding = 0,
-  paddingLeft = 0,
-}: Props) {
+function Friend(friendProps: Props) {
+  const { src, name, isVertical, padding = 0, paddingLeft = 0 } = friendProps;
   return (
     <div
       style={{ padding: `${padding}px`, paddingLeft: `${paddingLeft}px` }}

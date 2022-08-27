@@ -118,8 +118,8 @@
   border-radius: 10px;
 }
 
-@mixin FadeIn() {
-  @keyframes FadeIn {
+@mixin FadeDown() {
+  @keyframes FadeDown {
     from {
       transform: translateY(100%);
     }
@@ -128,7 +128,7 @@
     }
   }
 
-  @-webkit-keyframes FadeIn {
+  @-webkit-keyframes FadeDown {
     from {
       transform: translateY(100%);
     }
@@ -137,7 +137,7 @@
     }
   }
 
-  @-moz-keyframes FadeIn {
+  @-moz-keyframes FadeDown {
     from {
       transform: translateY(100%);
     }
@@ -145,26 +145,35 @@
       transform: translateY(0%);
     }
   }
-  animation: FadeIn 0.4s ease-out;
+  animation: FadeDown 0.4s ease-out;
 }
 
-@mixin FadeOut() {
-  @keyframes FadeOut {
+@mixin FadeUp() {
+  @keyframes FadeUp {
     to {
       transform: translateY(100%);
     }
   }
 
-  @-webkit-keyframes FadeOut {
+  @-webkit-keyframes FadeUp {
     to {
       transform: translateY(100%);
     }
   }
 
-  @-moz-keyframes FadeOut {
+  @-moz-keyframes FadeUp {
     to {
       transform: translateY(100%);
     }
   }
-  animation: FadeOut 0.4s ease-out;
+  animation: FadeUp 0.4s ease-out;
+}
+
+@mixin floating-Btn($top, $right, $bottom, $left) {
+  z-index: 99;
+  position: fixed;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
 }
