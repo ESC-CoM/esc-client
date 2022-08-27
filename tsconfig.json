@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["./src/*"],
+      "styles/*": ["./src/styles/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -22,5 +23,5 @@
     "noEmit": false,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src", "styles"]
 }
