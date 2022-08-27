@@ -1,0 +1,19 @@
+@import '/src/styles/color';
+
+.container {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    margin-right: 5px;
+    font-size: 14px;
+    color: $gray-700;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 20px;
+    word-break: keep-all;
+    color: $gray-700;
+  }
+}

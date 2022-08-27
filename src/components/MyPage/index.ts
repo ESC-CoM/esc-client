@@ -1,6 +1,3 @@
-import MyInformationCard from './MyInfomationCard';
-import PrivateInformationCard from './PrivateInformationCard';
-import CardBox from './CardBox';
-import EditButton from './EditButton';
-
-export { MyInformationCard, PrivateInformationCard, CardBox, EditButton };
+export { default as MyInfomationCard } from './MyInfomationCard';
+export { default as CardBox } from './CardBox';
+export { default as InformationBar } from './InformationBar';
