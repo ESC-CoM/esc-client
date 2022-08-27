@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
 import { memo } from 'react';
-import { Label } from 'src/components/Join';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   register: UseFormRegister<More1Type>;
@@ -14,8 +14,9 @@ export function BirthInput({ register, errors }: Props) {
   return (
     <div className={$['item']}>
       <Label
-        label={'태어난 연도'}
-        htmlFor={'birthDate'}
+        textContent="태어난 연도"
+        fontSize={15}
+        htmlFor="birthDate"
         errorMsg={errors.year?.message}
       />
 

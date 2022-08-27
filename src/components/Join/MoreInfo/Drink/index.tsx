@@ -4,7 +4,7 @@ import { Bottle } from 'src/components/shared/Icon';
 import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
 import { More2Type } from 'src/types/join';
-import { Label } from 'src/components/Join';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   value: number;
@@ -31,7 +31,7 @@ export function Drink({ value, setValue }: Props) {
 
   return (
     <div className={$['item']}>
-      <Label label={'주량'} />
+      <Label textContent="주량" fontSize={15} htmlFor="drink" />
 
       <div className={$['row']}>
         {drinkNum.map((_, index) => (

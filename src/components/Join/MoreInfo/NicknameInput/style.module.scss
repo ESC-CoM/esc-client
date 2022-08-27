@@ -4,7 +4,6 @@
 .item {
   margin-top: 50px;
   .row {
-    position: relative;
     display: flex;
     .input {
       @include input(100%);

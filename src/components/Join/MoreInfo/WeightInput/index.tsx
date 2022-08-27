@@ -2,7 +2,7 @@ import $ from './style.module.scss';
 import { weightInfo } from '../data';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { memo } from 'react';
-import { Label } from 'src/components/Join';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   value: number;
@@ -12,7 +12,7 @@ interface Props {
 export function WeightInput({ value, register }: Props) {
   return (
     <div className={$['item']}>
-      <Label label={'몸무게'} htmlFor={'weight'} />
+      <Label textContent="몸무게" fontSize={15} htmlFor="weight" />
 
       <span className={$['info']}>
         {weightInfo.filter((mark) => value == mark.value)[0].label}

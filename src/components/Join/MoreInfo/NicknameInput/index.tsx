@@ -8,7 +8,7 @@ import {
 } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
 import { memo } from 'react';
-import { Label } from 'src/components/Join';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   watch: UseFormWatch<More1Type>;
@@ -28,8 +28,9 @@ export function NicknameInput({ watch, register, setValue, errors }: Props) {
   return (
     <div className={$['item']}>
       <Label
-        label={'별명'}
-        htmlFor={'nickName'}
+        textContent="별명"
+        fontSize={15}
+        htmlFor="nickName"
         errorMsg={errors.nickName?.message}
       />
 
@@ -47,9 +48,12 @@ export function NicknameInput({ watch, register, setValue, errors }: Props) {
           중복확인
         </button>
       </div>
-      <span className={$['error-msg']}>
-        {!isNicknameDuplicated && errors.isNicknameDuplicated?.message}
-      </span>
+
+      {!isNicknameDuplicated && (
+        <span className={$['error-msg']}>
+          {errors.isNicknameDuplicated?.message}
+        </span>
+      )}
     </div>
   );
 }
