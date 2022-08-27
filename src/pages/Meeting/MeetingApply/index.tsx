@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { PageLayout } from 'src/components/Layout';
-import Search from 'src/components/Search';
+import { PageLayout } from 'src/components/shared/Layout';
+import Search from 'src/components/shared/Search';
 import { friendMocks, meetingApplyContent } from 'src/__mocks__/friendMocks';
 import $ from './style.module.scss';
-import SelectFriend from 'src/components/SelectFriend';
+import FriendWithCheck from 'src/components/shared/FriendWithCheck';
 import { FriendType, MeetingTitle } from 'src/types/meeting';
-import Friend from 'src/components/Friend';
-import ContentBox from 'src/components/ContentBox';
+import Friend from 'src/components/shared/Friend';
+import ContentBox from 'src/components/shared/ContentBox';
 
 export default function MeetingApplyPage() {
   const [friendFetchData, setFriendFetchData] = useState<FriendType[]>([]);
@@ -37,21 +37,20 @@ export default function MeetingApplyPage() {
         <h2 className={$['sub-title']}>친구 추가하기</h2>
         <Search />
       </div>
+
       <ul className={$['friends-list']}>
         {friendFetchData.map(({ src, name }, id) => (
-          <li
-            key={src + name}
-            className={$['friend']}
-            onClick={() => handleFriendClick(id)}
-          >
-            <SelectFriend
+          <li key={src + name} className={$['friend']}>
+            <FriendWithCheck
               {...{ src, name }}
               isVertical={false}
-              isSelected={addedList.find((x) => x === id) !== undefined}
+              isChecked={addedList.find((x) => x === id) !== undefined}
+              handleClick={() => handleFriendClick(id)}
             />
           </li>
         ))}
       </ul>
+
       <div className={$['added']}>
         <h2 className={$['sub-title']}>추가된 친구</h2>
         <ul className={$['added-friends']}>
@@ -69,7 +68,9 @@ export default function MeetingApplyPage() {
           )}
         </ul>
       </div>
+
       <ContentBox {...{ title, content }} contentTitle={MeetingTitle.apply} />
+
       <footer className={$['apply-btn']}>
         <button type="button">신청하기</button>
       </footer>
