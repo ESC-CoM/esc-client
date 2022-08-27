@@ -14,7 +14,7 @@ export default function MeetingApplyPage() {
   const { title, content } = meetingApplyContent;
 
   useEffect(() => {
-    // Todo: fetch Data
+    // TODO: fetch Data
     setFriendFetchData(
       friendMocks.map(({ src, name }) => {
         return {

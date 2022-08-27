@@ -22,7 +22,7 @@
     background-color: $white;
     z-index: 3;
     transition: all 0.2s ease-out;
-    animation: FadeIn 0.3s ease-in;
+    animation: FadeDown 0.3s ease-in;
 
     h2 {
       font-size: 20px;
@@ -94,7 +94,7 @@
   }
 }
 
-@keyframes FadeIn {
+@keyframes FadeDown {
   0% {
     opacity: 0;
   }
