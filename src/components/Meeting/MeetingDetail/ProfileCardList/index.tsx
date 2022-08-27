@@ -3,7 +3,7 @@ import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from 'react-icons/md';
-import ProfileCard from 'src/components/ProfileCardList/ProfileCard';
+import ProfileCard from 'src/components/Meeting/MeetingDetail/ProfileCardList/ProfileCard';
 import $ from './style.module.scss';
 import { useWindowResize } from 'src/hooks';
 import { Profile } from 'src/types/meeting';

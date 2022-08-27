@@ -1,4 +1,4 @@
-import { Header, LoginTitle } from '../../atoms';
+import { Header, LoginTitle } from '../atoms';
 import styles from './style.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';

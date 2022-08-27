@@ -1,4 +1,4 @@
-import { Header } from 'src/components/atoms';
+import { Header } from 'src/components/Login/atoms';
 import Authentication from '../Authentication';
 import styles from './style.module.scss';
 
