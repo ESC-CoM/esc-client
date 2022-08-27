@@ -11,3 +11,5 @@ export { default as WeightInput } from './MoreInfo/WeightInput';
 
 export { default as NextButton } from './NextButton';
 export { default as Term } from './Term';
+
+export { default as Welcome } from './Welcome';
