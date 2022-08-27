@@ -1,36 +1,28 @@
-import { memo } from 'react';
+import Friend from 'src/components/shared/Friend';
+import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
 import cx from 'classnames';
-import {
-  RiCheckboxCircleFill,
-  RiCheckboxBlankCircleLine,
-} from 'react-icons/ri';
 import $ from './style.module.scss';
+import { memo } from 'react';
 
 interface Props {
-  isChecked: boolean;
   src: string;
   name: string;
   isVertical: boolean;
-  onClick: () => void;
+  isChecked: boolean;
+  handleClick: () => void;
 }
 
-function FriendWithCheck({ isChecked, src, name, isVertical, onClick }: Props) {
+function FriendWithCheck(friendProps: Props) {
+  const { src, name, isVertical, isChecked, handleClick } = friendProps;
   return (
-    <div
-      className={cx($['friend'], { [$['vertical-shape']]: isVertical })}
-      onClick={onClick}
-    >
-      <div className={$['left-box']}>
-        <div className={$['img-wrapper']}>
-          <img draggable={false} alt={name + '프로필 이미지'} src={src} />
-        </div>
-        <em>{name}</em>
-      </div>
-      {isChecked ? (
-        <RiCheckboxCircleFill className={$['checked-icon']} />
-      ) : (
-        <RiCheckboxBlankCircleLine className={$['uncheck-icon']} />
-      )}
+    <div className={$['wrap']} onClick={handleClick}>
+      <Friend {...{ src, name, isVertical }} padding={7} paddingLeft={15} />
+      <button
+        type="button"
+        className={cx($['select-btn'], { [$['selected']]: isChecked })}
+      >
+        {isChecked ? <BsCheckCircleFill /> : <BsCircle />}
+      </button>
     </div>
   );
 }

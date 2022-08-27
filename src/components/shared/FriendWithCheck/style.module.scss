@@ -1,52 +1,17 @@
 @import 'src/styles/_color.scss';
+@import 'src/styles/mixin';
 
-.friend {
+.wrap {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  cursor: pointer;
-
-  .left-box {
-    display: flex;
-    align-items: center;
-
-    .img-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 10px;
-
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: $gray-300;
-        object-fit: contain;
-      }
-    }
-  }
-  .checked-icon {
+  .select-btn {
+    margin: auto 0 auto auto;
+    padding-right: 18px;
     font-size: 18px;
+    color: $gray-450;
+  }
+  .selected {
     color: $primary;
-  }
-
-  .uncheck-icon {
-    font-size: 18px;
-    color: $gray-400;
-  }
-}
-
-.vertical-shape {
-  flex-direction: column;
-  font-size: 14px;
-
-  .img-wrapper {
-    margin-bottom: 8px;
-
-    img {
-      width: 65px;
-      height: 65px;
-    }
   }
 }

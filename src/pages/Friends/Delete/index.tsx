@@ -31,10 +31,10 @@ export default function DeleteFriends() {
         {friendMocks.map(({ src, name, id }) => (
           <li key={id} className={$['friend-bar']}>
             <FriendWithCheck
-              isChecked={selectedFriends.includes(id)}
-              isVertical={false}
-              onClick={() => handleClick(id)}
               {...{ src, name }}
+              isVertical={false}
+              isChecked={selectedFriends.includes(id)}
+              handleClick={() => handleClick(id)}
             />
           </li>
         ))}
