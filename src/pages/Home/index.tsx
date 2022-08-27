@@ -7,7 +7,7 @@ import $ from './style.module.scss';
 import Plus from 'src/components/Icon/Plus';
 import useDetectScroll from 'src/hooks/useDetectScroll';
 import { useNavigate } from 'react-router-dom';
-import classnames from 'classnames';
+import cx from 'classnames';
 
 function MeetingBoardPage() {
   const [meetingList, setMeetingList] = useState<MeetingType[]>([]);
@@ -22,6 +22,9 @@ function MeetingBoardPage() {
     } else {
       setIsDown(false);
     }
+    return () => {
+      isScrollMove;
+    };
   }, [isScrollMove]);
 
   const fetchMoreMeetingFeeds = () => {
@@ -32,8 +35,8 @@ function MeetingBoardPage() {
     <PageLayout isNeedFooter={true} headerHeight={44} ref={layoutRef}>
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
-          {meetingList.map((meeting, i) => (
-            <HomeMeeting key={`meeting-${i}`} meeting={meeting} />
+          {meetingList.map((meeting) => (
+            <HomeMeeting key={meeting.id} meeting={meeting} />
           ))}
         </ul>
       </InfiniteScroll>
@@ -41,10 +44,10 @@ function MeetingBoardPage() {
       <button
         type="button"
         aria-label="과팅 등록하기"
-        className={classnames($['add-meeting'], {
+        className={cx($['add-meeting'], {
           [$['add-meeting-down']]: isDown,
         })}
-        onClick={() => navigate('./apply')} // Todo: register로 변경
+        onClick={() => navigate('./apply')} // TODO: register로 변경
       >
         <Plus />
       </button>
