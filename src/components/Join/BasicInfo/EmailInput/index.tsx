@@ -7,22 +7,23 @@ import {
 } from 'react-hook-form';
 import { EmailPasswordType } from 'src/types/join';
 import Label from 'src/components/shared/Label';
+import ErrorMessage from 'src/components/shared/ErrorMessage';
 
 interface Props {
-  isEmailDuplicated: boolean;
+  isDuplicationChecked: boolean;
   register: UseFormRegisterReturn;
   setValue: UseFormSetValue<EmailPasswordType>;
   errors: FieldErrors<EmailPasswordType>;
 }
 
 export default function EmailInput({
-  isEmailDuplicated,
+  isDuplicationChecked,
   register,
   setValue,
   errors,
 }: Props) {
   const checkDuplicatedEmail = () => {
-    setValue('isEmailDuplicated', true);
+    setValue('isDuplicationChecked', true);
   };
 
   return (
@@ -53,9 +54,9 @@ export default function EmailInput({
         </button>
       </div>
 
-      <span className={$['error-msg']}>
-        {!isEmailDuplicated && errors.isEmailDuplicated?.message}
-      </span>
+      {!isDuplicationChecked && (
+        <ErrorMessage errorText={errors.isDuplicationChecked?.message} />
+      )}
     </div>
   );
 }

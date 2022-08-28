@@ -9,7 +9,7 @@ import {
 type UserInfo =
   | Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'>
   | Pick<EmailPasswordType, 'email' | 'password'>
-  | Omit<More1Type, 'isNicknameDuplicated'>
+  | Omit<More1Type, 'isDuplicationChecked'>
   | More2Type;
 
 interface UserInfoSlice {
