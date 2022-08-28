@@ -2,6 +2,7 @@
 @import 'src/styles/_mixin.scss';
 
 .modal {
+  z-index: 1;
   display: flex;
   align-items: flex-end;
   justify-content: center;
