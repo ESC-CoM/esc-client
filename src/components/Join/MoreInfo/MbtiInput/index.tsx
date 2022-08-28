@@ -2,7 +2,7 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { FieldError, UseFormSetValue } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
-import Modal from 'src/components/Modal';
+import Modal from 'src/components/shared/Modal';
 import { useState } from 'react';
 import MbtiList from './MbtiList';
 

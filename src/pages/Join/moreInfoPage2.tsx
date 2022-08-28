@@ -6,7 +6,7 @@ import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term, NextButton } from 'src/components/Join';
-import Modal from 'src/components/Modal';
+import Modal from 'src/components/shared/Modal';
 
 export default function MoreInfoPage2() {
   const { setJoinInfo } = useStore();

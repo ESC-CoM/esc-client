@@ -6,6 +6,7 @@ interface Props {
   toggleModal: () => void;
 }
 
+// TODO: Portal로 만들기
 export default function Modal({ children, isModalOpen, toggleModal }: Props) {
   const handleClick = () => {
     if (isModalOpen) toggleModal();
