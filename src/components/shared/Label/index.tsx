@@ -16,7 +16,7 @@ function Label({ className, textContent, htmlFor, fontSize, errorMsg }: Props) {
       htmlFor={htmlFor}
       style={{ fontSize }}
     >
-      {textContent || errorMsg}
+      {errorMsg || textContent}
     </label>
   );
 }

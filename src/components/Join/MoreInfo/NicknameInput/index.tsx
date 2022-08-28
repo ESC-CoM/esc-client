@@ -9,6 +9,7 @@ import {
 import { More1Type } from 'src/types/join';
 import { memo } from 'react';
 import Label from 'src/components/shared/Label';
+import ErrorMessage from 'src/components/shared/ErrorMessage';
 
 interface Props {
   watch: UseFormWatch<More1Type>;
@@ -18,11 +19,11 @@ interface Props {
 }
 
 export function NicknameInput({ watch, register, setValue, errors }: Props) {
-  const isNicknameDuplicated = watch('isNicknameDuplicated', false);
+  const isDuplicationChecked = watch('isDuplicationChecked', false);
 
   const checkDuplication = () => {
     // api
-    setValue('isNicknameDuplicated', true);
+    setValue('isDuplicationChecked', true);
   };
 
   return (
@@ -48,11 +49,8 @@ export function NicknameInput({ watch, register, setValue, errors }: Props) {
           중복확인
         </button>
       </div>
-
-      {!isNicknameDuplicated && (
-        <span className={$['error-msg']}>
-          {errors.isNicknameDuplicated?.message}
-        </span>
+      {!isDuplicationChecked && (
+        <ErrorMessage errorText={errors.isDuplicationChecked?.message} />
       )}
     </div>
   );
