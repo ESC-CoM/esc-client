@@ -6,7 +6,7 @@ import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term, NextButton } from 'src/components/Join';
-import Modal from 'src/components/shared/Modal';
+import Modal from 'src/components/shared/BottomModal';
 
 export default function MoreInfoPage2() {
   const { setJoinInfo } = useStore();
@@ -38,9 +38,11 @@ export default function MoreInfoPage2() {
         </form>
         {isTermsOpen && (
           <Modal
+            portalId="terms-modal"
+            title="서비스 이용을 위해 동의가 필요해요"
             children={<Term />}
             toggleModal={() => setIsTermsOpen(!isTermsOpen)}
-            isModalOpen={isTermsOpen}
+            isOpen={isTermsOpen}
           />
         )}
       </section>

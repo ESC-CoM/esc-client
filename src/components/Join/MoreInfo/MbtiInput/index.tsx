@@ -2,7 +2,7 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { FieldError, UseFormSetValue } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
-import Modal from 'src/components/shared/Modal';
+import Modal from 'src/components/shared/BottomModal';
 import { useState } from 'react';
 import MbtiList from './MbtiList';
 
@@ -36,6 +36,8 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
 
       {isOpen && (
         <Modal
+          portalId="mbti-modal"
+          title="MBTI"
           children={
             <MbtiList
               setValue={setValue}
@@ -43,7 +45,7 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
             />
           }
           toggleModal={() => setIsOpen(!isOpen)}
-          isModalOpen={isOpen}
+          isOpen={isOpen}
         />
       )}
     </div>

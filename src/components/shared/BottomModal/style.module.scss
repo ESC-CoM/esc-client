@@ -1,8 +1,7 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.modal {
-  z-index: 1;
+.bottom-modal {
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -11,28 +10,42 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: $modalBackground;
 
-  .children {
+  .dimmer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $modalBackground;
+  }
+
+  .out-container {
     z-index: 1;
     overflow-y: auto;
     width: 100%;
     max-width: 758px;
     max-height: 300px;
-    padding: 25px;
+    padding: 20px;
     border-radius: 20px 20px 0 0;
     background-color: $white;
     @include FadeUp();
     &::-webkit-scrollbar {
       display: none;
     }
-  }
 
-  .back {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    .header {
+      margin-bottom: 20px;
+      .close-modal {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
   }
 }
