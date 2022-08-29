@@ -21,6 +21,7 @@ export default function MbtiList({ setValue, toggleModal }: Props) {
           key={value + index}
           className={$['mbti-element']}
           onClick={() => handleClick(value)}
+          tabIndex={0}
         >
           {value}
         </li>

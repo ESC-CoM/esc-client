@@ -71,8 +71,6 @@ export default function Term() {
 
   return (
     <form className={$['term-form']} onSubmit={handleSubmit(onSubmit)}>
-      <h2>서비스 이용을 위해 동의가 필요해요</h2>
-
       <div
         className={$['all-check']}
         onClick={() => handleAllCheck(allChecked)}

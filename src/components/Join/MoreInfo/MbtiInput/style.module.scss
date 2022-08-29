@@ -15,10 +15,11 @@
       @include input(100%);
       color: $gray-600;
       cursor: pointer;
+      text-align: left;
     }
     .mbti {
-      color: $primary;
-      border-bottom: 2px solid $primary;
+      color: $black;
+      font-weight: 700;
     }
     .error {
       border-bottom: 1.5px solid $red;
