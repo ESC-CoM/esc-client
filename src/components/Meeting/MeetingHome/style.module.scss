@@ -1,0 +1,52 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixin.scss';
+
+.meeting {
+  display: flex;
+  min-height: 65px;
+  padding: 15px;
+  align-items: center;
+  border-bottom: 1px solid $gray-250;
+  background-color: $white;
+  cursor: pointer;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .profileImg {
+    width: $boardDesktopImage;
+    height: $boardDesktopImage;
+    border-radius: 20%;
+    img {
+      width: $boardDesktopImage;
+      height: $boardDesktopImage;
+      object-fit: cover;
+      border-radius: 20%;
+    }
+  }
+
+  .meetingInfo {
+    margin: auto 0;
+    margin-left: 15px;
+    font-size: 15px;
+
+    .title {
+      @include textOverFlow;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .college,
+    .num {
+      display: block;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .college {
+      @include textOverFlow;
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
+  }
+}

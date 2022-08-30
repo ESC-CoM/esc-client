@@ -1,6 +1,7 @@
 import $ from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
-import ProfileImage from 'src/components/ProfileImage';
+import ProfileImage from 'src/components/shared/ProfileImage';
+import getProfileClassName from 'src/utils/getProfileClassName';
 
 interface Props {
   roomImage: {
@@ -32,12 +33,6 @@ export default function ChatList({
     .slice(0, 3);
   const profileLen = profileList.length;
 
-  const getProfileClassName = () => {
-    if (profileLen === 2) return 'double';
-    else if (profileLen === 3) return 'triple';
-    return 'single';
-  };
-
   const fetchChatRoom = () => {
     navigate('./room');
   };
@@ -45,7 +40,7 @@ export default function ChatList({
     <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
       <ProfileImage
         profileList={profileList}
-        className={getProfileClassName()}
+        className={getProfileClassName(profileLen)}
       />
       <div className={$['chat-info']}>
         <div className={$['main-info']}>

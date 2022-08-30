@@ -5,7 +5,7 @@ import {
   requestListMocks,
 } from 'src/__mocks__/myMeeting';
 import { RequestedList } from 'src/components/MyMeeting';
-import { InfiniteScroll } from 'src/components/Layout';
+import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 const { title, content, friends, date } = registerMeetingMocks[0];
@@ -23,8 +23,12 @@ export default function RegisterDetailPage() {
     <>
       <div className={$['detail-info']}>
         <div className={$['friends-image-list']}>
-          {friends.map((imgUri, index) => (
-            <img key={`${imgUri}-${index}`} src={imgUri} alt="friends-image" />
+          {friends.map(({ nickName, src }, index) => (
+            <img
+              key={`${src}-${index}`}
+              src={src}
+              alt={`${nickName}의 프로필`}
+            />
           ))}
         </div>
 

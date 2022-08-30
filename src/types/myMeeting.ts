@@ -1,7 +1,7 @@
 export type MyMeetingType = {
   title: string;
   content: string;
-  friends: string[];
+  friends: { nickName: string; src: string }[];
   date: string;
 };
 

@@ -7,7 +7,7 @@ export const messageInfoMocks = [
       name: '나',
       imagePath: '',
     },
-    content: '안녕하세요',
+    content: '1',
     date: '오후 05:15',
   },
   {

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import FriendWithCheck from 'src/components/FriendWithCheck';
-import { PageLayout } from 'src/components/Layout';
-import Search from 'src/components/Search';
+
+import FriendWithCheck from 'src/components/shared/FriendWithCheck';
+import { PageLayout } from 'src/components/shared/Layout';
+import Search from 'src/components/shared/Search';
 import { friendMocks } from 'src/__mocks__/friendMocks';
 import $ from './style.module.scss';
 
@@ -31,10 +32,10 @@ export default function DeleteFriends() {
         {friendMocks.map(({ src, name, id }) => (
           <li key={id} className={$['friend-bar']}>
             <FriendWithCheck
-              isChecked={selectedFriends.includes(id)}
-              isVertical={false}
-              onClick={() => handleClick(id)}
               {...{ src, name }}
+              isVertical={false}
+              isChecked={selectedFriends.includes(id)}
+              handleClick={() => handleClick(id)}
             />
           </li>
         ))}
