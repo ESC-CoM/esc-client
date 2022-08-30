@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import FriendWithCheck from 'src/components/FriendWithCheck';
+import FriendWithCheck from 'src/components/shared/FriendWithCheck';
 import { PageLayout } from 'src/components/shared/Layout';
 import Search from 'src/components/shared/Search';
 import { friendMocks } from 'src/__mocks__/friendMocks';
@@ -33,7 +33,7 @@ export default function AddFriends() {
             <FriendWithCheck
               isChecked={selectedFriends.includes(id)}
               isVertical={false}
-              onClick={() => handleClick(id)}
+              handleClick={() => handleClick(id)}
               {...{ src, name }}
             />
           </li>
