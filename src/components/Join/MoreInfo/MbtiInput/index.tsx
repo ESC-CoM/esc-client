@@ -39,12 +39,9 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
           portalId="mbti-modal"
           title="MBTI"
           children={
-            <MbtiList
-              setValue={setValue}
-              toggleModal={() => setIsOpen(!isOpen)}
-            />
+            <MbtiList setValue={setValue} onClose={() => setIsOpen(!isOpen)} />
           }
-          toggleModal={() => setIsOpen(!isOpen)}
+          onClose={() => setIsOpen(!isOpen)}
           isOpen={isOpen}
         />
       )}

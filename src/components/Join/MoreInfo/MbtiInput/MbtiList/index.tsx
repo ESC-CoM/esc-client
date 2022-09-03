@@ -5,12 +5,12 @@ import { mbtiList } from '../../data';
 
 interface Props {
   setValue: UseFormSetValue<More1Type>;
-  toggleModal: () => void;
+  onClose: () => void;
 }
 
-export default function MbtiList({ setValue, toggleModal }: Props) {
+export default function MbtiList({ setValue, onClose }: Props) {
   const handleClick = (value: string) => {
-    toggleModal();
+    onClose();
     setValue('mbti', value);
   };
 

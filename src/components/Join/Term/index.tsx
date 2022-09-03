@@ -12,7 +12,7 @@ import useStore from 'src/store/useStore';
 
 export type Props = {
   onState: boolean;
-  toggleModal: () => void;
+  onClose: () => void;
 };
 
 const NEXT_PATH = '/login';

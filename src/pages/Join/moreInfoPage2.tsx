@@ -41,7 +41,7 @@ export default function MoreInfoPage2() {
             portalId="terms-modal"
             title="서비스 이용을 위해 동의가 필요해요"
             children={<Term />}
-            toggleModal={() => setIsTermsOpen(!isTermsOpen)}
+            onClose={() => setIsTermsOpen(!isTermsOpen)}
             isOpen={isTermsOpen}
           />
         )}
