@@ -1,8 +1,8 @@
 @import '/src/styles/color';
 
 .text {
-  align-self: start;
-  margin: 10px 0 10px 0;
-  font-size: 22px;
-  color: $primary;
+  display: flex;
+  margin: 5px 0;
+  color: $orange;
+  font-size: 14px;
 }

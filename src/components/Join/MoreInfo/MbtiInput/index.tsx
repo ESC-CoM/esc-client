@@ -3,16 +3,23 @@ import cx from 'classnames';
 import { UseFormRegister, FieldError } from 'react-hook-form';
 import { mbtiList } from '../data';
 import { More1Type } from 'src/types/join';
+import { memo } from 'react';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   register: UseFormRegister<More1Type>;
   errors?: FieldError;
 }
 
-export default function MbtiInput({ register, errors }: Props) {
+export function MbtiInput({ register, errors }: Props) {
   return (
     <div className={$['item']}>
-      <label htmlFor="mbti">{errors?.message ?? 'MBTI'}</label>
+      <Label
+        textContent="MBTI"
+        fontSize={15}
+        htmlFor="mbti"
+        errorMsg={errors?.message}
+      />
 
       <select
         className={cx($[''], {
@@ -33,3 +40,5 @@ export default function MbtiInput({ register, errors }: Props) {
     </div>
   );
 }
+
+export default memo(MbtiInput);

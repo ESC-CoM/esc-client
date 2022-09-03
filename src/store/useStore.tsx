@@ -9,7 +9,7 @@ import {
 type UserInfo =
   | Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'>
   | Pick<EmailPasswordType, 'email' | 'password'>
-  | More1Type
+  | Omit<More1Type, 'isDuplicationChecked'>
   | More2Type;
 
 interface UserInfoSlice {
@@ -23,10 +23,9 @@ export const useStore = create<UserInfoSlice>((set, get) => ({
     password: '',
     phoneNumber: '',
     authNumber: 0,
+    nickName: '',
     gender: '',
     year: '',
-    month: '',
-    day: '',
     mbti: '',
     height: 0,
     weight: 0,

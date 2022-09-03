@@ -12,21 +12,21 @@ export type ExampleWord = {
 export type EmailPasswordType = {
   email: string;
   password: string;
-  isEmailDuplicated: boolean;
+  isDuplicationChecked: boolean;
 };
 
 export type PhoneAuthType = {
   phoneNumber: string;
   authNumber: number;
-  isPhoneDuplicated: boolean;
+  isReceivedAuthNum: boolean;
   isAuthed: boolean;
 };
 
 export type More1Type = {
+  nickName: string;
+  isDuplicationChecked: boolean;
   gender: string;
   year: string;
-  month: string;
-  day: string;
   mbti: string;
 };
 
