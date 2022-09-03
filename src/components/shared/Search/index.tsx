@@ -1,5 +1,6 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
+import useDebounceInput from 'src/hooks/useDebounceInput';
 import $ from './style.module.scss';
 
 type Props = {
@@ -8,10 +9,11 @@ type Props = {
 
 export default function Search({ onSearchClick }: Props) {
   const [searchText, setSearchText] = useState('');
+  const debouncedSetSearchText = useDebounceInput(setSearchText);
 
   const handleSearchTextChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
-  }) => setSearchText(value);
+  }) => debouncedSetSearchText(value);
 
   const handleEnterKeyDown: KeyboardEventHandler<HTMLInputElement> = ({
     key,
@@ -19,19 +21,21 @@ export default function Search({ onSearchClick }: Props) {
     if (key === 'Enter') onSearchClick(searchText);
   };
 
+  const handleSearchClickWithText = () => onSearchClick(searchText);
+
   return (
     <div className={$['search-box']}>
       <input
         type="search"
         onKeyDown={handleEnterKeyDown}
         placeholder="검색"
-        value={searchText}
+        defaultValue={searchText}
         onChange={handleSearchTextChange}
       />
       <button
         type="button"
         aria-label="검색하기"
-        onClick={() => onSearchClick(searchText)}
+        onClick={handleSearchClickWithText}
       >
         <HiOutlineSearch />
       </button>

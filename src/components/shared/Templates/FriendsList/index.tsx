@@ -20,7 +20,7 @@ export default function FriendsList({
   selectedIDList,
 }: Props) {
   const isSelected = (id: number) => {
-    if (!selectedIDList) return false;
+    if (!selectedIDList?.length) return false;
     return selectedIDList.includes(id);
   };
 
