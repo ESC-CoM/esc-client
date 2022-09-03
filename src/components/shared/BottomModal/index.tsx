@@ -33,14 +33,14 @@ export default function BottomModal({
   }, [portalId]);
 
   useEffect(() => {
-    const onKeyDownESC = (e: KeyboardEvent) => {
+    const handleKeyDownESC = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
       }
     };
-    document.addEventListener('keydown', onKeyDownESC);
+    document.addEventListener('keydown', handleKeyDownESC);
     return () => {
-      document?.removeEventListener('keydown', onKeyDownESC);
+      document?.removeEventListener('keydown', handleKeyDownESC);
     };
   }, [portalId]);
 

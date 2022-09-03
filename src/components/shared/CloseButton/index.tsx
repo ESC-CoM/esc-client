@@ -14,7 +14,7 @@ export default function CloseButton({ onClick }: Props) {
     <button
       className={$['close-button']}
       type="button"
-      aria-labelledby="닫기 버튼"
+      aria-label="닫기 버튼"
       onClick={handleClick}
     >
       <IoClose size={25} />

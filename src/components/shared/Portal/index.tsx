@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { ReactElement } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Props {
-  children: React.ReactElement;
+  children: ReactElement;
   container: Element | null;
 }
 
 export default function Portal({ children, container }: Props) {
   if (!container) return null;
-  return ReactDOM.createPortal(children, container);
+  return createPortal(children, container);
 }
