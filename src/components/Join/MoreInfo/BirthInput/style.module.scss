@@ -3,31 +3,21 @@
 
 .item {
   margin-top: 50px;
-  label {
-    font-size: 15px;
-    color: $gray-700;
-    padding: 10px 0;
-  }
+
   .row {
     display: flex;
     margin: 15px auto;
-    span {
+    .year {
       flex: 1;
       height: 20px;
       padding: 6px 0;
       border: none;
       border-bottom: 2px solid $gray-300;
 
-      input {
+      > input {
         width: 100%;
         border: none;
         font-size: 18px;
-        &:focus {
-          outline: none;
-        }
-      }
-      select {
-        @include select(100%, 100%, 14px, none);
       }
     }
     .error {

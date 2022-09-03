@@ -22,9 +22,9 @@ export default function EmailPasswordInputPage() {
     resolver: yupResolver(EmailPasswordYup),
   });
   const navigate = useNavigate();
-  const [email, isEmailDuplicated, password] = watch([
+  const [email, isDuplicationChecked, password] = watch([
     'email',
-    'isEmailDuplicated',
+    'isDuplicationChecked',
     'password',
   ]);
 
@@ -40,7 +40,7 @@ export default function EmailPasswordInputPage() {
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <EmailInput
-            isEmailDuplicated={isEmailDuplicated}
+            isDuplicationChecked={isDuplicationChecked}
             register={register('email')}
             setValue={setValue}
             errors={errors}

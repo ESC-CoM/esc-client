@@ -2,6 +2,8 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { FieldError, UseFormSetValue } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
+import { memo } from 'react';
+import Label from 'src/components/shared/Label';
 import Modal from 'src/components/shared/BottomModal';
 import { useState } from 'react';
 import MbtiList from './MbtiList';
@@ -12,7 +14,7 @@ interface Props {
   errors?: FieldError;
 }
 
-export default function MbtiInput({ mbti, setValue, errors }: Props) {
+export function MbtiInput({ mbti, setValue, errors }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -21,7 +23,12 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
 
   return (
     <div className={$['item']}>
-      <label htmlFor="mbti">{errors?.message ?? 'MBTI'}</label>
+      <Label
+        textContent="MBTI"
+        fontSize={15}
+        htmlFor="mbti"
+        errorMsg={errors?.message}
+      />
       <div className={$['item-btn']}>
         <input
           type="button"
@@ -48,3 +55,5 @@ export default function MbtiInput({ mbti, setValue, errors }: Props) {
     </div>
   );
 }
+
+export default memo(MbtiInput);

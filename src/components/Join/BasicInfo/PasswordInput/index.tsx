@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
 import { EmailPasswordType } from 'src/types/join';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   register: UseFormRegisterReturn;
@@ -15,7 +16,12 @@ export default function PasswordInput({ register, errors }: Props) {
 
   return (
     <div className={$['item']}>
-      <label htmlFor="password">{errors.password?.message ?? '비밀번호'}</label>
+      <Label
+        textContent="비밀번호"
+        fontSize={15}
+        htmlFor="password"
+        errorMsg={errors.password?.message}
+      />
 
       <div className={$['row']}>
         <input

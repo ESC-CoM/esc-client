@@ -9,6 +9,7 @@ import {
   BirthInput,
   MbtiInput,
   NextButton,
+  NicknameInput,
 } from '../../components/Join';
 import { More1Type } from 'src/types/join';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
@@ -28,15 +29,14 @@ export default function MoreInfoPage1() {
   } = useForm<More1Type>({
     resolver: yupResolver(MoreJoinSchema),
   });
-  const [gender, year, month, day, mbti] = watch([
+  const [nickName, gender, year, mbti] = watch([
+    'nickName',
     'gender',
     'year',
-    'month',
-    'day',
     'mbti',
   ]);
   const onSubmit = (data: More1Type) => {
-    const more1Info = { gender, year, month, day, mbti };
+    const more1Info = { nickName, gender, year, mbti };
     setJoinInfo(more1Info);
     navigate(NEXT_PATH);
   };
@@ -46,6 +46,12 @@ export default function MoreInfoPage1() {
       <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <NicknameInput
+            watch={watch}
+            register={register}
+            setValue={setValue}
+            errors={errors}
+          />
           <GenderInput
             value={gender}
             setValue={setValue}
