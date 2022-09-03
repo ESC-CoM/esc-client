@@ -1,5 +1,4 @@
-@import 'src/styles/_color.scss';
-@import 'src/styles/_mixin.scss';
+@import 'src/styles/main.scss';
 
 .bottom-modal {
   display: flex;
@@ -10,6 +9,9 @@
   bottom: 0;
   left: 0;
   right: 0;
+  @include desktop() {
+    align-items: center;
+  }
 
   .dimmer {
     position: fixed;
@@ -25,27 +27,40 @@
     overflow-y: auto;
     width: 100%;
     max-width: 758px;
-    max-height: 300px;
-    padding: 20px;
+    max-height: 50%;
     border-radius: 20px 20px 0 0;
     background-color: $white;
     @include FadeUp();
+    @include desktop() {
+      align-items: center;
+      max-height: 500px;
+      border-radius: 20px;
+    }
     &::-webkit-scrollbar {
       display: none;
     }
 
     .header {
-      margin-bottom: 20px;
-      .close-modal {
-        display: flex;
-        flex-direction: row-reverse;
-      }
-
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      padding: 20px 0 10px;
+      background-color: $white;
       .title {
+        width: 100%;
         text-align: center;
         font-size: 18px;
         font-weight: 700;
       }
+      .close-modal {
+        position: absolute;
+        right: 10px;
+      }
+    }
+
+    .inner-container {
+      padding: 20px;
     }
   }
 }

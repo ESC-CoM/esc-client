@@ -8,7 +8,7 @@ interface Props {
   title: string;
   children: JSX.Element;
   isOpen: boolean;
-  toggleModal: () => void;
+  onClose: () => void;
 }
 
 export default function BottomModal({
@@ -16,18 +16,11 @@ export default function BottomModal({
   title,
   children,
   isOpen,
-  toggleModal,
+  onClose,
 }: Props) {
   const [container, setContainer] = useState<Element | null>(null);
 
   useEffect(() => {
-    const onKeyDownESC = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        toggleModal();
-      }
-    };
-    document.addEventListener('keydown', onKeyDownESC);
-
     const newContainer = document.createElement('div');
     newContainer.setAttribute('id', portalId);
     document.body.appendChild(newContainer);
@@ -36,13 +29,23 @@ export default function BottomModal({
     return () => {
       const containerDOM = document.getElementById(portalId);
       containerDOM?.remove();
+    };
+  }, [portalId]);
 
+  useEffect(() => {
+    const onKeyDownESC = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', onKeyDownESC);
+    return () => {
       document?.removeEventListener('keydown', onKeyDownESC);
     };
   }, [portalId]);
 
   const handleClick = () => {
-    if (isOpen) toggleModal();
+    if (isOpen) onClose();
   };
 
   return (
@@ -54,15 +57,16 @@ export default function BottomModal({
         aria-labelledby="modal-heading"
       >
         <div className={$['dimmer']} onClick={handleClick} tabIndex={0} />
-
-        <div className={$['out-container']} role="document">
+        <div className={$['out-container']}>
           <div className={$.header} id="modal-heading">
+            <h2 className={$.title}>{title}</h2>
             <span className={$['close-modal']}>
               <CloseButton onClick={handleClick} />
             </span>
-            <h2 className={$.title}>{title}</h2>
           </div>
-          {children}
+          <div className={$['inner-container']} role="document">
+            {children}
+          </div>
         </div>
       </div>
     </Portal>
