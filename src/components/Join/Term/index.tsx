@@ -15,7 +15,7 @@ export type Props = {
   toggleModal: () => void;
 };
 
-const NEXT_PATH = '/login';
+const NEXT_PATH = '/join/welcome';
 
 export default function Term({ onState, toggleModal }: Props) {
   const { userInfo } = useStore();

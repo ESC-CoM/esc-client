@@ -1,0 +1,48 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.welcome {
+  margin-top: 10%;
+  @include mobile() {
+    margin-top: 25%;
+  }
+
+  img {
+    width: 100%;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: FadeIn 0.8s ease-out;
+
+    .title {
+      margin-top: 50px;
+      margin-bottom: 15px;
+      font-size: 30px;
+      font-weight: 700;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 70px;
+      p {
+        margin-bottom: 5px;
+      }
+    }
+    .start-btn {
+      @include button(80%, none, $primary, $white, 20px, 50px);
+    }
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0.3;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
