@@ -1,7 +1,7 @@
 const getProfileClassName = (profileLen: number) => {
+  if (profileLen === 1) return 'single';
   if (profileLen === 2) return 'double';
-  else if (profileLen === 3) return 'triple';
-  return 'single';
+  return 'triple';
 };
 
 export default getProfileClassName;

@@ -4,8 +4,11 @@
 
 .requested-info {
   display: flex;
+  align-items: center;
   padding: 15px;
+  border-bottom: 1px solid $gray-250;
   cursor: pointer;
+
   .info-list {
     display: flex;
     img {
