@@ -2,7 +2,7 @@ import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
 import { Profile } from 'src/types/profile';
 import { profileInfo } from './profile';
-import { ProfileImage } from 'src/components/Chat';
+import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import ProfileInfo from 'src/components/ProfileInfo';
 import { IoClose } from 'react-icons/io5';
 import { memo } from 'react';
@@ -43,7 +43,7 @@ export function PersonalProfilePage({ closeModal }: Props) {
         </button>
       </div>
       <div className={$['profile']}>
-        <ProfileImage
+        <PersonalProfileImage
           src={profile.img}
           alt={profile.name}
           width={80}

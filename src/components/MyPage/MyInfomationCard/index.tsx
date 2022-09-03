@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { AiOutlineMan } from 'react-icons/ai';
 import { IoIosArrowForward } from 'react-icons/io';
 import $ from './style.module.scss';
-import { ProfileImage } from 'src/components/Chat/ProfileImage';
+import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import InformationBar from '../InformationBar';
 import {
   MOCK_BASIC_INFORMATION,
@@ -19,7 +19,12 @@ export default function MyInformationCard({ className }: Prop) {
     <div className={cx($.container, className)}>
       <div className={$['left-box']}>
         <div className={$['profile-image-container']}>
-          <ProfileImage alt={''} src={MOCK_URL} width={60} height={60} />
+          <PersonalProfileImage
+            alt={''}
+            src={MOCK_URL}
+            width={60}
+            height={60}
+          />
           <span className={$.mbti}>INFP</span>
         </div>
         <div className={$['information-container']}>
