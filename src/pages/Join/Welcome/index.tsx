@@ -3,6 +3,7 @@ import { PageLayout } from 'src/components/shared/Layout';
 import { useNavigate } from 'react-router-dom';
 import Paragraph from 'src/components/shared/Paragraph';
 import Button from 'src/components/shared/Button';
+import WelcomeIcon from 'src/components/shared/Icon/WelcomeIcon';
 
 const NEXT_PATH = '/login';
 const contents = [
@@ -11,7 +12,6 @@ const contents = [
 ];
 
 export default function WelcomePage() {
-  // TODO: 배경 이미지 바꾸기
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(NEXT_PATH);
@@ -20,10 +20,7 @@ export default function WelcomePage() {
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={0}>
       <section className={$.welcome}>
-        <img
-          src="https://user-images.githubusercontent.com/63364990/187017663-1aafbaaa-82c4-4ba4-ac28-9f81ea566ca3.png"
-          alt="welcome-background-img"
-        />
+        <WelcomeIcon />
         <div className={$.content}>
           <h1 className={$.title}>회원가입을 환영합니다!</h1>
           <Paragraph contents={contents} />

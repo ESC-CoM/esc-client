@@ -1,14 +1,8 @@
 @import 'src/styles/main.scss';
 
 .welcome {
-  margin-top: 10%;
-  @include mobile() {
-    margin-top: 25%;
-  }
+  margin-top: 12%;
 
-  img {
-    width: 100%;
-  }
   .content {
     display: flex;
     flex-direction: column;
@@ -20,18 +14,6 @@
       margin-bottom: 15px;
       font-size: 30px;
       font-weight: 700;
-    }
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 70px;
-      p {
-        margin-bottom: 5px;
-      }
-    }
-    .start-btn {
-      @include button(80%, none, $primary, $white, 20px, 50px);
     }
   }
 }
