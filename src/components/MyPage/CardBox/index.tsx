@@ -10,12 +10,12 @@ const SETTING_MENU: Menu[] = [
       {
         type: 'link',
         text: '기본 정보 수정',
-        to: './',
+        to: '',
       },
       {
         type: 'link',
         text: '학사 정부 수정',
-        to: './',
+        to: '',
       },
     ],
   },
@@ -25,7 +25,7 @@ const SETTING_MENU: Menu[] = [
       {
         type: 'link',
         text: '친구 초대',
-        to: './',
+        to: '',
       },
     ],
   },

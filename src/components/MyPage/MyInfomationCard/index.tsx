@@ -29,12 +29,16 @@ export default function MyInformationCard({ className }: Prop) {
           </div>
           <ul>
             {MOCK_BASIC_INFORMATION.map(({ icon, text }) => (
-              <InformationBar {...{ icon, text }} />
+              <InformationBar key={text} {...{ icon, text }} />
             ))}
           </ul>
           <ul className={$['body-information']}>
             {MOCK_BODY_DATA.map(({ icon, text }) => (
-              <InformationBar className={$.item} {...{ icon, text }} />
+              <InformationBar
+                key={text}
+                className={$.item}
+                {...{ icon, text }}
+              />
             ))}
           </ul>
         </div>
