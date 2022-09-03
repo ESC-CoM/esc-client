@@ -4,6 +4,7 @@ import {
   EmailInputPage,
   MoreInfoPage1,
   MoreInfoPage2,
+  WelcomePage,
 } from '../pages/Join';
 import ProgressBar from 'src/components/ProgressBar';
 import { getCurrentPath } from 'src/utils/getCurrentPath';
@@ -30,6 +31,10 @@ const routes = [
     path: 'more2',
     element: <MoreInfoPage2 />,
   },
+  {
+    path: 'welcome',
+    element: <WelcomePage />,
+  },
 ];
 
 function JoinRoute() {
@@ -37,7 +42,7 @@ function JoinRoute() {
 
   return (
     <>
-      <ProgressBar currStep={currStep} allStep={routes.length} />
+      <ProgressBar currStep={currStep} allStep={routes.length - 1} />
       <Routes>
         {routes.map((route, index) => (
           <Route key={index} {...route} />

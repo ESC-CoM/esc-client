@@ -1,0 +1,10 @@
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70px;
+
+  .content {
+    margin-bottom: 5px;
+  }
+}

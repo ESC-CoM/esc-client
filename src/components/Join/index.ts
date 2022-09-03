@@ -12,3 +12,5 @@ export { default as NicknameInput } from './MoreInfo/NicknameInput';
 
 export { default as NextButton } from './NextButton';
 export { default as Term } from './Term';
+
+export { default as Welcome } from './Welcome';
