@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import cx from 'classnames';
 import useStore from 'src/store/useStore';
+import ErrorMessage from 'src/components/shared/ErrorMessage';
 
 export type Props = {
   onState: boolean;
@@ -110,7 +111,9 @@ export default function Term({ onState, toggleModal }: Props) {
           })}
         </ul>
         {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
-          <span className={$['error']}>필수 약관에 동의해주세요.</span>
+          <span className={$['error-msg']}>
+            <ErrorMessage errorText="필수 약관에 동의해주세요." />
+          </span>
         )}
 
         <button type="submit" className={$['next-btn']} aria-labelledby="next">

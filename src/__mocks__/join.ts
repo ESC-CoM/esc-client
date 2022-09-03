@@ -9,15 +9,6 @@ export const terms = [
   },
 ];
 
-export const monthList = Array.from(
-  { length: 12 },
-  (_, index) => 1 + index + '월'
-);
-export const dayList = Array.from(
-  { length: 31 },
-  (_, index) => 1 + index + '일'
-);
-
 export const hobbyData = [
   {
     id: 0,
