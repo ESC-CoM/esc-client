@@ -1,4 +1,4 @@
-import BasicSettingPage from './Basic';
+import MainSettingPage from './Main';
 import DetailSettingPage from './Detail';
 
-export { BasicSettingPage, DetailSettingPage };
+export { MainSettingPage, DetailSettingPage };

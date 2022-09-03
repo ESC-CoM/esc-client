@@ -4,13 +4,13 @@ import ToggleBar from '../ToggleBar';
 import $ from './style.module.scss';
 
 type Props = {
-  barClassName: string;
+  className: string;
   item: Item;
 };
 
-export default function Container({ barClassName, item }: Props) {
+export default function SettingContainer({ className, item }: Props) {
   return (
-    <li key={item.text} className={$[barClassName]}>
+    <li key={item.text} className={className}>
       {item.type === 'link' ? (
         <LinkBar to={item.to} text={item.text} />
       ) : (

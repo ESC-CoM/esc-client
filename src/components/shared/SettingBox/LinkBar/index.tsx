@@ -10,7 +10,7 @@ type Props = {
 export default function LinkBar({ to, text }: Props) {
   return (
     <Link to={to} className={$.link}>
-      <span>{text}</span>
+      <span className={$.text}>{text}</span>
       <IoChevronForward className={$.icon} />
     </Link>
   );

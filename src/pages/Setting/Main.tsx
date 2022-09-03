@@ -1,15 +1,11 @@
-import $ from './style.module.scss';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+import { PageLayout } from 'src/components/shared/Layout';
+import SettingBox from 'src/components/shared/SettingBox';
 import { Menu } from 'src/types/setting';
-import Container from '../Container';
-import getBarClassName from 'src/utils/getBarClassName';
+import $ from './main.module.scss';
 
-export default function SettingBox() {
-  const [isNotificationOn, setIsNotificationOn] = useState(true);
-  const onNotificationClick = useCallback(
-    () => setIsNotificationOn((pre) => !pre),
-    [isNotificationOn]
-  );
+export default function MainSettingPage() {
+  const [isNotificationOn, setIsNotificationOff] = useState(true);
 
   const SETTING_MENU: Menu[] = [
     {
@@ -19,7 +15,7 @@ export default function SettingBox() {
           text: '푸시 알람',
           type: 'toggle',
           value: isNotificationOn,
-          onClick: onNotificationClick,
+          onClick: () => setIsNotificationOff((pre) => !pre),
         },
       ],
     },
@@ -61,18 +57,10 @@ export default function SettingBox() {
   ];
 
   return (
-    <ul className={$.container}>
-      {SETTING_MENU.map(({ title, items }) => (
-        <li key={title}>
-          <h2 className={$.title}>{title}</h2>
-          <ul>
-            {items.map((item, index) => {
-              const barClassName = getBarClassName(index, items.length);
-              return <Container key={item.text} {...{ item, barClassName }} />;
-            })}
-          </ul>
-        </li>
-      ))}
-    </ul>
+    <PageLayout isNeedFooter={false} headerHeight={44}>
+      <div className={$.container}>
+        <SettingBox className={''} menu={SETTING_MENU} />
+      </div>
+    </PageLayout>
   );
 }

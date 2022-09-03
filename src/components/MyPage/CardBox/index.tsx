@@ -1,7 +1,35 @@
-import { Link } from 'react-router-dom';
 import MyInformationCard from '../MyInfomationCard';
-import { IoIosArrowForward } from 'react-icons/io';
 import $ from './style.module.scss';
+import { Menu } from 'src/types/setting';
+import SettingBox from 'src/components/shared/SettingBox';
+
+const SETTING_MENU: Menu[] = [
+  {
+    title: '계정 정보',
+    items: [
+      {
+        type: 'link',
+        text: '기본 정보 수정',
+        to: './',
+      },
+      {
+        type: 'link',
+        text: '학사 정부 수정',
+        to: './',
+      },
+    ],
+  },
+  {
+    title: '기타',
+    items: [
+      {
+        type: 'link',
+        text: '친구 초대',
+        to: './',
+      },
+    ],
+  },
+];
 
 export default function CardBox() {
   return (
@@ -11,25 +39,7 @@ export default function CardBox() {
         <MyInformationCard className={$.card} />
       </section>
       <section>
-        <h2 className={$['card-title']}>계정 정보</h2>
-        <div className={$['setting-group']}>
-          <Link to="" className={$['item']}>
-            <span className={$['setting-title']}>기본 정보 수정</span>
-            <IoIosArrowForward className={$.button} />
-          </Link>
-          <hr className={$.line} />
-          <Link to="" className={$['item']}>
-            <span className={$['setting-title']}>학사 정보 수정</span>
-            <IoIosArrowForward className={$.button} />
-          </Link>
-        </div>
-      </section>
-      <section>
-        <h2 className={$['card-title']}>기타</h2>
-        <Link to="" className={$['setting-bar']}>
-          <span className={$['setting-title']}>친구 초대</span>
-          <IoIosArrowForward className={$.button} />
-        </Link>
+        <SettingBox className={''} menu={SETTING_MENU} />
       </section>
     </div>
   );
