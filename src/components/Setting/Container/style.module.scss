@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   height: 50px;
-  background-color: $gray-200;
+  background-color: $white;
 }
 
 .single-bar {
@@ -19,11 +19,11 @@
 
 .middle-bar {
   @include bar();
-  border-top: 2px solid $white;
+  border-top: 2px solid $gray-50;
 }
 
 .bottom-bar {
   @include bar();
-  border-top: 2px solid $white;
+  border-top: 2px solid $gray-50;
   border-radius: 0 0 10px 10px;
 }

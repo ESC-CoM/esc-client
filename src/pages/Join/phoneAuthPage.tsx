@@ -24,7 +24,7 @@ export default function PhoneAuthPage() {
   const navigate = useNavigate();
   const [phoneNumber, isPhoneDuplicated, authNumber, isAuthed] = watch([
     'phoneNumber',
-    'isPhoneDuplicated',
+    'isReceivedAuthNum',
     'authNumber',
     'isAuthed',
   ]);

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
-export default function AuthTimer() {
+export function AuthTimer() {
   const [minutes, setMinutes] = useState(3);
   const [seconds, setSeconds] = useState(0);
   useEffect(() => {
@@ -25,3 +25,5 @@ export default function AuthTimer() {
     </span>
   );
 }
+
+export default memo(AuthTimer);
