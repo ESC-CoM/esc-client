@@ -61,9 +61,9 @@ export default function PhoneAuth({
       <h1>휴대폰 인증을 해주세요</h1>
       <InputWithButton
         className={$['input-with-button']}
-        register={register('phoneNumber')}
         onClick={sendPhoneNum}
         onChange={handlePhoneNumberChange}
+        value={phoneNumber}
         labelErrorMessage={errors.phoneNumber?.message}
         buttonErrorMessage={errors.isReceivedAuthNum?.message}
         labelText="휴대폰 번호"

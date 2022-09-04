@@ -7,8 +7,9 @@ import { ChangeEventHandler } from 'react';
 
 interface Props {
   className?: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string;
   onClick: () => void;
   labelText: string;
   buttonText: string;
@@ -22,6 +23,7 @@ export default function InputWithButton({
   register,
   onClick,
   onChange,
+  value,
   labelErrorMessage,
   buttonErrorMessage,
   labelText,
@@ -46,9 +48,8 @@ export default function InputWithButton({
           type="text"
           id="inputWithButton"
           autoFocus
-          placeholder={placeholder}
           {...register}
-          {...(onChange ?? { onChange })}
+          {...{ value, onChange, placeholder }}
         />
         <button className={$['btn']} type="button" onClick={handleClickButton}>
           {buttonText}
