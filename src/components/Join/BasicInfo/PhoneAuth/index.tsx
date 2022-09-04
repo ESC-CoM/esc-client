@@ -30,10 +30,7 @@ export default function PhoneAuth({
   setFocus,
   errors,
 }: Props) {
-  const [phoneNumber, isAuthed] = watch(['phoneNumber', 'isAuthed'], {
-    phoneNumber: '',
-    isAuthed: false,
-  });
+  const [phoneNumber, isAuthed] = watch(['phoneNumber', 'isAuthed']);
   const [sendCount, setSendCount] = useState(0);
 
   const sendPhoneNum = () => {
@@ -41,6 +38,7 @@ export default function PhoneAuth({
     setValue('isReceivedAuthNum', true);
 
     setFocus('authNumber');
+    console.log('clicked');
   };
 
   const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = ({

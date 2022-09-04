@@ -20,6 +20,7 @@ export default function PhoneAuthPage() {
     formState: { errors },
   } = useForm<PhoneAuthType>({
     resolver: yupResolver(PhoneYup),
+    defaultValues: { phoneNumber: '', isAuthed: false },
   });
   const navigate = useNavigate();
   const [isPhoneDuplicated, isAuthed] = watch([
