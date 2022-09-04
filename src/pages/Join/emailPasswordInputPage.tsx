@@ -4,16 +4,16 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useStore from 'src/store/useStore';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { EmailInput, PasswordInput, NextButton } from '../../components/Join';
+import { PasswordInput, NextButton } from '../../components/Join';
 import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
 import { EmailPasswordType } from 'src/types/join';
+import InputWithButton from 'src/components/shared/InputWithButton';
 
 const NEXT_PATH = '/join/more1';
 
 export default function EmailPasswordInputPage() {
   const { setJoinInfo } = useStore();
   const {
-    watch,
     register,
     setValue,
     handleSubmit,
@@ -22,28 +22,29 @@ export default function EmailPasswordInputPage() {
     resolver: yupResolver(EmailPasswordYup),
   });
   const navigate = useNavigate();
-  const [email, isDuplicationChecked, password] = watch([
-    'email',
-    'isDuplicationChecked',
-    'password',
-  ]);
 
   const onSubmit = (data: EmailPasswordType) => {
-    const emailPasswordInfo = { email, password };
-    setJoinInfo(emailPasswordInfo);
+    const { email, password } = data;
+    setJoinInfo({ email, password });
     navigate(NEXT_PATH);
   };
+
+  const handleDuplicationCheckButton = () =>
+    setValue('isDuplicationChecked', true);
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
       <section className={$.container}>
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <EmailInput
-            isDuplicationChecked={isDuplicationChecked}
+          <InputWithButton
+            className={$['input-with-button']}
             register={register('email')}
-            setValue={setValue}
-            errors={errors}
+            onClick={handleDuplicationCheckButton}
+            labelText="이메일"
+            buttonText="중복 확인"
+            labelErrorMessage={errors.email?.message}
+            buttonErrorMessage={errors.isDuplicationChecked?.message}
           />
           <PasswordInput register={register('password')} errors={errors} />
           <NextButton text={'다음'} />
