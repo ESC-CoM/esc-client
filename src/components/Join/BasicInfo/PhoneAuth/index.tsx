@@ -53,6 +53,7 @@ export default function PhoneAuth({
   };
 
   useEffect(() => {
+    if (!phoneNumber) return;
     insertAutoHyphen({ phoneNumber, setValue });
   }, [phoneNumber]);
 

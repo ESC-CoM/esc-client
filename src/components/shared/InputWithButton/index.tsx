@@ -49,7 +49,7 @@ export default function InputWithButton({
           id="inputWithButton"
           autoFocus
           {...register}
-          {...{ value, onChange, placeholder }}
+          {...{ value: (value ??= ''), onChange, placeholder }}
         />
         <button className={$['btn']} type="button" onClick={handleClickButton}>
           {buttonText}
