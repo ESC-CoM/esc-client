@@ -19,7 +19,7 @@ export const PhoneYup = yup.object({
   phoneNumber: yup
     .string()
     .typeError('올바른 휴대폰 번호를 입력해주세요.')
-    .required('휴대폰 인증을 해주세요.'),
+    .required('휴대폰 번호를 입력해주세요.'),
   authNumber: yup
     .number()
     .typeError('올바른 인증번호를 입력해주세요.')
