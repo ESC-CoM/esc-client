@@ -1,7 +1,6 @@
 import { Item } from 'src/types/setting';
 import LinkBar from '../LinkBar';
 import ToggleBar from '../ToggleBar';
-import $ from './style.module.scss';
 
 type Props = {
   className: string;
@@ -14,7 +13,11 @@ export default function SettingContainer({ className, item }: Props) {
       {item.type === 'link' ? (
         <LinkBar to={item.to} text={item.text} />
       ) : (
-        <ToggleBar text={item.text} value={item.value} onClick={item.onClick} />
+        <ToggleBar
+          text={item.text}
+          value={item.value}
+          onClick={item.onToggleClick}
+        />
       )}
     </li>
   );
