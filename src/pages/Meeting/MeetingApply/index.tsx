@@ -31,11 +31,13 @@ export default function MeetingApplyPage() {
     else setAddedList(addedList.filter((x) => x !== id));
   };
 
+  const handleSearchClick = (text: string) => alert(text);
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <div className={$['top']}>
         <h2 className={$['sub-title']}>친구 추가하기</h2>
-        <Search />
+        <Search onSearchClick={handleSearchClick} />
       </div>
 
       <ul className={$['friends-list']}>
