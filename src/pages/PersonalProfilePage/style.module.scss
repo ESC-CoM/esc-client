@@ -1,15 +1,17 @@
 @import 'src/styles/_color.scss';
 
 .profile-box {
-  position: relative;
   height: 100%;
-  padding: 10px;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  .profile-box-background-img {
+    position: fixed;
+    width: 100%;
+  }
 
   .close-profile {
+    position: relative;
     display: flex;
     justify-content: flex-end;
+    padding: 10px;
     .close-btn {
       font-size: 25px;
       color: $gray-500;

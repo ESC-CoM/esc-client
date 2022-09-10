@@ -6,27 +6,15 @@ import { memo } from 'react';
 import { BasicSection, MoreSection } from 'src/components/PersonalProfile';
 import { BasicInfoType, MoreInfoType } from 'src/types/profile';
 import ProfileBackgound from 'src/components/shared/Icon/ProfileBackgound.svg';
+import { basicInfoInit, moreInfoInit } from 'src/constants/personalProfile';
 
 interface Props {
   closeModal: () => void;
 }
 
 export function PersonalProfilePage({ closeModal }: Props) {
-  const [basicInfo, setBasicInfo] = useState<BasicInfoType>({
-    img: '',
-    nickName: '',
-    gender: '',
-    college: '',
-    department: '',
-    studentNum: '',
-  });
-  const [moreInfo, setMoreInfo] = useState<MoreInfoType>({
-    birthDate: '',
-    height: '',
-    weight: '',
-    mbti: '',
-    drink: 0,
-  });
+  const [basicInfo, setBasicInfo] = useState<BasicInfoType>(basicInfoInit);
+  const [moreInfo, setMoreInfo] = useState<MoreInfoType>(moreInfoInit);
 
   useEffect(() => {
     setBasicInfo(basicInfoMock);
@@ -34,12 +22,13 @@ export function PersonalProfilePage({ closeModal }: Props) {
   }, []);
 
   return (
-    <section
-      className={$['profile-box']}
-      style={{
-        backgroundImage: `url(${ProfileBackgound})`,
-      }}
-    >
+    <section className={$['profile-box']}>
+      <img
+        className={$['profile-box-background-img']}
+        src={ProfileBackgound}
+        alt="프로필 배경 이미지"
+        draggable="false"
+      />
       <div className={$['close-profile']} onClick={closeModal}>
         <button className={$['close-btn']}>
           <IoClose />
