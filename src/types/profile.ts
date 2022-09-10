@@ -1,15 +1,25 @@
 export type Profile = {
   img: string;
-  mannerScore: number;
-  name: string;
+  mannerScore?: number;
+  nickName: string;
   gender: string;
   birthDate: string;
   college: string;
   department?: string;
   studentNum: string;
-  height: number;
-  weight: number;
+  height: string;
+  weight: string;
   mbti: string;
   hobbies?: string;
   drink: number;
 };
+
+export type BasicInfoType = Pick<
+  Profile,
+  'img' | 'nickName' | 'gender' | 'college' | 'department' | 'studentNum'
+>;
+
+export type MoreInfoType = Pick<
+  Profile,
+  'birthDate' | 'height' | 'weight' | 'mbti' | 'drink'
+>;

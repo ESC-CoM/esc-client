@@ -1,6 +1,6 @@
 import { memo, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
-import { Profile } from 'src/types/meeting';
+import { Profile } from 'src/types/profile';
 import $ from './style.module.scss';
 
 type Props = {
