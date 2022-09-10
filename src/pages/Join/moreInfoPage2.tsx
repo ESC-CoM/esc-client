@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
-import { Term, NextButton } from 'src/components/Join';
+import { Term } from 'src/components/Join';
+import FooterButton from 'src/components/shared/FooterButton';
 
 export default function MoreInfoPage2() {
   const { setJoinInfo } = useStore();
@@ -33,7 +34,7 @@ export default function MoreInfoPage2() {
           <HeightInput value={height} register={register('height')} />
           <WeightInput value={weight} register={register('weight')} />
           <Drink value={drink} setValue={setValue} />
-          <NextButton text={'다음'} onClick={() => onSubmit(watch())} />
+          <FooterButton text="다음" type="submit" />
         </form>
         {termsOpen && (
           <Term

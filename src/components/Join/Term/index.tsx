@@ -10,6 +10,7 @@ import { terms } from 'src/__mocks__/join';
 import cx from 'classnames';
 import useStore from 'src/store/useStore';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
+import FooterButton from 'src/components/shared/FooterButton';
 
 export type Props = {
   onState: boolean;

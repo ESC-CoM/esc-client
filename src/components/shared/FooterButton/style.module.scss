@@ -3,9 +3,11 @@
 
 .footer {
   @include footer();
+  display: flex;
+  align-items: center;
 
   .button {
     @include button(calc(100% - 50px), none, $primary, $white, 20px);
-    min-width: 708px;
+    max-width: 708px;
   }
 }

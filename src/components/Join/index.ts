@@ -9,5 +9,4 @@ export { default as MbtiInput } from './MoreInfo/MbtiInput';
 export { default as WeightInput } from './MoreInfo/WeightInput';
 export { default as NicknameInput } from './MoreInfo/NicknameInput';
 
-export { default as NextButton } from './NextButton';
 export { default as Term } from './Term';

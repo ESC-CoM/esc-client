@@ -4,10 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useStore from 'src/store/useStore';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { PasswordInput, NextButton } from '../../components/Join';
+import { PasswordInput } from '../../components/Join';
 import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
 import { EmailPasswordType } from 'src/types/join';
 import InputWithButton from 'src/components/shared/InputWithButton';
+import FooterButton from 'src/components/shared/FooterButton';
 
 const NEXT_PATH = '/join/more1';
 
@@ -47,7 +48,7 @@ export default function EmailPasswordInputPage() {
             buttonErrorMessage={errors.isDuplicationChecked?.message}
           />
           <PasswordInput register={register('password')} errors={errors} />
-          <NextButton text={'다음'} />
+          <FooterButton text="다음" type="submit" />
         </form>
       </section>
     </PageLayout>
