@@ -6,10 +6,9 @@ import {
   MoreInfoPage2,
   WelcomePage,
 } from '../pages/Join';
-import ProgressBar from 'src/components/ProgressBar';
+import { ProgressBar } from 'src/components/Join';
 import { getCurrentPath } from 'src/utils/getCurrentPath';
 
-// TODO: 회원가입 환영 라우트 추가
 const routes = [
   {
     index: true,

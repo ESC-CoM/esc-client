@@ -4,9 +4,9 @@ interface Props {
   contents: string[];
 }
 
-export default function Paragraph({ contents }: Props) {
+export default function ParagraphList({ contents }: Props) {
   return (
-    <div className={$.paragraph}>
+    <div className={$['paragraph-list']}>
       {contents.map((content, index) => (
         <p key={content + index} className={$.content}>
           {content}

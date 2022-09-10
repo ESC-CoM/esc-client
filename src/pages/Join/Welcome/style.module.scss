@@ -1,7 +1,7 @@
 @import 'src/styles/main.scss';
 
 .welcome {
-  margin-top: 12%;
+  margin-top: 15px;
 
   .content {
     display: flex;
@@ -10,9 +10,9 @@
     animation: FadeIn 0.8s ease-out;
 
     .title {
-      margin-top: 50px;
+      margin-top: 1.5rem;
       margin-bottom: 15px;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 700;
     }
   }

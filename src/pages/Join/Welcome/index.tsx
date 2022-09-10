@@ -1,7 +1,7 @@
 import $ from './style.module.scss';
 import { PageLayout } from 'src/components/shared/Layout';
 import { useNavigate } from 'react-router-dom';
-import Paragraph from 'src/components/shared/Paragraph';
+import ParagraphList from 'src/components/shared/ParagraphList';
 import Button from 'src/components/shared/Button';
 import WelcomeIcon from 'src/components/shared/Icon/WelcomeIcon';
 
@@ -23,7 +23,7 @@ export default function WelcomePage() {
         <WelcomeIcon />
         <div className={$.content}>
           <h1 className={$.title}>회원가입을 환영합니다!</h1>
-          <Paragraph contents={contents} />
+          <ParagraphList contents={contents} />
           <Button
             contentText="블루스프링 시작하기"
             width="80%"

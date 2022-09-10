@@ -11,7 +11,7 @@
     max-width: 758px;
     height: 100%;
 
-    -webkit-appearance: none;
+    appearance: none;
     &::-webkit-progress-bar {
       background: $gray-300;
     }
