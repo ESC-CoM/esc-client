@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   registerMeetingMocks,
   requestListMocks,
@@ -16,6 +16,16 @@ export default function RegisterDetailPage() {
     MyMeetingRequestType[]
   >([]);
   const detailInfoRef = useRef<HTMLLIElement | null>(null);
+  const profileList = useMemo(
+    () =>
+      friends
+        .map(({ src, nickName }) => ({
+          src,
+          alt: nickName,
+        }))
+        .slice(0, 3),
+    []
+  );
 
   const fetchMoreMeetingFeeds = () => {
     setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
@@ -24,13 +34,7 @@ export default function RegisterDetailPage() {
   return (
     <>
       <div className={$['detail-info']}>
-        <MutiProfile
-          profileList={friends.map(({ src, nickName }) => ({
-            src,
-            alt: nickName,
-          }))}
-          parentRef={detailInfoRef}
-        />
+        <MutiProfile profileList={profileList} parentRef={detailInfoRef} />
 
         <div className={$['info']}>
           <div>

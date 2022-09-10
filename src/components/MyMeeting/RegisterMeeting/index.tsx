@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyMeetingType } from 'src/types/myMeeting';
 import MutiProfile from 'src/components/shared/MultiProfile';
@@ -12,6 +12,16 @@ export default function RegisterMeeting({
 }: MyMeetingType) {
   const navigate = useNavigate();
   const myMeetingRef = useRef<HTMLLIElement | null>(null);
+  const profileList = useMemo(
+    () =>
+      friends
+        .map(({ src, nickName }) => ({
+          src,
+          alt: nickName,
+        }))
+        .slice(0, 3),
+    []
+  );
 
   const getRequestList = () => {
     // 요청 리스트 fetch
@@ -20,13 +30,7 @@ export default function RegisterMeeting({
 
   return (
     <li className={$['my-meeting']} onClick={getRequestList} ref={myMeetingRef}>
-      <MutiProfile
-        profileList={friends.map(({ src, nickName }) => ({
-          src,
-          alt: nickName,
-        }))}
-        parentRef={myMeetingRef}
-      />
+      <MutiProfile profileList={profileList} parentRef={myMeetingRef} />
 
       <div className={$['my-meeting-info']}>
         <div>

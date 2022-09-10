@@ -18,6 +18,11 @@ const FALLBACK_IMAGE =
 export default function MutiProfile({ profileList, parentRef }: Props) {
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
+  const onError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = FALLBACK_IMAGE;
+  };
+
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
     observer: IntersectionObserver
@@ -39,15 +44,12 @@ export default function MutiProfile({ profileList, parentRef }: Props) {
 
   return (
     <div className={$[`${getProfileClassName(profileList.length)}`]}>
-      {profileList.slice(0, 3).map(({ alt, src }, index) => (
+      {profileList.map(({ alt, src }, index) => (
         <div key={`${src}${index}`} className={$['personal-img']}>
           <img
             src={src}
             alt={`${alt}의 프로필 사진`}
-            onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = FALLBACK_IMAGE;
-            }}
+            onError={onError}
             ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
           />
         </div>
