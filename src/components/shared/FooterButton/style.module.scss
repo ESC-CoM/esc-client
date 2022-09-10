@@ -1,0 +1,11 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_mixin.scss';
+
+.footer {
+  @include footer();
+
+  .button {
+    @include button(calc(100% - 50px), none, $primary, $white, 20px);
+    min-width: 708px;
+  }
+}
