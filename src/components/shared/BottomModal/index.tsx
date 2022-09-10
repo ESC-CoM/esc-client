@@ -54,7 +54,7 @@ export default function BottomModal({
         className={$['bottom-modal']}
         role="alertdialog"
         aria-modal
-        aria-labelledby="modal-heading"
+        aria-labelledby="bottom-modal"
       >
         <div className={$['dimmer']} onClick={handleClick} tabIndex={0} />
         <div className={$['out-container']}>

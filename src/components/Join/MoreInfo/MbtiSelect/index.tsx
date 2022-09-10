@@ -14,7 +14,7 @@ interface Props {
   errors?: FieldError;
 }
 
-export function MbtiInput({ mbti, setValue, errors }: Props) {
+export function MbtiSelect({ mbti, setValue, errors }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -45,15 +45,14 @@ export function MbtiInput({ mbti, setValue, errors }: Props) {
         <Modal
           portalId="mbti-modal"
           title="MBTI"
-          children={
-            <MbtiList setValue={setValue} onClose={() => setIsOpen(!isOpen)} />
-          }
           onClose={() => setIsOpen(!isOpen)}
           isOpen={isOpen}
-        />
+        >
+          <MbtiList setValue={setValue} onClose={() => setIsOpen(!isOpen)} />
+        </Modal>
       )}
     </div>
   );
 }
 
-export default memo(MbtiInput);
+export default memo(MbtiSelect);

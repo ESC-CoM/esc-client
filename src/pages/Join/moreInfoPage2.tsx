@@ -17,6 +17,10 @@ export default function MoreInfoPage2() {
   const [height, weight, drink] = watch(['height', 'weight', 'drink']);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
 
+  const onCloseTerms = () => {
+    setIsTermsOpen(!isTermsOpen);
+  };
+
   const onSubmit = (data: More2Type) => {
     const more2Info = { height, weight, drink };
     setJoinInfo(more2Info);
@@ -40,10 +44,11 @@ export default function MoreInfoPage2() {
           <Modal
             portalId="terms-modal"
             title="서비스 이용을 위해 동의가 필요해요"
-            children={<Term />}
-            onClose={() => setIsTermsOpen(!isTermsOpen)}
+            onClose={onCloseTerms}
             isOpen={isTermsOpen}
-          />
+          >
+            <Term />
+          </Modal>
         )}
       </section>
     </PageLayout>
