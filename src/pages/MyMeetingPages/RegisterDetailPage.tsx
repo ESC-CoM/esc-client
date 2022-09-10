@@ -47,10 +47,10 @@ export default function RegisterDetailPage() {
 
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
-          {requestedMeeting.map(({ comment, profileImg, date }, index) => (
+          {requestedMeeting.map(({ comment, requestedInfo, date }, index) => (
             <RequestedList
               key={`requested-list-${index}`}
-              {...{ comment, profileImg, date }}
+              {...{ comment, requestedInfo, date }}
             />
           ))}
         </ul>

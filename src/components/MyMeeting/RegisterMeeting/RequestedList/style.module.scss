@@ -5,8 +5,9 @@
 .requested-info {
   display: flex;
   align-items: center;
-  padding: 15px;
+  height: 70px;
   border-bottom: 1px solid $gray-250;
+  padding: 0 5px;
   cursor: pointer;
 
   .info-list {
