@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import { ProfileImage } from 'src/components/Chat/ProfileImage';
+import { PersonalProfileImage } from 'src/components/shared/PersonalProfileImage';
 import { BasicInfoType } from 'src/types/profile';
 import { IoMdMale, IoMdFemale } from 'react-icons/io';
 
@@ -12,7 +12,7 @@ export default function BasicSection({ basicInfo }: Props) {
 
   return (
     <section className={$['basic-section']}>
-      <ProfileImage src={img} alt={nickName} width={110} height={110} />
+      <PersonalProfileImage src={img} alt={nickName} width={110} height={110} />
 
       <div className={$['right']}>
         <div className={$['user-info']}>

@@ -1,18 +1,23 @@
 import $ from './style.module.scss';
 import { useIntersectObserver } from 'src/hooks';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
-
-const FALLBACK_IMAGE =
-  'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
+import MutiProfile from 'src/components/shared/MultiProfile';
 
 export default function RequestedList({
   comment,
-  profileImg,
+  requestedInfo,
   date,
 }: MyMeetingRequestType) {
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
+  const profileList = useMemo(
+    () =>
+      requestedInfo
+        .map(({ nickName, profileImg }) => ({ alt: nickName, src: profileImg }))
+        .slice(0, 3),
+    []
+  );
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -35,20 +40,7 @@ export default function RequestedList({
 
   return (
     <li className={$['requested-info']} ref={requestedMeetingRef}>
-      <div className={$['info-list']}>
-        {profileImg.map((imgUri, index) => (
-          <img
-            key={`${imgUri}-${index}`}
-            data-src={imgUri}
-            alt="profile-img"
-            onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = FALLBACK_IMAGE;
-            }}
-            ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
-          />
-        ))}
-      </div>
+      <MutiProfile profileList={profileList} parentRef={requestedMeetingRef} />
 
       <div className={$['info']}>
         <span className={$['comment']}>{comment}</span>

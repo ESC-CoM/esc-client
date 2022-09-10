@@ -1,5 +1,5 @@
 import Message from '../Message';
-import ProfileImage from '../ProfileImage';
+import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import cx from 'classnames';
 import $ from './style.module.scss';
 import { memo } from 'react';
@@ -24,7 +24,7 @@ export function ChatCard({
   return (
     <div className={cx($['chat-card'], $[id === 'loginid' ? 'me' : 'other'])}>
       {id === 'other' && (
-        <ProfileImage
+        <PersonalProfileImage
           id={id}
           alt={name}
           src={imagePath}
