@@ -16,7 +16,7 @@ export type Props = {
   onClose: () => void;
 };
 
-const NEXT_PATH = '/login';
+const NEXT_PATH = '/join/welcome';
 
 export default function Term() {
   const { userInfo } = useStore();

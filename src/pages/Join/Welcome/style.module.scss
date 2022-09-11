@@ -1,0 +1,29 @@
+@import 'src/styles/main.scss';
+
+.welcome {
+  margin-top: 15px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: FadeIn 0.8s ease-out;
+
+    .title {
+      margin-top: 1.5rem;
+      margin-bottom: 15px;
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0.3;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+  }
+}

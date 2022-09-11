@@ -156,71 +156,126 @@ export const registerMeetingMocks = [
 export const requestListMocks = [
   {
     comment: '공대도 받아주세요 !',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+      },
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
     ],
     date: '27초 전',
   },
   {
     comment: '술 잘 먹어요 ㅎㅎ',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+      },
     ],
     date: '30분 전',
   },
   {
     comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '2일 전',
   },
   {
     comment: '공대도 받아주세요 !',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '27초 전',
   },
   {
     comment: '술 잘 먹어요 ㅎㅎ',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '30분 전',
   },
   {
     comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '2일 전',
   },
   {
     comment: '공대도 받아주세요 !',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '27초 전',
   },
   {
     comment: '술 잘 먹어요 ㅎㅎ',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '30분 전',
   },
   {
     comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '2일 전',
   },
   {
     comment: '전정대랑 과팅합시다앙',
-    profileImg: [
-      'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+      },
     ],
     date: '2일 전',
   },
@@ -229,80 +284,53 @@ export const requestListMocks = [
 export const requestMeetingMocks = [
   {
     comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
     ],
     date: '52분 전',
     state: true,
   },
   {
     comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
     ],
     date: '22.04.29',
     state: false,
   },
   {
     comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
     ],
     date: '52분 전',
     state: true,
   },
   {
     comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '22.04.29',
-    state: false,
-  },
-  {
-    comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-    ],
-    date: '52분 전',
-    state: true,
-  },
-  {
-    comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '22.04.29',
-    state: false,
-  },
-  {
-    comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-    ],
-    date: '52분 전',
-    state: true,
-  },
-  {
-    comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-    ],
-    date: '22.04.29',
-    state: false,
-  },
-  {
-    comment: '내가 신청함',
-    profileImg: [
-      'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-    ],
-    date: '52분 전',
-    state: true,
-  },
-  {
-    comment: '신청2',
-    profileImg: [
-      'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        profileImg:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
     ],
     date: '22.04.29',
     state: false,
