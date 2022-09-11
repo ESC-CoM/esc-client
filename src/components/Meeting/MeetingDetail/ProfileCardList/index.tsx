@@ -6,10 +6,9 @@ import {
 import ProfileCard from 'src/components/Meeting/MeetingDetail/ProfileCardList/ProfileCard';
 import $ from './style.module.scss';
 import { useWindowResize } from 'src/hooks';
-import { Profile } from 'src/types/profile';
 
 type Props = {
-  friends: Profile[];
+  friends: res.Profile[];
 };
 
 function ProfileCardList({ friends }: Props) {

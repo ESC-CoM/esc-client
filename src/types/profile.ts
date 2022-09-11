@@ -10,7 +10,7 @@ export type Profile = {
   height: string;
   weight: string;
   mbti: string;
-  hobbies?: string;
+  hobbies?: string[];
   drink: number;
 };
 
