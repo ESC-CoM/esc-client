@@ -8,10 +8,12 @@ import { RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import MutiProfile from 'src/components/shared/MultiProfile';
+import { useNavigate } from 'react-router-dom';
 
 const { title, content, friends, date } = registerMeetingMocks[0];
 
 export default function RegisterDetailPage() {
+  const navigate = useNavigate();
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
@@ -31,9 +33,13 @@ export default function RegisterDetailPage() {
     setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
   };
 
+  const onClickRequestedPosting = () => {
+    navigate('/home/detail');
+  };
+
   return (
     <>
-      <div className={$['detail-info']}>
+      <div className={$['detail-info']} onClick={onClickRequestedPosting}>
         <MutiProfile profileList={profileList} parentRef={detailInfoRef} />
 
         <div className={$['info']}>

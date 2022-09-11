@@ -44,6 +44,13 @@ export default function RequestedList({
     navigate('/home/detail');
   };
 
+  const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+  };
+  const clickRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <li
       className={$['requested-info']}
@@ -58,8 +65,12 @@ export default function RequestedList({
       </div>
 
       <div className={$['request-btn']}>
-        <button className={$['btn']}>수락</button>
-        <button className={$['btn']}>거절</button>
+        <button className={$['btn']} onClick={clickAcceptBtn}>
+          수락
+        </button>
+        <button className={$['btn']} onClick={clickRefuseBtn}>
+          거절
+        </button>
       </div>
     </li>
   );
