@@ -1,16 +1,32 @@
 import { memo, useRef } from 'react';
+import { IoMdFemale, IoMdMale } from 'react-icons/io';
 import { useIntersectObserver } from 'src/hooks';
-import { Profile } from 'src/types/profile';
+import ProfileTagContainer from '../ProfileTagContainer';
 import $ from './style.module.scss';
+import cx from 'classnames';
 
 type Props = {
-  friend: Profile;
+  friend: res.Profile;
   profileWidth: number | undefined;
 };
 
 function ProfileCard({ friend, profileWidth }: Props) {
+  const { img, mannerScore, nickName, gender, birthDate } = friend;
+  const { college, department, studentNum } = friend;
+  const { height, weight, mbti, hobbies, drink } = friend;
   const profileRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
+
+  const info: Omit<res.Profile, 'nickName' | 'img' | 'gender' | 'hobbies'> = {
+    college,
+    department,
+    studentNum,
+    birthDate,
+    height,
+    weight,
+    mbti,
+    drink,
+  };
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -38,42 +54,27 @@ function ProfileCard({ friend, profileWidth }: Props) {
         ref={profileRef}
       >
         <div className={$['img-wrapper']}>
-          <img data-src={friend.img} alt="사진" ref={imgRef} />
+          <img data-src={img} alt="사진" ref={imgRef} />
         </div>
-        <table>
-          <tbody>
-            <tr>
-              <td>매너점수</td>
-              <td className={$['bold']}>{friend.mannerScore}점</td>
-            </tr>
-            <tr>
-              <td className={friend.gender === '남' ? $.male : $.female}>
-                {friend.gender}
-              </td>
-              <td>{friend.birthDate.split('-')[0]}년생</td>
-            </tr>
-            <tr>
-              <td>{friend.college}</td>
-              <td>{friend.studentNum}학번</td>
-            </tr>
-            <tr>
-              <td>{friend.height}cm</td>
-              <td>{friend.weight}kg</td>
-            </tr>
-            <tr>
-              <td>MBTI</td>
-              <td>{friend.mbti}</td>
-            </tr>
-            <tr>
-              <td>주량</td>
-              <td>{friend.drink}병</td>
-            </tr>
-            <tr>
-              <td>취미</td>
-              <td className={$['hobbies']}>{friend.hobbies}</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <section className={$['basic-info']}>
+          <span className={$['text']}>{nickName}</span>
+          <span className={cx($['gender'], $['text'])}>
+            {gender === '남' ? (
+              <IoMdMale className={$['gender-male']} />
+            ) : (
+              <IoMdFemale className={$['gender-female']} />
+            )}
+          </span>
+          {mannerScore && (
+            <span className={cx($['manner-score'], $['text'])}>
+              {mannerScore}점
+            </span>
+          )}
+        </section>
+
+        <ProfileTagContainer title="자기소개" info={info} />
+        {hobbies && <ProfileTagContainer title="취미소개" info={hobbies} />}
       </div>
     </div>
   );
