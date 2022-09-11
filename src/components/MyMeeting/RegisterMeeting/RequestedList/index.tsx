@@ -3,12 +3,14 @@ import { useIntersectObserver } from 'src/hooks';
 import { useMemo, useRef } from 'react';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import MutiProfile from 'src/components/shared/MultiProfile';
+import { useNavigate } from 'react-router-dom';
 
 export default function RequestedList({
   comment,
   requestedInfo,
   date,
 }: MyMeetingRequestType) {
+  const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const profileList = useMemo(
@@ -38,8 +40,16 @@ export default function RequestedList({
     lazyLoadCallback
   );
 
+  const onClickRequestedPosting = () => {
+    navigate('/home/detail');
+  };
+
   return (
-    <li className={$['requested-info']} ref={requestedMeetingRef}>
+    <li
+      className={$['requested-info']}
+      ref={requestedMeetingRef}
+      onClick={onClickRequestedPosting}
+    >
       <MutiProfile profileList={profileList} parentRef={requestedMeetingRef} />
 
       <div className={$['info']}>

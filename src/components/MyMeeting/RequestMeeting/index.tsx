@@ -3,6 +3,7 @@ import { MyMeetingRequestType } from 'src/types/myMeeting';
 import { useIntersectObserver } from 'src/hooks';
 import { useMemo, useRef } from 'react';
 import MutiProfile from 'src/components/shared/MultiProfile';
+import { useNavigate } from 'react-router-dom';
 
 export default function RequestMeeting({
   comment,
@@ -10,6 +11,7 @@ export default function RequestMeeting({
   date,
   state,
 }: MyMeetingRequestType) {
+  const navigate = useNavigate();
   const requestRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const profileList = useMemo(
@@ -42,8 +44,16 @@ export default function RequestMeeting({
     lazyLoadCallback
   );
 
+  const onClickRequestedPosting = () => {
+    navigate('/home/detail');
+  };
+
   return (
-    <li className={$['request-meeting-info']} ref={requestRef}>
+    <li
+      className={$['request-meeting-info']}
+      ref={requestRef}
+      onClick={onClickRequestedPosting}
+    >
       <MutiProfile profileList={profileList} parentRef={requestRef} />
 
       <div className={$['info']}>

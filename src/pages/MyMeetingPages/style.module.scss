@@ -3,6 +3,7 @@
 @import 'src/styles/mixin';
 
 .detail-info {
+  z-index: 3;
   position: sticky;
   top: 0;
   display: flex;
@@ -11,6 +12,7 @@
   padding: 0 5px;
   box-shadow: 0 5px 3px -2px $gray-300;
   background-color: $white;
+  cursor: pointer;
 
   .info {
     width: calc(100% - 60px);
@@ -36,6 +38,7 @@
 }
 
 .requested-list {
+  z-index: 2;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 10px;
@@ -43,7 +46,6 @@
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    // border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -51,8 +53,4 @@
     background: black;
     border-radius: 10px;
   }
-
-  // &::-webkit-scrollbar-thumb:hover {
-  //   background: rgb(54, 56, 58);
-  // }
 }
