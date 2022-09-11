@@ -22,7 +22,7 @@
 @mixin input($width) {
   width: $width;
   height: 40px;
-  font-size: 18px;
+  font-size: 15px;
   color: $black;
   background-color: $white;
   border: none;
@@ -118,55 +118,55 @@
   border-radius: 10px;
 }
 
-@mixin FadeDown() {
-  @keyframes FadeDown {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
-
-  @-webkit-keyframes FadeDown {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
-
-  @-moz-keyframes FadeDown {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
-  animation: FadeDown 0.4s ease-out;
-}
-
 @mixin FadeUp() {
   @keyframes FadeUp {
-    to {
+    from {
       transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0%);
     }
   }
 
   @-webkit-keyframes FadeUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+
+  @-moz-keyframes FadeUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  animation: FadeUp 0.4s ease-out;
+}
+
+@mixin FadeDown() {
+  @keyframes FadeDown {
     to {
       transform: translateY(100%);
     }
   }
 
-  @-moz-keyframes FadeUp {
+  @-webkit-keyframes FadeDown {
     to {
       transform: translateY(100%);
     }
   }
-  animation: FadeUp 0.4s ease-out;
+
+  @-moz-keyframes FadeDown {
+    to {
+      transform: translateY(100%);
+    }
+  }
+  animation: FadeDown 0.4s ease-out;
 }
 
 @mixin floating-Btn($top, $right, $bottom, $left) {

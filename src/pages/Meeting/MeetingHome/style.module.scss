@@ -16,10 +16,10 @@
   border-radius: 50%;
   box-shadow: 0px 3px 6px $shadow;
   background-color: $primary;
-  @include FadeDown();
+  @include FadeUp();
 
   &-down {
-    @include FadeUp();
+    @include FadeDown();
     visibility: hidden;
     transition: visibility 0.3s ease-out;
   }
