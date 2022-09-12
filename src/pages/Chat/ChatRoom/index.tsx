@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { MessageInput } from 'src/components/Chat';
 import { messageInfoMocks } from 'src/__mocks__/chat';
 import { useEffect, useCallback, useRef, useState } from 'react';
-import PersonalProfilePage from 'src/pages/PersonalProfile';
+import PersonalProfilePage from 'src/pages/PersonalProfilePage';
 import { ChatCard } from 'src/components/Chat';
 
 export default function ChatRoomPage() {

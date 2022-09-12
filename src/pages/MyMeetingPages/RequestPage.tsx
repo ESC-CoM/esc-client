@@ -16,12 +16,14 @@ export default function RequestPage() {
   return (
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
-        {requestMeeting.map(({ comment, profileImg, date, state }, index) => (
-          <RequestMeeting
-            key={`${profileImg}-${index}`}
-            {...{ comment, profileImg, date, state }}
-          />
-        ))}
+        {requestMeeting.map(
+          ({ comment, requestedInfo, date, state }, index) => (
+            <RequestMeeting
+              key={`${date}-${index}`}
+              {...{ comment, requestedInfo, date, state }}
+            />
+          )
+        )}
       </ul>
     </InfiniteScroll>
   );

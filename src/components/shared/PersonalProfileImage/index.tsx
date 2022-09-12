@@ -11,7 +11,14 @@ interface Props {
   onClick?: (userId: string) => void;
 }
 
-export function ProfileImage({ id, alt, src, width, height, onClick }: Props) {
+export function PersonalProfileImage({
+  id,
+  alt,
+  src,
+  width,
+  height,
+  onClick,
+}: Props) {
   return (
     <div
       className={$['profile-img']}
@@ -25,4 +32,4 @@ export function ProfileImage({ id, alt, src, width, height, onClick }: Props) {
   );
 }
 
-export default memo(ProfileImage);
+export default memo(PersonalProfileImage);

@@ -13,14 +13,13 @@ import ErrorMessage from 'src/components/shared/ErrorMessage';
 
 export type Props = {
   onState: boolean;
-  toggleModal: () => void;
+  onClose: () => void;
 };
 
-const NEXT_PATH = '/login';
+const NEXT_PATH = '/join/welcome';
 
-export default function Term({ onState, toggleModal }: Props) {
+export default function Term() {
   const { userInfo } = useStore();
-  console.log(userInfo);
   const navigate = useNavigate();
   const {
     watch,
@@ -41,7 +40,12 @@ export default function Term({ onState, toggleModal }: Props) {
   const getTermsTitle = (idx: number) =>
     !idx ? 'personalAgree' : 'acceptAgree';
 
-  const onHandleAllCheck = (check: boolean) => {
+  const handleCheck = (index: number) => {
+    const named = getTermsTitle(index);
+    setValue(named, !watch(named));
+  };
+
+  const handleAllCheck = (check: boolean) => {
     reset({
       personalAgree: !check,
       acceptAgree: !check,
@@ -67,69 +71,55 @@ export default function Term({ onState, toggleModal }: Props) {
   };
 
   return (
-    <main className={$['screen']}>
-      <form className={$['form']} onSubmit={handleSubmit(onSubmit)}>
-        <h2>서비스 이용을 위해 동의가 필요해요</h2>
-
-        <div
-          className={$['all-check']}
-          onClick={() => onHandleAllCheck(allChecked)}
-        >
-          <span
-            className={cx($['all-check-box'], {
-              [$['checked']]: allChecked,
-            })}
-          >
-            <FiCheck />
-          </span>
-          <em className={$['title']}>모두 동의하기</em>
-        </div>
-
-        <ul className={$['terms-list']}>
-          {terms.map((term, idx) => {
-            const { title, url } = term;
-            const named = getTermsTitle(idx);
-            return (
-              <li
-                className={$['terms-bx']}
-                key={idx}
-                onClick={() => setValue(named, !watch(named))}
-              >
-                <span
-                  className={cx($['check-box'], {
-                    [$['checked']]: watch(named),
-                  })}
-                >
-                  <FiCheck />
-                </span>
-                <strong className={$['title']}>{title}</strong>
-                <a href={url} className={$['url']}>
-                  <FiChevronRight />
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-        {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
-          <span className={$['error-msg']}>
-            <ErrorMessage errorText="필수 약관에 동의해주세요." />
-          </span>
-        )}
-
-        <button type="submit" className={$['next-btn']} aria-labelledby="next">
-          다음
-        </button>
-      </form>
-
+    <form className={$['term-form']} onSubmit={handleSubmit(onSubmit)}>
       <div
-        className={$['back']}
-        onClick={(e: React.MouseEvent) => {
-          e.preventDefault();
-          if (onState) {
-            toggleModal();
-          }
-        }}
-      />
-    </main>
+        className={$['all-check']}
+        onClick={() => handleAllCheck(allChecked)}
+      >
+        <span
+          className={cx($['all-check-box'], {
+            [$['checked']]: allChecked,
+          })}
+        >
+          <FiCheck />
+        </span>
+        <em className={$['title']}>모두 동의하기</em>
+      </div>
+
+      <ul className={$['terms-list']}>
+        {terms.map((term, idx) => {
+          const { title, url } = term;
+          const named = getTermsTitle(idx);
+          return (
+            <li
+              className={$['terms-bx']}
+              key={term.url}
+              onClick={() => handleCheck(idx)}
+            >
+              <span
+                className={cx($['check-box'], {
+                  [$['checked']]: watch(named),
+                })}
+              >
+                <FiCheck />
+              </span>
+              <strong className={$['title']}>{title}</strong>
+              <a href={url} className={$['url']}>
+                <FiChevronRight />
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      {(errors.personalAgree || errors.acceptAgree) && !allChecked && (
+        <span className={$['error-msg']}>
+          <ErrorMessage errorText="필수 약관에 동의해주세요." />
+        </span>
+      )}
+
+      <button type="submit" className={$['next-btn']} aria-label="다음 버튼">
+        다음
+      </button>
+    </form>
   );
 }
