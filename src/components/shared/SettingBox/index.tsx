@@ -5,7 +5,7 @@ import getBarClassName from 'src/utils/getBarClassName';
 import cx from 'classnames';
 
 type Props = {
-  className: string;
+  className?: string;
   menu: Menu[];
 };
 

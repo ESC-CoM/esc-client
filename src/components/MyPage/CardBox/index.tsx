@@ -11,7 +11,7 @@ export default function CardBox() {
         <MyInformationCard className={$.card} />
       </section>
       <section>
-        <SettingBox className={''} menu={MYPAGE_SETTING_MENU} />
+        <SettingBox menu={MYPAGE_SETTING_MENU} />
       </section>
     </div>
   );
