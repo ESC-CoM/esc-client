@@ -1,7 +1,8 @@
-import $ from './style.module.scss';
-import Portal from 'src/components/shared/Portal';
 import { useEffect, useState } from 'react';
+import Portal from 'src/components/shared/Portal';
+
 import CloseButton from '../CloseButton';
+import $ from './style.module.scss';
 
 interface Props {
   portalId: string;

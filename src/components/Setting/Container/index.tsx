@@ -1,4 +1,5 @@
 import { Item } from 'src/types/setting';
+
 import LinkBar from '../LinkBar';
 import ToggleBar from '../ToggleBar';
 import $ from './style.module.scss';

@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
-import MyInformationCard from '../MyInfomationCard';
 import { IoIosArrowForward } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+
+import MyInformationCard from '../MyInfomationCard';
 import $ from './style.module.scss';
 
 export default function CardBox() {

@@ -1,11 +1,12 @@
-import { PageLayout } from '../../components/shared/Layout';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NextButton, PhoneAuth } from '../../components/Join';
-import { PhoneYup } from 'src/components/Join/BasicInfo/yup';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { PhoneAuthType } from 'src/types/join';
+import { PhoneYup } from 'src/components/Join/BasicInfo/yup';
 import useStore from 'src/store/useStore';
+import { PhoneAuthType } from 'src/types/join';
+
+import { NextButton, PhoneAuth } from '../../components/Join';
+import { PageLayout } from '../../components/shared/Layout';
 
 const NEXT_PATH = '/join/email';
 

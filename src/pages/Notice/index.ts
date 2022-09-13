@@ -1,4 +1,4 @@
-import NoticeHome from './NoticeHome';
 import NoticeDetail from './NoticeDetail';
+import NoticeHome from './NoticeHome';
 
-export { NoticeHome, NoticeDetail };
+export { NoticeDetail, NoticeHome };

@@ -1,5 +1,5 @@
-import { PageLayout } from 'src/components/shared/Layout';
 import SettingBox from 'src/components/Setting/SettingBox';
+import { PageLayout } from 'src/components/shared/Layout';
 
 export default function BasicSettingPage() {
   return (

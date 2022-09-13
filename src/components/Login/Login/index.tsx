@@ -1,14 +1,15 @@
-import { Header, LoginTitle } from '../atoms';
-import styles from './style.module.scss';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import schema from './yup';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+import { Header, LoginTitle } from '../atoms';
 import EmailInput from '../EmailInput';
 import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
 import PasswordInput from '../PasswordInput';
 import SocialLoginBox from '../SocialLoginBox';
+import styles from './style.module.scss';
+import schema from './yup';
 
 export interface Inputs {
   email: string;

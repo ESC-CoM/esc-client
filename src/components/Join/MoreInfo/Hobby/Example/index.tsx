@@ -1,6 +1,7 @@
-import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
+
+import $ from './style.module.scss';
 
 type Props = {
   id: number;

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 import $ from './style.module.scss';
 
 export function MessageInput() {

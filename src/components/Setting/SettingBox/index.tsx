@@ -1,8 +1,9 @@
-import $ from './style.module.scss';
 import { useCallback, useState } from 'react';
 import { Menu } from 'src/types/setting';
-import Container from '../Container';
 import getBarClassName from 'src/utils/getBarClassName';
+
+import Container from '../Container';
+import $ from './style.module.scss';
 
 export default function SettingBox() {
   const [isNotificationOn, setIsNotificationOn] = useState(true);

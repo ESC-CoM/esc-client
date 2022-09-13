@@ -1,19 +1,20 @@
-import $ from './style.module.scss';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import cx from 'classnames';
 import {
-  UseFormWatch,
-  UseFormRegister,
-  UseFormSetValue,
-  UseFormSetFocus,
   FieldErrors,
+  UseFormRegister,
+  UseFormSetFocus,
+  UseFormSetValue,
+  UseFormWatch,
 } from 'react-hook-form';
-import { useState } from 'react';
-import AuthTimer from './authTimer';
-import { useEffect } from 'react';
+import ErrorMessage from 'src/components/shared/ErrorMessage';
+import Label from 'src/components/shared/Label';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
-import Label from 'src/components/shared/Label';
-import ErrorMessage from 'src/components/shared/ErrorMessage';
+
+import AuthTimer from './authTimer';
+import $ from './style.module.scss';
 
 interface Props {
   watch: UseFormWatch<PhoneAuthType>;

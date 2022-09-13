@@ -1,6 +1,7 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
 import useDebounceInput from 'src/hooks/useDebounceInput';
+
 import $ from './style.module.scss';
 
 type Props = {

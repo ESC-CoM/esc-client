@@ -1,13 +1,14 @@
-import $ from './style.module.scss';
 import cx from 'classnames';
 import {
+  FieldErrors,
   UseFormRegisterReturn,
   UseFormSetValue,
-  FieldErrors,
 } from 'react-hook-form';
-import { EmailPasswordType } from 'src/types/join';
-import Label from 'src/components/shared/Label';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
+import Label from 'src/components/shared/Label';
+import { EmailPasswordType } from 'src/types/join';
+
+import $ from './style.module.scss';
 
 interface Props {
   isDuplicationChecked: boolean;

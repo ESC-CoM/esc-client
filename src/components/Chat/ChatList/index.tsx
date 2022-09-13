@@ -1,7 +1,8 @@
-import $ from './style.module.scss';
+import { useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
-import { useMemo, useRef } from 'react';
+
+import $ from './style.module.scss';
 
 interface Props {
   roomImage: {

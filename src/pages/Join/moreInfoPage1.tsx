@@ -1,18 +1,19 @@
-import $ from './style.module.scss';
-import { PageLayout } from '../../components/shared/Layout';
-import useStore from 'src/store/useStore';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
+import useStore from 'src/store/useStore';
+import { More1Type } from 'src/types/join';
+
 import {
-  GenderInput,
   BirthInput,
+  GenderInput,
   MbtiInput,
   NextButton,
   NicknameInput,
 } from '../../components/Join';
-import { More1Type } from 'src/types/join';
-import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
+import { PageLayout } from '../../components/shared/Layout';
+import $ from './style.module.scss';
 
 const NEXT_PATH = '/join/more2';
 

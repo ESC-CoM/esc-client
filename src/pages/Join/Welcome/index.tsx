@@ -1,9 +1,10 @@
-import $ from './style.module.scss';
-import { PageLayout } from 'src/components/shared/Layout';
 import { useNavigate } from 'react-router-dom';
-import ParagraphList from 'src/components/shared/ParagraphList';
 import Button from 'src/components/shared/Button';
 import WelcomeIcon from 'src/components/shared/Icon/WelcomeIcon';
+import { PageLayout } from 'src/components/shared/Layout';
+import ParagraphList from 'src/components/shared/ParagraphList';
+
+import $ from './style.module.scss';
 
 const NEXT_PATH = '/login';
 const contents = [
