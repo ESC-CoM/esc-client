@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
+import Container from 'src/components/shared/SettingBox/Container';
 import { Menu } from 'src/types/setting';
 import getBarClassName from 'src/utils/getBarClassName';
 
-import Container from '../Container';
 import $ from './style.module.scss';
 
 export default function SettingBox() {
@@ -20,7 +20,7 @@ export default function SettingBox() {
           text: '푸시 알람',
           type: 'toggle',
           value: isNotificationOn,
-          onClick: onNotificationClick,
+          onToggleClick: onNotificationClick,
         },
       ],
     },

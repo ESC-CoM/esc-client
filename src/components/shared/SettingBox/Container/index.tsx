@@ -4,7 +4,7 @@ import LinkBar from '../LinkBar';
 import ToggleBar from '../ToggleBar';
 
 type Props = {
-  className: string;
+  className?: string;
   item: Item;
 };
 
