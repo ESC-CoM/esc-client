@@ -1,0 +1,8 @@
+@import '/src/styles/color';
+
+.text {
+  display: flex;
+  margin: 5px 0;
+  color: $orange;
+  font-size: 14px;
+}

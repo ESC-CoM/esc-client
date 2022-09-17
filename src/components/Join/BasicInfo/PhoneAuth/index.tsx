@@ -12,6 +12,8 @@ import AuthTimer from './authTimer';
 import { useEffect } from 'react';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
+import Label from 'src/components/shared/Label';
+import ErrorMessage from 'src/components/shared/ErrorMessage';
 
 interface Props {
   watch: UseFormWatch<PhoneAuthType>;
@@ -28,15 +30,15 @@ export default function PhoneAuth({
   setFocus,
   errors,
 }: Props) {
-  const [phoneNumber, isPhoneDuplicated, isAuthed] = watch(
-    ['phoneNumber', 'isPhoneDuplicated', 'isAuthed'],
-    { phoneNumber: '', isPhoneDuplicated: false, isAuthed: false }
+  const [phoneNumber, isReceivedAuthNum, isAuthed] = watch(
+    ['phoneNumber', 'isReceivedAuthNum', 'isAuthed'],
+    { phoneNumber: '', isReceivedAuthNum: false, isAuthed: false }
   );
   const [sendCount, setSendCount] = useState(0);
 
   const sendPhoneNum = () => {
     setSendCount(sendCount + 1);
-    setValue('isPhoneDuplicated', true);
+    setValue('isReceivedAuthNum', true);
 
     setFocus('authNumber');
   };
@@ -54,20 +56,24 @@ export default function PhoneAuth({
   }, [phoneNumber]);
 
   return (
-    <section>
+    <section className={$['phone-auth']}>
       <h1>휴대폰 인증을 해주세요</h1>
 
       <div className={$['item']}>
-        <label htmlFor="phponeNumber">
-          {errors.phoneNumber?.message ?? '휴대폰 번호'}
-        </label>
+        <Label
+          textContent="휴대폰 번호"
+          fontSize={15}
+          htmlFor="phoneNumber"
+          errorMsg={errors.phoneNumber?.message}
+        />
+
         <div className={$['row']}>
           <input
             type="text"
             className={cx($['input'], {
               [$['error']]: errors.phoneNumber,
             })}
-            id="phponeNumber"
+            id="phoneNumber"
             {...register('phoneNumber')}
             value={phoneNumber}
             onChange={handleNumber}
@@ -77,9 +83,9 @@ export default function PhoneAuth({
           </button>
         </div>
 
-        <span className={$['error-msg']}>
-          {!isPhoneDuplicated && errors.isPhoneDuplicated?.message}
-        </span>
+        {!isReceivedAuthNum && (
+          <ErrorMessage errorText={errors.isReceivedAuthNum?.message} />
+        )}
       </div>
 
       <div className={$['item']}>
@@ -99,10 +105,7 @@ export default function PhoneAuth({
             <AuthTimer />
           </span>
         </div>
-
-        <span className={$['error-msg']}>
-          {!isAuthed && errors.isAuthed?.message}
-        </span>
+        {!isAuthed && <ErrorMessage errorText={errors.isAuthed?.message} />}
       </div>
     </section>
   );

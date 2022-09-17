@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="540" height="1070" viewBox="0 0 540 1070">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#ffe6e8"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.497" y1="-0.41" x2="0.485" y2="1.397" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff777f"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="0.501" y1="-0.123" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff656f"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.5" x2="0.545" y2="1.401" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#b77276"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="0.5" x2="0.52" y2="1.329" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffc5c5"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="0.5" x2="0.416" y2="1.3" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f77"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-7" x1="0.5" x2="0.476" y2="1.279" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f99a9a"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="0.444" y1="-0.64" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#ff7a7a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-9" x1="0.5" x2="0.545" y2="1.676" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff9797"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-10" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffc4c4"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-11" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ecc0c3"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <clipPath id="clip-SH60">
+      <rect width="540" height="1070"/>
+    </clipPath>
+  </defs>
+  <g id="SH60" clip-path="url(#clip-SH60)">
+    <rect width="540" height="1070" fill="#f6f6f6"/>
+    <rect id="사각형_24511" data-name="사각형 24511" width="789" height="409" transform="translate(-288.995 251.35) rotate(-45)" fill="url(#linear-gradient)"/>
+    <rect id="사각형_24512" data-name="사각형 24512" width="451" height="261" transform="translate(238.507 302.261) rotate(-45)" fill="url(#linear-gradient-2)"/>
+    <rect id="사각형_24514" data-name="사각형 24514" width="259" height="725.952" transform="translate(55.366 485.402) rotate(-45)" fill="url(#linear-gradient-3)"/>
+    <rect id="사각형_24515" data-name="사각형 24515" width="158" height="341.383" transform="translate(-56.356 597.125) rotate(-45)" fill="url(#linear-gradient-4)"/>
+    <rect id="사각형_24517" data-name="사각형 24517" width="175" height="341.383" transform="translate(-51.542 849.427) rotate(-45)" fill="url(#linear-gradient-5)"/>
+    <rect id="사각형_24521" data-name="사각형 24521" width="144.061" height="280.519" transform="translate(-114.57 990.132) rotate(-45)" fill="url(#linear-gradient-6)"/>
+    <rect id="사각형_24519" data-name="사각형 24519" width="175" height="168.383" transform="translate(189.852 1090.821) rotate(-45)" fill="url(#linear-gradient-7)"/>
+    <rect id="사각형_24518" data-name="사각형 24518" width="175" height="121.383" transform="translate(-137.373 763.596) rotate(-45)" fill="url(#linear-gradient-8)"/>
+    <rect id="사각형_24516" data-name="사각형 24516" width="158" height="300.383" transform="translate(185.038 838.519) rotate(-45)" fill="url(#linear-gradient-9)"/>
+    <rect id="사각형_24520" data-name="사각형 24520" width="158" height="147.383" transform="translate(397.44 1050.922) rotate(-45)" fill="url(#linear-gradient-10)"/>
+    <rect id="사각형_24513" data-name="사각형 24513" width="197" height="193.247" transform="translate(423.062 486.816) rotate(-45)" fill="url(#linear-gradient-11)"/>
+    <rect id="사각형_24522" data-name="사각형 24522" width="540" height="1070" opacity="0.6"/>
+  </g>
+</svg>

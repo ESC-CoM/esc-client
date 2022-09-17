@@ -1,5 +1,5 @@
-import './style.module.scss';
-import { PageLayout } from '../../components/Layout';
+import $ from './style.module.scss';
+import { PageLayout } from '../../components/shared/Layout';
 import useStore from 'src/store/useStore';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -9,6 +9,7 @@ import {
   BirthInput,
   MbtiInput,
   NextButton,
+  NicknameInput,
 } from '../../components/Join';
 import { More1Type } from 'src/types/join';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
@@ -28,31 +29,36 @@ export default function MoreInfoPage1() {
   } = useForm<More1Type>({
     resolver: yupResolver(MoreJoinSchema),
   });
-  const [gender, year, month, day, mbti] = watch([
+  const [nickName, gender, year, mbti] = watch([
+    'nickName',
     'gender',
     'year',
-    'month',
-    'day',
     'mbti',
   ]);
   const onSubmit = (data: More1Type) => {
-    const more1Info = { gender, year, month, day, mbti };
+    const more1Info = { nickName, gender, year, mbti };
     setJoinInfo(more1Info);
     navigate(NEXT_PATH);
   };
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
-      <section>
+      <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <NicknameInput
+            watch={watch}
+            register={register}
+            setValue={setValue}
+            errors={errors}
+          />
           <GenderInput
             value={gender}
             setValue={setValue}
             errors={errors.gender}
           />
           <BirthInput register={register} errors={errors} />
-          <MbtiInput register={register} errors={errors.mbti} />
+          <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
           <NextButton text={'다음'} />
         </form>
       </section>

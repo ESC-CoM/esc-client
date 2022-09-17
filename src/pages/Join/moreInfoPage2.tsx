@@ -1,11 +1,12 @@
-import './style.module.scss';
-import { PageLayout } from '../../components/Layout';
+import $ from './style.module.scss';
+import { PageLayout } from '../../components/shared/Layout';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term, NextButton } from 'src/components/Join';
+import Modal from 'src/components/shared/BottomModal';
 
 export default function MoreInfoPage2() {
   const { setJoinInfo } = useStore();
@@ -14,20 +15,24 @@ export default function MoreInfoPage2() {
   });
 
   const [height, weight, drink] = watch(['height', 'weight', 'drink']);
-  const [termsOpen, setTermsOpen] = useState<boolean>(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+
+  const onCloseTerms = () => {
+    setIsTermsOpen(!isTermsOpen);
+  };
 
   const onSubmit = (data: More2Type) => {
     const more2Info = { height, weight, drink };
     setJoinInfo(more2Info);
 
-    if (!termsOpen) {
-      setTermsOpen(true);
+    if (!isTermsOpen) {
+      setIsTermsOpen(true);
     }
   };
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
-      <section>
+      <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <HeightInput value={height} register={register('height')} />
@@ -35,11 +40,15 @@ export default function MoreInfoPage2() {
           <Drink value={drink} setValue={setValue} />
           <NextButton text={'다음'} onClick={() => onSubmit(watch())} />
         </form>
-        {termsOpen && (
-          <Term
-            toggleModal={() => setTermsOpen(!termsOpen)}
-            onState={termsOpen}
-          />
+        {isTermsOpen && (
+          <Modal
+            portalId="terms-modal"
+            title="서비스 이용을 위해 동의가 필요해요"
+            onClose={onCloseTerms}
+            isOpen={isTermsOpen}
+          >
+            <Term />
+          </Modal>
         )}
       </section>
     </PageLayout>

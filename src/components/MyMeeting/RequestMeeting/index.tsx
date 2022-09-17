@@ -1,16 +1,27 @@
 import $ from './style.module.scss';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import { useIntersectObserver } from 'src/hooks';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
+import MutiProfile from 'src/components/shared/MultiProfile';
 
 export default function RequestMeeting({
   comment,
-  profileImg,
+  requestedInfo,
   date,
   state,
 }: MyMeetingRequestType) {
   const requestRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
+  const profileList = useMemo(
+    () =>
+      requestedInfo
+        .map(({ nickName, profileImg }) => ({
+          src: profileImg,
+          alt: nickName,
+        }))
+        .slice(0, 3),
+    []
+  );
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -33,16 +44,7 @@ export default function RequestMeeting({
 
   return (
     <li className={$['request-meeting-info']} ref={requestRef}>
-      <div className={$['image-list']}>
-        {profileImg.map((imgUri, index) => (
-          <img
-            key={`${imgUri}-${index}`}
-            data-src={imgUri}
-            alt="profile-img"
-            ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
-          />
-        ))}
-      </div>
+      <MutiProfile profileList={profileList} parentRef={requestRef} />
 
       <div className={$['info']}>
         <span className={$['title']}>{comment}</span>

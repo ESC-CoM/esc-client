@@ -2,6 +2,8 @@ import $ from './style.module.scss';
 import cx from 'classnames';
 import { UseFormSetValue, FieldError } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
+import { memo } from 'react';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   value: string;
@@ -9,10 +11,16 @@ interface Props {
   errors?: FieldError;
 }
 
-export default function GenderInput({ value, setValue, errors }: Props) {
+export function GenderInput({ value, setValue, errors }: Props) {
   return (
     <div className={$['item']}>
-      <label>{errors?.message ?? '성별'}</label>
+      <Label
+        textContent="성별"
+        fontSize={15}
+        htmlFor="birthDate"
+        errorMsg={errors?.message}
+      />
+
       <div className={$['row']}>
         <button
           className={cx($['gender-btn'], {
@@ -39,3 +47,5 @@ export default function GenderInput({ value, setValue, errors }: Props) {
     </div>
   );
 }
+
+export default memo(GenderInput);

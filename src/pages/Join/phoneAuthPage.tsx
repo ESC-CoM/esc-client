@@ -1,4 +1,4 @@
-import { PageLayout } from '../../components/Layout';
+import { PageLayout } from '../../components/shared/Layout';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { NextButton, PhoneAuth } from '../../components/Join';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { PhoneAuthType } from 'src/types/join';
 import useStore from 'src/store/useStore';
 
-const NEXT_PATH = '/join/basic/email';
+const NEXT_PATH = '/join/email';
 
 export default function PhoneAuthPage() {
   const { setJoinInfo } = useStore();
@@ -24,7 +24,7 @@ export default function PhoneAuthPage() {
   const navigate = useNavigate();
   const [phoneNumber, isPhoneDuplicated, authNumber, isAuthed] = watch([
     'phoneNumber',
-    'isPhoneDuplicated',
+    'isReceivedAuthNum',
     'authNumber',
     'isAuthed',
   ]);

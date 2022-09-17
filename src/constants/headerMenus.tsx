@@ -10,7 +10,7 @@ import {
   IoChevronBack,
 } from 'react-icons/io5';
 import { BsPersonPlus, BsPersonDash } from 'react-icons/bs';
-import { Logo } from 'src/components/Icon';
+import { Logo } from 'src/components/shared/Icon';
 
 type MenuType = {
   icon?: JSX.Element;
@@ -66,6 +66,12 @@ const menusLeft: MenuType[] = [
     text: '친구',
     url: '/friends/delete',
   },
+  {
+    text: '내 정보',
+    url: '/mypage',
+  },
+  { icon: <IoChevronBack />, text: '친구' },
+  { icon: <IoChevronBack />, text: '친구 찾기', url: '/friends/add' },
 ];
 
 const menusRight: MenuType[] = [
@@ -103,6 +109,10 @@ const menusRight: MenuType[] = [
     url: '/friends/delete',
   },
   { text: '모두 삭제', url: '/notice' },
+  {
+    text: '추가',
+    url: '/friends/add',
+  },
 ];
 
 export default [menusLeft, menusRight];

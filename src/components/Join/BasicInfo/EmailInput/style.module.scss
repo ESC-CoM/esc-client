@@ -3,11 +3,6 @@
 
 .item {
   margin-top: 35px;
-  label {
-    font-size: 15px;
-    color: $gray-700;
-    padding: 10px 0;
-  }
   .row {
     display: flex;
     .input {
@@ -20,9 +15,5 @@
     .error {
       border-bottom: 1.5px solid $red;
     }
-  }
-  .error-msg {
-    display: flex;
-    margin-top: 4px;
   }
 }

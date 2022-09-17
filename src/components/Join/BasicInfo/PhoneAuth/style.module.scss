@@ -1,7 +1,7 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/mixin';
 
-section {
+.phone-auth {
   padding: 20px;
   h1 {
     font-size: 24px;
@@ -38,10 +38,6 @@ section {
       .error {
         border-bottom: 1.5px solid $red;
       }
-    }
-    .error-msg {
-      display: flex;
-      margin-top: 4px;
     }
   }
 }

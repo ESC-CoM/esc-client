@@ -1,16 +1,17 @@
 import $ from './style.module.scss';
-import { useEffect, useState } from 'react';
-import { Bottle } from 'src/components/Icon';
+import { memo, useEffect, useState } from 'react';
+import { Bottle } from 'src/components/shared/Icon';
 import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
 import { More2Type } from 'src/types/join';
+import Label from 'src/components/shared/Label';
 
 interface Props {
   value: number;
   setValue: UseFormSetValue<More2Type>;
 }
 
-export default function Drink({ value, setValue }: Props) {
+export function Drink({ value, setValue }: Props) {
   const [drinkNum, setDrinkNum] = useState<number[]>(
     Array.from({ length: 6 }, () => 0)
   );
@@ -30,7 +31,7 @@ export default function Drink({ value, setValue }: Props) {
 
   return (
     <div className={$['item']}>
-      <label>주량</label>
+      <Label textContent="주량" fontSize={15} htmlFor="drink" />
 
       <div className={$['row']}>
         {drinkNum.map((_, index) => (
@@ -50,3 +51,5 @@ export default function Drink({ value, setValue }: Props) {
     </div>
   );
 }
+
+export default memo(Drink);

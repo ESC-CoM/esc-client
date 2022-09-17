@@ -1,0 +1,28 @@
+@import 'src/styles/_color.scss';
+
+.profile-box {
+  position: relative;
+  height: 100%;
+  .profile-box-background-img {
+    position: absolute;
+    width: 100%;
+  }
+
+  .close-profile {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    .close-btn {
+      font-size: 25px;
+      color: $gray-500;
+    }
+  }
+
+  .profile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

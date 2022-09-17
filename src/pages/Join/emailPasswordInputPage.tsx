@@ -1,5 +1,5 @@
-import './style.module.scss';
-import { PageLayout } from '../../components/Layout';
+import $ from './style.module.scss';
+import { PageLayout } from '../../components/shared/Layout';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useStore from 'src/store/useStore';
@@ -22,9 +22,9 @@ export default function EmailPasswordInputPage() {
     resolver: yupResolver(EmailPasswordYup),
   });
   const navigate = useNavigate();
-  const [email, isEmailDuplicated, password] = watch([
+  const [email, isDuplicationChecked, password] = watch([
     'email',
-    'isEmailDuplicated',
+    'isDuplicationChecked',
     'password',
   ]);
 
@@ -36,11 +36,11 @@ export default function EmailPasswordInputPage() {
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
-      <section>
+      <section className={$.container}>
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <EmailInput
-            isEmailDuplicated={isEmailDuplicated}
+            isDuplicationChecked={isDuplicationChecked}
             register={register('email')}
             setValue={setValue}
             errors={errors}

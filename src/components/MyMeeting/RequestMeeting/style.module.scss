@@ -3,8 +3,12 @@
 
 .request-meeting-info {
   display: flex;
-  padding: 15px;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid $gray-250;
+  padding: 0 5px;
   cursor: pointer;
+
   .image-list {
     display: flex;
     margin: 0 15px;
