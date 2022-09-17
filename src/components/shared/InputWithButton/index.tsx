@@ -43,7 +43,7 @@ export default function InputWithButton({
       <div className={$['row']}>
         <input
           className={cx($['input'], {
-            [$['error']]: !!labelErrorMessage,
+            [$['error']]: labelErrorMessage,
           })}
           type="text"
           id="inputWithButton"
