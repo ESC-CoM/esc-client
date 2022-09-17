@@ -1,6 +1,6 @@
+import { AiOutlineMan } from '@react-icons/all-files/ai/AiOutlineMan';
+import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward';
 import cx from 'classnames';
-import { AiOutlineMan } from 'react-icons/ai';
-import { IoIosArrowForward } from 'react-icons/io';
 import {
   MOCK_BASIC_INFORMATION,
   MOCK_BODY_DATA,

@@ -1,4 +1,4 @@
-import { IoChevronForward } from 'react-icons/io5';
+import { IoChevronForward } from '@react-icons/all-files/io5/IoChevronForward';
 import { Link } from 'react-router-dom';
 
 import $ from './style.module.scss';
