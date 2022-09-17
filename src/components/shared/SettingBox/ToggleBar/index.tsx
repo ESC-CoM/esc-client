@@ -11,7 +11,7 @@ type Props = {
 export default function ToggleBar({ text, value, onClick }: Props) {
   return (
     <div className={$.container}>
-      <span>{text}</span>
+      <span className={$.text}>{text}</span>
       <button
         className={cx($['slider'], value ? $['activate'] : '')}
         type="button"

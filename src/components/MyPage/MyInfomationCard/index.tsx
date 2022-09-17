@@ -39,7 +39,11 @@ export default function MyInformationCard({ className }: Prop) {
           </ul>
           <ul className={$['body-information']}>
             {MOCK_BODY_DATA.map(({ icon, text }) => (
-              <InformationBar className={$.item} {...{ icon, text }} />
+              <InformationBar
+                key={text}
+                className={$.item}
+                {...{ icon, text }}
+              />
             ))}
           </ul>
         </div>
