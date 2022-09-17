@@ -30,6 +30,16 @@
       height: 18px;
       overflow: auto;
       font-size: 13px;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: $gray-200;
+      }
+      &::-webkit-scrollbar-thumb {
+        width: 6px;
+        background-color: $gray-400;
+        border-radius: 50px;
+      }
     }
   }
   button[type='submit'] {
