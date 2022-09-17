@@ -1,11 +1,12 @@
 import { PageLayout } from '../../components/shared/Layout';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NextButton, PhoneAuth } from '../../components/Join';
+import { PhoneAuth } from '../../components/Join';
 import { PhoneYup } from 'src/components/Join/BasicInfo/yup';
 import { useNavigate } from 'react-router-dom';
 import { PhoneAuthType } from 'src/types/join';
 import useStore from 'src/store/useStore';
+import FooterButton from 'src/components/shared/FooterButton';
 
 const NEXT_PATH = '/join/email';
 
@@ -49,8 +50,9 @@ export default function PhoneAuthPage() {
           setFocus={setFocus}
           errors={errors}
         />
-        <NextButton
+        <FooterButton
           text={isAuthed ? '다음' : '인증하기'}
+          type="submit"
           onClick={sendAuthNum}
         />
       </form>

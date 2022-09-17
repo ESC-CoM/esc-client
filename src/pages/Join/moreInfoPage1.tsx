@@ -4,15 +4,11 @@ import useStore from 'src/store/useStore';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  GenderInput,
-  BirthInput,
-  MbtiInput,
-  NextButton,
-} from '../../components/Join';
+import { GenderInput, BirthInput, MbtiInput } from '../../components/Join';
 import { More1Type } from 'src/types/join';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 import InputWithButton from 'src/components/shared/InputWithButton';
+import FooterButton from 'src/components/shared/FooterButton';
 
 const NEXT_PATH = '/join/more2';
 
@@ -66,7 +62,7 @@ export default function MoreInfoPage1() {
           />
           <BirthInput register={register} errorMessage={errors.year?.message} />
           <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
-          <NextButton text={'다음'} />
+          <FooterButton text="다음" type="submit" />
         </form>
       </section>
     </PageLayout>
