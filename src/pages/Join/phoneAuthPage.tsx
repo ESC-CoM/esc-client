@@ -8,7 +8,7 @@ import { PhoneAuthType } from 'src/types/join';
 import useStore from 'src/store/useStore';
 import FooterButton from 'src/components/shared/FooterButton';
 
-const NEXT_PATH = '/join/basic/email';
+const NEXT_PATH = '/join/email';
 
 export default function PhoneAuthPage() {
   const { setJoinInfo } = useStore();

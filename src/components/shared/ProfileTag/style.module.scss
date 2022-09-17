@@ -1,0 +1,10 @@
+@import 'src/styles/_color.scss';
+
+.profile-tag {
+  display: inline-flex;
+  padding: 6px 8px;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 3px 2px 5px $gray-300, 0 -0.2px 2px $gray-300;
+  font-size: 15px;
+}

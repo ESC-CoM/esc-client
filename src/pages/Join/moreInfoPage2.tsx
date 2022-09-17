@@ -6,6 +6,7 @@ import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term } from 'src/components/Join';
+import Modal from 'src/components/shared/BottomModal';
 import FooterButton from 'src/components/shared/FooterButton';
 
 export default function MoreInfoPage2() {
@@ -15,14 +16,18 @@ export default function MoreInfoPage2() {
   });
 
   const [height, weight, drink] = watch(['height', 'weight', 'drink']);
-  const [termsOpen, setTermsOpen] = useState<boolean>(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+
+  const onCloseTerms = () => {
+    setIsTermsOpen(!isTermsOpen);
+  };
 
   const onSubmit = (data: More2Type) => {
     const more2Info = { height, weight, drink };
     setJoinInfo(more2Info);
 
-    if (!termsOpen) {
-      setTermsOpen(true);
+    if (!isTermsOpen) {
+      setIsTermsOpen(true);
     }
   };
 
@@ -36,11 +41,15 @@ export default function MoreInfoPage2() {
           <Drink value={drink} setValue={setValue} />
           <FooterButton text="다음" type="submit" />
         </form>
-        {termsOpen && (
-          <Term
-            toggleModal={() => setTermsOpen(!termsOpen)}
-            onState={termsOpen}
-          />
+        {isTermsOpen && (
+          <Modal
+            portalId="terms-modal"
+            title="서비스 이용을 위해 동의가 필요해요"
+            onClose={onCloseTerms}
+            isOpen={isTermsOpen}
+          >
+            <Term />
+          </Modal>
         )}
       </section>
     </PageLayout>

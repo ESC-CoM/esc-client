@@ -7,7 +7,7 @@ export type MyMeetingType = {
 
 export type MyMeetingRequestType = {
   comment: string;
-  profileImg: string[];
+  requestedInfo: { nickName: string; profileImg: string }[];
   date: string;
   state?: boolean;
 };

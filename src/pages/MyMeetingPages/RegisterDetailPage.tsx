@@ -1,5 +1,5 @@
 import $ from './style.module.scss';
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   registerMeetingMocks,
   requestListMocks,
@@ -7,6 +7,7 @@ import {
 import { RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
+import MutiProfile from 'src/components/shared/MultiProfile';
 
 const { title, content, friends, date } = registerMeetingMocks[0];
 
@@ -14,6 +15,17 @@ export default function RegisterDetailPage() {
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
+  const detailInfoRef = useRef<HTMLLIElement | null>(null);
+  const profileList = useMemo(
+    () =>
+      friends
+        .map(({ src, nickName }) => ({
+          src,
+          alt: nickName,
+        }))
+        .slice(0, 3),
+    []
+  );
 
   const fetchMoreMeetingFeeds = () => {
     setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
@@ -22,15 +34,7 @@ export default function RegisterDetailPage() {
   return (
     <>
       <div className={$['detail-info']}>
-        <div className={$['friends-image-list']}>
-          {friends.map(({ nickName, src }, index) => (
-            <img
-              key={`${src}-${index}`}
-              src={src}
-              alt={`${nickName}의 프로필`}
-            />
-          ))}
-        </div>
+        <MutiProfile profileList={profileList} parentRef={detailInfoRef} />
 
         <div className={$['info']}>
           <div>
@@ -43,10 +47,10 @@ export default function RegisterDetailPage() {
 
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
-          {requestedMeeting.map(({ comment, profileImg, date }, index) => (
+          {requestedMeeting.map(({ comment, requestedInfo, date }, index) => (
             <RequestedList
               key={`requested-list-${index}`}
-              {...{ comment, profileImg, date }}
+              {...{ comment, requestedInfo, date }}
             />
           ))}
         </ul>

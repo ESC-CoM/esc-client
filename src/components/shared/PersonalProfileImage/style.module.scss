@@ -2,10 +2,8 @@
 @import 'src/styles/_variables.scss';
 
 .profile-img {
-  width: 80px;
-  height: 80px;
   flex: 0 0 auto;
-  border: 1px solid $gray-300;
+  box-shadow: 0 0 2px 1px $shadow;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;

@@ -1,4 +1,5 @@
 export const mbtiList = [
+  '없음',
   'ENFP',
   'ENFJ',
   'ENTP',

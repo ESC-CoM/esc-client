@@ -4,17 +4,50 @@ import {
   EmailInputPage,
   MoreInfoPage1,
   MoreInfoPage2,
+  WelcomePage,
 } from '../pages/Join';
+import { ProgressBar } from 'src/components/Join';
+import { getCurrentPath } from 'src/utils/getCurrentPath';
+
+const routes = [
+  {
+    index: true,
+    element: <Navigate to="/join/phone" />,
+  },
+  {
+    path: 'phone',
+    element: <PhoneAuthPage />,
+  },
+  {
+    path: 'email',
+    element: <EmailInputPage />,
+  },
+  {
+    path: 'more1',
+    element: <MoreInfoPage1 />,
+  },
+  {
+    path: 'more2',
+    element: <MoreInfoPage2 />,
+  },
+  {
+    path: 'welcome',
+    element: <WelcomePage />,
+  },
+];
 
 function JoinRoute() {
+  const currStep = getCurrentPath(routes);
+
   return (
-    <Routes>
-      <Route index element={<Navigate to="/join/basic/phone" />} />
-      <Route path="basic/phone" element={<PhoneAuthPage />} />
-      <Route path="basic/email" element={<EmailInputPage />} />
-      <Route path="more1" element={<MoreInfoPage1 />} />
-      <Route path="more2" element={<MoreInfoPage2 />} />
-    </Routes>
+    <>
+      <ProgressBar currStep={currStep} allStep={routes.length - 1} />
+      <Routes>
+        {routes.map((route, index) => (
+          <Route key={index} {...route} />
+        ))}
+      </Routes>
+    </>
   );
 }
 

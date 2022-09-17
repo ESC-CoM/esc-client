@@ -60,8 +60,8 @@ export default function MoreInfoPage1() {
             setValue={setValue}
             errors={errors.gender}
           />
-          <BirthInput register={register} errors={errors} />
-          <MbtiInput register={register} errors={errors.mbti} />
+          <BirthInput register={register} errorMessage={errors.year?.message} />
+          <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
           <FooterButton text="다음" type="submit" />
         </form>
       </section>
