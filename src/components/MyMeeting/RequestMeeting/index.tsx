@@ -57,11 +57,11 @@ export default function RequestMeeting({
       <MutiProfile profileList={profileList} parentRef={requestRef} />
 
       <div className={$['info']}>
-        <span className={$['title']}>{comment}</span>
-        {state && <span className={$['state']}>거절됨</span>}
         <div>
-          <span className={$['date']}>{date}</span>
+          <span className={$['title']}>{comment}</span>
+          {state && <span className={$['state']}>거절됨</span>}
         </div>
+        <span className={$['date']}>{date}</span>
       </div>
 
       <div className={$['cancel-btn']}>

@@ -64,7 +64,7 @@ export default function RequestedList({
         <span className={$['date']}>{date}</span>
       </div>
 
-      <div className={$['request-btn']}>
+      <div className={$['request-btn-wrapper']}>
         <button className={$['btn']} onClick={clickAcceptBtn}>
           수락
         </button>

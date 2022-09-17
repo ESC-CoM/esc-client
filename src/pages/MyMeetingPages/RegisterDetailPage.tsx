@@ -9,8 +9,9 @@ import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useNavigate } from 'react-router-dom';
+import Badge from 'src/components/MyMeeting/Badge';
 
-const { title, content, friends, date } = registerMeetingMocks[0];
+const { kind, title, content, friends, date } = registerMeetingMocks[0];
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function RegisterDetailPage() {
         <MutiProfile profileList={profileList} parentRef={detailInfoRef} />
 
         <div className={$['info']}>
+          <Badge text={kind} />
           <div>
             <span className={$['title']}>{title}</span>
             <span className={$['date']}>•{date}</span>

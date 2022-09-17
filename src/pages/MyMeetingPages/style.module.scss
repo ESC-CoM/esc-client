@@ -8,16 +8,21 @@
   top: 0;
   display: flex;
   align-items: center;
-  height: 70px;
-  padding: 0 5px;
-  box-shadow: 0 5px 3px -2px $gray-300;
   background-color: $white;
+  box-shadow: 0 5px 3px -2px $gray-300;
+  padding: 10px;
   cursor: pointer;
 
   .info {
     width: calc(100% - 60px);
     display: flex;
     flex-direction: column;
+    margin-left: 0.5rem;
+    > :nth-child(1),
+    :nth-child(2) {
+      margin-bottom: 5px;
+    }
+
     .title {
       @include textOverFlow;
       font-size: 15px;
@@ -32,7 +37,6 @@
       @include textOverFlow;
       display: inline-block;
       font-size: 14px;
-      margin-top: 5px;
     }
   }
 }
