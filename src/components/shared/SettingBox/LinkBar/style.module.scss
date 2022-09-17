@@ -11,10 +11,15 @@
   text-decoration: none;
 
   &:active {
-    background-color: $white;
+    background-color: $gray-50;
+  }
+
+  .text {
+    color: $gray-700;
   }
 
   .icon {
     font-size: 20px;
+    color: $gray-400;
   }
 }

@@ -1,4 +1,3 @@
-export { default as EmailInput } from './BasicInfo/EmailInput';
 export { default as PasswordInput } from './BasicInfo/PasswordInput';
 export { default as PhoneAuth } from './BasicInfo/PhoneAuth';
 export { default as BirthInput } from './MoreInfo/BirthInput';
@@ -8,6 +7,5 @@ export { default as HeightInput } from './MoreInfo/HeightInput';
 export { default as MbtiInput } from './MoreInfo/MbtiSelect';
 export { default as NicknameInput } from './MoreInfo/NicknameInput';
 export { default as WeightInput } from './MoreInfo/WeightInput';
-export { default as NextButton } from './NextButton';
 export { default as ProgressBar } from './ProgressBar';
 export { default as Term } from './Term';

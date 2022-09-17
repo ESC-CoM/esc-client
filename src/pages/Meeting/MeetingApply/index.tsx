@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { friendMocks, meetingApplyContent } from 'src/__mocks__/friendMocks';
 import ContentBox from 'src/components/shared/ContentBox';
+import FooterButton from 'src/components/shared/FooterButton';
 import Friend from 'src/components/shared/Friend';
 import FriendWithCheck from 'src/components/shared/FriendWithCheck';
 import { PageLayout } from 'src/components/shared/Layout';
@@ -73,10 +74,7 @@ export default function MeetingApplyPage() {
       </div>
 
       <ContentBox {...{ title, content }} contentTitle={MeetingTitle.apply} />
-
-      <footer className={$['apply-btn']}>
-        <button type="button">신청하기</button>
-      </footer>
+      <FooterButton text="신청하기" type="button" />
     </PageLayout>
   );
 }

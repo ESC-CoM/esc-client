@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { NextButton, Term } from 'src/components/Join';
+import { Term } from 'src/components/Join';
 import Modal from 'src/components/shared/BottomModal';
+import FooterButton from 'src/components/shared/FooterButton';
 import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 
@@ -39,7 +40,7 @@ export default function MoreInfoPage2() {
           <HeightInput value={height} register={register('height')} />
           <WeightInput value={weight} register={register('weight')} />
           <Drink value={drink} setValue={setValue} />
-          <NextButton text={'다음'} onClick={() => onSubmit(watch())} />
+          <FooterButton text="다음" type="submit" />
         </form>
         {isTermsOpen && (
           <Modal

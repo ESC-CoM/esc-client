@@ -4,6 +4,7 @@ import ContentBox from 'src/components/shared/ContentBox';
 import { PageLayout } from 'src/components/shared/Layout';
 
 import $ from './style.module.scss';
+import FooterButton from 'src/components/shared/FooterButton';
 
 function MeetingDetailPage() {
   const { title, content, friends } = meetingDetailMocks;
@@ -14,9 +15,7 @@ function MeetingDetailPage() {
         <ProfileCardList friends={friends} />
         <ContentBox {...{ title, content }} isReadMode />
       </main>
-      <footer className={$['apply-btn']}>
-        <button type="button">신청하기</button>
-      </footer>
+      <FooterButton text="신청하기" type="button" />
     </PageLayout>
   );
 }

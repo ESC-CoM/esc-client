@@ -4,11 +4,10 @@
 .footer {
   @include footer();
   display: flex;
+  align-items: center;
 
-  .next-btn {
+  .button {
     @include button(calc(100% - 50px), none, $primary, $white, 20px);
-    @media screen and (min-width: 758px) {
-      width: 720px;
-    }
+    max-width: 720px;
   }
 }
