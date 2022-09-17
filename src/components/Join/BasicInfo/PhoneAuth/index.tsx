@@ -57,7 +57,7 @@ export default function PhoneAuth({
   }, [phoneNumber]);
 
   return (
-    <section className={$.container}>
+    <section className={$['phone-auth']}>
       <h1>휴대폰 인증을 해주세요</h1>
       <InputWithButton
         className={$['input-with-button']}

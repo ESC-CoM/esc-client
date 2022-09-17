@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { PhoneAuthType } from 'src/types/join';
 import useStore from 'src/store/useStore';
 
-const NEXT_PATH = '/join/basic/email';
+const NEXT_PATH = '/join/email';
 
 export default function PhoneAuthPage() {
   const { setJoinInfo } = useStore();

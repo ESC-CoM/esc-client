@@ -65,7 +65,7 @@ export default function MoreInfoPage1() {
             errors={errors.gender}
           />
           <BirthInput register={register} errorMessage={errors.year?.message} />
-          <MbtiInput register={register} errors={errors.mbti} />
+          <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
           <NextButton text={'다음'} />
         </form>
       </section>
