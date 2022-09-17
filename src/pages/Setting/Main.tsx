@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PageLayout } from 'src/components/shared/Layout';
 import SettingBox from 'src/components/shared/SettingBox';
 import { getSettingMenu } from 'src/constants/settingMenu';
+
 import $ from './main.module.scss';
 
 export default function MainSettingPage() {
