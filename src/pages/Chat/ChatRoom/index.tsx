@@ -1,11 +1,12 @@
-import { PageLayout } from 'src/components/shared/Layout';
-import $ from './style.module.scss';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
-import { MessageInput } from 'src/components/Chat';
 import { messageInfoMocks } from 'src/__mocks__/chat';
-import { useEffect, useCallback, useRef, useState } from 'react';
-import PersonalProfilePage from 'src/pages/PersonalProfilePage';
+import { MessageInput } from 'src/components/Chat';
 import { ChatCard } from 'src/components/Chat';
+import { PageLayout } from 'src/components/shared/Layout';
+import PersonalProfilePage from 'src/pages/PersonalProfilePage';
+
+import $ from './style.module.scss';
 
 export default function ChatRoomPage() {
   const [isClickProfile, setIsClickProfile] = useState(false);

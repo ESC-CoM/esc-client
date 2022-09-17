@@ -1,15 +1,16 @@
-import $ from './style.module.scss';
+import { memo } from 'react';
 import cx from 'classnames';
 import {
-  UseFormRegister,
   FieldErrors,
-  UseFormWatch,
+  UseFormRegister,
   UseFormSetValue,
+  UseFormWatch,
 } from 'react-hook-form';
-import { More1Type } from 'src/types/join';
-import { memo } from 'react';
-import Label from 'src/components/shared/Label';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
+import Label from 'src/components/shared/Label';
+import { More1Type } from 'src/types/join';
+
+import $ from './style.module.scss';
 
 interface Props {
   watch: UseFormWatch<More1Type>;

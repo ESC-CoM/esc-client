@@ -1,8 +1,9 @@
-import $ from './style.module.scss';
 import { useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MyMeetingType } from 'src/types/myMeeting';
 import MutiProfile from 'src/components/shared/MultiProfile';
+import { MyMeetingType } from 'src/types/myMeeting';
+
+import $ from './style.module.scss';
 
 export default function RegisterMeeting({
   title,

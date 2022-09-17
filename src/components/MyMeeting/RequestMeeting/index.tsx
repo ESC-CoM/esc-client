@@ -1,8 +1,9 @@
-import $ from './style.module.scss';
-import { MyMeetingRequestType } from 'src/types/myMeeting';
-import { useIntersectObserver } from 'src/hooks';
 import { useMemo, useRef } from 'react';
 import MutiProfile from 'src/components/shared/MultiProfile';
+import { useIntersectObserver } from 'src/hooks';
+import { MyMeetingRequestType } from 'src/types/myMeeting';
+
+import $ from './style.module.scss';
 
 export default function RequestMeeting({
   comment,

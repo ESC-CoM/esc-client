@@ -1,5 +1,5 @@
-import { PageLayout } from '../components/shared/Layout';
 import Login from '../components/Login/Login';
+import { PageLayout } from '../components/shared/Layout';
 
 function LoginPage() {
   return (

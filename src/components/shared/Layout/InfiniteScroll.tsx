@@ -1,4 +1,5 @@
-import { useEffect, useRef, ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
+
 import { useIntersectObserver } from '../../../hooks';
 
 interface Props {

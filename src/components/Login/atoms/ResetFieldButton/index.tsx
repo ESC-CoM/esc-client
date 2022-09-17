@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import { MdCancel } from 'react-icons/md';
+
 import styles from './style.module.scss';
 
 interface Props {

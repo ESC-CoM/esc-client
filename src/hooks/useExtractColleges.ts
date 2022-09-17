@@ -1,5 +1,6 @@
-import { MeetingProfileType } from './../types/meeting';
 import { useMemo } from 'react';
+
+import { MeetingProfileType } from './../types/meeting';
 
 export default function useExtractColleges(profiles: MeetingProfileType[]) {
   return useMemo(() => {

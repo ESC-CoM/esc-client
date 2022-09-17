@@ -1,4 +1,5 @@
 import cx from 'classnames';
+
 import styles from './style.module.scss';
 
 interface Props {
