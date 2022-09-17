@@ -1,4 +1,3 @@
-export { default as EmailInput } from './BasicInfo/EmailInput';
 export { default as PasswordInput } from './BasicInfo/PasswordInput';
 export { default as PhoneAuth } from './BasicInfo/PhoneAuth';
 

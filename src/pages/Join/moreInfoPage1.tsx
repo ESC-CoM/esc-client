@@ -9,10 +9,10 @@ import {
   BirthInput,
   MbtiInput,
   NextButton,
-  NicknameInput,
 } from '../../components/Join';
 import { More1Type } from 'src/types/join';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
+import InputWithButton from 'src/components/shared/InputWithButton';
 
 const NEXT_PATH = '/join/more2';
 
@@ -41,23 +41,30 @@ export default function MoreInfoPage1() {
     navigate(NEXT_PATH);
   };
 
+  const handleDuplicationButtonClick = () =>
+    setValue('isDuplicationChecked', true);
+
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
       <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <NicknameInput
-            watch={watch}
-            register={register}
-            setValue={setValue}
-            errors={errors}
+          <InputWithButton
+            className={$['input-with-button']}
+            register={register('nickName')}
+            onClick={handleDuplicationButtonClick}
+            labelErrorMessage={errors.nickName?.message}
+            buttonErrorMessage={errors.isDuplicationChecked?.message}
+            labelText="별명"
+            buttonText="중복 확인"
+            placeholder="최소 2자, 최대 10자"
           />
           <GenderInput
             value={gender}
             setValue={setValue}
             errors={errors.gender}
           />
-          <BirthInput register={register} errors={errors} />
+          <BirthInput register={register} errorMessage={errors.year?.message} />
           <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
           <NextButton text={'다음'} />
         </form>

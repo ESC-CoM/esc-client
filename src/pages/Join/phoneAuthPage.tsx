@@ -20,12 +20,11 @@ export default function PhoneAuthPage() {
     formState: { errors },
   } = useForm<PhoneAuthType>({
     resolver: yupResolver(PhoneYup),
+    defaultValues: { phoneNumber: '', isAuthed: false },
   });
   const navigate = useNavigate();
-  const [phoneNumber, isPhoneDuplicated, authNumber, isAuthed] = watch([
-    'phoneNumber',
+  const [isPhoneDuplicated, isAuthed] = watch([
     'isReceivedAuthNum',
-    'authNumber',
     'isAuthed',
   ]);
 
@@ -35,8 +34,8 @@ export default function PhoneAuthPage() {
     }
   };
   const onSubmit = (data: PhoneAuthType) => {
-    const PhoneInfo = { phoneNumber, authNumber };
-    setJoinInfo(PhoneInfo);
+    const { phoneNumber, authNumber } = data;
+    setJoinInfo({ phoneNumber, authNumber });
     navigate(NEXT_PATH);
   };
 

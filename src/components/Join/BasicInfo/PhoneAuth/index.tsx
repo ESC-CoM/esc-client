@@ -7,13 +7,13 @@ import {
   UseFormSetFocus,
   FieldErrors,
 } from 'react-hook-form';
-import { useState } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 import AuthTimer from './authTimer';
 import { useEffect } from 'react';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
-import Label from 'src/components/shared/Label';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
+import InputWithButton from 'src/components/shared/InputWithButton';
 
 interface Props {
   watch: UseFormWatch<PhoneAuthType>;
@@ -30,10 +30,7 @@ export default function PhoneAuth({
   setFocus,
   errors,
 }: Props) {
-  const [phoneNumber, isReceivedAuthNum, isAuthed] = watch(
-    ['phoneNumber', 'isReceivedAuthNum', 'isAuthed'],
-    { phoneNumber: '', isReceivedAuthNum: false, isAuthed: false }
-  );
+  const [phoneNumber, isAuthed] = watch(['phoneNumber', 'isAuthed']);
   const [sendCount, setSendCount] = useState(0);
 
   const sendPhoneNum = () => {
@@ -41,53 +38,37 @@ export default function PhoneAuth({
     setValue('isReceivedAuthNum', true);
 
     setFocus('authNumber');
+    console.log('clicked');
   };
 
-  const handleNumber = (e: React.FormEvent<HTMLInputElement>) => {
+  const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => {
     const regex = /^[0-9\b -]{0,13}$/;
-    const currValue = e.currentTarget.value;
-    if (regex.test(currValue)) {
-      setValue('phoneNumber', currValue);
+    if (regex.test(value)) {
+      setValue('phoneNumber', value);
     }
   };
 
   useEffect(() => {
-    insertAutoHyphen({ phoneNumber, setValue });
+    if (phoneNumber) {
+      insertAutoHyphen({ phoneNumber, setValue });
+    }
   }, [phoneNumber]);
 
   return (
     <section className={$['phone-auth']}>
       <h1>휴대폰 인증을 해주세요</h1>
-
-      <div className={$['item']}>
-        <Label
-          textContent="휴대폰 번호"
-          fontSize={15}
-          htmlFor="phoneNumber"
-          errorMsg={errors.phoneNumber?.message}
-        />
-
-        <div className={$['row']}>
-          <input
-            type="text"
-            className={cx($['input'], {
-              [$['error']]: errors.phoneNumber,
-            })}
-            id="phoneNumber"
-            {...register('phoneNumber')}
-            value={phoneNumber}
-            onChange={handleNumber}
-          />
-          <button className={$['btn']} type="button" onClick={sendPhoneNum}>
-            {sendCount > 0 ? '다시 받기' : '인증번호 받기'}
-          </button>
-        </div>
-
-        {!isReceivedAuthNum && (
-          <ErrorMessage errorText={errors.isReceivedAuthNum?.message} />
-        )}
-      </div>
-
+      <InputWithButton
+        className={$['input-with-button']}
+        onClick={sendPhoneNum}
+        onChange={handlePhoneNumberChange}
+        value={phoneNumber}
+        labelErrorMessage={errors.phoneNumber?.message}
+        buttonErrorMessage={errors.isReceivedAuthNum?.message}
+        labelText="휴대폰 번호"
+        buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
+      />
       <div className={$['item']}>
         <label htmlFor="authNumber">
           {errors.authNumber?.message ?? '인증번호'}
