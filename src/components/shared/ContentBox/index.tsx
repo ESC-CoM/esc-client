@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import useDebounceInput from 'src/hooks/useDebounceInput';
 import $ from './style.module.scss';
-import useAutoHeightChange from 'src/hooks/useAutoHeightChange';
+import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 interface Props {
   title: string;
@@ -18,7 +18,7 @@ function ContentBox({ title, content, isReadMode, contentTitle }: Props) {
   const handleContentChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => {
       handleContent(e.target.value);
-      useAutoHeightChange(contentRef);
+      if (contentRef.current) autosizeTextArea(contentRef.current);
     },
     []
   );

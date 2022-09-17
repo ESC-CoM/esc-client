@@ -1,8 +1,7 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import $ from './style.module.scss';
-// import ContentBox from 'src/components/ContentBox';
-import useAutoHeightChange from 'src/hooks/useAutoHeightChange';
 import { IoSend, IoImages } from 'react-icons/io5';
+import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 interface Props {
   setAlbums: React.Dispatch<React.SetStateAction<FileList | null | undefined>>;
@@ -13,17 +12,18 @@ export function MessageInput({ setAlbums }: Props) {
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
 
-  const handleContentChange = useCallback(() => {
-    const textareaRef = contentRef.current;
-    const DivContent = parentRef.current;
-    if (textareaRef && DivContent) {
-      if (textareaRef.scrollHeight <= 100) {
-        const scrollHeight = useAutoHeightChange(contentRef);
+  const handleContentChange = useCallback((e) => {
+    const value = e.target?.value;
+    setNewContent(value);
 
-        if (scrollHeight) {
-          DivContent.style.height = 'auto';
-          DivContent.style.height = `${scrollHeight + 12}px`;
-        }
+    const DivElement = parentRef.current;
+    const textareaElement = contentRef.current;
+    if (DivElement && textareaElement && textareaElement?.scrollHeight <= 96) {
+      const scrollHeight = autosizeTextArea(contentRef.current);
+
+      if (scrollHeight) {
+        DivElement.style.height = '0px';
+        DivElement.style.height = `${scrollHeight + 26}px`;
       }
     }
   }, []);
@@ -40,7 +40,7 @@ export function MessageInput({ setAlbums }: Props) {
       </label>
       <input type="file" name="file" id="file" multiple onChange={loadAlbum} />
 
-      <div className={$.text}>
+      <div className={$['textarea-wrapper']}>
         <textarea
           name="message"
           id=""
