@@ -1,14 +1,15 @@
 import cx from 'classnames';
 import { AiOutlineMan } from 'react-icons/ai';
 import { IoIosArrowForward } from 'react-icons/io';
-import $ from './style.module.scss';
-import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
-import InformationBar from '../InformationBar';
 import {
   MOCK_BASIC_INFORMATION,
   MOCK_BODY_DATA,
   MOCK_URL,
 } from 'src/__mocks__/mypageMocks';
+import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
+
+import InformationBar from '../InformationBar';
+import $ from './style.module.scss';
 
 type Prop = {
   className: string;

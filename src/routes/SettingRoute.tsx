@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
-import { MainSettingPage, DetailSettingPage } from 'src/pages/Setting';
+import { Route, Routes } from 'react-router-dom';
+import { DetailSettingPage, MainSettingPage } from 'src/pages/Setting';
 
 export default function SettingRouter() {
   return (

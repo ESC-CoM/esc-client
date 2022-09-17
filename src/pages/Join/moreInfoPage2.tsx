@@ -1,13 +1,14 @@
-import $ from './style.module.scss';
-import { PageLayout } from '../../components/shared/Layout';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import useStore from 'src/store/useStore';
-import { More2Type } from 'src/types/join';
-import { HeightInput, WeightInput, Drink } from '../../components/Join';
 import { Term } from 'src/components/Join';
 import Modal from 'src/components/shared/BottomModal';
 import FooterButton from 'src/components/shared/FooterButton';
+import useStore from 'src/store/useStore';
+import { More2Type } from 'src/types/join';
+
+import { Drink, HeightInput, WeightInput } from '../../components/Join';
+import { PageLayout } from '../../components/shared/Layout';
+import $ from './style.module.scss';
 
 export default function MoreInfoPage2() {
   const { setJoinInfo } = useStore();

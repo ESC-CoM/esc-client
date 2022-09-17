@@ -4,9 +4,10 @@ import {
   MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 import ProfileCard from 'src/components/Meeting/MeetingDetail/ProfileCardList/ProfileCard';
-import $ from './style.module.scss';
 import { useWindowResize } from 'src/hooks';
 import { Profile } from 'src/types/profile';
+
+import $ from './style.module.scss';
 
 type Props = {
   friends: Profile[];

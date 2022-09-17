@@ -1,8 +1,9 @@
-import Message from '../Message';
-import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
-import cx from 'classnames';
-import $ from './style.module.scss';
 import { memo } from 'react';
+import cx from 'classnames';
+import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
+
+import Message from '../Message';
+import $ from './style.module.scss';
 
 interface Props {
   id: string;

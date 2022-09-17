@@ -1,5 +1,6 @@
-import { IconType } from 'react-icons';
 import cx from 'classnames';
+import { IconType } from 'react-icons';
+
 import $ from './style.module.scss';
 
 type Props = {

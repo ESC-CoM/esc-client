@@ -1,14 +1,15 @@
-import $ from './style.module.scss';
-import { PageLayout } from '../../components/shared/Layout';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import useStore from 'src/store/useStore';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { PasswordInput } from '../../components/Join';
 import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
-import { EmailPasswordType } from 'src/types/join';
-import InputWithButton from 'src/components/shared/InputWithButton';
 import FooterButton from 'src/components/shared/FooterButton';
+import InputWithButton from 'src/components/shared/InputWithButton';
+import useStore from 'src/store/useStore';
+import { EmailPasswordType } from 'src/types/join';
+
+import { PasswordInput } from '../../components/Join';
+import { PageLayout } from '../../components/shared/Layout';
+import $ from './style.module.scss';
 
 const NEXT_PATH = '/join/more1';
 

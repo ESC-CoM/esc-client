@@ -1,15 +1,15 @@
+import { BsPersonDash, BsPersonPlus } from 'react-icons/bs';
 import {
-  IoCloseOutline,
+  IoChevronBack,
   IoChevronBackOutline,
   IoChevronDownOutline,
+  IoCloseOutline,
   IoNotificationsOutline,
-  IoSearchOutline,
   IoPeopleOutline,
   IoReorderThreeOutline,
+  IoSearchOutline,
   IoSettingsOutline,
-  IoChevronBack,
 } from 'react-icons/io5';
-import { BsPersonPlus, BsPersonDash } from 'react-icons/bs';
 import { Logo } from 'src/components/shared/Icon';
 
 type MenuType = {

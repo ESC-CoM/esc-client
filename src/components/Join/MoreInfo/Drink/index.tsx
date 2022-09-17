@@ -1,10 +1,11 @@
-import $ from './style.module.scss';
 import { memo, useEffect, useState } from 'react';
-import { Bottle } from 'src/components/shared/Icon';
-import { adjustDrink } from 'src/utils';
 import { UseFormSetValue } from 'react-hook-form';
-import { More2Type } from 'src/types/join';
+import { Bottle } from 'src/components/shared/Icon';
 import Label from 'src/components/shared/Label';
+import { More2Type } from 'src/types/join';
+import { adjustDrink } from 'src/utils';
+
+import $ from './style.module.scss';
 
 interface Props {
   value: number;

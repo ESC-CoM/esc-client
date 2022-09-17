@@ -1,9 +1,10 @@
-import $ from './style.module.scss';
+import { ChangeEventHandler } from 'react';
 import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import Label from 'src/components/shared/Label';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
-import { ChangeEventHandler } from 'react';
+import Label from 'src/components/shared/Label';
+
+import $ from './style.module.scss';
 
 interface Props {
   className?: string;

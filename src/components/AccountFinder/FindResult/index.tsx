@@ -1,7 +1,8 @@
-import cx from 'classnames';
 import { useEffect, useState } from 'react';
+import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { Header, SaparateLine } from 'src/components/Login/atoms';
+
 import styles from './style.module.scss';
 
 type Props = {

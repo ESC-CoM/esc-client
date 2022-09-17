@@ -1,8 +1,9 @@
-import $ from './style.module.scss';
-import { Menu } from 'src/types/setting';
-import Container from './Container';
-import getBarClassName from 'src/utils/getBarClassName';
 import cx from 'classnames';
+import { Menu } from 'src/types/setting';
+import getBarClassName from 'src/utils/getBarClassName';
+
+import Container from './Container';
+import $ from './style.module.scss';
 
 type Props = {
   className?: string;

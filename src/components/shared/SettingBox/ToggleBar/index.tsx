@@ -1,5 +1,6 @@
-import cx from 'classnames';
 import { MouseEventHandler } from 'react';
+import cx from 'classnames';
+
 import $ from './style.module.scss';
 
 type Props = {

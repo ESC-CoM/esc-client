@@ -1,9 +1,10 @@
-import ContentBox from 'src/components/shared/ContentBox';
-import { PageLayout } from 'src/components/shared/Layout';
-import ProfileCardList from 'src/components/Meeting/MeetingDetail/ProfileCardList';
 import { meetingDetailMocks } from 'src/__mocks__/meetingDetailMocks';
-import $ from './style.module.scss';
+import ProfileCardList from 'src/components/Meeting/MeetingDetail/ProfileCardList';
+import ContentBox from 'src/components/shared/ContentBox';
 import FooterButton from 'src/components/shared/FooterButton';
+import { PageLayout } from 'src/components/shared/Layout';
+
+import $ from './style.module.scss';
 
 function MeetingDetailPage() {
   const { title, content, friends } = meetingDetailMocks;

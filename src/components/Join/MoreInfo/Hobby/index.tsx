@@ -1,10 +1,11 @@
-import $ from './style.module.scss';
 import React, { useEffect, useState } from 'react';
 import { HiPlus } from 'react-icons/hi';
 import { hobbyData } from 'src/__mocks__/join';
-import Self from './Self';
-import Example from './Example';
 import { ExampleWord } from 'src/types/join';
+
+import Example from './Example';
+import Self from './Self';
+import $ from './style.module.scss';
 
 type Props = {
   setHobby: (hobby: string[]) => void;

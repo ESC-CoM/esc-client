@@ -1,6 +1,7 @@
-import $ from './style.module.scss';
 import ProfileTag from 'src/components/shared/ProfileTag';
 import { MoreInfoType } from 'src/types/profile';
+
+import $ from './style.module.scss';
 
 interface Props {
   moreInfo: MoreInfoType;

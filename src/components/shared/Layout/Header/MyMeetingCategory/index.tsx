@@ -1,7 +1,8 @@
-import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import $ from './style.module.scss';
 
 const category = [
   { name: '등록한 미팅', path: 'register' },

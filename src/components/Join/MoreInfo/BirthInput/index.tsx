@@ -1,9 +1,10 @@
-import $ from './style.module.scss';
+import { memo } from 'react';
 import cx from 'classnames';
 import { UseFormRegister } from 'react-hook-form';
-import { More1Type } from 'src/types/join';
-import { memo } from 'react';
 import Label from 'src/components/shared/Label';
+import { More1Type } from 'src/types/join';
+
+import $ from './style.module.scss';
 
 interface Props {
   register: UseFormRegister<More1Type>;

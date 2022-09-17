@@ -1,7 +1,8 @@
-import MyInformationCard from '../MyInfomationCard';
-import $ from './style.module.scss';
 import SettingBox from 'src/components/shared/SettingBox';
 import { MYPAGE_SETTING_MENU } from 'src/constants/settingMenu';
+
+import MyInformationCard from '../MyInfomationCard';
+import $ from './style.module.scss';
 
 export default function CardBox() {
   return (
