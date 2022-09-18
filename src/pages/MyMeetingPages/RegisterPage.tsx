@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { registerMeetingMocks } from 'src/__mocks__/myMeeting';
+import PostCard from 'src/components/MyMeeting/PostCard';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingType } from 'src/types/myMeeting';
-import PostCard from 'src/components/shared/Posting';
-import { useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
   const navigate = useNavigate();

@@ -1,10 +1,11 @@
 import { memo, useMemo, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
-import $ from './style.module.scss';
-import { useNavigate } from 'react-router-dom';
+
 import StateBadge from '../StateBadge';
+import $ from './style.module.scss';
 
 function RequestMeeting({
   comment,

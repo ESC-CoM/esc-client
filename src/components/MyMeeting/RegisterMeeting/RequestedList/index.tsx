@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
+
 import $ from './style.module.scss';
 
 function RequestedList({ comment, requestedInfo, date }: MyMeetingRequestType) {
@@ -36,7 +37,7 @@ function RequestedList({ comment, requestedInfo, date }: MyMeetingRequestType) {
     lazyLoadCallback
   );
 
-  const onClickRequestedPosting = () => {
+  const getProfileInfo = () => {
     navigate('/home/detail');
   };
 
@@ -51,7 +52,7 @@ function RequestedList({ comment, requestedInfo, date }: MyMeetingRequestType) {
     <li
       className={$['requested-info']}
       ref={requestedMeetingRef}
-      onClick={onClickRequestedPosting}
+      onClick={getProfileInfo}
     >
       <MutiProfile profileList={profileList} parentRef={requestedMeetingRef} />
 
