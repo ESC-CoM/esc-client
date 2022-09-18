@@ -151,7 +151,7 @@ export const registerMeetingMocks = [
 
 export const requestListMocks = [
   {
-    comment: '공대도 받아주세요 !',
+    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
     requestedInfo: [
       {
         nickName: '라이언',

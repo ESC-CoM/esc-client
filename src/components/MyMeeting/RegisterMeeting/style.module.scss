@@ -8,15 +8,10 @@
   cursor: pointer;
 
   .my-meeting-info {
-    width: calc(100% - 60px);
+    width: calc(100% - 70px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-left: 10px;
-    > :nth-child(1),
-    :nth-child(2) {
-      margin-bottom: 5px;
-    }
+    margin-left: 5px;
     .title {
       @include textOverFlow;
       font-size: 15px;

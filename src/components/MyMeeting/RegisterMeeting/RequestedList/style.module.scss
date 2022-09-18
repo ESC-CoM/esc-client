@@ -12,10 +12,9 @@
   .info {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 5px;
     width: 35%;
-    justify-content: space-between;
-    margin-left: 0.5rem;
+
     .comment {
       @include textOverFlow;
       font-size: 14px;
