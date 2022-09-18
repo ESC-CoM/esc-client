@@ -4,10 +4,9 @@ import {
   registerMeetingMocks,
   requestListMocks,
 } from 'src/__mocks__/myMeeting';
-import { RequestedList } from 'src/components/MyMeeting';
+import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
-import PostCard from 'src/components/shared/Posting';
 
 const { kind, title, content, friends, date } = registerMeetingMocks[0];
 const detailInfo = { badge: kind, title, content, date };

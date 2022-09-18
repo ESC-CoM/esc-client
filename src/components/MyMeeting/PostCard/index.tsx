@@ -1,9 +1,10 @@
 import { memo, useRef } from 'react';
+import cx from 'classnames';
 import Badge from 'src/components/MyMeeting/Badge';
 import { ProfileImg } from 'src/types/profile';
-import MutiProfile from '../MultiProfile';
+
+import MutiProfile from '../../shared/MultiProfile';
 import $ from './style.module.scss';
-import cx from 'classnames';
 
 type TextInfo = {
   badge?: string;
