@@ -1,5 +1,5 @@
+import { MdCancel } from '@react-icons/all-files/md/MdCancel';
 import cx from 'classnames';
-import { MdCancel } from 'react-icons/md';
 
 import styles from './style.module.scss';
 

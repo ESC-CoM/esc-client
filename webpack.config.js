@@ -1,28 +1,31 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const webpack = require('webpack');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LinkTypePlugin =
   require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const isAnalyze = process.argv.includes('--analyze');
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   devServer: {
+    historyApiFallback: true,
     port: 3000,
+    static: { directory: path.resolve(__dirname, './build') },
     historyApiFallback: true,
     compress: true,
-    open: true,
   },
   entry: {
     main: './src/index',
   },
-  devtool: isProduction ? 'cheap-source-map' : 'eval-cheap-source-map',
+  devtool: isProduction ? false : 'eval-cheap-source-map',
   output: {
+    pathinfo: false,
     publicPath: '/',
     filename: '[name].[chunkhash:8].bundle.js',
     chunkFilename: '[name].[chunkhash:8].bundle.js',
@@ -42,8 +45,18 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: '/node_modules/',
-        use: ['babel-loader', 'ts-loader'],
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'tsx',
+          target: 'es2015',
+        },
       },
       {
         test: /\.(jpe?g|gif|png|svg|ico)$/i,
@@ -68,9 +81,17 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new ESBuildMinifyPlugin({
+        target: 'es2015',
+        css: true,
+      }),
+    ],
+  },
   plugins: [
     new webpack.DefinePlugin({}),
-    new CleanWebpackPlugin(),
     new LinkTypePlugin({
       '**/*.css': 'text/css',
     }),
@@ -92,7 +113,7 @@ module.exports = {
             filename: '[name].[chunkhash:8].bundle.css',
           }),
         ]
-      : []),
+      : [new ForkTsCheckerWebpackPlugin()]),
     ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
   ],
 };
