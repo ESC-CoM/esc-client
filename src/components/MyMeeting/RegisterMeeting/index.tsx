@@ -37,10 +37,10 @@ export default function RegisterMeeting({
       <div className={$['my-meeting-info']}>
         <Badge text={kind} />
         <div>
-          <span className={$['title']}>{title}</span>
-          <span className={$['date']}>•{date}</span>
+          <span className={$.title}>{title}</span>
+          <span className={$.date}>•{date}</span>
         </div>
-        <span className={$['content']}>{content}</span>
+        <span className={$.content}>{content}</span>
       </div>
     </li>
   );

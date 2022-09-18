@@ -65,10 +65,10 @@ export default function RequestedList({
       </div>
 
       <div className={$['request-btn-wrapper']}>
-        <button className={$['btn']} onClick={clickAcceptBtn}>
+        <button className={$['accept-btn']} onClick={clickAcceptBtn}>
           수락
         </button>
-        <button className={$['btn']} onClick={clickRefuseBtn}>
+        <button className={$['refuse-btn']} onClick={clickRefuseBtn}>
           거절
         </button>
       </div>

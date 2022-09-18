@@ -5,5 +5,5 @@ type Props = {
 };
 
 export default function Badge({ text }: Props) {
-  return <span className={$.badge}>{text}</span>;
+  return <strong className={$.badge}>{text}</strong>;
 }
