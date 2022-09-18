@@ -1,24 +1,23 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   registerMeetingMocks,
   requestListMocks,
 } from 'src/__mocks__/myMeeting';
 import { RequestedList } from 'src/components/MyMeeting';
-import Badge from 'src/components/MyMeeting/Badge';
 import { InfiniteScroll } from 'src/components/shared/Layout';
-import MutiProfile from 'src/components/shared/MultiProfile';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
-import $ from './style.module.scss';
+import PostCard from 'src/components/shared/Posting';
 
 const { kind, title, content, friends, date } = registerMeetingMocks[0];
+const detailInfo = { badge: kind, title, content, date };
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
-  const detailInfoRef = useRef<HTMLLIElement | null>(null);
+
   const profileList = useMemo(
     () =>
       friends
@@ -34,24 +33,18 @@ export default function RegisterDetailPage() {
     setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
   };
 
-  const onClickRequestedPosting = () => {
+  const getProfileInfo = () => {
     navigate('/home/detail');
   };
 
   return (
     <>
-      <div className={$['detail-info']} onClick={onClickRequestedPosting}>
-        <MutiProfile profileList={profileList} parentRef={detailInfoRef} />
-
-        <div className={$['info']}>
-          <Badge text={kind} />
-          <div>
-            <span className={$['title']}>{title}</span>
-            <span className={$['date']}>•{date}</span>
-          </div>
-          <span className={$['content']}>{content}</span>
-        </div>
-      </div>
+      <PostCard
+        className="detail"
+        profileList={profileList}
+        textInfo={detailInfo}
+        onClick={getProfileInfo}
+      />
 
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>

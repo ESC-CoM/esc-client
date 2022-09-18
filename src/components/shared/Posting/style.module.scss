@@ -1,13 +1,13 @@
 @import 'src/styles/main.scss';
 
-.my-meeting {
+.post-card {
   display: flex;
   align-items: center;
   border-bottom: 1px solid $gray-250;
   padding: 10px;
   cursor: pointer;
 
-  .my-meeting-info {
+  .card-content {
     width: calc(100% - 70px);
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
       margin-bottom: 5px;
     }
 
-    .info-heading {
+    .card-heading {
       display: flex;
       align-items: center;
 
@@ -39,4 +39,16 @@
       font-size: 14px;
     }
   }
+}
+
+.detail {
+  z-index: 3;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0 5px 3px -2px $gray-300;
+  padding: 10px;
+  cursor: pointer;
 }

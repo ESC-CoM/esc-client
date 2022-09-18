@@ -1,7 +1,7 @@
 export const registerMeetingMocks = [
   {
     kind: '과팅',
-    title: '공대 여자 3명이랑 과팅 ㄱㄱ',
+    title: '공대 여자 3명이랑 과팅 ㄱㄱㄱㄱㄱㄱ~~~~~~~~~~~~',
     content: '같이 과팅할 남자 3명 구해요~ 같은 공대는 아니였으면 좋겠어여ㅎㅎ',
     friends: [
       {
@@ -155,18 +155,69 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+    ],
+    date: '27초 전',
+  },
+  {
+    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+      },
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+    ],
+    date: '27초 전',
+  },
+  {
+    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+      },
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+    ],
+    date: '27초 전',
+  },
+  {
+    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    requestedInfo: [
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+      },
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+      },
+      {
+        nickName: '라이언',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
     date: '27초 전',
@@ -176,13 +227,11 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
     ],
     date: '30분 전',
@@ -192,8 +241,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '2일 전',
@@ -203,8 +251,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '27초 전',
@@ -214,8 +261,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '30분 전',
@@ -225,8 +271,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '2일 전',
@@ -236,8 +281,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '27초 전',
@@ -247,8 +291,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '30분 전',
@@ -258,8 +301,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '2일 전',
@@ -269,8 +311,7 @@ export const requestListMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
+        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
       },
     ],
     date: '2일 전',
@@ -279,17 +320,15 @@ export const requestListMocks = [
 
 export const requestMeetingMocks = [
   {
-    comment: '내가 신청함',
+    comment: '내가 신청함~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
     date: '52분 전',
@@ -300,8 +339,7 @@ export const requestMeetingMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
     date: '22.04.29',
@@ -312,8 +350,7 @@ export const requestMeetingMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
     date: '52분 전',
@@ -324,8 +361,7 @@ export const requestMeetingMocks = [
     requestedInfo: [
       {
         nickName: '라이언',
-        profileImg:
-          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
     date: '22.04.29',

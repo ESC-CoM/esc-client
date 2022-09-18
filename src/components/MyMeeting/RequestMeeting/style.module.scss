@@ -1,5 +1,4 @@
-@import 'src/styles/_color.scss';
-@import 'src/styles/_mixin.scss';
+@import 'src/styles/main.scss';
 
 .request-meeting-info {
   display: flex;
@@ -9,26 +8,20 @@
   cursor: pointer;
 
   .info {
+    max-width: calc(100% - #{$boardDesktopImage + 15px});
     display: flex;
     flex-direction: column;
-    margin-left: 0.5rem;
-    > :nth-child(1),
-    :nth-child(2) {
+    margin-left: 10px;
+    overflow: hidden;
+    > :not(:last-child) {
       margin-bottom: 5px;
     }
-    .title {
+
+    .comment {
       @include textOverFlow;
       font-size: 14px;
     }
-    .state {
-      font-size: 11px;
-      padding: 3px 6px;
-      margin-left: 6px;
-      border-radius: 5px;
-      color: $primary;
-      background-color: $gray-200;
-      font-weight: 700;
-    }
+
     .date {
       font-size: 12px;
       color: $gray-600;

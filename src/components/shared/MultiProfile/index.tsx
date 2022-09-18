@@ -1,15 +1,11 @@
 import { RefObject, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
 import getProfileClassName from 'src/utils/getProfileClassName';
-
+import { ProfileImg } from 'src/types/profile';
 import $ from './style.module.scss';
 
-type ProfileInfo = {
-  alt: string;
-  src: string;
-};
 interface Props {
-  profileList: ProfileInfo[];
+  profileList: ProfileImg[];
   parentRef: RefObject<HTMLLIElement>;
 }
 

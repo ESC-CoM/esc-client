@@ -23,3 +23,8 @@ export type MoreInfoType = Pick<
   Profile,
   'birthDate' | 'height' | 'weight' | 'mbti' | 'drink'
 >;
+
+export type ProfileImg = {
+  alt: string;
+  src: string;
+};

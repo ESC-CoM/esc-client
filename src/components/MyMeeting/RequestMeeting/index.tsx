@@ -1,11 +1,12 @@
-import { useMemo, useRef } from 'react';
+import { memo, useMemo, useRef } from 'react';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import $ from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
+import StateBadge from '../StateBadge';
 
-export default function RequestMeeting({
+function RequestMeeting({
   comment,
   requestedInfo,
   date,
@@ -17,8 +18,8 @@ export default function RequestMeeting({
   const profileList = useMemo(
     () =>
       requestedInfo
-        .map(({ nickName, profileImg }) => ({
-          src: profileImg,
+        .map(({ nickName, src }) => ({
+          src: src,
           alt: nickName,
         }))
         .slice(0, 3),
@@ -44,29 +45,35 @@ export default function RequestMeeting({
     lazyLoadCallback
   );
 
-  const onClickRequestedPosting = () => {
+  const getRequestedPosting = () => {
     navigate('/home/detail');
+  };
+
+  const handleRefuseRequest = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
   };
 
   return (
     <li
       className={$['request-meeting-info']}
       ref={requestRef}
-      onClick={onClickRequestedPosting}
+      onClick={getRequestedPosting}
     >
       <MutiProfile profileList={profileList} parentRef={requestRef} />
 
       <div className={$['info']}>
-        <div>
-          <span className={$['title']}>{comment}</span>
-          {state && <span className={$['state']}>거절됨</span>}
-        </div>
+        {state && <StateBadge />}
+        <strong className={$['comment']}>{comment}</strong>
         <span className={$['date']}>{date}</span>
       </div>
 
       <div className={$['cancel-btn']}>
-        <button className={$['btn']}>신청 취소하기</button>
+        <button className={$['btn']} onClick={handleRefuseRequest}>
+          신청 취소하기
+        </button>
       </div>
     </li>
   );
 }
+
+export default memo(RequestMeeting);

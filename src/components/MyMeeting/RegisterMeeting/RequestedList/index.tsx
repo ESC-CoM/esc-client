@@ -1,22 +1,18 @@
-import { useMemo, useRef } from 'react';
+import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import $ from './style.module.scss';
 
-export default function RequestedList({
-  comment,
-  requestedInfo,
-  date,
-}: MyMeetingRequestType) {
+function RequestedList({ comment, requestedInfo, date }: MyMeetingRequestType) {
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const profileList = useMemo(
     () =>
       requestedInfo
-        .map(({ nickName, profileImg }) => ({ alt: nickName, src: profileImg }))
+        .map(({ nickName, src }) => ({ alt: nickName, src: src }))
         .slice(0, 3),
     []
   );
@@ -75,3 +71,5 @@ export default function RequestedList({
     </li>
   );
 }
+
+export default memo(RequestedList);
