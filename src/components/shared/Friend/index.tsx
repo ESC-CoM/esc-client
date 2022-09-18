@@ -1,5 +1,6 @@
-import cx from 'classnames';
 import { memo } from 'react';
+import cx from 'classnames';
+
 import $ from './style.module.scss';
 
 interface Props {

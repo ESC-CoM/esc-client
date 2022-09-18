@@ -1,4 +1,5 @@
 import { IoClose } from 'react-icons/io5';
+
 import $ from './style.module.scss';
 
 interface Props {

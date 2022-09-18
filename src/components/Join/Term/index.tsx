@@ -1,15 +1,16 @@
-import $ from './style.module.scss';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import TermsSchema from './yup';
-import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { TermSchema } from 'src/types/join';
+import { yupResolver } from '@hookform/resolvers/yup';
+import cx from 'classnames';
+import { useForm } from 'react-hook-form';
+import { FiCheck, FiChevronRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
-import cx from 'classnames';
-import useStore from 'src/store/useStore';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
+import useStore from 'src/store/useStore';
+import { TermSchema } from 'src/types/join';
+
+import $ from './style.module.scss';
+import TermsSchema from './yup';
 
 export type Props = {
   onState: boolean;

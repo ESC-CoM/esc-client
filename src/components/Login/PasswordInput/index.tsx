@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import cx from 'classnames';
+
+import { ResetFieldButton, ViewPasswordButton } from '../atoms';
 import styles from './style.module.scss';
-import { ViewPasswordButton, ResetFieldButton } from '../atoms';
 
 interface Props {
   register: () => void;

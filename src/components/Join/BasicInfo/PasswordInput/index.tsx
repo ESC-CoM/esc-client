@@ -1,10 +1,11 @@
-import $ from './style.module.scss';
-import cx from 'classnames';
 import { useState } from 'react';
+import cx from 'classnames';
+import { FieldErrors, UseFormRegisterReturn } from 'react-hook-form';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
-import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
-import { EmailPasswordType } from 'src/types/join';
 import Label from 'src/components/shared/Label';
+import { EmailPasswordType } from 'src/types/join';
+
+import $ from './style.module.scss';
 
 interface Props {
   register: UseFormRegisterReturn;

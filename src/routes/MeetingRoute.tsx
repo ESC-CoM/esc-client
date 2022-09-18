@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
-import { MeetingHome, MeetingApply, MeetingDetail } from 'src/pages/Meeting';
+import { Route, Routes } from 'react-router-dom';
+import { MeetingApply, MeetingDetail, MeetingHome } from 'src/pages/Meeting';
 
 function HomeRoute() {
   return (

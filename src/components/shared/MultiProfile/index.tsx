@@ -1,7 +1,8 @@
-import $ from './style.module.scss';
-import getProfileClassName from 'src/utils/getProfileClassName';
 import { RefObject, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
+import getProfileClassName from 'src/utils/getProfileClassName';
+
+import $ from './style.module.scss';
 
 type ProfileInfo = {
   alt: string;

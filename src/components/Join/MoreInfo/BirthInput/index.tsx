@@ -1,29 +1,30 @@
-import $ from './style.module.scss';
-import cx from 'classnames';
-import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { More1Type } from 'src/types/join';
 import { memo } from 'react';
+import cx from 'classnames';
+import { UseFormRegister } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
+import { More1Type } from 'src/types/join';
+
+import $ from './style.module.scss';
 
 interface Props {
   register: UseFormRegister<More1Type>;
-  errors: FieldErrors<More1Type>;
+  errorMessage?: string;
 }
 
-export function BirthInput({ register, errors }: Props) {
+export function BirthInput({ register, errorMessage }: Props) {
   return (
     <div className={$['item']}>
       <Label
         textContent="태어난 연도"
         fontSize={15}
         htmlFor="birthDate"
-        errorMsg={errors.year?.message}
+        errorMsg={errorMessage}
       />
 
       <div className={$['row']}>
         <span
           className={cx($['year'], {
-            [$['error']]: errors.year,
+            [$['error']]: errorMessage,
           })}
         >
           <input

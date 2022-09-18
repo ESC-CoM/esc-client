@@ -1,6 +1,6 @@
-import { PageLayout } from 'src/components/shared/Layout';
-import { ChatList } from 'src/components/Chat';
 import { chatListMocks } from 'src/__mocks__/chat';
+import { ChatList } from 'src/components/Chat';
+import { PageLayout } from 'src/components/shared/Layout';
 
 export default function ChatListPage() {
   return (
