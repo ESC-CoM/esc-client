@@ -1,10 +1,10 @@
-import create from 'zustand';
 import {
   EmailPasswordType,
-  PhoneAuthType,
   More1Type,
   More2Type,
+  PhoneAuthType,
 } from 'src/types/join';
+import create from 'zustand';
 
 type UserInfo =
   | Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'>

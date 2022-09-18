@@ -17,10 +17,3 @@
     }
   }
 }
-.apply-btn {
-  display: flex;
-  @include footer();
-  button {
-    @include button(720px, none, $primary, $white, 20px);
-  }
-}

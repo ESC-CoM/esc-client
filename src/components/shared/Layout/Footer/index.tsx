@@ -1,15 +1,16 @@
-import style from './style.module.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  IoHomeOutline,
-  IoHome,
-  IoChatbubbleEllipsesOutline,
-  IoChatbubbleEllipses,
-  IoPersonOutline,
-  IoPerson,
-} from 'react-icons/io5';
-import { BsSuitHeartFill, BsSuitHeart } from 'react-icons/bs';
 import cx from 'classnames';
+import { BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
+import {
+  IoChatbubbleEllipses,
+  IoChatbubbleEllipsesOutline,
+  IoHome,
+  IoHomeOutline,
+  IoPerson,
+  IoPersonOutline,
+} from 'react-icons/io5';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import style from './style.module.scss';
 
 export default function Footer() {
   const navigate = useNavigate();

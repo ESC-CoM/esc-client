@@ -1,6 +1,7 @@
-import { PageLayout } from 'src/components/shared/Layout';
-import NoticeCard from 'src/components/Notice/NoticeCard';
 import noticeList from 'src/__mocks__/notice';
+import NoticeCard from 'src/components/Notice/NoticeCard';
+import { PageLayout } from 'src/components/shared/Layout';
+
 import $ from './style.module.scss';
 
 export default function NoticeHome() {

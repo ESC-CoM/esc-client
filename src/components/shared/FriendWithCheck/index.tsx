@@ -1,8 +1,9 @@
-import Friend from 'src/components/shared/Friend';
-import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
-import cx from 'classnames';
-import $ from './style.module.scss';
 import { memo } from 'react';
+import cx from 'classnames';
+import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
+import Friend from 'src/components/shared/Friend';
+
+import $ from './style.module.scss';
 
 interface Props {
   src: string;

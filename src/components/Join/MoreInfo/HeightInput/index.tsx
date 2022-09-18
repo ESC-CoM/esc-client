@@ -1,8 +1,9 @@
-import $ from './style.module.scss';
-import { heightInfo } from '../data';
-import { UseFormRegisterReturn } from 'react-hook-form';
 import { memo } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
+
+import { heightInfo } from '../data';
+import $ from './style.module.scss';
 
 interface Props {
   value: number;

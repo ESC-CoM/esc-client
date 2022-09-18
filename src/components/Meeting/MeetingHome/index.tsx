@@ -1,8 +1,9 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useExtractColleges, useIntersectObserver } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
+
 import $ from './style.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';

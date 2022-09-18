@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+
 import styles from './style.module.scss';
 
 interface Props {

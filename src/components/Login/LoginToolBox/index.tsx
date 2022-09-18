@@ -1,5 +1,6 @@
 import cx from 'classnames';
-import { SaparateLine, GrayLink } from '../atoms';
+
+import { GrayLink, SaparateLine } from '../atoms';
 import styles from './style.module.scss';
 
 interface Props {

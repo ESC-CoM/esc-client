@@ -1,7 +1,8 @@
-import $ from './style.module.scss';
+import React, { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import headerMenus from 'src/constants/headerMenus';
-import React, { ReactNode } from 'react';
+
+import $ from './style.module.scss';
 
 interface Props {
   children?: ReactNode;

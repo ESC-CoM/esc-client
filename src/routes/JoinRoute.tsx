@@ -1,13 +1,14 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { ProgressBar } from 'src/components/Join';
+import { getCurrentPath } from 'src/utils/getCurrentPath';
+
 import {
-  PhoneAuthPage,
   EmailInputPage,
   MoreInfoPage1,
   MoreInfoPage2,
+  PhoneAuthPage,
   WelcomePage,
 } from '../pages/Join';
-import { ProgressBar } from 'src/components/Join';
-import { getCurrentPath } from 'src/utils/getCurrentPath';
 
 const routes = [
   {

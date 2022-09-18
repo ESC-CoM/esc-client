@@ -1,7 +1,8 @@
-import $ from './style.module.scss';
 import { UseFormSetValue } from 'react-hook-form';
 import { More1Type } from 'src/types/join';
+
 import { mbtiList } from '../../data';
+import $ from './style.module.scss';
 
 interface Props {
   setValue: UseFormSetValue<More1Type>;

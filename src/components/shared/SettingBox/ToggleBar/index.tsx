@@ -1,5 +1,6 @@
-import cx from 'classnames';
 import { MouseEventHandler } from 'react';
+import cx from 'classnames';
+
 import $ from './style.module.scss';
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 export default function ToggleBar({ text, value, onClick }: Props) {
   return (
     <div className={$.container}>
-      <span>{text}</span>
+      <span className={$.text}>{text}</span>
       <button
         className={cx($['slider'], value ? $['activate'] : '')}
         type="button"

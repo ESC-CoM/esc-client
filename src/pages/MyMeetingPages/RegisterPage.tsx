@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { InfiniteScroll } from 'src/components/shared/Layout';
-import { RegisterMeeting } from 'src/components/MyMeeting';
 import { registerMeetingMocks } from 'src/__mocks__/myMeeting';
+import { RegisterMeeting } from 'src/components/MyMeeting';
+import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingType } from 'src/types/myMeeting';
 
 export default function RegisterPage() {

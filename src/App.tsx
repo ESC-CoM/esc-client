@@ -1,16 +1,18 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import './styles/reset.scss';
-import JoinRoute from './routes/JoinRoute';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
 import LoginPage from './pages/Login';
-import AccountFinderRoute from './routes/AccountFinderRoute';
-import HomeRoute from './routes/MeetingRoute';
 import MyMeetingPage from './pages/MyMeetingPages';
-import ChatRoute from './routes/ChatRoute';
 import MyPage from './pages/MyPage';
-import SettingRoute from './routes/SettingRoute';
+import AccountFinderRoute from './routes/AccountFinderRoute';
+import ChatRoute from './routes/ChatRoute';
 import FriendsRoute from './routes/FriendsRoute';
+import JoinRoute from './routes/JoinRoute';
+import HomeRoute from './routes/MeetingRoute';
 import NoticeRoute from './routes/NoticeRoute';
+import SettingRoute from './routes/SettingRoute';
+
+import './styles/reset.scss';
 
 function App() {
   return (
