@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HiPlus } from 'react-icons/hi';
+import { HiPlus } from '@react-icons/all-files/hi/HiPlus';
 import { hobbyData } from 'src/__mocks__/join';
 import { ExampleWord } from 'src/types/join';
 

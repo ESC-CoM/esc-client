@@ -1,5 +1,6 @@
+import { MdCheckBox } from '@react-icons/all-files/md/MdCheckBox';
+import { MdCheckBoxOutlineBlank } from '@react-icons/all-files/md/MdCheckBoxOutlineBlank';
 import cx from 'classnames';
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 import styles from './style.module.scss';
 

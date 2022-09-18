@@ -1,6 +1,7 @@
 import { memo } from 'react';
+import { FaCheckCircle } from '@react-icons/all-files/fa/FaCheckCircle';
+import { FaRegCircle } from '@react-icons/all-files/fa/FaRegCircle';
 import cx from 'classnames';
-import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
 import Friend from 'src/components/shared/Friend';
 
 import $ from './style.module.scss';
@@ -22,7 +23,7 @@ function FriendWithCheck(friendProps: Props) {
         type="button"
         className={cx($['select-btn'], { [$['selected']]: isChecked })}
       >
-        {isChecked ? <BsCheckCircleFill /> : <BsCircle />}
+        {isChecked ? <FaCheckCircle /> : <FaRegCircle />}
       </button>
     </div>
   );
