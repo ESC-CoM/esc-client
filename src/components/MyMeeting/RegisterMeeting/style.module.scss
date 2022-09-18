@@ -9,9 +9,10 @@
   cursor: pointer;
 
   .my-meeting-info {
-    width: calc(100% - 60px);
+    width: calc(100% - 70px);
     display: flex;
     flex-direction: column;
+    margin-left: 5px;
     .title {
       @include textOverFlow;
       font-size: 15px;

@@ -23,8 +23,9 @@
   .info {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 5px;
     width: 35%;
+
     .comment {
       @include textOverFlow;
       font-size: 14px;
@@ -36,7 +37,7 @@
     }
   }
 
-  div:last-child {
+  .request-btn {
     margin-left: auto;
     button {
       @include button(70px, 2px solid $primary, $primary, $white, 15px, 35px);
