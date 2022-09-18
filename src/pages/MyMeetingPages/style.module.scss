@@ -8,10 +8,9 @@
   top: 0;
   display: flex;
   align-items: center;
-  height: 70px;
-  padding: 0 5px;
-  box-shadow: 0 5px 3px -2px $gray-300;
   background-color: $white;
+  box-shadow: 0 5px 3px -2px $gray-300;
+  padding: 10px;
   cursor: pointer;
 
   .info {
@@ -33,7 +32,6 @@
       @include textOverFlow;
       display: inline-block;
       font-size: 14px;
-      margin-top: 5px;
     }
   }
 }

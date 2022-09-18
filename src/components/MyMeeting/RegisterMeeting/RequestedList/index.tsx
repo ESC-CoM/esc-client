@@ -64,11 +64,11 @@ export default function RequestedList({
         <span className={$['date']}>{date}</span>
       </div>
 
-      <div className={$['request-btn']}>
-        <button className={$['btn']} onClick={clickAcceptBtn}>
+      <div className={$['request-btn-wrapper']}>
+        <button className={$['accept-btn']} onClick={clickAcceptBtn}>
           수락
         </button>
-        <button className={$['btn']} onClick={clickRefuseBtn}>
+        <button className={$['refuse-btn']} onClick={clickRefuseBtn}>
           거절
         </button>
       </div>

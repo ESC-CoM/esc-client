@@ -3,9 +3,8 @@
 .my-meeting {
   display: flex;
   align-items: center;
-  height: 70px;
   border-bottom: 1px solid $gray-250;
-  padding: 0 5px;
+  padding: 10px;
   cursor: pointer;
 
   .my-meeting-info {
@@ -27,7 +26,6 @@
       @include textOverFlow;
       display: inline-block;
       font-size: 14px;
-      margin-top: 5px;
     }
   }
 }

@@ -14,12 +14,14 @@ export default function RegisterPage() {
   return (
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
-        {registerMeeting.map(({ title, content, friends, date }, index) => (
-          <RegisterMeeting
-            key={`${date}-${index}`}
-            {...{ title, content, friends, date }}
-          />
-        ))}
+        {registerMeeting.map(
+          ({ kind, title, content, friends, date }, index) => (
+            <RegisterMeeting
+              key={`${date}-${index}`}
+              {...{ kind, title, content, friends, date }}
+            />
+          )
+        )}
       </ul>
     </InfiniteScroll>
   );

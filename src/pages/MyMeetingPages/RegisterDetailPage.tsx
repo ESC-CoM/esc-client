@@ -5,12 +5,13 @@ import {
   requestListMocks,
 } from 'src/__mocks__/myMeeting';
 import { RequestedList } from 'src/components/MyMeeting';
+import Badge from 'src/components/MyMeeting/Badge';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 import $ from './style.module.scss';
 
-const { title, content, friends, date } = registerMeetingMocks[0];
+const { kind, title, content, friends, date } = registerMeetingMocks[0];
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function RegisterDetailPage() {
         <MutiProfile profileList={profileList} parentRef={detailInfoRef} />
 
         <div className={$['info']}>
+          <Badge text={kind} />
           <div>
             <span className={$['title']}>{title}</span>
             <span className={$['date']}>•{date}</span>
