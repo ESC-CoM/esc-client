@@ -1,6 +1,11 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "simple-import-sort",
+    "unused-imports"
+  ],
   "ignorePatterns": ["build/**"],
   "extends": [
     "plugin:prettier/recommended",
@@ -43,7 +48,8 @@
         ]
       }
     ],
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "unused-imports/no-unused-imports": "error"
   },
   "parserOptions": {
     "ecmaVersion": 2017
