@@ -1,5 +1,5 @@
+import { IconType } from '@react-icons/all-files';
 import cx from 'classnames';
-import { IconType } from 'react-icons';
 
 import $ from './style.module.scss';
 

@@ -1,11 +1,11 @@
-import { GiWeightScale } from 'react-icons/gi';
-import { IoBeer, IoBody } from 'react-icons/io5';
-import { MdOutlineSchool } from 'react-icons/md';
-import { RiCake2Fill } from 'react-icons/ri';
+import { IoBeer } from '@react-icons/all-files/io5/IoBeer';
+import { IoBody } from '@react-icons/all-files/io5/IoBody';
+import { RiCake2Fill } from '@react-icons/all-files/ri/RiCake2Fill';
+import { OutlineSchool, WeightScale } from 'src/components/shared/Icon';
 
 export const MOCK_BASIC_INFORMATION = [
   {
-    icon: MdOutlineSchool,
+    icon: OutlineSchool,
     text: '사회과학대학 심리학과 19학번',
   },
   {
@@ -24,7 +24,7 @@ export const MOCK_BODY_DATA = [
     text: '175cm',
   },
   {
-    icon: GiWeightScale,
+    icon: WeightScale,
     text: '59kg',
   },
 ];

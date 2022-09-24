@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { IoEye } from '@react-icons/all-files/io5/IoEye';
+import { IoEyeOff } from '@react-icons/all-files/io5/IoEyeOff';
 import cx from 'classnames';
 import { FieldErrors, UseFormRegisterReturn } from 'react-hook-form';
-import { IoEye, IoEyeOff } from 'react-icons/io5';
 import Label from 'src/components/shared/Label';
 import { EmailPasswordType } from 'src/types/join';
 

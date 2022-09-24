@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { memo } from 'react';
-import { IoClose } from 'react-icons/io5';
+import { IoClose } from '@react-icons/all-files/io5/IoClose';
 import { BasicSection, MoreSection } from 'src/components/PersonalProfile';
 import ProfileBackgound from 'src/components/shared/Icon/ProfileBackgound.svg';
 import { basicInfoInit, moreInfoInit } from 'src/constants/personalProfile';

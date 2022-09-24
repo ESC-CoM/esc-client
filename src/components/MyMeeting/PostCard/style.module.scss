@@ -1,0 +1,56 @@
+@import 'src/styles/main.scss';
+
+.post-card {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid $gray-250;
+  padding: 10px;
+  cursor: pointer;
+
+  .card-content {
+    width: calc(100% - 70px);
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    > :not(:last-child) {
+      margin-bottom: 5px;
+    }
+
+    .card-heading {
+      display: flex;
+      align-items: center;
+
+      .date {
+        font-size: 12px;
+        color: $gray-600;
+        white-space: nowrap;
+        margin-left: auto;
+      }
+    }
+
+    .title {
+      @include textOverFlow;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .content {
+      @include textOverFlow;
+      font-size: 14px;
+    }
+  }
+}
+
+.detail {
+  z-index: 3;
+  position: sticky;
+  top: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0 5px 3px -2px $gray-300;
+  padding: 10px;
+  cursor: pointer;
+}
