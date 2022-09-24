@@ -1,6 +1,7 @@
 @import 'src/styles/main.scss';
 
 .profile-card {
+  width: 100%;
   display: flex;
   padding-bottom: 15px;
   &:last-child {
@@ -14,6 +15,8 @@
     max-width: 80px;
     max-height: 80px;
     margin-right: 15px;
+    border-radius: 50%;
+    box-shadow: 3px 2px 5px $gray-300, 0 -0.2px 2px $gray-300;
 
     img {
       width: 100%;
@@ -23,6 +26,7 @@
   }
 
   &-container {
+    width: 100%;
     padding: 10px;
     border-radius: 0 $borderBoxRadius 0 $borderBoxRadius;
     background-color: $white;
