@@ -6,7 +6,7 @@ import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import $ from './style.module.scss';
 
-function RequestedList({ comment, requestedInfo, date }: MyMeetingRequestType) {
+function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -73,4 +73,4 @@ function RequestedList({ comment, requestedInfo, date }: MyMeetingRequestType) {
   );
 }
 
-export default memo(RequestedList);
+export default memo(RequestedItem);

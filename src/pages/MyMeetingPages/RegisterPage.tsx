@@ -15,7 +15,7 @@ export default function RegisterPage() {
 
   const getRequestList = () => {
     // 요청 리스트 fetch
-    navigate('/mymeeting/register/detail');
+    navigate('/mymeeting/detail?status=register');
   };
 
   return (
