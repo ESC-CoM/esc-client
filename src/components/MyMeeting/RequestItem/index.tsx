@@ -7,7 +7,7 @@ import { MyMeetingRequestType } from 'src/types/myMeeting';
 import StateBadge from '../StateBadge';
 import $ from './style.module.scss';
 
-function RequestMeeting({
+function RequestItem({
   comment,
   requestedInfo,
   date,
@@ -77,4 +77,4 @@ function RequestMeeting({
   );
 }
 
-export default memo(RequestMeeting);
+export default memo(RequestItem);
