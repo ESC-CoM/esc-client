@@ -48,7 +48,7 @@ function MeetingHomePage() {
         className={cx($['add-meeting'], {
           [$['add-meeting-down']]: isDown,
         })}
-        onClick={() => navigate('./apply')} // TODO: register로 변경
+        onClick={() => navigate('./register')}
       >
         <Plus />
       </button>
