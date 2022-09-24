@@ -1,0 +1,55 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+
+.top {
+  position: sticky;
+  top: 0px;
+  padding: 24px 15px 0;
+  background-color: $white;
+}
+
+.sub-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.friends-list {
+  min-height: 320px;
+  max-height: 320px;
+  overflow: auto;
+  border: 0.5px solid $gray-300;
+  border-width: 0.5px 0;
+  .friend {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 0.5px solid $gray-300;
+    &:first-child {
+      border-top-width: 0px;
+    }
+    &:last-child {
+      border-bottom-width: 0px;
+    }
+  }
+}
+
+.added {
+  h2 {
+    padding: 24px 15px 0;
+  }
+  border-bottom: 0.5px solid $gray-300;
+  &-friends {
+    overflow-x: auto;
+    display: flex;
+    padding: 15px 15px 24px;
+    &-li {
+      margin-right: 30px;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  .no-added {
+    height: 89px;
+  }
+}
