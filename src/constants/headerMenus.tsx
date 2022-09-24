@@ -41,8 +41,12 @@ const menusLeft: MenuType[] = [
   },
   {
     icon: <Logo />,
-    text: '',
     url: '/mymeeting',
+    isPathBeIncluded: false,
+  },
+  {
+    icon: <IoChevronBackOutline />,
+    url: '/mymeeting/detail',
     isPathBeIncluded: true,
   },
   {
