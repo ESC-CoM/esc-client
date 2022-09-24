@@ -1,7 +1,8 @@
 import { IoMdFemale } from '@react-icons/all-files/io/IoMdFemale';
 import { IoMdMale } from '@react-icons/all-files/io/IoMdMale';
-import $ from './style.module.scss';
 import cx from 'classnames';
+
+import $ from './style.module.scss';
 
 type Props = {
   friend: Pick<res.Profile, 'mannerScore' | 'nickName' | 'gender'>;

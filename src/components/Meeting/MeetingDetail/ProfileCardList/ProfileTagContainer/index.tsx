@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import ProfileTag from 'src/components/shared/ProfileTag';
+
 import $ from './style.module.scss';
 
 type Obj = {

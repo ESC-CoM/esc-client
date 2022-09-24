@@ -1,8 +1,9 @@
 import { memo, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
+
+import ProfileBasicInfo from '../ProfileBasicInfo';
 import ProfileTagContainer from '../ProfileTagContainer';
 import $ from './style.module.scss';
-import ProfileBasicInfo from '../ProfileBasicInfo';
 
 type Props = {
   friend: res.Profile;
