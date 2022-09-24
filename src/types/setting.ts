@@ -1,11 +1,9 @@
-import { MouseEventHandler } from 'react';
-
 export type Item =
   | {
       text: string;
       type: 'toggle';
       value: boolean;
-      onClick: MouseEventHandler<HTMLButtonElement>;
+      onToggleClick: () => void;
     }
   | {
       text: string;

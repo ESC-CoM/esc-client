@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
 import { ChatListPage, ChatRoomPage } from '../pages/Chat';
 
 function ChatRoute() {

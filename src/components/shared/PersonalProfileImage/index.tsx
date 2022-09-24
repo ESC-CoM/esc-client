@@ -1,6 +1,7 @@
-import $ from './style.module.scss';
-import BasicProfile from 'src/components/shared/Icon/BasicProfile';
 import { memo } from 'react';
+import BasicProfile from 'src/components/shared/Icon/BasicProfile';
+
+import $ from './style.module.scss';
 
 interface Props {
   id?: string;

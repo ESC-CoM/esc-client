@@ -1,9 +1,9 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import {
+  AddFriends,
   DeleteFriends,
   Friends,
   FriendsDetail,
-  AddFriends,
 } from 'src/pages/Friends';
 
 function FriendsRouter() {

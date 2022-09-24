@@ -1,6 +1,7 @@
+import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack';
 import cx from 'classnames';
-import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+
 import styles from './style.module.scss';
 
 interface Props {

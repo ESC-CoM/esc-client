@@ -1,5 +1,6 @@
 import { memo, useRef } from 'react';
-import { IoMdFemale, IoMdMale } from 'react-icons/io';
+import { IoMdFemale } from '@react-icons/all-files/io/IoMdFemale';
+import { IoMdMale } from '@react-icons/all-files/io/IoMdMale';
 import { useIntersectObserver } from 'src/hooks';
 import ProfileTagContainer from '../ProfileTagContainer';
 import $ from './style.module.scss';

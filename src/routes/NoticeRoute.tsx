@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
-import { NoticeHome, NoticeDetail } from 'src/pages/Notice';
+import { Route, Routes } from 'react-router-dom';
+import { NoticeDetail, NoticeHome } from 'src/pages/Notice';
 
 export default function NoticeRouter() {
   return (

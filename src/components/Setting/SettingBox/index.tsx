@@ -1,8 +1,9 @@
-import $ from './style.module.scss';
 import { useCallback, useState } from 'react';
+import Container from 'src/components/shared/SettingBox/Container';
 import { Menu } from 'src/types/setting';
-import Container from '../Container';
 import getBarClassName from 'src/utils/getBarClassName';
+
+import $ from './style.module.scss';
 
 export default function SettingBox() {
   const [isNotificationOn, setIsNotificationOn] = useState(true);
@@ -19,7 +20,7 @@ export default function SettingBox() {
           text: '푸시 알람',
           type: 'toggle',
           value: isNotificationOn,
-          onClick: onNotificationClick,
+          onToggleClick: onNotificationClick,
         },
       ],
     },

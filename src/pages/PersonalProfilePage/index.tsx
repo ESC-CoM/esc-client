@@ -1,12 +1,13 @@
-import $ from './style.module.scss';
 import { useEffect, useState } from 'react';
-import { basicInfoMock, moreInfoMock } from './profile';
-import { IoClose } from 'react-icons/io5';
 import { memo } from 'react';
+import { IoClose } from '@react-icons/all-files/io5/IoClose';
 import { BasicSection, MoreSection } from 'src/components/PersonalProfile';
-import { BasicInfoType, MoreInfoType } from 'src/types/profile';
 import ProfileBackgound from 'src/components/shared/Icon/ProfileBackgound.svg';
 import { basicInfoInit, moreInfoInit } from 'src/constants/personalProfile';
+import { BasicInfoType, MoreInfoType } from 'src/types/profile';
+
+import { basicInfoMock, moreInfoMock } from './profile';
+import $ from './style.module.scss';
 
 interface Props {
   closeModal: () => void;

@@ -1,0 +1,66 @@
+@import 'src/styles/main.scss';
+
+.bottom-modal {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include desktop() {
+    align-items: center;
+  }
+
+  .dimmer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $modalBackground;
+  }
+
+  .out-container {
+    z-index: 1;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 758px;
+    max-height: 50%;
+    border-radius: 20px 20px 0 0;
+    background-color: $white;
+    @include FadeUp();
+    @include desktop() {
+      align-items: center;
+      max-height: 500px;
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      padding: 20px 0 10px;
+      background-color: $white;
+      .title {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .close-modal {
+        position: absolute;
+        right: 10px;
+      }
+    }
+
+    .inner-container {
+      padding: 20px;
+    }
+  }
+}

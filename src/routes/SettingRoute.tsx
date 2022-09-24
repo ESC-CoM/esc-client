@@ -1,10 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
-import { BasicSettingPage, DetailSettingPage } from 'src/pages/Setting';
+import { Route, Routes } from 'react-router-dom';
+import { DetailSettingPage, MainSettingPage } from 'src/pages/Setting';
 
 export default function SettingRouter() {
   return (
     <Routes>
-      <Route index element={<BasicSettingPage />} />
+      <Route index element={<MainSettingPage />} />
       <Route path="detail" element={<DetailSettingPage />} />
     </Routes>
   );

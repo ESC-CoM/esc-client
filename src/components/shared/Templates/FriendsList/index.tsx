@@ -1,8 +1,9 @@
+import Friend from 'src/components/shared/Friend';
 import { PageLayout } from 'src/components/shared/Layout';
 import Search from 'src/components/shared/Search';
-import Friend from 'src/components/shared/Friend';
-import $ from './style.module.scss';
+
 import FriendWithCheck from '../../FriendWithCheck';
+import $ from './style.module.scss';
 
 type Friend = { id: number; src: string; name: string };
 

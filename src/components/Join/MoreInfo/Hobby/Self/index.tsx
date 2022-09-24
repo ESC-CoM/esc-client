@@ -1,5 +1,6 @@
+import { IoClose } from '@react-icons/all-files/io5/IoClose';
+
 import $ from './style.module.scss';
-import { IoClose } from 'react-icons/io5';
 
 type Props = {
   index: number;

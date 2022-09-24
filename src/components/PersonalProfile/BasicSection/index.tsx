@@ -1,7 +1,9 @@
-import $ from './style.module.scss';
+import { IoMdFemale } from '@react-icons/all-files/io/IoMdFemale';
+import { IoMdMale } from '@react-icons/all-files/io/IoMdMale';
 import { PersonalProfileImage } from 'src/components/shared/PersonalProfileImage';
 import { BasicInfoType } from 'src/types/profile';
-import { IoMdMale, IoMdFemale } from 'react-icons/io';
+
+import $ from './style.module.scss';
 
 interface Props {
   basicInfo: BasicInfoType;

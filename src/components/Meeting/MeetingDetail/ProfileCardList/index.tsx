@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  MdOutlineArrowBackIosNew,
-  MdOutlineArrowForwardIos,
-} from 'react-icons/md';
+import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack';
+import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward';
 import ProfileCard from 'src/components/Meeting/MeetingDetail/ProfileCardList/ProfileCard';
-import $ from './style.module.scss';
 import { useWindowResize } from 'src/hooks';
+
+import $ from './style.module.scss';
 
 type Props = {
   friends: res.Profile[];
@@ -74,13 +73,13 @@ function ProfileCardList({ friends }: Props) {
         className={$['button-prev']}
         onClick={() => onChangeImg(imgCurrentNo - 1)}
       >
-        <MdOutlineArrowBackIosNew />
+        <IoIosArrowBack />
       </button>
       <button
         className={$['button-next']}
         onClick={() => onChangeImg(imgCurrentNo + 1)}
       >
-        <MdOutlineArrowForwardIos />
+        <IoIosArrowForward />
       </button>
     </section>
   );
