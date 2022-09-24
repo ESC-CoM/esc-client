@@ -1,57 +1,30 @@
-@import 'src/styles/_color.scss';
-@import 'src/styles/mixin';
+@import 'src/styles/main.scss';
 
-.slide-view {
+.profile-card {
   display: flex;
-  margin-right: 10%;
-  .profile-card {
-    display: flex;
-    padding: 20px 0;
+  padding-bottom: 15px;
+  &:last-child {
+    padding: 0;
+  }
 
-    .img-wrapper {
-      position: relative;
-      min-width: 80px;
-      min-height: 80px;
-      max-width: 80px;
-      max-height: 80px;
-      margin-right: 15px;
+  .img-wrapper {
+    position: relative;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    margin-right: 15px;
 
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-      }
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
     }
+  }
 
-    &-container {
-      width: fit-content;
-      height: fit-content;
-      padding: 10px;
-      border-radius: 0 $borderBoxRadius 0 $borderBoxRadius;
-      background-color: $white;
-      .basic-info {
-        display: flex;
-        align-items: center;
-        .text {
-          margin-right: 5px;
-          font-weight: 600;
-          font-size: 16px;
-          &:last-child {
-            margin: 0;
-          }
-        }
-
-        .gender {
-          display: flex;
-          font-size: 16px;
-          &-male {
-            color: $primary-blue;
-          }
-          &-female {
-            color: $primary;
-          }
-        }
-      }
-    }
+  &-container {
+    padding: 10px;
+    border-radius: 0 $borderBoxRadius 0 $borderBoxRadius;
+    background-color: $white;
   }
 }
