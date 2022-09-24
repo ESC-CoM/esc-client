@@ -2,9 +2,12 @@
 
 .container {
   padding: 20px;
-  font-size: 20px;
-  line-height: 25px;
-  color: $gray-700;
+
+  .discription {
+    font-size: 20px;
+    line-height: 25px;
+    color: $gray-700;
+  }
 
   .password-input {
     margin-top: 30px;
