@@ -12,7 +12,7 @@ function MeetingDetailPage() {
   const { title, content, friends } = meetingDetailMocks;
 
   const handleClick = () => {
-    navigate('/home/register');
+    navigate('/home/apply');
   };
 
   return (
