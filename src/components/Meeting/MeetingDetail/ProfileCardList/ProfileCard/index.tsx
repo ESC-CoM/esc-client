@@ -58,24 +58,26 @@ function ProfileCard({ friend, profileWidth }: Props) {
           <img data-src={img} alt="사진" ref={imgRef} />
         </div>
 
-        <section className={$['basic-info']}>
-          <span className={$['text']}>{nickName}</span>
-          <span className={cx($['gender'], $['text'])}>
-            {gender === '남' ? (
-              <IoMdMale className={$['gender-male']} />
-            ) : (
-              <IoMdFemale className={$['gender-female']} />
-            )}
-          </span>
-          {mannerScore && (
-            <span className={cx($['manner-score'], $['text'])}>
-              {mannerScore}점
+        <section className={$['profile-card-container']}>
+          <div className={$['basic-info']}>
+            <span className={$['text']}>{nickName}</span>
+            <span className={cx($['gender'], $['text'])}>
+              {gender === '남' ? (
+                <IoMdMale className={$['gender-male']} />
+              ) : (
+                <IoMdFemale className={$['gender-female']} />
+              )}
             </span>
-          )}
-        </section>
+            {mannerScore && (
+              <span className={cx($['manner-score'], $['text'])}>
+                {mannerScore}점
+              </span>
+            )}
+          </div>
 
-        <ProfileTagContainer title="자기소개" info={info} />
-        {hobbies && <ProfileTagContainer title="취미소개" info={hobbies} />}
+          <ProfileTagContainer title="자기소개" info={info} fontSize="13px" />
+          {hobbies && <ProfileTagContainer title="취미소개" info={hobbies} />}
+        </section>
       </div>
     </div>
   );

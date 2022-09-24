@@ -9,9 +9,10 @@ type Obj = {
 type Props = {
   title: string;
   info: Obj | (string | number)[];
+  fontSize?: string;
 };
 
-function ProfileTagContainer({ title, info }: Props) {
+function ProfileTagContainer({ title, info, fontSize }: Props) {
   const getUnit = (key: keyof res.Profile) => {
     if (key === 'drink') return '병';
     if (key === 'height') return 'cm';
@@ -30,6 +31,7 @@ function ProfileTagContainer({ title, info }: Props) {
           ([key, value], index) =>
             value && (
               <ProfileTag
+                {...{ fontSize }}
                 key={`${value}-${index}`}
                 value={key === 'drink' && !value ? '못마셔요' : value}
                 unit={

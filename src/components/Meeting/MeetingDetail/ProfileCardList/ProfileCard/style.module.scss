@@ -6,22 +6,15 @@
   margin-right: 10%;
   .profile-card {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    border-radius: $borderButtonRadius;
-    box-shadow: $headerShadow;
-    background-color: $white;
+    padding: 20px 0;
+
     .img-wrapper {
       position: relative;
-      width: 200px;
-      height: 200px;
+      min-width: 80px;
+      min-height: 80px;
+      max-width: 80px;
+      max-height: 80px;
       margin-right: 15px;
-      @include mobile {
-        width: 110px;
-        height: 110px;
-      }
 
       img {
         width: 100%;
@@ -30,29 +23,33 @@
       }
     }
 
-    .basic-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 15px;
-
-      .text {
-        margin-right: 5px;
-        font-weight: 600;
-        font-size: 20px;
-        &:last-child {
-          margin: 0;
-        }
-      }
-
-      .gender {
+    &-container {
+      width: fit-content;
+      height: fit-content;
+      padding: 10px;
+      border-radius: 0 $borderBoxRadius 0 $borderBoxRadius;
+      background-color: $white;
+      .basic-info {
         display: flex;
-        font-size: 22px;
-        &-male {
-          color: $primary-blue;
+        align-items: center;
+        .text {
+          margin-right: 5px;
+          font-weight: 600;
+          font-size: 16px;
+          &:last-child {
+            margin: 0;
+          }
         }
-        &-female {
-          color: $primary;
+
+        .gender {
+          display: flex;
+          font-size: 16px;
+          &-male {
+            color: $primary-blue;
+          }
+          &-female {
+            color: $primary;
+          }
         }
       }
     }
