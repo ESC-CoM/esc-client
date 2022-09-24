@@ -49,6 +49,7 @@ export default function EmailPasswordInputPage() {
             buttonErrorMessage={errors.isDuplicationChecked?.message}
           />
           <PasswordInput
+            propType="register"
             className={$.input}
             register={register('password')}
             errorMessage={errors.password?.message}

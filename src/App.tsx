@@ -3,12 +3,12 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import LoginPage from './pages/Login';
 import MyMeetingPage from './pages/MyMeetingPages';
-import MyPage from './pages/MyPage';
 import AccountFinderRoute from './routes/AccountFinderRoute';
 import ChatRoute from './routes/ChatRoute';
 import FriendsRoute from './routes/FriendsRoute';
 import JoinRoute from './routes/JoinRoute';
 import HomeRoute from './routes/MeetingRoute';
+import MyPageRouter from './routes/MyPageRouter';
 import NoticeRoute from './routes/NoticeRoute';
 import SettingRoute from './routes/SettingRoute';
 
@@ -24,7 +24,7 @@ function App() {
         <Route path="/home/*" element={<HomeRoute />} />
         <Route path="/mymeeting/*" element={<MyMeetingPage />} />
         <Route path="/chat/*" element={<ChatRoute />} />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/*" element={<MyPageRouter />} />
         <Route path="/join/*" element={<JoinRoute />} />
         <Route path="/setting/*" element={<SettingRoute />} />
         <Route path="/friends/*" element={<FriendsRoute />} />

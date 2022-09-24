@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChangeEventHandler } from 'react';
 import { IoEye } from '@react-icons/all-files/io5/IoEye';
 import { IoEyeOff } from '@react-icons/all-files/io5/IoEyeOff';
 import cx from 'classnames';
@@ -7,15 +8,29 @@ import Label from 'src/components/shared/Label';
 
 import $ from './style.module.scss';
 
-interface Props {
+type DefaultProps = {
   className?: string;
-  register: UseFormRegisterReturn;
+  placeholder?: string;
   errorMessage?: string;
-}
+};
+
+type RegisterProps = {
+  propType: 'register';
+  register: UseFormRegisterReturn;
+} & DefaultProps;
+
+type ControlledProps = {
+  propType: 'controlled';
+  value?: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+} & DefaultProps;
+
+type Props = RegisterProps | ControlledProps;
 export default function PasswordInput({
   className,
-  register,
   errorMessage,
+  placeholder,
+  ...props
 }: Props) {
   const [isEncrypted, setIsEncrypted] = useState(false);
 
@@ -34,10 +49,11 @@ export default function PasswordInput({
           className={cx($.input, {
             [$.error]: errorMessage,
           })}
+          placeholder={placeholder}
           type={isEncrypted ? 'text' : 'password'}
           id="password"
-          placeholder="영문, 숫자 포함 8자 이상"
-          {...register}
+          {...(props.propType === 'register' && props.register)}
+          {...(props.propType === 'controlled' && props)}
         />
         <button
           type="button"
