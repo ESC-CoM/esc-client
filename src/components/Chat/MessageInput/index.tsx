@@ -1,6 +1,7 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import $ from './style.module.scss';
-import { IoSend, IoImages } from 'react-icons/io5';
+import { IoSend } from '@react-icons/all-files/io5/IoSend';
+import { IoImages } from '@react-icons/all-files/io5/IoImages';
 import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 interface Props {
@@ -42,8 +43,6 @@ export function MessageInput({ setAlbums }: Props) {
 
       <div className={$['textarea-wrapper']}>
         <textarea
-          name="message"
-          id=""
           defaultValue={newContent}
           placeholder="메세지 보내기..."
           ref={contentRef}
