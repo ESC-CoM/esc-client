@@ -23,7 +23,7 @@ export default function () {
         </p>
         <PasswordInput
           className={$['password-input']}
-          propType="controlled"
+          proptype="controlled"
           onChange={handlePasswordChange}
           value={password}
         />
