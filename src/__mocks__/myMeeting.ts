@@ -149,7 +149,7 @@ export const registerMeetingMocks = [
   },
 ];
 
-export const requestListMocks = [
+export const requestedListMocks = [
   {
     comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
     requestedInfo: [
