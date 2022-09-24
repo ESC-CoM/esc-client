@@ -6,8 +6,7 @@
   align-items: center;
   border: 1px solid $gray-300;
   border-radius: 22px;
-  height: 44px;
-  padding: 0 12px;
+  padding: 10px 12px;
   font-size: 100%;
   overflow-y: hidden;
   input[type='file'] {
@@ -21,25 +20,21 @@
     cursor: pointer;
   }
 
-  .textarea-wrapper {
-    display: flex;
+  textarea {
     flex: 1 1 auto;
-    flex-direction: column;
     padding: 0 10px;
-    textarea {
-      height: 18px;
-      overflow: auto;
-      font-size: 13px;
+    height: 19px;
+    overflow: auto;
+    font-size: 13px;
 
-      &::-webkit-scrollbar {
-        width: 6px;
-        background-color: $gray-200;
-      }
-      &::-webkit-scrollbar-thumb {
-        width: 6px;
-        background-color: $gray-400;
-        border-radius: 50px;
-      }
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: $gray-200;
+    }
+    &::-webkit-scrollbar-thumb {
+      width: 6px;
+      background-color: $gray-400;
+      border-radius: 50px;
     }
   }
   button[type='submit'] {
