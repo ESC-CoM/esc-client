@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { friendMocks } from 'src/__mocks__/friendMocks';
-import MeetingApplyTemplate from 'src/components/shared/Templates/MeetingApplyTemplate';
+import { MeetingApplyTemplate } from 'src/components/shared/Templates';
 import { FriendType } from 'src/types/meeting';
 
 export default function MeetingApplyPage() {
