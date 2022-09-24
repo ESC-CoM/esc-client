@@ -40,6 +40,11 @@ const menusLeft: MenuType[] = [
     url: '/home/apply',
   },
   {
+    icon: <IoCloseOutline />,
+    text: '과팅 등록하기',
+    url: '/home/register',
+  },
+  {
     icon: <Logo />,
     text: '',
     url: '/mymeeting',
