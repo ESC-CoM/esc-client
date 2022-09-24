@@ -1,17 +1,31 @@
 import { memo, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
-import { Profile } from 'src/types/profile';
 
+import ProfileBasicInfo from '../ProfileBasicInfo';
+import ProfileTagContainer from '../ProfileTagContainer';
 import $ from './style.module.scss';
 
 type Props = {
-  friend: Profile;
-  profileWidth: number | undefined;
+  friend: res.Profile;
 };
 
-function ProfileCard({ friend, profileWidth }: Props) {
+function ProfileCard({ friend }: Props) {
+  const { img, mannerScore, nickName, gender, birthDate } = friend;
+  const { college, department, studentNum } = friend;
+  const { height, weight, mbti, hobbies, drink } = friend;
   const profileRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
+
+  const info: Omit<res.Profile, 'nickName' | 'img' | 'gender' | 'hobbies'> = {
+    college,
+    department,
+    studentNum,
+    birthDate,
+    height,
+    weight,
+    mbti,
+    drink,
+  };
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -32,50 +46,23 @@ function ProfileCard({ friend, profileWidth }: Props) {
   );
 
   return (
-    <div className={$['slide-view']}>
-      <div
-        className={$['profile-card']}
-        style={{ width: `${profileWidth}px` }}
-        ref={profileRef}
-      >
-        <div className={$['img-wrapper']}>
-          <img data-src={friend.img} alt="사진" ref={imgRef} />
-        </div>
-        <table>
-          <tbody>
-            <tr>
-              <td>매너점수</td>
-              <td className={$['bold']}>{friend.mannerScore}점</td>
-            </tr>
-            <tr>
-              <td className={friend.gender === '남' ? $.male : $.female}>
-                {friend.gender}
-              </td>
-              <td>{friend.birthDate.split('-')[0]}년생</td>
-            </tr>
-            <tr>
-              <td>{friend.college}</td>
-              <td>{friend.studentNum}학번</td>
-            </tr>
-            <tr>
-              <td>{friend.height}cm</td>
-              <td>{friend.weight}kg</td>
-            </tr>
-            <tr>
-              <td>MBTI</td>
-              <td>{friend.mbti}</td>
-            </tr>
-            <tr>
-              <td>주량</td>
-              <td>{friend.drink}병</td>
-            </tr>
-            <tr>
-              <td>취미</td>
-              <td className={$['hobbies']}>{friend.hobbies}</td>
-            </tr>
-          </tbody>
-        </table>
+    <div className={$['profile-card']} ref={profileRef}>
+      <div className={$['img-wrapper']}>
+        <img data-src={img} alt="사진" ref={imgRef} />
       </div>
+
+      <section className={$['profile-card-container']}>
+        <ProfileBasicInfo friend={{ nickName, gender, mannerScore }} />
+
+        <ProfileTagContainer title="자기소개" info={info} fontSize="13px" />
+        {hobbies && (
+          <ProfileTagContainer
+            title="취미소개"
+            info={hobbies}
+            fontSize="13px"
+          />
+        )}
+      </section>
     </div>
   );
 }
