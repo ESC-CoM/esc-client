@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import {
   Authentication,
+  ChangeEmail,
   ChangePassword,
   ChangePhone,
   Home,
@@ -15,6 +16,7 @@ function MyPageRouter() {
       <Route path="select" element={<Select />} />
       <Route path="change/password" element={<ChangePassword />} />
       <Route path="change/phone" element={<ChangePhone />} />
+      <Route path="change/email" element={<ChangeEmail />} />
     </Routes>
   );
 }
