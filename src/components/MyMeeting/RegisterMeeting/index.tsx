@@ -1,11 +1,13 @@
-import { useMemo, useRef } from 'react';
+import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { MyMeetingType } from 'src/types/myMeeting';
 
+import Badge from '../Badge';
 import $ from './style.module.scss';
 
-export default function RegisterMeeting({
+function RegisterMeeting({
+  kind,
   title,
   content,
   friends,
@@ -34,12 +36,15 @@ export default function RegisterMeeting({
       <MutiProfile profileList={profileList} parentRef={myMeetingRef} />
 
       <div className={$['my-meeting-info']}>
-        <div>
-          <span className={$['title']}>{title}</span>
-          <span className={$['date']}>•{date}</span>
+        <div className={$['info-heading']}>
+          <Badge text={kind} />
+          <span className={$.date}>{date}</span>
         </div>
-        <span className={$['content']}>{content}</span>
+        <span className={$.title}>{title}</span>
+        <span className={$.content}>{content}</span>
       </div>
     </li>
   );
 }
+
+export default memo(RegisterMeeting);
