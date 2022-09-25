@@ -1,5 +1,5 @@
 import { chatListMocks } from 'src/__mocks__/chat';
-import { ChatList } from 'src/components/Chat';
+import { ChatItem } from 'src/components/Chat';
 import { PageLayout } from 'src/components/shared/Layout';
 
 export default function ChatListPage() {
@@ -8,7 +8,7 @@ export default function ChatListPage() {
       <ul>
         {chatListMocks.map(
           ({ roomImage, title, content, time, count }, index) => (
-            <ChatList
+            <ChatItem
               key={title + index}
               {...{ roomImage, title, content, time, count }}
             />

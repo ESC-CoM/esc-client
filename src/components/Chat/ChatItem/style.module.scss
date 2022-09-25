@@ -1,18 +1,19 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.chat-list {
+.chat-item {
   display: flex;
   align-items: center;
-  height: 70px;
   border-bottom: 1px solid $gray-250;
-  padding: 0 5px;
+  padding: 10px;
   cursor: pointer;
 
   .chat-info {
-    width: calc(100% - 45px);
+    width: 100%;
     display: flex;
+    margin-left: 10px;
     overflow: hidden;
+
     & > .main-info,
     .more-info {
       display: flex;
@@ -20,7 +21,8 @@
     }
 
     .main-info {
-      max-width: 70%;
+      max-width: calc(100% - #{$boardDesktopImage + 15px});
+
       strong {
         font-size: 16px;
         font-weight: 700;

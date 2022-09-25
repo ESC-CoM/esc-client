@@ -15,7 +15,7 @@ interface Props {
   count: string;
 }
 
-export default function ChatList({
+export default function ChatItem({
   roomImage,
   title,
   content,
@@ -23,7 +23,7 @@ export default function ChatList({
   count,
 }: Props) {
   const navigate = useNavigate();
-  const chatListRef = useRef<HTMLLIElement | null>(null);
+  const chatItemRef = useRef<HTMLLIElement | null>(null);
   const profileList = useMemo(
     () =>
       roomImage
@@ -41,8 +41,8 @@ export default function ChatList({
     navigate('./room');
   };
   return (
-    <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
-      <MutiProfile profileList={profileList} parentRef={chatListRef} />
+    <li className={$['chat-item']} onClick={() => fetchChatRoom()}>
+      <MutiProfile profileList={profileList} parentRef={chatItemRef} />
       <div className={$['chat-info']}>
         <div className={$['main-info']}>
           <strong>{title}</strong>
