@@ -8,6 +8,7 @@ import StateBadge from '../StateBadge';
 import $ from './style.module.scss';
 
 function RequestItem({
+  boardId,
   comment,
   requestedInfo,
   date,

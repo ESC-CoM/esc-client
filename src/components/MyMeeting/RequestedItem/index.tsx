@@ -1,12 +1,18 @@
 import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import socket from 'src/common/socket';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import $ from './style.module.scss';
 
-function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
+function RequestedItem({
+  boardId,
+  comment,
+  requestedInfo,
+  date,
+}: MyMeetingRequestType) {
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -41,10 +47,11 @@ function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
     navigate('/home/detail');
   };
 
-  const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    socket.emit('room', boardId);
   };
-  const clickRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
   };
 
@@ -62,10 +69,10 @@ function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
       </div>
 
       <div className={$['request-btn-wrapper']}>
-        <button className={$['accept-btn']} onClick={clickAcceptBtn}>
+        <button className={$['accept-btn']} onClick={handleAcceptBtn}>
           수락
         </button>
-        <button className={$['refuse-btn']} onClick={clickRefuseBtn}>
+        <button className={$['refuse-btn']} onClick={handleRefuseBtn}>
           거절
         </button>
       </div>
