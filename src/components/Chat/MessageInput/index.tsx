@@ -1,8 +1,9 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
-import $ from './style.module.scss';
 import { IoSend } from '@react-icons/all-files/io5/IoSend';
 import { IoImages } from '@react-icons/all-files/io5/IoImages';
 import autosizeTextArea from 'src/utils/autosizeTextArea';
+
+import $ from './style.module.scss';
 
 interface Props {
   setAlbums: React.Dispatch<React.SetStateAction<FileList | null | undefined>>;
@@ -11,23 +12,18 @@ interface Props {
 export function MessageInput({ setAlbums }: Props) {
   const [newContent, setNewContent] = useState('');
   const contentRef = useRef<HTMLTextAreaElement>(null);
-  const parentRef = useRef<HTMLDivElement>(null);
 
-  const handleContentChange = useCallback((e) => {
-    const value = e.target?.value;
-    setNewContent(value);
-
-    const DivElement = parentRef.current;
-    const textareaElement = contentRef.current;
-    if (DivElement && textareaElement && textareaElement?.scrollHeight <= 96) {
-      const scrollHeight = autosizeTextArea(contentRef.current);
-
-      if (scrollHeight) {
-        DivElement.style.height = '0px';
-        DivElement.style.height = `${scrollHeight + 26}px`;
-      }
-    }
-  }, []);
+  const handleContentChange = useCallback(
+    ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) => {
+      setNewContent(value);
+      const textareaElement = contentRef.current;
+      if (!textareaElement) return;
+      const isMaxHeight = textareaElement.scrollHeight > 96;
+      if (isMaxHeight) return;
+      autosizeTextArea(textareaElement);
+    },
+    []
+  );
 
   const loadAlbum = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.currentTarget.files);
@@ -35,21 +31,19 @@ export function MessageInput({ setAlbums }: Props) {
   };
 
   return (
-    <div className={$['message-input-box']} ref={parentRef}>
+    <div className={$['message-input-box']}>
       <label htmlFor="file">
         <IoImages className={$['img-btn']} />
       </label>
       <input type="file" name="file" id="file" multiple onChange={loadAlbum} />
-
-      <div className={$['textarea-wrapper']}>
-        <textarea
-          defaultValue={newContent}
-          placeholder="메세지 보내기..."
-          ref={contentRef}
-          onChange={handleContentChange}
-          autoFocus
-        />
-      </div>
+      <textarea
+        name="message"
+        defaultValue={newContent}
+        placeholder="메세지 보내기..."
+        ref={contentRef}
+        onChange={handleContentChange}
+        autoFocus
+      />
       <button type="submit">
         <IoSend />
       </button>
