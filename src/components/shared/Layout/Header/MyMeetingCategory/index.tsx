@@ -17,18 +17,20 @@ export default function MyMeetingCategory() {
   ]);
   const navigate = useNavigate();
   const location = useLocation();
-  const currPath = location.pathname;
+  const queryString = location.search;
+  const params = new URLSearchParams(queryString);
+  const keyword = params.get('status');
 
   const navigateTab = (index1: number) => {
     setIsCategoryActive(
       isCategoryActive.map((_, index2) => (index1 === index2 ? true : false))
     );
-    if (index1 === 0) navigate('/mymeeting/register/basic');
-    else if (index1 === 1) navigate('/mymeeting/request/basic');
+    if (index1 === 0) navigate('/mymeeting?status=register');
+    else if (index1 === 1) navigate('/mymeeting?status=request');
   };
 
   useEffect(() => {
-    if (currPath === '/mymeeting/request/basic')
+    if (keyword === 'request')
       setIsCategoryActive(
         isCategoryActive.map((_, index) => (index === 1 ? true : false))
       );
@@ -40,7 +42,7 @@ export default function MyMeetingCategory() {
         <li
           key={`nav-item-${index}`}
           className={cx($['nav-item'], {
-            [$['item-active']]: isCategoryActive[index] && currPath.match(path),
+            [$['item-active']]: isCategoryActive[index] && keyword?.match(path),
           })}
           onClick={() => navigateTab(index)}
         >

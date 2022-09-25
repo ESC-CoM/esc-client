@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { MeetingApply, MeetingDetail, MeetingHome } from 'src/pages/Meeting';
+import { MeetingDetail, MeetingHome } from 'src/pages/Meeting';
+import { MeetingApply, MeetingRegister } from 'src/pages/Meeting';
 
 function HomeRoute() {
   return (
@@ -7,6 +8,7 @@ function HomeRoute() {
       <Route index element={<MeetingHome />} />
       <Route path="detail" element={<MeetingDetail />} />
       <Route path="apply" element={<MeetingApply />} />
+      <Route path="register" element={<MeetingRegister />} />
     </Routes>
   );
 }

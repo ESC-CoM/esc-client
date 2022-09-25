@@ -10,7 +10,7 @@ export type Profile = {
   height: string;
   weight: string;
   mbti: string;
-  hobbies?: string;
+  hobbies?: string[];
   drink: number;
 };
 
@@ -23,3 +23,8 @@ export type MoreInfoType = Pick<
   Profile,
   'birthDate' | 'height' | 'weight' | 'mbti' | 'drink'
 >;
+
+export type ProfileImg = {
+  alt: string;
+  src: string;
+};
