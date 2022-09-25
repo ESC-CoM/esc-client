@@ -6,15 +6,18 @@ import $ from './style.module.scss';
 
 type Props = {
   data: DefaultData[];
+  selected: string;
+  handleChange: (value: string) => void;
 };
 
 function MeetingHeader(headerProps: Props) {
-  const { data } = headerProps;
+  const { data, selected, handleChange } = headerProps;
   return (
     <div className={$['meeting-header']}>
       <SelectBox
         options={data}
-        selected={'gwating'}
+        selected={selected}
+        onChange={handleChange}
         name={'meeting-kind'}
         className={$['meeting-select']}
       />
