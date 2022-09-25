@@ -1,5 +1,6 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
-import { IoImages, IoSend } from 'react-icons/io5';
+import { IoSend } from '@react-icons/all-files/io5/IoSend';
+import { IoImages } from '@react-icons/all-files/io5/IoImages';
 import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 import $ from './style.module.scss';

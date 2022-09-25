@@ -1,7 +1,7 @@
 const meetingBoardMocks = [
   {
     id: 1,
-    title: '공대 남신 3명입니다.',
+    title: '공대 남신 3명입니다.공대 남신 3명입니다.~~~~~~~~~~~~~~',
     gender: '남자',
     profiles: [
       {

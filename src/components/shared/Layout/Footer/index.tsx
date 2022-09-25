@@ -1,13 +1,12 @@
+import { IoChatbubbleEllipses } from '@react-icons/all-files/io5/IoChatbubbleEllipses';
+import { IoChatbubbleEllipsesOutline } from '@react-icons/all-files/io5/IoChatbubbleEllipsesOutline';
+import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline';
+import { IoHeartSharp } from '@react-icons/all-files/io5/IoHeartSharp';
+import { IoHome } from '@react-icons/all-files/io5/IoHome';
+import { IoHomeOutline } from '@react-icons/all-files/io5/IoHomeOutline';
+import { IoPerson } from '@react-icons/all-files/io5/IoPerson';
+import { IoPersonOutline } from '@react-icons/all-files/io5/IoPersonOutline';
 import cx from 'classnames';
-import { BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
-import {
-  IoChatbubbleEllipses,
-  IoChatbubbleEllipsesOutline,
-  IoHome,
-  IoHomeOutline,
-  IoPerson,
-  IoPersonOutline,
-} from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import style from './style.module.scss';
@@ -24,11 +23,11 @@ export default function Footer() {
       url: '/home',
     },
     {
-      icon: <BsSuitHeart />,
-      active: <BsSuitHeartFill />,
+      icon: <IoHeartOutline />,
+      active: <IoHeartSharp />,
       text: 'MY 과팅',
       url: '/mymeeting',
-      goto: '/mymeeting/register/basic',
+      goto: '/mymeeting?status=register',
     },
     {
       icon: <IoChatbubbleEllipsesOutline />,
