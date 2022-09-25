@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
 import InputWithButton from 'src/components/shared/InputWithButton';
+import PasswordInput from 'src/components/shared/PasswordInput';
 import useStore from 'src/store/useStore';
 import { EmailPasswordType } from 'src/types/join';
 
-import { PasswordInput } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
 import $ from './style.module.scss';
 
@@ -48,7 +48,11 @@ export default function EmailPasswordInputPage() {
             labelErrorMessage={errors.email?.message}
             buttonErrorMessage={errors.isDuplicationChecked?.message}
           />
-          <PasswordInput register={register('password')} errors={errors} />
+          <PasswordInput
+            className={$.input}
+            register={register('password')}
+            errorMessage={errors.password?.message}
+          />
           <FooterButton text="다음" type="submit" />
         </form>
       </section>
