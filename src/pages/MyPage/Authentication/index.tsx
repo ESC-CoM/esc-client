@@ -20,7 +20,7 @@ export default function () {
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       <div className={$.container}>
-        <p>
+        <p className={$.discription}>
           회원님의 소중한 개인정보 보호를 위해
           <br />
           비밀번호 인증이 필요해요.
