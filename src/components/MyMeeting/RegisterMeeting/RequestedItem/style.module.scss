@@ -1,30 +1,18 @@
-@import 'src/styles/_color.scss';
-@import 'src/styles/_variables.scss';
-@import 'src/styles/mixin';
+@import 'src/styles/main';
 
 .requested-info {
   display: flex;
   align-items: center;
-  height: 70px;
   border-bottom: 1px solid $gray-250;
-  padding: 0 5px;
+  padding: 10px;
   cursor: pointer;
-
-  .info-list {
-    display: flex;
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 20%;
-      object-fit: contain;
-    }
-  }
 
   .info {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
     width: 35%;
+
     .comment {
       @include textOverFlow;
       font-size: 14px;
@@ -36,7 +24,7 @@
     }
   }
 
-  div:last-child {
+  .request-btn-wrapper {
     margin-left: auto;
     button {
       @include button(70px, 2px solid $primary, $primary, $white, 15px, 35px);

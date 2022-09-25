@@ -66,9 +66,4 @@ const friendMocks = [
   },
 ];
 
-const meetingApplyContent = {
-  title: '함께하고 싶다는 의사를 어필해주세요!',
-  content: '안녕하세요! 구성원은 전자정보대 남자 3명입니다! 재밌게 놀아봐요',
-};
-
-export { friendMocks, meetingApplyContent };
+export { friendMocks };
