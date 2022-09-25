@@ -14,7 +14,7 @@ import { Logo } from 'src/components/shared/Icon';
 type MenuType = {
   icon?: JSX.Element;
   text?: string;
-  url?: string;
+  url?: string | string[];
   isPathBeIncluded?: boolean;
 };
 
@@ -30,14 +30,14 @@ const menusLeft: MenuType[] = [
     url: '/home',
   },
   {
-    icon: <IoChevronDownOutline />,
-    text: '소개팅',
-    url: '/home/personal',
+    icon: <IoCloseOutline />,
+    text: '과팅 신청하기',
+    url: ['/home', '/apply'],
   },
   {
     icon: <IoCloseOutline />,
-    text: '과팅 신청하기',
-    url: '/home/apply',
+    text: '과팅 등록하기',
+    url: '/home/register',
   },
   {
     icon: <Logo />,
@@ -75,6 +75,7 @@ const menusLeft: MenuType[] = [
   },
   { icon: <IoChevronBack />, text: '친구' },
   { icon: <IoChevronBack />, text: '친구 찾기', url: '/friends/add' },
+  { icon: <IoChevronBack />, text: '내 정보', url: '/mypage/authentication' },
 ];
 
 const menusRight: MenuType[] = [

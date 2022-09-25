@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { friendMocks, meetingApplyContent } from 'src/__mocks__/friendMocks';
 import ContentBox from 'src/components/shared/ContentBox';
 import FooterButton from 'src/components/shared/FooterButton';
 import Friend from 'src/components/shared/Friend';
@@ -10,23 +8,17 @@ import { FriendType, MeetingTitle } from 'src/types/meeting';
 
 import $ from './style.module.scss';
 
-export default function MeetingApplyPage() {
-  const [friendFetchData, setFriendFetchData] = useState<FriendType[]>([]);
-  const [addedList, setAddedList] = useState<number[]>([]);
-  const { title, content } = meetingApplyContent;
+type Props = {
+  isApply?: boolean;
+  title: string;
+  friendFetchData: FriendType[];
+  addedList: number[];
+  setAddedList: React.Dispatch<React.SetStateAction<number[]>>;
+};
 
-  useEffect(() => {
-    // TODO: fetch Data
-    setFriendFetchData(
-      friendMocks.map(({ src, name }) => {
-        return {
-          src,
-          name,
-        };
-      })
-    );
-  }, []);
-
+export default function MeetingApplyTemplate(applyProps: Props) {
+  const { isApply, title, friendFetchData, addedList, setAddedList } =
+    applyProps;
   const handleFriendClick = (id: number) => {
     if (addedList.find((x) => x === id) === undefined)
       setAddedList([...addedList, id]);
@@ -34,6 +26,8 @@ export default function MeetingApplyPage() {
   };
 
   const handleSearchClick = (text: string) => alert(text);
+
+  const btnText = isApply ? '신청하기' : '등록하기';
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
@@ -73,8 +67,8 @@ export default function MeetingApplyPage() {
         </ul>
       </div>
 
-      <ContentBox {...{ title, content }} contentTitle={MeetingTitle.apply} />
-      <FooterButton text="신청하기" type="button" />
+      <ContentBox {...{ title }} contentTitle={MeetingTitle.apply} />
+      <FooterButton text={btnText} type="button" />
     </PageLayout>
   );
 }

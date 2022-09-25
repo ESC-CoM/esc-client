@@ -6,7 +6,7 @@ import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 interface Props {
   title: string;
-  content: string;
+  content?: string;
   isReadMode?: boolean;
   contentTitle?: string;
 }
@@ -29,7 +29,7 @@ function ContentBox({ title, content, isReadMode, contentTitle }: Props) {
       {isReadMode ? (
         <div style={{ minHeight: '200px' }}>
           <h2>{title}</h2>
-          <span>{content}</span>
+          {content && <span>{content}</span>}
         </div>
       ) : (
         <div className={$['textarea-box']}>

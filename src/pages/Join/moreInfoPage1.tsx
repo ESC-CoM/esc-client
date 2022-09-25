@@ -47,7 +47,7 @@ export default function MoreInfoPage1() {
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputWithButton
-            className={$['input-with-button']}
+            className={$.input}
             register={register('nickName')}
             onClick={handleDuplicationButtonClick}
             labelErrorMessage={errors.nickName?.message}
