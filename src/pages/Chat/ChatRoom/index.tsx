@@ -15,6 +15,8 @@ export default function ChatRoomPage() {
   const [isOverHalf, setIsOverHalf] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
 
+  const [albums, setAlbums] = useState<FileList | null>();
+
   const initTransform = () => {
     if (profileRef.current)
       profileRef.current.style.transform = 'translateY(0px)';
@@ -138,7 +140,7 @@ export default function ChatRoomPage() {
         })}
       </section>
       <div className={$['msg-input']}>
-        <MessageInput />
+        <MessageInput setAlbums={setAlbums} />
       </div>
     </PageLayout>
   );

@@ -3,31 +3,42 @@
 
 .message-input-box {
   display: flex;
-  height: 30px;
-  padding: 5px;
+  align-items: center;
   border: 1px solid $gray-300;
-  border-radius: 10px;
-  button[type='button'] {
-    @include button(30px, none, $primary, $white, 20px, 30px);
+  border-radius: 22px;
+  padding: 10px 12px;
+  font-size: 100%;
+  overflow-y: hidden;
+  input[type='file'] {
+    display: none;
   }
-  .text {
+
+  .img-btn {
     display: flex;
-    flex-direction: column;
+    color: $black-100;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  textarea {
     flex: 1 1 auto;
-    textarea {
-      border: none;
-      overflow: auto;
-      padding: 8px;
-      resize: none;
-      &:focus {
-        outline: none;
-      }
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    height: 14px;
+    margin: 0 10px;
+    overflow: auto;
+    font-size: 13px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: $gray-200;
+    }
+    &::-webkit-scrollbar-thumb {
+      width: 6px;
+      background-color: $gray-400;
+      border-radius: 50px;
     }
   }
   button[type='submit'] {
-    @include button(40px, none, $primary, $white, 14px, 30px);
+    color: $black-100;
+    font-size: 20px;
   }
 }
