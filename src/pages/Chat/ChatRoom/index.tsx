@@ -116,7 +116,7 @@ export default function ChatRoomPage() {
   });
 
   return (
-    <PageLayout isNeedFooter={false}>
+    <PageLayout isNeedFooter={false} headerHeight={44}>
       {isClickProfile && (
         <div
           className={cx($['profile-active'], isOverHalf && $['profile-hidden'])}
