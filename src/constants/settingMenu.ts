@@ -7,7 +7,7 @@ export const MYPAGE_SETTING_MENU: Menu[] = [
       {
         type: 'link',
         text: '기본 정보 수정',
-        to: './',
+        to: './authentication',
       },
       {
         type: 'link',

@@ -75,6 +75,7 @@ const menusLeft: MenuType[] = [
   },
   { icon: <IoChevronBack />, text: '친구' },
   { icon: <IoChevronBack />, text: '친구 찾기', url: '/friends/add' },
+  { icon: <IoChevronBack />, text: '내 정보', url: '/mypage/authentication' },
 ];
 
 const menusRight: MenuType[] = [
