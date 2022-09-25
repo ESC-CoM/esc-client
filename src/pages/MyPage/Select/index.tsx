@@ -29,7 +29,7 @@ export default function Select() {
           className={$['change-info-item']}
           title="전화번호"
           value={PERSONAL_INFORMATIONS.phoneNumber}
-          href=""
+          href="../change/phone"
         />
         <ChangeInfoItem
           className={$['change-info-item']}

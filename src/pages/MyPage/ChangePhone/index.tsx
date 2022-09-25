@@ -1,3 +1,4 @@
+import FooterButton from 'src/components/shared/FooterButton';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import InputWithTimer from 'src/components/shared/InputWithTimer';
 import { PageLayout } from 'src/components/shared/Layout';
@@ -24,6 +25,7 @@ export default function ChangePhone() {
           onChange={() => null}
           label="인증번호"
         />
+        <FooterButton type="button" text="전화번호 바꾸기" />
       </div>
     </PageLayout>
   );
