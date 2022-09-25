@@ -6,9 +6,10 @@ import $ from './style.module.scss';
 
 interface Props {
   children?: ReactNode;
+  customHeader?: ReactNode;
 }
 
-export default function Header({ children }: Props) {
+export default function Header({ children, customHeader }: Props) {
   const location = useLocation();
 
   const isStringUrl = (url?: string | string[], isPathBeIncluded?: boolean) => {
@@ -29,29 +30,35 @@ export default function Header({ children }: Props) {
   return (
     <header className={$['fixed']}>
       <div className={$['header']}>
-        <nav className={$['fixed-bar']}>
-          {headerMenus.map((menus, index1) => (
-            <div
-              key={`header-parent-${index1}`}
-              className={!index1 ? $['left'] : $['right']}
-            >
-              {menus.map((menu, index2) => {
-                if (
-                  isStringUrl(menu.url, menu.isPathBeIncluded) ||
-                  isStringArrUrl(menu.url)
-                )
-                  return (
-                    <React.Fragment key={`header-${index1}-${index2}`}>
-                      <span>{menu.icon}</span>
-                      {menu.text && <em>{menu.text}</em>}
-                    </React.Fragment>
-                  );
-              })}
-            </div>
-          ))}
-        </nav>
+        {customHeader ? (
+          customHeader
+        ) : (
+          <>
+            <nav className={$['fixed-bar']}>
+              {headerMenus.map((menus, index1) => (
+                <div
+                  key={`header-parent-${index1}`}
+                  className={!index1 ? $['left'] : $['right']}
+                >
+                  {menus.map((menu, index2) => {
+                    if (
+                      isStringUrl(menu.url, menu.isPathBeIncluded) ||
+                      isStringArrUrl(menu.url)
+                    )
+                      return (
+                        <React.Fragment key={`header-${index1}-${index2}`}>
+                          <span>{menu.icon}</span>
+                          {menu.text && <em>{menu.text}</em>}
+                        </React.Fragment>
+                      );
+                  })}
+                </div>
+              ))}
+            </nav>
 
-        <nav className={$['nav-bar']}>{children}</nav>
+            <nav className={$['nav-bar']}>{children}</nav>
+          </>
+        )}
       </div>
     </header>
   );

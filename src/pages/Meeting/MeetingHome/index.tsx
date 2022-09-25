@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
+import MeetingHeader from 'src/components/Meeting/MeetingHeader';
 import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import Plus from 'src/components/shared/Icon/Plus';
 import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
 import useDetectScroll from 'src/hooks/useDetectScroll';
 import { MeetingType } from 'src/types/meeting';
 
+import { meetingOptions } from './constants';
 import $ from './style.module.scss';
 
 function MeetingHomePage() {
@@ -33,7 +35,12 @@ function MeetingHomePage() {
   };
 
   return (
-    <PageLayout isNeedFooter={true} headerHeight={44} ref={layoutRef}>
+    <PageLayout
+      isNeedFooter={true}
+      headerHeight={60}
+      ref={layoutRef}
+      customHeader={<MeetingHeader data={meetingOptions} />}
+    >
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
           {meetingList.map((meeting) => (
