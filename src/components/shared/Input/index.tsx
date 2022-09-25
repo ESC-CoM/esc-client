@@ -9,6 +9,7 @@ import $ from './style.module.scss';
 type DefaultProps = {
   className?: string;
   label: string;
+  placeholder?: string;
   labelErrorMessage?: string;
   bottomErrorMessage?: string;
 };
@@ -29,6 +30,7 @@ type Props = RegisterProps | ControlledProps;
 export default function Input({
   className,
   label,
+  placeholder,
   labelErrorMessage,
   bottomErrorMessage,
   ...props
@@ -46,6 +48,7 @@ export default function Input({
         })}
         type="text"
         id="auth-number"
+        placeholder={placeholder}
         {...(props.proptype === 'register' && props.register())}
         {...(props.proptype === 'controlled' && {
           value: props.value,

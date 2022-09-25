@@ -3,11 +3,12 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
+import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import useStore from 'src/store/useStore';
 import { More1Type } from 'src/types/join';
 
-import { BirthInput, GenderInput, MbtiInput } from '../../components/Join';
+import { GenderInput, MbtiInput } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
 import $ from './style.module.scss';
 
@@ -61,7 +62,14 @@ export default function MoreInfoPage1() {
             setValue={setValue}
             errors={errors.gender}
           />
-          <BirthInput register={register} errorMessage={errors.year?.message} />
+          <Input
+            className={$.input}
+            proptype="register"
+            placeholder="년도(4자)"
+            labelErrorMessage={errors.year?.message}
+            register={() => register('year')}
+            label="태어난 년도"
+          />
           <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
           <FooterButton text="다음" type="submit" />
         </form>
