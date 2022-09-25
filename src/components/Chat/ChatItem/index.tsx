@@ -5,6 +5,7 @@ import MutiProfile from 'src/components/shared/MultiProfile';
 import $ from './style.module.scss';
 
 interface Props {
+  boardId: number;
   roomImage: {
     name: string;
     imageUrl: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function ChatItem({
+  boardId,
   roomImage,
   title,
   content,
@@ -38,8 +40,9 @@ export default function ChatItem({
   );
 
   const fetchChatRoom = () => {
-    navigate('./room');
+    navigate(`./room/${boardId}`);
   };
+
   return (
     <li className={$['chat-item']} onClick={() => fetchChatRoom()}>
       <MutiProfile profileList={profileList} parentRef={chatItemRef} />

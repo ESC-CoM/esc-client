@@ -1,6 +1,5 @@
 import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import socket from 'src/common/socket';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
@@ -49,7 +48,7 @@ function RequestedItem({
 
   const handleAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    socket.emit('room', boardId);
+    navigate(`/chat/room/${boardId}`);
   };
   const handleRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

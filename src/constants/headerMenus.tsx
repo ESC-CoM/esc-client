@@ -57,6 +57,7 @@ const menusLeft: MenuType[] = [
   {
     icon: <IoChevronBackOutline />,
     url: '/chat/room',
+    isPathBeIncluded: true,
   },
   {
     icon: <IoChevronBack />,
@@ -108,6 +109,7 @@ const menusRight: MenuType[] = [
   {
     icon: <IoReorderThreeOutline />,
     url: '/chat/room',
+    isPathBeIncluded: true,
   },
   {
     icon: <IoSettingsOutline />,

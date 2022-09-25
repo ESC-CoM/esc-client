@@ -60,6 +60,7 @@ export const messageInfoMocks = [
 
 export const chatListMocks = [
   {
+    boardId: 1,
     roomImage: profileList,
     title:
       '소프트웨어학과 남자 3명 소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명',
@@ -69,6 +70,7 @@ export const chatListMocks = [
     count: '26',
   },
   {
+    boardId: 2,
     roomImage: profileList,
     title:
       '심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명',
@@ -77,6 +79,7 @@ export const chatListMocks = [
     count: '38',
   },
   {
+    boardId: 3,
     roomImage: profileList,
     title: '간호학과 여자 3명 간호학과 여자 3명',
     content: '안녕하세용',
@@ -84,6 +87,7 @@ export const chatListMocks = [
     count: '5',
   },
   {
+    boardId: 4,
     roomImage: profileList,
     title: '화학과 남자 3명',
     content: ':):D',

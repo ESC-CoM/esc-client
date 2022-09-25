@@ -1,1 +1,1 @@
-export const ROOM_CHAT = 'room';
+export const CONNECT_CHAT_ROOM = 'CONNECT_CHAT_ROOM';

@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
+import { useParams } from 'react-router-dom';
 import { messageInfoMocks } from 'src/__mocks__/chat';
+import { CONNECT_CHAT_ROOM } from 'src/common/actionTypes';
+import socket from 'src/common/socket';
 import { MessageInput } from 'src/components/Chat';
 import { ChatCard } from 'src/components/Chat';
 import { PageLayout } from 'src/components/shared/Layout';
@@ -116,6 +119,11 @@ export default function ChatRoomPage() {
       };
     }
   });
+
+  const { boardId } = useParams();
+  useEffect(() => {
+    socket.emit(CONNECT_CHAT_ROOM, boardId);
+  }, []);
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
