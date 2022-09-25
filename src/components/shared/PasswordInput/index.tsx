@@ -12,6 +12,7 @@ type DefaultProps = {
   className?: string;
   placeholder?: string;
   errorMessage?: string;
+  label: string;
 };
 
 type RegisterProps = {
@@ -28,6 +29,7 @@ type ControlledProps = {
 type Props = RegisterProps | ControlledProps;
 export default function PasswordInput({
   className,
+  label,
   errorMessage,
   placeholder,
   ...props
@@ -39,7 +41,7 @@ export default function PasswordInput({
   return (
     <div className={className}>
       <Label
-        textContent="비밀번호"
+        textContent={label}
         fontSize={15}
         htmlFor="password"
         errorMsg={errorMessage}

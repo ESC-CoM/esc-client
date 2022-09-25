@@ -26,6 +26,7 @@ export default function () {
           비밀번호 인증이 필요해요.
         </p>
         <PasswordInput
+          label="비밀번호"
           className={$['password-input']}
           proptype="controlled"
           onChange={handlePasswordChange}
