@@ -1,14 +1,16 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 import { HiOutlineSearch } from '@react-icons/all-files/hi/HiOutlineSearch';
+import cx from 'classnames';
 import useDebounceInput from 'src/hooks/useDebounceInput';
+import { StyleProps } from 'src/types/props';
 
 import $ from './style.module.scss';
 
 type Props = {
   onSearchClick: (text: string) => void;
-};
+} & StyleProps;
 
-export default function Search({ onSearchClick }: Props) {
+export default function Search({ onSearchClick, className }: Props) {
   const [searchText, setSearchText] = useState('');
   const debouncedSetSearchText = useDebounceInput(setSearchText);
 
@@ -25,7 +27,7 @@ export default function Search({ onSearchClick }: Props) {
   const handleSearchClickWithText = () => onSearchClick(searchText);
 
   return (
-    <div className={$['search-box']}>
+    <div className={cx($['search-box'], className)}>
       <input
         type="search"
         onKeyDown={handleEnterKeyDown}
