@@ -1,6 +1,5 @@
 import { ChangeEventHandler, useState } from 'react';
 import { useEffect } from 'react';
-import cx from 'classnames';
 import {
   FieldErrors,
   UseFormRegister,
@@ -8,12 +7,12 @@ import {
   UseFormSetValue,
   UseFormWatch,
 } from 'react-hook-form';
-import ErrorMessage from 'src/components/shared/ErrorMessage';
+import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
 
-import AuthTimer from './authTimer';
+import AuthTimer from '../AuthTimer';
 import $ from './style.module.scss';
 
 interface Props {
@@ -31,7 +30,7 @@ export default function PhoneAuth({
   setFocus,
   errors,
 }: Props) {
-  const [phoneNumber, isAuthed] = watch(['phoneNumber', 'isAuthed']);
+  const phoneNumber = watch('phoneNumber');
   const [sendCount, setSendCount] = useState(0);
 
   const sendPhoneNum = () => {
@@ -70,24 +69,15 @@ export default function PhoneAuth({
         labelText="휴대폰 번호"
         buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
       />
-      <div className={$['item']}>
-        <label htmlFor="authNumber">
-          {errors.authNumber?.message ?? '인증번호'}
-        </label>
-        <div className={$['row']}>
-          <input
-            type="text"
-            className={cx($['input'], {
-              [$['error']]: errors.phoneNumber,
-            })}
-            id="authNumber"
-            {...register('authNumber')}
-          />
-          <span className={$['timer']}>
-            <AuthTimer />
-          </span>
-        </div>
-        {!isAuthed && <ErrorMessage errorText={errors.isAuthed?.message} />}
+      <div className={$['auth-number-input-container']}>
+        <Input
+          className={$['auth-number-input']}
+          proptype="register"
+          register={() => register('authNumber')}
+          labelErrorMessage={errors.authNumber?.message}
+          bottomErrorMessage={errors.isAuthed?.message}
+        />
+        <AuthTimer className={$.timer} />
       </div>
     </section>
   );
