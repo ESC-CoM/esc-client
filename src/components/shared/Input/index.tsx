@@ -3,10 +3,12 @@ import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 import ErrorMessage from '../ErrorMessage';
+import Label from '../Label';
 import $ from './style.module.scss';
 
 type DefaultProps = {
   className?: string;
+  label: string;
   labelErrorMessage?: string;
   bottomErrorMessage?: string;
 };
@@ -26,15 +28,18 @@ type Props = RegisterProps | ControlledProps;
 
 export default function Input({
   className,
+  label,
   labelErrorMessage,
   bottomErrorMessage,
   ...props
 }: Props) {
   return (
     <div className={className}>
-      <label className={$.label} htmlFor="auth-number">
-        {labelErrorMessage ?? '인증번호'}
-      </label>
+      <Label
+        textContent={labelErrorMessage || label}
+        htmlFor="auth-number"
+        fontSize={15}
+      />
       <input
         className={cx($.input, {
           [$.error]: labelErrorMessage || bottomErrorMessage,

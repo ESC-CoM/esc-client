@@ -72,6 +72,7 @@ export default function PhoneAuth({
       <div className={$['auth-number-input-container']}>
         <Input
           className={$['auth-number-input']}
+          label="인증번호"
           proptype="register"
           register={() => register('authNumber')}
           labelErrorMessage={errors.authNumber?.message}
