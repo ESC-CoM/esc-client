@@ -3,7 +3,6 @@ import { Location } from 'react-router-dom';
 import getQueryStringObj from './getQueryStringObj';
 
 function getUrlFullName(target: string, value: string, location: Location) {
-  console.log(getQueryStringObj(location.search));
   const queryStrObj = getQueryStringObj(location.search);
   const changedQuery = {
     ...queryStrObj,
