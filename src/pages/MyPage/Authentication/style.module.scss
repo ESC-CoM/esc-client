@@ -1,0 +1,15 @@
+@import '/src/styles/color';
+
+.container {
+  padding: 20px;
+
+  .discription {
+    font-size: 20px;
+    line-height: 25px;
+    color: $gray-700;
+  }
+
+  .password-input {
+    margin-top: 30px;
+  }
+}

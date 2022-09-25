@@ -19,7 +19,7 @@ export default function Search({ onSearchClick }: Props) {
   const handleEnterKeyDown: KeyboardEventHandler<HTMLInputElement> = ({
     key,
   }) => {
-    if (key === 'Enter') onSearchClick(searchText);
+    if (key === 'Enter') onSearchClick(searchText); // TODO: 2번 실행됨.
   };
 
   const handleSearchClickWithText = () => onSearchClick(searchText);

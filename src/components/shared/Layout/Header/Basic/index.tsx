@@ -11,6 +11,21 @@ interface Props {
 export default function Header({ children }: Props) {
   const location = useLocation();
 
+  const isStringUrl = (url?: string | string[], isPathBeIncluded?: boolean) => {
+    return (
+      typeof url === 'string' &&
+      (location.pathname === url ||
+        (isPathBeIncluded && url && location.pathname.match(url)))
+    );
+  };
+
+  const isStringArrUrl = (urlArr?: string | string[]) => {
+    return (
+      typeof urlArr !== 'string' &&
+      urlArr?.every((url) => location.pathname.includes(url))
+    );
+  };
+
   return (
     <header className={$['fixed']}>
       <div className={$['header']}>
@@ -22,10 +37,8 @@ export default function Header({ children }: Props) {
             >
               {menus.map((menu, index2) => {
                 if (
-                  location.pathname === menu.url ||
-                  (menu.isPathBeIncluded &&
-                    menu.url &&
-                    location.pathname.match(menu.url))
+                  isStringUrl(menu.url, menu.isPathBeIncluded) ||
+                  isStringArrUrl(menu.url)
                 )
                   return (
                     <React.Fragment key={`header-${index1}-${index2}`}>
