@@ -1,5 +1,6 @@
 import { ChangeEventHandler } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FooterButton from 'src/components/shared/FooterButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import PasswordInput from 'src/components/shared/PasswordInput';
@@ -7,11 +8,14 @@ import PasswordInput from 'src/components/shared/PasswordInput';
 import $ from './style.module.scss';
 
 export default function () {
+  const navigate = useNavigate();
   const [password, setPassword] = useState('');
 
   const handlePasswordChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
   }) => setPassword(value);
+
+  const handleButtonClick = () => navigate('../select');
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
@@ -23,12 +27,12 @@ export default function () {
         </p>
         <PasswordInput
           className={$['password-input']}
-          propType="controlled"
+          proptype="controlled"
           onChange={handlePasswordChange}
           value={password}
         />
       </div>
-      <FooterButton text="확인" type="button" />
+      <FooterButton text="확인" type="button" onClick={handleButtonClick} />
     </PageLayout>
   );
 }

@@ -15,12 +15,12 @@ type DefaultProps = {
 };
 
 type RegisterProps = {
-  propType: 'register';
+  proptype: 'register';
   register: UseFormRegisterReturn;
 } & DefaultProps;
 
 type ControlledProps = {
-  propType: 'controlled';
+  proptype: 'controlled';
   value?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 } & DefaultProps;
@@ -52,8 +52,8 @@ export default function PasswordInput({
           placeholder={placeholder}
           type={isEncrypted ? 'text' : 'password'}
           id="password"
-          {...(props.propType === 'register' && props.register)}
-          {...(props.propType === 'controlled' && props)}
+          {...(props.proptype === 'register' && props.register)}
+          {...(props.proptype === 'controlled' && props)}
         />
         <button
           type="button"
