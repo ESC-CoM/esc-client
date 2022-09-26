@@ -35,7 +35,7 @@ export default function Select() {
           className={$['change-info-item']}
           title="비밀번호"
           value={getEncryptedPassword(PERSONAL_INFORMATIONS.password)}
-          href=""
+          href="../change/password"
         />
       </div>
     </PageLayout>
