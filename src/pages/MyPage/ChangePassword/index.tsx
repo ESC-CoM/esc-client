@@ -1,12 +1,10 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 import FooterButton from 'src/components/shared/FooterButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import PasswordInput from 'src/components/shared/PasswordInput';
 
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-
 import $ from './style.module.scss';
-
 import schema from './yup';
 
 type FormData = {
@@ -44,7 +42,7 @@ export default function ChangePassword() {
           label="새 비밀번호"
         />
         <PasswordInput
-          className={$['password-input']}
+          className={$.password}
           id="new-password-confirm"
           proptype="register"
           errorMessage={errors.newPasswordConfirm?.message}
