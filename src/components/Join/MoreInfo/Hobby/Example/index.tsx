@@ -26,9 +26,9 @@ export default function Example({ id, info, selectItem, removeItem }: Props) {
   }, [clicked]);
 
   return (
-    <div className={$['item']} onClick={clickItem}>
-      <span className={cx($['icon'], { [$['clicked']]: clicked })}>{icon}</span>
-      <span className={$['name']}>{name}</span>
+    <div className={$.item} onClick={clickItem}>
+      <span className={cx($.icon, { [$.clicked]: clicked })}>{icon}</span>
+      <span className={$.name}>{name}</span>
     </div>
   );
 }

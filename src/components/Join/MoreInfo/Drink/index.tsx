@@ -31,13 +31,13 @@ export function Drink({ value, setValue }: Props) {
   };
 
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label textContent="주량" fontSize={15} htmlFor="drink" />
 
-      <div className={$['row']}>
+      <div className={$.row}>
         {drinkNum.map((_, index) => (
           <span
-            className={$['icon']}
+            className={$.icon}
             key={index}
             draggable="true"
             onClick={(e) => fillBottle(e, index)}
@@ -47,7 +47,7 @@ export function Drink({ value, setValue }: Props) {
           </span>
         ))}
 
-        <span className={$['info']}>{value ? `${value}병` : '못마셔요'}</span>
+        <span className={$.info}>{value ? `${value}병` : '못마셔요'}</span>
       </div>
     </div>
   );

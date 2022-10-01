@@ -16,35 +16,6 @@
     max-width: 758px;
     margin: 0 auto;
 
-    .fixed-bar {
-      display: flex;
-      width: 100%;
-      font-size: 24px;
-      padding: 10px 0;
-
-      .left {
-        display: flex;
-        margin-left: 10px;
-        margin-right: auto;
-      }
-
-      .right {
-        display: flex;
-        margin-left: auto;
-        margin-right: 10px;
-      }
-
-      span {
-        display: flex;
-        cursor: pointer;
-      }
-      em {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 24px;
-      }
-    }
-
     .nav-bar {
       width: 100%;
       margin: 0 auto;

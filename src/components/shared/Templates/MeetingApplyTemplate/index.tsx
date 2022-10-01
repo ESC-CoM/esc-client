@@ -31,14 +31,14 @@ export default function MeetingApplyTemplate(applyProps: Props) {
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
-      <div className={$['top']}>
+      <div className={$.top}>
         <h2 className={$['sub-title']}>친구 추가하기</h2>
         <Search onSearchClick={handleSearchClick} />
       </div>
 
       <ul className={$['friends-list']}>
         {friendFetchData.map(({ src, name }, id) => (
-          <li key={src + name} className={$['friend']}>
+          <li key={src + name} className={$.friend}>
             <FriendWithCheck
               {...{ src, name }}
               isVertical={false}
@@ -49,7 +49,7 @@ export default function MeetingApplyTemplate(applyProps: Props) {
         ))}
       </ul>
 
-      <div className={$['added']}>
+      <div className={$.added}>
         <h2 className={$['sub-title']}>추가된 친구</h2>
         <ul className={$['added-friends']}>
           {!addedList.length ? (

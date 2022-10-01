@@ -16,3 +16,8 @@ export type IconProps = {
   style?: React.CSSProperties;
   className?: string;
 };
+
+export type DefaultData = {
+  name: string;
+  code: string;
+};

@@ -12,15 +12,15 @@ interface Props {
 
 export function HeightInput({ value, register }: Props) {
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label textContent="키" fontSize={15} htmlFor="height" />
 
-      <span className={$['info']}>
+      <span className={$.info}>
         {heightInfo.filter((mark) => value == mark.value)[0].label}
       </span>
       <input
         type="range"
-        className={$['input']}
+        className={$.input}
         id="height"
         min="145"
         max="190"
