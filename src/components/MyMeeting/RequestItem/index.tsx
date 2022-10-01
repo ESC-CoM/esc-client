@@ -63,14 +63,14 @@ function RequestItem({
     >
       <MutiProfile profileList={profileList} parentRef={requestRef} />
 
-      <div className={$['info']}>
+      <div className={$.info}>
         {state && <StateBadge />}
-        <strong className={$['comment']}>{comment}</strong>
-        <span className={$['date']}>{date}</span>
+        <strong className={$.comment}>{comment}</strong>
+        <span className={$.date}>{date}</span>
       </div>
 
       <div className={$['cancel-btn']}>
-        <button className={$['btn']} onClick={handleRefuseRequest}>
+        <button className={$.btn} onClick={handleRefuseRequest}>
           신청 취소하기
         </button>
       </div>

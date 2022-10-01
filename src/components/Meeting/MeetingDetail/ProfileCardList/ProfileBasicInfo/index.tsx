@@ -13,8 +13,8 @@ function ProfileCard({ friend }: Props) {
 
   return (
     <div className={$['basic-info']}>
-      <span className={$['text']}>{nickName}</span>
-      <span className={cx($['gender'], $['text'])}>
+      <span className={$.text}>{nickName}</span>
+      <span className={cx($.gender, $.text)}>
         {gender === '남' ? (
           <IoMdMale className={$['gender-male']} />
         ) : (
@@ -22,9 +22,7 @@ function ProfileCard({ friend }: Props) {
         )}
       </span>
       {mannerScore && (
-        <span className={cx($['manner-score'], $['text'])}>
-          {mannerScore}점
-        </span>
+        <span className={cx($['manner-score'], $.text)}>{mannerScore}점</span>
       )}
     </div>
   );

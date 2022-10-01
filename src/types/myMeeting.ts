@@ -1,5 +1,3 @@
-import { ProfileImg } from './profile';
-
 export type MyMeetingType = {
   kind: string;
   title: string;

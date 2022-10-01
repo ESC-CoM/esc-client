@@ -1,7 +1,8 @@
 import { RefObject, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
-import getProfileClassName from 'src/utils/getProfileClassName';
 import { ProfileImg } from 'src/types/profile';
+import getProfileClassName from 'src/utils/getProfileClassName';
+
 import $ from './style.module.scss';
 
 interface Props {

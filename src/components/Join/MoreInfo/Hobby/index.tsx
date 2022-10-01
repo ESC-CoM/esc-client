@@ -51,7 +51,7 @@ export default function Hobby({ setHobby }: Props) {
   }, [inputedWordList, selectedWordList]);
 
   return (
-    <main className={$['hobby']}>
+    <main className={$.hobby}>
       <div>
         {hobbyData.map(({ id, ...info }) => (
           <Example
@@ -68,14 +68,14 @@ export default function Hobby({ setHobby }: Props) {
         <input
           type="text"
           value={wordInput}
-          className={$['input']}
+          className={$.input}
           id="hobby"
           placeholder="추가하고 싶은 취미를 입력해주세요."
           onChange={(e) => setWordInput(e.target.value)}
           onKeyPress={onEnter}
         />
         <span
-          className={$['plus']}
+          className={$.plus}
           onClick={() => {
             if (wordInput !== '') {
               setInputedWordList([...inputedWordList, wordInput]);

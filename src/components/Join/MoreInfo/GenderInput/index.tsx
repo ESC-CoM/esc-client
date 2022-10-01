@@ -14,7 +14,7 @@ interface Props {
 
 export function GenderInput({ value, setValue, errors }: Props) {
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label
         textContent="성별"
         fontSize={15}
@@ -22,7 +22,7 @@ export function GenderInput({ value, setValue, errors }: Props) {
         errorMsg={errors?.message}
       />
 
-      <div className={$['row']}>
+      <div className={$.row}>
         <button
           className={cx($['gender-btn'], {
             [$['gender-active']]: value === '남자',

@@ -27,6 +27,7 @@
   }
 
   .meetingInfo {
+    max-width: calc(100% - 75px);
     margin: auto 0;
     margin-left: 15px;
     font-size: 15px;

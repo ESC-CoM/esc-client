@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
+import MeetingHeader from 'src/components/Meeting/MeetingHeader';
 import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import Plus from 'src/components/shared/Icon/Plus';
 import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
+import { useQueryRouter, useSearch } from 'src/hooks';
 import useDetectScroll from 'src/hooks/useDetectScroll';
 import { MeetingType } from 'src/types/meeting';
 
+import { meetingOptions } from './constants';
 import $ from './style.module.scss';
 
 function MeetingHomePage() {
@@ -16,6 +19,8 @@ function MeetingHomePage() {
   const layoutRef = useRef<HTMLDivElement>(null);
   const isScrollMove = useDetectScroll(layoutRef);
   const navigate = useNavigate();
+  const meetingKind = useSearch('kind') || meetingOptions[0].code;
+  const router = useQueryRouter('kind');
 
   useEffect(() => {
     if (isScrollMove) {
@@ -33,7 +38,18 @@ function MeetingHomePage() {
   };
 
   return (
-    <PageLayout isNeedFooter={true} headerHeight={44} ref={layoutRef}>
+    <PageLayout
+      isNeedFooter={true}
+      headerHeight={60}
+      ref={layoutRef}
+      customHeader={
+        <MeetingHeader
+          data={meetingOptions}
+          selected={meetingKind}
+          handleChange={router}
+        />
+      }
+    >
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
           {meetingList.map((meeting) => (

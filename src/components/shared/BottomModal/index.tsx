@@ -57,7 +57,7 @@ export default function BottomModal({
         aria-modal
         aria-labelledby="bottom-modal"
       >
-        <div className={$['dimmer']} onClick={handleClick} tabIndex={0} />
+        <div className={$.dimmer} onClick={handleClick} tabIndex={0} />
         <div className={$['out-container']}>
           <div className={$.header} id="modal-heading">
             <h2 className={$.title}>{title}</h2>

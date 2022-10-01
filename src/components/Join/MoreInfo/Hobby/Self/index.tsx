@@ -10,9 +10,9 @@ type Props = {
 
 export default function Self({ index, word, removeItem }: Props) {
   return (
-    <span className={$['word']} onClick={() => removeItem(index)}>
-      <b className={$['text']}>#{word}</b>
-      <span className={$['close']}>
+    <span className={$.word} onClick={() => removeItem(index)}>
+      <b className={$.text}>#{word}</b>
+      <span className={$.close}>
         <IoClose />
       </span>
     </span>

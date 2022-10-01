@@ -28,7 +28,7 @@ export default function EmailInput({
   };
 
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label
         textContent="이메일"
         fontSize={15}
@@ -36,21 +36,17 @@ export default function EmailInput({
         errorMsg={errors.email?.message}
       />
 
-      <div className={$['row']}>
+      <div className={$.row}>
         <input
-          className={cx($['input'], {
-            [$['error']]: errors.email,
+          className={cx($.input, {
+            [$.error]: errors.email,
           })}
           type="text"
           id="email"
           autoFocus
           {...register}
         />
-        <button
-          className={$['btn']}
-          type="button"
-          onClick={checkDuplicatedEmail}
-        >
+        <button className={$.btn} type="button" onClick={checkDuplicatedEmail}>
           중복확인
         </button>
       </div>
