@@ -8,6 +8,7 @@ import $ from './style.module.scss';
 type DefaultProps = {
   className?: string;
   label: string;
+  type: string;
   buttonText: string;
   labelErrorMessage?: string;
   buttonErrorMessage?: string;
@@ -34,6 +35,7 @@ export default function InputWithButton({
   labelErrorMessage,
   buttonErrorMessage,
   label,
+  type,
   buttonText,
   placeholder,
   ...props
@@ -43,7 +45,7 @@ export default function InputWithButton({
   return (
     <div className={className}>
       <div className={$.row}>
-        <Input {...{ label, placeholder, labelErrorMessage, ...props }} />
+        <Input {...{ label, placeholder, labelErrorMessage, type, ...props }} />
         <button className={$.btn} type="button" onClick={handleClickButton}>
           {buttonText}
         </button>

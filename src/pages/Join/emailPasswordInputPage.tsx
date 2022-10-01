@@ -40,6 +40,7 @@ export default function EmailPasswordInputPage() {
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputWithButton
+            type="email"
             proptype="register"
             className={$['input-with-button']}
             register={register('email')}

@@ -10,6 +10,7 @@ type DefaultProps = {
   className?: string;
   label: string;
   placeholder?: string;
+  type: string;
   labelErrorMessage?: string;
   bottomErrorMessage?: string;
 };
@@ -31,6 +32,7 @@ export default function Input({
   className,
   label,
   placeholder,
+  type,
   labelErrorMessage,
   bottomErrorMessage,
   ...props
@@ -46,9 +48,8 @@ export default function Input({
         className={cx($.input, {
           [$.error]: labelErrorMessage || bottomErrorMessage,
         })}
-        type="text"
         id="auth-number"
-        placeholder={placeholder}
+        {...{ placeholder, type }}
         {...(props.proptype === 'register' && props.register)}
         {...(props.proptype === 'controlled' && {
           value: props.value,

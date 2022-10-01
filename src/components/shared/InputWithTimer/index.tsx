@@ -11,6 +11,7 @@ type DefaultProps = {
   label: string;
   placeholder?: string;
   labelErrorMessage?: string;
+  type: string;
   bottomErrorMessage?: string;
 };
 
@@ -31,6 +32,7 @@ export default function InputWithTimer({
   className,
   label,
   placeholder,
+  type,
   labelErrorMessage,
   bottomErrorMessage,
   ...props
@@ -39,6 +41,7 @@ export default function InputWithTimer({
     <div className={cx($['auth-number-input-container'], className)}>
       <Input
         {...{
+          type,
           label,
           placeholder,
           labelErrorMessage,

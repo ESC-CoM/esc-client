@@ -48,6 +48,7 @@ export default function MoreInfoPage1() {
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputWithButton
+            type="text"
             proptype="register"
             className={$.input}
             register={register('nickName')}
@@ -64,6 +65,7 @@ export default function MoreInfoPage1() {
             errors={errors.gender}
           />
           <Input
+            type="number"
             className={$.input}
             proptype="register"
             placeholder="년도(4자)"

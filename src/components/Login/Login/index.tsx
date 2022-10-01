@@ -42,6 +42,7 @@ export default function Login() {
         <LoginTitle className={$.title} />
         <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
+            type="email"
             className={$.email}
             proptype="register"
             label="이메일"
@@ -49,6 +50,7 @@ export default function Login() {
             register={register('email')}
           />
           <Input
+            type="password"
             className={$.password}
             proptype="register"
             label="비밀번호"

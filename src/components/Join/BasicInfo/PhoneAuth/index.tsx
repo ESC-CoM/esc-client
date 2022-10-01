@@ -59,6 +59,7 @@ export default function PhoneAuth({
     <section className={$['phone-auth']}>
       <h1>휴대폰 인증을 해주세요</h1>
       <InputWithButton
+        type="number"
         proptype="controlled"
         className={$['input-with-button']}
         onClick={sendPhoneNum}
@@ -70,6 +71,7 @@ export default function PhoneAuth({
         buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
       />
       <InputWithTimer
+        type="number"
         className={$['auth-number-input']}
         proptype="register"
         register={register('authNumber')}
