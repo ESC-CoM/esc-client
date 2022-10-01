@@ -21,7 +21,6 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    resetField,
     watch,
     setValue,
     formState: { errors },
@@ -43,17 +42,19 @@ export default function Login() {
         <LoginTitle className={$.title} />
         <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
+            type="email"
             className={$.email}
             proptype="register"
             label="이메일"
             placeholder="sample@email.com"
-            register={() => register('email')}
+            register={register('email')}
           />
           <Input
+            type="password"
             className={$.password}
             proptype="register"
             label="비밀번호"
-            register={() => register('password')}
+            register={register('password')}
           />
           <ErrorMessageBox errors={errors} className={$.error} />
           <LoginCheckBoxArea

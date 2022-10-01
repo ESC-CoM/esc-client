@@ -10,6 +10,7 @@ export default function ChangeEmail() {
       <div className={$.container}>
         <p className={$.discription}>새로운 이메일 주소를 인증해주세요.</p>
         <Input
+          type="email"
           className={$['email-input']}
           proptype="controlled"
           value=""
