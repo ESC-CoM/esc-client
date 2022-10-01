@@ -87,6 +87,11 @@ const menusLeft: MenuType[] = [
     text: '전화번호 번경',
     url: '/mypage/change/phone',
   },
+  {
+    icon: <IoChevronBack />,
+    text: '이메일 변경',
+    url: '/mypage/change/email',
+  },
 ];
 
 const menusRight: MenuType[] = [
