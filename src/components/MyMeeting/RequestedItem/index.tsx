@@ -1,5 +1,6 @@
 import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ChatApi from 'src/api/chat';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
@@ -8,7 +9,7 @@ import $ from './style.module.scss';
 
 function RequestedItem({
   boardId,
-  comment,
+  title,
   requestedInfo,
   date,
 }: MyMeetingRequestType) {
@@ -48,7 +49,14 @@ function RequestedItem({
 
   const handleAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    navigate(`/chat/room/${boardId}`);
+    const boardInfo = {
+      name: title,
+      participants: requestedInfo.map(({ id }) => id),
+    };
+    console.log(boardInfo);
+    ChatApi.createChatRoom(boardId, boardInfo).then((data) => {
+      navigate(`/chat/room/${boardId}`);
+    });
   };
   const handleRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -63,7 +71,7 @@ function RequestedItem({
       <MutiProfile profileList={profileList} parentRef={requestedMeetingRef} />
 
       <div className={$.info}>
-        <span className={$.comment}>{comment}</span>
+        <span className={$.title}>{title}</span>
         <span className={$.date}>{date}</span>
       </div>
 

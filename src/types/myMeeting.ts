@@ -8,8 +8,8 @@ export type MyMeetingType = {
 
 export type MyMeetingRequestType = {
   boardId: number;
-  comment: string;
-  requestedInfo: { nickName: string; src: string }[];
+  title: string;
+  requestedInfo: { id: number; nickName: string; src: string }[];
   date: string;
   state?: boolean;
 };

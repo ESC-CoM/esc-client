@@ -9,7 +9,7 @@ import $ from './style.module.scss';
 
 function RequestItem({
   boardId,
-  comment,
+  title,
   requestedInfo,
   date,
   state,
@@ -65,7 +65,7 @@ function RequestItem({
 
       <div className={$.info}>
         {state && <StateBadge />}
-        <strong className={$.comment}>{comment}</strong>
+        <strong className={$.title}>{title}</strong>
         <span className={$.date}>{date}</span>
       </div>
 

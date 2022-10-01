@@ -152,17 +152,20 @@ export const registerMeetingMocks = [
 export const requestedListMocks = [
   {
     boardId: 1,
-    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    title: '공대도 받아주세요! ~~~~~~~~~~~~~~',
     requestedInfo: [
       {
+        id: 1,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
+        id: 2,
         nickName: '라이언',
         src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
       {
+        id: 3,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
@@ -171,17 +174,20 @@ export const requestedListMocks = [
   },
   {
     boardId: 2,
-    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    title: '공대도 받아주세요! ~~~~~~~~~~~~~~',
     requestedInfo: [
       {
+        id: 4,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
+        id: 5,
         nickName: '라이언',
         src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
       {
+        id: 6,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
@@ -190,17 +196,20 @@ export const requestedListMocks = [
   },
   {
     boardId: 3,
-    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    title: '공대도 받아주세요! ~~~~~~~~~~~~~~',
     requestedInfo: [
       {
+        id: 7,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
+        id: 8,
         nickName: '라이언',
         src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
       {
+        id: 9,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
@@ -209,77 +218,32 @@ export const requestedListMocks = [
   },
   {
     boardId: 4,
-    comment: '공대도 받아주세요! ~~~~~~~~~~~~~~',
+    title: '공대도 받아주세요! ~~~~~~~~~~~~~~',
     requestedInfo: [
       {
+        id: 10,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
       {
+        id: 11,
         nickName: '라이언',
         src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
       {
+        id: 12,
         nickName: '라이언',
         src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
     date: '27초 전',
-  },
-  {
-    boardId: 5,
-    comment: '술 잘 먹어요 ㅎㅎ',
-    requestedInfo: [
-      {
-        nickName: '라이언',
-        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
-      },
-      {
-        nickName: '라이언',
-        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
-      },
-    ],
-    date: '30분 전',
-  },
-  {
-    boardId: 6,
-    comment: '전정대랑 과팅합시다앙',
-    requestedInfo: [
-      {
-        nickName: '라이언',
-        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-      },
-    ],
-    date: '2일 전',
-  },
-  {
-    boardId: 7,
-    comment: '공대도 받아주세요 !',
-    requestedInfo: [
-      {
-        nickName: '라이언',
-        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-      },
-    ],
-    date: '27초 전',
-  },
-  {
-    boardId: 8,
-    comment: '술 잘 먹어요 ㅎㅎ',
-    requestedInfo: [
-      {
-        nickName: '라이언',
-        src: 'https://thumb.mt.co.kr/06/2021/12/2021122022255032493_1.jpg/dims/optimize/',
-      },
-    ],
-    date: '30분 전',
   },
 ];
 
 export const requestMeetingMocks = [
   {
     boardId: 1,
-    comment: '내가 신청함~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',
+    title: '내가 신청함~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',
     requestedInfo: [
       {
         id: 1,
@@ -297,7 +261,7 @@ export const requestMeetingMocks = [
   },
   {
     boardId: 2,
-    comment: '신청2',
+    title: '신청2',
     requestedInfo: [
       {
         id: 1,
@@ -310,7 +274,7 @@ export const requestMeetingMocks = [
   },
   {
     boardId: 3,
-    comment: '내가 신청함',
+    title: '내가 신청함',
     requestedInfo: [
       {
         id: 1,
@@ -323,7 +287,7 @@ export const requestMeetingMocks = [
   },
   {
     boardId: 4,
-    comment: '신청2',
+    title: '신청2',
     requestedInfo: [
       {
         id: 1,

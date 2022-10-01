@@ -23,5 +23,6 @@
     "noEmit": false,
     "jsx": "react-jsx"
   },
+  "typeRoots": ["./src/types/apiTypes"],
   "include": ["src", "styles"]
 }

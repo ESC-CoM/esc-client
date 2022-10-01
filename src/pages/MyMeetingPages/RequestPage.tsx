@@ -17,10 +17,10 @@ export default function RequestPage() {
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
         {requestMeeting.map(
-          ({ boardId, comment, requestedInfo, date, state }, index) => (
+          ({ boardId, title, requestedInfo, date, state }, index) => (
             <RequestMeeting
               key={`${date}-${index}`}
-              {...{ boardId, comment, requestedInfo, date, state }}
+              {...{ boardId, title, requestedInfo, date, state }}
             />
           )
         )}
