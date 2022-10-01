@@ -56,9 +56,9 @@ function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
     >
       <MutiProfile profileList={profileList} parentRef={requestedMeetingRef} />
 
-      <div className={$['info']}>
-        <span className={$['comment']}>{comment}</span>
-        <span className={$['date']}>{date}</span>
+      <div className={$.info}>
+        <span className={$.comment}>{comment}</span>
+        <span className={$.date}>{date}</span>
       </div>
 
       <div className={$['request-btn-wrapper']}>

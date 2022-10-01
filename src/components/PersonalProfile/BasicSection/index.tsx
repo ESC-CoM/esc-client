@@ -16,14 +16,14 @@ export default function BasicSection({ basicInfo }: Props) {
     <section className={$['basic-section']}>
       <PersonalProfileImage src={img} alt={nickName} width={110} height={110} />
 
-      <div className={$['right']}>
+      <div className={$.right}>
         <div className={$['user-info']}>
           <em className={$['nick-name']}>{nickName}</em>
-          <span className={$['gender']}>
+          <span className={$.gender}>
             {gender === '남' ? (
-              <IoMdMale className={$['male']} />
+              <IoMdMale className={$.male} />
             ) : (
-              <IoMdFemale className={$['female']} />
+              <IoMdFemale className={$.female} />
             )}
           </span>
         </div>

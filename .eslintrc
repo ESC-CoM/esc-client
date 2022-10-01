@@ -13,6 +13,7 @@
     "prettier"
   ],
   "rules": {
+    "dot-notation": "error",
     "linebreak-style": 0,
     "no-array-constructor": "error",
     "no-new-object": "error",

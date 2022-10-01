@@ -16,7 +16,7 @@ function Friend(friendProps: Props) {
   return (
     <div
       style={{ padding: `${padding}px`, paddingLeft: `${paddingLeft}px` }}
-      className={cx($['friend'], { [$['vertical-shape']]: isVertical })}
+      className={cx($.friend, { [$['vertical-shape']]: isVertical })}
       onClick={(e) => {
         e.stopPropagation();
         console.log('profile');
