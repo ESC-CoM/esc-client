@@ -35,7 +35,7 @@ export function PersonalProfilePage({ closeModal }: Props) {
           <IoClose />
         </button>
       </div>
-      <div className={$['profile']}>
+      <div className={$.profile}>
         <BasicSection basicInfo={basicInfo} />
         <MoreSection moreInfo={moreInfo} />
       </div>
