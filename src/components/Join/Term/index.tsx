@@ -80,12 +80,12 @@ export default function Term() {
       >
         <span
           className={cx($['all-check-box'], {
-            [$['checked']]: allChecked,
+            [$.checked]: allChecked,
           })}
         >
           <FiCheck />
         </span>
-        <em className={$['title']}>모두 동의하기</em>
+        <em className={$.title}>모두 동의하기</em>
       </div>
 
       <ul className={$['terms-list']}>
@@ -100,13 +100,13 @@ export default function Term() {
             >
               <span
                 className={cx($['check-box'], {
-                  [$['checked']]: watch(named),
+                  [$.checked]: watch(named),
                 })}
               >
                 <FiCheck />
               </span>
-              <strong className={$['title']}>{title}</strong>
-              <a href={url} className={$['url']}>
+              <strong className={$.title}>{title}</strong>
+              <a href={url} className={$.url}>
                 <FiChevronRight />
               </a>
             </li>

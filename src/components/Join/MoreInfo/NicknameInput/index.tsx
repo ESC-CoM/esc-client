@@ -28,7 +28,7 @@ export function NicknameInput({ watch, register, setValue, errors }: Props) {
   };
 
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label
         textContent="별명"
         fontSize={15}
@@ -36,17 +36,17 @@ export function NicknameInput({ watch, register, setValue, errors }: Props) {
         errorMsg={errors.nickName?.message}
       />
 
-      <div className={$['row']}>
+      <div className={$.row}>
         <input
           type="text"
-          className={cx($['input'], {
-            [$['error']]: errors?.nickName,
+          className={cx($.input, {
+            [$.error]: errors?.nickName,
           })}
           id="nickName"
           {...register('nickName')}
           placeholder={'최소 2자, 최대 10자'}
         />
-        <button className={$['btn']} type="button" onClick={checkDuplication}>
+        <button className={$.btn} type="button" onClick={checkDuplication}>
           중복확인
         </button>
       </div>

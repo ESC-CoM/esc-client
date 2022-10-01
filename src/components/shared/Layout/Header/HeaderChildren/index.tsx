@@ -27,7 +27,7 @@ export default function HeaderChildren() {
       {headerMenus.map((menus, index1) => (
         <div
           key={`header-parent-${index1}`}
-          className={!index1 ? $['left'] : $['right']}
+          className={!index1 ? $.left : $.right}
         >
           {menus.map((menu, index2) => {
             if (

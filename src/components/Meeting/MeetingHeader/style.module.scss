@@ -1,7 +1,8 @@
 @import 'styles/main.scss';
 
 .meeting-header {
-  width: calc(100% - 20px);
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;

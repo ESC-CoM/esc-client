@@ -8,7 +8,7 @@ interface Props {
 export default function ProgressBar({ currStep, allStep }: Props) {
   return (
     <div className={$['progress-bar']}>
-      <progress className={$['progress']} max={allStep} value={currStep} />
+      <progress className={$.progress} max={allStep} value={currStep} />
     </div>
   );
 }

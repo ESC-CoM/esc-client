@@ -94,7 +94,7 @@ function SelectBox(selectProps: Props) {
                 tabIndex={0}
                 role="menuitem"
                 key={optionName}
-                style={{ ...{ height } }}
+                style={{ height }}
                 className={cx($['select-item'], {
                   [$['select-item-clicked']]: isSelected(optionName),
                 })}

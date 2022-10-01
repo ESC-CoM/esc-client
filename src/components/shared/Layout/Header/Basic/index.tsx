@@ -10,8 +10,8 @@ interface Props {
 
 export default function Header({ children, customHeader }: Props) {
   return (
-    <header className={$['fixed']}>
-      <div className={$['header']}>
+    <header className={$.fixed}>
+      <div className={$.header}>
         {customHeader ? (
           customHeader
         ) : (
