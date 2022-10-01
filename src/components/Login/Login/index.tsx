@@ -1,14 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import Input from 'src/components/shared/Input';
 
 import { Header, LoginTitle } from '../atoms';
-import EmailInput from '../EmailInput';
 import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
-import PasswordInput from '../PasswordInput';
 import SocialLoginBox from '../SocialLoginBox';
-import styles from './style.module.scss';
+import $ from './style.module.scss';
 import schema from './yup';
 
 export interface Inputs {
@@ -39,31 +38,32 @@ export default function Login() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={$.container}>
         <Header />
-        <LoginTitle className={styles.title} />
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <EmailInput
-            className={styles.email}
+        <LoginTitle className={$.title} />
+        <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            className={$.email}
+            proptype="register"
+            label="이메일"
+            placeholder="sample@email.com"
             register={() => register('email')}
-            resetField={() => resetField('email')}
-            isValueExists={watch('email') ? true : false}
           />
-          <PasswordInput
+          <Input
+            className={$.password}
+            proptype="register"
+            label="비밀번호"
             register={() => register('password')}
-            resetField={() => resetField('password')}
-            className={styles.password}
-            isValueExists={watch('password') ? true : false}
           />
-          <ErrorMessageBox errors={errors} className={styles.error} />
+          <ErrorMessageBox errors={errors} className={$.error} />
           <LoginCheckBoxArea
-            className={styles.checkbox}
+            className={$.checkbox}
             isSaveId={isSaveId}
             isAutoLogin={isAutoLogin}
             setValue={setValue}
           />
           <button
-            className={styles.submit}
+            className={$.submit}
             type="submit"
             aria-label="로그인 버튼"
             onClick={() => handleSubmit(onSubmit)}
@@ -71,8 +71,8 @@ export default function Login() {
             로그인
           </button>
         </form>
-        <LoginToolBox className={styles.links} />
-        <SocialLoginBox className={styles.socialLogin} />
+        <LoginToolBox className={$.links} />
+        <SocialLoginBox className={$.socialLogin} />
       </div>
     </>
   );
