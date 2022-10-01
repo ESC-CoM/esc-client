@@ -41,10 +41,10 @@ export default function InputWithButton({
         htmlFor="inputWithButton"
         errorMsg={labelErrorMessage}
       />
-      <div className={$['row']}>
+      <div className={$.row}>
         <input
-          className={cx($['input'], {
-            [$['error']]: labelErrorMessage,
+          className={cx($.input, {
+            [$.error]: labelErrorMessage,
           })}
           type="text"
           id="inputWithButton"
@@ -52,7 +52,7 @@ export default function InputWithButton({
           {...register}
           {...{ value, onChange, placeholder }}
         />
-        <button className={$['btn']} type="button" onClick={handleClickButton}>
+        <button className={$.btn} type="button" onClick={handleClickButton}>
           {buttonText}
         </button>
       </div>

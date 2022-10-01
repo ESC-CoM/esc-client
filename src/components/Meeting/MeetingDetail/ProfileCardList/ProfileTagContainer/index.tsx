@@ -26,7 +26,7 @@ function ProfileTagContainer({ title, info, fontSize }: Props) {
 
   return (
     <section className={$['tag-container']}>
-      <span className={$['title']}>{title}</span>
+      <span className={$.title}>{title}</span>
       <div className={$['tag-list']}>
         {Object.entries(info).map(
           ([key, value], index) =>

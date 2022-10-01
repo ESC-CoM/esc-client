@@ -177,3 +177,9 @@
   bottom: $bottom;
   left: $left;
 }
+
+@mixin border($prop, $border, $color) {
+  box-sizing: border-box;
+  #{$prop}: 1px solid $color;
+  border-radius: $border;
+}

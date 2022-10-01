@@ -1,8 +1,8 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import useDebounceInput from 'src/hooks/useDebounceInput';
+import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 import $ from './style.module.scss';
-import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 interface Props {
   title: string;

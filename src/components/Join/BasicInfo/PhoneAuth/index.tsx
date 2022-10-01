@@ -70,20 +70,20 @@ export default function PhoneAuth({
         labelText="휴대폰 번호"
         buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
       />
-      <div className={$['item']}>
+      <div className={$.item}>
         <label htmlFor="authNumber">
           {errors.authNumber?.message ?? '인증번호'}
         </label>
-        <div className={$['row']}>
+        <div className={$.row}>
           <input
             type="text"
-            className={cx($['input'], {
-              [$['error']]: errors.phoneNumber,
+            className={cx($.input, {
+              [$.error]: errors.phoneNumber,
             })}
             id="authNumber"
             {...register('authNumber')}
           />
-          <span className={$['timer']}>
+          <span className={$.timer}>
             <AuthTimer />
           </span>
         </div>

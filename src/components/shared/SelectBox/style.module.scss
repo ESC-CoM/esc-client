@@ -1,0 +1,69 @@
+@import 'styles/main.scss';
+
+.select-box {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  @include border(border, $borderButtonRadius, $gray-250);
+
+  button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    color: $primary;
+    white-space: nowrap;
+  }
+}
+
+.select-wrapper {
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  @include border(border, $borderButtonRadius, $gray-250);
+  background-color: $white;
+
+  .select-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 10px;
+    border-bottom: 1px solid $gray-250;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:first-child {
+      border-radius: $borderButtonRadius $borderButtonRadius 0 0;
+    }
+
+    &:last-child {
+      border: 0;
+      border-radius: 0 0 $borderButtonRadius $borderButtonRadius;
+    }
+
+    &-clicked {
+      background-color: $primary-transparent;
+      font-weight: 600;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $primary-transparent;
+      font-weight: 600;
+    }
+  }
+}
+
+.arrow {
+  margin: 0 0 0 5px;
+  &-clicked {
+    transform: rotate(180deg);
+  }
+}

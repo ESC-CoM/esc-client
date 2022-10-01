@@ -13,7 +13,7 @@ interface Props {
 
 export function BirthInput({ register, errorMessage }: Props) {
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label
         textContent="태어난 연도"
         fontSize={15}
@@ -21,10 +21,10 @@ export function BirthInput({ register, errorMessage }: Props) {
         errorMsg={errorMessage}
       />
 
-      <div className={$['row']}>
+      <div className={$.row}>
         <span
-          className={cx($['year'], {
-            [$['error']]: errorMessage,
+          className={cx($.year, {
+            [$.error]: errorMessage,
           })}
         >
           <input
