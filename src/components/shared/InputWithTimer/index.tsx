@@ -16,7 +16,7 @@ type DefaultProps = {
 
 type RegisterProps = {
   proptype: 'register';
-  register: () => UseFormRegisterReturn;
+  register: UseFormRegisterReturn;
 } & DefaultProps;
 
 type ControlledProps = {
@@ -37,20 +37,15 @@ export default function InputWithTimer({
 }: Props) {
   return (
     <div className={cx($['auth-number-input-container'], className)}>
-      {props.proptype === 'register' ? (
-        <Input
-          proptype="register"
-          register={props.register}
-          {...{ label, labelErrorMessage, bottomErrorMessage, placeholder }}
-        />
-      ) : (
-        <Input
-          proptype="controlled"
-          value={props.value}
-          onChange={props.onChange}
-          {...{ label, labelErrorMessage, bottomErrorMessage, placeholder }}
-        />
-      )}
+      <Input
+        {...{
+          label,
+          placeholder,
+          labelErrorMessage,
+          bottomErrorMessage,
+          ...props,
+        }}
+      />
       <AuthTimer className={$.timer} />
     </div>
   );

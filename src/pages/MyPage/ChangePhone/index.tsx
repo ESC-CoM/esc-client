@@ -14,8 +14,11 @@ export default function ChangePhone() {
           <br /> 새로운 전화번호를 인증해주세요.
         </p>
         <InputWithButton
+          proptype="controlled"
+          value=""
+          onChange={() => console.log('')}
           onClick={() => console.log('clicked')}
-          labelText="휴대폰 번호"
+          label="휴대폰 번호"
           buttonText="인증번호 받기"
         />
         <InputWithTimer
