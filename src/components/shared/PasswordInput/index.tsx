@@ -12,15 +12,16 @@ type DefaultProps = {
   className?: string;
   placeholder?: string;
   errorMessage?: string;
+  label: string;
 };
 
 type RegisterProps = {
-  propType: 'register';
+  proptype: 'register';
   register: UseFormRegisterReturn;
 } & DefaultProps;
 
 type ControlledProps = {
-  propType: 'controlled';
+  proptype: 'controlled';
   value?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 } & DefaultProps;
@@ -28,6 +29,7 @@ type ControlledProps = {
 type Props = RegisterProps | ControlledProps;
 export default function PasswordInput({
   className,
+  label,
   errorMessage,
   placeholder,
   ...props
@@ -39,7 +41,7 @@ export default function PasswordInput({
   return (
     <div className={className}>
       <Label
-        textContent="비밀번호"
+        textContent={label}
         fontSize={15}
         htmlFor="password"
         errorMsg={errorMessage}
@@ -52,8 +54,8 @@ export default function PasswordInput({
           placeholder={placeholder}
           type={isEncrypted ? 'text' : 'password'}
           id="password"
-          {...(props.propType === 'register' && props.register)}
-          {...(props.propType === 'controlled' && props)}
+          {...(props.proptype === 'register' && props.register)}
+          {...(props.proptype === 'controlled' && props)}
         />
         <button
           type="button"
