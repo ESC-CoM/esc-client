@@ -23,7 +23,7 @@ export function MbtiSelect({ mbti, setValue, errors }: Props) {
   };
 
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label
         textContent="MBTI"
         fontSize={15}
@@ -34,8 +34,8 @@ export function MbtiSelect({ mbti, setValue, errors }: Props) {
         <input
           type="button"
           className={cx({
-            [$['error']]: errors?.message,
-            [$['mbti']]: mbti,
+            [$.error]: errors?.message,
+            [$.mbti]: mbti,
           })}
           value={mbti || '선택'}
           onClick={handleClick}

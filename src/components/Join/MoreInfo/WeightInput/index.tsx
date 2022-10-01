@@ -12,15 +12,15 @@ interface Props {
 
 export function WeightInput({ value, register }: Props) {
   return (
-    <div className={$['item']}>
+    <div className={$.item}>
       <Label textContent="몸무게" fontSize={15} htmlFor="weight" />
 
-      <span className={$['info']}>
+      <span className={$.info}>
         {weightInfo.filter((mark) => value == mark.value)[0].label}
       </span>
       <input
         type="range"
-        className={$['input']}
+        className={$.input}
         id="weight"
         min="35"
         max="90"

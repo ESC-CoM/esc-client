@@ -17,11 +17,11 @@ interface Props {
 function FriendWithCheck(friendProps: Props) {
   const { src, name, isVertical, isChecked, handleClick } = friendProps;
   return (
-    <div className={$['wrap']} onClick={handleClick}>
+    <div className={$.wrap} onClick={handleClick}>
       <Friend {...{ src, name, isVertical }} padding={7} paddingLeft={15} />
       <button
         type="button"
-        className={cx($['select-btn'], { [$['selected']]: isChecked })}
+        className={cx($['select-btn'], { [$.selected]: isChecked })}
       >
         {isChecked ? <FaCheckCircle /> : <FaRegCircle />}
       </button>

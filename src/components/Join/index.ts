@@ -1,5 +1,4 @@
 export { default as PhoneAuth } from './BasicInfo/PhoneAuth';
-export { default as BirthInput } from './MoreInfo/BirthInput';
 export { default as Drink } from './MoreInfo/Drink';
 export { default as GenderInput } from './MoreInfo/GenderInput';
 export { default as HeightInput } from './MoreInfo/HeightInput';

@@ -11,13 +11,17 @@ interface Props {
   children: ReactNode;
   headerHeight?: number;
   decreaseHeight?: number;
+  customHeader?: React.ReactNode;
 }
 
 function PageLayout(
-  { isNeedFooter, children, headerHeight = 0, decreaseHeight = 0 }: Props,
+  layoutProps: Props,
   ref: ForwardedRef<HTMLDivElement> | null
 ) {
+  const { isNeedFooter, children, customHeader } = layoutProps;
+  const { headerHeight = 0, decreaseHeight = 0 } = layoutProps;
   const location = useLocation();
+  const hasHeaderChildren = (url: string) => location.pathname.match(url);
   const footerHeight = isNeedFooter ? 55 : 0;
 
   useEffect(() => {
@@ -30,12 +34,15 @@ function PageLayout(
 
   return (
     <>
-      {headerHeight > 0 &&
+      {!customHeader &&
+        headerHeight > 0 &&
         headerChildren.map(({ children, url }) => {
-          if (location.pathname.match(url))
+          if (hasHeaderChildren(url))
             return <Header key={url} children={children} />;
           return <Header key={url} />;
         })}
+      {customHeader && <Header {...{ customHeader }} />}
+
       <main
         className={style.layout}
         ref={ref}
