@@ -8,6 +8,7 @@ const LinkTypePlugin =
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const isAnalyze = process.argv.includes('--analyze');
 const isProduction = process.env.NODE_ENV === 'production';
@@ -91,6 +92,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     new webpack.DefinePlugin({}),
     new LinkTypePlugin({
       '**/*.css': 'text/css',
