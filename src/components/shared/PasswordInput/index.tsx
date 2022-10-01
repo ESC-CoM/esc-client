@@ -13,6 +13,7 @@ type DefaultProps = {
   placeholder?: string;
   errorMessage?: string;
   label: string;
+  id: string;
 };
 
 type RegisterProps = {
@@ -32,6 +33,7 @@ export default function PasswordInput({
   label,
   errorMessage,
   placeholder,
+  id,
   ...props
 }: Props) {
   const [isEncrypted, setIsEncrypted] = useState(false);
@@ -43,7 +45,7 @@ export default function PasswordInput({
       <Label
         textContent={label}
         fontSize={15}
-        htmlFor="password"
+        htmlFor={id}
         errorMsg={errorMessage}
       />
       <div className={$['input-container']}>
@@ -51,9 +53,8 @@ export default function PasswordInput({
           className={cx($.input, {
             [$.error]: errorMessage,
           })}
-          placeholder={placeholder}
           type={isEncrypted ? 'text' : 'password'}
-          id="password"
+          {...{ id, placeholder }}
           {...(props.proptype === 'register' && props.register)}
           {...(props.proptype === 'controlled' && props)}
         />

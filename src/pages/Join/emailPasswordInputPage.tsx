@@ -50,6 +50,7 @@ export default function EmailPasswordInputPage() {
           />
           <PasswordInput
             label="비밀번호"
+            id="password"
             proptype="register"
             className={$.input}
             register={register('password')}
