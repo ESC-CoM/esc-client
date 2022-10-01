@@ -82,6 +82,11 @@ const menusLeft: MenuType[] = [
     text: '비밀번호 변경',
     url: '/mypage/change/password',
   },
+  {
+    icon: <IoChevronBack />,
+    text: '전화번호 번경',
+    url: '/mypage/change/phone',
+  },
 ];
 
 const menusRight: MenuType[] = [

@@ -7,12 +7,11 @@ import {
   UseFormSetValue,
   UseFormWatch,
 } from 'react-hook-form';
-import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
+import InputWithTimer from 'src/components/shared/InputWithTimer';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
 
-import AuthTimer from '../AuthTimer';
 import $ from './style.module.scss';
 
 interface Props {
@@ -69,17 +68,14 @@ export default function PhoneAuth({
         labelText="휴대폰 번호"
         buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
       />
-      <div className={$['auth-number-input-container']}>
-        <Input
-          className={$['auth-number-input']}
-          label="인증번호"
-          proptype="register"
-          register={() => register('authNumber')}
-          labelErrorMessage={errors.authNumber?.message}
-          bottomErrorMessage={errors.isAuthed?.message}
-        />
-        <AuthTimer className={$.timer} />
-      </div>
+      <InputWithTimer
+        className={$['auth-number-input']}
+        proptype="register"
+        register={() => register('authNumber')}
+        label="인증번호"
+        labelErrorMessage={errors.authNumber?.message}
+        bottomErrorMessage={errors.isAuthed?.message}
+      />
     </section>
   );
 }
