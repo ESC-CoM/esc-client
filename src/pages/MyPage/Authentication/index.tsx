@@ -27,6 +27,7 @@ export default function () {
         </p>
         <PasswordInput
           label="비밀번호"
+          id="password"
           className={$['password-input']}
           proptype="controlled"
           onChange={handlePasswordChange}

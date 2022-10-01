@@ -23,13 +23,13 @@ export default function Select() {
           className={$['change-info-item']}
           title="이메일"
           value={PERSONAL_INFORMATIONS.email}
-          href=""
+          href="../change/email"
         />
         <ChangeInfoItem
           className={$['change-info-item']}
           title="전화번호"
           value={PERSONAL_INFORMATIONS.phoneNumber}
-          href=""
+          href="../change/phone"
         />
         <ChangeInfoItem
           className={$['change-info-item']}
