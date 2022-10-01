@@ -1,5 +1,4 @@
 import { ChangeEventHandler, useState } from 'react';
-import { useEffect } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
@@ -43,23 +42,17 @@ export default function PhoneAuth({
   const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
   }) => {
-    const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(value)) {
-      setValue('phoneNumber', value);
-    }
+    insertAutoHyphen({
+      phoneNumber: value,
+      setPhoneNumber: (number) => setValue('phoneNumber', number),
+    });
   };
-
-  useEffect(() => {
-    if (phoneNumber) {
-      insertAutoHyphen({ phoneNumber, setValue });
-    }
-  }, [phoneNumber]);
 
   return (
     <section className={$['phone-auth']}>
       <h1>휴대폰 인증을 해주세요</h1>
       <InputWithButton
-        type="number"
+        type="text"
         proptype="controlled"
         className={$['input-with-button']}
         onClick={sendPhoneNum}

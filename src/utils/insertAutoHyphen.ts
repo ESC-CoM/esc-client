@@ -1,31 +1,34 @@
-import { UseFormSetValue } from 'react-hook-form';
-import { PhoneAuthType } from 'src/types/join';
-
-interface Props {
+type Props = {
   phoneNumber: string;
-  setValue: UseFormSetValue<PhoneAuthType>;
-}
+  setPhoneNumber: (number: string) => void;
+};
 
-export default function insertAutoHyphen({ phoneNumber, setValue }: Props) {
-  if (phoneNumber.length === 4) {
-    setValue(
-      'phoneNumber',
+export default function insertAutoHyphen({
+  phoneNumber,
+  setPhoneNumber,
+}: Props) {
+  const length = phoneNumber.length;
+  const isNumberOrHyphen = /^[0-9-]*$/.test(phoneNumber);
+
+  if (!isNumberOrHyphen || length > 13) return;
+
+  if (length === 4) {
+    setPhoneNumber(
       phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{1})/, '$1-$2')
     );
     return;
   }
-  if (phoneNumber.length === 10) {
-    setValue(
-      'phoneNumber',
+  if (length === 10) {
+    setPhoneNumber(
       phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{2})/, '$1-$2-$3')
     );
     return;
   }
-  if (phoneNumber.length === 13) {
-    setValue(
-      'phoneNumber',
+  if (length === 13) {
+    setPhoneNumber(
       phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
     );
     return;
   }
+  setPhoneNumber(phoneNumber);
 }
