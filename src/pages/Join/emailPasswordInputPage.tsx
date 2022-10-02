@@ -5,6 +5,7 @@ import { EmailPasswordYup } from 'src/components/Join/BasicInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import PasswordInput from 'src/components/shared/PasswordInput';
+import { useEmailDuplicateQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
 import { EmailPasswordType } from 'src/types/join';
 
@@ -16,6 +17,7 @@ const NEXT_PATH = '/join/more1';
 export default function EmailPasswordInputPage() {
   const { setJoinInfo } = useStore();
   const {
+    watch,
     register,
     setValue,
     handleSubmit,
@@ -23,6 +25,7 @@ export default function EmailPasswordInputPage() {
   } = useForm<EmailPasswordType>({
     resolver: yupResolver(EmailPasswordYup),
   });
+
   const navigate = useNavigate();
 
   const onSubmit = (data: EmailPasswordType) => {
@@ -31,8 +34,12 @@ export default function EmailPasswordInputPage() {
     navigate(NEXT_PATH);
   };
 
-  const handleDuplicationCheckButton = () =>
+  const { data, refetch } = useEmailDuplicateQuery(watch('email'));
+
+  const handleDuplicationCheckButton = () => {
     setValue('isDuplicationChecked', true);
+    refetch();
+  };
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
