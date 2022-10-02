@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import { Term } from 'src/components/Join';
 import Modal from 'src/components/shared/BottomModal';
 import FooterButton from 'src/components/shared/FooterButton';
+import HeightInput from 'src/components/shared/HeightInput';
 import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 
-import { Drink, HeightInput, WeightInput } from '../../components/Join';
+import { Drink, WeightInput } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
 import $ from './style.module.scss';
 
@@ -37,7 +38,11 @@ export default function MoreInfoPage2() {
       <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <HeightInput value={height} register={register('height')} />
+          <HeightInput
+            className={$.input}
+            value={height}
+            register={register('height')}
+          />
           <WeightInput value={weight} register={register('weight')} />
           <Drink value={drink} setValue={setValue} />
           <FooterButton text="다음" type="submit" />

@@ -1,3 +1,4 @@
+import FooterButton from 'src/components/shared/FooterButton';
 import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { PageLayout } from 'src/components/shared/Layout';
@@ -10,7 +11,7 @@ export default function ChangeAdditionalInfo() {
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
-      <div className={$.container}>
+      <form className={$.container}>
         <InputWithButton
           type="text"
           proptype="controlled"
@@ -30,7 +31,8 @@ export default function ChangeAdditionalInfo() {
           value=""
         />
         <MBTISelect mbti="" setMBTI={setMBTI} />
-      </div>
+        <FooterButton text="변경하기" type="submit" />
+      </form>
     </PageLayout>
   );
 }
