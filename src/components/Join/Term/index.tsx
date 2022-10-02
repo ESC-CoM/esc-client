@@ -9,7 +9,7 @@ import { terms } from 'src/__mocks__/join';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
 import { useRegisterQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
-import { UserInfo } from 'src/store/useStore';
+import { UserStoreInfo } from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';
 import getUUID from 'src/utils/getUUID';
 
@@ -70,7 +70,7 @@ export default function Term() {
     checkAllChecked();
   }, [watch()]);
 
-  const changeKeyName = (userInfo: UserInfo) => {
+  const changeKeyName = (userInfo: UserStoreInfo) => {
     const newUserInfo: any = { ...userInfo };
     newUserInfo.phone = newUserInfo.phoneNumber;
     delete newUserInfo.phoneNumber;
@@ -85,7 +85,7 @@ export default function Term() {
 
     delete newUserInfo.authNumber;
 
-    newUserInfo.gender = newUserInfo.gender === '남' ? 'man' : 'woman';
+    newUserInfo.gender = newUserInfo.gender === '남' ? 'men' : 'women';
 
     newUserInfo.studentIdAuthenticationKey = getUUID();
 
