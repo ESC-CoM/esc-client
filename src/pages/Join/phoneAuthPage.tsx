@@ -12,7 +12,7 @@ import { PageLayout } from '../../components/shared/Layout';
 const NEXT_PATH = '/join/email';
 
 export default function PhoneAuthPage() {
-  const { setJoinInfo } = useStore();
+  const { userInfo, setJoinInfo } = useStore();
   const {
     watch,
     register,
@@ -37,6 +37,10 @@ export default function PhoneAuthPage() {
   };
   const onSubmit = (data: PhoneAuthType) => {
     const { phoneNumber, authNumber } = data;
+
+    if (phoneNumber !== userInfo.phoneNumber) {
+      return alert('휴대폰 인증이 필요합니다'); // TODO: 토스트 메세지
+    }
     setJoinInfo({ phoneNumber, authNumber });
     navigate(NEXT_PATH);
   };

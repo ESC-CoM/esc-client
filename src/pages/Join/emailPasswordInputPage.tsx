@@ -15,7 +15,7 @@ import $ from './style.module.scss';
 const NEXT_PATH = '/join/more1';
 
 export default function EmailPasswordInputPage() {
-  const { setJoinInfo } = useStore();
+  const { userInfo, setJoinInfo } = useStore();
   const {
     watch,
     register,
@@ -30,14 +30,19 @@ export default function EmailPasswordInputPage() {
 
   const onSubmit = (data: EmailPasswordType) => {
     const { email, password } = data;
+    if (email !== userInfo.email) {
+      return alert('이메일 중복 검사가 필요합니다'); // TODO: 토스트 메세지
+    }
     setJoinInfo({ email, password });
     navigate(NEXT_PATH);
   };
 
   const { data, refetch } = useEmailDuplicateQuery(watch('email'));
+  console.log(data);
 
   const handleDuplicationCheckButton = () => {
     setValue('isDuplicationChecked', true);
+    setJoinInfo({ email: watch('email') });
     refetch();
   };
 

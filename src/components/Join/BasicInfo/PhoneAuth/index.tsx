@@ -9,6 +9,7 @@ import {
 } from 'react-hook-form';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import InputWithTimer from 'src/components/shared/InputWithTimer';
+import useStore from 'src/store/useStore';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
 
@@ -29,12 +30,14 @@ export default function PhoneAuth({
   setFocus,
   errors,
 }: Props) {
+  const { setJoinInfo } = useStore();
   const phoneNumber = watch('phoneNumber');
   const [sendCount, setSendCount] = useState(0);
 
   const sendPhoneNum = () => {
     setSendCount(sendCount + 1);
     setValue('isReceivedAuthNum', true);
+    setJoinInfo({ phoneNumber });
 
     setFocus('authNumber');
     console.log('clicked');
