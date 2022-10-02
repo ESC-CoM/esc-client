@@ -1,10 +1,13 @@
 import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { PageLayout } from 'src/components/shared/Layout';
+import { MBTISelect } from 'src/components/shared/MBTISelect';
 
 import $ from './style.module.scss';
 
 export default function ChangeAdditionalInfo() {
+  const setMBTI = (mbti: string) => console.log(mbti);
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       <div className={$.container}>
@@ -26,6 +29,7 @@ export default function ChangeAdditionalInfo() {
           placeholder="년도(4자)"
           value=""
         />
+        <MBTISelect mbti="" setMBTI={setMBTI} />
       </div>
     </PageLayout>
   );
