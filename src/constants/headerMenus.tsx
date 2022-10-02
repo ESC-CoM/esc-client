@@ -92,6 +92,11 @@ const menusLeft: MenuType[] = [
     text: '이메일 변경',
     url: '/mypage/change/email',
   },
+  {
+    icon: <IoChevronBack />,
+    text: '추가 정보 수정',
+    url: '/mypage/change/additional-info',
+  },
 ];
 
 const menusRight: MenuType[] = [

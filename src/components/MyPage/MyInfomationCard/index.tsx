@@ -1,6 +1,7 @@
 import { AiOutlineMan } from '@react-icons/all-files/ai/AiOutlineMan';
 import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward';
 import cx from 'classnames';
+import { Link } from 'react-router-dom';
 import {
   MOCK_BASIC_INFORMATION,
   MOCK_BODY_DATA,
@@ -17,7 +18,7 @@ type Prop = {
 
 export default function MyInformationCard({ className }: Prop) {
   return (
-    <div className={cx($.container, className)}>
+    <Link className={cx($.container, className)} to="./change/additional-info">
       <div className={$['left-box']}>
         <div className={$['profile-image-container']}>
           <PersonalProfileImage
@@ -50,6 +51,6 @@ export default function MyInformationCard({ className }: Prop) {
         </div>
       </div>
       <IoIosArrowForward className={$.button} />
-    </div>
+    </Link>
   );
 }
