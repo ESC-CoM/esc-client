@@ -7,8 +7,11 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
+import { useRegisterQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
+import { UserInfo } from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';
+import getUUID from 'src/utils/getUUID';
 
 import $ from './style.module.scss';
 import TermsSchema from './yup';
@@ -21,7 +24,6 @@ export type Props = {
 const NEXT_PATH = '/join/welcome';
 
 export default function Term() {
-  const { userInfo } = useStore();
   const navigate = useNavigate();
   const {
     watch,
@@ -68,8 +70,38 @@ export default function Term() {
     checkAllChecked();
   }, [watch()]);
 
+  const changeKeyName = (userInfo: UserInfo) => {
+    const newUserInfo: any = { ...userInfo };
+    newUserInfo.phone = newUserInfo.phoneNumber;
+    delete newUserInfo.phoneNumber;
+
+    newUserInfo.amountOfAlchol = newUserInfo.drink * 10;
+    delete newUserInfo.drink;
+
+    const { year } = newUserInfo;
+    const birth = `${year}`;
+    newUserInfo.birth = birth;
+    delete newUserInfo.year;
+
+    delete newUserInfo.authNumber;
+
+    newUserInfo.gender = newUserInfo.gender === '남' ? 'man' : 'woman';
+
+    newUserInfo.studentIdAuthenticationKey = getUUID();
+
+    return newUserInfo as res.UserInfo;
+  };
+
+  const { userInfo, setJoinInfo } = useStore();
+  const userData = changeKeyName(userInfo);
+
+  const { refetch } = useRegisterQuery(userData);
   const onSubmit = (data: TermSchema) => {
-    if (allChecked) navigate(NEXT_PATH);
+    if (allChecked) {
+      setJoinInfo({ isAgree: true });
+      refetch();
+      navigate(NEXT_PATH);
+    }
   };
 
   return (
