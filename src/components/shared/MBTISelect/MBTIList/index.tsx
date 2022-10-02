@@ -1,4 +1,5 @@
-import { mbtiList } from '../../../Join/MoreInfo/data';
+import MBTI_LIST from 'src/constants/MBTI';
+
 import $ from './style.module.scss';
 
 type Props = {
@@ -14,7 +15,7 @@ export default function MBTIList({ setMBTI, onClose }: Props) {
 
   return (
     <ul>
-      {mbtiList.map((value) => (
+      {MBTI_LIST.map((value) => (
         <li
           key={value}
           className={$['mbti-element']}
