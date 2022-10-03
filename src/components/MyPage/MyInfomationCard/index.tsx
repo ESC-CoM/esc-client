@@ -22,7 +22,7 @@ export default function MyInformationCard({ className }: Prop) {
       <div className={$['left-box']}>
         <div className={$['profile-image-container']}>
           <PersonalProfileImage
-            alt={''}
+            userName={''}
             src={MOCK_URL}
             width={60}
             height={60}

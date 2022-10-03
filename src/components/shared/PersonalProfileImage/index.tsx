@@ -3,18 +3,18 @@ import BasicProfile from 'src/components/shared/Icon/BasicProfile';
 
 import $ from './style.module.scss';
 
-interface Props {
+type Props = {
   id?: string;
-  alt: string;
+  userName: string;
   src: string;
   width: number;
   height: number;
   onClick?: (userId: string) => void;
-}
+};
 
 export function PersonalProfileImage({
   id,
-  alt,
+  userName,
   src,
   width,
   height,
@@ -28,7 +28,11 @@ export function PersonalProfileImage({
         if (onClick && id) onClick(id);
       }}
     >
-      {src ? <img src={src} alt={`${alt}의 프로필 사진`} /> : <BasicProfile />}
+      {src ? (
+        <img src={src} alt={`${userName}의 프로필 사진`} />
+      ) : (
+        <BasicProfile width={width} />
+      )}
     </div>
   );
 }

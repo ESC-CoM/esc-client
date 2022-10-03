@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
+import { MOCK_URL } from 'src/__mocks__/mypageMocks';
 import FooterButton from 'src/components/shared/FooterButton';
 import { HeightInput } from 'src/components/shared/HeightInput';
 import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import { MBTISelect } from 'src/components/shared/MBTISelect';
+import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import { WeightInput } from 'src/components/shared/WeightInput';
 import MBTI_LIST from 'src/constants/MBTI';
 
@@ -37,6 +39,12 @@ export default function ChangeAdditionalInfo() {
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       <form className={$.container} onSubmit={onSubmit}>
+        <PersonalProfileImage
+          userName="프로필"
+          src={MOCK_URL}
+          width={80}
+          height={80}
+        />
         <InputWithButton
           type="text"
           proptype="register"
