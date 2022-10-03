@@ -95,11 +95,12 @@ export default function Term() {
   const { userInfo, setJoinInfo } = useStore();
   const userData = changeKeyName(userInfo);
 
-  const { refetch } = useRegisterQuery(userData);
+  const { data } = useRegisterQuery(userData);
+  console.log(data);
+
   const onSubmit = (data: TermSchema) => {
     if (allChecked) {
       setJoinInfo({ isAgree: true });
-      refetch();
       navigate(NEXT_PATH);
     }
   };

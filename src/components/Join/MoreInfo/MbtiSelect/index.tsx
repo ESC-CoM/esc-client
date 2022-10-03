@@ -37,7 +37,7 @@ export function MbtiSelect({ mbti, setValue, errorMessage }: Props) {
             [$.error]: errorMessage,
             [$.mbti]: mbti,
           })}
-          value={mbti}
+          defaultValue={mbti || ''}
           placeholder="선택"
           onClick={handleClick}
         />

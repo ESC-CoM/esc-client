@@ -24,8 +24,8 @@ export default function MoreInfoPage2() {
   };
 
   const onSubmit = (data: More2Type) => {
-    const more2Info = { height, weight, drink };
-    setJoinInfo(more2Info);
+    const { height, weight, drink } = data;
+    setJoinInfo({ height: +height, weight: +weight, drink });
 
     if (!isTermsOpen) {
       setIsTermsOpen(true);
