@@ -4,10 +4,9 @@ import { FiCheck } from '@react-icons/all-files/fi/FiCheck';
 import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight';
 import cx from 'classnames';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
-import { useRegisterQuery } from 'src/hooks/api/join';
+import { useRegister } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
 import { UserStoreInfo } from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';
@@ -21,10 +20,7 @@ export type Props = {
   onClose: () => void;
 };
 
-const NEXT_PATH = '/join/welcome';
-
 export default function Term() {
-  const navigate = useNavigate();
   const {
     watch,
     handleSubmit,
@@ -93,15 +89,15 @@ export default function Term() {
   };
 
   const { userInfo, setJoinInfo } = useStore();
-  const userData = changeKeyName(userInfo);
 
-  const { data } = useRegisterQuery(userData);
-  console.log(data);
+  const { mutate } = useRegister();
 
   const onSubmit = (data: TermSchema) => {
     if (allChecked) {
       setJoinInfo({ isAgree: true });
-      navigate(NEXT_PATH);
+
+      const userData = changeKeyName(userInfo);
+      mutate(userData);
     }
   };
 

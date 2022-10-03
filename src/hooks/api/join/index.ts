@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
@@ -5,7 +6,7 @@ import {
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
 
-import { useCoreQuery } from '../core';
+import { useCoreMutation, useCoreQuery } from '../core';
 
 export const useEmailDuplicateQuery = (email: string) => {
   return useCoreQuery(
@@ -27,12 +28,17 @@ export const useNicknameDuplicateQuery = (nickname: string) => {
   );
 };
 
-export const useRegisterQuery = (userInfo: res.UserInfo) => {
-  return useCoreQuery(
-    queryKey.registerFunc(userInfo),
-    () => register(userInfo),
-    {
-      enabled: !!userInfo.isAgree,
-    }
-  );
+const NEXT_PATH = '/join/welcome';
+
+export const useRegister = () => {
+  return useCoreMutation(register, {
+    onSuccess: (data) => {
+      // const { message, data } = data;
+      // console.log(message); // TODO: 토스트 메시지
+      Navigate({ to: NEXT_PATH });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 };
