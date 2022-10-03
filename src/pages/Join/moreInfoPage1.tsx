@@ -5,6 +5,7 @@ import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
 import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
+import { useNicknameDuplicateQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
 import { More1Type } from 'src/types/join';
 
@@ -15,7 +16,7 @@ import $ from './style.module.scss';
 const NEXT_PATH = '/join/more2';
 
 export default function MoreInfoPage1() {
-  const { setJoinInfo } = useStore();
+  const { userInfo, setJoinInfo } = useStore();
 
   const navigate = useNavigate();
   const {
@@ -27,20 +28,23 @@ export default function MoreInfoPage1() {
   } = useForm<More1Type>({
     resolver: yupResolver(MoreJoinSchema),
   });
-  const [nickName, gender, year, mbti] = watch([
-    'nickName',
-    'gender',
-    'year',
-    'mbti',
-  ]);
+  const [gender, mbti] = watch(['gender', 'mbti']);
+
   const onSubmit = (data: More1Type) => {
-    const more1Info = { nickName, gender, year, mbti };
-    setJoinInfo(more1Info);
+    if (data.nickName !== userInfo.nickName) {
+      return alert('별명 중복 검사가 필요합니다'); // TODO: 토스트 메세지
+    }
+    setJoinInfo(data);
     navigate(NEXT_PATH);
   };
 
-  const handleDuplicationButtonClick = () =>
+  const { data } = useNicknameDuplicateQuery(watch('nickName'));
+  console.log(data);
+
+  const handleDuplicationButtonClick = () => {
+    setJoinInfo({ nickName: watch('nickName') });
     setValue('isDuplicationChecked', true);
+  };
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
@@ -70,7 +74,11 @@ export default function MoreInfoPage1() {
             register={() => register('year')}
             label="태어난 년도"
           />
-          <MbtiInput mbti={mbti} setValue={setValue} errors={errors.mbti} />
+          <MbtiInput
+            mbti={mbti}
+            setValue={setValue}
+            errorMessage={errors.mbti?.message}
+          />
           <FooterButton text="다음" type="submit" />
         </form>
       </section>

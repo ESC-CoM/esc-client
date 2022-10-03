@@ -1,4 +1,8 @@
-import { checkEmailDuplicate, register } from 'src/api/join';
+import {
+  checkEmailDuplicate,
+  checkNicknameDuplicate,
+  register,
+} from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
 
 import { useCoreQuery } from '../core';
@@ -9,6 +13,16 @@ export const useEmailDuplicateQuery = (email: string) => {
     () => checkEmailDuplicate(email),
     {
       enabled: !!email,
+    }
+  );
+};
+
+export const useNicknameDuplicateQuery = (nickname: string) => {
+  return useCoreQuery(
+    queryKey.checkNicknameDuplicateFunc(nickname),
+    () => checkNicknameDuplicate(nickname),
+    {
+      enabled: !!nickname,
     }
   );
 };

@@ -1,7 +1,6 @@
 import * as yup from 'yup';
 
 const MoreJoinSchema = yup.object({
-  // 원활한 테스트를 위해 임시 주석처리
   nickName: yup
     .string()
     .min(2, '최소 2자 이상 입력해주세요.')
@@ -14,7 +13,7 @@ const MoreJoinSchema = yup.object({
     .min(4, '연도를 정확하게 입력해주세요.')
     .max(4, '연도를 정확하게 입력해주세요.')
     .required('생년월일을 선택해주세요.'),
-  mbti: yup.string().min(4, 'MBTI를 선택해주세요.'),
+  mbti: yup.string().required('MBTI를 선택해주세요.'),
 });
 
 export default MoreJoinSchema;

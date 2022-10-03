@@ -6,6 +6,9 @@ export const queryKey = {
   checkEmailDuplicateFunc: (email: string) => {
     return ['checkEmailDuplicate', { email }];
   },
+  checkNicknameDuplicateFunc: (nickname: string) => {
+    return ['checkNicknameDuplicate', { nickname }];
+  },
   registerFunc: (userInfo: res.UserInfo) => {
     return ['register', { userInfo }];
   },

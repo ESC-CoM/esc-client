@@ -1,7 +1,12 @@
 import { http } from 'src/api/core';
 
 const checkEmailDuplicate = async (email: string): Promise<string> => {
-  const response = await http.get(`/api/auth/duplicates/${email}`);
+  const response = await http.get(`/api/auth/duplicates/email/${email}`);
+  return response.data;
+};
+
+const checkNicknameDuplicate = async (nickname: string): Promise<string> => {
+  const response = await http.get(`/api/auth/duplicates/nickname/${nickname}`);
   return response.data;
 };
 
@@ -10,4 +15,4 @@ const register = async (userInfo: res.UserInfo): Promise<number> => {
   return response.data;
 };
 
-export { checkEmailDuplicate, register };
+export { checkEmailDuplicate, checkNicknameDuplicate, register };
