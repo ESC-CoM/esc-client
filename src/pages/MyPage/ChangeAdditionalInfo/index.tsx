@@ -1,5 +1,6 @@
-import { ChangeEventHandler, useEffect, useState } from 'react';
+import { ChangeEventHandler, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { MOCK_URL } from 'src/__mocks__/mypageMocks';
 import DrinkInput from 'src/components/shared/DrinkInput';
 import FooterButton from 'src/components/shared/FooterButton';
@@ -13,7 +14,9 @@ import { WeightInput } from 'src/components/shared/WeightInput';
 import { MBTIType } from 'src/types/join';
 
 import $ from './style.module.scss';
+
 type FormData = {
+  profileImageURL: string;
   nickName: string;
   isDuplicationChecked: boolean;
   birthYear: number;
@@ -21,6 +24,16 @@ type FormData = {
   height: number;
   weight: number;
   drink: number;
+};
+
+const ADDITIONAL_INFO_MOCKS = {
+  profileImageURL: MOCK_URL,
+  nickName: '블루스',
+  birthYear: 2000,
+  MBTI: 'ISTJ' as const,
+  height: 170,
+  weight: 55,
+  drink: 0,
 };
 
 export default function ChangeAdditionalInfo() {
@@ -33,11 +46,32 @@ export default function ChangeAdditionalInfo() {
   } = useForm<FormData>({
     defaultValues: { height: 165, weight: 60, drink: 0 },
   });
-  const [profileImage, setProfileImage] = useState('');
+  const navigate = useNavigate();
 
-  useEffect(() => setProfileImage(MOCK_URL), []);
+  useEffect(() => {
+    const {
+      profileImageURL,
+      nickName,
+      birthYear,
+      MBTI,
+      height,
+      weight,
+      drink,
+    } = ADDITIONAL_INFO_MOCKS;
+    // TODO: 유저 정보를 받아와서 defaultValues로 설정해야 함.
+    setValue('profileImageURL', profileImageURL);
+    setValue('nickName', nickName);
+    setValue('birthYear', birthYear);
+    setValue('MBTI', MBTI);
+    setValue('height', height);
+    setValue('weight', weight);
+    setValue('drink', drink);
+  }, []);
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    navigate('/mypage');
+  });
 
   const setMBTI = (mbti: MBTIType) => setValue('MBTI', mbti);
 
@@ -46,10 +80,11 @@ export default function ChangeAdditionalInfo() {
   }) => {
     if (!files) return;
     const file = files[0];
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = ({ target }) => {
       if (!target?.result) return;
-      setProfileImage(target.result as string);
+      setValue('profileImageURL', target.result as string);
     };
     reader.readAsDataURL(file);
   };
@@ -62,7 +97,7 @@ export default function ChangeAdditionalInfo() {
         <label className={$['profile-image']} htmlFor="profile-image">
           <PersonalProfileImage
             userName="프로필"
-            src={profileImage}
+            src={watch('profileImageURL')}
             width={100}
             height={100}
           />
