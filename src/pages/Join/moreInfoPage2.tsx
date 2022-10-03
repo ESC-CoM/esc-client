@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Term } from 'src/components/Join';
 import Modal from 'src/components/shared/BottomModal';
+import { DrinkInput } from 'src/components/shared/DrinkInput';
 import FooterButton from 'src/components/shared/FooterButton';
 import HeightInput from 'src/components/shared/HeightInput';
 import WeightInput from 'src/components/shared/WeightInput';
 import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 
-import { Drink } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
 import $ from './style.module.scss';
 
@@ -34,6 +34,8 @@ export default function MoreInfoPage2() {
     }
   };
 
+  const setDrinkValue = (drink: number) => setValue('drink', drink);
+
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
       <section className={$.container}>
@@ -49,7 +51,11 @@ export default function MoreInfoPage2() {
             value={weight}
             register={register('weight')}
           />
-          <Drink value={drink} setValue={setValue} />
+          <DrinkInput
+            className={$.input}
+            value={drink}
+            setValue={setDrinkValue}
+          />
           <FooterButton text="다음" type="submit" />
         </form>
         {isTermsOpen && (

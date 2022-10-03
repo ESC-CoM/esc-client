@@ -8,7 +8,7 @@ import {
   h_point,
   half_offset_x,
   half_offset_y,
-} from '../components/Join/MoreInfo/Drink/data';
+} from '../components/shared/DrinkInput/data';
 
 export default function adjustDrink(
   e: React.MouseEvent<HTMLElement>,

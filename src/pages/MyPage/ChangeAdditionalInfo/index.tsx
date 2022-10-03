@@ -1,6 +1,7 @@
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { MOCK_URL } from 'src/__mocks__/mypageMocks';
+import DrinkInput from 'src/components/shared/DrinkInput';
 import FooterButton from 'src/components/shared/FooterButton';
 import { HeightInput } from 'src/components/shared/HeightInput';
 import Input from 'src/components/shared/Input';
@@ -52,6 +53,8 @@ export default function ChangeAdditionalInfo() {
     };
     reader.readAsDataURL(file);
   };
+
+  const setDrinkValue = (drink: number) => setValue('drink', drink);
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
@@ -105,6 +108,11 @@ export default function ChangeAdditionalInfo() {
           className={$.input}
           value={watch('weight')}
           register={register('weight')}
+        />
+        <DrinkInput
+          className={$.input}
+          value={watch('drink')}
+          setValue={setDrinkValue}
         />
         <FooterButton text="변경하기" type="submit" />
       </form>
