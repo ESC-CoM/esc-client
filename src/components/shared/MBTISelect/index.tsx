@@ -3,15 +3,16 @@ import { useState } from 'react';
 import cx from 'classnames';
 import Modal from 'src/components/shared/BottomModal';
 import Label from 'src/components/shared/Label';
+import { MBTIType } from 'src/types/join';
 
 import MBTIList from './MBTIList';
 import $ from './style.module.scss';
 
 type Props = {
   className?: string;
-  mbti: string;
+  mbti: MBTIType;
   errors?: string;
-  setMBTI: (mbti: string) => void;
+  setMBTI: (mbti: MBTIType) => void;
 };
 
 export function MBTISelect({ className, mbti, setMBTI, errors }: Props) {

@@ -23,7 +23,7 @@ export function PersonalProfileImage({
   return (
     <div
       className={$['profile-img']}
-      style={{ width: width, height: height }}
+      style={{ width, height }}
       onClick={() => {
         if (onClick && id) onClick(id);
       }}

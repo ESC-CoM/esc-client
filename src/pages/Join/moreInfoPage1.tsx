@@ -7,7 +7,7 @@ import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { MBTISelect } from 'src/components/shared/MBTISelect';
 import useStore from 'src/store/useStore';
-import { More1Type } from 'src/types/join';
+import { MBTIType, More1Type } from 'src/types/join';
 
 import { GenderInput } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
@@ -43,7 +43,7 @@ export default function MoreInfoPage1() {
   const handleDuplicationButtonClick = () =>
     setValue('isDuplicationChecked', true);
 
-  const setMBTI = (mbti: string) => setValue('mbti', mbti);
+  const setMBTI = (mbti: MBTIType) => setValue('mbti', mbti);
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>

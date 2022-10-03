@@ -1,16 +1,17 @@
 import MBTI_LIST from 'src/constants/MBTI';
+import { MBTIType } from 'src/types/join';
 
 import $ from './style.module.scss';
 
 type Props = {
-  setMBTI: (mbti: string) => void;
+  setMBTI: (mbti: MBTIType) => void;
   onClose: () => void;
 };
 
 export default function MBTIList({ setMBTI, onClose }: Props) {
   const handleClick = (value: string) => {
     onClose();
-    setMBTI(value);
+    setMBTI(value as MBTIType);
   };
 
   return (

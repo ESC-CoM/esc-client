@@ -1,3 +1,17 @@
 .container {
-  padding: 20px;
+  padding: 40px 20px 20px;
+
+  .profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hidden-input {
+    display: none;
+  }
+
+  .input {
+    margin-top: 30px;
+  }
 }
