@@ -1,3 +1,4 @@
+import { ChangeEventHandler, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { MOCK_URL } from 'src/__mocks__/mypageMocks';
 import FooterButton from 'src/components/shared/FooterButton';
@@ -31,19 +32,42 @@ export default function ChangeAdditionalInfo() {
   } = useForm<FormData>({
     defaultValues: { height: 165, weight: 60, drink: 0 },
   });
+  const [profileImage, setProfileImage] = useState('');
+
+  useEffect(() => setProfileImage(MOCK_URL), []);
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
   const setMBTI = (mbti: string) => console.log(mbti);
 
+  const handleProfileImageChange: ChangeEventHandler<HTMLInputElement> = ({
+    target: { files },
+  }) => {
+    if (!files) return;
+    const file = files[0];
+    const reader = new FileReader();
+    reader.onload = ({ target }) => {
+      if (!target?.result) return;
+      setProfileImage(target.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       <form className={$.container} onSubmit={onSubmit}>
-        <PersonalProfileImage
-          userName="프로필"
-          src={MOCK_URL}
-          width={80}
-          height={80}
+        <label htmlFor="profile-image">
+          <PersonalProfileImage
+            userName="프로필"
+            src={profileImage}
+            width={80}
+            height={80}
+          />
+        </label>
+        <input
+          type="file"
+          id="profile-image"
+          onChange={handleProfileImageChange}
         />
         <InputWithButton
           type="text"
