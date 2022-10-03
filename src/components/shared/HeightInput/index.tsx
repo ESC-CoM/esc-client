@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
 
-import heightInfo from './getHeightInfo';
+import heightInfo from './heightInfo';
 import $ from './style.module.scss';
 
 type Props = {

@@ -3,11 +3,12 @@
 
 .item {
   position: relative;
-  margin-top: 50px;
+
   .input {
     @include inputRange();
     padding: 10px 0;
   }
+
   .info {
     position: absolute;
     right: 0;

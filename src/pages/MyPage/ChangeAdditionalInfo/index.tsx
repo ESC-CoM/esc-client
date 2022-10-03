@@ -5,6 +5,7 @@ import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import { MBTISelect } from 'src/components/shared/MBTISelect';
+import { WeightInput } from 'src/components/shared/WeightInput';
 import MBTI_LIST from 'src/constants/MBTI';
 
 import $ from './style.module.scss';
@@ -57,6 +58,7 @@ export default function ChangeAdditionalInfo() {
         />
         <MBTISelect mbti="" setMBTI={setMBTI} />
         <HeightInput value={watch('height')} register={register('height')} />
+        <WeightInput value={watch('weight')} register={register('weight')} />
         <FooterButton text="변경하기" type="submit" />
       </form>
     </PageLayout>

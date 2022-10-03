@@ -1,4 +1,4 @@
-export const weightInfo = Array.from({ length: 12 }, (_, index) => {
+const weightInfo = Array.from({ length: 12 }, (_, index) => {
   if (!index)
     return {
       value: 35,
@@ -14,3 +14,5 @@ export const weightInfo = Array.from({ length: 12 }, (_, index) => {
     label: `${35 + 5 * index}kg ~ ${35 + 5 * (index + 1)}kg`,
   };
 });
+
+export default weightInfo;

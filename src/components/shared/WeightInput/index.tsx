@@ -1,20 +1,21 @@
 import { memo } from 'react';
+import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
 
-import { weightInfo } from '../data';
 import $ from './style.module.scss';
+import weightInfo from './weightInfo';
 
-interface Props {
+type Props = {
+  className?: string;
   value: number;
   register: UseFormRegisterReturn;
-}
+};
 
-export function WeightInput({ value, register }: Props) {
+export function WeightInput({ className, value, register }: Props) {
   return (
-    <div className={$.item}>
+    <div className={cx($.item, className)}>
       <Label textContent="몸무게" fontSize={15} htmlFor="weight" />
-
       <span className={$.info}>
         {weightInfo.filter((mark) => value == mark.value)[0].label}
       </span>
