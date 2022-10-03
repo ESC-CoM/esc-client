@@ -1,4 +1,5 @@
 import { ChangeEventHandler, useEffect } from 'react';
+import { AiFillCamera } from '@react-icons/all-files/ai/AiFillCamera';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { MOCK_URL } from 'src/__mocks__/mypageMocks';
@@ -101,6 +102,7 @@ export default function ChangeAdditionalInfo() {
             width={100}
             height={100}
           />
+          <AiFillCamera className={$['camera-icon']} />
         </label>
         <input
           className={$['hidden-input']}
