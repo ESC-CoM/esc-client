@@ -1,12 +1,17 @@
 .container {
   padding: 20px;
-
-  .input {
-    margin-top: 35px;
-  }
-
   h1 {
     font-size: 24px;
     font-weight: 700;
+  }
+
+  form {
+    .input-with-button {
+      margin-top: 35px;
+    }
+  }
+
+  .input {
+    margin-top: 35px;
   }
 }
