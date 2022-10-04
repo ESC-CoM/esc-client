@@ -4,13 +4,13 @@ import { FiCheck } from '@react-icons/all-files/fi/FiCheck';
 import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight';
 import cx from 'classnames';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
 import { useRegister } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
-import { UserStoreInfo } from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';
-import getUUID from 'src/utils/getUUID';
+import changeKeyName from 'src/utils/changeKeyName';
 
 import $ from './style.module.scss';
 import TermsSchema from './yup';
@@ -20,7 +20,10 @@ export type Props = {
   onClose: () => void;
 };
 
+const NEXT_PATH = '/join/welcome';
+
 export default function Term() {
+  const navigate = useNavigate();
   const {
     watch,
     handleSubmit,
@@ -63,43 +66,24 @@ export default function Term() {
   };
 
   useEffect(() => {
-    checkAllChecked();
+    return checkAllChecked();
   }, [watch()]);
 
-  const changeKeyName = (userInfo: UserStoreInfo) => {
-    const newUserInfo: any = { ...userInfo };
-    newUserInfo.phone = newUserInfo.phoneNumber;
-    delete newUserInfo.phoneNumber;
-
-    newUserInfo.amountOfAlchol = newUserInfo.drink * 10;
-    delete newUserInfo.drink;
-
-    const { year } = newUserInfo;
-    const birth = `${year}`;
-    newUserInfo.birth = birth;
-    delete newUserInfo.year;
-
-    delete newUserInfo.authNumber;
-
-    newUserInfo.gender = newUserInfo.gender === '남' ? 'men' : 'women';
-
-    newUserInfo.studentIdAuthenticationKey = getUUID();
-
-    return newUserInfo as res.UserInfo;
-  };
-
   const { userInfo, setJoinInfo } = useStore();
+  const userData = changeKeyName(userInfo);
 
-  const { mutate } = useRegister();
+  const { mutate, isSuccess, isError } = useRegister();
 
   const onSubmit = (data: TermSchema) => {
     if (allChecked) {
       setJoinInfo({ isAgree: true });
-
-      const userData = changeKeyName(userInfo);
       mutate(userData);
     }
   };
+
+  useEffect(() => {
+    if (isError) navigate(NEXT_PATH);
+  }, [isError]); // TODO: isSuccess로 변경
 
   return (
     <form className={$['term-form']} onSubmit={handleSubmit(onSubmit)}>

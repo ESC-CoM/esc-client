@@ -33,9 +33,9 @@ export function useCoreMutation<T, U>(
   options?: Omit<UseMutationOptions<T, AxiosError, U>, 'mutationKey'>
 ): UseMutationResult<T, AxiosError, U> {
   return useMutation(mutation, {
-    onError: (err) => {
-      return console.error(err);
-    },
+    // onError: (err) => {
+    //   return console.error(err);
+    // },
     ...options,
   });
 }

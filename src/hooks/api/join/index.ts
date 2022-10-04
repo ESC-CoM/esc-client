@@ -1,4 +1,3 @@
-import { Navigate } from 'react-router-dom';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
@@ -28,14 +27,11 @@ export const useNicknameDuplicateQuery = (nickname: string) => {
   );
 };
 
-const NEXT_PATH = '/join/welcome';
-
 export const useRegister = () => {
   return useCoreMutation(register, {
     onSuccess: (data) => {
       // const { message, data } = data;
       // console.log(message); // TODO: 토스트 메시지
-      Navigate({ to: NEXT_PATH });
     },
     onError: (error) => {
       console.log(error);
