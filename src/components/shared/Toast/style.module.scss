@@ -1,0 +1,12 @@
+@import '/src/styles/color';
+
+.toast-msg {
+  width: calc(100% - 32px);
+  max-width: 1024px;
+  div {
+    width: 100%;
+  }
+  .icon {
+    color: $white;
+  }
+}
