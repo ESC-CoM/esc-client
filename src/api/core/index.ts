@@ -1,10 +1,10 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
-import { Navigate } from 'react-router-dom';
 import { ACCESSTOKEN } from 'src/constants/auth';
 import { getAccessToken, setAccessToken } from 'src/utils/auth';
+import { getRefreshToken } from 'src/utils/auth';
+import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { authRefresh } from '../auth';
-import { getRefreshToken } from './../../utils/auth';
 
 const http: AxiosInstance = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}`,
@@ -34,20 +34,20 @@ http.interceptors.response.use(
   async (err) => {
     const { status, code } = err.response.data;
     if (status === 404) {
-      Navigate({ to: '/home' });
+      window.location.href = '/home';
     } else if (status === 403 && code === 'INVALID_REFRESH_TOKEN') {
       const accessToken = getAccessToken();
       const refreshToken = getRefreshToken();
       try {
         const response = await authRefresh({ accessToken, refreshToken });
         const {
-          status,
           data: { accessToken: access },
         } = response;
         setAccessToken(access);
-        console.log(status); // TODO: 토스트 메시지
+        toastSuccess({ message: '재인증 완료' });
       } catch {
-        Navigate({ to: '/login' });
+        window.location.href = '/login';
+        toastError({ message: '다시 인증해야 합니다.' });
       }
     }
     return Promise.reject(err);

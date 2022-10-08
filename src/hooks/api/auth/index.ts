@@ -1,6 +1,7 @@
 import { authRefresh, postLoginInfo } from 'src/api/auth';
 import { isAxiosError } from 'src/api/core';
 import { setAccessToken, setRefreshToken } from 'src/utils/auth';
+import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation } from '../core';
 
@@ -13,12 +14,12 @@ export const useLogin = () => {
       } = data;
       setAccessToken(accessToken);
       setRefreshToken(refreshToken);
-      console.log(message); // TODO: 토스트 메시지
+      toastSuccess({ message });
     },
     onError: (error) => {
-      if (isAxiosError<res.AuthError>(error) && error.response) {
-        const { message, status } = error.response.data;
-        console.log(message, status); // TODO: 토스트 메시지
+      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+        const { message } = error.response.data;
+        toastError({ message });
       }
     },
   });
