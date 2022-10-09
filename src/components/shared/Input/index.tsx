@@ -40,7 +40,7 @@ export default function Input({
   ...props
 }: Props) {
   return (
-    <div className={cx($['input-wrapper'], className)}>
+    <div className={className}>
       <Label
         textContent={labelErrorMessage || label}
         htmlFor={htmlFor}

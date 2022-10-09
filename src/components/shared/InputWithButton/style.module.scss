@@ -3,7 +3,11 @@
 
 .row {
   display: flex;
-  align-items: flex-end;
+
+  .input {
+    @include input(100%);
+    margin-right: 5px;
+  }
 
   .btn {
     @include button(160px, none, $primary, $white, 16px);
