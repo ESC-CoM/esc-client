@@ -1,12 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from 'src/components/shared/Input';
+import { useLogin } from 'src/hooks/api/auth';
 
 import { Header, LoginTitle } from '../atoms';
 import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
-import SocialLoginBox from '../SocialLoginBox';
 import $ from './style.module.scss';
 import schema from './yup';
 
@@ -21,11 +21,12 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    resetField,
     watch,
     setValue,
     formState: { errors },
   } = useForm<Inputs>({ resolver: yupResolver(schema) });
+
+  const { mutate } = useLogin();
 
   const [isSaveId, isAutoLogin] = watch(['isSaveId', 'isAutoLogin'], {
     isSaveId: false,
@@ -33,7 +34,7 @@ export default function Login() {
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    alert(JSON.stringify(data));
+    mutate(data);
   };
 
   return (
@@ -43,17 +44,19 @@ export default function Login() {
         <LoginTitle className={$.title} />
         <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
+            type="email"
             className={$.email}
             proptype="register"
             label="이메일"
             placeholder="sample@email.com"
-            register={() => register('email')}
+            register={register('email')}
           />
           <Input
+            type="password"
             className={$.password}
             proptype="register"
             label="비밀번호"
-            register={() => register('password')}
+            register={register('password')}
           />
           <ErrorMessageBox errors={errors} className={$.error} />
           <LoginCheckBoxArea
@@ -72,7 +75,7 @@ export default function Login() {
           </button>
         </form>
         <LoginToolBox className={$.links} />
-        <SocialLoginBox className={$.socialLogin} />
+        {/* <SocialLoginBox className={$.socialLogin} /> */}
       </div>
     </>
   );

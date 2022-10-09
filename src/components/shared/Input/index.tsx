@@ -10,13 +10,15 @@ type DefaultProps = {
   className?: string;
   label: string;
   placeholder?: string;
+  type: string;
+  htmlFor?: string; // TODO: optional
   labelErrorMessage?: string;
   bottomErrorMessage?: string;
 };
 
 type RegisterProps = {
   proptype: 'register';
-  register: () => UseFormRegisterReturn;
+  register: UseFormRegisterReturn;
 } & DefaultProps;
 
 type ControlledProps = {
@@ -31,6 +33,8 @@ export default function Input({
   className,
   label,
   placeholder,
+  type,
+  htmlFor,
   labelErrorMessage,
   bottomErrorMessage,
   ...props
@@ -39,17 +43,16 @@ export default function Input({
     <div className={className}>
       <Label
         textContent={labelErrorMessage || label}
-        htmlFor="auth-number"
+        htmlFor={htmlFor}
         fontSize={15}
       />
       <input
         className={cx($.input, {
           [$.error]: labelErrorMessage || bottomErrorMessage,
         })}
-        type="text"
-        id="auth-number"
-        placeholder={placeholder}
-        {...(props.proptype === 'register' && props.register())}
+        id={htmlFor}
+        {...{ placeholder, type }}
+        {...(props.proptype === 'register' && props.register)}
         {...(props.proptype === 'controlled' && {
           value: props.value,
           onChange: props.onChange,
