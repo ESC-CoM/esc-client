@@ -53,12 +53,14 @@ export default function MoreInfoPage1() {
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputWithButton
+            type="text"
+            proptype="register"
             className={$.input}
             register={register('nickName')}
             onClick={handleDuplicationButtonClick}
             labelErrorMessage={errors.nickName?.message}
             buttonErrorMessage={errors.isDuplicationChecked?.message}
-            labelText="별명"
+            label="별명"
             buttonText="중복 확인"
             placeholder="최소 2자, 최대 10자"
           />
@@ -68,11 +70,12 @@ export default function MoreInfoPage1() {
             errors={errors.gender}
           />
           <Input
+            type="number"
             className={$.input}
             proptype="register"
             placeholder="년도(4자)"
             labelErrorMessage={errors.year?.message}
-            register={() => register('year')}
+            register={register('year')}
             label="태어난 년도"
           />
           <MbtiInput

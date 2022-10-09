@@ -1,11 +1,19 @@
+import { ChangeEventHandler, useState } from 'react';
 import FooterButton from 'src/components/shared/FooterButton';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import InputWithTimer from 'src/components/shared/InputWithTimer';
 import { PageLayout } from 'src/components/shared/Layout';
+import { insertAutoHyphen } from 'src/utils';
 
 import $ from './style.module.scss';
 
 export default function ChangePhone() {
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  const handleChangePhoneNumber: ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => insertAutoHyphen({ phoneNumber: value, setPhoneNumber });
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       <div className={$.container}>
@@ -14,11 +22,16 @@ export default function ChangePhone() {
           <br /> 새로운 전화번호를 인증해주세요.
         </p>
         <InputWithButton
+          proptype="controlled"
+          value={phoneNumber}
+          onChange={handleChangePhoneNumber}
           onClick={() => console.log('clicked')}
-          labelText="휴대폰 번호"
+          label="휴대폰 번호"
+          type="text"
           buttonText="인증번호 받기"
         />
         <InputWithTimer
+          type="number"
           className={$['auth-number-input']}
           proptype="controlled"
           value=""

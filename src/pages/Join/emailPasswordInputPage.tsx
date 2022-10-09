@@ -52,10 +52,12 @@ export default function EmailPasswordInputPage() {
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputWithButton
+            type="email"
+            proptype="register"
             className={$['input-with-button']}
             register={register('email')}
             onClick={handleDuplicationCheckButton}
-            labelText="이메일"
+            label="이메일"
             buttonText="중복 확인"
             labelErrorMessage={errors.email?.message}
             buttonErrorMessage={errors.isDuplicationChecked?.message}

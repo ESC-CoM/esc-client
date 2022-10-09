@@ -1,5 +1,4 @@
 import { ChangeEventHandler, useState } from 'react';
-import { useEffect } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
@@ -46,35 +45,32 @@ export default function PhoneAuth({
   const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
   }) => {
-    const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(value)) {
-      setValue('phoneNumber', value);
-    }
+    insertAutoHyphen({
+      phoneNumber: value,
+      setPhoneNumber: (number) => setValue('phoneNumber', number),
+    });
   };
-
-  useEffect(() => {
-    if (phoneNumber) {
-      insertAutoHyphen({ phoneNumber, setValue });
-    }
-  }, [phoneNumber]);
 
   return (
     <section className={$['phone-auth']}>
       <h1>휴대폰 인증을 해주세요</h1>
       <InputWithButton
+        type="text"
+        proptype="controlled"
         className={$['input-with-button']}
         onClick={sendPhoneNum}
         onChange={handlePhoneNumberChange}
         value={phoneNumber}
         labelErrorMessage={errors.phoneNumber?.message}
         buttonErrorMessage={errors.isReceivedAuthNum?.message}
-        labelText="휴대폰 번호"
+        label="휴대폰 번호"
         buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
       />
       <InputWithTimer
+        type="number"
         className={$['auth-number-input']}
         proptype="register"
-        register={() => register('authNumber')}
+        register={register('authNumber')}
         label="인증번호"
         labelErrorMessage={errors.authNumber?.message}
         bottomErrorMessage={errors.isAuthed?.message}
