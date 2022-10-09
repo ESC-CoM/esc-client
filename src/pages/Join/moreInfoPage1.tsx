@@ -32,11 +32,10 @@ export default function MoreInfoPage1() {
   const [gender, mbti] = watch(['gender', 'mbti']);
 
   const onSubmit = (data: More1Type) => {
-    const { nickName, gender, year, mbti } = data;
-    if (nickName !== userInfo.nickName) {
+    if (data.nickName !== userInfo.nickName) {
       return alert('별명 중복 검사가 필요합니다'); // TODO: 토스트 메세지
     }
-    setJoinInfo({ gender, mbti, nickName, year });
+    setJoinInfo(data);
     navigate(NEXT_PATH);
   };
 

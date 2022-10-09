@@ -28,13 +28,16 @@ export default function EmailPasswordInputPage() {
   });
 
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
 
   const onSubmit = (data: EmailPasswordType) => {
-    const { email, password } = data;
-    setJoinInfo({ email, password });
+    if (data.email !== email) {
+      return alert('이메일 중복확인을 해주세요.'); // TODO: 토스트 메세지로 변경
+    }
+
+    setJoinInfo(data);
     navigate(NEXT_PATH);
   };
-  const [email, setEmail] = useState('');
 
   const { isSuccess, isError } = useEmailDuplicateQuery(email);
 
