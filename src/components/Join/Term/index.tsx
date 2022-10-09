@@ -82,8 +82,8 @@ export default function Term() {
   };
 
   useEffect(() => {
-    if (isError) navigate(NEXT_PATH);
-  }, [isError]); // TODO: isSuccess로 변경
+    if (isSuccess) navigate(NEXT_PATH);
+  }, [isSuccess]);
 
   return (
     <form className={$['term-form']} onSubmit={handleSubmit(onSubmit)}>

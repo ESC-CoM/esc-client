@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +16,7 @@ import $ from './style.module.scss';
 const NEXT_PATH = '/join/more1';
 
 export default function EmailPasswordInputPage() {
-  const { userInfo, setJoinInfo } = useStore();
+  const { setJoinInfo } = useStore();
   const {
     watch,
     register,
@@ -30,21 +31,26 @@ export default function EmailPasswordInputPage() {
 
   const onSubmit = (data: EmailPasswordType) => {
     const { email, password } = data;
-    if (email !== userInfo.email) {
-      return alert('이메일 중복 검사가 필요합니다'); // TODO: 토스트 메세지
-    }
     setJoinInfo({ email, password });
     navigate(NEXT_PATH);
   };
+  const [email, setEmail] = useState('');
 
-  const { data, refetch } = useEmailDuplicateQuery(watch('email'));
-  console.log(data);
+  const { isSuccess, isError } = useEmailDuplicateQuery(email);
 
   const handleDuplicationCheckButton = () => {
-    setValue('isDuplicationChecked', true);
-    setJoinInfo({ email: watch('email') });
-    refetch();
+    setEmail(watch('email'));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setValue('isDuplicationChecked', true);
+      setJoinInfo({ email: watch('email') });
+    }
+    if (isError) {
+      setValue('isDuplicationChecked', false);
+    }
+  }, [isSuccess, isError]);
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
@@ -62,6 +68,11 @@ export default function EmailPasswordInputPage() {
             labelErrorMessage={errors.email?.message}
             buttonErrorMessage={errors.isDuplicationChecked?.message}
           />
+          {isSuccess && <span className={$.msg}>사용 가능한 이메일입니다</span>}
+          {isError && (
+            <span className={$.msg}>이미 사용 중인 이메일입니다</span>
+          )}
+
           <PasswordInput
             label="비밀번호"
             id="password"

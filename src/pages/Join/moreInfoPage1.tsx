@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -39,13 +40,23 @@ export default function MoreInfoPage1() {
     navigate(NEXT_PATH);
   };
 
-  const { data } = useNicknameDuplicateQuery(watch('nickName'));
-  console.log(data);
+  const [nickName, setNickName] = useState('');
+
+  const { isSuccess, isError } = useNicknameDuplicateQuery(nickName);
 
   const handleDuplicationButtonClick = () => {
-    setJoinInfo({ nickName: watch('nickName') });
-    setValue('isDuplicationChecked', true);
+    setNickName(watch('nickName'));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setJoinInfo({ nickName: watch('nickName') });
+      setValue('isDuplicationChecked', true);
+    }
+    if (isError) {
+      setValue('isDuplicationChecked', false);
+    }
+  }, [isSuccess, isError]);
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>
@@ -64,6 +75,9 @@ export default function MoreInfoPage1() {
             buttonText="중복 확인"
             placeholder="최소 2자, 최대 10자"
           />
+          {isSuccess && <span className={$.msg}>사용 가능한 별명입니다</span>}
+          {isError && <span className={$.msg}>이미 사용 중인 별명입니다</span>}
+
           <GenderInput
             value={gender}
             setValue={setValue}
