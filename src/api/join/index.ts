@@ -10,7 +10,7 @@ const checkNicknameDuplicate = async (nickname: string): Promise<string> => {
   return response.data;
 };
 
-const register = async (userInfo: res.UserInfo): Promise<number> => {
+const register = async (userInfo: req.UserInfo): Promise<number> => {
   const response = await http.post(`/api/auth/register`, userInfo);
   return response.data;
 };

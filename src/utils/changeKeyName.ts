@@ -3,26 +3,36 @@ import { UserStoreInfo } from 'src/store/useStore';
 import getUUID from './getUUID';
 
 export default function changeKeyName(userInfo: UserStoreInfo) {
-  const newUserInfo: any = { ...userInfo };
-  newUserInfo.phone = newUserInfo.phoneNumber;
-  delete newUserInfo.phoneNumber;
+  const {
+    email,
+    password,
+    phoneNumber,
+    nickName,
+    gender,
+    year,
+    isAgree,
+    height,
+    weight,
+    mbti,
+    drink,
+    profileImage,
+  } = userInfo;
 
-  newUserInfo.amountOfAlchol = newUserInfo.drink * 10;
-  delete newUserInfo.drink;
+  const newUserInfo: req.UserInfo = {
+    email,
+    password,
+    phone: phoneNumber,
+    nickname: nickName,
+    gender,
+    birth: year,
+    isAgree,
+    height,
+    weight,
+    mbti,
+    amountOfAlchol: drink * 10,
+    profileImage: profileImage,
+    studentIdAuthenticationKey: getUUID(),
+  };
 
-  newUserInfo.nickname = newUserInfo.nickName;
-  delete newUserInfo.nickName;
-
-  const { year } = newUserInfo;
-  const birth = `${year}`;
-  newUserInfo.birth = birth;
-  delete newUserInfo.year;
-
-  delete newUserInfo.authNumber;
-
-  newUserInfo.gender = newUserInfo.gender === '남' ? 'men' : 'women';
-
-  newUserInfo.studentIdAuthenticationKey = getUUID();
-
-  return newUserInfo as res.UserInfo;
+  return newUserInfo;
 }

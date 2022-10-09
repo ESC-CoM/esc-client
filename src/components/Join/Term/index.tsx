@@ -72,7 +72,7 @@ export default function Term() {
   const { userInfo, setJoinInfo } = useStore();
   const userData = changeKeyName(userInfo);
 
-  const { mutate, isSuccess, isError } = useRegister();
+  const { mutate, isSuccess } = useRegister();
 
   const onSubmit = (data: TermSchema) => {
     if (allChecked) {

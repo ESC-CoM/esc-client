@@ -32,6 +32,7 @@ export default function EmailPasswordInputPage() {
 
   const onSubmit = (data: EmailPasswordType) => {
     if (data.email !== email) {
+      setValue('isDuplicationChecked', false);
       return alert('이메일 중복확인을 해주세요.'); // TODO: 토스트 메세지로 변경
     }
 

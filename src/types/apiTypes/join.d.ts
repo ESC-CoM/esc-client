@@ -1,4 +1,4 @@
-declare namespace res {
+declare namespace req {
   export type UserInfo = {
     email: string;
     password: string;

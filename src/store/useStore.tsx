@@ -3,6 +3,7 @@ import {
   More1Type,
   More2Type,
   PhoneAuthType,
+  ProfileImgType,
   TermType,
 } from 'src/types/join';
 import create from 'zustand';
@@ -11,9 +12,10 @@ export type UserStoreInfo = Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'> &
   Pick<EmailPasswordType, 'email' | 'password'> &
   Omit<More1Type, 'isDuplicationChecked'> &
   More2Type &
-  TermType;
+  TermType &
+  ProfileImgType;
 
-type UserInfo = {
+export type UserInfo = {
   email?: string;
   password?: string;
   phoneNumber?: string;

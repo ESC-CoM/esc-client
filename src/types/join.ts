@@ -39,3 +39,7 @@ export type More2Type = {
 export type TermType = {
   isAgree: boolean;
 };
+
+export type ProfileImgType = {
+  profileImage: string;
+};

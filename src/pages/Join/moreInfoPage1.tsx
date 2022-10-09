@@ -33,6 +33,7 @@ export default function MoreInfoPage1() {
 
   const onSubmit = (data: More1Type) => {
     if (data.nickName !== userInfo.nickName) {
+      setValue('isDuplicationChecked', false);
       return alert('별명 중복 검사가 필요합니다'); // TODO: 토스트 메세지
     }
     setJoinInfo(data);

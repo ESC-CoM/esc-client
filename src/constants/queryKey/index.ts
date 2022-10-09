@@ -9,7 +9,7 @@ export const queryKey = {
   checkNicknameDuplicateFunc: (nickname: string) => {
     return ['checkNicknameDuplicate', { nickname }];
   },
-  registerFunc: (userInfo: res.UserInfo) => {
-    return ['register', { userInfo }];
+  registerFunc: (userInfo: req.UserInfo) => {
+    return ['register', { ...userInfo }];
   },
 };
