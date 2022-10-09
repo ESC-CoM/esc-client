@@ -1,8 +1,15 @@
+@import 'src/styles/main.scss';
+
 .container {
   padding: 20px;
   h1 {
     font-size: 24px;
     font-weight: 700;
+    margin-bottom: 35px;
+  }
+  .msg {
+    font-size: 14px;
+    color: $black-100;
   }
 
   form {
