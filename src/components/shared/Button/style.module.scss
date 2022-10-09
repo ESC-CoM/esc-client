@@ -1,5 +1,5 @@
 @import 'src/styles/main.scss';
 
 .button {
-  @include button(80%, none, $primary, $white, 20px, 50px);
+  @include button(80%, none, $primary, $white, 15px);
 }

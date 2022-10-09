@@ -46,7 +46,7 @@ export default function PhoneAuthPage() {
   };
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={54}>
+    <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <PhoneAuth
           watch={watch}

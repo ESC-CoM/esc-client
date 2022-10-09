@@ -58,7 +58,7 @@ export default function MoreInfoPage1() {
   }, [isSuccess, isError]);
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={54}>
+    <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>

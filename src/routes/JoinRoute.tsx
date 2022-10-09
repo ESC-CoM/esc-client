@@ -7,6 +7,7 @@ import {
   MoreInfoPage1,
   MoreInfoPage2,
   PhoneAuthPage,
+  ProfileImageUploadPage,
   WelcomePage,
 } from '../pages/Join';
 
@@ -30,6 +31,10 @@ const routes = [
   {
     path: 'more2',
     element: <MoreInfoPage2 />,
+  },
+  {
+    path: 'profile-image',
+    element: <ProfileImageUploadPage />,
   },
   {
     path: 'welcome',

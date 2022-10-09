@@ -1,12 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from 'src/components/shared/Input';
+import { useLogin } from 'src/hooks/api/auth';
 
 import { Header, LoginTitle } from '../atoms';
 import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
-import SocialLoginBox from '../SocialLoginBox';
 import $ from './style.module.scss';
 import schema from './yup';
 
@@ -26,13 +26,15 @@ export default function Login() {
     formState: { errors },
   } = useForm<Inputs>({ resolver: yupResolver(schema) });
 
+  const { mutate } = useLogin();
+
   const [isSaveId, isAutoLogin] = watch(['isSaveId', 'isAutoLogin'], {
     isSaveId: false,
     isAutoLogin: false,
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    alert(JSON.stringify(data));
+    mutate(data);
   };
 
   return (
@@ -73,7 +75,7 @@ export default function Login() {
           </button>
         </form>
         <LoginToolBox className={$.links} />
-        <SocialLoginBox className={$.socialLogin} />
+        {/* <SocialLoginBox className={$.socialLogin} /> */}
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ReactDOM from 'react-dom';
 
+import Toast from './components/shared/Toast';
 import App from './App';
 
 export const queryClient = new QueryClient({
@@ -20,6 +21,7 @@ ReactDOM.render(
     <ReactQueryDevtools initialIsOpen={false} />
     <React.StrictMode>
       <App />
+      <Toast />
     </React.StrictMode>
   </QueryClientProvider>,
   document.getElementById('root')

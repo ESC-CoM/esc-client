@@ -56,7 +56,7 @@ export default function EmailPasswordInputPage() {
   }, [isSuccess, isError]);
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={54}>
+    <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <section className={$.container}>
         <h1>이메일, 비밀번호를 입력해주세요</h1>
         <form onSubmit={handleSubmit(onSubmit)}>

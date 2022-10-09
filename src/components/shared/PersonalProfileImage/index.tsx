@@ -28,7 +28,11 @@ export function PersonalProfileImage({
         if (onClick && id) onClick(id);
       }}
     >
-      {src ? <img src={src} alt={`${alt}의 프로필 사진`} /> : <BasicProfile />}
+      {src ? (
+        <img src={src} alt={`${alt} 프로필 사진`} />
+      ) : (
+        <BasicProfile width={width} height={height} />
+      )}
     </div>
   );
 }

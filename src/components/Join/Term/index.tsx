@@ -20,7 +20,7 @@ export type Props = {
   onClose: () => void;
 };
 
-const NEXT_PATH = '/join/welcome';
+const NEXT_PATH = '/join/profile-image';
 
 export default function Term() {
   const navigate = useNavigate();
