@@ -43,6 +43,7 @@ export default function ProfileImageUploadPage() {
           height={120}
         />
         <ImageUploadButton
+          className={$['upload-button']}
           inputRef={fileInputRef}
           buttonText="사진 업로드"
           onChange={addImage}

@@ -2,6 +2,7 @@ import Button from '../Button';
 import $ from './style.module.scss';
 
 interface Props {
+  className?: string;
   inputRef: React.MutableRefObject<HTMLInputElement | null>;
   buttonText: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function ImageUploadButton({
+  className,
   inputRef,
   buttonText,
   onChange,
@@ -20,7 +22,7 @@ export default function ImageUploadButton({
   const handleClickButton = () => onClick();
 
   return (
-    <label htmlFor="input-file" className={$['file-label']}>
+    <label htmlFor="input-file" className={className}>
       <input
         className={$['input-file']}
         type="file"

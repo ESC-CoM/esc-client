@@ -58,18 +58,15 @@ export default function StdCardUploadPage() {
         ) : (
           <StdCard width={300} />
         )}
-        <ParagraphList contents={SUB_MSG} fontSize={12} />
+        <ParagraphList contents={SUB_MSG} fontSize={14} />
         <ImageUploadButton
+          className={$['upload-button']}
           inputRef={fileInputRef}
-          buttonText="학생증 업로드"
+          buttonText={stdCardImgURL ? '다시 업로드' : '학생증 업로드'}
           onChange={addImage}
           onClick={handleClickButton}
         />
-        <FooterButton
-          text="다음"
-          type="submit"
-          onClick={() => handleOnSubmit()}
-        />
+        <FooterButton text="인증하기" type="submit" onClick={handleOnSubmit} />
       </section>
     </PageLayout>
   );
