@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ProgressBar } from 'src/components/Join';
+import StdCardUploadPage from 'src/pages/Join/StdCardUpload';
 import { getCurrentPath } from 'src/utils/getCurrentPath';
 
 import {
@@ -35,6 +36,10 @@ const routes = [
   {
     path: 'profile-image',
     element: <ProfileImageUploadPage />,
+  },
+  {
+    path: 'student-card',
+    element: <StdCardUploadPage />,
   },
   {
     path: 'welcome',
