@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +7,7 @@ import FooterButton from 'src/components/shared/FooterButton';
 import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import { MBTISelect } from 'src/components/shared/MBTISelect';
+import { useNicknameDuplicateQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
 import { MBTIType, More1Type } from 'src/types/join';
 
@@ -16,7 +18,7 @@ import $ from './style.module.scss';
 const NEXT_PATH = '/join/more2';
 
 export default function MoreInfoPage1() {
-  const { setJoinInfo } = useStore();
+  const { userInfo, setJoinInfo } = useStore();
 
   const navigate = useNavigate();
   const {
@@ -28,25 +30,39 @@ export default function MoreInfoPage1() {
   } = useForm<More1Type>({
     resolver: yupResolver(MoreJoinSchema),
   });
-  const [nickName, gender, year, mbti] = watch([
-    'nickName',
-    'gender',
-    'year',
-    'mbti',
-  ]);
+  const [gender, mbti] = watch(['gender', 'mbti']);
+
   const onSubmit = (data: More1Type) => {
-    const more1Info = { nickName, gender, year, mbti };
-    setJoinInfo(more1Info);
+    if (data.nickName !== userInfo.nickName) {
+      setValue('isDuplicationChecked', false);
+      return alert('별명 중복 검사가 필요합니다'); // TODO: 토스트 메세지
+    }
+    setJoinInfo(data);
     navigate(NEXT_PATH);
   };
 
-  const handleDuplicationButtonClick = () =>
-    setValue('isDuplicationChecked', true);
+  const [nickName, setNickName] = useState('');
+
+  const { isSuccess, isError } = useNicknameDuplicateQuery(nickName);
+
+  const handleDuplicationButtonClick = () => {
+    setNickName(watch('nickName'));
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setJoinInfo({ nickName: watch('nickName') });
+      setValue('isDuplicationChecked', true);
+    }
+    if (isError) {
+      setValue('isDuplicationChecked', false);
+    }
+  }, [isSuccess, isError]);
 
   const setMBTI = (mbti: MBTIType) => setValue('mbti', mbti);
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={54}>
+    <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,6 +78,9 @@ export default function MoreInfoPage1() {
             buttonText="중복 확인"
             placeholder="최소 2자, 최대 10자"
           />
+          {isSuccess && <span className={$.msg}>사용 가능한 별명입니다</span>}
+          {isError && <span className={$.msg}>이미 사용 중인 별명입니다</span>}
+
           <GenderInput
             value={gender}
             setValue={setValue}

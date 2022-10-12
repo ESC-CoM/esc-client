@@ -3,7 +3,6 @@
 
 .item {
   position: relative;
-
   .input {
     @include inputRange();
     padding: 10px 0;

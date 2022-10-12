@@ -11,6 +11,7 @@ type DefaultProps = {
   label: string;
   placeholder?: string;
   type: string;
+  htmlFor?: string; // TODO: optional
   labelErrorMessage?: string;
   bottomErrorMessage?: string;
 };
@@ -33,6 +34,7 @@ export default function Input({
   label,
   placeholder,
   type,
+  htmlFor,
   labelErrorMessage,
   bottomErrorMessage,
   ...props
@@ -41,14 +43,14 @@ export default function Input({
     <div className={className}>
       <Label
         textContent={labelErrorMessage || label}
-        htmlFor="auth-number"
+        htmlFor={htmlFor}
         fontSize={15}
       />
       <input
         className={cx($.input, {
           [$.error]: labelErrorMessage || bottomErrorMessage,
         })}
-        id="auth-number"
+        id={htmlFor}
         {...{ placeholder, type }}
         {...(props.proptype === 'register' && props.register)}
         {...(props.proptype === 'controlled' && {

@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 interface Props {
   className?: string;
   textContent: string;
-  htmlFor: string;
+  htmlFor?: string;
   fontSize: number;
   errorMsg?: string;
 }

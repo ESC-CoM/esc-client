@@ -97,6 +97,11 @@ const menusLeft: MenuType[] = [
     text: '추가 정보 수정',
     url: '/mypage/change/additional-info',
   },
+  {
+    icon: <IoChevronBack />,
+    url: '/join',
+    isPathBeIncluded: true,
+  },
 ];
 
 const menusRight: MenuType[] = [

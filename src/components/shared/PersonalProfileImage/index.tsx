@@ -5,7 +5,7 @@ import $ from './style.module.scss';
 
 type Props = {
   id?: string;
-  userName: string;
+  userName?: string;
   src: string;
   width: number;
   height: number;
@@ -29,7 +29,7 @@ export function PersonalProfileImage({
       }}
     >
       {src ? (
-        <img src={src} alt={`${userName}의 프로필 사진`} />
+        <img src={src} alt={`${userName} 프로필 사진`} />
       ) : (
         <BasicProfile width={width} />
       )}

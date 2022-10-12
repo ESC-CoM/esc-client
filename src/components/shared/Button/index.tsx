@@ -1,6 +1,7 @@
 import $ from './style.module.scss';
 
 interface Props {
+  type?: 'button' | 'submit' | 'reset';
   contentText: string;
   width?: string;
   fontSize?: number;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function Button({
+  type = 'button',
   contentText,
   width,
   fontSize,
@@ -20,6 +22,7 @@ export default function Button({
   return (
     <button
       className={$.button}
+      type={type}
       style={{ width, fontSize }}
       onClick={handleClick}
     >

@@ -39,3 +39,11 @@ export type More2Type = {
   weight: number;
   drink: number;
 };
+
+export type TermType = {
+  isAgree: boolean;
+};
+
+export type ProfileImgType = {
+  profileImage: string;
+};
