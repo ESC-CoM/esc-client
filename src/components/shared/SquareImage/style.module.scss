@@ -1,11 +1,8 @@
 @import 'src/styles/_color.scss';
 
-.profile-img {
+.square-image {
   box-shadow: 0 0 2px 1px $shadow;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  > img {
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;

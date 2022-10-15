@@ -5,7 +5,7 @@ import $ from './style.module.scss';
 
 type Props = {
   id?: string;
-  userName?: string;
+  alt: string;
   src: string;
   width: number;
   height: number;
@@ -14,8 +14,8 @@ type Props = {
 
 export function PersonalProfileImage({
   id,
-  userName,
   src,
+  alt,
   width,
   height,
   onClick,
@@ -28,11 +28,7 @@ export function PersonalProfileImage({
         if (onClick && id) onClick(id);
       }}
     >
-      {src ? (
-        <img src={src} alt={`${userName} 프로필 사진`} />
-      ) : (
-        <BasicProfile width={width} />
-      )}
+      {src ? <img {...{ src, alt }} /> : <BasicProfile width={width} />}
     </div>
   );
 }

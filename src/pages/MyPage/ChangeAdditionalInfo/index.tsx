@@ -92,7 +92,7 @@ export default function ChangeAdditionalInfo() {
       <form className={$.container} onSubmit={onSubmit}>
         <label className={$['profile-image']} htmlFor="profile-image">
           <PersonalProfileImage
-            userName="프로필"
+            alt="나의 현재 프로필"
             src={watch('profileImageURL')}
             width={100}
             height={100}
