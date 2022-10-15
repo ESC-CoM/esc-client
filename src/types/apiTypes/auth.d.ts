@@ -18,12 +18,6 @@ declare namespace res {
       refreshToken: string;
     };
   };
-  export type AuthError = {
-    message: string;
-    status: number;
-    errors: string[];
-    code: string;
-  };
   export type RefreshSuccess = {
     status: string;
     message: string;
