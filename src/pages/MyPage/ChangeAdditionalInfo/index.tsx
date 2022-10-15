@@ -13,6 +13,7 @@ import { MBTISelect } from 'src/components/shared/MBTISelect';
 import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import { WeightInput } from 'src/components/shared/WeightInput';
 import { MBTIType } from 'src/types/join';
+import { readFileAsURL } from 'src/utils';
 
 import $ from './style.module.scss';
 
@@ -81,13 +82,7 @@ export default function ChangeAdditionalInfo() {
   }) => {
     if (!files) return;
     const file = files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = ({ target }) => {
-      if (!target?.result) return;
-      setValue('profileImageURL', target.result as string);
-    };
-    reader.readAsDataURL(file);
+    readFileAsURL(file, (url) => setValue('profileImageURL', url));
   };
 
   const setDrinkValue = (drink: number) => setValue('drink', drink);
