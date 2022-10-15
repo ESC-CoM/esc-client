@@ -1,13 +1,14 @@
 @import 'src/styles/_color.scss';
-@import 'src/styles/_mixin.scss';
+@import 'src/styles/mixin';
 
-.item {
+.row {
   position: relative;
-  margin-top: 35px;
-  .input {
-    @include inputRange();
+  padding: 10px 0;
+
+  .icon {
     padding: 10px 0;
   }
+
   .info {
     position: absolute;
     right: 0;
