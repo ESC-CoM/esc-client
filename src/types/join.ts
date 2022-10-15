@@ -43,3 +43,7 @@ export type TermType = {
 export type ProfileImgType = {
   profileImage: string;
 };
+
+export type StdCardType = {
+  studentIdAuthenticationKey: string;
+};

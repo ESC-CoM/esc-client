@@ -3,6 +3,7 @@ import Button from 'src/components/shared/Button';
 import WelcomeIcon from 'src/components/shared/Icon/WelcomeIcon';
 import { PageLayout } from 'src/components/shared/Layout';
 import ParagraphList from 'src/components/shared/ParagraphList';
+import useStore from 'src/store/useStore';
 
 import $ from './style.module.scss';
 
@@ -13,6 +14,8 @@ const contents = [
 ];
 
 export default function WelcomePage() {
+  const { userInfo } = useStore();
+  console.log(userInfo);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(NEXT_PATH);
