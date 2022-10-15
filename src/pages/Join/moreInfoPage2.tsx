@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Term } from 'src/components/Join';
 import Modal from 'src/components/shared/BottomModal';
+import { DrinkInput } from 'src/components/shared/DrinkInput';
 import FooterButton from 'src/components/shared/FooterButton';
+import HeightInput from 'src/components/shared/HeightInput';
+import WeightInput from 'src/components/shared/WeightInput';
 import useStore from 'src/store/useStore';
 import { More2Type } from 'src/types/join';
 
-import { Drink, HeightInput, WeightInput } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
 import $ from './style.module.scss';
 
@@ -32,14 +34,28 @@ export default function MoreInfoPage2() {
     }
   };
 
+  const setDrinkValue = (drink: number) => setValue('drink', drink);
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <section className={$.container}>
         <h1>추가 정보</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <HeightInput value={height} register={register('height')} />
-          <WeightInput value={weight} register={register('weight')} />
-          <Drink value={drink} setValue={setValue} />
+          <HeightInput
+            className={$.input}
+            value={height}
+            register={register('height')}
+          />
+          <WeightInput
+            className={$.input}
+            value={weight}
+            register={register('weight')}
+          />
+          <DrinkInput
+            className={$.input}
+            value={drink}
+            setValue={setDrinkValue}
+          />
           <FooterButton text="다음" type="submit" />
         </form>
         {isTermsOpen && (

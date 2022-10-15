@@ -1,5 +1,6 @@
 import {
   EmailPasswordType,
+  MBTIType,
   More1Type,
   More2Type,
   PhoneAuthType,
@@ -25,7 +26,7 @@ export type UserInfo = {
   nickName?: string;
   gender?: string;
   year?: string;
-  mbti?: string;
+  mbti?: MBTIType;
   height?: number;
   weight?: number;
   drink?: number;
@@ -48,7 +49,7 @@ export const useStore = create<UserInfoSlice>((set, get) => ({
     nickName: '',
     gender: '',
     year: '',
-    mbti: '',
+    mbti: '없음',
     height: 0,
     weight: 0,
     drink: 0,

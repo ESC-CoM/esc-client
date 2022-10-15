@@ -27,7 +27,7 @@ export function ChatCard({
       {id === 'other' && (
         <PersonalProfileImage
           id={id}
-          alt={name}
+          alt={`${name}님의 프로필`}
           src={imagePath}
           width={35}
           height={35}

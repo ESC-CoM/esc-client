@@ -1,18 +1,17 @@
 import { memo, useEffect, useState } from 'react';
-import { UseFormSetValue } from 'react-hook-form';
 import { Bottle } from 'src/components/shared/Icon';
 import Label from 'src/components/shared/Label';
-import { More2Type } from 'src/types/join';
 import { adjustDrink } from 'src/utils';
 
 import $ from './style.module.scss';
 
-interface Props {
+type Props = {
+  className?: string;
   value: number;
-  setValue: UseFormSetValue<More2Type>;
-}
+  setValue: (value: number) => void;
+};
 
-export function Drink({ value, setValue }: Props) {
+export function DrinkInput({ className, value, setValue }: Props) {
   const [drinkNum, setDrinkNum] = useState<number[]>(
     Array.from({ length: 6 }, () => 0)
   );
@@ -22,7 +21,7 @@ export function Drink({ value, setValue }: Props) {
 
   useEffect(() => {
     const count = drinkNum.reduce((acc, curr) => acc + curr, 0);
-    setValue('drink', count);
+    setValue(count);
   }, [drinkNum, drinkDegree]);
 
   const fillBottle = (e: React.MouseEvent<HTMLElement>, index: number) => {
@@ -31,9 +30,8 @@ export function Drink({ value, setValue }: Props) {
   };
 
   return (
-    <div className={$.item}>
+    <div className={className}>
       <Label textContent="주량" fontSize={15} htmlFor="drink" />
-
       <div className={$.row}>
         {drinkNum.map((_, index) => (
           <span
@@ -46,11 +44,10 @@ export function Drink({ value, setValue }: Props) {
             <Bottle key={index} degree={drinkDegree[index]} />
           </span>
         ))}
-
         <span className={$.info}>{value ? `${value}병` : '못마셔요'}</span>
       </div>
     </div>
   );
 }
 
-export default memo(Drink);
+export default memo(DrinkInput);
