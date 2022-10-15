@@ -4,6 +4,7 @@ import FooterButton from 'src/components/shared/FooterButton';
 import ImageUploadButton from 'src/components/shared/ImageUploadButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
+import { useUploadProfileImage } from 'src/hooks/api/join';
 import { toastError } from 'src/utils/toaster';
 
 import $ from './style.module.scss';
@@ -14,13 +15,22 @@ export default function ProfileImageUploadPage() {
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [profileImg, setProfileImg] = useState('');
+  const { mutate } = useUploadProfileImage();
 
-  const addImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedImageList = e.target.files;
-    console.log(selectedImageList);
-    setProfileImg(
-      'https://t1.daumcdn.net/news/202009/22/xportsnews/20200922111443330clnu.jpg'
-    );
+  const onUploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formData = new FormData();
+    const files = e.target?.files;
+    if (files) {
+      const file = files[0];
+      if (file) {
+        formData.append('image', file);
+        mutate(formData, {
+          onSuccess: ({ data }) => {
+            setProfileImg(data);
+          },
+        });
+      }
+    }
   };
 
   const handleClickButton = () => {
@@ -46,7 +56,7 @@ export default function ProfileImageUploadPage() {
           className={$['upload-button']}
           inputRef={fileInputRef}
           buttonText="사진 업로드"
-          onChange={addImage}
+          onChange={onUploadImg}
           onClick={handleClickButton}
         />
         <FooterButton

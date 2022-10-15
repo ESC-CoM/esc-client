@@ -1,9 +1,12 @@
+import { isAxiosError } from 'src/api/core';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
   register,
+  uploadProfileImage,
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
+import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';
 
@@ -35,6 +38,21 @@ export const useRegister = () => {
     },
     onError: (error) => {
       console.log(error);
+    },
+  });
+};
+
+export const useUploadProfileImage = () => {
+  return useCoreMutation(uploadProfileImage, {
+    onSuccess: (data) => {
+      const { message } = data;
+      toastSuccess({ message });
+    },
+    onError: (error) => {
+      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+        const { message } = error.response.data;
+        toastError({ message });
+      }
     },
   });
 };

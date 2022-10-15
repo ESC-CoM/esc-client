@@ -15,3 +15,11 @@ declare namespace req {
     studentIdAuthenticationKey: string; // uuid
   };
 }
+
+declare namespace res {
+  export type ProfileImageSuccess = {
+    status: string;
+    message: string;
+    data: string;
+  };
+}
