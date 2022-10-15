@@ -14,6 +14,12 @@ export default function MBTIList({ setMBTI, onClose }: Props) {
     setMBTI(value as MBTIType);
   };
 
+  const handleSelectByKeyboard = (value: MBTIType, key: string) => {
+    if (key !== 'Enter') return;
+    setMBTI(value);
+    onClose();
+  };
+
   return (
     <ul>
       {MBTI_LIST.map((value) => (
@@ -22,6 +28,7 @@ export default function MBTIList({ setMBTI, onClose }: Props) {
           className={$['mbti-element']}
           onClick={() => handleClick(value)}
           tabIndex={0}
+          onKeyDown={({ key }) => handleSelectByKeyboard(value, key)}
         >
           {value}
         </li>
