@@ -37,6 +37,10 @@ export default function StdCardUploadPage() {
           setStdCardImgURL(image);
           setJoinInfo({ studentIdAuthenticationKey: uuid });
         },
+        onError: () => {
+          const message = '이미지 업로드에 실패했습니다. 다시 시도해주세요.';
+          toastError({ message });
+        },
       });
     }
   };

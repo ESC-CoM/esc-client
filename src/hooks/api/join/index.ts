@@ -1,4 +1,3 @@
-import { isAxiosError } from 'src/api/core';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
@@ -6,7 +5,6 @@ import {
   uploadStdCard,
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
-import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';
 
@@ -43,16 +41,5 @@ export const useRegister = () => {
 };
 
 export const useUploadStdCard = () => {
-  return useCoreMutation(uploadStdCard, {
-    onSuccess: (data) => {
-      const { message } = data;
-      toastSuccess({ message });
-    },
-    onError: (error) => {
-      if (isAxiosError<res.StdCardError>(error) && !!error.response) {
-        const { message } = error.response.data;
-        toastError({ message });
-      }
-    },
-  });
+  return useCoreMutation(uploadStdCard);
 };
