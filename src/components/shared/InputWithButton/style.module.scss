@@ -3,9 +3,10 @@
 
 .row {
   display: flex;
+  align-items: flex-end;
 
   .input {
-    @include input(100%);
+    flex: 3;
     margin-right: 5px;
   }
 

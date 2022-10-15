@@ -14,7 +14,12 @@ export default function BasicSection({ basicInfo }: Props) {
 
   return (
     <section className={$['basic-section']}>
-      <PersonalProfileImage src={img} alt={nickName} width={110} height={110} />
+      <PersonalProfileImage
+        src={img}
+        alt={`${nickName}님의 프로필`}
+        width={110}
+        height={110}
+      />
 
       <div className={$.right}>
         <div className={$['user-info']}>

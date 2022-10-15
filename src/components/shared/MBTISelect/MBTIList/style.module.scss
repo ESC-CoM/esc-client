@@ -1,0 +1,12 @@
+@import 'src/styles/_color.scss';
+@import 'src/styles/_variables.scss';
+
+.mbti-element {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+  margin-bottom: 15px;
+  background-color: $gray-200;
+  border-radius: $borderBoxRadius;
+  cursor: pointer;
+}

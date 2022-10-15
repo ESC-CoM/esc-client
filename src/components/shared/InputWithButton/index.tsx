@@ -45,7 +45,10 @@ export default function InputWithButton({
   return (
     <div className={className}>
       <div className={$.row}>
-        <Input {...{ label, placeholder, labelErrorMessage, type, ...props }} />
+        <Input
+          className={$.input}
+          {...{ label, placeholder, labelErrorMessage, type, ...props }}
+        />
         <button className={$.btn} type="button" onClick={handleClickButton}>
           {buttonText}
         </button>
