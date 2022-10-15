@@ -97,6 +97,15 @@ const menusLeft: MenuType[] = [
     url: '/join',
     isPathBeIncluded: true,
   },
+  {
+    icon: <Logo />,
+    url: '/chat',
+  },
+  {
+    icon: <IoChevronBack />,
+    url: '/chat/room',
+    isPathBeIncluded: true,
+  },
 ];
 
 const menusRight: MenuType[] = [
@@ -114,8 +123,12 @@ const menusRight: MenuType[] = [
     url: '/mypage',
   },
   {
-    icon: <IoReorderThreeOutline />,
+    icon: <IoNotificationsOutline />,
     url: '/chat',
+  },
+  {
+    icon: <IoReorderThreeOutline />,
+    url: '/chat/room',
   },
   {
     icon: <IoSettingsOutline />,
