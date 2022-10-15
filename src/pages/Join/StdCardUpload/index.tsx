@@ -8,6 +8,7 @@ import ParagraphList from 'src/components/shared/ParagraphList';
 import SquareImage from 'src/components/shared/SquareImage';
 import { useUploadStdCard } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
+import getFormData from 'src/utils/getFormData';
 import { toastError } from 'src/utils/toaster';
 
 import $ from './style.module.scss';
@@ -26,20 +27,17 @@ export default function StdCardUploadPage() {
   const { mutate } = useUploadStdCard();
 
   const onUploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formData = new FormData();
     const files = e.target?.files;
+
     if (files) {
-      const file = files[0];
-      if (file) {
-        formData.append('image', file);
-        mutate(formData, {
-          onSuccess: ({ data }) => {
-            const { uuid, image } = data;
-            setStdCardImgURL(image);
-            setJoinInfo({ studentIdAuthenticationKey: uuid });
-          },
-        });
-      }
+      const formData = getFormData(files);
+      mutate(formData, {
+        onSuccess: ({ data }) => {
+          const { uuid, image } = data;
+          setStdCardImgURL(image);
+          setJoinInfo({ studentIdAuthenticationKey: uuid });
+        },
+      });
     }
   };
 
