@@ -49,7 +49,7 @@ export const useUploadStdCard = () => {
       toastSuccess({ message });
     },
     onError: (error) => {
-      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+      if (isAxiosError<res.StdCardError>(error) && !!error.response) {
         const { message } = error.response.data;
         toastError({ message });
       }

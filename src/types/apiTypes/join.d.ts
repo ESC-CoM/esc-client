@@ -22,4 +22,10 @@ declare namespace res {
     message: string;
     data: { uuid: string; image: string };
   };
+  export type StdCardError = {
+    message: string;
+    status: number;
+    errors: string[];
+    code: string;
+  };
 }
