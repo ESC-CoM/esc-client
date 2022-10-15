@@ -51,8 +51,7 @@ export const useStore = create<UserInfoSlice>((set, get) => ({
     weight: 0,
     drink: 0,
     isAgree: false,
-    profileImage:
-      'https://img.vogue.co.kr/vogue/2022/09/style_63245e792eb39-745x930.png',
+    profileImage: '',
   },
   setJoinInfo: (newInfo) => {
     set((state) => ({

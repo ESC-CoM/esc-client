@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FooterButton from 'src/components/shared/FooterButton';
 import ImageUploadButton from 'src/components/shared/ImageUploadButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import { useUploadProfileImage } from 'src/hooks/api/join';
+import useStore from 'src/store/useStore';
 import { toastError } from 'src/utils/toaster';
 
 import $ from './style.module.scss';
@@ -12,10 +13,11 @@ import $ from './style.module.scss';
 const NEXT_PATH = '/join/student-card';
 
 export default function ProfileImageUploadPage() {
+  const { userInfo, setJoinInfo } = useStore();
+  const { profileImage } = userInfo;
+  const { mutate } = useUploadProfileImage();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [profileImg, setProfileImg] = useState('');
-  const { mutate } = useUploadProfileImage();
 
   const onUploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
@@ -26,7 +28,7 @@ export default function ProfileImageUploadPage() {
         formData.append('image', file);
         mutate(formData, {
           onSuccess: ({ data }) => {
-            setProfileImg(data);
+            setJoinInfo({ profileImage: data });
           },
         });
       }
@@ -38,7 +40,7 @@ export default function ProfileImageUploadPage() {
   };
 
   const handleOnSubmit = () => {
-    if (profileImg) navigate(NEXT_PATH);
+    if (profileImage) navigate(NEXT_PATH);
     else toastError({ message: '프로필 사진을 업로드해주세요' });
   };
 
@@ -48,7 +50,7 @@ export default function ProfileImageUploadPage() {
         <h1>프로필 사진을 설정해주세요</h1>
         <PersonalProfileImage
           alt=""
-          src={profileImg}
+          src={profileImage}
           width={120}
           height={120}
         />

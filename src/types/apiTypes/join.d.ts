@@ -22,4 +22,10 @@ declare namespace res {
     message: string;
     data: string;
   };
+  export type ProfileImageError = {
+    message: string;
+    status: number;
+    errors: string[];
+    code: string;
+  };
 }
