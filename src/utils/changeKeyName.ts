@@ -1,7 +1,5 @@
 import { UserStoreInfo } from 'src/store/useStore';
 
-import getUUID from './getUUID';
-
 export default function changeKeyName(userInfo: UserStoreInfo) {
   const {
     email,
@@ -10,12 +8,13 @@ export default function changeKeyName(userInfo: UserStoreInfo) {
     nickName,
     gender,
     year,
-    isAgree,
+    mbti,
     height,
     weight,
-    mbti,
     drink,
+    isAgree,
     profileImage,
+    studentIdAuthenticationKey,
   } = userInfo;
 
   const newUserInfo: req.UserInfo = {
@@ -30,8 +29,8 @@ export default function changeKeyName(userInfo: UserStoreInfo) {
     weight,
     mbti,
     amountOfAlchol: drink * 10,
-    profileImage: profileImage,
-    studentIdAuthenticationKey: getUUID(),
+    profileImage,
+    studentIdAuthenticationKey,
   };
 
   return newUserInfo;

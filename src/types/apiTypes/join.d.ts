@@ -17,6 +17,11 @@ declare namespace req {
 }
 
 declare namespace res {
+  export type RegisterSuccess = {
+    status: string;
+    message: string;
+    data: number;
+  };
   export type StdCardSuccess = {
     status: string;
     message: string;

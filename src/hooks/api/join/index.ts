@@ -1,3 +1,4 @@
+import { isAxiosError } from 'src/api/core';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
@@ -32,11 +33,14 @@ export const useNicknameDuplicateQuery = (nickname: string) => {
 export const useRegister = () => {
   return useCoreMutation(register, {
     onSuccess: (data) => {
-      // const { message, data } = data;
-      // console.log(message); // TODO: 토스트 메시지
+      const { message } = data;
+      toastSuccess({ message });
     },
     onError: (error) => {
-      console.log(error);
+      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+        const { message } = error.response.data;
+        toastError({ message });
+      }
     },
   });
 };

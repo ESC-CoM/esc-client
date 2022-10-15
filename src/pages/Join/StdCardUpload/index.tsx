@@ -6,8 +6,9 @@ import ImageUploadButton from 'src/components/shared/ImageUploadButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import ParagraphList from 'src/components/shared/ParagraphList';
 import SquareImage from 'src/components/shared/SquareImage';
-import { useUploadStdCard } from 'src/hooks/api/join';
+import { useRegister, useUploadStdCard } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
+import changeKeyName from 'src/utils/changeKeyName';
 import getFormData from 'src/utils/getFormData';
 import { toastError } from 'src/utils/toaster';
 
@@ -20,11 +21,12 @@ const SUB_MSG = [
 ];
 
 export default function StdCardUploadPage() {
-  const { setJoinInfo } = useStore();
+  const { userInfo, setJoinInfo } = useStore();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [stdCardImgURL, setStdCardImgURL] = useState('');
   const { mutate } = useUploadStdCard();
+  const { mutate: registerMutate } = useRegister();
 
   const onUploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target?.files;
@@ -46,8 +48,15 @@ export default function StdCardUploadPage() {
   };
 
   const handleOnSubmit = () => {
-    if (stdCardImgURL) navigate(NEXT_PATH);
-    else toastError({ message: '학생증 사진을 업로드해주세요' });
+    if (!stdCardImgURL)
+      return toastError({ message: '학생증 사진을 업로드해주세요' });
+
+    const userData = changeKeyName(userInfo);
+    registerMutate(userData, {
+      onSuccess: () => {
+        navigate(NEXT_PATH);
+      },
+    });
   };
 
   return (
