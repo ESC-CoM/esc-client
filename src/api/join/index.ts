@@ -15,4 +15,9 @@ const register = async (userInfo: req.UserInfo): Promise<number> => {
   return response.data;
 };
 
-export { checkEmailDuplicate, checkNicknameDuplicate, register };
+const sendAuthNum = async (phone: string): Promise<res.PhoneSuccess> => {
+  const response = await http.post(`/api/sms`, phone);
+  return response.data;
+};
+
+export { checkEmailDuplicate, checkNicknameDuplicate, register, sendAuthNum };

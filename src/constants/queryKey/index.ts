@@ -12,4 +12,7 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
+  phoneFunc: (phone: string) => {
+    return ['phone', { phone }];
+  },
 };

@@ -2,6 +2,7 @@ import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
   register,
+  sendAuthNum,
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
 
@@ -36,5 +37,11 @@ export const useRegister = () => {
     onError: (error) => {
       console.log(error);
     },
+  });
+};
+
+export const usePhoneQuery = (phone: string) => {
+  return useCoreQuery(queryKey.phoneFunc(phone), () => sendAuthNum(phone), {
+    enabled: !!phone,
   });
 };

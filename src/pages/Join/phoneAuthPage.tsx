@@ -35,6 +35,7 @@ export default function PhoneAuthPage() {
       setValue('isAuthed', true);
     }
   };
+
   const onSubmit = (data: PhoneAuthType) => {
     const { phoneNumber, authNumber } = data;
 

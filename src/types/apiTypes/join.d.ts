@@ -15,3 +15,12 @@ declare namespace req {
     studentIdAuthenticationKey: string; // uuid
   };
 }
+
+declare namespace res {
+  export type PhoneSuccess = {
+    requestId: string;
+    requestTime: string;
+    statusCode: string;
+    statusName: string;
+  };
+}
