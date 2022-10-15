@@ -39,16 +39,14 @@ export function MBTISelect({ className, mbti, setMBTI, errors }: Props) {
         value={mbti || '선택'}
         onClick={handleClick}
       />
-      {isOpen && (
-        <Modal
-          portalId="mbti-modal"
-          title="MBTI"
-          onClose={() => setIsOpen(false)}
-          isOpen={isOpen}
-        >
-          <MBTIList setMBTI={setMBTI} onClose={handleClose} />
-        </Modal>
-      )}
+      <Modal
+        portalId="mbti-modal"
+        title="MBTI"
+        onClose={() => setIsOpen(false)}
+        isOpen={isOpen}
+      >
+        <MBTIList setMBTI={setMBTI} onClose={handleClose} />
+      </Modal>
     </div>
   );
 }

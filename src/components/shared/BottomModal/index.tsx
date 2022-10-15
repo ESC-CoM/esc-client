@@ -19,6 +19,8 @@ export default function BottomModal({
   isOpen,
   onClose,
 }: Props) {
+  if (!isOpen) return null;
+
   const [container, setContainer] = useState<Element | null>(null);
 
   useEffect(() => {
