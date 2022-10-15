@@ -1,4 +1,3 @@
-import { isAxiosError } from 'src/api/core';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
@@ -48,11 +47,9 @@ export const useUploadProfileImage = () => {
       const { message } = data;
       toastSuccess({ message });
     },
-    onError: (error) => {
-      if (isAxiosError<res.ProfileImageError>(error) && !!error.response) {
-        const { message } = error.response.data;
-        toastError({ message });
-      }
+    onError: () => {
+      const message = '이미지 업로드에 실패했습니다.\n다시 시도해주세요.';
+      toastError({ message });
     },
   });
 };
