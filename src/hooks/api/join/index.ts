@@ -1,4 +1,5 @@
 import {
+  checkAuthNum,
   checkEmailDuplicate,
   checkNicknameDuplicate,
   register,
@@ -43,5 +44,11 @@ export const useRegister = () => {
 export const usePhoneQuery = (phone: string) => {
   return useCoreQuery(queryKey.phoneFunc(phone), () => sendAuthNum(phone), {
     enabled: !!phone,
+  });
+};
+
+export const useAuthNumQuery = (code: number) => {
+  return useCoreQuery(queryKey.authNumFunc(code), () => checkAuthNum(code), {
+    enabled: !!code,
   });
 };

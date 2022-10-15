@@ -15,4 +15,7 @@ export const queryKey = {
   phoneFunc: (phone: string) => {
     return ['phone', { phone }];
   },
+  authNumFunc: (code: number) => {
+    return ['authNum', { code }];
+  },
 };

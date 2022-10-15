@@ -20,4 +20,15 @@ const sendAuthNum = async (phone: string): Promise<res.PhoneSuccess> => {
   return response.data;
 };
 
-export { checkEmailDuplicate, checkNicknameDuplicate, register, sendAuthNum };
+const checkAuthNum = async (code: number): Promise<boolean> => {
+  const response = await http.post(`/api/sms/auth`, code);
+  return response.data;
+};
+
+export {
+  checkAuthNum,
+  checkEmailDuplicate,
+  checkNicknameDuplicate,
+  register,
+  sendAuthNum,
+};

@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { PhoneYup } from 'src/components/Join/BasicInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
+import { useAuthNumQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
 import { PhoneAuthType } from 'src/types/join';
+import { toastError } from 'src/utils/toaster';
 
 import { PhoneAuth } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
@@ -25,13 +28,17 @@ export default function PhoneAuthPage() {
     defaultValues: { phoneNumber: '', isAuthed: false },
   });
   const navigate = useNavigate();
-  const [isPhoneDuplicated, isAuthed] = watch([
+  const [authNumber, isPhoneDuplicated, isAuthed] = watch([
+    'authNumber',
     'isReceivedAuthNum',
     'isAuthed',
   ]);
+  const [authNum, setAuthNum] = useState(0);
+  const { data, isSuccess } = useAuthNumQuery(authNum);
 
   const sendAuthNum = () => {
     if (isPhoneDuplicated) {
+      setAuthNum(authNumber);
       setValue('isAuthed', true);
     }
   };
@@ -40,10 +47,14 @@ export default function PhoneAuthPage() {
     const { phoneNumber, authNumber } = data;
 
     if (phoneNumber !== userInfo.phoneNumber) {
-      return alert('휴대폰 인증이 필요합니다'); // TODO: 토스트 메세지
+      const message = '휴대폰 인증이 필요합니다.';
+      toastError({ message });
     }
-    setJoinInfo({ phoneNumber, authNumber });
-    navigate(NEXT_PATH);
+
+    if (isSuccess) {
+      setJoinInfo({ phoneNumber, authNumber });
+      navigate(NEXT_PATH);
+    }
   };
 
   return (
