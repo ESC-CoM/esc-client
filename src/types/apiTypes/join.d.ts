@@ -15,3 +15,22 @@ declare namespace req {
     studentIdAuthenticationKey: string; // uuid
   };
 }
+
+declare namespace res {
+  export type RegisterSuccess = {
+    status: string;
+    message: string;
+    data: number;
+  };
+  export type StdCardSuccess = {
+    status: string;
+    message: string;
+    data: { uuid: string; image: string };
+  };
+  export type StdCardError = {
+    message: string;
+    status: number;
+    errors: string[];
+    code: string;
+  };
+}

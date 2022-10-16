@@ -6,6 +6,10 @@ import ImageUploadButton from 'src/components/shared/ImageUploadButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import ParagraphList from 'src/components/shared/ParagraphList';
 import SquareImage from 'src/components/shared/SquareImage';
+import { useRegister, useUploadStdCard } from 'src/hooks/api/join';
+import useStore from 'src/store/useStore';
+import changeKeyName from 'src/utils/changeKeyName';
+import getFormData from 'src/utils/getFormData';
 import { toastError } from 'src/utils/toaster';
 
 import $ from './style.module.scss';
@@ -16,22 +20,27 @@ const SUB_MSG = [
   '관리자 승인까지 최대 1~3일 소요될 수 있어요 🙏',
 ];
 
-const mockImage = [
-  // 테스트 데이터 -> TODO: API 연동 필요
-  'https://user-images.githubusercontent.com/63364990/194860375-7685f674-68ea-4b30-a6ab-525a15838389.jpeg',
-  'https://user-images.githubusercontent.com/63364990/194861047-b16cdfff-68e3-40c2-b5b7-f19a1fae0ce1.jpeg',
-  'https://user-images.githubusercontent.com/63364990/194861182-05b04b85-e9ad-463b-b244-4088c45d7ff6.jpeg',
-];
-
 export default function StdCardUploadPage() {
+  const { userInfo, setJoinInfo } = useStore();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [stdCardImgURL, setStdCardImgURL] = useState('');
+  const { mutate } = useUploadStdCard();
+  const { mutate: registerMutate } = useRegister();
 
-  const addImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedImage = e.target.files?.[0];
-    console.log(selectedImage);
-    setStdCardImgURL(mockImage[2]);
+  const onUploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target?.files;
+
+    if (files) {
+      const formData = getFormData(files);
+      mutate(formData, {
+        onSuccess: ({ data }) => {
+          const { uuid, image } = data;
+          setStdCardImgURL(image);
+          setJoinInfo({ studentIdAuthenticationKey: uuid });
+        },
+      });
+    }
   };
 
   const handleClickButton = () => {
@@ -39,8 +48,15 @@ export default function StdCardUploadPage() {
   };
 
   const handleOnSubmit = () => {
-    if (stdCardImgURL) navigate(NEXT_PATH);
-    else toastError({ message: '학생증 사진을 업로드해주세요' });
+    if (!stdCardImgURL)
+      return toastError({ message: '학생증 사진을 업로드해주세요' });
+
+    const userData = changeKeyName(userInfo);
+    registerMutate(userData, {
+      onSuccess: () => {
+        navigate(NEXT_PATH);
+      },
+    });
   };
 
   return (
@@ -63,7 +79,7 @@ export default function StdCardUploadPage() {
           className={$['upload-button']}
           inputRef={fileInputRef}
           buttonText={stdCardImgURL ? '다시 업로드' : '학생증 업로드'}
-          onChange={addImage}
+          onChange={onUploadImg}
           onClick={handleClickButton}
         />
         <FooterButton text="인증하기" type="submit" onClick={handleOnSubmit} />
