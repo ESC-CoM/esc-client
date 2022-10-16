@@ -5,6 +5,7 @@ import {
   More2Type,
   PhoneAuthType,
   ProfileImgType,
+  StdCardType,
   TermType,
 } from 'src/types/join';
 import create from 'zustand';
@@ -14,7 +15,8 @@ export type UserStoreInfo = Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'> &
   Omit<More1Type, 'isDuplicationChecked'> &
   More2Type &
   TermType &
-  ProfileImgType;
+  ProfileImgType &
+  StdCardType;
 
 export type UserInfo = {
   email?: string;
@@ -30,6 +32,7 @@ export type UserInfo = {
   drink?: number;
   isAgree?: boolean;
   profileImage?: string;
+  studentIdAuthenticationKey?: string;
 };
 
 interface UserInfoSlice {
@@ -52,6 +55,7 @@ export const useStore = create<UserInfoSlice>((set, get) => ({
     drink: 0,
     isAgree: false,
     profileImage: '',
+    studentIdAuthenticationKey: '',
   },
   setJoinInfo: (newInfo) => {
     set((state) => ({
