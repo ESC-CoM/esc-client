@@ -10,9 +10,19 @@ const checkNicknameDuplicate = async (nickname: string): Promise<string> => {
   return response.data;
 };
 
-const register = async (userInfo: req.UserInfo): Promise<number> => {
+const register = async (
+  userInfo: req.UserInfo
+): Promise<res.RegisterSuccess> => {
   const response = await http.post(`/api/auth/register`, userInfo);
   return response.data;
 };
 
-export { checkEmailDuplicate, checkNicknameDuplicate, register };
+const uploadStdCard = async (body: FormData): Promise<res.StdCardSuccess> => {
+  const response = await http.post(
+    'api/auth/student-verification/upload',
+    body
+  );
+  return response.data;
+};
+
+export { checkEmailDuplicate, checkNicknameDuplicate, register, uploadStdCard };

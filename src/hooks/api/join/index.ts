@@ -1,9 +1,12 @@
+import { isAxiosError } from 'src/api/core';
 import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
   register,
+  uploadStdCard,
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
+import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';
 
@@ -30,11 +33,27 @@ export const useNicknameDuplicateQuery = (nickname: string) => {
 export const useRegister = () => {
   return useCoreMutation(register, {
     onSuccess: (data) => {
-      // const { message, data } = data;
-      // console.log(message); // TODO: 토스트 메시지
+      const { message } = data;
+      toastSuccess({ message });
     },
     onError: (error) => {
-      console.log(error);
+      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+        const { message } = error.response.data;
+        toastError({ message });
+      }
+    },
+  });
+};
+
+export const useUploadStdCard = () => {
+  return useCoreMutation(uploadStdCard, {
+    onSuccess: (data) => {
+      const { message } = data;
+      toastSuccess({ message });
+    },
+    onError: () => {
+      const message = '이미지 업로드에 실패했습니다.\n다시 시도해주세요.';
+      toastError({ message });
     },
   });
 };
