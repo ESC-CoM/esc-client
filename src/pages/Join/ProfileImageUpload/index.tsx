@@ -6,6 +6,7 @@ import { PageLayout } from 'src/components/shared/Layout';
 import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import { useUploadProfileImage } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
+import getFormData from 'src/utils/getFormData';
 import { toastError } from 'src/utils/toaster';
 
 import $ from './style.module.scss';
@@ -20,18 +21,15 @@ export default function ProfileImageUploadPage() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const onUploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formData = new FormData();
     const files = e.target?.files;
+
     if (files) {
-      const file = files[0];
-      if (file) {
-        formData.append('image', file);
-        mutate(formData, {
-          onSuccess: ({ data }) => {
-            setJoinInfo({ profileImage: data });
-          },
-        });
-      }
+      const formData = getFormData(files);
+      mutate(formData, {
+        onSuccess: ({ data }) => {
+          setJoinInfo({ profileImage: data });
+        },
+      });
     }
   };
 
