@@ -18,7 +18,7 @@ const register = async (
 };
 
 const sendAuthNum = async (phone: string): Promise<res.PhoneSuccess> => {
-  const response = await http.post(`/api/sms`, phone);
+  const response = await http.post(`/api/sms`, phone.replace(/-/g, ''));
   return response.data;
 };
 
