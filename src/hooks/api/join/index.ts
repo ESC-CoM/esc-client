@@ -5,6 +5,7 @@ import {
   checkNicknameDuplicate,
   register,
   sendAuthNum,
+  uploadProfileImage,
   uploadStdCard,
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
@@ -69,5 +70,18 @@ export const usePhoneQuery = (phone: string) => {
 export const useAuthNumQuery = (code: number) => {
   return useCoreQuery(queryKey.authNumFunc(code), () => checkAuthNum(code), {
     enabled: !!code,
+  });
+};
+
+export const useUploadProfileImage = () => {
+  return useCoreMutation(uploadProfileImage, {
+    onSuccess: (data) => {
+      const { message } = data;
+      toastSuccess({ message });
+    },
+    onError: () => {
+      const message = '이미지 업로드에 실패했습니다.\n다시 시도해주세요.';
+      toastError({ message });
+    },
   });
 };
