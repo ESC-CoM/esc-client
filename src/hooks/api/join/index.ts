@@ -3,6 +3,7 @@ import {
   checkEmailDuplicate,
   checkNicknameDuplicate,
   register,
+  uploadProfileImage,
   uploadStdCard,
 } from 'src/api/join';
 import { queryKey } from 'src/constants/queryKey';
@@ -47,6 +48,19 @@ export const useRegister = () => {
 
 export const useUploadStdCard = () => {
   return useCoreMutation(uploadStdCard, {
+    onSuccess: (data) => {
+      const { message } = data;
+      toastSuccess({ message });
+    },
+    onError: () => {
+      const message = '이미지 업로드에 실패했습니다.\n다시 시도해주세요.';
+      toastError({ message });
+    },
+  });
+};
+
+export const useUploadProfileImage = () => {
+  return useCoreMutation(uploadProfileImage, {
     onSuccess: (data) => {
       const { message } = data;
       toastSuccess({ message });

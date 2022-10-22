@@ -17,6 +17,17 @@ declare namespace req {
 }
 
 declare namespace res {
+  export type ProfileImageSuccess = {
+    status: string;
+    message: string;
+    data: string;
+  };
+  export type ProfileImageError = {
+    message: string;
+    status: number;
+    errors: string[];
+    code: string;
+  };
   export type RegisterSuccess = {
     status: string;
     message: string;
