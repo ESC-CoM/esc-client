@@ -1,12 +1,13 @@
 import { AiOutlineMan } from '@react-icons/all-files/ai/AiOutlineMan';
+import { AiOutlineWoman } from '@react-icons/all-files/ai/AiOutlineWoman';
 import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward';
+import { IoBeer } from '@react-icons/all-files/io5/IoBeer';
+import { IoBody } from '@react-icons/all-files/io5/IoBody';
+import { RiCake2Fill } from '@react-icons/all-files/ri/RiCake2Fill';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
-import {
-  MOCK_BASIC_INFORMATION,
-  MOCK_BODY_DATA,
-  MOCK_URL,
-} from 'src/__mocks__/mypageMocks';
+import { OutlineSchool } from 'src/components/shared/Icon';
+import { WeightScale } from 'src/components/shared/Icon';
 import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 
 import InformationBar from '../InformationBar';
@@ -14,39 +15,62 @@ import $ from './style.module.scss';
 
 type Prop = {
   className: string;
+  userInfo: res.UserInfoDetailSuccess;
 };
 
-export default function MyInformationCard({ className }: Prop) {
+export default function MyInformationCard({
+  className,
+  userInfo: {
+    userInfo: {
+      nickname,
+      birth,
+      profileImage,
+      schoolInfo: { university, major },
+      otherInfo: { amountOfAlchol, mbti, gender },
+      physicalInfo: { height, weight },
+    },
+  },
+}: Prop) {
   return (
     <Link className={cx($.container, className)} to="./change/additional-info">
       <div className={$['left-box']}>
         <div className={$['profile-image-container']}>
           <PersonalProfileImage
             alt="프로필"
-            src={MOCK_URL}
+            src={profileImage}
             width={60}
             height={60}
           />
-          <span className={$.mbti}>INFP</span>
+          <span className={$.mbti}>{mbti}</span>
         </div>
         <div className={$['information-container']}>
           <div className={$['name-container']}>
-            <em className={$.name}>최현오</em>
-            <AiOutlineMan className={$.icon} />
+            <em className={$.name}>{nickname}</em>
+            {gender === 'men' ? (
+              <AiOutlineMan className={cx($.icon, $['man-icon'])} />
+            ) : (
+              <AiOutlineWoman className={cx($.icon, $['woman-icon'])} />
+            )}
           </div>
           <ul>
-            {MOCK_BASIC_INFORMATION.map(({ icon, text }) => (
-              <InformationBar key={text} {...{ icon, text }} />
-            ))}
+            <InformationBar
+              icon={OutlineSchool}
+              text={`${university} ${major}`}
+            />
+            <InformationBar icon={RiCake2Fill} text={`${birth}년생`} />
+            <InformationBar icon={IoBeer} text={`${amountOfAlchol}병`} />
           </ul>
           <ul className={$['body-information']}>
-            {MOCK_BODY_DATA.map(({ icon, text }) => (
-              <InformationBar
-                key={text}
-                className={$.item}
-                {...{ icon, text }}
-              />
-            ))}
+            <InformationBar
+              className={$.item}
+              icon={IoBody}
+              text={`${height.toString()}cm`}
+            />
+            <InformationBar
+              className={$.item}
+              icon={WeightScale}
+              text={`${weight.toString()}kg`}
+            />
           </ul>
         </div>
       </div>
