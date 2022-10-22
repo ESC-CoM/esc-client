@@ -33,12 +33,13 @@ export default function PhoneAuthPage() {
     'isReceivedAuthNum',
     'isAuthed',
   ]);
+
   const [authNum, setAuthNum] = useState(0);
   const { data, isSuccess } = useAuthNumQuery(authNum);
 
   const sendAuthNum = () => {
     if (isPhoneDuplicated) {
-      setAuthNum(authNumber);
+      setAuthNum(+authNumber); // TODO: authNumber이 number 타입인데 string으로 들어감..
       setValue('isAuthed', true);
     }
   };

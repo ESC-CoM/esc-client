@@ -26,6 +26,7 @@ const checkAuthNum = async (code: number): Promise<boolean> => {
   const response = await http.post(`/api/sms/auth`, code);
   return response.data;
 };
+
 const uploadProfileImage = async (
   body: FormData
 ): Promise<res.ProfileImageSuccess> => {
