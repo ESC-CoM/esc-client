@@ -13,7 +13,7 @@ const headerChilderen: ChildrenType[] = [
   },
   {
     children: <FriendsTab />,
-    url: '/friends',
+    url: '/friends/list',
   },
 ];
 

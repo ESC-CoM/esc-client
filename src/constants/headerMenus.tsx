@@ -62,7 +62,7 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
     {
       icon: <IoChevronBack />,
       text: '친구',
-      url: '/friends',
+      url: '/friends/list',
       onClick: () => navigate(-1),
     },
     {
@@ -139,7 +139,7 @@ const menusRight: MenuType[] = [
   {
     icon: <IoPeopleOutline />,
     url: '/mypage',
-    to: '/friends',
+    to: '/friends/list?kind=myfriends',
   },
   {
     icon: <IoNotificationsOutline />,
@@ -152,15 +152,16 @@ const menusRight: MenuType[] = [
   {
     icon: <IoSettingsOutline />,
     url: '/mypage',
+    to: '/setting',
   },
   {
     icon: <BsPersonPlus style={{ marginRight: '20px' }} />,
-    url: '/friends',
+    url: '/friends/list',
     to: '/friends/add',
   },
   {
     icon: <BsPersonDash />,
-    url: '/friends',
+    url: '/friends/list',
     to: '/friends/delete',
   },
   {
