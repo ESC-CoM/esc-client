@@ -32,22 +32,24 @@ http.interceptors.response.use(
   // TODO: test 필요
   (res) => res,
   async (err) => {
-    const { status, code } = err.response.data;
-    if (status === 404) {
-      window.location.href = '/home';
-    } else if (status === 403 && code === 'INVALID_REFRESH_TOKEN') {
-      const accessToken = getAccessToken();
-      const refreshToken = getRefreshToken();
-      try {
-        const response = await authRefresh({ accessToken, refreshToken });
-        const {
-          data: { accessToken: access },
-        } = response;
-        setAccessToken(access);
-        toastSuccess({ message: '재인증 완료' });
-      } catch {
-        window.location.href = '/login';
-        toastError({ message: '다시 인증해야 합니다.' });
+    if (isAxiosError<res.Error>(err) && err.response) {
+      const { status, code } = err.response.data;
+      if (status === 404) {
+        window.location.href = '/home';
+      } else if (status === 403 && code === 'INVALID_REFRESH_TOKEN') {
+        const accessToken = getAccessToken();
+        const refreshToken = getRefreshToken();
+        try {
+          const response = await authRefresh({ accessToken, refreshToken });
+          const {
+            data: { accessToken: access },
+          } = response;
+          setAccessToken(access);
+          toastSuccess({ message: '재인증 완료' });
+        } catch {
+          window.location.href = '/login';
+          toastError({ message: '다시 인증해야 합니다.' });
+        }
       }
     }
     return Promise.reject(err);

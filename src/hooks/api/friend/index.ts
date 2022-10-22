@@ -33,16 +33,30 @@ export const useFriendsRequests = () => {
   return useCoreQuery(queryKey.friendsRequest, () => getFriendRequests());
 };
 
-export const useSendFriendsRequest = (id: number) => {
-  return useCoreQuery(queryKey.sendFriendRequest(id), () =>
-    sendFriendRequests(id)
-  );
+export const useSendFriendsRequest = () => {
+  return useCoreMutation(sendFriendRequests, {
+    onSuccess: (res) => {
+      const { message } = res;
+      toastSuccess({ message });
+      queryClient.invalidateQueries(queryKey.friendsRequest);
+    },
+    onError: () => {
+      toastSuccess({ message: '친구 요청을 실패했습니다.' });
+    },
+  });
 };
 
-export const useAcceptFriendsRequest = (id: number) => {
-  return useCoreQuery(queryKey.acceptFriendRequest(id), () =>
-    acceptFriendRequests(id)
-  );
+export const useAcceptFriendsRequest = () => {
+  return useCoreMutation(acceptFriendRequests, {
+    onSuccess: (res) => {
+      const { message } = res;
+      toastSuccess({ message });
+      queryClient.invalidateQueries(queryKey.friendsList);
+    },
+    onError: () => {
+      toastSuccess({ message: '친구 요청 수락을 실패했습니다.' });
+    },
+  });
 };
 
 export const useRejectFriendsRequest = () => {

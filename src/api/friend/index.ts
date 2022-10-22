@@ -18,14 +18,14 @@ export const getFriendRequests = async (): Promise<res.FriendRequestList> => {
 export const sendFriendRequests = async (
   id: number
 ): Promise<res.DeleteFriend> => {
-  const response = await http.get(`api/friend/request/${id}`);
+  const response = await http.post(`api/friend/request/${id}`);
   return response.data;
 };
 
 export const acceptFriendRequests = async (
   id: number
 ): Promise<res.DeleteFriend> => {
-  const response = await http.get(`api/friend/accept/${id}`);
+  const response = await http.patch(`api/friend/accept/${id}`);
   return response.data;
 };
 
