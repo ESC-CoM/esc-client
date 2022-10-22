@@ -39,4 +39,12 @@ const getInfiniteMeeting =
     };
   };
 
-export { getInfiniteMeeting, getMeetingList };
+const createMeeting = async (
+  body: req.CreateMeeting
+): Promise<res.MeetingFeed> => {
+  console.log(body);
+  const response = await http.post(`/api/board`, body);
+  return response.data;
+};
+
+export { createMeeting, getInfiniteMeeting, getMeetingList };

@@ -1,33 +1,69 @@
+import { useState } from 'react';
+import { ChangeEventHandler } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ContentBox from 'src/components/shared/ContentBox';
 import FooterButton from 'src/components/shared/FooterButton';
 import Friend from 'src/components/shared/Friend';
 import FriendWithCheck from 'src/components/shared/FriendWithCheck';
 import { PageLayout } from 'src/components/shared/Layout';
 import Search from 'src/components/shared/Search';
+import { useCreateMeetingQuery } from 'src/hooks/api/home';
 import { FriendType, MeetingTitle } from 'src/types/meeting';
 
+import Input from '../../Input';
 import $ from './style.module.scss';
 
 type Props = {
   isApply?: boolean;
   title: string;
   friendFetchData: FriendType[];
-  addedList: number[];
-  setAddedList: React.Dispatch<React.SetStateAction<number[]>>;
+  addedFriendList: number[];
+  setAddedFriendList: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
+const NEXT_PATH = '/home';
+
 export default function MeetingApplyTemplate(applyProps: Props) {
-  const { isApply, title, friendFetchData, addedList, setAddedList } =
-    applyProps;
+  const {
+    isApply,
+    title,
+    friendFetchData,
+    addedFriendList,
+    setAddedFriendList,
+  } = applyProps;
+  const navigate = useNavigate();
+
   const handleFriendClick = (id: number) => {
-    if (addedList.find((x) => x === id) === undefined)
-      setAddedList([...addedList, id]);
-    else setAddedList(addedList.filter((x) => x !== id));
+    if (addedFriendList.find((x) => x === id) === undefined)
+      setAddedFriendList([...addedFriendList, id]);
+    else setAddedFriendList(addedFriendList.filter((x) => x !== id));
   };
 
   const handleSearchClick = (text: string) => alert(text);
 
   const btnText = isApply ? '신청하기' : '등록하기';
+  const contentState = useState('');
+
+  const { data, mutate } = useCreateMeetingQuery();
+
+  const handleClickRegisterBtn = () => {
+    const body = {
+      title: titleInput,
+      content: contentState[0],
+      headCount: addedFriendList.length + 1,
+      participants: addedFriendList,
+    };
+    mutate(body, {
+      onSuccess: () => {
+        navigate(NEXT_PATH);
+      },
+    });
+  };
+
+  const [titleInput, setTitleInput] = useState('');
+  const handleTitleInput: ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => setTitleInput(value);
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
@@ -42,7 +78,7 @@ export default function MeetingApplyTemplate(applyProps: Props) {
             <FriendWithCheck
               {...{ src, name }}
               isVertical={false}
-              isChecked={addedList.find((x) => x === id) !== undefined}
+              isChecked={addedFriendList.find((x) => x === id) !== undefined}
               handleClick={() => handleFriendClick(id)}
             />
           </li>
@@ -52,10 +88,10 @@ export default function MeetingApplyTemplate(applyProps: Props) {
       <div className={$.added}>
         <h2 className={$['sub-title']}>추가된 친구</h2>
         <ul className={$['added-friends']}>
-          {!addedList.length ? (
+          {!addedFriendList.length ? (
             <span className={$['no-added']}> </span>
           ) : (
-            addedList.map((addedFriendIdx) => {
+            addedFriendList.map((addedFriendIdx) => {
               const { src, name } = friendFetchData[addedFriendIdx];
               return (
                 <li className={$['added-friends-li']} key={src + name}>
@@ -67,8 +103,24 @@ export default function MeetingApplyTemplate(applyProps: Props) {
         </ul>
       </div>
 
-      <ContentBox {...{ title }} contentTitle={MeetingTitle.apply} />
-      <FooterButton text={btnText} type="button" />
+      <ContentBox
+        {...{ title, contentState }}
+        contentTitle={MeetingTitle.apply}
+      >
+        <Input
+          className={$['input-title']}
+          type="text"
+          proptype="controlled"
+          value={titleInput}
+          onChange={handleTitleInput}
+          placeholder="제목 입력"
+        />
+      </ContentBox>
+      <FooterButton
+        text={btnText}
+        type="button"
+        onClick={handleClickRegisterBtn}
+      />
     </PageLayout>
   );
 }

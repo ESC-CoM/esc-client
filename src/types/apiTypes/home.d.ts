@@ -8,6 +8,12 @@ declare namespace req {
     gender: string | null;
     meetingStatus: string | null;
   };
+  export type CreateMeeting = {
+    title: string;
+    content: string;
+    headCount: number;
+    participants: number[];
+  };
 }
 
 declare namespace res {
@@ -47,5 +53,29 @@ declare namespace res {
       height: number;
       message: string;
     };
+  };
+  type Participant = {
+    schoolInfo: {
+      school: string;
+      major: string;
+      class: string;
+    };
+    email: string;
+    phone: string;
+    birth: string;
+    profileImage: string;
+    weight: number;
+    height: number;
+    message: string;
+  };
+  export type CreateMeeting = {
+    id: number;
+    title: string;
+    content: string;
+    headCount: number;
+    createdAt: string;
+    meetingStatus: string;
+    owner: Participant;
+    participants: Participant[];
   };
 }

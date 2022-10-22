@@ -5,7 +5,7 @@ import { FriendType } from 'src/types/meeting';
 
 export default function MeetingRegisterPage() {
   const [friendFetchData, setFriendFetchData] = useState<FriendType[]>([]);
-  const [addedList, setAddedList] = useState<number[]>([]);
+  const [addedFriendList, setAddedFriendList] = useState<number[]>([]);
   const title = '함께하고 싶다는 의사를 어필해주세요!';
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function MeetingRegisterPage() {
 
   return (
     <MeetingApplyTemplate
-      {...{ title, friendFetchData, addedList, setAddedList }}
+      {...{ title, friendFetchData, addedFriendList, setAddedFriendList }}
     />
   );
 }
