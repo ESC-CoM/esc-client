@@ -1,3 +1,4 @@
+import FriendsTab from 'src/components/shared/Layout/Header/FriendsTab';
 import MyMeetingCategory from 'src/components/shared/Layout/Header/MyMeetingCategory';
 
 type ChildrenType = {
@@ -9,6 +10,10 @@ const headerChilderen: ChildrenType[] = [
   {
     children: <MyMeetingCategory />,
     url: '/mymeeting',
+  },
+  {
+    children: <FriendsTab />,
+    url: '/friends',
   },
 ];
 
