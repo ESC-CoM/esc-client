@@ -20,9 +20,13 @@ export default function Header({ customHeader }: Props) {
         ) : (
           <>
             <HeaderChildren />
-            {headerChildren.map(({ children, url }) => {
+            {headerChildren.map(({ children, url }, i) => {
               if (hasHeaderChildren(url)) {
-                return <nav className={$['nav-bar']}>{children}</nav>;
+                return (
+                  <nav className={$['nav-bar']} key={url + i}>
+                    {children}
+                  </nav>
+                );
               }
               return null;
             })}

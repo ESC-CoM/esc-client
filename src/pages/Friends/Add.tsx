@@ -18,10 +18,9 @@ export default function AddFriends() {
 
   return (
     <FriendsList
+      type="add"
       friends={friendMocks}
       onSearchClick={handleSearchClick}
-      onSelectFriend={handleSelectFriend}
-      selectedIDList={[]}
     />
   );
 }

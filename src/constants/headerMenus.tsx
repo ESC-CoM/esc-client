@@ -72,7 +72,7 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
     },
     {
       icon: <IoChevronBack />,
-      text: '친구',
+      text: '친구 삭제',
       url: '/friends/delete',
       onClick: () => navigate(-1),
     },
@@ -164,16 +164,7 @@ const menusRight: MenuType[] = [
     url: '/friends/list',
     to: '/friends/delete',
   },
-  {
-    text: '삭제',
-    url: '/friends/delete',
-    to: '/friends/delete',
-  },
   { text: '모두 삭제', url: '/notice' },
-  {
-    text: '추가',
-    url: '/friends/add',
-  },
 ];
 
 export { menusLeft, menusRight };

@@ -18,10 +18,9 @@ export default function DeleteFriends() {
 
   return (
     <FriendsList
+      type="delete"
       friends={friendMocks}
       onSearchClick={handleSearchClick}
-      onSelectFriend={handleSelectFriend}
-      selectedIDList={selectList}
     />
   );
 }
