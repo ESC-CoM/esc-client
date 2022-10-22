@@ -7,7 +7,8 @@ export type MeetingType = {
   id: number;
   title: string;
   gender: string;
-  profiles: MeetingProfileType[];
+  profiles: MeetingProfileType;
+  headCount: number;
 };
 
 export type FriendType = {
