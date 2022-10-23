@@ -5,11 +5,11 @@ export const setAccessToken = (token: string | null) => {
 };
 
 export const getAccessToken = () => {
-  return localStorage.getItem(ACCESSTOKEN);
+  return localStorage.getItem(ACCESSTOKEN) || '';
 };
 
 export const getRefreshToken = () => {
-  return localStorage.getItem(REFRESHTOKEN);
+  return localStorage.getItem(REFRESHTOKEN) || '';
 };
 
 export const setRefreshToken = (token: string | null) => {
