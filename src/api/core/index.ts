@@ -11,6 +11,7 @@ const http: AxiosInstance = axios.create({
   timeout: 3000,
   headers: {
     'Content-Type': 'application/json',
+    [ACCESSTOKEN]: getAccessToken(),
   },
 });
 
@@ -19,6 +20,25 @@ export function isAxiosError<ResponseType>(
 ): error is AxiosError<ResponseType> {
   return axios.isAxiosError(error);
 }
+
+export const refreshAccessToken = async (err: AxiosError) => {
+  const accessToken = getAccessToken();
+  const refreshToken = getRefreshToken();
+  try {
+    const response = await authRefresh({ accessToken, refreshToken });
+    const {
+      data: { accessToken: access },
+    } = response;
+    setAccessToken(access);
+    toastSuccess({ message: '재인증 완료' });
+    http.defaults.headers[ACCESSTOKEN] = access;
+    const reResponse = await http.request(err.config);
+    return reResponse;
+  } catch {
+    window.location.href = '/login';
+    toastError({ message: '다시 로그인해야 합니다.' });
+  }
+};
 
 http.interceptors.request.use((config) => {
   const token = getAccessToken();
@@ -32,22 +52,15 @@ http.interceptors.response.use(
   // TODO: test 필요
   (res) => res,
   async (err) => {
-    const { status, code } = err.response.data;
-    if (status === 404) {
-      window.location.href = '/home';
-    } else if (status === 403 && code === 'INVALID_REFRESH_TOKEN') {
-      const accessToken = getAccessToken();
-      const refreshToken = getRefreshToken();
-      try {
-        const response = await authRefresh({ accessToken, refreshToken });
-        const {
-          data: { accessToken: access },
-        } = response;
-        setAccessToken(access);
-        toastSuccess({ message: '재인증 완료' });
-      } catch {
-        window.location.href = '/login';
-        toastError({ message: '다시 인증해야 합니다.' });
+    if (isAxiosError<res.Error>(err) && err.response) {
+      const { status, code } = err.response.data;
+      if (status === 404) {
+        window.location.href = '/home';
+      } else if (status === 400 && code === 'USER_NOT_EXISTED') {
+        window.location.href = '/home';
+        toastError({ message: '아직 가입이 승인되지 않은 유저입니다.' });
+      } else if (status === 403 && code === 'INVALID_REFRESH_TOKEN') {
+        refreshAccessToken(err);
       }
     }
     return Promise.reject(err);
