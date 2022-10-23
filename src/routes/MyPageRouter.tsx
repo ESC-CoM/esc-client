@@ -7,6 +7,7 @@ import {
   ChangePhone,
   Home,
   Select,
+  StudentCardUploadPage,
 } from 'src/pages/MyPage';
 
 function MyPageRouter() {
@@ -19,6 +20,10 @@ function MyPageRouter() {
       <Route path="change/phone" element={<ChangePhone />} />
       <Route path="change/email" element={<ChangeEmail />} />
       <Route path="change/additional-info" element={<ChangeAdditionalInfo />} />
+      <Route
+        path="change/student-card-upload"
+        element={<StudentCardUploadPage />}
+      />
     </Routes>
   );
 }
