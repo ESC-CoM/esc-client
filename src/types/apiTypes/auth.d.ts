@@ -22,7 +22,7 @@ declare namespace res {
     status: string;
     message: string;
     data: {
-      accessToken: string | null;
+      accessToken: string;
     };
   };
 }
