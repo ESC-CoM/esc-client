@@ -17,6 +17,26 @@ declare namespace req {
 }
 
 declare namespace res {
+  export type MBTIType =
+    | '없음'
+    | 'ENFP'
+    | 'ENFJ'
+    | 'ENTP'
+    | 'ENTJ'
+    | 'ESFP'
+    | 'ESFJ'
+    | 'ESTP'
+    | 'ESTJ'
+    | 'INFP'
+    | 'INFJ'
+    | 'INTP'
+    | 'INTJ'
+    | 'ISFP'
+    | 'ISFJ'
+    | 'ISTP'
+    | 'ISTJ';
+  export type GENDERType = 'men' | 'women';
+
   export type ProfileImageSuccess = {
     status: string;
     message: string;

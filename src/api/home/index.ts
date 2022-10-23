@@ -39,4 +39,9 @@ const getInfiniteMeeting =
     };
   };
 
-export { getInfiniteMeeting, getMeetingList };
+const getMeetingDetail = async (id: number): Promise<res.MeetingDetail> => {
+  const response = await http.get(`/api/board/${id}`);
+  return response.data;
+};
+
+export { getInfiniteMeeting, getMeetingDetail, getMeetingList };
