@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 import MeetingHeader from 'src/components/Meeting/MeetingHeader';
 import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import Plus from 'src/components/shared/Icon/Plus';
@@ -59,10 +60,11 @@ function MeetingHomePage() {
   }, [refetch, remove]);
 
   const items = data?.pages;
-  const itemList = items?.reduce(
-    (acc: res.MeetingSummary[], cur) => (acc = [...acc, ...cur.items]),
-    []
-  );
+  const itemList = meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
+  // items?.reduce(
+  //   (acc: res.MeetingSummary[], cur) => (acc = [...acc, ...cur.items]),
+  //   []
+  // );
 
   return (
     <PageLayout
