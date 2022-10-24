@@ -15,7 +15,7 @@ import $ from './style.module.scss';
 
 const initialInfiniteReq = {
   page: '0',
-  size: '50',
+  size: '30',
   ownerId: '',
   headCount: '',
   university: '',

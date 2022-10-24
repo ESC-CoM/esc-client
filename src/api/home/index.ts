@@ -19,7 +19,7 @@ const getInfiniteMeeting =
     const queryString = getQueryString({
       ...queryStringObj,
       page: `${pageParam}`,
-      size: '50',
+      size: '30',
       ownerId: '',
       headCount: '',
       university: '',
