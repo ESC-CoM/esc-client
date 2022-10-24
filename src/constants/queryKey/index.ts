@@ -15,4 +15,7 @@ export const queryKey = {
   meetingItemListFunc: (requestParams: req.Home) => {
     return ['meetingItemList', { ...requestParams }];
   },
+  meetingItemDetailFunc: (id: number) => {
+    return ['meetingItemDetail', id];
+  },
 };

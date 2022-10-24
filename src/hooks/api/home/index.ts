@@ -1,12 +1,13 @@
 import {
   createMeeting,
   getInfiniteMeeting,
+  getMeetingDetail,
   getMeetingList,
 } from 'src/api/home';
 import { queryKey } from 'src/constants/queryKey';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
-import { useCoreInfiniteQuery, useCoreMutation } from '../core';
+import { useCoreInfiniteQuery, useCoreMutation, useCoreQuery } from '../core';
 
 export const useMeetingItemListQuery = (requestParams: req.Home) => {
   return useCoreInfiniteQuery(
@@ -32,4 +33,10 @@ export const useCreateMeetingQuery = () => {
       toastError({ message });
     },
   });
+};
+
+export const useMeetingItemDetailQuery = (id: number) => {
+  return useCoreQuery(queryKey.meetingItemDetailFunc(id), () =>
+    getMeetingDetail(id)
+  );
 };

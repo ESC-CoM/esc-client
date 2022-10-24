@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function Meeting({
-  meeting: { title, gender, profiles, headCount },
+  meeting: { id, title, gender, headCount, profiles },
 }: Props) {
   const meetingRef = useRef<HTMLLIElement | null>(null);
   const imgListRef = useRef<HTMLDivElement | null>(null);
@@ -44,7 +44,7 @@ export default function Meeting({
     <li
       className={$.meeting}
       ref={meetingRef}
-      onClick={() => navigate('./detail')}
+      onClick={() => navigate(`./detail/${id}`)}
     >
       <div className={$.profileImg} ref={imgListRef}>
         <img

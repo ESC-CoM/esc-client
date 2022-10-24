@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import ProfileTag from 'src/components/shared/ProfileTag';
+import { Profile } from 'src/types/profile';
 
 import $ from './style.module.scss';
 
@@ -14,13 +15,12 @@ type Props = {
 };
 
 function ProfileTagContainer({ title, info, fontSize }: Props) {
-  const getUnit = (key: keyof res.Profile) => {
+  const getUnit = (key: keyof Profile) => {
     if (key === 'drink') return '병';
     if (key === 'height') return 'cm';
     if (key === 'weight') return 'kg';
     if (key === 'studentNum') return '학번';
     if (key === 'birthDate') return '년생';
-    if (key === 'mannerScore') return '점';
     return '';
   };
 
@@ -34,11 +34,9 @@ function ProfileTagContainer({ title, info, fontSize }: Props) {
               <ProfileTag
                 {...{ fontSize }}
                 key={`${value}-${index}`}
-                value={key === 'drink' && !value ? '못마셔요' : value}
+                value={key === 'drink' && !value ? '못마셔요' : +value / 10}
                 unit={
-                  key === 'drink' && !value
-                    ? ''
-                    : getUnit(key as keyof res.Profile)
+                  key === 'drink' && !value ? '' : getUnit(key as keyof Profile)
                 }
               />
             )

@@ -19,7 +19,7 @@ const getInfiniteMeeting =
     const queryString = getQueryString({
       ...queryStringObj,
       page: `${pageParam}`,
-      size: '50',
+      size: '30',
       ownerId: '',
       headCount: '',
       university: '',
@@ -47,4 +47,9 @@ const createMeeting = async (
   return response.data;
 };
 
-export { createMeeting, getInfiniteMeeting, getMeetingList };
+const getMeetingDetail = async (id: number): Promise<res.MeetingDetail> => {
+  const response = await http.get(`/api/board/${id}`);
+  return response.data;
+};
+
+export { createMeeting, getInfiniteMeeting, getMeetingDetail, getMeetingList };

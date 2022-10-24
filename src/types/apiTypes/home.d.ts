@@ -78,4 +78,25 @@ declare namespace res {
     owner: Participant;
     participants: Participant[];
   };
+  export type MeetingDetail = {
+    title: string;
+    content: string;
+    participants: {
+      id: number;
+      nickname: string;
+      birth: string;
+      profileImage: string;
+      university: string;
+      studentId: string;
+      physicalInfo: {
+        height: string;
+        weight: string;
+      };
+      otherInfo: {
+        gender: res.GENDERType;
+        mbti: res.MBTIType;
+        amountOfAlchol: number;
+      };
+    }[];
+  };
 }

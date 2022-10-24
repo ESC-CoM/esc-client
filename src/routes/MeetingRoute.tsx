@@ -6,7 +6,7 @@ function HomeRoute() {
   return (
     <Routes>
       <Route index element={<MeetingHome />} />
-      <Route path="detail" element={<MeetingDetail />} />
+      <Route path="detail/:boardId" element={<MeetingDetail />} />
       <Route path="apply" element={<MeetingApply />} />
       <Route path="register" element={<MeetingRegister />} />
     </Routes>
