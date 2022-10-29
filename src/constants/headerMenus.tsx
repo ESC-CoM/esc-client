@@ -50,16 +50,6 @@ const menusLeft: MenuType[] = [
     isPathBeIncluded: true,
   },
   {
-    icon: <Logo />,
-    url: '/chat',
-    isPathBeIncluded: false,
-  },
-  {
-    icon: <IoChevronBackOutline />,
-    url: '/chat/room',
-    isPathBeIncluded: true,
-  },
-  {
     icon: <IoChevronBack />,
     text: '내 정보',
     url: '/setting',
