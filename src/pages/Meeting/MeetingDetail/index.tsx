@@ -17,7 +17,7 @@ function MeetingDetailPage() {
   const { boardId } = useParams();
 
   const handleClick = () => {
-    navigate('/home/apply');
+    navigate(`/home/apply/${boardId}`);
   };
 
   const { data } = useMeetingItemDetailQuery(+(boardId || 0));
