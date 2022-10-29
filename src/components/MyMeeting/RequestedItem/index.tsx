@@ -1,6 +1,5 @@
 import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ChatApi from 'src/api/chat';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
@@ -54,9 +53,6 @@ function RequestedItem({
       participants: requestedInfo.map(({ id }) => id),
     };
     console.log(boardInfo);
-    ChatApi.createChatRoom(boardId, boardInfo).then((data) => {
-      navigate(`/chat/room/${boardId}`);
-    });
   };
   const handleRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
