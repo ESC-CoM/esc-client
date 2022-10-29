@@ -2,6 +2,7 @@ import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
+import { useCreateChatRoom } from 'src/hooks/api/chat';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import $ from './style.module.scss';
@@ -46,6 +47,8 @@ function RequestedItem({
     navigate('/home/detail');
   };
 
+  const { mutate } = useCreateChatRoom();
+
   const handleAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     const boardInfo = {
@@ -53,6 +56,7 @@ function RequestedItem({
       participants: requestedInfo.map(({ id }) => id),
     };
     console.log(boardInfo);
+    mutate({ boardId, body: boardInfo });
   };
   const handleRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
