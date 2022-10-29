@@ -1,20 +1,21 @@
 import { memo } from 'react';
+import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
 
-import { heightInfo } from '../data';
+import heightInfo from './heightInfo';
 import $ from './style.module.scss';
 
-interface Props {
+type Props = {
+  className?: string;
   value: number;
   register: UseFormRegisterReturn;
-}
+};
 
-export function HeightInput({ value, register }: Props) {
+export function HeightInput({ className, value, register }: Props) {
   return (
-    <div className={$.item}>
+    <div className={cx($.item, className)}>
       <Label textContent="키" fontSize={15} htmlFor="height" />
-
       <span className={$.info}>
         {heightInfo.filter((mark) => value == mark.value)[0].label}
       </span>

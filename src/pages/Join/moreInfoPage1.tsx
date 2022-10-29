@@ -6,11 +6,12 @@ import MoreJoinSchema from 'src/components/Join/MoreInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
 import Input from 'src/components/shared/Input';
 import InputWithButton from 'src/components/shared/InputWithButton';
+import { MBTISelect } from 'src/components/shared/MBTISelect';
 import { useNicknameDuplicateQuery } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
-import { More1Type } from 'src/types/join';
+import { MBTIType, More1Type } from 'src/types/join';
 
-import { GenderInput, MbtiInput } from '../../components/Join';
+import { GenderInput } from '../../components/Join';
 import { PageLayout } from '../../components/shared/Layout';
 import $ from './style.module.scss';
 
@@ -58,6 +59,8 @@ export default function MoreInfoPage1() {
     }
   }, [isSuccess, isError]);
 
+  const setMBTI = (mbti: MBTIType) => setValue('mbti', mbti);
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
       <section className={$.container}>
@@ -92,10 +95,10 @@ export default function MoreInfoPage1() {
             register={register('year')}
             label="태어난 년도"
           />
-          <MbtiInput
-            mbti={mbti}
-            setValue={setValue}
-            errorMessage={errors.mbti?.message}
+          <MBTISelect
+            className={$.input}
+            {...{ mbti, setMBTI }}
+            errors={errors.mbti?.message}
           />
           <FooterButton text="다음" type="submit" />
         </form>

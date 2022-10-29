@@ -1,3 +1,5 @@
+import MBTI_LIST from 'src/constants/MBTI';
+
 export interface TermSchema {
   [index: string]: boolean;
   personalAgree: boolean;
@@ -22,12 +24,14 @@ export type PhoneAuthType = {
   isAuthed: boolean;
 };
 
+export type MBTIType = typeof MBTI_LIST[number];
+
 export type More1Type = {
   nickName: string;
   isDuplicationChecked: boolean;
   gender: string;
   year: string;
-  mbti: string;
+  mbti: MBTIType;
 };
 
 export type More2Type = {
@@ -42,4 +46,8 @@ export type TermType = {
 
 export type ProfileImgType = {
   profileImage: string;
+};
+
+export type StdCardType = {
+  studentIdAuthenticationKey: string;
 };

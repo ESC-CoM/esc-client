@@ -1,8 +1,6 @@
 @import 'src/styles/_color.scss';
-@import 'src/styles/_variables.scss';
 
 .profile-img {
-  flex: 0 0 auto;
   box-shadow: 0 0 2px 1px $shadow;
   border-radius: 50%;
   overflow: hidden;

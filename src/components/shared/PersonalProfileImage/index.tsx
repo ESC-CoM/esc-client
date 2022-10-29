@@ -3,19 +3,19 @@ import BasicProfile from 'src/components/shared/Icon/BasicProfile';
 
 import $ from './style.module.scss';
 
-interface Props {
+type Props = {
   id?: string;
   alt: string;
   src: string;
   width: number;
   height: number;
   onClick?: (userId: string) => void;
-}
+};
 
 export function PersonalProfileImage({
   id,
-  alt,
   src,
+  alt,
   width,
   height,
   onClick,
@@ -23,16 +23,12 @@ export function PersonalProfileImage({
   return (
     <div
       className={$['profile-img']}
-      style={{ width: width, height: height }}
+      style={{ width, height }}
       onClick={() => {
         if (onClick && id) onClick(id);
       }}
     >
-      {src ? (
-        <img src={src} alt={`${alt} 프로필 사진`} />
-      ) : (
-        <BasicProfile width={width} height={height} />
-      )}
+      {src ? <img {...{ src, alt }} /> : <BasicProfile width={width} />}
     </div>
   );
 }

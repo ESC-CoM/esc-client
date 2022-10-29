@@ -1,14 +1,13 @@
-interface Props {
-  width: number;
-  height: number;
-}
+type Props = {
+  width?: number;
+};
 
-export default function BasicProfile({ width, height }: Props) {
+export default function BasicProfile({ width = 80 }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
-      height={height}
+      height="100%"
       viewBox="0 0 120 120"
     >
       <g id="그룹_19520" data-name="그룹 19520" transform="translate(6 -170)">

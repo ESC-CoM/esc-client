@@ -104,7 +104,21 @@ const menusLeft: MenuType[] = [
   },
   {
     icon: <IoChevronBack />,
+    text: '추가 정보 수정',
+    url: '/mypage/change/additional-info',
+  },
+  {
+    icon: <IoChevronBack />,
     url: '/join',
+    isPathBeIncluded: true,
+  },
+  {
+    icon: <Logo />,
+    url: '/chat',
+  },
+  {
+    icon: <IoChevronBack />,
+    url: '/chat/room',
     isPathBeIncluded: true,
   },
 ];

@@ -3,6 +3,7 @@ import Button from 'src/components/shared/Button';
 import WelcomeIcon from 'src/components/shared/Icon/WelcomeIcon';
 import { PageLayout } from 'src/components/shared/Layout';
 import ParagraphList from 'src/components/shared/ParagraphList';
+import useStore from 'src/store/useStore';
 
 import $ from './style.module.scss';
 
@@ -13,18 +14,24 @@ const contents = [
 ];
 
 export default function WelcomePage() {
+  const { userInfo } = useStore();
+  console.log(userInfo);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(NEXT_PATH);
   };
 
   return (
-    <PageLayout isNeedFooter={false} decreaseHeight={0}>
+    <PageLayout isNeedFooter={false}>
       <section className={$.welcome}>
         <WelcomeIcon />
         <div className={$.content}>
           <h1 className={$.title}>회원가입을 환영합니다!</h1>
-          <ParagraphList contents={contents} />
+          <ParagraphList
+            className={$['welcome-sub-text']}
+            contents={contents}
+            fontSize={14}
+          />
           <Button
             contentText="블루스프링 시작하기"
             width="80%"
