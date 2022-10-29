@@ -14,6 +14,14 @@ declare namespace req {
     headCount: number;
     participants: number[];
   };
+  export type RequestMeeting = {
+    boardId: number;
+    body: {
+      title: string;
+      message: string;
+      participants: number[];
+    };
+  };
 }
 
 declare namespace res {
