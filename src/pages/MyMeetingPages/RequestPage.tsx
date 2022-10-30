@@ -19,6 +19,8 @@ export default function RequestPage() {
   if (isMeetingListError || !meetingList)
     return <div>신청한 과팅 목록 불러오기 오류</div>;
 
+  console.log(meetingList);
+
   return (
     <InfiniteScroll trigger={fetchNextPage}>
       <ul>
