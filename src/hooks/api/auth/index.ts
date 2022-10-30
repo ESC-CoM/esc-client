@@ -1,9 +1,10 @@
-import { authRefresh, postLoginInfo } from 'src/api/auth';
+import { authRefresh, getUserValidationId, postLoginInfo } from 'src/api/auth';
 import { isAxiosError } from 'src/api/core';
+import { queryKey } from 'src/constants/queryKey';
 import { setAccessToken, setRefreshToken } from 'src/utils/auth';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
-import { useCoreMutation } from '../core';
+import { useCoreMutation, useCoreQuery } from '../core';
 
 export const useLogin = () => {
   return useCoreMutation(postLoginInfo, {
@@ -44,4 +45,8 @@ export const useRefresh = () => {
       // }
     },
   });
+};
+
+export const useGetUserValidationId = () => {
+  return useCoreQuery(queryKey.userValidationId, getUserValidationId);
 };

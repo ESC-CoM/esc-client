@@ -12,4 +12,6 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
+  userValidationId: ['userValidationId'],
+  detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
 };
