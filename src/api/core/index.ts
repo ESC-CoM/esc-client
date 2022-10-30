@@ -8,7 +8,6 @@ import { authRefresh } from '../auth';
 
 const http: AxiosInstance = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}`,
-  // baseURL: 'http://localhost:8080',
   timeout: 3000,
   headers: {
     'Content-Type': 'application/json',
