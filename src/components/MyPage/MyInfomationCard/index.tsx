@@ -13,14 +13,13 @@ import PersonalProfileImage from 'src/components/shared/PersonalProfileImage';
 import InformationBar from '../InformationBar';
 import $ from './style.module.scss';
 
-type Prop = {
+type Props = {
   className: string;
   userInfo: res.UserInfoDetailSuccess;
 };
 
-export default function MyInformationCard({
-  className,
-  userInfo: {
+export default function MyInformationCard({ className, userInfo }: Props) {
+  const {
     userInfo: {
       nickname,
       birth,
@@ -29,8 +28,8 @@ export default function MyInformationCard({
       otherInfo: { amountOfAlchol, mbti, gender },
       physicalInfo: { height, weight },
     },
-  },
-}: Prop) {
+  } = userInfo;
+
   return (
     <Link className={cx($.container, className)} to="./change/additional-info">
       <div className={$['left-box']}>
