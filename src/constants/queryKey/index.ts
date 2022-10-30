@@ -18,4 +18,6 @@ export const queryKey = {
   authNumFunc: (code: number) => {
     return ['authNum', { code }];
   },
+  userValidationId: ['userValidationId'],
+  detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
 };
