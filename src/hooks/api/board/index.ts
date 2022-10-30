@@ -3,7 +3,7 @@ import { queryKey } from 'src/constants/queryKey';
 
 import { useCoreInfiniteQuery } from '../core';
 
-export const useGetMeetingListRegisteredByMeQuery = (
+export const useGetMeetingListRegisteredByMe = (
   params?: req.BoardRequestedByMe
 ) => {
   return useCoreInfiniteQuery(
