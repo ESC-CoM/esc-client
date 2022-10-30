@@ -28,7 +28,15 @@ declare namespace res {
     status: string;
     message: string;
     data: {
-      accessToken: string | null;
+      accessToken: string;
     };
+  };
+  export type ValidateSuccess = number;
+
+  export type ValidateError = {
+    message: string;
+    status: number;
+    errors: string[];
+    code: string;
   };
 }

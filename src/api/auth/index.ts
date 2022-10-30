@@ -14,3 +14,8 @@ export const authRefresh = async (
   const response = await http.post('api/auth/refresh', body);
   return response.data;
 };
+
+export const getUserValidationId = async (): Promise<res.ValidateSuccess> => {
+  const response = await http.get('api/auth/validate');
+  return response.data;
+};
