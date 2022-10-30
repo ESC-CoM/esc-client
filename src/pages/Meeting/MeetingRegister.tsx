@@ -22,7 +22,8 @@ export default function MeetingRegisterPage() {
 
   return (
     <MeetingApplyTemplate
-      {...{ title, friendFetchData, addedFriendList, setAddedFriendList }}
+      setAddedFriendList={(friendsIDs) => setAddedFriendList(friendsIDs)}
+      {...{ title, friendFetchData, addedFriendList }}
     />
   );
 }

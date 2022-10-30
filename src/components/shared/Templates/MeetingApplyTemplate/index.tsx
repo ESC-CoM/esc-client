@@ -18,7 +18,7 @@ type Props = {
   title: string;
   friendFetchData: FriendType[];
   addedFriendList: number[];
-  setAddedFriendList: React.Dispatch<React.SetStateAction<number[]>>;
+  setAddedFriendList: (friendsIDs: number[]) => void;
 };
 
 const NEXT_PATH = '/home';
