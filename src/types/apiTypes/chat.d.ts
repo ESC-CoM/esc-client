@@ -12,19 +12,7 @@ declare namespace res {
   export type UserInfoDto = {
     id: number;
     nickname: string;
-    birth: string;
     profileImage: string;
-    university: string;
-    studentId: string;
-    physicalInfo: {
-      height: string;
-      weight: string;
-    };
-    otherInfo: {
-      gender: res.GENDERType;
-      mbti: res.MBTIType;
-      amountOfAlchol: number;
-    };
   };
 
   export type CreateChatRoom = {
