@@ -1,17 +1,25 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerMeetingMocks } from 'src/__mocks__/myMeeting';
 import PostCard from 'src/components/MyMeeting/PostCard';
 import { InfiniteScroll } from 'src/components/shared/Layout';
+import { useGetMeetingListRegisteredByMeQuery } from 'src/hooks/api/borad';
 import { MyMeetingType } from 'src/types/myMeeting';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const [registerMeeting, setRegisterMeeting] = useState<MyMeetingType[]>([]);
+  const {
+    data: registeredMeetingData,
+    fetchNextPage,
+    isLoading: isRegisteredMeetingLoading,
+    isError: isRegisteredMeetingError,
+  } = useGetMeetingListRegisteredByMeQuery({ page: 0, size: 10 });
 
-  const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([...registerMeeting, ...registerMeetingMocks]);
-  };
+  if (isRegisteredMeetingLoading) return <div>로딩중</div>;
+  if (registeredMeetingData === undefined || isRegisteredMeetingError)
+    return <div>오류 발생</div>;
+
+  console.log(registeredMeetingData);
 
   const getRequestList = () => {
     // 요청 리스트 fetch
@@ -19,7 +27,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
+    <InfiniteScroll trigger={fetchNextPage}>
       <ul>
         {registerMeeting.map(
           ({ kind, title, content, friends, date }, index) => {

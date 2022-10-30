@@ -1,11 +1,16 @@
 import { getMeetingListRegisteredByMe } from 'src/api/board';
 import { queryKey } from 'src/constants/queryKey';
 
-import { useCoreQuery } from '../core';
+import { useCoreInfiniteQuery } from '../core';
 
-export const useGetMeetingListRegisteredByMeQuery = () => {
-  return useCoreQuery(
+export const useGetMeetingListRegisteredByMeQuery = (
+  params?: req.BoardListRegisteredByMe
+) => {
+  return useCoreInfiniteQuery(
     queryKey.meetingListRegisteredByMe,
-    getMeetingListRegisteredByMe
+    () => getMeetingListRegisteredByMe(params),
+    {
+      getNextPageParam: ({ pageable: { pageNumber } }) => pageNumber + 1,
+    }
   );
 };

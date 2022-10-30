@@ -1,5 +1,17 @@
 type Gender = 'men' | 'women';
 
+declare namespace req {
+  export type BoardListRegisteredByMe = {
+    page?: number;
+    size?: number;
+    sort?: string[];
+    headCount?: number;
+    gender?: Gender;
+    university?: string;
+    meetingStatus?: 'PENDING' | 'ALLOWED' | 'REJECTED';
+  };
+}
+
 declare namespace res {
   export type BoardListRegisteredByMe = {
     number: number;
@@ -16,33 +28,7 @@ declare namespace res {
       headCount: number;
       gender: Gender;
       meetingStatus: 'PENDING' | 'ALLOWED' | 'REJECTED';
-      owner: {
-        id: number;
-        email: string;
-        userInfo: {
-          nickname: string;
-          phone: string;
-          birth: string;
-          profileImage: string;
-          schoolInfo: {
-            university: string;
-            major: string;
-            studentId: string;
-          };
-          physicalInfo: {
-            height: number;
-            weight: number;
-          };
-          otherInfo: {
-            gender: Gender;
-            mbti: string;
-            amountOfAlchol: number;
-          };
-          mannerScore: number;
-          studentIdAuthenticationKey: string;
-          agree: boolean;
-        };
-      };
+      participants: string[];
       createdAt: string;
       university: string;
     }[];
