@@ -27,15 +27,12 @@ const getInfiniteMeeting =
       meetingStatus: '',
     });
 
-    const {
-      data: { pagination, items },
-    } = await apiFunc(queryString);
+    const { page, last, boardListDtos } = await apiFunc(queryString);
+
     return {
-      pagination: {
-        ...pagination,
-        pageNumber: pageParam,
-      },
-      items,
+      page,
+      last,
+      boardListDtos,
     };
   };
 
