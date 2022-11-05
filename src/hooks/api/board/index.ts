@@ -19,5 +19,6 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
         if ('status' in response) return;
         response.page + 1;
       },
+      enabled: boardId > -1,
     }
   );

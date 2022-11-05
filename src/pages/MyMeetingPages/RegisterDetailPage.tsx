@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   registerMeetingMocks,
@@ -14,6 +14,7 @@ const detailInfo = { badge: kind, title, content, date };
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
+  const [boardId, setBoardId] = useState(-1);
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
@@ -23,9 +24,17 @@ export default function RegisterDetailPage() {
     isError: isRequestListError,
     fetchNextPage: fetchNextRequestList,
   } = useGetRequestListForMeetingRegisteredByMe({
-    boardId: 0,
+    boardId,
     params: { page: 0, size: 10 },
   });
+
+  useEffect(() => {
+    const queryString = window.location.href;
+    const urlParams = new URLSearchParams(queryString);
+    const boardId = urlParams.get('boardId');
+    if (!boardId) return;
+    setBoardId(parseInt(boardId));
+  }, []);
 
   const profileList = useMemo(
     () =>

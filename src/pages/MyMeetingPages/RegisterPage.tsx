@@ -15,7 +15,7 @@ export default function RegisterPage() {
 
   const getRequestList = (boardId: number) => {
     // 요청 리스트 fetch
-    navigate(`/mymeeting/detail?status=register?boardId=${boardId}`);
+    navigate(`/mymeeting/detail?status=register&boardId=${boardId}`);
   };
 
   return (
