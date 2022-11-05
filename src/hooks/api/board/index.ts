@@ -9,7 +9,7 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
 }: req.RequestListForMeetingRegisteredByMe) =>
   useCoreInfiniteQuery(
     queryKey.requestListForMeetingRegisteredByMeFunc(boardId),
-    ({ pageParam = 0 }) =>
+    ({ pageParam = params.page }) =>
       getRequestListForMeetingRegisteredByMe({
         boardId,
         params: { ...params, page: pageParam },

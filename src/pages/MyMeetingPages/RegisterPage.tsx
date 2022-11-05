@@ -13,9 +13,9 @@ export default function RegisterPage() {
     setRegisterMeeting([...registerMeeting, ...registerMeetingMocks]);
   };
 
-  const getRequestList = () => {
+  const getRequestList = (boardId: number) => {
     // 요청 리스트 fetch
-    navigate('/mymeeting/detail?status=register');
+    navigate(`/mymeeting/detail?status=register?boardId=${boardId}`);
   };
 
   return (
@@ -33,7 +33,7 @@ export default function RegisterPage() {
                 key={`${date}-${index}`}
                 profileList={profileList}
                 textInfo={textInfo}
-                onClick={getRequestList}
+                onClick={() => getRequestList(0)}
               />
             );
           }

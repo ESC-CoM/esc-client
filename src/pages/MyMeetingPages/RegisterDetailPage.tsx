@@ -6,6 +6,7 @@ import {
 } from 'src/__mocks__/myMeeting';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
+import { useGetRequestListForMeetingRegisteredByMe } from 'src/hooks/api/board';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 const { kind, title, content, friends, date } = registerMeetingMocks[0];
@@ -16,6 +17,15 @@ export default function RegisterDetailPage() {
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
+  const {
+    data: requestList,
+    isLoading: isRequestListLoading,
+    isError: isRequestListError,
+    fetchNextPage: fetchNextRequestList,
+  } = useGetRequestListForMeetingRegisteredByMe({
+    boardId: 0,
+    params: { page: 0, size: 10 },
+  });
 
   const profileList = useMemo(
     () =>
@@ -36,8 +46,15 @@ export default function RegisterDetailPage() {
     navigate('/home/detail');
   };
 
+  if (isRequestListLoading) return <div>loading...</div>;
+  if (isRequestListError) return <div>error</div>;
+  if (requestList === undefined) return <div>data error</div>;
+
+  console.log(requestList);
+
   return (
     <>
+      <button onClick={() => fetchNextRequestList}>fetch next page</button>
       <PostCard
         className="detail"
         profileList={profileList}
