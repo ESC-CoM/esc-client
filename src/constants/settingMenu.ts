@@ -12,7 +12,7 @@ export const MYPAGE_SETTING_MENU: Menu[] = [
       {
         type: 'link',
         text: '학사 정보 수정',
-        to: './',
+        to: './change/student-card-upload',
       },
     ],
   },

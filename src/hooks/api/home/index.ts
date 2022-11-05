@@ -15,8 +15,8 @@ export const useMeetingItemListQuery = (requestParams: req.Home) => {
     queryKey.meetingItemListFunc(requestParams),
     getInfiniteMeeting(requestParams, getMeetingList),
     {
-      getNextPageParam: ({ pagination: { pageNumber, last } }) => {
-        return last ? undefined : pageNumber + 1;
+      getNextPageParam: ({ page, last }) => {
+        return last ? undefined : page + 1;
       },
     }
   );

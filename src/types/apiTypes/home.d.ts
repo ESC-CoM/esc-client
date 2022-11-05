@@ -25,18 +25,10 @@ declare namespace req {
 }
 
 declare namespace res {
-  export type Pagination<T> = {
-    pagination: {
-      pageNumber: number;
-      page: number;
-      size: number;
-      last: boolean;
-    };
-    items: T[];
-  };
   export type MeetingFeed = {
-    data: Pagination<res.MeetingSummary>;
-    status: number;
+    page: number;
+    last: boolean;
+    boardListDtos: T[];
   };
   export type MeetingSummary = {
     id: number;
@@ -45,22 +37,9 @@ declare namespace res {
     headCount: number; // 미팅을 주선하는 쪽의 인원수
     gender: string;
     meetingStatus: string;
-    university: string;
+    university: string[];
     createdAt: string;
-    owner: {
-      schoolInfo: {
-        school: string;
-        major: string;
-        class: string;
-      };
-      email: string;
-      phone: string;
-      birth: string;
-      profileImage: string;
-      weight: number;
-      height: number;
-      message: string;
-    };
+    profileImages: string[];
   };
   type Participant = {
     schoolInfo: {

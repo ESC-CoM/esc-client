@@ -62,7 +62,8 @@ function MeetingHomePage() {
   const items = data?.pages;
   const itemList = meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
   // items?.reduce(
-  //   (acc: res.MeetingSummary[], cur) => (acc = [...acc, ...cur.items]),
+  //   (acc: res.MeetingSummary[], cur) =>
+  //     (acc = [...acc, ...cur.boardListDtos]),
   //   []
   // );
 
@@ -80,23 +81,17 @@ function MeetingHomePage() {
       }
     >
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
-        {itemList?.length && (
+        {!!itemList?.length && (
           <ul>
             {itemList.map(
-              ({
-                id,
-                title,
-                gender,
-                headCount,
-                university: college,
-                owner: { profileImage: url },
-              }) => {
+              ({ id, title, gender, headCount, university, profileImages }) => {
                 const meeting = {
                   id,
                   title,
                   gender,
                   headCount,
-                  profiles: { college, url },
+                  college: university,
+                  profiles: profileImages,
                 };
 
                 return <HomeMeeting key={meeting.id} meeting={meeting} />;
