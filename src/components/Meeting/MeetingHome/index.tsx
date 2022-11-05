@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useIntersectObserver } from 'src/hooks';
+import { useExtractColleges, useIntersectObserver } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 
 import $ from './style.module.scss';
@@ -13,14 +13,16 @@ interface Props {
 }
 
 export default function Meeting({
-  meeting: { id, title, gender, headCount, profiles },
+  meeting: { id, title, gender, headCount, college, profiles },
 }: Props) {
+  const navigate = useNavigate();
+
   const meetingRef = useRef<HTMLLIElement | null>(null);
   const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const { college, url } = profiles;
-  const navigate = useNavigate();
+  const url = profiles[0];
+  const collegesText = useExtractColleges(college);
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -60,7 +62,7 @@ export default function Meeting({
 
       <div className={$.meetingInfo}>
         <span className={$.title}>{title}</span>
-        <span className={$.college}>{college}</span>
+        <span className={$.college}>{collegesText}</span>
         <span className={$.num}>
           {gender} {headCount}인
         </span>
