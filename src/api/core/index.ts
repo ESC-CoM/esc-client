@@ -1,5 +1,9 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
-import { ACCESSTOKEN } from 'src/constants/auth';
+import {
+  ACCESSTOKEN,
+  TOKEN_EXPIRED,
+  USER_NOT_EXISTED,
+} from 'src/constants/auth';
 import { getAccessToken, setAccessToken } from 'src/utils/auth';
 import { getRefreshToken } from 'src/utils/auth';
 import { toastError, toastSuccess } from 'src/utils/toaster';
@@ -34,9 +38,10 @@ export const refreshAccessToken = async (err: AxiosError) => {
     http.defaults.headers[ACCESSTOKEN] = access;
     const reResponse = await http.request(err.config);
     return reResponse;
-  } catch {
+  } catch (error) {
     window.location.href = '/login';
     toastError({ message: '다시 로그인해야 합니다.' });
+    return Promise.reject(error);
   }
 };
 
@@ -56,11 +61,13 @@ http.interceptors.response.use(
       const { status, code } = err.response.data;
       if (status === 404) {
         window.location.href = '/home';
-      } else if (status === 400 && code === 'USER_NOT_EXISTED') {
+      } else if (status === 400 && code === USER_NOT_EXISTED) {
         window.location.href = '/home';
         toastError({ message: '아직 가입이 승인되지 않은 유저입니다.' });
-      } else if (status === 403 && code === 'INVALID_REFRESH_TOKEN') {
+      } else if (status === 403 && code === TOKEN_EXPIRED) {
         refreshAccessToken(err);
+      } else if (status === 403) {
+        window.location.href = '/login';
       }
     }
     return Promise.reject(err);

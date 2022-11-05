@@ -10,7 +10,6 @@ export const postLoginInfo = async (
 export const authRefresh = async (
   body: req.Refresh
 ): Promise<res.RefreshSuccess> => {
-  console.log(body);
   const response = await http.post('api/auth/refresh', body);
   return response.data;
 };
