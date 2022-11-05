@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { friendMocks } from 'src/__mocks__/friendMocks';
 import { FriendsList } from 'src/components/shared/Templates';
 import { useSearch } from 'src/hooks';
 import { useFriendsList, useFriendsRequests } from 'src/hooks/api/friend';
@@ -16,6 +15,7 @@ export default function FriendsListPage() {
   const kind = useSearch('kind');
   const navigate = useNavigate();
   const { data } = useFriendData(kind);
+  const friendData = data?.data || [];
 
   useEffect(() => {
     if (!kind) {
@@ -26,7 +26,7 @@ export default function FriendsListPage() {
   if (path === '/friends/list' && kind === 'myfriends')
     return (
       <FriendsList
-        friends={friendMocks}
+        friends={friendData}
         onSearchClick={(text) => {
           console.log(text);
         }}
@@ -36,7 +36,7 @@ export default function FriendsListPage() {
     return (
       <FriendsList
         type="request"
-        friends={friendMocks}
+        friends={friendData}
         onSearchClick={(text) => console.log(text)}
       />
     );

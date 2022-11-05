@@ -7,7 +7,7 @@ import {
 } from 'src/api/friend';
 import { queryKey } from 'src/constants/queryKey';
 import { queryClient } from 'src/index';
-import { toastSuccess } from 'src/utils/toaster';
+import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';
 import { getFriendRequests } from './../../../api/friend/index';
@@ -24,7 +24,7 @@ export const useDeleteFriend = () => {
       queryClient.invalidateQueries(queryKey.friendsList);
     },
     onError: () => {
-      toastSuccess({ message: '친구 삭제를 실패했습니다.' });
+      toastError({ message: '친구 삭제를 실패했습니다.' });
     },
   });
 };

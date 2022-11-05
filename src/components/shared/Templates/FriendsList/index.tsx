@@ -15,21 +15,20 @@ import Button from '../../Button';
 import FriendWithCheck from '../../FriendWithCheck';
 import $ from './style.module.scss';
 
-type Friend = { id: number; src: string; name: string };
 type ListType = 'request' | 'myrequest' | 'add' | 'delete';
 type MutationFunc = UseMutateFunction<
   res.DeleteFriend,
   AxiosError<unknown, any>,
-  number,
+  string,
   unknown
 >;
 
 type Props = {
-  friends: Friend[];
+  friends: res.Friend[];
   onSearchClick: (text: string) => void;
   type?: ListType;
-  onSelectFriend?: (id: number) => void;
-  selectedIDList?: number[];
+  onSelectFriend?: (id: string) => void;
+  selectedIDList?: string[];
 };
 
 export default function FriendsList(listProps: Props) {
@@ -51,7 +50,7 @@ export default function FriendsList(listProps: Props) {
     { btnType: 'delete', text: '친구 삭제', onClick: deleteFriend },
   ];
 
-  const isSelected = (id: number) => {
+  const isSelected = (id: string) => {
     if (!selectedIDList?.length) return false;
     return selectedIDList.includes(id);
   };
@@ -62,11 +61,11 @@ export default function FriendsList(listProps: Props) {
         <Search onSearchClick={onSearchClick} />
       </div>
       <ul>
-        {friends.map(({ src, name, id }, index) => (
+        {friends.map(({ profile, nickName, id }, index) => (
           <li key={`${name}${index}`} className={$['friend-bar']}>
             {onSelectFriend && (
               <FriendWithCheck
-                {...{ src, name }}
+                {...{ src: profile, name: nickName }}
                 isVertical={false}
                 isChecked={isSelected(id)}
                 handleClick={() => onSelectFriend(id)}
@@ -75,7 +74,7 @@ export default function FriendsList(listProps: Props) {
 
             {!onSelectFriend && (
               <Friend
-                {...{ src, name }}
+                {...{ src: profile, name: nickName }}
                 isVertical={false}
                 padding={10}
                 paddingLeft={10}

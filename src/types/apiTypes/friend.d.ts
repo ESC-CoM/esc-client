@@ -1,12 +1,13 @@
 declare namespace res {
+  export type Friend = {
+    id: string;
+    profile: string;
+    nickName: string;
+  };
   export type FriendList = {
     status: string;
     message: string;
-    data: {
-      friendShipId: number;
-      nickName: string;
-      profile: string;
-    };
+    data: Friend[];
   };
   export type DeleteFriend = {
     status: string;
@@ -21,6 +22,6 @@ declare namespace res {
   export type FriendRequestList = {
     status: string;
     message: string;
-    data: FriendRequest[];
+    data: Friend[];
   };
 }
