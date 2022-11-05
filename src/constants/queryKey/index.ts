@@ -18,4 +18,6 @@ export const queryKey = {
   meetingItemDetailFunc: (id: number) => {
     return ['meetingItemDetail', id];
   },
+  userValidationId: ['userValidationId'],
+  detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
 };
