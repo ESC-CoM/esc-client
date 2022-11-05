@@ -24,6 +24,11 @@ function ProfileTagContainer({ title, info, fontSize }: Props) {
     return '';
   };
 
+  const getValue = (key: keyof Profile, value: string | number) => {
+    if (key === 'drink') return +value / 10;
+    return value;
+  };
+
   return (
     <section className={$['tag-container']}>
       <span className={$.title}>{title}</span>
@@ -34,7 +39,7 @@ function ProfileTagContainer({ title, info, fontSize }: Props) {
               <ProfileTag
                 {...{ fontSize }}
                 key={`${value}-${index}`}
-                value={key === 'drink' && !value ? '못마셔요' : +value / 10}
+                value={getValue(key as keyof Profile, value)}
                 unit={
                   key === 'drink' && !value ? '' : getUnit(key as keyof Profile)
                 }
