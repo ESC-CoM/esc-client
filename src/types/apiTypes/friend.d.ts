@@ -3,6 +3,8 @@ declare namespace res {
     id: string;
     profile: string;
     nickName: string;
+    email?: string;
+    friend?: boolean;
   };
   export type FriendList = {
     status: string;
@@ -20,6 +22,11 @@ declare namespace res {
     name: string;
   };
   export type FriendRequestList = {
+    status: string;
+    message: string;
+    data: Friend[];
+  };
+  export type SearchedFriend = {
     status: string;
     message: string;
     data: Friend[];

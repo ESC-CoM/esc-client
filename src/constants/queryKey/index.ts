@@ -20,4 +20,7 @@ export const queryKey = {
   acceptFriendRequest: (id: number) => {
     return ['acceptFriendRequest', id];
   },
+  searchedFriend: (user: string) => {
+    return ['searchedFriend', user];
+  },
 };

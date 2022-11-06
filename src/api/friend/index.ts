@@ -15,6 +15,13 @@ export const getFriendRequests = async (): Promise<res.FriendRequestList> => {
   return response.data;
 };
 
+export const getSearchedFriend = async (
+  user: string
+): Promise<res.SearchedFriend> => {
+  const response = await http.get(`api/friend/search?value=${user}`);
+  return response.data;
+};
+
 export const sendFriendRequests = async (
   id: string
 ): Promise<res.DeleteFriend> => {
