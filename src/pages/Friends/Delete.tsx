@@ -1,25 +1,16 @@
-import { useState } from 'react';
-import { friendMocks } from 'src/__mocks__/friendMocks';
 import { FriendsList } from 'src/components/shared/Templates';
+import { useFriendsList } from 'src/hooks/api/friend';
 
 export default function DeleteFriends() {
-  const [selectList, setSelectList] = useState<number[]>([]);
-
-  const handleSelectFriend = (id: number) => {
-    const isExists = selectList.includes(id);
-    if (isExists) {
-      setSelectList((pre) => pre.filter((preID) => preID !== id));
-      return;
-    }
-    setSelectList((pre) => [...pre, id]);
-  };
+  const { data } = useFriendsList();
+  const friendData = data?.data || [];
 
   const handleSearchClick = (text: string) => alert(text);
 
   return (
     <FriendsList
       type="delete"
-      friends={friendMocks}
+      friends={friendData}
       onSearchClick={handleSearchClick}
     />
   );

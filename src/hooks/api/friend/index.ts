@@ -9,7 +9,7 @@ import {
 import { getFriendRequests, getSearchedFriend } from 'src/api/friend/index';
 import { queryKey } from 'src/constants/queryKey';
 import { queryClient } from 'src/index';
-import { toastError, toastSuccess } from 'src/utils/toaster';
+import { toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';
 
@@ -24,8 +24,11 @@ export const useDeleteFriend = () => {
       toastSuccess({ message });
       queryClient.invalidateQueries(queryKey.friendsList);
     },
-    onError: () => {
-      toastError({ message: '친구 삭제를 실패했습니다.' });
+    onError: (err) => {
+      if (isAxiosError<res.Error>(err) && err.response) {
+        const { message } = err.response.data;
+        toastSuccess({ message });
+      }
     },
   });
 };
