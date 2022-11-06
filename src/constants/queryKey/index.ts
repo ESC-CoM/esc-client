@@ -23,4 +23,6 @@ export const queryKey = {
   searchedFriend: (user: string) => {
     return ['searchedFriend', user];
   },
+  userValidationId: ['userValidationId'],
+  detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
 };

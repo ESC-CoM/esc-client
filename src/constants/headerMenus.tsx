@@ -111,6 +111,11 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
     },
     {
       icon: <IoChevronBack />,
+      text: '학생증 재인증',
+      url: '/mypage/change/student-card-upload',
+    },
+    {
+      icon: <IoChevronBack />,
       url: '/join',
       isPathBeIncluded: true,
     },
