@@ -8,9 +8,7 @@ export const useMeetingItemListQuery = (params?: req.Home) => {
     queryKey.meetingItemList,
     () => getMeetingList(params),
     {
-      getNextPageParam: ({ page, last }) => {
-        return last ? undefined : page + 1;
-      },
+      getNextPageParam: ({ page, last }) => (last ? page : page + 1),
     }
   );
 };
