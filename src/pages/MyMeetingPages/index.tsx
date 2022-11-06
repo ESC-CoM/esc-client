@@ -1,16 +1,13 @@
-import { useLocation } from 'react-router-dom';
 import { PageLayout } from 'src/components/shared/Layout';
-import seatchParams from 'src/utils/searchParams';
+import { useSearch } from 'src/hooks';
 
 import RegisterDetailPage from './RegisterDetailPage';
 import RegisterPage from './RegisterPage';
 import RequestPage from './RequestPage';
 
 export default function MyMeetingPage() {
-  const location = useLocation();
   const path = location.pathname;
-  const queryString = location.search;
-  const keyword = seatchParams(queryString, 'status');
+  const keyword = useSearch('status');
 
   return (
     <PageLayout isNeedFooter={true} headerHeight={84}>

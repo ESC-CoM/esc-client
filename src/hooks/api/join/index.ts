@@ -38,7 +38,7 @@ export const useRegister = () => {
       toastSuccess({ message });
     },
     onError: (error) => {
-      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+      if (isAxiosError<res.Error>(error) && !!error.response) {
         const { message } = error.response.data;
         toastError({ message });
       }

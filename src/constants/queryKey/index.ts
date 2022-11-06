@@ -12,6 +12,17 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
+  friendsList: ['friendsList'],
+  friendsRequest: ['friendsRequest'],
+  sendFriendRequest: (id: number) => {
+    return ['sendFriendRequest', id];
+  },
+  acceptFriendRequest: (id: number) => {
+    return ['acceptFriendRequest', id];
+  },
+  searchedFriend: (user: string) => {
+    return ['searchedFriend', user];
+  },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
 };
