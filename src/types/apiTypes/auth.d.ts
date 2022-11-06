@@ -21,8 +21,6 @@ declare namespace res {
   export type RefreshSuccess = {
     status: string;
     message: string;
-    data: {
-      accessToken: string;
-    };
+    data: string;
   };
 }

@@ -30,12 +30,11 @@ export const refreshAccessToken = async (err: AxiosError) => {
   const refreshToken = getRefreshToken();
   try {
     const response = await authRefresh({ accessToken, refreshToken });
-    const {
-      data: { accessToken: access },
-    } = response;
-    setAccessToken(access);
+    const { data } = response;
+    setAccessToken(data);
     toastSuccess({ message: '재인증 완료' });
-    http.defaults.headers[ACCESSTOKEN] = access;
+    http.defaults.headers[ACCESSTOKEN] = data;
+    if (err.config.headers) err.config.headers[ACCESSTOKEN] = data;
     const reResponse = await http.request(err.config);
     return reResponse;
   } catch (error) {
