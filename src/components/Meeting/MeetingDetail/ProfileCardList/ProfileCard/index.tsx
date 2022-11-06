@@ -64,7 +64,7 @@ function ProfileCard({ friend }: Props) {
 
       <section className={$['profile-card-container']}>
         <ProfileBasicInfo friend={{ nickName: nickname, gender }} />
-        <ProfileTagContainer title="자기소개" info={info} fontSize="13px" />
+        <ProfileTagContainer info={info} fontSize="13px" />
       </section>
     </div>
   );

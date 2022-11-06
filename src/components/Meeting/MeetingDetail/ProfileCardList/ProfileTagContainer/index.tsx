@@ -9,12 +9,11 @@ type Obj = {
 };
 
 type Props = {
-  title: string;
   info: Obj | (string | number)[];
   fontSize?: string;
 };
 
-function ProfileTagContainer({ title, info, fontSize }: Props) {
+function ProfileTagContainer({ info, fontSize }: Props) {
   const getUnit = (key: keyof Profile) => {
     if (key === 'drink') return '병';
     if (key === 'height') return 'cm';
@@ -24,9 +23,13 @@ function ProfileTagContainer({ title, info, fontSize }: Props) {
     return '';
   };
 
+  const getValue = (key: keyof Profile, value: string | number) => {
+    if (key === 'drink') return +value / 10;
+    return value;
+  };
+
   return (
     <section className={$['tag-container']}>
-      <span className={$.title}>{title}</span>
       <div className={$['tag-list']}>
         {Object.entries(info).map(
           ([key, value], index) =>
@@ -34,7 +37,7 @@ function ProfileTagContainer({ title, info, fontSize }: Props) {
               <ProfileTag
                 {...{ fontSize }}
                 key={`${value}-${index}`}
-                value={key === 'drink' && !value ? '못마셔요' : +value / 10}
+                value={getValue(key as keyof Profile, value)}
                 unit={
                   key === 'drink' && !value ? '' : getUnit(key as keyof Profile)
                 }
