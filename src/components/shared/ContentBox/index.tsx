@@ -37,7 +37,7 @@ function ContentBox({
     <section className={$['content-box']}>
       {isReadMode ? (
         <div style={{ minHeight: '200px' }}>
-          <h2>{title}</h2>
+          <h2 className={$['title-read-mode']}>{title}</h2>
           {content && <span>{content}</span>}
         </div>
       ) : (
