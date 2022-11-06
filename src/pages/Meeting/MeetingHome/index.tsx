@@ -16,11 +16,6 @@ import $ from './style.module.scss';
 const initialInfiniteReq = {
   page: 0,
   size: 30,
-  ownerId: '',
-  headCount: '',
-  university: '',
-  gender: '',
-  meetingStatus: '',
 };
 
 function MeetingHomePage() {
