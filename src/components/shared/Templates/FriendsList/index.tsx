@@ -24,7 +24,7 @@ type MutationFunc = UseMutateFunction<
 >;
 
 type Props = {
-  friends: res.Friend[];
+  friends: res.Friend[] | res.SearchedFriend['data'];
   onSearchClick: (text: string) => void;
   type?: ListType;
   onSelectFriend?: (id: string) => void;
@@ -61,8 +61,8 @@ export default function FriendsList(listProps: Props) {
         <Search onSearchClick={onSearchClick} />
       </div>
       <ul>
-        {friends.map(({ profile, nickName, id }, index) => (
-          <li key={`${name}${index}`} className={$['friend-bar']}>
+        {friends.map(({ id, profile, nickName, friend }, index) => (
+          <li key={`${nickName}${index}`} className={$['friend-bar']}>
             {onSelectFriend && (
               <FriendWithCheck
                 {...{ src: profile, name: nickName }}
@@ -98,7 +98,8 @@ export default function FriendsList(listProps: Props) {
 
             {btnProps.map(({ btnType, text, onClick }) => {
               return (
-                type === btnType && (
+                type === btnType &&
+                !friend && (
                   <Button
                     key={btnType + text}
                     contentText={text}

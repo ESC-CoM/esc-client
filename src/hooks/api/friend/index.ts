@@ -1,3 +1,4 @@
+import { isAxiosError } from 'src/api/core';
 import {
   acceptFriendRequests,
   deleteFriend,
@@ -5,12 +6,12 @@ import {
   rejectFriendRequests,
   sendFriendRequests,
 } from 'src/api/friend';
+import { getFriendRequests, getSearchedFriend } from 'src/api/friend/index';
 import { queryKey } from 'src/constants/queryKey';
 import { queryClient } from 'src/index';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';
-import { getFriendRequests } from './../../../api/friend/index';
 
 export const useFriendsList = () => {
   return useCoreQuery(queryKey.friendsList, () => getFriendsList());
@@ -33,6 +34,16 @@ export const useFriendsRequests = () => {
   return useCoreQuery(queryKey.friendsRequest, () => getFriendRequests());
 };
 
+export const useSearchFriend = (user: string) => {
+  return useCoreQuery(
+    queryKey.searchedFriend(user),
+    () => getSearchedFriend(user),
+    {
+      enabled: !!user,
+    }
+  );
+};
+
 export const useSendFriendsRequest = () => {
   return useCoreMutation(sendFriendRequests, {
     onSuccess: (res) => {
@@ -40,8 +51,11 @@ export const useSendFriendsRequest = () => {
       toastSuccess({ message });
       queryClient.invalidateQueries(queryKey.friendsRequest);
     },
-    onError: () => {
-      toastSuccess({ message: '친구 요청을 실패했습니다.' });
+    onError: (err) => {
+      if (isAxiosError<res.Error>(err) && err.response) {
+        const { message } = err.response.data;
+        toastSuccess({ message });
+      }
     },
   });
 };
