@@ -12,9 +12,7 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
-  meetingItemListFunc: (requestParams: req.Home) => {
-    return ['meetingItemList', { ...requestParams }];
-  },
+  meetingItemList: ['meetingItemList'],
   meetingItemDetailFunc: (id: number) => {
     return ['meetingItemDetail', id];
   },

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
@@ -14,8 +14,8 @@ import { meetingOptions } from './constants';
 import $ from './style.module.scss';
 
 const initialInfiniteReq = {
-  page: '0',
-  size: '30',
+  page: 0,
+  size: 30,
   ownerId: '',
   headCount: '',
   university: '',
@@ -42,22 +42,9 @@ function MeetingHomePage() {
     };
   }, [isScrollMove]);
 
-  const {
-    data,
-    hasNextPage,
-    isLoading,
-    isFetching,
-    fetchNextPage,
-    refetch,
-    remove,
-  } = useMeetingItemListQuery({ ...initialInfiniteReq });
-
-  const fetchMoreMeetingFeeds = useCallback(() => {
-    remove();
-    return refetch({
-      refetchPage: (_, index) => index === 0,
-    });
-  }, [refetch, remove]);
+  const { data, isLoading, isError, fetchNextPage } = useMeetingItemListQuery({
+    ...initialInfiniteReq,
+  });
 
   const items = data?.pages;
   const itemList = meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
@@ -66,6 +53,8 @@ function MeetingHomePage() {
   //     (acc = [...acc, ...cur.boardListDtos]),
   //   []
   // );
+
+  if (isLoading) return <div>로딩중</div>;
 
   return (
     <PageLayout
@@ -80,7 +69,7 @@ function MeetingHomePage() {
         />
       }
     >
-      <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
+      <InfiniteScroll trigger={fetchNextPage}>
         {!!itemList?.length && (
           <ul>
             {itemList.map(

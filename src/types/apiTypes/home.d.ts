@@ -1,7 +1,7 @@
 declare namespace req {
   export type Home = {
-    page: string;
-    size: string;
+    page: number;
+    size: number;
     ownerId: string | null;
     headCount: string | null;
     university: string | null;

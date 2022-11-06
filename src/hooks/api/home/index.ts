@@ -1,16 +1,12 @@
-import {
-  getInfiniteMeeting,
-  getMeetingDetail,
-  getMeetingList,
-} from 'src/api/home';
+import { getMeetingDetail, getMeetingList } from 'src/api/home';
 import { queryKey } from 'src/constants/queryKey';
 
 import { useCoreInfiniteQuery, useCoreQuery } from '../core';
 
-export const useMeetingItemListQuery = (requestParams: req.Home) => {
+export const useMeetingItemListQuery = (params?: req.Home) => {
   return useCoreInfiniteQuery(
-    queryKey.meetingItemListFunc(requestParams),
-    getInfiniteMeeting(requestParams, getMeetingList),
+    queryKey.meetingItemList,
+    () => getMeetingList(params),
     {
       getNextPageParam: ({ page, last }) => {
         return last ? undefined : page + 1;
