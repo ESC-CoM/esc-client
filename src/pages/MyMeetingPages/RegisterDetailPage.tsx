@@ -25,7 +25,7 @@ export default function RegisterDetailPage() {
     fetchNextPage: fetchNextRequestList,
   } = useGetRequestListForMeetingRegisteredByMe({
     boardId,
-    params: { page: 0, size: 10 },
+    params: { size: 10 },
   });
 
   useEffect(() => {
