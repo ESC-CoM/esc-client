@@ -4,11 +4,12 @@ import { queryKey } from 'src/constants/queryKey';
 import { useCoreInfiniteQuery } from '../core';
 
 export const useGetMeetingListRegisteredByMe = (
-  params?: req.BoardRequestedByMe
+  params?: Omit<req.BoardRequestedByMe, 'page'>
 ) => {
   return useCoreInfiniteQuery(
     queryKey.meetingListRegisteredByMe,
-    () => getMeetingListRequestedByMe(params),
+    ({ pageParam = 0 }) =>
+      getMeetingListRequestedByMe({ ...params, page: pageParam }),
     {
       getNextPageParam: ({ pageable: { pageNumber } }) => pageNumber + 1,
     }
