@@ -8,7 +8,8 @@ export const useGetMeetingListRegisteredByMeQuery = (
 ) => {
   return useCoreInfiniteQuery(
     queryKey.meetingListRegisteredByMe,
-    () => getMeetingListRegisteredByMe(params),
+    ({ pageParam = 0 }) =>
+      getMeetingListRegisteredByMe({ ...params, page: pageParam }),
     {
       getNextPageParam: ({ pageable: { pageNumber } }) => pageNumber + 1,
     }
