@@ -73,25 +73,14 @@ function MeetingHomePage() {
         {!!itemList?.length && (
           <ul>
             {itemList.map(
-              ({
-                id,
-                title,
-                content,
-                gender,
-                headCount,
-                university,
-                profileImages,
-                createdAt,
-              }) => {
+              ({ id, title, gender, headCount, university, profileImages }) => {
                 const meeting = {
                   id,
                   title,
-                  content,
                   gender,
                   headCount,
                   college: university,
                   profiles: profileImages,
-                  createdAt,
                 };
 
                 return <HomeMeeting key={meeting.id} meeting={meeting} />;
