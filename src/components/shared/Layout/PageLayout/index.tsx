@@ -1,7 +1,5 @@
 import { ForwardedRef, forwardRef, ReactNode, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import Header from 'src/components/shared/Layout/Header/Basic';
-import headerChildren from 'src/constants/headerChildren';
 
 import Footer from '../Footer';
 import style from './style.module.scss';
@@ -20,8 +18,6 @@ function PageLayout(
 ) {
   const { isNeedFooter, children, customHeader } = layoutProps;
   const { headerHeight = 0, decreaseHeight = 0 } = layoutProps;
-  const location = useLocation();
-  const hasHeaderChildren = (url: string) => location.pathname.match(url);
   const footerHeight = isNeedFooter ? 55 : 0;
 
   useEffect(() => {
@@ -34,13 +30,7 @@ function PageLayout(
 
   return (
     <>
-      {!customHeader &&
-        headerHeight > 0 &&
-        headerChildren.map(({ children, url }) => {
-          if (hasHeaderChildren(url))
-            return <Header key={url} children={children} />;
-          return <Header key={url} />;
-        })}
+      {!customHeader && <Header />}
       {customHeader && <Header {...{ customHeader }} />}
 
       <main
