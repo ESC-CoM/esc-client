@@ -64,7 +64,7 @@ export default function Meeting({
         <span className={$.title}>{title}</span>
         <span className={$.college}>{collegesText}</span>
         <span className={$.num}>
-          {gender} {headCount}인
+          {gender === 'women' ? '여자' : '남자'} {headCount}인
         </span>
       </div>
     </li>
