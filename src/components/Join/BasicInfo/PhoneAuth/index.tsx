@@ -31,13 +31,10 @@ export default function PhoneAuth({
   errors,
 }: Props) {
   const { setJoinInfo } = useStore();
-  const [phoneNumber, isReceivedAuthNum] = watch([
-    'phoneNumber',
-    'isReceivedAuthNum',
-  ]);
+  const phoneNumber = watch('phoneNumber');
+  const [btnClickcount, setBtnClickCount] = useState(0);
   const [phone, setPhone] = useState('');
-  const { data } = usePhoneQuery(phone);
-  console.log(data);
+  const { data } = usePhoneQuery(phone, btnClickcount);
 
   const sendPhoneNum = () => {
     if (phoneNumber.length === 13) {
@@ -45,6 +42,7 @@ export default function PhoneAuth({
       setJoinInfo({ phoneNumber });
       setValue('isReceivedAuthNum', true);
       setFocus('authNumber');
+      setBtnClickCount((prev) => prev + 1);
     }
   };
 
@@ -70,7 +68,7 @@ export default function PhoneAuth({
         labelErrorMessage={errors.phoneNumber?.message}
         buttonErrorMessage={errors.isReceivedAuthNum?.message}
         label="휴대폰 번호"
-        buttonText={isReceivedAuthNum ? '다시 받기' : '인증번호 받기'}
+        buttonText={btnClickcount > 0 ? '다시 받기' : '인증번호 받기'}
       />
       <InputWithTimer
         type="number"

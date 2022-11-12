@@ -12,8 +12,8 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
-  phoneFunc: (phone: string) => {
-    return ['phone', { phone }];
+  phoneFunc: (phone: string, btnClickcount: number) => {
+    return ['phone', { phone, btnClickcount }];
   },
   authNumFunc: (code: number) => {
     return ['authNum', { code }];

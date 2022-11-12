@@ -61,15 +61,27 @@ export const useUploadStdCard = () => {
   });
 };
 
-export const usePhoneQuery = (phone: string) => {
-  return useCoreQuery(queryKey.phoneFunc(phone), () => sendAuthNum(phone), {
-    enabled: !!phone,
-  });
+export const usePhoneQuery = (phone: string, btnClickcount: number) => {
+  return useCoreQuery(
+    queryKey.phoneFunc(phone, btnClickcount),
+    () => sendAuthNum(phone),
+    {
+      enabled: !!phone && !!btnClickcount,
+    }
+  );
 };
 
 export const useAuthNumQuery = (code: number) => {
   return useCoreQuery(queryKey.authNumFunc(code), () => checkAuthNum(code), {
     enabled: !!code,
+    onSuccess: () => {
+      const message = '인증완료';
+      toastSuccess({ message });
+    },
+    onError: () => {
+      const message = '인증번호가 올바르지 않습니다.';
+      toastError({ message });
+    },
   });
 };
 

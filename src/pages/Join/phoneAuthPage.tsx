@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ import { PageLayout } from '../../components/shared/Layout';
 const NEXT_PATH = '/join/email';
 
 export default function PhoneAuthPage() {
-  const { userInfo, setJoinInfo } = useStore();
+  const { userInfo } = useStore();
   const {
     watch,
     register,
@@ -35,11 +35,11 @@ export default function PhoneAuthPage() {
   ]);
 
   const [authNum, setAuthNum] = useState(0);
-  const { data, isSuccess } = useAuthNumQuery(authNum);
+  const { isSuccess } = useAuthNumQuery(authNum);
 
   const sendAuthNum = () => {
     if (isPhoneDuplicated) {
-      setAuthNum(+authNumber); // TODO: authNumber이 number 타입인데 string으로 들어감..
+      setAuthNum(+authNumber);
       setValue('isAuthed', true);
     }
   };
@@ -51,12 +51,13 @@ export default function PhoneAuthPage() {
       const message = '휴대폰 인증이 필요합니다.';
       toastError({ message });
     }
+  };
 
+  useEffect(() => {
     if (isSuccess) {
-      setJoinInfo({ phoneNumber, authNumber });
       navigate(NEXT_PATH);
     }
-  };
+  }, [isSuccess]);
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>
@@ -70,7 +71,7 @@ export default function PhoneAuthPage() {
         />
         <FooterButton
           text={isAuthed ? '다음' : '인증하기'}
-          type="submit"
+          type={isAuthed ? 'submit' : 'button'}
           onClick={sendAuthNum}
         />
       </form>

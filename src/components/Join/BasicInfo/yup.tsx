@@ -29,8 +29,4 @@ export const PhoneYup = yup.object({
     .boolean()
     .required('휴대폰 인증을 해주세요.')
     .oneOf([true], '휴대폰 인증을 해주세요.'),
-  isAuthed: yup
-    .boolean()
-    .required('인증번호를 입력해주세요.')
-    .oneOf([true], '인증번호를 입력해주세요.'),
 });
