@@ -12,6 +12,10 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
+  meetingItemList: ['meetingItemList'],
+  meetingItemDetailFunc: (id: number) => {
+    return ['meetingItemDetail', id];
+  },
   friendsList: ['friendsList'],
   friendsRequest: ['friendsRequest'],
   sendFriendRequest: (id: number) => {
