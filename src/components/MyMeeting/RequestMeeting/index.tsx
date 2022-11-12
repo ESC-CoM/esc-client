@@ -12,7 +12,10 @@ function RequestMeeting({
   requestedInfo,
   date,
   state,
-}: MyMeetingRequestType) {
+  onDeleteClick,
+}: MyMeetingRequestType & {
+  onDeleteClick: () => void;
+}) {
   const navigate = useNavigate();
   const requestRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -52,6 +55,7 @@ function RequestMeeting({
 
   const handleRefuseRequest = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onDeleteClick();
   };
 
   return (

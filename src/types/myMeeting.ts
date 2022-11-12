@@ -11,4 +11,5 @@ export type MyMeetingRequestType = {
   requestedInfo: { nickName: string; src: string }[];
   date: string;
   state?: boolean;
+  onDeleteClick?: () => void;
 };
