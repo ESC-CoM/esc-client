@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 import MeetingHeader from 'src/components/Meeting/MeetingHeader';
 import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import Plus from 'src/components/shared/Icon/Plus';
@@ -37,19 +36,25 @@ function MeetingHomePage() {
     };
   }, [isScrollMove]);
 
-  const { data, isLoading, isError, fetchNextPage } = useMeetingItemListQuery({
-    ...initialInfiniteReq,
-  });
+  const { data, isLoading, hasNextPage, fetchNextPage } =
+    useMeetingItemListQuery({
+      ...initialInfiniteReq,
+    });
 
   const items = data?.pages;
-  const itemList = meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
-  // items?.reduce(
-  //   (acc: res.MeetingSummary[], cur) =>
-  //     (acc = [...acc, ...cur.boardListDtos]),
-  //   []
-  // );
+  const itemList =
+    // meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
+    items?.reduce(
+      (acc: res.MeetingSummary[], cur) =>
+        (acc = [...acc, ...cur.boardListDtos]),
+      []
+    );
 
   if (isLoading) return <div>로딩중</div>;
+
+  const getNextPage = () => {
+    if (hasNextPage) fetchNextPage();
+  };
 
   return (
     <PageLayout
@@ -64,18 +69,29 @@ function MeetingHomePage() {
         />
       }
     >
-      <InfiniteScroll trigger={fetchNextPage}>
+      <InfiniteScroll trigger={getNextPage}>
         {!!itemList?.length && (
           <ul>
             {itemList.map(
-              ({ id, title, gender, headCount, university, profileImages }) => {
+              ({
+                id,
+                title,
+                content,
+                gender,
+                headCount,
+                university,
+                profileImages,
+                createdAt,
+              }) => {
                 const meeting = {
                   id,
                   title,
+                  content,
                   gender,
                   headCount,
                   college: university,
                   profiles: profileImages,
+                  createdAt,
                 };
 
                 return <HomeMeeting key={meeting.id} meeting={meeting} />;
