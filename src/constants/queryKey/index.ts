@@ -18,6 +18,17 @@ export const queryKey = {
   authNumFunc: (code: number) => {
     return ['authNum', { code }];
   },
+  friendsList: ['friendsList'],
+  friendsRequest: ['friendsRequest'],
+  sendFriendRequest: (id: number) => {
+    return ['sendFriendRequest', id];
+  },
+  acceptFriendRequest: (id: number) => {
+    return ['acceptFriendRequest', id];
+  },
+  searchedFriend: (user: string) => {
+    return ['searchedFriend', user];
+  },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
 };
