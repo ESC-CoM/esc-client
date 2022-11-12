@@ -11,18 +11,11 @@ type Props = {
 };
 
 function ProfileCard({ friend }: Props) {
-  const {
-    id,
-    nickname,
-    birth,
-    profileImage,
-    university,
-    studentId,
-    physicalInfo,
-    otherInfo,
-  } = friend;
+  const { nickname, birth, profileImage } = friend;
+  const { university, studentId, physicalInfo, otherInfo } = friend;
   const { gender, mbti, amountOfAlchol } = otherInfo;
   const { height, weight } = physicalInfo;
+
   const info: Omit<
     Profile,
     'nickName' | 'img' | 'gender' | 'mannerScore' | 'department' | 'hobbies'
@@ -35,6 +28,7 @@ function ProfileCard({ friend }: Props) {
     mbti,
     drink: amountOfAlchol,
   };
+
   const profileRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
