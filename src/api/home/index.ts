@@ -18,4 +18,13 @@ const createMeeting = async (
   return response.data;
 };
 
-export { createMeeting, getMeetingDetail, getMeetingList };
+const requestMeeting = async ({
+  boardId,
+  body,
+}: req.RequestMeeting): Promise<res.MeetingDetail> => {
+  console.log(body);
+  const response = await http.post(`/api/board/${boardId}/request`, body);
+  return response.data;
+};
+
+export { createMeeting, getMeetingDetail, getMeetingList, requestMeeting };

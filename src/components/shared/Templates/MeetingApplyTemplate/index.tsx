@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { ChangeEventHandler } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ContentBox from 'src/components/shared/ContentBox';
 import FooterButton from 'src/components/shared/FooterButton';
 import Friend from 'src/components/shared/Friend';
 import FriendWithCheck from 'src/components/shared/FriendWithCheck';
 import { PageLayout } from 'src/components/shared/Layout';
 import Search from 'src/components/shared/Search';
-import { useCreateMeetingQuery } from 'src/hooks/api/home';
 import { FriendType, MeetingTitle } from 'src/types/meeting';
 
 import Input from '../../Input';
@@ -19,9 +17,8 @@ type Props = {
   friendFetchData: FriendType[];
   addedFriendList: number[];
   setAddedFriendList: (friendsIDs: number[]) => void;
+  handleClickBtn: (data: req.CreateMeeting) => void;
 };
-
-const NEXT_PATH = '/home';
 
 export default function MeetingApplyTemplate(applyProps: Props) {
   const {
@@ -30,8 +27,8 @@ export default function MeetingApplyTemplate(applyProps: Props) {
     friendFetchData,
     addedFriendList,
     setAddedFriendList,
+    handleClickBtn,
   } = applyProps;
-  const navigate = useNavigate();
 
   const handleFriendClick = (id: number) => {
     if (addedFriendList.find((x) => x === id) === undefined)
@@ -44,20 +41,15 @@ export default function MeetingApplyTemplate(applyProps: Props) {
   const btnText = isApply ? '신청하기' : '등록하기';
   const contentState = useState('');
 
-  const { data, mutate } = useCreateMeetingQuery();
-
   const handleClickRegisterBtn = () => {
-    const body = {
+    const data = {
       title: titleInput,
       content: contentState[0],
       headCount: addedFriendList.length + 1,
       participants: addedFriendList,
     };
-    mutate(body, {
-      onSuccess: () => {
-        navigate(NEXT_PATH);
-      },
-    });
+
+    handleClickBtn(data);
   };
 
   const [titleInput, setTitleInput] = useState('');

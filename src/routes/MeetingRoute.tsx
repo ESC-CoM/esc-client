@@ -7,7 +7,7 @@ function HomeRoute() {
     <Routes>
       <Route index element={<MeetingHome />} />
       <Route path="detail/:boardId" element={<MeetingDetail />} />
-      <Route path="apply" element={<MeetingApply />} />
+      <Route path="apply/:boardId" element={<MeetingApply />} />
       <Route path="register" element={<MeetingRegister />} />
     </Routes>
   );
