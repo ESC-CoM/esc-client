@@ -11,10 +11,10 @@ export default function MeetingRegisterPage() {
   useEffect(() => {
     // TODO: fetch Data
     setFriendFetchData(
-      friendMocks.map(({ src, name }) => {
+      friendMocks.map(({ profile, nickName }) => {
         return {
-          src,
-          name,
+          src: profile,
+          name: nickName,
         };
       })
     );

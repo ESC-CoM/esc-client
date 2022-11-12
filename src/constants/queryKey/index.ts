@@ -12,11 +12,20 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
-  meetingItemListFunc: (requestParams: req.Home) => {
-    return ['meetingItemList', { ...requestParams }];
-  },
+  meetingItemList: ['meetingItemList'],
   meetingItemDetailFunc: (id: number) => {
     return ['meetingItemDetail', id];
+  },
+  friendsList: ['friendsList'],
+  friendsRequest: ['friendsRequest'],
+  sendFriendRequest: (id: number) => {
+    return ['sendFriendRequest', id];
+  },
+  acceptFriendRequest: (id: number) => {
+    return ['acceptFriendRequest', id];
+  },
+  searchedFriend: (user: string) => {
+    return ['searchedFriend', user];
   },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
