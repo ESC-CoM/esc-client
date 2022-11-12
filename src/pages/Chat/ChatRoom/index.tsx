@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useParams } from 'react-router-dom';
+import { io } from 'socket.io-client';
 import { messageInfoMocks } from 'src/__mocks__/chat';
 import { MessageInput } from 'src/components/Chat';
 import { ChatCard } from 'src/components/Chat';
@@ -10,6 +11,8 @@ import PersonalProfilePage from 'src/pages/PersonalProfilePage';
 import $ from './style.module.scss';
 
 export default function ChatRoomPage() {
+  const socket = io(`${process.env.REACT_APP_API_URL}/board-chat`);
+
   const [isClickProfile, setIsClickProfile] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startClientY, setStartClientY] = useState(0);
@@ -120,6 +123,31 @@ export default function ChatRoomPage() {
 
   const { boardId } = useParams();
 
+  /* 채팅 메세지 소켓 */
+  useEffect(() => {
+    if (socket?.connected) {
+      socket.on('receive', (data) => {
+        const { id, message, senderId, messageType } = data;
+        console.log(data);
+      });
+
+      return () => {
+        socket.off('receive');
+      };
+    }
+  }, [socket]);
+
+  const onSendMessage = (message: string) => {
+    console.log(message);
+
+    if (socket?.connected) {
+      socket.emit('send', {
+        message: message || '테스트 메세지',
+        messageType: 'MESSAGE',
+      });
+    }
+  };
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       {isClickProfile && (
@@ -143,7 +171,7 @@ export default function ChatRoomPage() {
         })}
       </section>
       <div className={$['msg-input']}>
-        <MessageInput setAlbums={setAlbums} />
+        <MessageInput setAlbums={setAlbums} onSendMessage={onSendMessage} />
       </div>
     </PageLayout>
   );

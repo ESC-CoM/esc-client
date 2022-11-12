@@ -7,9 +7,10 @@ import $ from './style.module.scss';
 
 interface Props {
   setAlbums: React.Dispatch<React.SetStateAction<FileList | null | undefined>>;
+  onSendMessage: (message: string) => void;
 }
 
-export function MessageInput({ setAlbums }: Props) {
+export function MessageInput({ setAlbums, onSendMessage }: Props) {
   const [newContent, setNewContent] = useState('');
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
@@ -30,6 +31,10 @@ export function MessageInput({ setAlbums }: Props) {
     setAlbums(e.currentTarget.files);
   };
 
+  const onClickSendBtn = () => {
+    onSendMessage(newContent);
+  };
+
   return (
     <div className={$['message-input-box']}>
       <label htmlFor="file">
@@ -44,8 +49,8 @@ export function MessageInput({ setAlbums }: Props) {
         onChange={handleContentChange}
         autoFocus
       />
-      <button type="submit">
-        <IoSend />
+      <button type="submit" onClick={onClickSendBtn}>
+        <IoSend color={newContent ? 'black' : '#9e9e9e'} />
       </button>
     </div>
   );
