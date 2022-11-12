@@ -1,12 +1,12 @@
 declare namespace req {
   export type Home = {
-    page: string;
-    size: string;
-    ownerId: string | null;
-    headCount: string | null;
-    university: string | null;
-    gender: string | null;
-    meetingStatus: string | null;
+    page: number;
+    size: number;
+    ownerId?: string | null;
+    headCount?: string | null;
+    university?: string | null;
+    gender?: string | null;
+    meetingStatus?: string | null;
   };
   export type CreateMeeting = {
     title: string;

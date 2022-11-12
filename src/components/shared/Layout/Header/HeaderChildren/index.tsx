@@ -1,11 +1,16 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import headerMenus from 'src/constants/headerMenus';
+import React, { useMemo } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { menusLeft, menusRight } from 'src/constants/headerMenus';
 
 import $ from './style.module.scss';
 
 export default function HeaderChildren() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const headerMenus = useMemo(
+    () => [menusLeft(navigate), menusRight],
+    [navigate]
+  );
 
   const isStringUrl = (url?: string | string[], isPathBeIncluded?: boolean) => {
     return (
@@ -35,10 +40,12 @@ export default function HeaderChildren() {
               isStringArrUrl(menu.url)
             )
               return (
-                <React.Fragment key={`header-${index1}-${index2}`}>
-                  <span>{menu.icon}</span>
-                  {menu.text && <em>{menu.text}</em>}
-                </React.Fragment>
+                <Link to={menu.to || ''} key={`header-${index1}-${index2}`}>
+                  <div className={$['icon-box']}>
+                    <span onClick={menu.onClick}>{menu.icon}</span>
+                    {menu.text && <em>{menu.text}</em>}
+                  </div>
+                </Link>
               );
           })}
         </div>

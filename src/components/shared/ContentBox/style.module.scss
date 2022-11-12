@@ -9,6 +9,12 @@
     font-weight: 700;
     font-size: 18px;
   }
+
+  .title-read-mode {
+    border-bottom: 2px solid $gray-300;
+    padding: 5px 0;
+  }
+
   .textarea-box {
     min-height: 200px;
     display: flex;

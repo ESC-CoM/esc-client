@@ -11,18 +11,11 @@ type Props = {
 };
 
 function ProfileCard({ friend }: Props) {
-  const {
-    id,
-    nickname,
-    birth,
-    profileImage,
-    university,
-    studentId,
-    physicalInfo,
-    otherInfo,
-  } = friend;
+  const { nickname, birth, profileImage } = friend;
+  const { university, studentId, physicalInfo, otherInfo } = friend;
   const { gender, mbti, amountOfAlchol } = otherInfo;
   const { height, weight } = physicalInfo;
+
   const info: Omit<
     Profile,
     'nickName' | 'img' | 'gender' | 'mannerScore' | 'department' | 'hobbies'
@@ -64,7 +57,7 @@ function ProfileCard({ friend }: Props) {
 
       <section className={$['profile-card-container']}>
         <ProfileBasicInfo friend={{ nickName: nickname, gender }} />
-        <ProfileTagContainer title="자기소개" info={info} fontSize="13px" />
+        <ProfileTagContainer info={info} fontSize="13px" />
       </section>
     </div>
   );

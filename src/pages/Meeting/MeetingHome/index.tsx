@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 import MeetingHeader from 'src/components/Meeting/MeetingHeader';
 import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import Plus from 'src/components/shared/Icon/Plus';
@@ -14,13 +13,8 @@ import { meetingOptions } from './constants';
 import $ from './style.module.scss';
 
 const initialInfiniteReq = {
-  page: '0',
-  size: '30',
-  ownerId: '',
-  headCount: '',
-  university: '',
-  gender: '',
-  meetingStatus: '',
+  page: 0,
+  size: 30,
 };
 
 function MeetingHomePage() {
@@ -42,30 +36,25 @@ function MeetingHomePage() {
     };
   }, [isScrollMove]);
 
-  const {
-    data,
-    hasNextPage,
-    isLoading,
-    isFetching,
-    fetchNextPage,
-    refetch,
-    remove,
-  } = useMeetingItemListQuery({ ...initialInfiniteReq });
-
-  const fetchMoreMeetingFeeds = useCallback(() => {
-    remove();
-    return refetch({
-      refetchPage: (_, index) => index === 0,
+  const { data, isLoading, hasNextPage, fetchNextPage } =
+    useMeetingItemListQuery({
+      ...initialInfiniteReq,
     });
-  }, [refetch, remove]);
 
   const items = data?.pages;
-  const itemList = meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
-  // items?.reduce(
-  //   (acc: res.MeetingSummary[], cur) =>
-  //     (acc = [...acc, ...cur.boardListDtos]),
-  //   []
-  // );
+  const itemList =
+    // meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
+    items?.reduce(
+      (acc: res.MeetingSummary[], cur) =>
+        (acc = [...acc, ...cur.boardListDtos]),
+      []
+    );
+
+  if (isLoading) return <div>로딩중</div>;
+
+  const getNextPage = () => {
+    if (hasNextPage) fetchNextPage();
+  };
 
   return (
     <PageLayout
@@ -80,7 +69,7 @@ function MeetingHomePage() {
         />
       }
     >
-      <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
+      <InfiniteScroll trigger={getNextPage}>
         {!!itemList?.length && (
           <ul>
             {itemList.map(
