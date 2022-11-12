@@ -6,7 +6,16 @@ import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import $ from './style.module.scss';
 
-function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
+function RequestedItem({
+  comment,
+  requestedInfo,
+  date,
+  onAllowClick,
+  onRejectClick,
+}: MyMeetingRequestType & {
+  onAllowClick: () => void;
+  onRejectClick: () => void;
+}) {
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -43,9 +52,11 @@ function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
 
   const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onAllowClick();
   };
   const clickRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onRejectClick();
   };
 
   return (

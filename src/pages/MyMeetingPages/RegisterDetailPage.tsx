@@ -6,6 +6,10 @@ import {
 } from 'src/__mocks__/myMeeting';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
+import {
+  usePatchAllowRequest,
+  usePatchRejectRequest,
+} from 'src/hooks/api/board';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 const { kind, title, content, friends, date } = registerMeetingMocks[0];
@@ -16,6 +20,8 @@ export default function RegisterDetailPage() {
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
+  const { mutate: allowRequest } = usePatchAllowRequest(0);
+  const { mutate: rejectRequest } = usePatchRejectRequest(0);
 
   const profileList = useMemo(
     () =>
@@ -50,6 +56,8 @@ export default function RegisterDetailPage() {
           {requestedMeeting.map(({ comment, requestedInfo, date }, index) => (
             <RequestedList
               key={`requested-list-${index}`}
+              onAllowClick={() => allowRequest(0)}
+              onRejectClick={() => rejectRequest(0)}
               {...{ comment, requestedInfo, date }}
             />
           ))}
