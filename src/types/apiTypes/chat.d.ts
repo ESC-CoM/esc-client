@@ -24,4 +24,32 @@ declare namespace res {
       participants: UserInfoDto[];
     };
   };
+
+  type Participant = {
+    id: number;
+    nickname: string;
+    profileImage: string;
+  };
+
+  type Message = {
+    id: number;
+    message: string;
+    messageType: 'NOTICE' | 'MESSAGE';
+    senderId: number;
+  };
+
+  type Board = {
+    id: number;
+    title: string;
+    participants: Participant[];
+  };
+
+  export type getChatRoomInfo = {
+    status: string;
+    message: string;
+    data: {
+      board: Board;
+      chat: Message[];
+    };
+  };
 }

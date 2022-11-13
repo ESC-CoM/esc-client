@@ -29,4 +29,5 @@ export const queryKey = {
   },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
+  getChatRoomInfo: ['getChatRoomInfo'],
 };

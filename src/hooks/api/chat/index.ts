@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { createChatRoom } from 'src/api/chat';
+import { createChatRoom, getChatRoomInfo } from 'src/api/chat';
 import { isAxiosError } from 'src/api/core';
+import { queryKey } from 'src/constants/queryKey';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
-import { useCoreMutation } from '../core';
+import { useCoreMutation, useCoreQuery } from '../core';
 
 export const useCreateChatRoom = () => {
   const navigate = useNavigate();
@@ -24,4 +25,8 @@ export const useCreateChatRoom = () => {
       }
     },
   });
+};
+
+export const useGetChatRoomInfo = (boardId: number) => {
+  return useCoreQuery(queryKey.getChatRoomInfo, () => getChatRoomInfo(boardId));
 };
