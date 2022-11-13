@@ -4,12 +4,12 @@ import BasicProfile from 'src/components/shared/Icon/BasicProfile';
 import $ from './style.module.scss';
 
 type Props = {
-  id?: string;
+  id?: number;
   alt: string;
   src: string;
   width: number;
   height: number;
-  onClick?: (userId: string) => void;
+  onClick?: (userId: number) => void;
 };
 
 export function PersonalProfileImage({

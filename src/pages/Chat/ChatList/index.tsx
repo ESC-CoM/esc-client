@@ -7,10 +7,10 @@ export default function ChatListPage() {
     <PageLayout isNeedFooter={true} headerHeight={44}>
       <ul>
         {chatListMocks.map(
-          ({ boardId, roomImage, title, content, time, count }, index) => (
+          ({ boardId, roomImage, title, message, time, count }, index) => (
             <ChatItem
               key={title + index}
-              {...{ boardId, roomImage, title, content, time, count }}
+              {...{ boardId, roomImage, title, message, time, count }}
             />
           )
         )}

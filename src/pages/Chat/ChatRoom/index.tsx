@@ -34,7 +34,7 @@ export default function ChatRoomPage() {
     }, 300);
   };
 
-  const clickProfile = (userId: string) => {
+  const clickProfile = (userId: number) => {
     // 개인 프로필 정보 불러오기
     setIsClickProfile(true);
     setIsOverHalf(false);
@@ -120,6 +120,9 @@ export default function ChatRoomPage() {
 
   const { boardId } = useParams();
 
+  // const { data } = useGetChatRoomInfo(+(boardId || 0));
+  // const chatInfo = data?.data.chat;
+
   return (
     <PageLayout isNeedFooter={false} headerHeight={44}>
       {isClickProfile && (
@@ -132,12 +135,21 @@ export default function ChatRoomPage() {
       )}
 
       <section className={$['chat-content']}>
-        {messageInfoMocks.map(({ sender, content, date }, index) => {
-          const { id, name, imagePath } = sender;
+        {messageInfoMocks.map(({ message, sender, isMe, date }, index) => {
+          const { senderId, name, imagePath } = sender;
+
           return (
             <ChatCard
-              key={`${sender.id}${date}${index}`}
-              {...{ id, name, imagePath, content, date, clickProfile }}
+              key={`${senderId}${index}`}
+              {...{
+                senderId,
+                name,
+                imagePath,
+                isMe,
+                date,
+                content: message,
+                clickProfile,
+              }}
             />
           );
         })}

@@ -6,27 +6,29 @@ import Message from '../Message';
 import $ from './style.module.scss';
 
 interface Props {
-  id: string;
   name: string;
+  senderId: number;
   imagePath: string;
+  isMe: boolean;
   content: string;
   date: string;
-  clickProfile: (userId: string) => void;
+  clickProfile: (userId: number) => void;
 }
 
 export function ChatCard({
-  id,
   name,
+  senderId,
   imagePath,
+  isMe,
   content,
   date,
   clickProfile,
 }: Props) {
   return (
-    <div className={cx($['chat-card'], $[id === 'loginid' ? 'me' : 'other'])}>
-      {id === 'other' && (
+    <div className={cx($['chat-card'], $[isMe ? 'me' : 'other'])}>
+      {!isMe && (
         <PersonalProfileImage
-          id={id}
+          id={senderId}
           alt={`${name}님의 프로필`}
           src={imagePath}
           width={35}
@@ -34,7 +36,7 @@ export function ChatCard({
           onClick={clickProfile}
         />
       )}
-      <Message id={id} name={name} content={content} />
+      <Message {...{ name, content, isMe }} />
       <time className={$.date} dateTime={date}>
         {date}
       </time>

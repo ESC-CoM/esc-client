@@ -4,14 +4,12 @@ import cx from 'classnames';
 import $ from './style.module.scss';
 
 interface Props {
-  id: string;
   name: string | undefined;
   content: string;
+  isMe: boolean;
 }
 
-export function Message({ id, name, content }: Props) {
-  const isMe = id === 'loginid';
-
+export function Message({ name, content, isMe }: Props) {
   return (
     <div className={$['chat-msg']}>
       {!isMe && <span className={$.name}>{name}</span>}

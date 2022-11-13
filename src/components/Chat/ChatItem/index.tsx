@@ -11,7 +11,7 @@ interface Props {
     imageUrl: string;
   }[];
   title: string;
-  content: string;
+  message: string;
   time: string;
   count: string;
 }
@@ -20,7 +20,7 @@ export default function ChatItem({
   boardId,
   roomImage,
   title,
-  content,
+  message,
   time,
   count,
 }: Props) {
@@ -49,7 +49,7 @@ export default function ChatItem({
       <div className={$['chat-info']}>
         <div className={$['main-info']}>
           <strong>{title}</strong>
-          <span className={$.content}>{content}</span>
+          <span className={$.message}>{message}</span>
         </div>
         <div className={$['more-info']}>
           <time>{time}</time>
