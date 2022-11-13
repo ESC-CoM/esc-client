@@ -1,5 +1,6 @@
 import { memo, useRef } from 'react';
 import { useIntersectObserver } from 'src/hooks';
+import { Profile } from 'src/types/profile';
 
 import ProfileBasicInfo from '../ProfileBasicInfo';
 import ProfileTagContainer from '../ProfileTagContainer';
@@ -10,22 +11,26 @@ type Props = {
 };
 
 function ProfileCard({ friend }: Props) {
-  const { img, mannerScore, nickName, gender, birthDate } = friend;
-  const { college, department, studentNum } = friend;
-  const { height, weight, mbti, hobbies, drink } = friend;
-  const profileRef = useRef<HTMLDivElement | null>(null);
-  const imgRef = useRef<HTMLImageElement | null>(null);
+  const { nickname, birth, profileImage } = friend;
+  const { university, studentId, physicalInfo, otherInfo } = friend;
+  const { gender, mbti, amountOfAlchol } = otherInfo;
+  const { height, weight } = physicalInfo;
 
-  const info: Omit<res.Profile, 'nickName' | 'img' | 'gender' | 'hobbies'> = {
-    college,
-    department,
-    studentNum,
-    birthDate,
+  const info: Omit<
+    Profile,
+    'nickName' | 'img' | 'gender' | 'mannerScore' | 'department' | 'hobbies'
+  > = {
+    birthDate: birth,
+    college: university,
+    studentNum: studentId,
     height,
     weight,
     mbti,
-    drink,
+    drink: amountOfAlchol,
   };
+
+  const profileRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -48,20 +53,12 @@ function ProfileCard({ friend }: Props) {
   return (
     <div className={$['profile-card']} ref={profileRef}>
       <div className={$['img-wrapper']}>
-        <img data-src={img} alt="사진" ref={imgRef} />
+        <img data-src={profileImage} alt="사진" ref={imgRef} />
       </div>
 
       <section className={$['profile-card-container']}>
-        <ProfileBasicInfo friend={{ nickName, gender, mannerScore }} />
-
-        <ProfileTagContainer title="자기소개" info={info} fontSize="13px" />
-        {hobbies && (
-          <ProfileTagContainer
-            title="취미소개"
-            info={hobbies}
-            fontSize="13px"
-          />
-        )}
+        <ProfileBasicInfo friend={{ nickName: nickname, gender }} />
+        <ProfileTagContainer info={info} fontSize="13px" />
       </section>
     </div>
   );

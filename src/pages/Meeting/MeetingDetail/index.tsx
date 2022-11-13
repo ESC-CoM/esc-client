@@ -1,19 +1,27 @@
-import { useNavigate } from 'react-router-dom';
-import { meetingDetailMocks } from 'src/__mocks__/meetingDetailMocks';
+import { useNavigate, useParams } from 'react-router-dom';
 import ProfileCardList from 'src/components/Meeting/MeetingDetail/ProfileCardList';
 import ContentBox from 'src/components/shared/ContentBox';
 import FooterButton from 'src/components/shared/FooterButton';
 import { PageLayout } from 'src/components/shared/Layout';
+import { useMeetingItemDetailQuery } from 'src/hooks/api/home';
 
 import $ from './style.module.scss';
+const initialBoard = {
+  title: '',
+  content: '',
+  participants: [],
+};
 
 function MeetingDetailPage() {
   const navigate = useNavigate();
-  const { title, content, friends } = meetingDetailMocks;
+  const { boardId } = useParams();
 
   const handleClick = () => {
     navigate('/home/apply');
   };
+
+  const { data } = useMeetingItemDetailQuery(+(boardId || 0));
+  const { title, content, participants: friends } = data || initialBoard;
 
   return (
     <PageLayout isNeedFooter={false} decreaseHeight={54}>

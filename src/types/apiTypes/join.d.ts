@@ -23,6 +23,26 @@ declare namespace res {
     statusCode: string;
     statusName: string;
   };
+  export type MBTIType =
+    | '없음'
+    | 'ENFP'
+    | 'ENFJ'
+    | 'ENTP'
+    | 'ENTJ'
+    | 'ESFP'
+    | 'ESFJ'
+    | 'ESTP'
+    | 'ESTJ'
+    | 'INFP'
+    | 'INFJ'
+    | 'INTP'
+    | 'INTJ'
+    | 'ISFP'
+    | 'ISFJ'
+    | 'ISTP'
+    | 'ISTJ';
+  export type GENDERType = 'men' | 'women';
+
   export type ProfileImageSuccess = {
     status: string;
     message: string;
