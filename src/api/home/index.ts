@@ -10,4 +10,21 @@ const getMeetingDetail = async (id: number): Promise<res.MeetingDetail> => {
   return response.data;
 };
 
-export { getMeetingDetail, getMeetingList };
+const createMeeting = async (
+  body: req.CreateMeeting
+): Promise<res.MeetingFeed> => {
+  console.log(body);
+  const response = await http.post(`/api/board`, body);
+  return response.data;
+};
+
+const requestMeeting = async ({
+  boardId,
+  body,
+}: req.RequestMeeting): Promise<res.MeetingDetail> => {
+  console.log(body);
+  const response = await http.post(`/api/board/${boardId}/request`, body);
+  return response.data;
+};
+
+export { createMeeting, getMeetingDetail, getMeetingList, requestMeeting };

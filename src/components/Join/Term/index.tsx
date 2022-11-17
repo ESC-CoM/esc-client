@@ -7,10 +7,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { terms } from 'src/__mocks__/join';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
-import { useRegister } from 'src/hooks/api/join';
 import useStore from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';
-import changeKeyName from 'src/utils/changeKeyName';
 
 import $ from './style.module.scss';
 import TermsSchema from './yup';
@@ -69,21 +67,14 @@ export default function Term() {
     return checkAllChecked();
   }, [watch()]);
 
-  const { userInfo, setJoinInfo } = useStore();
-  const userData = changeKeyName(userInfo);
+  const { setJoinInfo } = useStore();
 
-  const { mutate, isSuccess } = useRegister();
-
-  const onSubmit = (data: TermSchema) => {
+  const onSubmit = () => {
     if (allChecked) {
       setJoinInfo({ isAgree: true });
-      mutate(userData);
+      navigate(NEXT_PATH);
     }
   };
-
-  useEffect(() => {
-    if (isSuccess) navigate(NEXT_PATH);
-  }, [isSuccess]);
 
   return (
     <form className={$['term-form']} onSubmit={handleSubmit(onSubmit)}>

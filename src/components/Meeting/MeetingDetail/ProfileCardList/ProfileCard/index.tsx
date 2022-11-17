@@ -28,7 +28,6 @@ function ProfileCard({ friend }: Props) {
     mbti,
     drink: amountOfAlchol,
   };
-
   const profileRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
