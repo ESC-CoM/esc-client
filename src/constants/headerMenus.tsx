@@ -136,6 +136,7 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       icon: <IoChevronBack />,
       url: '/join',
       isPathBeIncluded: true,
+      onClick: () => navigate(-1),
     },
     {
       icon: <Logo />,

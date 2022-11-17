@@ -23,7 +23,7 @@ const sendAuthNum = async (phone: string): Promise<res.PhoneSuccess> => {
 };
 
 const checkAuthNum = async (code: number): Promise<boolean> => {
-  const response = await http.post(`/api/sms/auth`, code);
+  const response = await http.post(`/api/sms/auth?code=${code}`);
   return response.data;
 };
 
