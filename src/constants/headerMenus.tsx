@@ -169,6 +169,7 @@ const menusRight: MenuType[] = [
   {
     icon: <IoNotificationsOutline />,
     url: '/chat',
+    to: '/notice',
   },
   {
     icon: <IoReorderThreeOutline />,
