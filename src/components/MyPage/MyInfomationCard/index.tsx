@@ -24,11 +24,15 @@ export default function MyInformationCard({ className, userInfo }: Props) {
       nickname,
       birth,
       profileImage,
-      schoolInfo: { university, major },
+      schoolInfo,
       otherInfo: { amountOfAlchol, mbti, gender },
       physicalInfo: { height, weight },
     },
   } = userInfo;
+
+  const schoolText = schoolInfo
+    ? schoolInfo.university + ' ' + schoolInfo.major
+    : '학생증 인증 후 확인할 수 있습니다.';
 
   return (
     <Link className={cx($.container, className)} to="./change/additional-info">
@@ -52,10 +56,7 @@ export default function MyInformationCard({ className, userInfo }: Props) {
             )}
           </div>
           <ul>
-            <InformationBar
-              icon={OutlineSchool}
-              text={`${university} ${major}`}
-            />
+            <InformationBar icon={OutlineSchool} text={schoolText} />
             <InformationBar icon={RiCake2Fill} text={`${birth}년생`} />
             <InformationBar icon={IoBeer} text={`${amountOfAlchol}병`} />
           </ul>
