@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { PhoneYup } from 'src/components/Join/BasicInfo/yup';
 import FooterButton from 'src/components/shared/FooterButton';
-import { useAuthNumQuery } from 'src/hooks/api/join';
+import { usePhoneStore } from 'src/store/usePhoneStore';
 import useStore from 'src/store/useStore';
 import { PhoneAuthType } from 'src/types/join';
 import { toastError } from 'src/utils/toaster';
@@ -35,7 +35,7 @@ export default function PhoneAuthPage() {
   ]);
 
   const [authNum, setAuthNum] = useState(0);
-  const { isSuccess } = useAuthNumQuery(authNum);
+  // const { isSuccess } = useAuthNumQuery(authNum);
 
   const sendAuthNum = () => {
     if (isPhoneDuplicated) {
@@ -43,6 +43,8 @@ export default function PhoneAuthPage() {
       setValue('isAuthed', true);
     }
   };
+
+  const { authCode } = usePhoneStore();
 
   const onSubmit = (data: PhoneAuthType) => {
     const { phoneNumber, authNumber } = data;
@@ -54,10 +56,12 @@ export default function PhoneAuthPage() {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    console.log(authCode && +authCode === authNum);
+    if (authCode && +authCode === authNum) {
+      // TODO: 임시로 지정, 추후에 백엔드에서 수정하면 제거할 것
       navigate(NEXT_PATH);
     }
-  }, [isSuccess]);
+  }, [authCode, authNum]);
 
   return (
     <PageLayout isNeedFooter={false} headerHeight={44} decreaseHeight={54}>

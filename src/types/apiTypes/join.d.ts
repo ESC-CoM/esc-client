@@ -22,6 +22,7 @@ declare namespace res {
     requestTime: string;
     statusCode: string;
     statusName: string;
+    authCode: string; // TODO: 임시로 지정, 추후에 백엔드에서 수정하면 제거할 것
   };
   export type MBTIType =
     | '없음'

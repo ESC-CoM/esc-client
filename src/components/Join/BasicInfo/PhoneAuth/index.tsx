@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from 'react';
+import { ChangeEventHandler, useEffect, useState } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
@@ -9,6 +9,7 @@ import {
 import InputWithButton from 'src/components/shared/InputWithButton';
 import InputWithTimer from 'src/components/shared/InputWithTimer';
 import { usePhoneQuery } from 'src/hooks/api/join';
+import { usePhoneStore } from 'src/store/usePhoneStore';
 import useStore from 'src/store/useStore';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
@@ -31,10 +32,15 @@ export default function PhoneAuth({
   errors,
 }: Props) {
   const { setJoinInfo } = useStore();
+  const { checkAuthCode } = usePhoneStore();
   const phoneNumber = watch('phoneNumber');
   const [btnClickcount, setBtnClickCount] = useState(0);
   const [phone, setPhone] = useState('');
-  const { data } = usePhoneQuery(phone, btnClickcount);
+  const { data, isSuccess } = usePhoneQuery(phone, btnClickcount);
+
+  useEffect(() => {
+    if (isSuccess && data) checkAuthCode(data.authCode);
+  }, [isSuccess]);
 
   const sendPhoneNum = () => {
     if (phoneNumber.length === 13) {
