@@ -61,32 +61,30 @@ export const messageInfoMocks = [
 export const chatListMocks = [
   {
     roomImage: profileList,
-    title:
-      '소프트웨어학과 남자 3명 소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명소프트웨어학과 남자 3명',
+    title: '소프트웨어학과 남자 3명',
+    content: '언제가 좋을까요?',
+    time: '오후 12:25',
+    count: '6',
+  },
+  {
+    roomImage: profileList,
+    title: '심리학과 남자 4명',
     content:
       'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ',
-    time: '오후 12:25',
-    count: '26',
-  },
-  {
-    roomImage: profileList,
-    title:
-      '심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명 심리학과 여자 4명',
-    content: '언제가 좋을까요?',
     time: '오후 2:18',
-    count: '38',
+    count: '23',
   },
   {
-    roomImage: profileList,
-    title: '간호학과 여자 3명 간호학과 여자 3명',
+    roomImage: profileList.slice(1).reverse(),
+    title: '간호학과 남자 2명',
     content: '안녕하세용',
     time: '오전 1:35',
     count: '5',
   },
   {
-    roomImage: profileList,
+    roomImage: profileList.reverse(),
     title: '화학과 남자 3명',
-    content: ':):D',
+    content: '우와 :)',
     time: '오전 3:05',
     count: '300+',
   },

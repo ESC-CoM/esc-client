@@ -2,16 +2,16 @@ export const profileList = [
   {
     name: '쭈꾸미',
     imageUrl:
-      'https://image.fmkorea.com/files/attach/new/20200822/3655109/2889212861/3050346954/8a72c1b35ac36f68c59bddc70b64db22.jpg',
+      'https://user-images.githubusercontent.com/63364990/202516959-9af74ecb-ae3b-4e4d-a33e-f8ba2b9716fd.jpeg',
   },
   {
     name: '냥냥이',
     imageUrl:
-      'https://t1.daumcdn.net/news/202009/22/xportsnews/20200922111443330clnu.jpg',
+      'https://img.mbn.co.kr/filewww/news/other/2019/12/30/015331923331.jpg',
   },
   {
     name: '야옹',
     imageUrl:
-      'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTEwMjdfMzMg%2FMDAxNTcyMTczNDAwMjc0.-zTktpIp7v4OuhrkU2OLCmR1yxPqTFTTQ3NMHoz9-Csg.x04PhKOmPSawfE07xN5uBlURiDdeHcIZ4i73gp7wB7Ug.JPEG.lucy3622%2F1572173398894.jpg&type=sc960_832',
   },
 ];
