@@ -61,7 +61,7 @@ function MeetingHomePage() {
       isNeedFooter={true}
       headerHeight={60}
       ref={layoutRef}
-      customHeader={
+      headerWithCustom={
         <MeetingHeader
           data={meetingOptions}
           selected={meetingKind}

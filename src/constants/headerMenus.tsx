@@ -2,12 +2,10 @@ import { BsPersonDash } from '@react-icons/all-files/bs/BsPersonDash';
 import { BsPersonPlus } from '@react-icons/all-files/bs/BsPersonPlus';
 import { IoChevronBack } from '@react-icons/all-files/io5/IoChevronBack';
 import { IoChevronBackOutline } from '@react-icons/all-files/io5/IoChevronBackOutline';
-import { IoChevronDownOutline } from '@react-icons/all-files/io5/IoChevronDownOutline';
 import { IoCloseOutline } from '@react-icons/all-files/io5/IoCloseOutline';
 import { IoNotificationsOutline } from '@react-icons/all-files/io5/IoNotificationsOutline';
 import { IoPeopleOutline } from '@react-icons/all-files/io5/IoPeopleOutline';
 import { IoReorderThreeOutline } from '@react-icons/all-files/io5/IoReorderThreeOutline';
-import { IoSearchOutline } from '@react-icons/all-files/io5/IoSearchOutline';
 import { IoSettingsOutline } from '@react-icons/all-files/io5/IoSettingsOutline';
 import { NavigateFunction } from 'react-router-dom';
 import { Logo } from 'src/components/shared/Icon';
@@ -30,11 +28,6 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       onClick: () => navigate(-1),
     },
     {
-      icon: <IoChevronDownOutline />,
-      text: '과팅',
-      url: '/home',
-    },
-    {
       icon: <IoChevronBackOutline />,
       url: '/home/detail',
       isPathBeIncluded: true,
@@ -55,6 +48,11 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
     {
       icon: <Logo />,
       url: '/mymeeting',
+      isPathBeIncluded: false,
+    },
+    {
+      icon: <Logo />,
+      url: '/home',
       isPathBeIncluded: false,
     },
     {
@@ -159,12 +157,13 @@ const menusRight: MenuType[] = [
     isPathBeIncluded: true,
   },
   {
-    icon: <IoSearchOutline />,
-    url: '/home',
+    icon: <IoPeopleOutline />,
+    url: '/mypage',
+    to: '/friends/list?kind=myfriends',
   },
   {
     icon: <IoPeopleOutline />,
-    url: '/mypage',
+    url: '/home',
     to: '/friends/list?kind=myfriends',
   },
   {
