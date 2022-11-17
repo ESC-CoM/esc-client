@@ -98,7 +98,12 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       url: '/friends/add',
       onClick: () => navigate(-1),
     },
-    { icon: <IoChevronBack />, text: '내 정보', url: '/mypage/authentication' },
+    {
+      icon: <IoChevronBack />,
+      text: '내 정보',
+      url: '/mypage/authentication',
+      onClick: () => navigate(-1),
+    },
     { icon: <IoChevronBack />, text: '내 정보', url: '/mypage/select' },
     {
       icon: <IoChevronBack />,
@@ -119,11 +124,13 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       icon: <IoChevronBack />,
       text: '추가 정보 수정',
       url: '/mypage/change/additional-info',
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
       text: '학생증 재인증',
       url: '/mypage/change/student-card-upload',
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
