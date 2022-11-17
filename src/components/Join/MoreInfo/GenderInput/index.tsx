@@ -26,7 +26,7 @@ export function GenderInput({ value, setValue, errors }: Props) {
       <div className={$.row}>
         <button
           className={cx($['gender-btn'], {
-            [$['gender-active']]: value === '남자',
+            [$['gender-active']]: value === 'men',
           })}
           onClick={() => setValue('gender', gender.men)}
           type="button"
@@ -37,7 +37,7 @@ export function GenderInput({ value, setValue, errors }: Props) {
 
         <button
           className={cx($['gender-btn'], {
-            [$['gender-active']]: value === '여자',
+            [$['gender-active']]: value === 'women',
           })}
           onClick={() => setValue('gender', gender.women)}
           type="button"
