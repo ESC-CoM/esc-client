@@ -7,15 +7,15 @@ export const messageInfoMocks = [
       name: '나',
       imagePath: '',
     },
-    content: '1',
+    content: '안녕하세요',
     date: '오후 05:15',
   },
   {
     sender: {
       id: 'other',
-      name: '프렌즈1',
+      name: '사과먹는 춘식이',
       imagePath:
-        'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+        'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTEwMjdfMzMg%2FMDAxNTcyMTczNDAwMjc0.-zTktpIp7v4OuhrkU2OLCmR1yxPqTFTTQ3NMHoz9-Csg.x04PhKOmPSawfE07xN5uBlURiDdeHcIZ4i73gp7wB7Ug.JPEG.lucy3622%2F1572173398894.jpg&type=sc960_832',
     },
     content: '반가워요~',
     date: '오후 05:16',
@@ -23,28 +23,27 @@ export const messageInfoMocks = [
   {
     sender: {
       id: 'other',
-      name: '프렌즈2',
+      name: '둥둥 라이언',
       imagePath:
-        'https://media.bunjang.co.kr/product/166788639_1_1634025108_w360.jpg',
+        'https://user-images.githubusercontent.com/63364990/202516959-9af74ecb-ae3b-4e4d-a33e-f8ba2b9716fd.jpeg',
     },
     content: '어느 과이신가요?',
-    date: '오후 05:16',
+    date: '오후 05:45',
   },
   {
     sender: {
       id: 'other',
-      name: '프렌즈3',
+      name: '책읽는 튜브',
       imagePath:
-        'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
+        'https://img.mbn.co.kr/filewww/news/other/2019/12/30/015331923331.jpg',
     },
-    content:
-      '어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?',
-    date: '오후 06:20',
+    content: '저희는 소웨에요',
+    date: '오후 06:06',
   },
   {
     sender: { id: 'loginid', name: '나', imagePath: '' },
-    content: '안녕하세요안녕하세요안녕하세요안녕하세요',
-    date: '오전 09:15',
+    content: '저희 컴공입니다ㅎㅎ',
+    date: '오후 06:21',
   },
   {
     sender: {
@@ -52,9 +51,8 @@ export const messageInfoMocks = [
       name: '나',
       imagePath: '',
     },
-    content:
-      '어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?어느 과이신가요?',
-    date: '오후 06:20',
+    content: '어디서 언제 볼까요??',
+    date: '오후 06:21',
   },
 ];
 
