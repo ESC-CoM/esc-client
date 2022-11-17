@@ -17,6 +17,12 @@ declare namespace req {
 }
 
 declare namespace res {
+  export type PhoneSuccess = {
+    requestId: string;
+    requestTime: string;
+    statusCode: string;
+    statusName: string;
+  };
   export type MBTIType =
     | '없음'
     | 'ENFP'
