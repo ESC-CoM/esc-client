@@ -9,8 +9,10 @@ import App from './App';
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      staleTime: 3 * 60 * 1000,
       refetchOnWindowFocus: false,
-      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchOnMount: true,
       retry: false,
     },
   },
