@@ -31,8 +31,23 @@ export function MessageInput({ setAlbums }: Props) {
     setAlbums(e.currentTarget.files);
   };
 
+  const getAmPm = (hours: number) => {
+    const amPm = hours < 12 ? 'am' : 'pm';
+    return amPm;
+  };
+
   const onSendMessage = () => {
     if (newContent.length) {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const amPmEng = getAmPm(hours);
+      const amPmKr = amPmEng === 'am' ? '오전' : '오후';
+      const hoursStr = String(hours > 12 ? (hours % 13) + 1 : hours).padStart(
+        2,
+        '0'
+      );
+
       socket().emit('board-chat', {
         sender: {
           id: 'loginid',
@@ -40,7 +55,7 @@ export function MessageInput({ setAlbums }: Props) {
           imagePath: '',
         },
         content: newContent,
-        date: '오후 05:15',
+        date: `${amPmKr} ${hoursStr}:${minutes}`,
       });
       setNewContent('');
     }
