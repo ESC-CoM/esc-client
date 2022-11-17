@@ -60,9 +60,9 @@ export const chatListMocks = [
   {
     roomImage: profileList,
     title: '소프트웨어학과 남자 3명',
-    content: '언제가 좋을까요?',
+    content: '채팅방이 생성되었어요!',
     time: '오후 12:25',
-    count: '6',
+    count: '1',
   },
   {
     roomImage: profileList,
