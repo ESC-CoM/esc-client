@@ -14,7 +14,7 @@ interface Props {
   clickProfile: (userId: string) => void;
 }
 
-export function ChatCard({
+export function MessageCard({
   id,
   name,
   imagePath,
@@ -42,4 +42,4 @@ export function ChatCard({
   );
 }
 
-export default memo(ChatCard);
+export default memo(MessageCard);

@@ -1,19 +1,6 @@
 @import 'src/styles/_color.scss';
 @import 'src/styles/_mixin.scss';
 
-.chat-content {
-  padding: 0 12px;
-}
-.msg-input {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: $white;
-  margin-top: auto;
-  padding: 10px;
-}
-
 .profile-active {
   position: absolute;
   width: 100%;
@@ -24,4 +11,8 @@
 }
 .profile-hidden {
   @include FadeDown();
+}
+
+.chat-content {
+  padding: 0 12px;
 }
