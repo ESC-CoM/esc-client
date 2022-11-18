@@ -6,7 +6,7 @@ import { Chat } from 'src/types/chat';
 
 import $ from './style.module.scss';
 
-export const socket = () => io('http://localhost:5000');
+export const socket = () => io('http://localhost:8080');
 
 export default function ChatRoomPage() {
   const profileRef = useRef<HTMLDivElement>(null);
