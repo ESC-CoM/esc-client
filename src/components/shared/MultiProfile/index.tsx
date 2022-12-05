@@ -45,7 +45,7 @@ export default function MutiProfile({ profileList, parentRef }: Props) {
       {profileList.map(({ alt, src }, index) => (
         <div key={`${src}${index}`} className={$['personal-img']}>
           <img
-            src={src}
+            data-src={src}
             alt={`${alt}의 프로필 사진`}
             onError={onError}
             ref={(el) => (imgRefs.current[index] = el as HTMLImageElement)}
