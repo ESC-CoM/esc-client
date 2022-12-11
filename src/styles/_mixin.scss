@@ -183,3 +183,43 @@
   #{$prop}: 1px solid $color;
   border-radius: $border;
 }
+
+@mixin loading {
+  @keyframes loading {
+    0% {
+      background-color: $gray-300;
+    }
+    50% {
+      background-color: $gray-200;
+    }
+    100% {
+      background-color: $gray-300;
+    }
+  }
+
+  @-webkit-keyframes loading {
+    0% {
+      background-color: $gray-300;
+    }
+    50% {
+      background-color: $gray-200;
+    }
+    100% {
+      background-color: $gray-300;
+    }
+  }
+
+  @-moz-keyframes loading {
+    0% {
+      background-color: $gray-300;
+    }
+    50% {
+      background-color: $gray-200;
+    }
+    100% {
+      background-color: $gray-300;
+    }
+  }
+
+  animation: loading 1.5s infinite ease-in-out;
+}
