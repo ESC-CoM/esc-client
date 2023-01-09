@@ -1,4 +1,4 @@
-export const registerMeetingMocks = [
+const registerMeetingMocks = [
   {
     id: 1,
     kind: '과팅',
@@ -120,7 +120,7 @@ export const registerMeetingMocks = [
   },
 ];
 
-export const requestListMocks = [
+const requestListMocks = [
   {
     id: 7,
     comment: '공대 남자 3명 신청해요',
@@ -214,7 +214,7 @@ export const requestListMocks = [
   },
 ];
 
-export const requestMeetingMocks = [
+const requestMeetingMocks = [
   {
     id: 12,
     comment: '전정대, 인문대 2명 신청합니다 😆',
@@ -292,3 +292,5 @@ export const requestMeetingMocks = [
     state: false,
   },
 ];
+
+export { registerMeetingMocks, requestListMocks, requestMeetingMocks };

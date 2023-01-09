@@ -1,9 +1,6 @@
 import { useMemo, useState } from 'react';
+import { registerMeetingMocks, requestListMocks } from '@mocks/data';
 import { useNavigate } from 'react-router-dom';
-import {
-  registerMeetingMocks,
-  requestListMocks,
-} from 'src/__mocks__/myMeeting';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';

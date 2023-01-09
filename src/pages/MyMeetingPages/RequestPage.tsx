@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { requestMeetingMocks } from 'src/__mocks__/myMeeting';
+import { requestMeetingMocks } from '@mocks/data';
 import { RequestMeeting } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
