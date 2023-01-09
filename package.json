@@ -19,7 +19,9 @@
     "analyze": "yarn build --analyze",
     "lint": "eslint ./src",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
@@ -49,6 +51,15 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.2",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
@@ -71,6 +82,7 @@
     "react-hot-loader": "^4.13.0",
     "sass": "^1.55.0",
     "sass-loader": "^12.6.0",
+    "storybook-addon-react-router-v6": "^0.2.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.8",
     "url-loader": "^4.1.1",
