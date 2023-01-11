@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { Header, SaparateLine } from 'src/components/Login/atoms';
+import { SaparateLine } from 'src/components/Login/atoms';
 
 import styles from './style.module.scss';
 
@@ -42,7 +42,6 @@ export default function FindResult({ type }: Props) {
 
   return (
     <div className={styles.container}>
-      <Header title="아이디 찾기" />
       <div className={styles.demoImage}>demo image</div>
       <p className={styles.discription}>
         회원님의 본인인증 정보로 <br />
