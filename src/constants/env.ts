@@ -1,4 +1,4 @@
 const isServer = typeof window === 'undefined';
-const devEnv = process.env.NODE_ENV === 'development';
-const prodEnv = process.env.NODE_ENV === 'development';
-export { devEnv, isServer, prodEnv };
+const isDevEnv = process.env.NODE_ENV === 'development';
+const isProdEnv = process.env.NODE_ENV === 'production';
+export { isDevEnv, isProdEnv, isServer };

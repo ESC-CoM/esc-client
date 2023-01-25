@@ -9,20 +9,20 @@ import {
 export const getRequestListForMeetingRegistered = rest.get(
   '/api/board/:id/request',
   (_, res, ctx) => {
-    res(ctx.json(requestListForMeetingRegisteredMocks));
+    return res(ctx.status(200), ctx.json(requestListForMeetingRegisteredMocks));
   }
 );
 
 export const getMeetingRegisteredList = rest.get(
   '/api/board/me',
   (_, res, ctx) => {
-    res(ctx.json(registerMeetingMocks));
+    return res(ctx.status(200), ctx.json(registerMeetingMocks));
   }
 );
 
 export const getMeetingApplyList = rest.get(
   '/api/request/board/me',
   (_, res, ctx) => {
-    res(ctx.json(applyMeetingMocks));
+    return res(ctx.status(200), ctx.json(applyMeetingMocks));
   }
 );
