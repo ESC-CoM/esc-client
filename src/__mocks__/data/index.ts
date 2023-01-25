@@ -1,13 +1,9 @@
-export { chatListMocks, messageInfoMocks } from './chat';
-export { friendMocks } from './friendMocks';
-export { hobbyData, terms } from './join';
-export { meetingBoardMocks } from './meetingBoardMocks';
-export { meetingDetailMocks } from './meetingDetailMocks';
-export { profileList } from './mutiProfile';
-export {
-  registerMeetingMocks,
-  requestListMocks,
-  requestMeetingMocks,
-} from './myMeeting';
-export { MOCK_URL } from './mypageMocks';
-export { noticeList } from './notice';
+export * from './chat';
+export * from './friendMocks';
+export * from './join';
+export * from './meetingBoardMocks';
+export * from './meetingDetailMocks';
+export * from './mutiProfile';
+export * from './myMeeting';
+export * from './mypageMocks';
+export * from './notice';

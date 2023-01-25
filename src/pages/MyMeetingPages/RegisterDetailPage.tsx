@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react';
-import { registerMeetingMocks, requestListMocks } from '@mocks/data';
+import {
+  registerMeetingMocks,
+  requestListForMeetingRegisteredMocks,
+} from '@mocks/data';
 import { useNavigate } from 'react-router-dom';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
@@ -26,7 +29,10 @@ export default function RegisterDetailPage() {
   );
 
   const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
+    setRegisterMeeting([
+      ...requestedMeeting,
+      ...requestListForMeetingRegisteredMocks,
+    ]);
   };
 
   const getProfileInfo = () => {

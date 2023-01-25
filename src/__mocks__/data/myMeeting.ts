@@ -120,7 +120,7 @@ const registerMeetingMocks = [
   },
 ];
 
-const requestListMocks = [
+const requestListForMeetingRegisteredMocks = [
   {
     id: 7,
     comment: '공대 남자 3명 신청해요',
@@ -214,7 +214,7 @@ const requestListMocks = [
   },
 ];
 
-const requestMeetingMocks = [
+const applyMeetingMocks = [
   {
     id: 12,
     comment: '전정대, 인문대 2명 신청합니다 😆',
@@ -293,4 +293,8 @@ const requestMeetingMocks = [
   },
 ];
 
-export { registerMeetingMocks, requestListMocks, requestMeetingMocks };
+export {
+  applyMeetingMocks,
+  registerMeetingMocks,
+  requestListForMeetingRegisteredMocks,
+};
