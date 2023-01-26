@@ -1,4 +1,4 @@
-@import 'src/styles/_color.scss';
+@import '@styles/color';
 
 @mixin messageBox($color, $backgroundColor) {
   margin-top: 5px;

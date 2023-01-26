@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { terms } from '@mocks/data';
 import { FiCheck } from '@react-icons/all-files/fi/FiCheck';
 import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight';
 import cx from 'classnames';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { terms } from 'src/__mocks__/join';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
 import useStore from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';

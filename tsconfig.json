@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["./src/*"],
-      "styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@mocks/*": ["./src/mocks/*"]
     },
     "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,7 +22,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "jsx": "react-jsx",
+    "jsx": "react-jsx"
   },
   "include": ["src", "styles"]
 }

@@ -1,0 +1,23 @@
+@import '@styles/main';
+
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  background-color: $white;
+  box-shadow: $headerShadow;
+
+  .back {
+    margin-left: 8px;
+  }
+
+  .title {
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 18px;
+  }
+}

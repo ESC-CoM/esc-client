@@ -1,5 +1,4 @@
-@import '/src/styles/color';
-@import '/src/styles/mixin';
+@import '@styles/color';
 
 .container {
   min-height: calc(100vh - 99px);

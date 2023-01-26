@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { requestMeetingMocks } from 'src/__mocks__/myMeeting';
+import { applyMeetingMocks } from '@mocks/data';
 import { RequestMeeting } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
@@ -10,7 +10,7 @@ export default function RequestPage() {
   );
 
   const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([...requestMeeting, ...requestMeetingMocks]);
+    setRegisterMeeting([...requestMeeting, ...applyMeetingMocks]);
   };
 
   return (
