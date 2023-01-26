@@ -17,7 +17,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     port: 3000,
-    static: { directory: path.resolve(__dirname, './build') },
+    static: { directory: path.resolve(__dirname, 'public') },
     historyApiFallback: true,
     compress: true,
   },
@@ -39,8 +39,17 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom',
       src: path.resolve(__dirname, './src'),
       '@styles': path.resolve(__dirname, './src/styles'),
-      '@mocks': path.resolve(__dirname, './src/__mocks__'),
+      '@mocks': path.resolve(__dirname, './src/mocks'),
       extensions: ['.tsx', '.ts', '.js'],
+    },
+    fallback: {
+      assert: require.resolve('assert/'),
+      url: require.resolve('url/'),
+      http: require.resolve('stream-http'),
+      stream: require.resolve('stream-browserify'),
+      https: require.resolve('https-browserify'),
+      zlib: require.resolve('browserify-zlib'),
+      timers: require.resolve('timers-browserify'),
     },
   },
   module: {

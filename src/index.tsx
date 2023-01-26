@@ -3,9 +3,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ReactDOM from 'react-dom';
 
-import { initMockApi } from './__mocks__/workers';
 import Toast from './components/shared/Toast';
 import { isDevEnv } from './constants/env';
+import { initMockApi } from './mocks/workers';
 import App from './App';
 
 export const queryClient = new QueryClient({

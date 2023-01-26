@@ -19,7 +19,7 @@ export default function ChangeInfoItem({
     <div className={className}>
       <h1 className={$['information-name']}>{title}</h1>
       <div className={$['information-box']}>
-        <span className={$['information']}>{value}</span>
+        <span className={$.information}>{value}</span>
         <Link className={$['change-link']} to={href}>
           변경
         </Link>
