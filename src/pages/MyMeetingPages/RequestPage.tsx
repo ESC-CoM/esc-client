@@ -15,8 +15,6 @@ export default function RequestPage() {
     setRegisterMeeting([...requestMeeting, ...requestMeetingMocks]);
   };
 
-  const handleDeleteRequest = (id: number) => deleteRequest(id);
-
   return (
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
@@ -24,7 +22,7 @@ export default function RequestPage() {
           ({ comment, requestedInfo, date, state }, index) => (
             <RequestMeeting
               key={`${date}-${index}`}
-              onDeleteClick={() => handleDeleteRequest(index)}
+              onDeleteClick={() => deleteRequest(index)}
               {...{ comment, requestedInfo, date, state }}
             />
           )
