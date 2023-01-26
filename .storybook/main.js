@@ -20,7 +20,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       src: path.resolve(__dirname, '../src'),
-      styles: path.resolve(__dirname, '../src/styles'),
+      '@styles': path.resolve(__dirname, '../src/styles'),
     };
 
     config.module.rules.push({
@@ -35,12 +35,12 @@ module.exports = {
               includePaths: [path.appSrc + '/src'],
             },
             additionalData: `
-              @import "src/styles/_color.scss";
-              @import "src/styles/_mixin.scss";
-              @import "src/styles/_variables.scss";
-              @import "src/styles/font.scss";
-              @import "src/styles/main.scss";
-              @import "src/styles/reset.scss";
+              @import "@styles/_color.scss";
+              @import "@styles/_mixin.scss";
+              @import "@styles/_variables.scss";
+              @import "@styles/font.scss";
+              @import "@styles/main.scss";
+              @import "@styles/reset.scss";
             `,
           },
         },
