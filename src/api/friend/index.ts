@@ -32,13 +32,13 @@ export const sendFriendRequests = async (
 export const acceptFriendRequests = async (
   id: string
 ): Promise<res.DeleteFriend> => {
-  const response = await http.patch(`api/friend/accept/${id}`);
+  const response = await http.patch(`api/friend/request/accept/${id}`);
   return response.data;
 };
 
 export const rejectFriendRequests = async (
   id: string
 ): Promise<res.DeleteFriend> => {
-  const response = await http.delete(`api/friend/reject/${id}`);
+  const response = await http.patch(`api/friend/reject/${id}`);
   return response.data;
 };

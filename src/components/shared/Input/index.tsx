@@ -8,7 +8,7 @@ import $ from './style.module.scss';
 
 type DefaultProps = {
   className?: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   type: string;
   htmlFor?: string; // TODO: optional
@@ -41,11 +41,14 @@ export default function Input({
 }: Props) {
   return (
     <div className={className}>
-      <Label
-        textContent={labelErrorMessage || label}
-        htmlFor={htmlFor}
-        fontSize={15}
-      />
+      {labelErrorMessage ||
+        (label && (
+          <Label
+            textContent={labelErrorMessage || label}
+            htmlFor={htmlFor}
+            fontSize={15}
+          />
+        ))}
       <input
         className={cx($.input, {
           [$.error]: labelErrorMessage || bottomErrorMessage,

@@ -10,13 +10,15 @@ interface Props {
   headerHeight?: number;
   decreaseHeight?: number;
   customHeader?: React.ReactNode;
+  headerWithCustom?: React.ReactNode;
 }
 
 function PageLayout(
   layoutProps: Props,
   ref: ForwardedRef<HTMLDivElement> | null
 ) {
-  const { isNeedFooter, children, customHeader } = layoutProps;
+  const { isNeedFooter, children, customHeader, headerWithCustom } =
+    layoutProps;
   const { headerHeight = 0, decreaseHeight = 0 } = layoutProps;
   const footerHeight = isNeedFooter ? 55 : 0;
 
@@ -30,8 +32,14 @@ function PageLayout(
 
   return (
     <>
-      {!customHeader && <Header />}
+      {!customHeader && !headerWithCustom && <Header />}
       {customHeader && <Header {...{ customHeader }} />}
+      {headerWithCustom && (
+        <>
+          <Header />
+          <Header {...{ customHeader: headerWithCustom }} />
+        </>
+      )}
 
       <main
         className={style.layout}

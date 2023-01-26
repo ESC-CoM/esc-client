@@ -13,7 +13,6 @@ const meetingDetailMocks: res.meetingDetail = {
       height: '170~175',
       weight: '65~70',
       mbti: 'ISFJ',
-      // hobbies: ['롤롤롤하기', '코코딩하기', '자전거타기'],
       drink: 5,
     },
     {
@@ -26,7 +25,6 @@ const meetingDetailMocks: res.meetingDetail = {
       height: '175~180',
       weight: '70~75',
       mbti: 'ISFP',
-      hobbies: ['롤', '코딩', '마라탕'],
       drink: 1,
     },
     {
@@ -39,7 +37,6 @@ const meetingDetailMocks: res.meetingDetail = {
       height: '170~175',
       weight: '60~65',
       mbti: 'ENFP',
-      hobbies: ['축구', '맛집탐방', '커피'],
       drink: 1.5,
     },
   ],

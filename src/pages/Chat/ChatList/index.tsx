@@ -1,4 +1,4 @@
-import { chatListMocks } from 'src/__mocks__/chat';
+import { chatListMocks } from '@mocks/data/chat';
 import { ChatList } from 'src/components/Chat';
 import { PageLayout } from 'src/components/shared/Layout';
 

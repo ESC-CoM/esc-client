@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { requestMeetingMocks } from 'src/__mocks__/myMeeting';
+import { applyMeetingMocks } from '@mocks/data';
 import { RequestMeeting } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
@@ -10,17 +10,17 @@ export default function RequestPage() {
   );
 
   const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([...requestMeeting, ...requestMeetingMocks]);
+    setRegisterMeeting([...requestMeeting, ...applyMeetingMocks]);
   };
 
   return (
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
         {requestMeeting.map(
-          ({ comment, requestedInfo, date, state }, index) => (
+          ({ id, comment, requestedInfo, date, state }, index) => (
             <RequestMeeting
               key={`${date}-${index}`}
-              {...{ comment, requestedInfo, date, state }}
+              {...{ id, comment, requestedInfo, date, state }}
             />
           )
         )}

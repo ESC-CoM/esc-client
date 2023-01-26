@@ -12,6 +12,16 @@ export const queryKey = {
   registerFunc: (userInfo: req.UserInfo) => {
     return ['register', { ...userInfo }];
   },
+  phoneFunc: (phone: string, btnClickcount: number) => {
+    return ['phone', { phone, btnClickcount }];
+  },
+  authNumFunc: (code: number) => {
+    return ['authNum', { code }];
+  },
+  meetingItemList: ['meetingItemList'],
+  meetingItemDetailFunc: (id: number) => {
+    return ['meetingItemDetail', id];
+  },
   friendsList: ['friendsList'],
   friendsRequest: ['friendsRequest'],
   sendFriendRequest: (id: number) => {
@@ -25,4 +35,5 @@ export const queryKey = {
   },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
+  myInfo: ['myInfo'],
 };

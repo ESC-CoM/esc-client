@@ -2,12 +2,10 @@ import { BsPersonDash } from '@react-icons/all-files/bs/BsPersonDash';
 import { BsPersonPlus } from '@react-icons/all-files/bs/BsPersonPlus';
 import { IoChevronBack } from '@react-icons/all-files/io5/IoChevronBack';
 import { IoChevronBackOutline } from '@react-icons/all-files/io5/IoChevronBackOutline';
-import { IoChevronDownOutline } from '@react-icons/all-files/io5/IoChevronDownOutline';
 import { IoCloseOutline } from '@react-icons/all-files/io5/IoCloseOutline';
 import { IoNotificationsOutline } from '@react-icons/all-files/io5/IoNotificationsOutline';
 import { IoPeopleOutline } from '@react-icons/all-files/io5/IoPeopleOutline';
 import { IoReorderThreeOutline } from '@react-icons/all-files/io5/IoReorderThreeOutline';
-import { IoSearchOutline } from '@react-icons/all-files/io5/IoSearchOutline';
 import { IoSettingsOutline } from '@react-icons/all-files/io5/IoSettingsOutline';
 import { NavigateFunction } from 'react-router-dom';
 import { Logo } from 'src/components/shared/Icon';
@@ -30,19 +28,22 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       onClick: () => navigate(-1),
     },
     {
-      icon: <IoChevronDownOutline />,
-      text: '과팅',
-      url: '/home',
+      icon: <IoChevronBackOutline />,
+      url: '/home/detail',
+      isPathBeIncluded: true,
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoCloseOutline />,
       text: '과팅 신청하기',
       url: ['/home', '/apply'],
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoCloseOutline />,
       text: '과팅 등록하기',
       url: '/home/register',
+      onClick: () => navigate(-1),
     },
     {
       icon: <Logo />,
@@ -50,14 +51,21 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       isPathBeIncluded: false,
     },
     {
+      icon: <Logo />,
+      url: '/home',
+      isPathBeIncluded: false,
+    },
+    {
       icon: <IoChevronBackOutline />,
       url: '/mymeeting/detail',
       isPathBeIncluded: true,
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
       text: '내 정보',
       url: '/setting',
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
@@ -69,6 +77,7 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       icon: <IoChevronBack />,
       text: '홈',
       url: '/notice',
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
@@ -87,7 +96,12 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       url: '/friends/add',
       onClick: () => navigate(-1),
     },
-    { icon: <IoChevronBack />, text: '내 정보', url: '/mypage/authentication' },
+    {
+      icon: <IoChevronBack />,
+      text: '내 정보',
+      url: '/mypage/authentication',
+      onClick: () => navigate(-1),
+    },
     { icon: <IoChevronBack />, text: '내 정보', url: '/mypage/select' },
     {
       icon: <IoChevronBack />,
@@ -108,16 +122,19 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       icon: <IoChevronBack />,
       text: '추가 정보 수정',
       url: '/mypage/change/additional-info',
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
       text: '학생증 재인증',
       url: '/mypage/change/student-card-upload',
+      onClick: () => navigate(-1),
     },
     {
       icon: <IoChevronBack />,
       url: '/join',
       isPathBeIncluded: true,
+      onClick: () => navigate(-1),
     },
     {
       icon: <Logo />,
@@ -127,6 +144,24 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       icon: <IoChevronBack />,
       url: '/chat/room',
       isPathBeIncluded: true,
+      onClick: () => navigate(-1),
+    },
+    {
+      icon: <IoChevronBack />,
+      url: '/login',
+      onClick: () => navigate(-1),
+    },
+    {
+      icon: <IoChevronBack />,
+      url: '/find/email',
+      text: '아이디 찾기',
+      onClick: () => navigate(-1),
+    },
+    {
+      icon: <IoChevronBack />,
+      url: '/find/password',
+      text: '비밀번호 찾기',
+      onClick: () => navigate(-1),
     },
   ];
 };
@@ -135,11 +170,8 @@ const menusRight: MenuType[] = [
   {
     icon: <IoNotificationsOutline />,
     url: '/mymeeting',
+    to: '/notice',
     isPathBeIncluded: true,
-  },
-  {
-    icon: <IoSearchOutline />,
-    url: '/home',
   },
   {
     icon: <IoPeopleOutline />,
@@ -147,8 +179,14 @@ const menusRight: MenuType[] = [
     to: '/friends/list?kind=myfriends',
   },
   {
+    icon: <IoPeopleOutline />,
+    url: '/home',
+    to: '/friends/list?kind=myfriends',
+  },
+  {
     icon: <IoNotificationsOutline />,
     url: '/chat',
+    to: '/notice',
   },
   {
     icon: <IoReorderThreeOutline />,

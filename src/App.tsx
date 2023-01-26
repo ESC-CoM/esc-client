@@ -12,7 +12,7 @@ import MyPageRouter from './routes/MyPageRouter';
 import NoticeRoute from './routes/NoticeRoute';
 import SettingRoute from './routes/SettingRoute';
 
-import './styles/reset.scss';
+import '@styles/reset.scss';
 
 function App() {
   return (
