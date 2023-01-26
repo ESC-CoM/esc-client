@@ -1,4 +1,4 @@
-@import 'styles/main.scss';
+@import '@styles/main';
 
 .add-meeting {
   @include floating-Btn(auto, 17px, 72px, auto);
