@@ -146,6 +146,23 @@ const menusLeft = (navigate: NavigateFunction): MenuType[] => {
       isPathBeIncluded: true,
       onClick: () => navigate(-1),
     },
+    {
+      icon: <IoChevronBack />,
+      url: '/login',
+      onClick: () => navigate(-1),
+    },
+    {
+      icon: <IoChevronBack />,
+      url: '/find/email',
+      text: '아이디 찾기',
+      onClick: () => navigate(-1),
+    },
+    {
+      icon: <IoChevronBack />,
+      url: '/find/password',
+      text: '비밀번호 찾기',
+      onClick: () => navigate(-1),
+    },
   ];
 };
 

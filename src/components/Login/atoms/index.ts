@@ -4,7 +4,6 @@ import ErrorMessage from '../../shared/ErrorMessage';
 import GrayLink from '../../shared/GrayLink';
 import Label from '../../shared/Label';
 import SaparateLine from '../../shared/SaparateLine';
-import Header from './Header';
 import LoginTitle from './LoginTitle';
 import ResetFieldButton from './ResetFieldButton';
 import SocialLoginButton from './SocialLoginButton';
@@ -15,7 +14,6 @@ export {
   CheckBox,
   ErrorMessage,
   GrayLink,
-  Header,
   Label,
   LoginTitle,
   ResetFieldButton,
