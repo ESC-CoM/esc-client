@@ -20,17 +20,23 @@ export const queryClient = new QueryClient({
   },
 });
 
-if (isDevEnv) {
-  initMockApi();
+async function workerPrepare() {
+  if (isDevEnv) await initMockApi();
+  return Promise.resolve();
 }
 
-ReactDOM.render(
+function renderWithWorker(dom: JSX.Element) {
+  workerPrepare().then(() => {
+    ReactDOM.render(dom, document.getElementById('root'));
+  });
+}
+
+renderWithWorker(
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} />
     <React.StrictMode>
       <App />
       <Toast />
     </React.StrictMode>
-  </QueryClientProvider>,
-  document.getElementById('root')
+  </QueryClientProvider>
 );
