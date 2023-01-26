@@ -7,6 +7,7 @@ export type MyMeetingType = {
 };
 
 export type MyMeetingRequestType = {
+  id: number;
   comment: string;
   requestedInfo: { nickName: string; src: string }[];
   date: string;

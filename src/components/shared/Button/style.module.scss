@@ -1,4 +1,4 @@
-@import 'src/styles/main.scss';
+@import '@styles/main';
 
 .button {
   @include button(80%, none, $primary, $white, 15px);

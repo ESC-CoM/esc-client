@@ -1,8 +1,8 @@
 import { ChangeEventHandler, useEffect } from 'react';
+import { MOCK_URL } from '@mocks/data';
 import { AiFillCamera } from '@react-icons/all-files/ai/AiFillCamera';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { MOCK_URL } from 'src/__mocks__/mypageMocks';
 import DrinkInput from 'src/components/shared/DrinkInput';
 import FooterButton from 'src/components/shared/FooterButton';
 import { HeightInput } from 'src/components/shared/HeightInput';

@@ -1,31 +1,44 @@
+import { useState } from 'react';
+import { ChangeEventHandler } from 'react';
+import FriendManager from 'src/components/Meeting/FriendManager';
 import ContentBox from 'src/components/shared/ContentBox';
 import FooterButton from 'src/components/shared/FooterButton';
-import Friend from 'src/components/shared/Friend';
-import FriendWithCheck from 'src/components/shared/FriendWithCheck';
 import { PageLayout } from 'src/components/shared/Layout';
 import Search from 'src/components/shared/Search';
-import { FriendType, MeetingTitle } from 'src/types/meeting';
+import { useFriendStore } from 'src/store/useFriendStore';
+import { MeetingTitle } from 'src/types/meeting';
 
+import Input from '../../Input';
 import $ from './style.module.scss';
 
 type Props = {
   isApply?: boolean;
   title: string;
-  friendFetchData: FriendType[];
-  addedList: number[];
-  setAddedList: React.Dispatch<React.SetStateAction<number[]>>;
+  handleClickBtn: (data: req.CreateMeeting) => void;
 };
 
 export default function MeetingApplyTemplate(applyProps: Props) {
-  const { isApply, title, friendFetchData, addedList, setAddedList } =
-    applyProps;
-  const handleFriendClick = (id: number) => {
-    if (addedList.find((x) => x === id) === undefined)
-      setAddedList([...addedList, id]);
-    else setAddedList(addedList.filter((x) => x !== id));
-  };
+  const { isApply, title, handleClickBtn } = applyProps;
+
+  const { addedFriends } = useFriendStore((state) => state);
+  const contentState = useState('');
+  const [titleInput, setTitleInput] = useState('');
 
   const handleSearchClick = (text: string) => alert(text);
+
+  const handleTitleInput: ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => setTitleInput(value);
+
+  const handleClickRegisterBtn = () => {
+    const data = {
+      title: titleInput,
+      content: contentState[0],
+      headCount: addedFriends.length + 1,
+      participants: addedFriends,
+    };
+    handleClickBtn(data);
+  };
 
   const btnText = isApply ? '신청하기' : '등록하기';
 
@@ -36,39 +49,26 @@ export default function MeetingApplyTemplate(applyProps: Props) {
         <Search onSearchClick={handleSearchClick} />
       </div>
 
-      <ul className={$['friends-list']}>
-        {friendFetchData.map(({ src, name }, id) => (
-          <li key={src + name} className={$.friend}>
-            <FriendWithCheck
-              {...{ src, name }}
-              isVertical={false}
-              isChecked={addedList.find((x) => x === id) !== undefined}
-              handleClick={() => handleFriendClick(id)}
-            />
-          </li>
-        ))}
-      </ul>
+      <FriendManager />
 
-      <div className={$.added}>
-        <h2 className={$['sub-title']}>추가된 친구</h2>
-        <ul className={$['added-friends']}>
-          {!addedList.length ? (
-            <span className={$['no-added']}> </span>
-          ) : (
-            addedList.map((addedFriendIdx) => {
-              const { src, name } = friendFetchData[addedFriendIdx];
-              return (
-                <li className={$['added-friends-li']} key={src + name}>
-                  <Friend {...{ src, name }} isVertical />
-                </li>
-              );
-            })
-          )}
-        </ul>
-      </div>
-
-      <ContentBox {...{ title }} contentTitle={MeetingTitle.apply} />
-      <FooterButton text={btnText} type="button" />
+      <ContentBox
+        {...{ title, contentState }}
+        contentTitle={MeetingTitle.apply}
+      >
+        <Input
+          className={$['input-title']}
+          type="text"
+          proptype="controlled"
+          value={titleInput}
+          onChange={handleTitleInput}
+          placeholder="제목 입력"
+        />
+      </ContentBox>
+      <FooterButton
+        text={btnText}
+        type="button"
+        onClick={handleClickRegisterBtn}
+      />
     </PageLayout>
   );
 }

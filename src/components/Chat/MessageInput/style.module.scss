@@ -1,9 +1,10 @@
-@import 'src/styles/_color.scss';
-@import 'src/styles/_mixin.scss';
+@import '@styles/main';
 
 .message-input-box {
+  max-width: 734px;
   display: flex;
   align-items: center;
+  margin: auto;
   border: 1px solid $gray-300;
   border-radius: 22px;
   padding: 10px 12px;

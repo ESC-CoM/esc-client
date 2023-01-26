@@ -1,6 +1,7 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import { IoImages } from '@react-icons/all-files/io5/IoImages';
 import { IoSend } from '@react-icons/all-files/io5/IoSend';
+import { socket } from 'src/pages/Chat/ChatRoom';
 import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 import $ from './style.module.scss';
@@ -30,6 +31,36 @@ export function MessageInput({ setAlbums }: Props) {
     setAlbums(e.currentTarget.files);
   };
 
+  const getAmPm = (hours: number) => {
+    const amPm = hours < 12 ? 'am' : 'pm';
+    return amPm;
+  };
+
+  const onSendMessage = () => {
+    if (newContent.length) {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const amPmEng = getAmPm(hours);
+      const amPmKr = amPmEng === 'am' ? '오전' : '오후';
+      const hoursStr = String(hours > 12 ? (hours % 13) + 1 : hours).padStart(
+        2,
+        '0'
+      );
+
+      socket().emit('board-chat', {
+        sender: {
+          id: 'loginid',
+          name: '나',
+          imagePath: '',
+        },
+        content: newContent,
+        date: `${amPmKr} ${hoursStr}:${minutes}`,
+      });
+      setNewContent('');
+    }
+  };
+
   return (
     <div className={$['message-input-box']}>
       <label htmlFor="file">
@@ -38,13 +69,13 @@ export function MessageInput({ setAlbums }: Props) {
       <input type="file" name="file" id="file" multiple onChange={loadAlbum} />
       <textarea
         name="message"
-        defaultValue={newContent}
+        value={newContent}
         placeholder="메세지 보내기..."
         ref={contentRef}
         onChange={handleContentChange}
         autoFocus
       />
-      <button type="submit">
+      <button type="button" onClick={onSendMessage}>
         <IoSend />
       </button>
     </div>

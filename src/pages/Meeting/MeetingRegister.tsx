@@ -1,28 +1,23 @@
-import { useEffect, useState } from 'react';
-import { friendMocks } from 'src/__mocks__/friendMocks';
+import { useNavigate } from 'react-router-dom';
 import { MeetingApplyTemplate } from 'src/components/shared/Templates';
-import { FriendType } from 'src/types/meeting';
+import { useCreateMeetingQuery } from 'src/hooks/api/home';
+
+const NEXT_PATH = '/mymeeting?status=register';
 
 export default function MeetingRegisterPage() {
-  const [friendFetchData, setFriendFetchData] = useState<FriendType[]>([]);
-  const [addedList, setAddedList] = useState<number[]>([]);
+  const navigate = useNavigate();
+
   const title = '함께하고 싶다는 의사를 어필해주세요!';
 
-  useEffect(() => {
-    // TODO: fetch Data
-    setFriendFetchData(
-      friendMocks.map(({ profile, nickName }) => {
-        return {
-          src: profile,
-          name: nickName,
-        };
-      })
-    );
-  }, []);
+  const { mutate } = useCreateMeetingQuery();
 
-  return (
-    <MeetingApplyTemplate
-      {...{ title, friendFetchData, addedList, setAddedList }}
-    />
-  );
+  const handleClickBtn = (data: req.CreateMeeting) => {
+    mutate(data, {
+      onSuccess: () => {
+        navigate(NEXT_PATH);
+      },
+    });
+  };
+
+  return <MeetingApplyTemplate {...{ title, handleClickBtn }} />;
 }
