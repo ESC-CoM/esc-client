@@ -20,8 +20,8 @@ export default function RegisterDetailPage() {
   const [requestedMeeting, setRegisterMeeting] = useState<
     MyMeetingRequestType[]
   >([]);
-  const { mutate: allowRequest } = usePatchAllowRequest(0);
-  const { mutate: rejectRequest } = usePatchRejectRequest(0);
+  const { mutate: allowRequest } = usePatchAllowRequest();
+  const { mutate: rejectRequest } = usePatchRejectRequest();
 
   const profileList = useMemo(
     () =>
