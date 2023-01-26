@@ -7,7 +7,7 @@ import { MyMeetingRequestType } from 'src/types/myMeeting';
 import $ from './style.module.scss';
 
 function RequestedItem({
-<<<<<<< HEAD
+  id,
   comment,
   requestedInfo,
   date,
@@ -17,13 +17,6 @@ function RequestedItem({
   onAllowClick: () => void;
   onRejectClick: () => void;
 }) {
-=======
-  id,
-  comment,
-  requestedInfo,
-  date,
-}: MyMeetingRequestType) {
->>>>>>> dev
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
