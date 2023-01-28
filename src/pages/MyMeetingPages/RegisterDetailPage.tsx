@@ -60,8 +60,8 @@ export default function RegisterDetailPage() {
             ({ id, comment, requestedInfo, date }, index) => (
               <RequestedList
                 key={`requested-list-${index}`}
-                onAllowClick={() => allowRequest(0)}
-                onRejectClick={() => rejectRequest(0)}
+                onAllowClick={() => allowRequest(id)}
+                onRejectClick={() => rejectRequest(id)}
                 {...{ id, comment, requestedInfo, date }}
               />
             )
