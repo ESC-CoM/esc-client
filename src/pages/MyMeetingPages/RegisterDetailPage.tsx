@@ -1,14 +1,14 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   registerMeetingMocks,
-  requestListMocks,
-} from 'src/__mocks__/myMeeting';
+  requestListForMeetingRegisteredMocks,
+} from '@mocks/data';
+import { useNavigate } from 'react-router-dom';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { MyMeetingRequestType } from 'src/types/myMeeting';
 
-const { kind, title, content, friends, date } = registerMeetingMocks[0];
+const { id, kind, title, content, friends, date } = registerMeetingMocks[0];
 const detailInfo = { badge: kind, title, content, date };
 
 export default function RegisterDetailPage() {
@@ -29,11 +29,14 @@ export default function RegisterDetailPage() {
   );
 
   const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([...requestedMeeting, ...requestListMocks]);
+    setRegisterMeeting([
+      ...requestedMeeting,
+      ...requestListForMeetingRegisteredMocks,
+    ]);
   };
 
   const getProfileInfo = () => {
-    navigate('/home/detail');
+    navigate('/home/detail/' + id);
   };
 
   return (
@@ -47,12 +50,14 @@ export default function RegisterDetailPage() {
 
       <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
         <ul>
-          {requestedMeeting.map(({ comment, requestedInfo, date }, index) => (
-            <RequestedList
-              key={`requested-list-${index}`}
-              {...{ comment, requestedInfo, date }}
-            />
-          ))}
+          {requestedMeeting.map(
+            ({ id, comment, requestedInfo, date }, index) => (
+              <RequestedList
+                key={`requested-list-${index}`}
+                {...{ id, comment, requestedInfo, date }}
+              />
+            )
+          )}
         </ul>
       </InfiniteScroll>
     </>

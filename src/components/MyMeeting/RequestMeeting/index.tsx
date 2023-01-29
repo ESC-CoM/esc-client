@@ -8,6 +8,7 @@ import StateBadge from '../StateBadge';
 import $ from './style.module.scss';
 
 function RequestMeeting({
+  id,
   comment,
   requestedInfo,
   date,
@@ -47,7 +48,7 @@ function RequestMeeting({
   );
 
   const getRequestedPosting = () => {
-    navigate('/home/detail');
+    navigate('/home/detail/' + id);
   };
 
   const handleRefuseRequest = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -63,7 +64,7 @@ function RequestMeeting({
       <MutiProfile profileList={profileList} parentRef={requestRef} />
 
       <div className={$.info}>
-        {state && <StateBadge />}
+        {!state && <StateBadge />}
         <strong className={$.comment}>{comment}</strong>
         <span className={$.date}>{date}</span>
       </div>

@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from 'react';
-import { Header } from 'src/components/Login/atoms';
 
 import Authentication from '../Authentication';
 import styles from './style.module.scss';
@@ -18,7 +17,6 @@ export default function PasswrodFinder() {
 
   return (
     <div className={styles.container}>
-      <Header title="비밀번호 찾기" />
       <h1 className={styles.title}>비밀번호 찾는 방법을 선택해주세요.</h1>
       <div className={styles.buttonContainer}>
         <input

@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from 'src/components/shared/Input';
 import { useLogin } from 'src/hooks/api/auth';
 
-import { Header, LoginTitle } from '../atoms';
+import { LoginTitle } from '../atoms';
 import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
@@ -40,7 +40,6 @@ export default function Login() {
   return (
     <>
       <div className={$.container}>
-        <Header />
         <LoginTitle className={$.title} />
         <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
           <Input

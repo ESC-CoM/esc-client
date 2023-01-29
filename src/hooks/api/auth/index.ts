@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { authRefresh, getUserValidationId, postLoginInfo } from 'src/api/auth';
 import { isAxiosError } from 'src/api/core';
 import { queryKey } from 'src/constants/queryKey';
@@ -7,6 +8,7 @@ import { toastError, toastSuccess } from 'src/utils/toaster';
 import { useCoreMutation, useCoreQuery } from '../core';
 
 export const useLogin = () => {
+  const navigate = useNavigate();
   return useCoreMutation(postLoginInfo, {
     onSuccess: (data) => {
       const {
@@ -16,9 +18,10 @@ export const useLogin = () => {
       setAccessToken(accessToken);
       setRefreshToken(refreshToken);
       toastSuccess({ message });
+      navigate('/home');
     },
     onError: (error) => {
-      if (isAxiosError<res.AuthError>(error) && !!error.response) {
+      if (isAxiosError<res.Error>(error) && !!error.response) {
         const { message } = error.response.data;
         toastError({ message });
       }
@@ -29,10 +32,7 @@ export const useLogin = () => {
 export const useRefresh = () => {
   return useCoreMutation(authRefresh, {
     onSuccess: (data) => {
-      const {
-        status,
-        data: { accessToken },
-      } = data;
+      const { status, data: accessToken } = data;
       setAccessToken(accessToken);
       console.log(status);
     },

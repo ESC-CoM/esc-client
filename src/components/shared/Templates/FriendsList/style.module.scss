@@ -1,15 +1,41 @@
-@import '/src/styles/color';
-@import '/src/styles/mixin';
+@import '@styles/main';
 
 .search-box {
+  position: sticky;
+  top: 0;
   padding: 10px;
+  background-color: $white;
 }
 
 .friend-bar {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
   border-top: 1px solid $gray-200;
 
   &:last-child {
     margin-bottom: 100px;
     border-bottom: 1px solid $gray-200;
   }
+}
+
+.btn-box {
+  margin-left: auto;
+}
+.btn {
+  width: fit-content;
+  padding: 0 10px;
+  margin: 0;
+  background-color: $gray-200;
+  color: $black;
+  &:first-child {
+    margin-right: 10px;
+  }
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+}
+.last-btn {
+  margin-left: auto;
 }

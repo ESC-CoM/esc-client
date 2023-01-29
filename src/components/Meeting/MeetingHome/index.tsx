@@ -13,14 +13,16 @@ interface Props {
 }
 
 export default function Meeting({
-  meeting: { title, gender, profiles },
+  meeting: { id, title, gender, headCount, college, profiles },
 }: Props) {
+  const navigate = useNavigate();
+
   const meetingRef = useRef<HTMLLIElement | null>(null);
   const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const colleges = useExtractColleges(profiles);
-  const { url } = profiles[0];
-  const navigate = useNavigate();
+
+  const url = profiles[0];
+  const collegesText = useExtractColleges(college);
 
   const lazyLoadCallback = (
     entries: IntersectionObserverEntry[],
@@ -44,7 +46,7 @@ export default function Meeting({
     <li
       className={$.meeting}
       ref={meetingRef}
-      onClick={() => navigate('./detail')}
+      onClick={() => navigate(`./detail/${id}`)}
     >
       <div className={$.profileImg} ref={imgListRef}>
         <img
@@ -60,9 +62,9 @@ export default function Meeting({
 
       <div className={$.meetingInfo}>
         <span className={$.title}>{title}</span>
-        <span className={$.college}>{colleges}</span>
+        <span className={$.college}>{collegesText}</span>
         <span className={$.num}>
-          {gender} {profiles.length}인
+          {gender === 'women' ? '여자' : '남자'} {headCount}인
         </span>
       </div>
     </li>
