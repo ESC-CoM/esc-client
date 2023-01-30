@@ -214,87 +214,98 @@ const requestListForMeetingRegisteredMocks = [
   },
 ];
 
-const applyMeetingMocks = [
+const requestMeetingMocks = [
   {
-    id: 12,
-    comment: '전정대, 인문대 2명 신청합니다 😆',
-    requestedInfo: [
+    boardId: 12,
+    title: '전정대, 인문대 2명 신청합니다 😆',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
       },
     ],
-    date: '52분 전',
-    state: true,
+    updatedAt: '52분 전',
+    participantStatus: 'PENDING',
   },
   {
-    id: 13,
-    comment: '전정대 2, 공대 1 과팅 하실래요?',
-    requestedInfo: [
+    boardId: 13,
+    title: '전정대 2, 공대 1 과팅 하실래요?',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
+        nickname: '라이언',
+        profileImage:
+          'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        nickname: '라이언',
+        profileImage:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
-    date: '2일전',
-    state: false,
+    updatedAt: '2일전',
+    participantStatus: 'ALLOWED',
   },
   {
-    id: 14,
-    comment: '자연대, 전정대, 인문대 3명이랑 과팅해요🐹',
-    requestedInfo: [
+    boardId: 14,
+    title: '자연대, 전정대, 인문대 3명이랑 과팅해요🐹',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
     ],
-    date: '22.11.18',
-    state: true,
+    updatedAt: '22.11.18',
+    participantStatus: 'REJECTED',
   },
   {
-    id: 15,
-    comment: '안녕하세요 저희 전정대 2명인데 과팅 신청해요~',
-    requestedInfo: [
+    boardId: 15,
+    title: '안녕하세요 저희 전정대 2명인데 과팅 신청해요~',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
       },
     ],
-    date: '22.09.11',
-    state: false,
+    updatedAt: '22.09.11',
+    participantStatus: 'ALLOWED',
   },
 ];
 
 export {
-  applyMeetingMocks,
   registerMeetingMocks,
   requestListForMeetingRegisteredMocks,
+  requestMeetingMocks,
 };

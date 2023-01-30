@@ -5,8 +5,13 @@
   font-size: 11px;
   padding: 3px 6px;
   border-radius: 5px;
-  color: $primary;
   background-color: $gray-200;
   font-weight: 700;
   white-space: nowrap;
+}
+.rejected {
+  color: $primary;
+}
+.allowed {
+  color: $primary-blue;
 }

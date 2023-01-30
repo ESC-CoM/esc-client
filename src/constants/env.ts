@@ -1,4 +1,7 @@
 const isServer = typeof window === 'undefined';
 const isDevEnv = process.env.NODE_ENV === 'development';
 const isProdEnv = process.env.NODE_ENV === 'production';
-export { isDevEnv, isProdEnv, isServer };
+const API_SERVER_URL = process.env.REACT_APP_API_URL;
+const API_LOCAL_SERVER_URL = process.env.REACT_APP_LOCAL_API_URL;
+
+export { API_LOCAL_SERVER_URL, API_SERVER_URL, isDevEnv, isProdEnv, isServer };
