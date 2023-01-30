@@ -1,3 +1,4 @@
+import { patchAllowOrRejectRequest } from 'src/api/board';
 import { deleteRequestByMe } from 'src/api/board';
 import { getRequestListForMeetingRegisteredByMe } from 'src/api/board';
 import { getMeetingListRequestedByMe } from 'src/api/board';
@@ -7,6 +8,42 @@ import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation } from '../core';
 import { useCoreInfiniteQuery } from '../core';
+
+export const usePatchAllowRequest = (boardId: number) => {
+  return useCoreMutation(
+    (requestId: number) => patchAllowOrRejectRequest(requestId, 'ALLOWED'),
+    {
+      onSuccess: (response) => {
+        queryClient.invalidateQueries(
+          queryKey.requestListForMeetingRegisteredByMe(boardId)
+        );
+        const { message } = response;
+        toastSuccess({ message });
+      },
+      onError: () => {
+        toastError({ message: '신청 수락을 실패했습니다.' });
+      },
+    }
+  );
+};
+
+export const usePatchRejectRequest = (boardId: number) => {
+  return useCoreMutation(
+    (requestId: number) => patchAllowOrRejectRequest(requestId, 'REJECTED'),
+    {
+      onSuccess: (response) => {
+        queryClient.invalidateQueries(
+          queryKey.requestListForMeetingRegisteredByMe(boardId)
+        );
+        const { message } = response;
+        toastSuccess({ message });
+      },
+      onError: () => {
+        toastError({ message: '신청 거절을 실패했습니다.' });
+      },
+    }
+  );
+};
 
 export const useDeleteRequestByMe = () => {
   return useCoreMutation((id: number) => deleteRequestByMe(id), {
