@@ -29,6 +29,18 @@ declare namespace res {
     senderId: SenderId;
     participantStatus: ParticipantStatus;
   };
+  export type RequestMeetingListPagination = {
+    offset: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    pageNumber: number;
+    pageSize: number;
+    paged: boolean;
+    unpaged: boolean;
+  };
   export type RequestMeetingListByMe = {
     size: number;
     content: RequestMeetingListByMeContent[];
@@ -38,18 +50,7 @@ declare namespace res {
       sorted: boolean;
       unsorted: boolean;
     };
-    pageable: {
-      offset: number;
-      sort: {
-        empty: boolean;
-        sorted: boolean;
-        unsorted: boolean;
-      };
-      pageNumber: number;
-      pageSize: number;
-      paged: boolean;
-      unpaged: boolean;
-    };
+    pageable: RequestMeetingListPagination;
     first: boolean;
     last: boolean;
     numberOfElements: number;
