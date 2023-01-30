@@ -1,4 +1,5 @@
 export type MyMeetingType = {
+  id: number;
   kind: string;
   title: string;
   content: string;
@@ -12,4 +13,5 @@ export type MyMeetingRequestType = {
   requestedInfo: { nickName: string; src: string }[];
   date: string;
   state?: boolean;
+  onDeleteClick?: () => void;
 };

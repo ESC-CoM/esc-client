@@ -9,12 +9,12 @@ import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreInfiniteQuery, useCoreMutation, useCoreQuery } from '../core';
 
-export const useMeetingItemListQuery = (params?: req.Home) => {
+export const useMeetingItemListQuery = (params: req.Home) => {
   return useCoreInfiniteQuery(
     queryKey.meetingItemList,
-    () => getMeetingList(params),
+    ({ pageParam = 0 }) => getMeetingList({ ...params, page: pageParam }),
     {
-      getNextPageParam: ({ page, last }) => (last ? page : page + 1),
+      getNextPageParam: ({ page, last }) => (last ? undefined : page + 1),
     }
   );
 };

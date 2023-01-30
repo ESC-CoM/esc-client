@@ -1,27 +1,30 @@
-import { useMemo, useState } from 'react';
-import {
-  registerMeetingMocks,
-  requestListForMeetingRegisteredMocks,
-} from '@mocks/data';
+import { useMemo } from 'react';
+import { registerMeetingMocks } from '@mocks/data';
 import { useNavigate } from 'react-router-dom';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
+import { useSearch } from 'src/hooks';
 import {
   usePatchAllowRequest,
   usePatchRejectRequest,
 } from 'src/hooks/api/board';
-import { MyMeetingRequestType } from 'src/types/myMeeting';
+import { useGetRequestListForMeetingRegisteredByMe } from 'src/hooks/api/board';
 
 const { id, kind, title, content, friends, date } = registerMeetingMocks[0];
 const detailInfo = { badge: kind, title, content, date };
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
-  const [requestedMeeting, setRegisterMeeting] = useState<
-    MyMeetingRequestType[]
-  >([]);
+
   const { mutate: allowRequest } = usePatchAllowRequest();
   const { mutate: rejectRequest } = usePatchRejectRequest();
+  const boardId = Number(useSearch('boardId') ?? -1);
+
+  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
+    useGetRequestListForMeetingRegisteredByMe({
+      boardId,
+      params: { size: 10 },
+    });
 
   const profileList = useMemo(
     () =>
@@ -34,15 +37,21 @@ export default function RegisterDetailPage() {
     []
   );
 
-  const fetchMoreMeetingFeeds = () => {
-    setRegisterMeeting([
-      ...requestedMeeting,
-      ...requestListForMeetingRegisteredMocks,
-    ]);
-  };
+  const getProfileInfo = () => navigate('/home/detail/' + id);
 
-  const getProfileInfo = () => {
-    navigate('/home/detail/' + id);
+  if (isLoading) return <div>loading...</div>;
+  if (isError) return <div>error</div>;
+  if (data === undefined) return <div>data error</div>;
+
+  const items = data?.pages;
+  const itemList = items?.reduce(
+    (acc: res.RequestListForMeetingRegisteredByMeContent[], cur) =>
+      (acc = [...acc, ...cur.content]),
+    []
+  );
+
+  const getNextPage = () => {
+    if (hasNextPage) fetchNextPage();
   };
 
   return (
@@ -54,18 +63,21 @@ export default function RegisterDetailPage() {
         onClick={getProfileInfo}
       />
 
-      <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
+      <InfiniteScroll trigger={getNextPage}>
         <ul>
-          {requestedMeeting.map(
-            ({ id, comment, requestedInfo, date }, index) => (
-              <RequestedList
-                key={`requested-list-${index}`}
-                onAllowClick={() => allowRequest(id)}
-                onRejectClick={() => rejectRequest(id)}
-                {...{ id, comment, requestedInfo, date }}
-              />
-            )
-          )}
+          {itemList.map((item, index) => (
+            <RequestedList
+              key={`requested-list-${index}`}
+              {...{
+                requestBoardId: item.requestBoardId,
+                title: item.title,
+                requestParticipants: item.requestParticipants,
+                updatedAt: item.updatedAt,
+                onAllowClick: () => allowRequest(item.requestBoardId),
+                onRejectClick: () => rejectRequest(item.requestBoardId),
+              }}
+            />
+          ))}
         </ul>
       </InfiniteScroll>
     </>

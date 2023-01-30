@@ -50,8 +50,6 @@ function MeetingHomePage() {
       []
     );
 
-  if (isLoading) return <div>로딩중</div>;
-
   const getNextPage = () => {
     if (hasNextPage) fetchNextPage();
   };
