@@ -1,4 +1,4 @@
-import noticeList from 'src/__mocks__/notice';
+import { noticeList } from '@mocks/data';
 import NoticeCard from 'src/components/Notice/NoticeCard';
 import { PageLayout } from 'src/components/shared/Layout';
 

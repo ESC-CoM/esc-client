@@ -1,0 +1,20 @@
+@import '@styles/color';
+
+.chat-card {
+  display: flex;
+  margin-top: 5px;
+  margin-left: 0;
+  margin-right: 20%;
+  &.me {
+    flex-direction: row-reverse;
+    margin-right: 0;
+    margin-left: 20%;
+  }
+  .date {
+    align-self: flex-end;
+    flex: 0 0 auto;
+    font-size: 10px;
+    margin: 0 2px;
+    color: $gray-700;
+  }
+}

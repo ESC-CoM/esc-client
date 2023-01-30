@@ -6,7 +6,12 @@ import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import $ from './style.module.scss';
 
-function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
+function RequestedItem({
+  id,
+  comment,
+  requestedInfo,
+  date,
+}: MyMeetingRequestType) {
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -38,7 +43,7 @@ function RequestedItem({ comment, requestedInfo, date }: MyMeetingRequestType) {
   );
 
   const getProfileInfo = () => {
-    navigate('/home/detail');
+    navigate('/home/detail/' + id);
   };
 
   const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {

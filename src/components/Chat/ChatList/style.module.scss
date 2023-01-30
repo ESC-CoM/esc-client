@@ -1,18 +1,18 @@
-@import 'src/styles/_color.scss';
-@import 'src/styles/_mixin.scss';
+@import '@styles/main';
 
 .chat-list {
   display: flex;
   align-items: center;
-  height: 70px;
   border-bottom: 1px solid $gray-250;
-  padding: 0 5px;
+  padding: 10px;
   cursor: pointer;
 
   .chat-info {
     width: calc(100% - 45px);
     display: flex;
     overflow: hidden;
+    margin-left: 10px;
+
     & > .main-info,
     .more-info {
       display: flex;

@@ -2,6 +2,7 @@ import { memo } from 'react';
 import cx from 'classnames';
 import { FieldError, UseFormSetValue } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
+import { gender } from 'src/constants/config';
 import { More1Type } from 'src/types/join';
 
 import $ from './style.module.scss';
@@ -25,9 +26,9 @@ export function GenderInput({ value, setValue, errors }: Props) {
       <div className={$.row}>
         <button
           className={cx($['gender-btn'], {
-            [$['gender-active']]: value === '남자',
+            [$['gender-active']]: value === 'men',
           })}
-          onClick={() => setValue('gender', '남자')}
+          onClick={() => setValue('gender', gender.men)}
           type="button"
           aria-labelledby="gender"
         >
@@ -36,9 +37,9 @@ export function GenderInput({ value, setValue, errors }: Props) {
 
         <button
           className={cx($['gender-btn'], {
-            [$['gender-active']]: value === '여자',
+            [$['gender-active']]: value === 'women',
           })}
-          onClick={() => setValue('gender', '여자')}
+          onClick={() => setValue('gender', gender.women)}
           type="button"
           aria-labelledby="gender"
         >
