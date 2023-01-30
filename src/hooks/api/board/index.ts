@@ -20,6 +20,9 @@ export const usePatchAllowRequest = (boardId: number) => {
         const { message } = response;
         toastSuccess({ message });
       },
+      onError: () => {
+        toastError({ message: '신청 수락을 실패했습니다.' });
+      },
     }
   );
 };
@@ -34,6 +37,9 @@ export const usePatchRejectRequest = (boardId: number) => {
         );
         const { message } = response;
         toastSuccess({ message });
+      },
+      onError: () => {
+        toastError({ message: '신청 거절을 실패했습니다.' });
       },
     }
   );
