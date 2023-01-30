@@ -122,95 +122,109 @@ const registerMeetingMocks = [
 
 const requestListForMeetingRegisteredMocks = [
   {
-    id: 7,
-    comment: '공대 남자 3명 신청해요',
-    requestedInfo: [
+    requestBoardId: 7,
+    title: '공대 남자 3명 신청해요',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://www.fnnews.com/resource/media/image/2022/05/13/202205130719128261_l.jpg',
+        nickname: '라이언',
+        profileImage:
+          'https://www.fnnews.com/resource/media/image/2022/05/13/202205130719128261_l.jpg',
       },
       {
-        nickName: '라이언',
-        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+        nickname: '라이언',
+        profileImage:
+          'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
       {
-        nickName: '라이언',
-        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        nickname: '라이언',
+        profileImage:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
-    date: '27초 전',
+    updatedAt: '27초 전',
   },
   {
-    id: 8,
-    comment: '사범대 3명 신청합니당',
-    requestedInfo: [
+    requestBoardId: 8,
+    title: '사범대 3명 신청합니당',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTEwMjdfMzMg%2FMDAxNTcyMTczNDAwMjc0.-zTktpIp7v4OuhrkU2OLCmR1yxPqTFTTQ3NMHoz9-Csg.x04PhKOmPSawfE07xN5uBlURiDdeHcIZ4i73gp7wB7Ug.JPEG.lucy3622%2F1572173398894.jpg&type=sc960_832',
+        nickname: '라이언',
+        profileImage:
+          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTEwMjdfMzMg%2FMDAxNTcyMTczNDAwMjc0.-zTktpIp7v4OuhrkU2OLCmR1yxPqTFTTQ3NMHoz9-Csg.x04PhKOmPSawfE07xN5uBlURiDdeHcIZ4i73gp7wB7Ug.JPEG.lucy3622%2F1572173398894.jpg&type=sc960_832',
       },
       {
-        nickName: '라이언',
-        src: 'https://www.fnnews.com/resource/media/image/2022/05/13/202205130719128261_l.jpg',
+        nickname: '라이언',
+        profileImage:
+          'https://www.fnnews.com/resource/media/image/2022/05/13/202205130719128261_l.jpg',
       },
       {
-        nickName: '라이언',
-        src: 'https://img.mbn.co.kr/filewww/news/other/2019/12/30/015331923331.jpg',
+        nickname: '라이언',
+        profileImage:
+          'https://img.mbn.co.kr/filewww/news/other/2019/12/30/015331923331.jpg',
       },
     ],
-    date: '27초 전',
+    updatedAt: '27초 전',
   },
   {
-    id: 9,
-    comment: '공대도 받아주세요ㅠㅠ~~~~~~~~~~~~',
-    requestedInfo: [
+    requestBoardId: 9,
+    title: '공대도 받아주세요ㅠㅠ~~~~~~~~~~~~',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202517078-aa180ee7-0963-4221-9742-c377f91e2314.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202517078-aa180ee7-0963-4221-9742-c377f91e2314.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202516959-9af74ecb-ae3b-4e4d-a33e-f8ba2b9716fd.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202516959-9af74ecb-ae3b-4e4d-a33e-f8ba2b9716fd.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
+        nickname: '라이언',
+        profileImage:
+          'http://cdn.ggilbo.com/news/photo/202110/873065_702693_2620.jpg',
       },
     ],
-    date: '27초 전',
+    updatedAt: '27초 전',
   },
   {
-    id: 10,
-    comment: '안녕하세요 자연대 3명입니다',
-    requestedInfo: [
+    requestBoardId: 10,
+    title: '안녕하세요 자연대 3명입니다',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://news.nateimg.co.kr/orgImg/hr/2021/09/03/20210903000001_0.jpg',
+        nickname: '라이언',
+        profileImage:
+          'https://news.nateimg.co.kr/orgImg/hr/2021/09/03/20210903000001_0.jpg',
       },
       {
-        nickName: '라이언',
-        src: 'https://user-images.githubusercontent.com/63364990/202517053-8d644d92-e90d-4c5b-bb9a-216e3ea8e05e.jpeg',
+        nickname: '라이언',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202517053-8d644d92-e90d-4c5b-bb9a-216e3ea8e05e.jpeg',
       },
       {
-        nickName: '라이언',
-        src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl1sYM3S2FJ9PuoP1xRUCaneazva2jdxjYA&usqp=CAU',
+        nickname: '라이언',
+        profileImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl1sYM3S2FJ9PuoP1xRUCaneazva2jdxjYA&usqp=CAU',
       },
     ],
-    date: '27초 전',
+    updatedAt: '27초 전',
   },
   {
-    id: 11,
-    comment: '저희 술 잘 먹어요 ㅎㅎ',
-    requestedInfo: [
+    requestBoardId: 11,
+    title: '저희 술 잘 먹어요 ㅎㅎ',
+    requestParticipants: [
       {
-        nickName: '라이언',
-        src: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTNfMTY3%2FMDAxNjI4ODQ4NzE0OTIw.aYZUZKIBMCo2p8iHi3OEeeWFnqEjWcUxkYXgGZOVCz4g.cHSgQ4Foa9exYJKS39pxM6ZFWjRKAo_Qe1wSvNTvbMYg.JPEG.oyeonwol0311%2FIMG%25A3%25DF1395%25A3%25DFpolarr.jpg&type=sc960_832',
+        nickname: '라이언',
+        profileImage:
+          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTNfMTY3%2FMDAxNjI4ODQ4NzE0OTIw.aYZUZKIBMCo2p8iHi3OEeeWFnqEjWcUxkYXgGZOVCz4g.cHSgQ4Foa9exYJKS39pxM6ZFWjRKAo_Qe1wSvNTvbMYg.JPEG.oyeonwol0311%2FIMG%25A3%25DF1395%25A3%25DFpolarr.jpg&type=sc960_832',
       },
       {
-        nickName: '라이언',
-        src: 'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
+        nickname: '라이언',
+        profileImage:
+          'http://cdn.ksilbo.co.kr/news/photo/201911/736241_408290_1458.jpg',
       },
     ],
-    date: '30분 전',
+    updatedAt: '30분 전',
   },
 ];
 

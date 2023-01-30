@@ -13,16 +13,16 @@ export default function RegisterPage() {
     setRegisterMeeting([...registerMeeting, ...registerMeetingMocks]);
   };
 
-  const getRequestList = () => {
+  const getRequestList = (boardId: number) => {
     // 요청 리스트 fetch
-    navigate('/mymeeting/detail?status=register');
+    navigate(`/mymeeting/detail?status=register&boardId=${boardId}`);
   };
 
   return (
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
         {registerMeeting.map(
-          ({ kind, title, content, friends, date }, index) => {
+          ({ id, kind, title, content, friends, date }, index) => {
             const profileList = friends.map(({ nickName, src }) => ({
               alt: nickName,
               src,
@@ -33,7 +33,7 @@ export default function RegisterPage() {
                 key={`${date}-${index}`}
                 profileList={profileList}
                 textInfo={textInfo}
-                onClick={getRequestList}
+                onClick={() => getRequestList(id)}
               />
             );
           }

@@ -35,6 +35,9 @@ export const queryKey = {
   },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
-  meetingListRegisteredByMe: ['meetingListRegisteredByMe'],
+  requestListForMeetingRegisteredByMe: (boardId: number) => {
+    return ['requestListForMeetingRegisteredByMe', { boardId }];
+  },
+  meetingListRequestedByMe: ['meetingListRequestedByMe'],
   myInfo: ['myInfo'],
 };

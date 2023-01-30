@@ -9,9 +9,16 @@ import {
 import { pagination } from '../data/pagination';
 
 export const getRequestListForMeetingRegistered = rest.get(
-  '/api/board/:id/request',
+  `${API_SERVER_URL}api/board/:id/request`,
   (_, res, ctx) => {
-    return res(ctx.status(200), ctx.json(requestListForMeetingRegisteredMocks));
+    return res(
+      ctx.status(200),
+      ctx.delay(300),
+      ctx.json({
+        content: requestListForMeetingRegisteredMocks,
+        pageable: pagination,
+      })
+    );
   }
 );
 

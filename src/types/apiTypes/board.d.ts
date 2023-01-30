@@ -1,4 +1,15 @@
 declare namespace req {
+  export type RequestListForMeetingRegisteredByMe = {
+    boardId: number;
+    params: {
+      page?: number;
+      size?: number;
+      sort?: string[];
+      boardId?: number;
+      senderId?: number;
+    };
+  };
+
   export type RequestMeetingByMe = {
     page?: number;
     size?: number;
@@ -41,9 +52,17 @@ declare namespace res {
     paged: boolean;
     unpaged: boolean;
   };
-  export type RequestMeetingListByMe = {
+  export type RequestListForMeetingRegisteredByMeContent = {
+    title: string;
+    message: string;
+    requestBoardId: number;
+    requestParticipants: RequestParticipants[];
+    createdAt: string;
+    updatedAt: string;
+  };
+  export type MeetingListTemplate<T> = {
     size: number;
-    content: RequestMeetingListByMeContent[];
+    content: T[];
     number: number;
     sort: {
       empty: boolean;
@@ -56,4 +75,10 @@ declare namespace res {
     numberOfElements: number;
     empty: boolean;
   };
+
+  export type RequestListForMeetingRegisteredByMe =
+    MeetingListTemplate<RequestListForMeetingRegisteredByMeContent>;
+
+  export type RequestMeetingListByMe =
+    MeetingListTemplate<RequestMeetingListByMeContent>;
 }

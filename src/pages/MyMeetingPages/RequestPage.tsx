@@ -1,10 +1,10 @@
 import { RequestMeeting } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
-import { useGetMeetingListRegisteredByMe } from 'src/hooks/api/board';
+import { useGetMeetingListRequestedByMe } from 'src/hooks/api/board';
 
 export default function RequestPage() {
   const { data, isLoading, isError, hasNextPage, fetchNextPage } =
-    useGetMeetingListRegisteredByMe({ size: 10 });
+    useGetMeetingListRequestedByMe({ size: 10 });
 
   if (isLoading) return <div>신청한 과팅 목록 불러오는중...</div>;
   if (isError || !data) return <div>신청한 과팅 목록 불러오기 오류</div>;
