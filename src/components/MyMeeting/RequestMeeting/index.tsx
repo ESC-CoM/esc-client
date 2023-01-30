@@ -13,11 +13,19 @@ type Props = Pick<
   | 'requestParticipants'
   | 'updatedAt'
   | 'participantStatus'
->;
+> & {
+  onDeleteClick: () => void;
+};
 
 function RequestMeeting(props: Props) {
-  const { boardId, title, participantStatus, updatedAt, requestParticipants } =
-    props;
+  const {
+    boardId,
+    title,
+    participantStatus,
+    updatedAt,
+    requestParticipants,
+    onDeleteClick,
+  } = props;
   const navigate = useNavigate();
   const requestRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -57,6 +65,7 @@ function RequestMeeting(props: Props) {
 
   const handleRefuseRequest = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onDeleteClick();
   };
 
   return (
