@@ -1,3 +1,5 @@
+import cx from 'classnames';
+
 import $ from './style.module.scss';
 
 type Props = {
@@ -5,7 +7,19 @@ type Props = {
 };
 
 export default function StateBadge({ state }: Props) {
-  const stateResult = state === 'ALLOWED' ? '승인됨' : '거절됨';
-  const stateText = state === 'PENDING' ? '검토중' : stateResult;
-  return <span className={$['state-badge']}>{stateText}</span>;
+  const isAllowed = state === 'ALLOWED';
+  const isPending = state === 'PENDING';
+  const stateResult = isAllowed ? '승인됨' : '거절됨';
+  const stateText = isPending ? '검토중' : stateResult;
+
+  return (
+    <span
+      className={cx($['state-badge'], {
+        [$.rejected]: !isPending && !isAllowed,
+        [$.allowed]: isAllowed,
+      })}
+    >
+      {stateText}
+    </span>
+  );
 }
