@@ -22,7 +22,7 @@ export default function RegisterPage() {
     <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
       <ul>
         {registerMeeting.map(
-          ({ kind, title, content, friends, date }, index) => {
+          ({ id, kind, title, content, friends, date }, index) => {
             const profileList = friends.map(({ nickName, src }) => ({
               alt: nickName,
               src,
@@ -33,7 +33,7 @@ export default function RegisterPage() {
                 key={`${date}-${index}`}
                 profileList={profileList}
                 textInfo={textInfo}
-                onClick={() => getRequestList(0)}
+                onClick={() => getRequestList(id)}
               />
             );
           }
