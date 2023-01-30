@@ -52,17 +52,17 @@ declare namespace res {
     paged: boolean;
     unpaged: boolean;
   };
-
-  export type RequestListForMeetingRegisteredByMe = {
+  export type RequestListForMeetingRegisteredByMeContent = {
     title: string;
     message: string;
+    requestBoardId: number;
     requestParticipants: RequestParticipants[];
-    page: number;
+    createdAt: string;
+    updatedAt: string;
   };
-
-  export type RequestMeetingListByMe = {
+  export type MeetingListTemplate<T> = {
     size: number;
-    content: RequestMeetingListByMeContent[];
+    content: T[];
     number: number;
     sort: {
       empty: boolean;
@@ -75,4 +75,10 @@ declare namespace res {
     numberOfElements: number;
     empty: boolean;
   };
+
+  export type RequestListForMeetingRegisteredByMe =
+    MeetingListTemplate<RequestListForMeetingRegisteredByMeContent>;
+
+  export type RequestMeetingListByMe =
+    MeetingListTemplate<RequestMeetingListByMeContent>;
 }
