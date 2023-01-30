@@ -1,10 +1,12 @@
 import { rest } from 'msw';
+import { API_SERVER_URL } from 'src/constants/env';
 
 import {
-  applyMeetingMocks,
   registerMeetingMocks,
   requestListForMeetingRegisteredMocks,
+  requestMeetingMocks,
 } from '../data';
+import { pagination } from '../data/pagination';
 
 export const getRequestListForMeetingRegistered = rest.get(
   '/api/board/:id/request',
@@ -20,9 +22,13 @@ export const getMeetingRegisteredList = rest.get(
   }
 );
 
-export const getMeetingApplyList = rest.get(
-  '/api/request/board/me',
+export const getRequestMeetingList = rest.get(
+  `${API_SERVER_URL}api/board/request/me`,
   (_, res, ctx) => {
-    return res(ctx.status(200), ctx.json(applyMeetingMocks));
+    return res(
+      ctx.status(200),
+      ctx.delay(300),
+      ctx.json({ content: requestMeetingMocks, pageable: pagination })
+    );
   }
 );
