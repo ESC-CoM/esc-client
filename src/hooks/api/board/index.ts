@@ -9,12 +9,14 @@ import { toastError, toastSuccess } from 'src/utils/toaster';
 import { useCoreMutation } from '../core';
 import { useCoreInfiniteQuery } from '../core';
 
-export const usePatchAllowRequest = () => {
+export const usePatchAllowRequest = (boardId: number) => {
   return useCoreMutation(
     (requestId: number) => patchAllowOrRejectRequest(requestId, 'ALLOWED'),
     {
       onSuccess: (response) => {
-        // TODO: 내가 등록한 미팅 신청자 목록 연동하면 query invalidation 필요
+        queryClient.invalidateQueries(
+          queryKey.requestListForMeetingRegisteredByMe(boardId)
+        );
         const { message } = response;
         toastSuccess({ message });
       },
@@ -22,12 +24,14 @@ export const usePatchAllowRequest = () => {
   );
 };
 
-export const usePatchRejectRequest = () => {
+export const usePatchRejectRequest = (boardId: number) => {
   return useCoreMutation(
     (requestId: number) => patchAllowOrRejectRequest(requestId, 'REJECTED'),
     {
       onSuccess: (response) => {
-        // TODO: 내가 등록한 미팅 신청자 목록 연동하면 query invalidation 필요
+        queryClient.invalidateQueries(
+          queryKey.requestListForMeetingRegisteredByMe(boardId)
+        );
         const { message } = response;
         toastSuccess({ message });
       },

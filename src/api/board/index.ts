@@ -7,6 +7,7 @@ export const patchAllowOrRejectRequest = async (
   const response = await http.patch(`/board/request/${requestId}`, body);
   return response.data;
 };
+
 export const deleteRequestByMe = async (
   id: number
 ): Promise<res.RequestByMe> => {

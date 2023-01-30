@@ -15,10 +15,9 @@ const detailInfo = { badge: kind, title, content, date };
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
-
-  const { mutate: allowRequest } = usePatchAllowRequest();
-  const { mutate: rejectRequest } = usePatchRejectRequest();
   const boardId = Number(useSearch('boardId') ?? -1);
+  const { mutate: allowRequest } = usePatchAllowRequest(boardId);
+  const { mutate: rejectRequest } = usePatchRejectRequest(boardId);
 
   const { data, isLoading, isError, hasNextPage, fetchNextPage } =
     useGetRequestListForMeetingRegisteredByMe({
