@@ -3,7 +3,7 @@ import { InfiniteScroll } from 'src/components/shared/Layout';
 import { useGetMeetingListRegisteredByMe } from 'src/hooks/api/board';
 
 export default function RequestPage() {
-  const { data, isLoading, isError, fetchNextPage } =
+  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
     useGetMeetingListRegisteredByMe({ size: 10 });
 
   if (isLoading) return <div>신청한 과팅 목록 불러오는중...</div>;
@@ -16,8 +16,12 @@ export default function RequestPage() {
     []
   );
 
+  const getNextPage = () => {
+    if (hasNextPage) fetchNextPage();
+  };
+
   return (
-    <InfiniteScroll trigger={fetchNextPage}>
+    <InfiniteScroll trigger={getNextPage}>
       <ul>
         {/* TODO: 데이터 잘 불러와지는지, 페이지네이션 잘 되는지 콘솔로 확인 후에 UI에 반영하기. */}
         {itemList.map((item, index) => (

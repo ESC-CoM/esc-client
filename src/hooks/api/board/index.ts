@@ -11,7 +11,8 @@ export const useGetMeetingListRegisteredByMe = (
     ({ pageParam = 0 }) =>
       getMeetingListRequestedByMe({ ...params, page: pageParam }),
     {
-      getNextPageParam: ({ pageable: { pageNumber } }) => pageNumber + 1,
+      getNextPageParam: ({ pageable: { pageNumber }, last }) =>
+        last ? undefined : pageNumber + 1,
     }
   );
 };
