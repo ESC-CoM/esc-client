@@ -21,6 +21,7 @@ module.exports = {
       ...config.resolve.alias,
       src: path.resolve(__dirname, '../src'),
       '@styles': path.resolve(__dirname, '../src/styles'),
+      '@mocks': path.resolve(__dirname, './src/mocks'),
     };
 
     config.module.rules.push({
