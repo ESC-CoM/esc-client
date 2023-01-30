@@ -28,7 +28,7 @@ export default function ImageUploadButton({
         type="file"
         ref={inputRef}
         onChange={handleChangeInput}
-        accept="image/*"
+        accept="image/*,.webp,.heif,.heic,.bmp"
         id="input-file"
       />
       <Button

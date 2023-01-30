@@ -10,7 +10,7 @@ function ProfileCardList({ friends }: Props) {
   return (
     <section className={$['friends-slides']}>
       {friends.map((friend) => (
-        <ProfileCard key={friend.img} friend={friend} />
+        <ProfileCard key={friend.profileImage} friend={friend} />
       ))}
     </section>
   );

@@ -2,26 +2,39 @@ import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
-import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import StateBadge from '../StateBadge';
 import $ from './style.module.scss';
 
-function RequestMeeting({
-  comment,
-  requestedInfo,
-  date,
-  state,
-}: MyMeetingRequestType) {
+type Props = Pick<
+  res.RequestMeetingListByMeContent,
+  | 'boardId'
+  | 'title'
+  | 'requestParticipants'
+  | 'updatedAt'
+  | 'participantStatus'
+> & {
+  onDeleteClick: () => void;
+};
+
+function RequestMeeting(props: Props) {
+  const {
+    boardId,
+    title,
+    participantStatus,
+    updatedAt,
+    requestParticipants,
+    onDeleteClick,
+  } = props;
   const navigate = useNavigate();
   const requestRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const profileList = useMemo(
     () =>
-      requestedInfo
-        .map(({ nickName, src }) => ({
-          src: src,
-          alt: nickName,
+      requestParticipants
+        .map(({ nickname, profileImage }) => ({
+          src: profileImage,
+          alt: nickname,
         }))
         .slice(0, 3),
     []
@@ -47,11 +60,12 @@ function RequestMeeting({
   );
 
   const getRequestedPosting = () => {
-    navigate('/home/detail');
+    navigate('/home/detail/' + boardId);
   };
 
   const handleRefuseRequest = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onDeleteClick();
   };
 
   return (
@@ -63,9 +77,9 @@ function RequestMeeting({
       <MutiProfile profileList={profileList} parentRef={requestRef} />
 
       <div className={$.info}>
-        {state && <StateBadge />}
-        <strong className={$.comment}>{comment}</strong>
-        <span className={$.date}>{date}</span>
+        <StateBadge state={participantStatus} />
+        <strong className={$.comment}>{title}</strong>
+        <span className={$.date}>{updatedAt}</span>
       </div>
 
       <div className={$['cancel-btn']}>

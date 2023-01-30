@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from 'react';
+import { ChangeEventHandler, useEffect, useState } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
@@ -8,6 +8,8 @@ import {
 } from 'react-hook-form';
 import InputWithButton from 'src/components/shared/InputWithButton';
 import InputWithTimer from 'src/components/shared/InputWithTimer';
+import { usePhoneQuery } from 'src/hooks/api/join';
+import { usePhoneStore } from 'src/store/usePhoneStore';
 import useStore from 'src/store/useStore';
 import { PhoneAuthType } from 'src/types/join';
 import { insertAutoHyphen } from 'src/utils';
@@ -30,16 +32,24 @@ export default function PhoneAuth({
   errors,
 }: Props) {
   const { setJoinInfo } = useStore();
+  const { checkAuthCode } = usePhoneStore();
   const phoneNumber = watch('phoneNumber');
-  const [sendCount, setSendCount] = useState(0);
+  const [btnClickcount, setBtnClickCount] = useState(0);
+  const [phone, setPhone] = useState('');
+  const { data, isSuccess } = usePhoneQuery(phone, btnClickcount);
+
+  useEffect(() => {
+    if (isSuccess && data) checkAuthCode(data.authCode);
+  }, [isSuccess]);
 
   const sendPhoneNum = () => {
-    setSendCount(sendCount + 1);
-    setValue('isReceivedAuthNum', true);
-    setJoinInfo({ phoneNumber });
-
-    setFocus('authNumber');
-    console.log('clicked');
+    if (phoneNumber.length === 13) {
+      setPhone(phoneNumber);
+      setJoinInfo({ phoneNumber });
+      setValue('isReceivedAuthNum', true);
+      setFocus('authNumber');
+      setBtnClickCount((prev) => prev + 1);
+    }
   };
 
   const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = ({
@@ -64,7 +74,7 @@ export default function PhoneAuth({
         labelErrorMessage={errors.phoneNumber?.message}
         buttonErrorMessage={errors.isReceivedAuthNum?.message}
         label="휴대폰 번호"
-        buttonText={sendCount > 0 ? '다시 받기' : '인증번호 받기'}
+        buttonText={btnClickcount > 0 ? '다시 받기' : '인증번호 받기'}
       />
       <InputWithTimer
         type="number"

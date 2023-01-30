@@ -1,20 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { meetingBoardMocks } from 'src/__mocks__/meetingBoardMocks';
 import MeetingHeader from 'src/components/Meeting/MeetingHeader';
 import HomeMeeting from 'src/components/Meeting/MeetingHome';
 import Plus from 'src/components/shared/Icon/Plus';
 import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
 import { useQueryRouter, useSearch } from 'src/hooks';
+import { useMeetingItemListQuery } from 'src/hooks/api/home';
 import useDetectScroll from 'src/hooks/useDetectScroll';
-import { MeetingType } from 'src/types/meeting';
 
 import { meetingOptions } from './constants';
 import $ from './style.module.scss';
 
+const initialInfiniteReq = {
+  page: 0,
+  size: 30,
+};
+
 function MeetingHomePage() {
-  const [meetingList, setMeetingList] = useState<MeetingType[]>([]);
   const [isDown, setIsDown] = useState(false);
   const layoutRef = useRef<HTMLDivElement>(null);
   const isScrollMove = useDetectScroll(layoutRef);
@@ -33,16 +36,30 @@ function MeetingHomePage() {
     };
   }, [isScrollMove]);
 
-  const fetchMoreMeetingFeeds = () => {
-    setMeetingList([...meetingList, ...meetingBoardMocks]);
+  const { data, isLoading, hasNextPage, fetchNextPage } =
+    useMeetingItemListQuery({
+      ...initialInfiniteReq,
+    });
+
+  const items = data?.pages;
+  const itemList =
+    // meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
+    items?.reduce(
+      (acc: res.MeetingSummary[], cur) =>
+        (acc = [...acc, ...cur.boardListDtos]),
+      []
+    );
+
+  const getNextPage = () => {
+    if (hasNextPage) fetchNextPage();
   };
 
   return (
     <PageLayout
       isNeedFooter={true}
-      headerHeight={60}
+      headerHeight={104}
       ref={layoutRef}
-      customHeader={
+      headerWithCustom={
         <MeetingHeader
           data={meetingOptions}
           selected={meetingKind}
@@ -50,12 +67,25 @@ function MeetingHomePage() {
         />
       }
     >
-      <InfiniteScroll trigger={fetchMoreMeetingFeeds}>
-        <ul>
-          {meetingList.map((meeting) => (
-            <HomeMeeting key={meeting.id} meeting={meeting} />
-          ))}
-        </ul>
+      <InfiniteScroll trigger={getNextPage}>
+        {!!itemList?.length && (
+          <ul>
+            {itemList.map(
+              ({ id, title, gender, headCount, university, profileImages }) => {
+                const meeting = {
+                  id,
+                  title,
+                  gender,
+                  headCount,
+                  college: university,
+                  profiles: profileImages,
+                };
+
+                return <HomeMeeting key={meeting.id} meeting={meeting} />;
+              }
+            )}
+          </ul>
+        )}
       </InfiniteScroll>
 
       <button

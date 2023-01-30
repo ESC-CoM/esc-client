@@ -22,7 +22,7 @@ export const MYPAGE_SETTING_MENU: Menu[] = [
       {
         type: 'link',
         text: '친구 초대',
-        to: './',
+        to: '.',
       },
     ],
   },
