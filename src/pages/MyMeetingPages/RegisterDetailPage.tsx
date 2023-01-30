@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { useSearch } from 'src/hooks';
+import {
+  usePatchAllowRequest,
+  usePatchRejectRequest,
+} from 'src/hooks/api/board';
 import { useGetRequestListForMeetingRegisteredByMe } from 'src/hooks/api/board';
 
 const { id, kind, title, content, friends, date } = registerMeetingMocks[0];
@@ -12,6 +16,8 @@ const detailInfo = { badge: kind, title, content, date };
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
   const boardId = Number(useSearch('boardId') ?? -1);
+  const { mutate: allowRequest } = usePatchAllowRequest(boardId);
+  const { mutate: rejectRequest } = usePatchRejectRequest(boardId);
 
   const { data, isLoading, isError, hasNextPage, fetchNextPage } =
     useGetRequestListForMeetingRegisteredByMe({
@@ -66,6 +72,8 @@ export default function RegisterDetailPage() {
                 title: item.title,
                 requestParticipants: item.requestParticipants,
                 updatedAt: item.updatedAt,
+                onAllowClick: () => allowRequest(item.requestBoardId),
+                onRejectClick: () => rejectRequest(item.requestBoardId),
               }}
             />
           ))}

@@ -8,10 +8,20 @@ import $ from './style.module.scss';
 type Props = Omit<
   res.RequestListForMeetingRegisteredByMeContent,
   'message' | 'createdAt'
->;
+> & {
+  onAllowClick: () => void;
+  onRejectClick: () => void;
+};
 
 function RequestedItem(props: Props) {
-  const { requestBoardId, title, updatedAt, requestParticipants } = props;
+  const {
+    requestBoardId,
+    title,
+    updatedAt,
+    requestParticipants,
+    onAllowClick,
+    onRejectClick,
+  } = props;
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -51,9 +61,11 @@ function RequestedItem(props: Props) {
 
   const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onAllowClick();
   };
   const clickRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onRejectClick();
   };
 
   return (

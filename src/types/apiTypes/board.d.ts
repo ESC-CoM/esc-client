@@ -1,4 +1,6 @@
 declare namespace req {
+  export type AllowOrRejectRequest = 'ALLOWED' | 'REJECTED';
+
   export type RequestListForMeetingRegisteredByMe = {
     boardId: number;
     params: {
@@ -19,6 +21,11 @@ declare namespace req {
 }
 
 declare namespace res {
+  export type AllowOrRejectRequest = {
+    status: number;
+    message: string;
+    data: null;
+  };
   export type RequestByMe = {
     status: string;
     message: string;
