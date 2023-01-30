@@ -4,6 +4,7 @@ import {
   TOKEN_EXPIRED,
   USER_NOT_EXISTED,
 } from 'src/constants/auth';
+import { API_SERVER_URL } from 'src/constants/env';
 import { getAccessToken, setAccessToken } from 'src/utils/auth';
 import { getRefreshToken } from 'src/utils/auth';
 import { toastError, toastSuccess } from 'src/utils/toaster';
@@ -11,7 +12,7 @@ import { toastError, toastSuccess } from 'src/utils/toaster';
 import { authRefresh } from '../auth';
 
 const http: AxiosInstance = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}`,
+  baseURL: API_SERVER_URL,
   timeout: 3000,
   headers: {
     'Content-Type': 'application/json',

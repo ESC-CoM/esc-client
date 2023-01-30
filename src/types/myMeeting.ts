@@ -1,4 +1,5 @@
 export type MyMeetingType = {
+  id: number;
   kind: string;
   title: string;
   content: string;
