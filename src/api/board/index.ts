@@ -3,9 +3,7 @@ import { http } from '../core';
 export const getRequestListForMeetingRegisteredByMe = async ({
   boardId,
   params,
-}: req.RequestListForMeetingRegisteredByMe): Promise<
-  res.RequestListForMeetingRegisteredByMe | res.Error
-> => {
+}: req.RequestListForMeetingRegisteredByMe): Promise<res.RequestListForMeetingRegisteredByMe> => {
   const { data } = await http.get(`/api/board/${boardId}/request`, { params });
   return data;
 };

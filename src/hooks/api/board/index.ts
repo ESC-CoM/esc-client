@@ -4,13 +4,15 @@ import { queryKey } from 'src/constants/queryKey';
 
 import { useCoreInfiniteQuery } from '../core';
 
+type RequestListForMeetingRegisteredByMe = {
+  boardId: req.RequestListForMeetingRegisteredByMe['boardId'];
+  params: Omit<req.RequestListForMeetingRegisteredByMe['params'], 'page'>;
+};
+
 export const useGetRequestListForMeetingRegisteredByMe = ({
   boardId,
   params,
-}: {
-  boardId: req.RequestListForMeetingRegisteredByMe['boardId'];
-  params: Omit<req.RequestListForMeetingRegisteredByMe['params'], 'page'>;
-}) =>
+}: RequestListForMeetingRegisteredByMe) =>
   useCoreInfiniteQuery(
     queryKey.requestListForMeetingRegisteredByMe(boardId),
     ({ pageParam = 0 }) =>
@@ -19,11 +21,9 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
         params: { ...params, page: pageParam },
       }),
     {
-      getNextPageParam: (response) => {
-        if ('status' in response) return; // error
-        return response.page + 1;
-      },
-      enabled: boardId > -1,
+      getNextPageParam: ({ pageable: { pageNumber }, last }) =>
+        last ? undefined : pageNumber + 1,
+      enabled: !!boardId && boardId > -1,
     }
   );
 
