@@ -57,7 +57,7 @@ function MeetingHomePage() {
   return (
     <PageLayout
       isNeedFooter={true}
-      headerHeight={60}
+      headerHeight={104}
       ref={layoutRef}
       headerWithCustom={
         <MeetingHeader

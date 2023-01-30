@@ -23,4 +23,4 @@ const noticeList = [
   },
 ];
 
-export default noticeList;
+export { noticeList };

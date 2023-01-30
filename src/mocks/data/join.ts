@@ -1,4 +1,4 @@
-export const terms = [
+const terms = [
   {
     title: '이용약관 동의(필수)',
     url: 'http://1',
@@ -9,7 +9,7 @@ export const terms = [
   },
 ];
 
-export const hobbyData = [
+const hobbyData = [
   {
     id: 0,
     name: '카페가기',
@@ -116,3 +116,5 @@ export const hobbyData = [
     icon: '📷',
   },
 ];
+
+export { hobbyData, terms };

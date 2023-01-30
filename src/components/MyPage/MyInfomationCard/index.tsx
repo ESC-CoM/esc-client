@@ -58,7 +58,7 @@ export default function MyInformationCard({ className, userInfo }: Props) {
           <ul>
             <InformationBar icon={OutlineSchool} text={schoolText} />
             <InformationBar icon={RiCake2Fill} text={`${birth}년생`} />
-            <InformationBar icon={IoBeer} text={`${amountOfAlchol}병`} />
+            <InformationBar icon={IoBeer} text={`${amountOfAlchol / 10}병`} />
           </ul>
           <ul className={$['body-information']}>
             <InformationBar

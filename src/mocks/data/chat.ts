@@ -1,6 +1,6 @@
 import { profileList } from './mutiProfile';
 
-export const messageInfoMocks = [
+const messageInfoMocks = [
   {
     sender: {
       id: 'loginid',
@@ -56,7 +56,7 @@ export const messageInfoMocks = [
   },
 ];
 
-export const chatListMocks = [
+const chatListMocks = [
   {
     roomImage: profileList,
     title: '소프트웨어학과 남자 3명',
@@ -87,3 +87,5 @@ export const chatListMocks = [
     count: '300+',
   },
 ];
+
+export { chatListMocks, messageInfoMocks };

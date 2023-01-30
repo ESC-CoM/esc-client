@@ -1,4 +1,4 @@
-export const profileList = [
+const profileList = [
   {
     name: '쭈꾸미',
     imageUrl:
@@ -15,3 +15,5 @@ export const profileList = [
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTEwMjdfMzMg%2FMDAxNTcyMTczNDAwMjc0.-zTktpIp7v4OuhrkU2OLCmR1yxPqTFTTQ3NMHoz9-Csg.x04PhKOmPSawfE07xN5uBlURiDdeHcIZ4i73gp7wB7Ug.JPEG.lucy3622%2F1572173398894.jpg&type=sc960_832',
   },
 ];
+
+export { profileList };
