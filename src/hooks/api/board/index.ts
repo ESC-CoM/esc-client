@@ -23,7 +23,7 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
     {
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
-      enabled: !!boardId && boardId > -1,
+      enabled: boardId > -1,
     }
   );
 
