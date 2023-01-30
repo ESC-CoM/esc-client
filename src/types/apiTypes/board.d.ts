@@ -1,5 +1,5 @@
 declare namespace req {
-  export type BoardRequestedByMe = {
+  export type RequestMeetingByMe = {
     page?: number;
     size?: number;
     sort?: string[];
@@ -8,26 +8,30 @@ declare namespace req {
 }
 
 declare namespace res {
-  export type BoardRequestedByMeSuccess = {
+  export type ParticipantStatus = 'PENDING' | 'REJECTED' | 'ALLOWED';
+  export type RequestParticipants = {
+    id: number;
+    nickname: string;
+    profileImage: string;
+  };
+  export type SenderId = {
+    id: number;
+    nickname: string;
+    profileImage: string;
+  };
+  export type RequestMeetingListByMeContent = {
+    title: string;
+    message: string;
+    requestParticipants: RequestParticipants[];
+    boardId: number;
+    createdAt: string;
+    updatedAt: string;
+    senderId: SenderId;
+    participantStatus: ParticipantStatus;
+  };
+  export type RequestMeetingListByMe = {
     size: number;
-    content: {
-      title: string;
-      message: string;
-      requestParticipants: {
-        id: number;
-        nickname: string;
-        profileImage: string;
-      }[];
-      boardId: number;
-      createdAt: string;
-      updatedAt: string;
-      senderId: {
-        id: number;
-        nickname: string;
-        profileImage: string;
-      };
-      participantStatus: 'PENDING' | 'REJECTED' | 'ALLOWED';
-    }[];
+    content: RequestMeetingListByMeContent[];
     number: number;
     sort: {
       empty: boolean;

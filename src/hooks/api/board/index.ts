@@ -4,7 +4,7 @@ import { queryKey } from 'src/constants/queryKey';
 import { useCoreInfiniteQuery } from '../core';
 
 export const useGetMeetingListRegisteredByMe = (
-  params?: Omit<req.BoardRequestedByMe, 'page'>
+  params?: Omit<req.RequestMeetingByMe, 'page'>
 ) => {
   return useCoreInfiniteQuery(
     queryKey.meetingListRegisteredByMe,
