@@ -1,8 +1,5 @@
 export const queryKey = {
-  example: ['example'],
-  exampleFunc: (example: string, hi: string) => {
-    return ['arrayTypeQueryKey', { example, hi }];
-  },
+  meetingListRegisteredByMe: ['meetingListRegisteredByMe'],
   checkEmailDuplicateFunc: (email: string) => {
     return ['checkEmailDuplicate', { email }];
   },
@@ -35,5 +32,9 @@ export const queryKey = {
   },
   userValidationId: ['userValidationId'],
   detailUserInformationFunc: (id: number) => ['detailUserInformation', { id }],
+  requestListForMeetingRegisteredByMe: (boardId: number) => {
+    return ['requestListForMeetingRegisteredByMe', { boardId }];
+  },
+  meetingListRequestedByMe: ['meetingListRequestedByMe'],
   myInfo: ['myInfo'],
 };

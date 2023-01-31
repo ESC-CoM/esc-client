@@ -1,6 +1,6 @@
 import { http } from 'src/api/core';
 
-const getMeetingList = async (params?: req.Home): Promise<res.MeetingFeed> => {
+const getMeetingList = async (params: req.Home): Promise<res.MeetingFeed> => {
   const response = await http.get('/api/board', { params });
   return response.data;
 };

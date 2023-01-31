@@ -2,23 +2,36 @@ import { memo, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { useIntersectObserver } from 'src/hooks';
-import { MyMeetingRequestType } from 'src/types/myMeeting';
 
 import $ from './style.module.scss';
 
-function RequestedItem({
-  id,
-  comment,
-  requestedInfo,
-  date,
-}: MyMeetingRequestType) {
+type Props = Omit<
+  res.RequestListForMeetingRegisteredByMeContent,
+  'message' | 'createdAt'
+> & {
+  onAllowClick: () => void;
+  onRejectClick: () => void;
+};
+
+function RequestedItem(props: Props) {
+  const {
+    requestBoardId,
+    title,
+    updatedAt,
+    requestParticipants,
+    onAllowClick,
+    onRejectClick,
+  } = props;
   const navigate = useNavigate();
   const requestedMeetingRef = useRef<HTMLLIElement | null>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const profileList = useMemo(
     () =>
-      requestedInfo
-        .map(({ nickName, src }) => ({ alt: nickName, src: src }))
+      requestParticipants
+        .map(({ nickname, profileImage }) => ({
+          alt: nickname,
+          src: profileImage,
+        }))
         .slice(0, 3),
     []
   );
@@ -43,14 +56,16 @@ function RequestedItem({
   );
 
   const getProfileInfo = () => {
-    navigate('/home/detail/' + id);
+    navigate('/home/detail/' + requestBoardId);
   };
 
   const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onAllowClick();
   };
   const clickRefuseBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    onRejectClick();
   };
 
   return (
@@ -62,8 +77,8 @@ function RequestedItem({
       <MutiProfile profileList={profileList} parentRef={requestedMeetingRef} />
 
       <div className={$.info}>
-        <span className={$.comment}>{comment}</span>
-        <span className={$.date}>{date}</span>
+        <span className={$.comment}>{title}</span>
+        <span className={$.date}>{updatedAt}</span>
       </div>
 
       <div className={$['request-btn-wrapper']}>
