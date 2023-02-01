@@ -7,9 +7,9 @@ import Plus from 'src/components/shared/Icon/Plus';
 import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
 import { useQueryRouter, useSearch } from 'src/hooks';
 import { useMeetingItemListQuery } from 'src/hooks/api/home';
+import useDetectScroll from 'src/hooks/useDetectScroll';
 
 import { meetingOptions } from './constants';
-import { useFloatingAnimation } from './home.hook';
 import $ from './style.module.scss';
 
 const initialInfiniteReq = {
@@ -19,7 +19,7 @@ const initialInfiniteReq = {
 
 function MeetingHomePage() {
   const layoutRef = useRef<HTMLDivElement>(null);
-  const isAnimationable = useFloatingAnimation(layoutRef);
+  const isAnimationable = useDetectScroll(layoutRef);
   const navigate = useNavigate();
   const meetingKind = useSearch('kind') || meetingOptions[0].code;
   const router = useQueryRouter('kind');
