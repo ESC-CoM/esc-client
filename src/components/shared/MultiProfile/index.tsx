@@ -1,5 +1,5 @@
-import { RefObject, useRef } from 'react';
-import { useIntersectObserver } from 'src/hooks';
+import { useRef } from 'react';
+import { useIntersect } from 'src/hooks';
 import { ProfileImg } from 'src/types/profile';
 import getProfileClassName from 'src/utils/getProfileClassName';
 
@@ -7,13 +7,12 @@ import $ from './style.module.scss';
 
 interface Props {
   profileList: ProfileImg[];
-  parentRef: RefObject<HTMLLIElement>;
 }
 
 const FALLBACK_IMAGE =
   'https://ninajohansson.se/wp-content/themes/koji/assets/images/default-fallback-image.png';
 
-export default function MutiProfile({ profileList, parentRef }: Props) {
+export default function MutiProfile({ profileList }: Props) {
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
   const onError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
@@ -22,26 +21,26 @@ export default function MutiProfile({ profileList, parentRef }: Props) {
   };
 
   const lazyLoadCallback = (
-    entries: IntersectionObserverEntry[],
+    entry: IntersectionObserverEntry,
     observer: IntersectionObserver
   ) => {
-    const targetBox = entries[0];
-    if (targetBox.isIntersecting) {
+    if (entry.isIntersecting) {
       imgRefs.current.forEach((img) => {
         if (img && img.dataset.src) img.src = img.dataset.src;
       });
-      observer.unobserve(targetBox.target);
+      observer.unobserve(entry.target);
     }
   };
 
-  useIntersectObserver<HTMLLIElement>(
-    { threshold: 0.1 },
-    parentRef,
-    lazyLoadCallback
-  );
+  const parentRef = useIntersect<HTMLDivElement>(lazyLoadCallback, {
+    threshold: 0.1,
+  });
 
   return (
-    <div className={$[`${getProfileClassName(profileList.length)}`]}>
+    <div
+      className={$[`${getProfileClassName(profileList.length)}`]}
+      ref={parentRef}
+    >
       {profileList.map(({ alt, src }, index) => (
         <div key={`${src}${index}`} className={$['personal-img']}>
           <img

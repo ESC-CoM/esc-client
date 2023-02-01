@@ -1,7 +1,6 @@
-import { memo, useMemo, useRef } from 'react';
+import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
-import { useIntersectObserver } from 'src/hooks';
 
 import StateBadge from '../StateBadge';
 import $ from './style.module.scss';
@@ -18,17 +17,9 @@ type Props = Pick<
 };
 
 function RequestMeeting(props: Props) {
-  const {
-    boardId,
-    title,
-    participantStatus,
-    updatedAt,
-    requestParticipants,
-    onDeleteClick,
-  } = props;
+  const { boardId, title, participantStatus, updatedAt } = props;
+  const { requestParticipants, onDeleteClick } = props;
   const navigate = useNavigate();
-  const requestRef = useRef<HTMLLIElement | null>(null);
-  const imgRefs = useRef<HTMLImageElement[]>([]);
   const profileList = useMemo(
     () =>
       requestParticipants
@@ -38,25 +29,6 @@ function RequestMeeting(props: Props) {
         }))
         .slice(0, 3),
     []
-  );
-
-  const lazyLoadCallback = (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ) => {
-    const targetBox = entries[0];
-    if (targetBox.isIntersecting) {
-      imgRefs.current.forEach((img) => {
-        if (img && img.dataset.src) img.src = img.dataset.src;
-      });
-      observer.unobserve(targetBox.target);
-    }
-  };
-
-  useIntersectObserver<HTMLLIElement>(
-    { threshold: 0.1 },
-    requestRef,
-    lazyLoadCallback
   );
 
   const getRequestedPosting = () => {
@@ -69,12 +41,8 @@ function RequestMeeting(props: Props) {
   };
 
   return (
-    <li
-      className={$['request-meeting-info']}
-      ref={requestRef}
-      onClick={getRequestedPosting}
-    >
-      <MutiProfile profileList={profileList} parentRef={requestRef} />
+    <li className={$['request-meeting-info']} onClick={getRequestedPosting}>
+      <MutiProfile profileList={profileList} />
 
       <div className={$.info}>
         <StateBadge state={participantStatus} />
