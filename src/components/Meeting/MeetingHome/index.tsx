@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useExtractColleges, useIntersectObserver } from 'src/hooks';
+import { useExtractColleges, useIntersect } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 
 import $ from './style.module.scss';
@@ -16,38 +16,28 @@ export default function Meeting({
   meeting: { id, title, gender, headCount, college, profiles },
 }: Props) {
   const navigate = useNavigate();
-
-  const meetingRef = useRef<HTMLLIElement | null>(null);
-  const imgListRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
   const url = profiles[0];
   const collegesText = useExtractColleges(college);
 
   const lazyLoadCallback = (
-    entries: IntersectionObserverEntry[],
+    entry: IntersectionObserverEntry,
     observer: IntersectionObserver
   ) => {
-    const targetBox = entries[0];
-    if (targetBox.isIntersecting) {
+    if (entry.isIntersecting) {
       const ref = imgRef.current;
       if (ref && ref.dataset.src) ref.src = ref.dataset.src;
-      observer.unobserve(targetBox.target);
+      observer.unobserve(entry.target);
     }
   };
 
-  useIntersectObserver<HTMLLIElement>(
-    { threshold: 0.1 },
-    meetingRef,
-    lazyLoadCallback
-  );
+  const imgListRef = useIntersect<HTMLDivElement>(lazyLoadCallback, {
+    threshold: 0.1,
+  });
 
   return (
-    <li
-      className={$.meeting}
-      ref={meetingRef}
-      onClick={() => navigate(`./detail/${id}`)}
-    >
+    <li className={$.meeting} onClick={() => navigate(`./detail/${id}`)}>
       <div className={$.profileImg} ref={imgListRef}>
         <img
           data-src={url}

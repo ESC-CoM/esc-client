@@ -1,5 +1,5 @@
 import { memo, useRef } from 'react';
-import { useIntersectObserver } from 'src/hooks';
+import { useIntersect } from 'src/hooks';
 import { Profile } from 'src/types/profile';
 
 import ProfileBasicInfo from '../ProfileBasicInfo';
@@ -28,26 +28,22 @@ function ProfileCard({ friend }: Props) {
     mbti,
     drink: amountOfAlchol,
   };
-  const profileRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
   const lazyLoadCallback = (
-    entries: IntersectionObserverEntry[],
+    entry: IntersectionObserverEntry,
     observer: IntersectionObserver
   ) => {
-    const targetBox = entries[0];
     const targetImg = imgRef.current;
-    if (targetBox.isIntersecting && targetImg && targetImg.dataset.src) {
+    if (entry.isIntersecting && targetImg && targetImg.dataset.src) {
       targetImg.src = targetImg.dataset.src;
-      observer.unobserve(targetBox.target);
+      observer.unobserve(entry.target);
     }
   };
 
-  useIntersectObserver<HTMLDivElement>(
-    { threshold: 0.1 },
-    profileRef,
-    lazyLoadCallback
-  );
+  const profileRef = useIntersect<HTMLDivElement>(lazyLoadCallback, {
+    threshold: 0.1,
+  });
 
   return (
     <div className={$['profile-card']} ref={profileRef}>

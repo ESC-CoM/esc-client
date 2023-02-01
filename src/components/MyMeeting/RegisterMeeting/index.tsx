@@ -1,4 +1,4 @@
-import { memo, useMemo, useRef } from 'react';
+import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { MyMeetingType } from 'src/types/myMeeting';
@@ -14,7 +14,6 @@ function RegisterMeeting({
   date,
 }: MyMeetingType) {
   const navigate = useNavigate();
-  const myMeetingRef = useRef<HTMLLIElement | null>(null);
   const profileList = useMemo(
     () =>
       friends
@@ -32,8 +31,8 @@ function RegisterMeeting({
   };
 
   return (
-    <li className={$['my-meeting']} onClick={getRequestList} ref={myMeetingRef}>
-      <MutiProfile profileList={profileList} parentRef={myMeetingRef} />
+    <li className={$['my-meeting']} onClick={getRequestList}>
+      <MutiProfile profileList={profileList} />
 
       <div className={$['my-meeting-info']}>
         <div className={$['info-heading']}>
