@@ -30,11 +30,4 @@ declare namespace res {
       agree: boolean;
     };
   };
-
-  export type UserInfoDetailError = {
-    message: string;
-    status: number;
-    errors: string[];
-    code: string;
-  };
 }

@@ -10,25 +10,10 @@ declare namespace req {
 }
 
 declare namespace res {
-  export type AuthSuccess = {
-    status: string;
-    message: string;
-    data: {
-      accessToken: string;
-      refreshToken: string;
-    };
-  };
-  export type RefreshSuccess = {
-    status: string;
-    message: string;
-    data: string;
-  };
+  export type AuthSuccess = res.Success<{
+    accessToken: string;
+    refreshToken: string;
+  }>;
+  export type RefreshSuccess = res.Success<string>;
   export type ValidateSuccess = number;
-
-  export type ValidateError = {
-    message: string;
-    status: number;
-    errors: string[];
-    code: string;
-  };
 }

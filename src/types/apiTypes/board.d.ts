@@ -33,16 +33,6 @@ declare namespace req {
 }
 
 declare namespace res {
-  export type AllowOrRejectRequest = {
-    status: number;
-    message: string;
-    data: null;
-  };
-  export type RequestByMe = {
-    status: string;
-    message: string;
-    data: null;
-  };
   export type ParticipantStatus = 'PENDING' | 'REJECTED' | 'ALLOWED';
   export type MeetingParticipant = {
     id?: number;

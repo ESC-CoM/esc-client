@@ -6,29 +6,13 @@ declare namespace res {
     email?: string;
     friend?: boolean;
   };
-  export type FriendList = {
-    status: string;
-    message: string;
-    data: Friend[];
-  };
-  export type DeleteFriend = {
-    status: string;
-    message: string;
-    data: number;
-  };
+  export type FriendList = res.Success<Friend[]>;
+  export type DeleteFriend = res.Success<number>;
   export type FriendRequest = {
     friendRequestId: number;
     profile: string;
     name: string;
   };
-  export type FriendRequestList = {
-    status: string;
-    message: string;
-    data: Friend[];
-  };
-  export type SearchedFriend = {
-    status: string;
-    message: string;
-    data: Friend[];
-  };
+  export type FriendRequestList = res.Success<Friend[]>;
+  export type SearchedFriend = res.Success<Friend[]>;
 }
