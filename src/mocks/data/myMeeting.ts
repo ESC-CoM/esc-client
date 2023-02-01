@@ -1,122 +1,138 @@
-const registerMeetingMocks = [
+const registerMeetingMocks: res.BoardListRegisteredByMeContent[] = [
   {
     id: 1,
     kind: '과팅',
     title: '공대, 전정대 여자 3명이랑 과팅 ㄱㄱㄱㄱㄱㄱ~~~~~~~~~~~~',
-    content:
+    message:
       '같이 과팅할 남자 3명 구해요~ 같은 공대, 전정대는 아니였으면 좋겠어요ㅎㅎ',
-    friends: [
+    registerParticipants: [
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
       },
     ],
-    date: '1시간 전',
+    createdAt: '1시간 전',
   },
   {
     id: 2,
     kind: '미팅',
     title: '전정대+공대 여자 2명이랑 과팅해용',
-    content: '같이 과팅할 남자 2명 구합니당 해 뜰때까지 놀아요^ㅡ^',
-    friends: [
+    message: '같이 과팅할 남자 2명 구합니당 해 뜰때까지 놀아요^ㅡ^',
+    registerParticipants: [
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515923-034f559f-d1e1-4665-a735-a5df086375ec.jpeg',
       },
     ],
-    date: '7일전',
+    createdAt: '7일전',
   },
   {
     id: 3,
     kind: '과팅',
     title: '전정대랑 경영대 여자 2명 과팅올려요',
-    content: '과팅해요 저희 재밌어요',
-    friends: [
+    message: '과팅해요 저희 재밌어요',
+    registerParticipants: [
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+        nickname: '',
+        profileImage:
+          'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
       },
     ],
-    date: '22.10.10',
+    createdAt: '22.10.10',
   },
   {
     id: 4,
     kind: '미팅',
     title: '자연대, 전정대, 인문대 3:3 골고루 과팅해요',
-    content: '분위기 메이커들만 모였어요 😜',
-    friends: [
+    message: '분위기 메이커들만 모였어요 😜',
+    registerParticipants: [
       {
-        nickName: '',
-        src: 'https://media.bunjang.co.kr/product/166788639_1_1634025108_w360.jpg',
+        nickname: '',
+        profileImage:
+          'https://media.bunjang.co.kr/product/166788639_1_1634025108_w360.jpg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
     ],
-    date: '22.09.03',
+    createdAt: '22.09.03',
   },
   {
     id: 5,
     kind: '과팅',
     title: '저희 3:3 과팅해요',
-    content: '모든 신청 환영',
-    friends: [
+    message: '모든 신청 환영',
+    registerParticipants: [
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
       },
     ],
-    date: '22.09.02',
+    createdAt: '22.09.02',
   },
   {
     id: 6,
     kind: '미팅',
     title: '전정대 여자 단체 과팅 올려요~',
-    content: '아무나 과팅 고고',
-    friends: [
+    message: '아무나 과팅 고고',
+    registerParticipants: [
       {
-        nickName: '',
-        src: 'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
       },
       {
-        nickName: '',
-        src: 'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+        nickname: '',
+        profileImage:
+          'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
       },
       {
-        nickName: '',
-        src: 'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
+        nickname: '',
+        profileImage:
+          'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
       },
     ],
-    date: '22.09.02',
+    createdAt: '22.09.02',
   },
 ];
 
