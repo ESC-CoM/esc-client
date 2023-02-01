@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { useIntersectObserver } from '../../../hooks';
+import { useIntersect } from '../../../hooks';
 
 type Props = {
   children: ReactNode;
@@ -21,7 +21,7 @@ export default function InfiniteScroll(props: Props) {
     trigger();
   };
 
-  const observerRef = useIntersectObserver<HTMLDivElement>(onIntersect, {
+  const observerRef = useIntersect<HTMLDivElement>(onIntersect, {
     threshold: 1,
   });
 

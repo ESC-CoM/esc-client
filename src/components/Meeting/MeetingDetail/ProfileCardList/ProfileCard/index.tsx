@@ -1,5 +1,5 @@
 import { memo, useRef } from 'react';
-import { useIntersectObserver } from 'src/hooks';
+import { useIntersect } from 'src/hooks';
 import { Profile } from 'src/types/profile';
 
 import ProfileBasicInfo from '../ProfileBasicInfo';
@@ -41,7 +41,7 @@ function ProfileCard({ friend }: Props) {
     }
   };
 
-  const profileRef = useIntersectObserver<HTMLDivElement>(lazyLoadCallback, {
+  const profileRef = useIntersect<HTMLDivElement>(lazyLoadCallback, {
     threshold: 0.1,
   });
 

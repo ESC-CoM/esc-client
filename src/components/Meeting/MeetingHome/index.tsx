@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useExtractColleges, useIntersectObserver } from 'src/hooks';
+import { useExtractColleges, useIntersect } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 
 import $ from './style.module.scss';
@@ -32,7 +32,7 @@ export default function Meeting({
     }
   };
 
-  const imgListRef = useIntersectObserver<HTMLDivElement>(lazyLoadCallback, {
+  const imgListRef = useIntersect<HTMLDivElement>(lazyLoadCallback, {
     threshold: 0.1,
   });
 

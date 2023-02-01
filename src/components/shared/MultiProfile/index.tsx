@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useIntersectObserver } from 'src/hooks';
+import { useIntersect } from 'src/hooks';
 import { ProfileImg } from 'src/types/profile';
 import getProfileClassName from 'src/utils/getProfileClassName';
 
@@ -32,7 +32,7 @@ export default function MutiProfile({ profileList }: Props) {
     }
   };
 
-  const parentRef = useIntersectObserver<HTMLDivElement>(lazyLoadCallback, {
+  const parentRef = useIntersect<HTMLDivElement>(lazyLoadCallback, {
     threshold: 0.1,
   });
 
