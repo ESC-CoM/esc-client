@@ -5,21 +5,14 @@ import { useGetMeetingListRegisteredByMeQuery } from 'src/hooks/api/board';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { data, getNextPage, isLoading, isError } =
+  const { itemList, getNextPage, isLoading, isError } =
     useGetMeetingListRegisteredByMeQuery({ page: 0, size: 10 });
 
   if (isLoading) return <div>로딩중</div>;
-  if (!data || isError) return <div>오류 발생</div>;
+  if (!itemList || isError) return <div>오류 발생</div>;
 
-  const itemList = data?.pages.reduce(
-    (acc: res.BoardListRegisteredByMeContent[], cur) =>
-      (acc = [...acc, ...cur.content]),
-    []
-  );
-
-  const getRequestList = (boardId: number) => {
+  const getRequestList = (boardId: number) =>
     navigate(`/mymeeting/detail?status=register&boardId=${boardId}`);
-  };
 
   return (
     <InfiniteScroll trigger={getNextPage}>

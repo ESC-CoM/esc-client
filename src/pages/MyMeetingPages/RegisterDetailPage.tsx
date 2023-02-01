@@ -19,8 +19,7 @@ export default function RegisterDetailPage() {
   const boardId = Number(useSearch('boardId') ?? -1);
   const { mutate: allowRequest } = usePatchAllowRequest(boardId);
   const { mutate: rejectRequest } = usePatchRejectRequest(boardId);
-
-  const { data, isLoading, isError, getNextPage } =
+  const { itemList, isLoading, isError, getNextPage } =
     useGetRequestListForMeetingRegisteredByMe({
       boardId,
       params: { size: 10 },
@@ -41,13 +40,7 @@ export default function RegisterDetailPage() {
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>error</div>;
-  if (!data) return <div>data error</div>;
-
-  const itemList = data?.pages.reduce(
-    (acc: res.RequestListForMeetingRegisteredByMeContent[], cur) =>
-      (acc = [...acc, ...cur.content]),
-    []
-  );
+  if (!itemList) return <div>data error</div>;
 
   return (
     <>

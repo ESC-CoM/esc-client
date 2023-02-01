@@ -36,18 +36,13 @@ function MeetingHomePage() {
     };
   }, [isScrollMove]);
 
-  const { data, getNextPage, isLoading, isError } = useMeetingItemListQuery({
-    ...initialInfiniteReq,
-  });
+  const { itemList, getNextPage, isLoading, isError } = useMeetingItemListQuery(
+    { ...initialInfiniteReq }
+  );
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>error</div>;
-  if (!data) return <div>data error</div>;
-
-  const itemList = data?.pages.reduce(
-    (acc: res.MeetingSummary[], cur) => (acc = [...acc, ...cur.boardListDtos]),
-    []
-  );
+  if (!itemList) return <div>data error</div>;
 
   return (
     <PageLayout

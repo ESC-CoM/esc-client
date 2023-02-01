@@ -41,16 +41,17 @@ export function useCoreMutation<T, U>(
   });
 }
 
-type UseInfiniteCustomResult<T> = Omit<
+type UseInfiniteCustomResult<T, U> = Omit<
   Partial<UseInfiniteQueryResult<T, AxiosError>>,
   'hasNextPage' | 'fetchNextPage'
-> & { getNextPage: () => void };
+> & { getNextPage: () => void; itemList: U[] | undefined };
 
-export function useCoreInfiniteQuery<T>(
+export function useCoreInfiniteQuery<T extends { [key: string]: any }, U>(
   keyName: QueryKey,
   query: QueryFunction<T, QueryKey>,
+  itemContainingProp: string,
   options?: Omit<UseInfiniteQueryOptions<T, AxiosError>, 'queryKey' | 'queryFn'>
-): UseInfiniteCustomResult<T> {
+): UseInfiniteCustomResult<T, U> {
   const { data, isLoading, isError, hasNextPage, fetchNextPage } =
     useInfiniteQuery(keyName, query, {
       onError: (err) => {
@@ -58,10 +59,14 @@ export function useCoreInfiniteQuery<T>(
       },
       ...options,
     });
+  const itemList = data?.pages.reduce((acc: U[], cur) => {
+    if (!(itemContainingProp in cur)) return [...acc, cur];
+    return [...acc, ...cur[itemContainingProp]];
+  }, []);
   const getNextPage = useCallback(() => {
     if (hasNextPage) {
       fetchNextPage();
     }
   }, [hasNextPage, fetchNextPage]);
-  return { data, isLoading, isError, getNextPage };
+  return { data, itemList, isLoading, isError, getNextPage };
 }
