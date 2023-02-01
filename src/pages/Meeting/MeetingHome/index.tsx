@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import MeetingHeader from 'src/components/Meeting/MeetingHeader';
@@ -7,9 +7,9 @@ import Plus from 'src/components/shared/Icon/Plus';
 import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
 import { useQueryRouter, useSearch } from 'src/hooks';
 import { useMeetingItemListQuery } from 'src/hooks/api/home';
-import useDetectScroll from 'src/hooks/useDetectScroll';
 
 import { meetingOptions } from './constants';
+import { useFloatingAnimation } from './home.hook';
 import $ from './style.module.scss';
 
 const initialInfiniteReq = {
@@ -18,24 +18,11 @@ const initialInfiniteReq = {
 };
 
 function MeetingHomePage() {
-  const [isDown, setIsDown] = useState(false);
   const layoutRef = useRef<HTMLDivElement>(null);
-  const isScrollMove = useDetectScroll(layoutRef);
+  const isAnimationable = useFloatingAnimation(layoutRef);
   const navigate = useNavigate();
   const meetingKind = useSearch('kind') || meetingOptions[0].code;
   const router = useQueryRouter('kind');
-
-  useEffect(() => {
-    if (isScrollMove) {
-      setIsDown(true);
-    } else {
-      setIsDown(false);
-    }
-    return () => {
-      isScrollMove;
-    };
-  }, [isScrollMove]);
-
   const { itemList, getNextPage, isLoading, isError } = useMeetingItemListQuery(
     { ...initialInfiniteReq }
   );
@@ -82,7 +69,7 @@ function MeetingHomePage() {
         type="button"
         aria-label="과팅 등록하기"
         className={cx($['add-meeting'], {
-          [$['add-meeting-down']]: isDown,
+          [$['add-meeting-down']]: isAnimationable,
         })}
         onClick={() => navigate('./register')}
       >
