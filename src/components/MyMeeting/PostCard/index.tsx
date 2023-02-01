@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { memo } from 'react';
 import cx from 'classnames';
 import Badge from 'src/components/MyMeeting/Badge';
 import { ProfileImg } from 'src/types/profile';
@@ -22,15 +22,13 @@ type Props = {
 
 function PostCard({ className, profileList, textInfo, onClick }: Props) {
   const { badge, title, content, date } = textInfo;
-  const postCardRef = useRef<HTMLLIElement | null>(null);
 
   return (
     <li
       className={cx($['post-card'], { [$[`${className}`]]: className })}
       onClick={onClick}
-      ref={postCardRef}
     >
-      <MutiProfile profileList={profileList} parentRef={postCardRef} />
+      <MutiProfile profileList={profileList} />
 
       <div className={$['card-content']}>
         <div className={$['card-heading']}>

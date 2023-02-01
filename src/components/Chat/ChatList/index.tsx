@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 
@@ -23,7 +23,6 @@ export default function ChatList({
   count,
 }: Props) {
   const navigate = useNavigate();
-  const chatListRef = useRef<HTMLLIElement | null>(null);
   const profileList = useMemo(
     () =>
       roomImage
@@ -42,7 +41,7 @@ export default function ChatList({
   };
   return (
     <li className={$['chat-list']} onClick={() => fetchChatRoom()}>
-      <MutiProfile profileList={profileList} parentRef={chatListRef} />
+      <MutiProfile profileList={profileList} />
       <div className={$['chat-info']}>
         <div className={$['main-info']}>
           <strong>{title}</strong>
