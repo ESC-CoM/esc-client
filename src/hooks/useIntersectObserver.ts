@@ -32,7 +32,6 @@ export default function useIntersectObserver<T extends HTMLElement>(
   );
 
   useEffect(() => {
-    console.log('hi');
     if (!ref?.current) return;
     const observer = new IntersectionObserver(observerCallback, options);
     observer.observe(ref.current);

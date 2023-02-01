@@ -1,32 +1,34 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode } from 'react';
 
 import { useIntersectObserver } from '../../../hooks';
 
-interface Props {
+type Props = {
   children: ReactNode;
   trigger: () => void;
   pageNumber?: number;
   totalPageCount?: number;
   isLoaded?: boolean;
-}
+};
 
 export default function InfiniteScroll(props: Props) {
-  const { trigger, pageNumber, totalPageCount, isLoaded } = props;
+  const { trigger } = props;
 
-  const target = useRef<HTMLDivElement>(null);
-  const isIntersecting = useIntersectObserver<HTMLDivElement>(
-    { threshold: 1 },
-    target
-  );
+  const onIntersect = (
+    entry: IntersectionObserverEntry,
+    observer: IntersectionObserver
+  ): void => {
+    observer.unobserve(entry.target);
+    trigger();
+  };
 
-  useEffect(() => {
-    if (isIntersecting) trigger();
-  }, [isIntersecting]);
+  const observerRef = useIntersectObserver<HTMLDivElement>(onIntersect, {
+    threshold: 1,
+  });
 
   return (
     <>
       {props.children}
-      <div ref={target} />
+      <div ref={observerRef} style={{ height: '1px' }} />
     </>
   );
 }
