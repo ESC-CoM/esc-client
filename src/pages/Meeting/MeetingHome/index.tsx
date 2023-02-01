@@ -36,23 +36,18 @@ function MeetingHomePage() {
     };
   }, [isScrollMove]);
 
-  const { data, isLoading, hasNextPage, fetchNextPage } =
-    useMeetingItemListQuery({
-      ...initialInfiniteReq,
-    });
+  const { data, getNextPage, isLoading, isError } = useMeetingItemListQuery({
+    ...initialInfiniteReq,
+  });
 
-  const items = data?.pages;
-  const itemList =
-    // meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
-    items?.reduce(
-      (acc: res.MeetingSummary[], cur) =>
-        (acc = [...acc, ...cur.boardListDtos]),
-      []
-    );
+  if (isLoading) return <div>loading...</div>;
+  if (isError) return <div>error</div>;
+  if (!data) return <div>data error</div>;
 
-  const getNextPage = () => {
-    if (hasNextPage) fetchNextPage();
-  };
+  const itemList = data?.pages.reduce(
+    (acc: res.MeetingSummary[], cur) => (acc = [...acc, ...cur.boardListDtos]),
+    []
+  );
 
   return (
     <PageLayout

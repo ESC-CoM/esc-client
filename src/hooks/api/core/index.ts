@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import type {
   MutationFunction,
   QueryFunction,
@@ -33,22 +34,34 @@ export function useCoreMutation<T, U>(
   options?: Omit<UseMutationOptions<T, AxiosError, U>, 'mutationKey'>
 ): UseMutationResult<T, AxiosError, U> {
   return useMutation(mutation, {
-    // onError: (err) => {
-    //   return console.error(err);
-    // },
-    ...options,
-  });
-}
-
-export function useCoreInfiniteQuery<T>(
-  keyName: QueryKey,
-  query: QueryFunction<T, QueryKey>,
-  options?: Omit<UseInfiniteQueryOptions<T, AxiosError>, 'queryKey' | 'queryFn'>
-): UseInfiniteQueryResult<T, AxiosError> {
-  return useInfiniteQuery(keyName, query, {
     onError: (err) => {
       return console.error(err);
     },
     ...options,
   });
+}
+
+type UseInfiniteCustomResult<T> = Omit<
+  Partial<UseInfiniteQueryResult<T, AxiosError>>,
+  'hasNextPage' | 'fetchNextPage'
+> & { getNextPage: () => void };
+
+export function useCoreInfiniteQuery<T>(
+  keyName: QueryKey,
+  query: QueryFunction<T, QueryKey>,
+  options?: Omit<UseInfiniteQueryOptions<T, AxiosError>, 'queryKey' | 'queryFn'>
+): UseInfiniteCustomResult<T> {
+  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
+    useInfiniteQuery(keyName, query, {
+      onError: (err) => {
+        return console.error(err);
+      },
+      ...options,
+    });
+  const getNextPage = useCallback(() => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+  }, [hasNextPage, fetchNextPage]);
+  return { data, isLoading, isError, getNextPage };
 }

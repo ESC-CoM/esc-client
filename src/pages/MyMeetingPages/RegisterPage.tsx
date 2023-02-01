@@ -5,7 +5,7 @@ import { useGetMeetingListRegisteredByMeQuery } from 'src/hooks/api/board';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { data, fetchNextPage, hasNextPage, isLoading, isError } =
+  const { data, getNextPage, isLoading, isError } =
     useGetMeetingListRegisteredByMeQuery({ page: 0, size: 10 });
 
   if (isLoading) return <div>로딩중</div>;
@@ -19,10 +19,6 @@ export default function RegisterPage() {
 
   const getRequestList = (boardId: number) => {
     navigate(`/mymeeting/detail?status=register&boardId=${boardId}`);
-  };
-
-  const getNextPage = () => {
-    if (hasNextPage) fetchNextPage();
   };
 
   return (
