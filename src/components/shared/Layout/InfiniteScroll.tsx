@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-
-import { useIntersect } from '../../../hooks';
+import { useIntersect } from 'src/hooks';
 
 type Props = {
   children: ReactNode;
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export default function InfiniteScroll(props: Props) {
-  const { trigger } = props;
+  const { children, trigger } = props;
 
   const onIntersect = (
     entry: IntersectionObserverEntry,
@@ -27,7 +26,7 @@ export default function InfiniteScroll(props: Props) {
 
   return (
     <>
-      {props.children}
+      {children}
       <div ref={observerRef} style={{ height: '1px' }} />
     </>
   );
