@@ -1,18 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import PostCard from 'src/components/MyMeeting/PostCard';
 import { InfiniteScroll } from 'src/components/shared/Layout';
-import { useGetMeetingListRegisteredByMeQuery } from 'src/hooks/api/borad';
+import { useGetMeetingListRegisteredByMeQuery } from 'src/hooks/api/board';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { data, fetchNextPage, isLoading, isError } =
+  const { data, fetchNextPage, hasNextPage, isLoading, isError } =
     useGetMeetingListRegisteredByMeQuery({ page: 0, size: 10 });
 
   if (isLoading) return <div>로딩중</div>;
   if (!data || isError) return <div>오류 발생</div>;
 
-  const items = data?.pages;
-  const itemList = items?.reduce(
+  const itemList = data?.pages.reduce(
     (acc: res.BoardListRegisteredByMeContent[], cur) =>
       (acc = [...acc, ...cur.content]),
     []
@@ -22,8 +21,12 @@ export default function RegisterPage() {
     navigate(`/mymeeting/detail?status=register&boardId=${boardId}`);
   };
 
+  const getNextPage = () => {
+    if (hasNextPage) fetchNextPage();
+  };
+
   return (
-    <InfiniteScroll trigger={fetchNextPage}>
+    <InfiniteScroll trigger={getNextPage}>
       <ul>
         {itemList.map(
           ({ id, kind, title, message, registerParticipants, createdAt }) => {
