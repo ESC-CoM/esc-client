@@ -72,7 +72,7 @@ export default function RegisterDetailPage() {
                 requestBoardId: item.requestBoardId,
                 title: item.title,
                 requestParticipants: item.requestParticipants,
-                updatedAt: item.updatedAt,
+                createdAt: item.createdAt,
                 onAllowClick: () => allowRequest(item.requestBoardId),
                 onRejectClick: () => rejectRequest(item.requestBoardId),
               }}

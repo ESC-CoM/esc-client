@@ -80,21 +80,16 @@ declare namespace res {
 
   export type RequestMeetingListByMeContent = {
     title: string;
-    message: string;
     requestParticipants: MeetingParticipant[];
     boardId: number;
     createdAt: string;
-    updatedAt: string;
-    senderId: MeetingParticipant;
     participantStatus: ParticipantStatus;
   };
   export type RequestListForMeetingRegisteredByMeContent = {
     title: string;
-    message: string;
     requestBoardId: number;
     requestParticipants: MeetingParticipant[];
     createdAt: string;
-    updatedAt: string;
   };
   export type BoardListRegisteredByMeContent = {
     id: number;

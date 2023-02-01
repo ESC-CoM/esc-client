@@ -10,14 +10,14 @@ type Props = Pick<
   | 'boardId'
   | 'title'
   | 'requestParticipants'
-  | 'updatedAt'
+  | 'createdAt'
   | 'participantStatus'
 > & {
   onDeleteClick: () => void;
 };
 
 function RequestMeeting(props: Props) {
-  const { boardId, title, participantStatus, updatedAt } = props;
+  const { boardId, title, participantStatus, createdAt } = props;
   const { requestParticipants, onDeleteClick } = props;
   const navigate = useNavigate();
   const profileList = useMemo(
@@ -47,7 +47,7 @@ function RequestMeeting(props: Props) {
       <div className={$.info}>
         <StateBadge state={participantStatus} />
         <strong className={$.comment}>{title}</strong>
-        <span className={$.date}>{updatedAt}</span>
+        <span className={$.date}>{createdAt}</span>
       </div>
 
       <div className={$['cancel-btn']}>

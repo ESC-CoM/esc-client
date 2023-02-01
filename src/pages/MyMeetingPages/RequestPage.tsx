@@ -25,15 +25,14 @@ export default function RequestPage() {
   return (
     <InfiniteScroll trigger={getNextPage}>
       <ul>
-        {/* TODO: 데이터 잘 불러와지는지, 페이지네이션 잘 되는지 콘솔로 확인 후에 UI에 반영하기. */}
-        {itemList.map((item, index) => (
+        {itemList.map((item) => (
           <RequestMeeting
-            key={`${item.updatedAt}-${index}`}
+            key={item.boardId}
             {...{
               boardId: item.boardId,
               title: item.title,
               requestParticipants: item.requestParticipants,
-              updatedAt: item.updatedAt,
+              createdAt: item.createdAt,
               participantStatus: item.participantStatus,
               onDeleteClick: () => deleteRequest(item.boardId),
             }}

@@ -4,16 +4,13 @@ import MutiProfile from 'src/components/shared/MultiProfile';
 
 import $ from './style.module.scss';
 
-type Props = Omit<
-  res.RequestListForMeetingRegisteredByMeContent,
-  'message' | 'createdAt'
-> & {
+type Props = res.RequestListForMeetingRegisteredByMeContent & {
   onAllowClick: () => void;
   onRejectClick: () => void;
 };
 
 function RequestedItem(props: Props) {
-  const { requestBoardId, title, updatedAt, requestParticipants } = props;
+  const { requestBoardId, title, createdAt, requestParticipants } = props;
   const { onAllowClick, onRejectClick } = props;
   const navigate = useNavigate();
   const profileList = useMemo(
@@ -46,7 +43,7 @@ function RequestedItem(props: Props) {
 
       <div className={$.info}>
         <span className={$.comment}>{title}</span>
-        <span className={$.date}>{updatedAt}</span>
+        <span className={$.date}>{createdAt}</span>
       </div>
 
       <div className={$['request-btn-wrapper']}>
