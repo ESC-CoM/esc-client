@@ -10,8 +10,9 @@ import {
 } from 'src/hooks/api/board';
 import { useGetRequestListForMeetingRegisteredByMe } from 'src/hooks/api/board';
 
-const { id, kind, title, content, friends, date } = registerMeetingMocks[0];
-const detailInfo = { badge: kind, title, content, date };
+const { id, kind, title, message, registerParticipants, createdAt } =
+  registerMeetingMocks[0];
+const detailInfo = { badge: kind, title, content: message, date: createdAt };
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
@@ -27,10 +28,10 @@ export default function RegisterDetailPage() {
 
   const profileList = useMemo(
     () =>
-      friends
-        .map(({ src, nickName }) => ({
-          src,
-          alt: nickName,
+      registerParticipants
+        .map(({ profileImage, nickname }) => ({
+          src: profileImage,
+          alt: nickname,
         }))
         .slice(0, 3),
     []
