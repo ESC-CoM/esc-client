@@ -1,7 +1,5 @@
-type Gender = 'men' | 'women';
-
 declare namespace req {
-  export type AllowOrRejectRequest = 'ALLOWED' | 'REJECTED';
+  export type AllowOrRejectRequest = Exclude<res.ParticipantStatus, 'PENDING'>;
 
   export type RequestListForMeetingRegisteredByMe = {
     boardId: number;
@@ -26,9 +24,9 @@ declare namespace req {
     size?: number;
     sort?: string[];
     headCount?: number;
-    gender?: Gender;
+    gender?: res.GENDERType;
     university?: string;
-    meetingStatus?: 'PENDING' | 'ALLOWED' | 'REJECTED';
+    meetingStatus?: res.ParticipantStatus;
   };
 }
 

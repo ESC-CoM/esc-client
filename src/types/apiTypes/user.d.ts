@@ -21,7 +21,7 @@ declare namespace res {
         weight: number;
       };
       otherInfo: {
-        gender: 'men' | 'women';
+        gender: res.GENDERType;
         mbti: string;
         amountOfAlchol: number;
       };
