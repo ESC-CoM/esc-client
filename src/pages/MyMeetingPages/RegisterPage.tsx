@@ -1,45 +1,45 @@
-import { useState } from 'react';
-import { registerMeetingMocks } from '@mocks/data';
 import { useNavigate } from 'react-router-dom';
 import PostCard from 'src/components/MyMeeting/PostCard';
 import { InfiniteScroll } from 'src/components/shared/Layout';
 import { useGetMeetingListRegisteredByMeQuery } from 'src/hooks/api/borad';
-import { MyMeetingType } from 'src/types/myMeeting';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const [registerMeeting, setRegisterMeeting] = useState<MyMeetingType[]>([]);
-  const {
-    data: registeredMeetingData,
-    fetchNextPage,
-    isLoading: isRegisteredMeetingLoading,
-    isError: isRegisteredMeetingError,
-  } = useGetMeetingListRegisteredByMeQuery({ page: 0, size: 10 });
+  const { data, fetchNextPage, isLoading, isError } =
+    useGetMeetingListRegisteredByMeQuery({ page: 0, size: 10 });
 
-  if (isRegisteredMeetingLoading) return <div>로딩중</div>;
-  if (registeredMeetingData === undefined || isRegisteredMeetingError)
-    return <div>오류 발생</div>;
+  if (isLoading) return <div>로딩중</div>;
+  if (!data || isError) return <div>오류 발생</div>;
 
-  console.log(registeredMeetingData);
+  const items = data?.pages;
+  const itemList = items?.reduce(
+    (acc: res.BoardListRegisteredByMeContent[], cur) =>
+      (acc = [...acc, ...cur.content]),
+    []
+  );
 
   const getRequestList = (boardId: number) => {
-    // 요청 리스트 fetch
     navigate(`/mymeeting/detail?status=register&boardId=${boardId}`);
   };
 
   return (
     <InfiniteScroll trigger={fetchNextPage}>
       <ul>
-        {registerMeeting.map(
-          ({ id, kind, title, content, friends, date }, index) => {
-            const profileList = friends.map(({ nickName, src }) => ({
-              alt: nickName,
-              src,
+        {itemList.map(
+          ({ id, kind, title, message, registerParticipants, createdAt }) => {
+            const profileList = registerParticipants.map((participant) => ({
+              alt: participant.nickname,
+              src: participant.profileImage,
             }));
-            const textInfo = { badge: kind, title, content, date };
+            const textInfo = {
+              badge: kind,
+              title,
+              content: message,
+              date: createdAt,
+            };
             return (
               <PostCard
-                key={`${date}-${index}`}
+                key={id}
                 profileList={profileList}
                 textInfo={textInfo}
                 onClick={() => getRequestList(id)}
