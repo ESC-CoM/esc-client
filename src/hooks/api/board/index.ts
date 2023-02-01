@@ -1,13 +1,30 @@
-import { patchAllowOrRejectRequest } from 'src/api/board';
-import { deleteRequestByMe } from 'src/api/board';
-import { getRequestListForMeetingRegisteredByMe } from 'src/api/board';
-import { getMeetingListRequestedByMe } from 'src/api/board';
+import {
+  deleteRequestByMe,
+  getMeetingListRegisteredByMe,
+  getMeetingListRequestedByMe,
+  getRequestListForMeetingRegisteredByMe,
+  patchAllowOrRejectRequest,
+} from 'src/api/board';
 import { queryKey } from 'src/constants/queryKey';
 import { queryClient } from 'src/index';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation } from '../core';
 import { useCoreInfiniteQuery } from '../core';
+
+export const useGetMeetingListRegisteredByMeQuery = (
+  params?: req.BoardListRegisteredByMe
+) => {
+  return useCoreInfiniteQuery(
+    queryKey.meetingListRegisteredByMe,
+    ({ pageParam = 0 }) =>
+      getMeetingListRegisteredByMe({ ...params, page: pageParam }),
+    {
+      getNextPageParam: ({ pageable: { pageNumber }, last }) =>
+        last ? undefined : pageNumber + 1,
+    }
+  );
+};
 
 export const usePatchAllowRequest = (boardId: number) => {
   return useCoreMutation(
