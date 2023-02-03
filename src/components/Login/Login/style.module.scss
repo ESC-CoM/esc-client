@@ -1,5 +1,26 @@
 @import '@styles/main';
 
+$login-element-height: 50px;
+$login-element-border-radius: 8px;
+
+@mixin login-input($position) {
+  box-sizing: border-box;
+  width: 100%;
+  height: $login-element-height;
+  padding-left: 15px;
+  border: 1px solid $gray-300;
+  @if $position == up {
+    border-radius: $login-element-border-radius
+      $login-element-border-radius
+      0
+      0;
+    border-bottom: none;
+  } @else if $position == middle {
+    border-bottom: none;
+  }
+  font-size: 15px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -8,6 +29,10 @@
   padding: 20px;
   box-sizing: border-box;
   background-color: $white;
+
+  .logo-container {
+    margin-top: 12vh;
+  }
 
   .title {
     margin-top: 100px;
@@ -20,13 +45,12 @@
     width: 100%;
     margin-top: 50px;
 
-    .email {
-      width: 100%;
+    .email-input {
+      @include login-input(up);
     }
 
-    .password {
-      margin-top: 12px;
-      width: 100%;
+    .password-input {
+      @include login-input(middle);
     }
 
     .error {
@@ -37,9 +61,21 @@
       margin-top: 20px;
     }
 
-    .submit {
-      @include button(100%, none, $primary, $white, 16px);
-      margin-top: 20px;
+    .submit-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: $login-element-height;
+      color: $white;
+      background-color: $primary;
+      border-radius: 0 0 $login-element-border-radius
+        $login-element-border-radius;
+      font-size: 17px;
+
+      .button-logo {
+        margin-right: 5px;
+      }
     }
   }
 

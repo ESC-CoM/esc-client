@@ -1,9 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import Input from 'src/components/shared/Input';
+import { Logo, LogoOnlyIcon } from 'src/components/shared/Icon';
 import { useLogin } from 'src/hooks/api/auth';
 
-import { LoginTitle } from '../atoms';
 import ErrorMessageBox from '../ErrorMessageBox';
 import LoginCheckBoxArea from '../LoginCheckBoxArea';
 import LoginToolBox from '../LoginToolBox';
@@ -40,23 +39,31 @@ export default function Login() {
   return (
     <>
       <div className={$.container}>
-        <LoginTitle className={$.title} />
+        <div className={$['logo-container']}>
+          <Logo width={250} />
+        </div>
         <form className={$.form} onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            type="email"
-            className={$.email}
-            proptype="register"
-            label="이메일"
-            placeholder="sample@email.com"
-            register={register('email')}
+          <input
+            className={$['email-input']}
+            type="text"
+            placeholder="이메일"
+            {...register('email')}
           />
-          <Input
-            type="password"
-            className={$.password}
-            proptype="register"
-            label="비밀번호"
-            register={register('password')}
+          <input
+            className={$['password-input']}
+            type="text"
+            placeholder="비밀번호"
+            {...register('password')}
           />
+          <button
+            className={$['submit-button']}
+            type="submit"
+            aria-label="로그인 버튼"
+            onClick={() => handleSubmit(onSubmit)}
+          >
+            <LogoOnlyIcon className={$['button-logo']} width={17} />
+            로그인
+          </button>
           <ErrorMessageBox errors={errors} className={$.error} />
           <LoginCheckBoxArea
             className={$.checkbox}
@@ -64,14 +71,6 @@ export default function Login() {
             isAutoLogin={isAutoLogin}
             setValue={setValue}
           />
-          <button
-            className={$.submit}
-            type="submit"
-            aria-label="로그인 버튼"
-            onClick={() => handleSubmit(onSubmit)}
-          >
-            로그인
-          </button>
         </form>
         <LoginToolBox className={$.links} />
         {/* <SocialLoginBox className={$.socialLogin} /> */}
