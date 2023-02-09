@@ -17,6 +17,11 @@ $login-element-border-radius: 8px;
     border-bottom: none;
   } @else if $position == middle {
     border-bottom: none;
+  } @else if $position == down {
+    border-radius: 0
+      0
+      $login-element-border-radius
+      $login-element-border-radius;
   }
   font-size: 15px;
 }

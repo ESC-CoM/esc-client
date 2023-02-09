@@ -36,6 +36,8 @@ export default function Login() {
     mutate(data);
   };
 
+  const handleClickSubmit = () => handleSubmit(onSubmit);
+
   return (
     <>
       <div className={$.container}>
@@ -59,7 +61,7 @@ export default function Login() {
             className={$['submit-button']}
             type="submit"
             aria-label="로그인 버튼"
-            onClick={() => handleSubmit(onSubmit)}
+            onClick={handleClickSubmit}
           >
             <LogoOnlyIcon className={$['button-logo']} width={17} />
             로그인
