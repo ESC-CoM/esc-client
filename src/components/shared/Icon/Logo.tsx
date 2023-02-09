@@ -1,9 +1,14 @@
-export default function Logo() {
+type Props = {
+  width?: number;
+  className?: string;
+};
+
+export default function Logo({ width = 120, className }: Props) {
   return (
     <svg
+      {...{ className, width }}
+      height="100%"
       xmlns="http://www.w3.org/2000/svg"
-      width="120"
-      height="20"
       viewBox="0 0 414.309 72.5"
     >
       <defs>

@@ -1,5 +1,7 @@
 @import '@styles/color';
 
 .label {
+  display: flex;
+  align-items: center;
   color: $gray-600;
 }
