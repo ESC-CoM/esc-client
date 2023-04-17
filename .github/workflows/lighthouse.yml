@@ -1,0 +1,24 @@
+name: lighthouse CI
+on:
+  pull_request:
+    branches: [dev]
+
+jobs:
+  Lighthouse-CI:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install Dependencies
+        uses: ./.github/actions/yarn-install
+
+      - run: yarn global add @lhci/cli@0.11.x
+      - run: yarn build
+      - run: |
+      lhci autorun || echo "Fail to Run Lighthouse CI"
