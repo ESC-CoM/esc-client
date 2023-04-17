@@ -1,4 +1,5 @@
-name: dev ci
+name: dev CI
+
 on:
   pull_request:
     branches: [dev]
@@ -9,10 +10,11 @@ defaults:
 
 jobs:
   Continuous-Integration:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-22.04
     steps:
       - name: Git Checkout
         uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
