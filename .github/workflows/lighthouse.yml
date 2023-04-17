@@ -19,7 +19,10 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/actions/yarn-install
 
-      - run: yarn global add @lhci/cli@0.11.x
-      - run: yarn build
-      - run: |
-      lhci autorun || echo "Fail to Run Lighthouse CI"
+      - name: Build
+        run: yarn build
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun || echo "Fail to Run Lighthouse CI!"
