@@ -20,8 +20,8 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Install Dependencies
-        run: ./.github/actions/yarn-install
+      - name: Dependency Install
+        uses: ./.github/actions/yarn-install
 
       - name: Format
         run: yarn format
