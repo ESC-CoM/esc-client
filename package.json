@@ -23,7 +23,8 @@
     "msw": "npx msw init public/ --save",
     "msw:cleanup": "rm public/mockServiceWorker.js",
     "cypress:open": "cypress open",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
