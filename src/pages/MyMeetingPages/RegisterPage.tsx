@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { registerMeetingMocks } from '@mocks/data';
 import { useNavigate } from 'react-router-dom';
 import PostCard from 'src/components/MyMeeting/PostCard';
 import { InfiniteScroll } from 'src/components/shared/Layout';
