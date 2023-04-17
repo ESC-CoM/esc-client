@@ -1,8 +1,8 @@
-name: Install Dependencies
+name: 'Dependency Install'
 
 runs:
   using: 'composite'
 
   steps:
-    - name: Install Dependencies
+    - name: Dependency Install
       run: yarn install
