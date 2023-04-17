@@ -1,4 +1,5 @@
 name: lighthouse CI
+
 on:
   pull_request:
     branches: [dev]
