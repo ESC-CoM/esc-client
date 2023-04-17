@@ -26,11 +26,6 @@ jobs:
       - name: Format
         run: yarn format
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'style: auto code format'
-
       - name: Check Lint
         run: yarn lint
 
