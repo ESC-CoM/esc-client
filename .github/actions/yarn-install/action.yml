@@ -5,4 +5,5 @@ runs:
 
   steps:
     - name: Dependency Install
+      shell: bash
       run: yarn install
