@@ -24,7 +24,7 @@
     "msw:cleanup": "rm public/mockServiceWorker.js",
     "cypress:open": "cypress open",
     "eject": "react-scripts eject",
-    "format": "prettier --write"
+    "format": "prettier --write **/*.{ts,tsx}"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
