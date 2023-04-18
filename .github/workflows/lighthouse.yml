@@ -37,29 +37,28 @@ jobs:
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync("./lhci_reports/manifest.json"));
-            let comments = "";
-
-            results.forEach((result) => {
+            const tries = 3;
+            const triesArr = Array.from({ length: tries }, (_, idx) => idx + 1);
+            let comments = "Lighthouse 성능 측정 결과 🤾‍♀️" + "\n\n";
+            results.forEach((result, i) => {
               const { summary, jsonPath } = result;
-              const { audits } = details;
-
               const details = JSON.parse(fs.readFileSync(jsonPath));
+              const { audits } = details;
               const formatResult = (res) => Math.round(res * 100);
-
               Object.keys(summary).forEach(
                 (key) => (summary[key] = formatResult(summary[key]))
               );
-
               const score = (res) => (res >= 90 ? "🟢" : res >= 50 ? "🟠" : "🔴");
-
               const comment = [
-                `⚡️ Lighthouse report!`,
+                `try ${triesArr[i]}`,
                 `| Category | Score |`,
                 `| --- | --- |`,
                 `| ${score(summary.performance)} Performance | ${summary.performance} |`,
-                { ... }
+                `| ${score(summary.accessibility)} Accessibility | ${summary.accessibility} |`,
+                `| ${score(summary["best-practices"])} Best-Practices | ${summary["best-practices"]} |`,
+                `| ${score(summary.seo)} SEO | ${summary.seo} |`,
+                `| ${score(summary.pwa)} PWA | ${summary.pwa} |`
               ].join("\n");
-
               const detail = [
                 `| Category | Score |`,
                 `| --- | --- |`,
@@ -68,11 +67,30 @@ jobs:
                 )} First Contentful Paint | ${
                   audits["first-contentful-paint"].displayValue
                 } |`,
-                { ... }
+                `| ${score(
+                  audits["largest-contentful-paint"].score * 100
+                )} Largest Contentful Paint | ${
+                  audits["largest-contentful-paint"].displayValue
+                } |`,
+                `| ${score(
+                  audits["first-meaningful-paint"].score * 100
+                )} First Meaningful Paint | ${
+                  audits["first-meaningful-paint"].displayValue
+                } |`,
+                `| ${score(
+                  audits["speed-index"].score * 100
+                )} Speed Index | ${
+                  audits["speed-index"].displayValue
+                } |`,
+                `| ${score(
+                  audits["total-blocking-time"].score * 100
+                )} Total Blocking Time | ${
+                  audits["total-blocking-time"].displayValue
+                } |`,
               ].join("\n");
-              comments += comment + "\n" + detail + "\n";
+              comments += comment + "\n" +"\n"+ detail + "\n" + "\n";
             });
-            core.setOutput('comments', comments)
+            core.setOutput('comments', comments);
 
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
