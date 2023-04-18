@@ -39,7 +39,7 @@ jobs:
             const results = JSON.parse(fs.readFileSync("./lhci_reports/manifest.json"));
             const tries = 3;
             const triesArr = Array.from({ length: tries }, (_, idx) => idx + 1);
-            let comments = "Lighthouse 성능 측정 결과 🤾‍♀️" + "\n\n";
+            let comments = "🎢 Lighthouse 성능 측정 결과" + "\n\n";
             results.forEach((result, i) => {
               const { summary, jsonPath } = result;
               const details = JSON.parse(fs.readFileSync(jsonPath));
@@ -49,16 +49,19 @@ jobs:
                 (key) => (summary[key] = formatResult(summary[key]))
               );
               const score = (res) => (res >= 90 ? "🟢" : res >= 50 ? "🟠" : "🔴");
+
+              const { performance, accessibilit, seo, pwa } = summary.;
               const comment = [
-                `try ${triesArr[i]}`,
+                `**Try ${triesArr[i]}**`,
                 `| Category | Score |`,
                 `| --- | --- |`,
-                `| ${score(summary.performance)} Performance | ${summary.performance} |`,
-                `| ${score(summary.accessibility)} Accessibility | ${summary.accessibility} |`,
+                `| ${score(performance)} Performance | ${performance} |`,
+                `| ${score(accessibility)} Accessibility | ${accessibility} |`,
                 `| ${score(summary["best-practices"])} Best-Practices | ${summary["best-practices"]} |`,
-                `| ${score(summary.seo)} SEO | ${summary.seo} |`,
-                `| ${score(summary.pwa)} PWA | ${summary.pwa} |`
+                `| ${score(seo)} SEO | ${seo} |`,
+                `| ${score(pwa)} PWA | ${pwa} |`
               ].join("\n");
+
               const detail = [
                 `| Category | Score |`,
                 `| --- | --- |`,
@@ -94,6 +97,7 @@ jobs:
 
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
+
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
