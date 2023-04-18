@@ -49,17 +49,15 @@ jobs:
                 (key) => (summary[key] = formatResult(summary[key]))
               );
               const score = (res) => (res >= 90 ? "🟢" : res >= 50 ? "🟠" : "🔴");
-
-              const { performance, accessibilit, seo, pwa } = summary.;
               const comment = [
-                `**Try ${triesArr[i]}**`,
+                `try ${triesArr[i]}`,
                 `| Category | Score |`,
                 `| --- | --- |`,
-                `| ${score(performance)} Performance | ${performance} |`,
-                `| ${score(accessibility)} Accessibility | ${accessibility} |`,
+                `| ${score(summary.performance)} Performance | ${summary.performance} |`,
+                `| ${score(summary.accessibility)} Accessibility | ${summary.accessibility} |`,
                 `| ${score(summary["best-practices"])} Best-Practices | ${summary["best-practices"]} |`,
-                `| ${score(seo)} SEO | ${seo} |`,
-                `| ${score(pwa)} PWA | ${pwa} |`
+                `| ${score(summary.seo)} SEO | ${summary.seo} |`,
+                `| ${score(summary.pwa)} PWA | ${summary.pwa} |`
               ].join("\n");
 
               const detail = [
