@@ -14,7 +14,7 @@ runs:
       id: yarn-cache
       uses: actions/cache@v3
       with:
-        path: ~/.yarn
+        path: ${{ steps.yarn-config.outputs.CACHE_FOLDER }}
         key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-cache-
