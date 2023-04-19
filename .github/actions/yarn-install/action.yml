@@ -22,4 +22,4 @@ runs:
     - name: Install dependencies
       shell: bash
       if: steps.yarn-cache.outputs.cache-hit != 'true'
-      run: yarn install --immutable --inline-builds
+      run: yarn install

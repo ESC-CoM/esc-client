@@ -102,4 +102,4 @@ jobs:
           message: |
             ${{ github.sha }}
             Lighthouse CI ended successfully.
-            ${{ steps.format_lighthouse_score.outputs.comments}}
+            ${{ steps.format_lighthouse_score.outputs.comments }}
