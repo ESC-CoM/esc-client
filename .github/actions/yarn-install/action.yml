@@ -11,8 +11,8 @@ runs:
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
     - name: Restore yarn cache
-      uses: actions/cache@v3
       id: yarn-cache
+      uses: actions/cache@v3
       with:
         path: ${{ steps.yarn-cache-dir.outputs.dir }}
         key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
@@ -22,4 +22,4 @@ runs:
     - name: Install dependencies
       shell: bash
       if: steps.yarn-cache.outputs.cache-hit != 'true'
-      run: yarn install
+      run: yarn install --immutable --inline-builds
