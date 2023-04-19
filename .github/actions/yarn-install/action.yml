@@ -5,11 +5,6 @@ runs:
   using: 'composite'
 
   steps:
-    - name: Get yarn cache directory path as "$GITHUB_OUTPUT"
-      id: yarn-config
-      shell: bash
-      run: echo "CACHE_FOLDER=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-
     - name: Restore yarn cache
       id: yarn-cache
       uses: actions/cache@v3
