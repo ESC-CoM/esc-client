@@ -23,6 +23,7 @@ jobs:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         run: |
           echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env
+
       - name: Dependency Install
         uses: ./.github/actions/yarn-install
 
