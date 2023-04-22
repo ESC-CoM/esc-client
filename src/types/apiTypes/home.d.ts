@@ -25,11 +25,6 @@ declare namespace req {
 }
 
 declare namespace res {
-  export type MeetingFeed = {
-    page: number;
-    last: boolean;
-    boardListDtos: T[];
-  };
   export type MeetingSummary = {
     id: number;
     title: string;
@@ -41,6 +36,12 @@ declare namespace res {
     createdAt: string;
     profileImages: string[];
   };
+  export type MeetingFeed = {
+    page: number;
+    last: boolean;
+    boardListDtos: MeetingSummary[];
+  };
+
   type Participant = {
     schoolInfo: {
       school: string;
@@ -55,6 +56,7 @@ declare namespace res {
     height: number;
     message: string;
   };
+
   export type CreateMeeting = {
     id: number;
     title: string;
@@ -65,6 +67,7 @@ declare namespace res {
     owner: Participant;
     participants: Participant[];
   };
+
   export type MeetingDetail = {
     title: string;
     content: string;

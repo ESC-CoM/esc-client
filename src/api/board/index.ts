@@ -3,9 +3,7 @@ import { http } from '../core';
 export const getMeetingListRegisteredByMe = async (
   params?: req.BoardListRegisteredByMe
 ): Promise<res.BoardListRegisteredByMe> => {
-  const {
-    data: { data },
-  } = await http.get('api/board/me', {
+  const { data } = await http.get('api/board/me', {
     params,
   });
   return data;
@@ -14,14 +12,14 @@ export const getMeetingListRegisteredByMe = async (
 export const patchAllowOrRejectRequest = async (
   requestId: number,
   body: req.AllowOrRejectRequest
-): Promise<res.AllowOrRejectRequest> => {
+): Promise<res.Success<null>> => {
   const response = await http.patch(`/board/request/${requestId}`, body);
   return response.data;
 };
 
 export const deleteRequestByMe = async (
   id: number
-): Promise<res.RequestByMe> => {
+): Promise<res.Success<null>> => {
   const response = await http.delete(`/api/board/request/${id}`);
   return response.data;
 };
