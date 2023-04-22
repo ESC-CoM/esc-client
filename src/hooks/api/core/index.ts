@@ -42,31 +42,44 @@ export function useCoreMutation<T, U>(
 }
 
 type UseInfiniteCustomResult<T, U> = Omit<
-  Partial<UseInfiniteQueryResult<T, AxiosError>>,
+  UseInfiniteQueryResult<T, AxiosError>,
   'hasNextPage' | 'fetchNextPage'
 > & { getNextPage: () => void; itemList: U[] | undefined };
 
-export function useCoreInfiniteQuery<T extends { [key: string]: any }, U>(
+type UseInfiniteCustomOptions<T, K> = Omit<
+  UseInfiniteQueryOptions<T, AxiosError>,
+  'queryKey' | 'queryFn'
+> & { itemContainingProp?: K };
+
+const isItemList = <T, U, K extends keyof T>(
+  items?: T[],
+  key?: K
+): items is Array<T & Record<K, U[]>> => {
+  if (!items || !key) return true;
+  return items.every((item) => Array.isArray(item[key])) || false;
+};
+
+export function useCoreInfiniteQuery<T, U, K extends keyof T>(
   keyName: QueryKey,
   query: QueryFunction<T, QueryKey>,
-  itemContainingProp: string,
-  options?: Omit<UseInfiniteQueryOptions<T, AxiosError>, 'queryKey' | 'queryFn'>
+  options?: UseInfiniteCustomOptions<T, K>
 ): UseInfiniteCustomResult<T, U> {
-  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
+  const { data, isFetching, hasNextPage, fetchNextPage, ...rest } =
     useInfiniteQuery(keyName, query, {
-      onError: (err) => {
-        return console.error(err);
-      },
+      onError: (err) => console.error(err),
       ...options,
     });
-  const itemList = data?.pages.reduce((acc: U[], cur) => {
-    if (!(itemContainingProp in cur)) return [...acc, cur];
-    return [...acc, ...cur[itemContainingProp]];
-  }, []);
+  const items = data?.pages;
+  const prop = options?.itemContainingProp;
+
+  if (!isItemList<T, U, K>(items, prop))
+    throw new Error('item[prop] is not iterable'); // items, prop이 있는데 배열이 아니면 error throw
+  const itemList =
+    items && prop
+      ? items.reduce((acc: U[], cur) => [...acc, ...cur[prop]], [])
+      : undefined;
   const getNextPage = useCallback(() => {
-    if (hasNextPage) {
-      fetchNextPage();
-    }
+    if (hasNextPage && !isFetching) fetchNextPage();
   }, [hasNextPage, fetchNextPage]);
-  return { data, itemList, isLoading, isError, getNextPage };
+  return { ...rest, data, itemList, isFetching, getNextPage };
 }

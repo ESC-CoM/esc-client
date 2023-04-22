@@ -29,7 +29,7 @@ export default function useDetectScroll(ref: React.RefObject<HTMLElement>) {
         }
       }
     };
-    console.log(curRef);
+
     if (curRef)
       curRef.addEventListener('scroll', throttle(updateScrollDir, 300));
     return () => {

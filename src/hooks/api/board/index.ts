@@ -17,15 +17,16 @@ export const useGetMeetingListRegisteredByMeQuery = (
 ) => {
   return useCoreInfiniteQuery<
     res.BoardListRegisteredByMe,
-    res.BoardListRegisteredByMeContent
+    res.BoardListRegisteredByMeContent,
+    'content'
   >(
     queryKey.meetingListRegisteredByMe,
     ({ pageParam = 0 }) =>
       getMeetingListRegisteredByMe({ ...params, page: pageParam }),
-    'content',
     {
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
+      itemContainingProp: 'content',
     }
   );
 };
@@ -90,7 +91,8 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
 }: RequestListForMeetingRegisteredByMe) => {
   return useCoreInfiniteQuery<
     res.RequestListForMeetingRegisteredByMe,
-    res.RequestListForMeetingRegisteredByMeContent
+    res.RequestListForMeetingRegisteredByMeContent,
+    'content'
   >(
     queryKey.requestListForMeetingRegisteredByMe(boardId),
     ({ pageParam = 0 }) =>
@@ -98,11 +100,11 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
         boardId,
         params: { ...params, page: pageParam },
       }),
-    'content',
     {
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
       enabled: boardId > -1,
+      itemContainingProp: 'content',
     }
   );
 };
@@ -112,15 +114,16 @@ export const useGetMeetingListRequestedByMe = (
 ) => {
   return useCoreInfiniteQuery<
     res.RequestMeetingListByMe,
-    res.RequestMeetingListByMeContent
+    res.RequestMeetingListByMeContent,
+    'content'
   >(
     queryKey.meetingListRequestedByMe,
     ({ pageParam = 0 }) =>
       getMeetingListRequestedByMe({ ...params, page: pageParam }),
-    'content',
     {
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
+      itemContainingProp: 'content',
     }
   );
 };
