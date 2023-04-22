@@ -24,7 +24,7 @@ function LoginCheckBoxArea({
         className=""
         textContent="아이디 저장"
         htmlFor="save-id"
-        fontSize={22}
+        fontSize={17}
       />
       <CheckBox
         isChecked={isSaveId}
@@ -39,7 +39,7 @@ function LoginCheckBoxArea({
         className={styles.rightLabel}
         textContent="자동 로그인"
         htmlFor="auto-login"
-        fontSize={22}
+        fontSize={17}
       />
       <CheckBox
         isChecked={isAutoLogin}

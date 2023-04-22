@@ -4,7 +4,6 @@ import ErrorMessage from '../../shared/ErrorMessage';
 import GrayLink from '../../shared/GrayLink';
 import Label from '../../shared/Label';
 import SaparateLine from '../../shared/SaparateLine';
-import LoginTitle from './LoginTitle';
 import ResetFieldButton from './ResetFieldButton';
 import SocialLoginButton from './SocialLoginButton';
 import ViewPasswordButton from './ViewPasswordButton';
@@ -15,7 +14,6 @@ export {
   ErrorMessage,
   GrayLink,
   Label,
-  LoginTitle,
   ResetFieldButton,
   SaparateLine,
   SocialLoginButton,
