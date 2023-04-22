@@ -56,7 +56,7 @@ const isItemList = <T, U, K extends keyof T>(
   key?: K
 ): items is Array<T & Record<K, U[]>> => {
   if (!items || !key) return true;
-  return items.every((item) => Array.isArray(item[key])) || false;
+  return items.every((item) => Array.isArray(item[key]));
 };
 
 export function useCoreInfiniteQuery<T, U, K extends keyof T>(
