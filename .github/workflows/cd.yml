@@ -11,24 +11,23 @@ jobs:
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
-      - name: Use Node.js version 14.x
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Generate Environment Variables
-        run: |
-          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env
-
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+        run: |
+          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env
+      - name: Dependency Install
+        uses: ./.github/actions/yarn-install
 
       - name: Build
         run: |
-          npm install -g yarn
-          yarn install
           yarn msw:cleanup
           yarn build
 
