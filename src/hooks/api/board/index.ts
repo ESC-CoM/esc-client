@@ -1,13 +1,35 @@
-import { patchAllowOrRejectRequest } from 'src/api/board';
-import { deleteRequestByMe } from 'src/api/board';
-import { getRequestListForMeetingRegisteredByMe } from 'src/api/board';
-import { getMeetingListRequestedByMe } from 'src/api/board';
+import {
+  deleteRequestByMe,
+  getMeetingListRegisteredByMe,
+  getMeetingListRequestedByMe,
+  getRequestListForMeetingRegisteredByMe,
+  patchAllowOrRejectRequest,
+} from 'src/api/board';
 import { queryKey } from 'src/constants/queryKey';
 import { queryClient } from 'src/index';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation } from '../core';
 import { useCoreInfiniteQuery } from '../core';
+
+export const useGetMeetingListRegisteredByMeQuery = (
+  params?: req.BoardListRegisteredByMe
+) => {
+  return useCoreInfiniteQuery<
+    res.BoardListRegisteredByMe,
+    res.BoardListRegisteredByMeContent,
+    'content'
+  >(
+    queryKey.meetingListRegisteredByMe,
+    ({ pageParam = 0 }) =>
+      getMeetingListRegisteredByMe({ ...params, page: pageParam }),
+    {
+      getNextPageParam: ({ pageable: { pageNumber }, last }) =>
+        last ? undefined : pageNumber + 1,
+      itemContainingProp: 'content',
+    }
+  );
+};
 
 export const usePatchAllowRequest = (boardId: number) => {
   return useCoreMutation(
@@ -66,8 +88,12 @@ type RequestListForMeetingRegisteredByMe = {
 export const useGetRequestListForMeetingRegisteredByMe = ({
   boardId,
   params,
-}: RequestListForMeetingRegisteredByMe) =>
-  useCoreInfiniteQuery(
+}: RequestListForMeetingRegisteredByMe) => {
+  return useCoreInfiniteQuery<
+    res.RequestListForMeetingRegisteredByMe,
+    res.RequestListForMeetingRegisteredByMeContent,
+    'content'
+  >(
     queryKey.requestListForMeetingRegisteredByMe(boardId),
     ({ pageParam = 0 }) =>
       getRequestListForMeetingRegisteredByMe({
@@ -78,19 +104,26 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
       enabled: boardId > -1,
+      itemContainingProp: 'content',
     }
   );
+};
 
 export const useGetMeetingListRequestedByMe = (
   params?: Omit<req.RequestMeetingByMe, 'page'>
 ) => {
-  return useCoreInfiniteQuery(
+  return useCoreInfiniteQuery<
+    res.RequestMeetingListByMe,
+    res.RequestMeetingListByMeContent,
+    'content'
+  >(
     queryKey.meetingListRequestedByMe,
     ({ pageParam = 0 }) =>
       getMeetingListRequestedByMe({ ...params, page: pageParam }),
     {
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
+      itemContainingProp: 'content',
     }
   );
 };

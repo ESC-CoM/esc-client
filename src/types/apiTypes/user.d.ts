@@ -21,7 +21,7 @@ declare namespace res {
         weight: number;
       };
       otherInfo: {
-        gender: 'men' | 'women';
+        gender: res.GENDERType;
         mbti: string;
         amountOfAlchol: number;
       };
@@ -29,12 +29,5 @@ declare namespace res {
       studentIdAuthenticationKey: string;
       agree: boolean;
     };
-  };
-
-  export type UserInfoDetailError = {
-    message: string;
-    status: number;
-    errors: string[];
-    code: string;
   };
 }

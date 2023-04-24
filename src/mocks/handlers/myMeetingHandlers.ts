@@ -23,9 +23,13 @@ export const getRequestListForMeetingRegistered = rest.get(
 );
 
 export const getMeetingRegisteredList = rest.get(
-  '/api/board/me',
+  `${API_SERVER_URL}api/board/me`,
   (_, res, ctx) => {
-    return res(ctx.status(200), ctx.json(registerMeetingMocks));
+    return res(
+      ctx.status(200),
+      ctx.delay(300),
+      ctx.json({ content: registerMeetingMocks, pageable: pagination })
+    );
   }
 );
 

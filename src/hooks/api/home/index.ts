@@ -10,11 +10,16 @@ import { toastError, toastSuccess } from 'src/utils/toaster';
 import { useCoreInfiniteQuery, useCoreMutation, useCoreQuery } from '../core';
 
 export const useMeetingItemListQuery = (params: req.Home) => {
-  return useCoreInfiniteQuery(
+  return useCoreInfiniteQuery<
+    res.MeetingFeed,
+    res.MeetingSummary,
+    'boardListDtos'
+  >(
     queryKey.meetingItemList,
     ({ pageParam = 0 }) => getMeetingList({ ...params, page: pageParam }),
     {
       getNextPageParam: ({ page, last }) => (last ? undefined : page + 1),
+      itemContainingProp: 'boardListDtos',
     }
   );
 };

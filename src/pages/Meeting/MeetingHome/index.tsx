@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import cx from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import MeetingHeader from 'src/components/Meeting/MeetingHeader';
@@ -18,41 +18,18 @@ const initialInfiniteReq = {
 };
 
 function MeetingHomePage() {
-  const [isDown, setIsDown] = useState(false);
   const layoutRef = useRef<HTMLDivElement>(null);
-  const isScrollMove = useDetectScroll(layoutRef);
+  const isAnimationable = useDetectScroll(layoutRef);
   const navigate = useNavigate();
   const meetingKind = useSearch('kind') || meetingOptions[0].code;
   const router = useQueryRouter('kind');
+  const { itemList, getNextPage, isLoading, isError } = useMeetingItemListQuery(
+    { ...initialInfiniteReq }
+  );
 
-  useEffect(() => {
-    if (isScrollMove) {
-      setIsDown(true);
-    } else {
-      setIsDown(false);
-    }
-    return () => {
-      isScrollMove;
-    };
-  }, [isScrollMove]);
-
-  const { data, isLoading, hasNextPage, fetchNextPage } =
-    useMeetingItemListQuery({
-      ...initialInfiniteReq,
-    });
-
-  const items = data?.pages;
-  const itemList =
-    // meetingBoardMocks; // TODO: 서버될 때까지 Mock 데이터
-    items?.reduce(
-      (acc: res.MeetingSummary[], cur) =>
-        (acc = [...acc, ...cur.boardListDtos]),
-      []
-    );
-
-  const getNextPage = () => {
-    if (hasNextPage) fetchNextPage();
-  };
+  if (isLoading) return <div>loading...</div>;
+  if (isError) return <div>error</div>;
+  if (!itemList) return <div>data error</div>;
 
   return (
     <PageLayout
@@ -92,7 +69,7 @@ function MeetingHomePage() {
         type="button"
         aria-label="과팅 등록하기"
         className={cx($['add-meeting'], {
-          [$['add-meeting-down']]: isDown,
+          [$['add-meeting-down']]: isAnimationable,
         })}
         onClick={() => navigate('./register')}
       >

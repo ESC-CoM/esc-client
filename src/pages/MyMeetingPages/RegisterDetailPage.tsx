@@ -10,16 +10,16 @@ import {
 } from 'src/hooks/api/board';
 import { useGetRequestListForMeetingRegisteredByMe } from 'src/hooks/api/board';
 
-const { id, kind, title, content, friends, date } = registerMeetingMocks[0];
-const detailInfo = { badge: kind, title, content, date };
+const { id, kind, title, message, registerParticipants, createdAt } =
+  registerMeetingMocks[0];
+const detailInfo = { badge: kind, title, content: message, date: createdAt };
 
 export default function RegisterDetailPage() {
   const navigate = useNavigate();
   const boardId = Number(useSearch('boardId') ?? -1);
   const { mutate: allowRequest } = usePatchAllowRequest(boardId);
   const { mutate: rejectRequest } = usePatchRejectRequest(boardId);
-
-  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
+  const { itemList, isLoading, isError, getNextPage } =
     useGetRequestListForMeetingRegisteredByMe({
       boardId,
       params: { size: 10 },
@@ -27,10 +27,10 @@ export default function RegisterDetailPage() {
 
   const profileList = useMemo(
     () =>
-      friends
-        .map(({ src, nickName }) => ({
-          src,
-          alt: nickName,
+      registerParticipants
+        .map(({ profileImage, nickname }) => ({
+          src: profileImage,
+          alt: nickname,
         }))
         .slice(0, 3),
     []
@@ -40,18 +40,7 @@ export default function RegisterDetailPage() {
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>error</div>;
-  if (data === undefined) return <div>data error</div>;
-
-  const items = data?.pages;
-  const itemList = items?.reduce(
-    (acc: res.RequestListForMeetingRegisteredByMeContent[], cur) =>
-      (acc = [...acc, ...cur.content]),
-    []
-  );
-
-  const getNextPage = () => {
-    if (hasNextPage) fetchNextPage();
-  };
+  if (!itemList) return <div>data error</div>;
 
   return (
     <>
@@ -71,7 +60,7 @@ export default function RegisterDetailPage() {
                 requestBoardId: item.requestBoardId,
                 title: item.title,
                 requestParticipants: item.requestParticipants,
-                updatedAt: item.updatedAt,
+                createdAt: item.createdAt,
                 onAllowClick: () => allowRequest(item.requestBoardId),
                 onRejectClick: () => rejectRequest(item.requestBoardId),
               }}

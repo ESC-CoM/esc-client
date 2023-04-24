@@ -44,31 +44,7 @@ declare namespace res {
     | 'ISTJ';
   export type GENDERType = 'men' | 'women';
 
-  export type ProfileImageSuccess = {
-    status: string;
-    message: string;
-    data: string;
-  };
-  export type ProfileImageError = {
-    message: string;
-    status: number;
-    errors: string[];
-    code: string;
-  };
-  export type RegisterSuccess = {
-    status: string;
-    message: string;
-    data: number;
-  };
-  export type StdCardSuccess = {
-    status: string;
-    message: string;
-    data: { uuid: string; image: string };
-  };
-  export type StdCardError = {
-    message: string;
-    status: number;
-    errors: string[];
-    code: string;
-  };
+  export type ProfileImageSuccess = res.Success<string>;
+  export type RegisterSuccess = res.Success<number>;
+  export type StdCardSuccess = res.Success<{ uuid: string; image: string }>;
 }

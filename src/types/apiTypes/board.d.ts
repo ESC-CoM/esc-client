@@ -1,7 +1,5 @@
-type Gender = 'men' | 'women';
-
 declare namespace req {
-  export type AllowOrRejectRequest = 'ALLOWED' | 'REJECTED';
+  export type AllowOrRejectRequest = Exclude<res.ParticipantStatus, 'PENDING'>;
 
   export type RequestListForMeetingRegisteredByMe = {
     boardId: number;
@@ -26,45 +24,21 @@ declare namespace req {
     size?: number;
     sort?: string[];
     headCount?: number;
-    gender?: Gender;
+    gender?: res.GENDERType;
     university?: string;
-    meetingStatus?: 'PENDING' | 'ALLOWED' | 'REJECTED';
+    meetingStatus?: res.ParticipantStatus;
   };
 }
 
 declare namespace res {
-  export type AllowOrRejectRequest = {
-    status: number;
-    message: string;
-    data: null;
-  };
-  export type RequestByMe = {
-    status: string;
-    message: string;
-    data: null;
-  };
   export type ParticipantStatus = 'PENDING' | 'REJECTED' | 'ALLOWED';
-  export type RequestParticipants = {
-    id: number;
+  export type MeetingParticipant = {
+    id?: number;
     nickname: string;
     profileImage: string;
   };
-  export type SenderId = {
-    id: number;
-    nickname: string;
-    profileImage: string;
-  };
-  export type RequestMeetingListByMeContent = {
-    title: string;
-    message: string;
-    requestParticipants: RequestParticipants[];
-    boardId: number;
-    createdAt: string;
-    updatedAt: string;
-    senderId: SenderId;
-    participantStatus: ParticipantStatus;
-  };
-  export type RequestMeetingListPagination = {
+
+  export type MeetingListPagination = {
     offset: number;
     sort: {
       empty: boolean;
@@ -76,14 +50,6 @@ declare namespace res {
     paged: boolean;
     unpaged: boolean;
   };
-  export type RequestListForMeetingRegisteredByMeContent = {
-    title: string;
-    message: string;
-    requestBoardId: number;
-    requestParticipants: RequestParticipants[];
-    createdAt: string;
-    updatedAt: string;
-  };
   export type MeetingListTemplate<T> = {
     size: number;
     content: T[];
@@ -93,49 +59,37 @@ declare namespace res {
       sorted: boolean;
       unsorted: boolean;
     };
-    pageable: RequestMeetingListPagination;
+    pageable: MeetingListPagination;
     first: boolean;
     last: boolean;
     numberOfElements: number;
     empty: boolean;
   };
 
-  export type BoardListRegisteredByMe = {
-    number: number;
-    sort: {
-      empty: boolean;
-      sorted: boolean;
-      unsorted: boolean;
-    };
-    size: number;
-    content: {
-      id: number;
-      title: string;
-      content: string;
-      headCount: number;
-      gender: Gender;
-      meetingStatus: 'PENDING' | 'ALLOWED' | 'REJECTED';
-      participants: string[];
-      createdAt: string;
-      university: string;
-    }[];
-    pageable: {
-      offset: number;
-      sort: {
-        empty: boolean;
-        sorted: boolean;
-        unsorted: boolean;
-      };
-      pageNumber: number;
-      pageSize: number;
-      paged: boolean;
-      unpaged: boolean;
-    };
-    first: boolean;
-    last: boolean;
-    numberOfElements: number;
-    empty: boolean;
+  export type RequestMeetingListByMeContent = {
+    title: string;
+    requestParticipants: MeetingParticipant[];
+    boardId: number;
+    createdAt: string;
+    participantStatus: ParticipantStatus;
   };
+  export type RequestListForMeetingRegisteredByMeContent = {
+    title: string;
+    requestBoardId: number;
+    requestParticipants: MeetingParticipant[];
+    createdAt: string;
+  };
+  export type BoardListRegisteredByMeContent = {
+    id: number;
+    kind: string;
+    title: string;
+    message: string;
+    registerParticipants: MeetingParticipant[];
+    createdAt: string;
+  };
+
+  export type BoardListRegisteredByMe =
+    MeetingListTemplate<BoardListRegisteredByMeContent>;
 
   export type RequestListForMeetingRegisteredByMe =
     MeetingListTemplate<RequestListForMeetingRegisteredByMeContent>;
