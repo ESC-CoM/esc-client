@@ -1,11 +1,16 @@
 name: dev deploy to AWS Cloudfront
 
 on:
-  push:
-    branches: [dev]
+  workflow_run:
+    workflows: ['dev CI']
+    types:
+      - completed
+    branches:
+      - 'dev'
 
 jobs:
   continuous-deployment:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     environment: dev-deployment
 
