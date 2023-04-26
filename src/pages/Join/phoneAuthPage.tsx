@@ -56,7 +56,6 @@ export default function PhoneAuthPage() {
   };
 
   useEffect(() => {
-    console.log(authCode && +authCode === authNum);
     if (authCode && +authCode === authNum) {
       // TODO: 임시로 지정, 추후에 백엔드에서 수정하면 제거할 것
       navigate(NEXT_PATH);
