@@ -1,0 +1,16 @@
+@import '@styles/color';
+
+.error-fallback {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+
+  .error-message {
+    margin-bottom: 20px;
+  }
+  button > .reset-icon {
+    color: $primary;
+    font-size: 2rem;
+  }
+}
