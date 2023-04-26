@@ -64,7 +64,7 @@ export function useCoreInfiniteQuery<T, U, K extends keyof T>(
   query: QueryFunction<T, QueryKey>,
   options?: UseInfiniteCustomOptions<T, K>
 ): UseInfiniteCustomResult<T, U> {
-  const { data, isFetching, hasNextPage, fetchNextPage, ...rest } =
+  const { data, isFetchingNextPage, hasNextPage, fetchNextPage, ...rest } =
     useInfiniteQuery(keyName, query, {
       onError: (err) => console.error(err),
       ...options,
@@ -79,7 +79,14 @@ export function useCoreInfiniteQuery<T, U, K extends keyof T>(
       ? items.reduce((acc: U[], cur) => [...acc, ...cur[prop]], [])
       : undefined;
   const getNextPage = useCallback(() => {
-    if (hasNextPage && !isFetching) fetchNextPage();
-  }, [hasNextPage, fetchNextPage]);
-  return { ...rest, data, itemList, isFetching, getNextPage };
+    if (hasNextPage && !isFetchingNextPage) fetchNextPage();
+  }, [hasNextPage, isFetchingNextPage]);
+
+  return {
+    ...rest,
+    data,
+    itemList,
+    isFetchingNextPage,
+    getNextPage,
+  };
 }
