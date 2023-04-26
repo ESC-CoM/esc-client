@@ -24,7 +24,8 @@
     "msw:cleanup": "rm -rf public/mockServiceWorker.js",
     "cypress:open": "cypress open",
     "eject": "react-scripts eject",
-    "format": "prettier --write **/*.{ts,tsx}"
+    "format": "prettier --write **/*.{ts,tsx}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
@@ -80,7 +81,9 @@
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.1",
     "https-browserify": "^1.0.0",
+    "husky": "^8.0.3",
     "jest": "^29.3.1",
+    "lint-staged": "^13.2.1",
     "mini-css-extract-plugin": "^2.6.0",
     "msw": "^1.0.0",
     "prettier": "^2.5.1",
@@ -117,5 +120,11 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
