@@ -83,16 +83,12 @@ export default function FriendsList(listProps: Props) {
 
             {type === 'request' && (
               <div className={$['btn-box']}>
-                <Button
-                  contentText="수락"
-                  className={$.btn}
-                  onClick={() => acceptRequest(id)}
-                />
-                <Button
-                  contentText="거절"
-                  className={$.btn}
-                  onClick={() => rejectRequest(id)}
-                />
+                <Button className={$.btn} onClick={() => acceptRequest(id)}>
+                  수락
+                </Button>
+                <Button className={$.btn} onClick={() => rejectRequest(id)}>
+                  거절
+                </Button>
               </div>
             )}
 
@@ -102,12 +98,13 @@ export default function FriendsList(listProps: Props) {
                 !friend && (
                   <Button
                     key={btnType + text}
-                    contentText={text}
                     className={cx($.btn, $['last-btn'])}
                     onClick={() => {
                       if (onClick) onClick(id);
                     }}
-                  />
+                  >
+                    {text}
+                  </Button>
                 )
               );
             })}
