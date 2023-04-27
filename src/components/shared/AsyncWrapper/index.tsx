@@ -5,7 +5,7 @@ import ErrorBoundary from '../ErrorBoundary';
 
 interface Props {
   children: ReactElement;
-  errorFallback: ComponentProps<typeof ErrorBoundary>['fallback'];
+  errorFallback: ComponentProps<typeof ErrorBoundary>['fallbackUI'];
   suspenseFallback: ReactElement;
 }
 
@@ -14,7 +14,7 @@ function AsyncWrapper(props: Props) {
   const { reset } = useQueryErrorResetBoundary();
 
   return (
-    <ErrorBoundary fallback={errorFallback} onReset={reset}>
+    <ErrorBoundary fallbackUI={errorFallback} onReset={reset}>
       <Suspense fallback={suspenseFallback}>{children}</Suspense>
     </ErrorBoundary>
   );
