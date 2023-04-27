@@ -4,13 +4,15 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 15px;
   margin: auto;
 
   .error-message {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
-  button > .reset-icon {
-    color: $primary;
-    font-size: 2rem;
+  .go-to-main-btn {
+    color: $white;
+    background-color: $primary-blue;
+    font-weight: 700;
   }
 }
