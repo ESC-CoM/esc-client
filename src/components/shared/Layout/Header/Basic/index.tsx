@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import headerChildren from 'src/constants/headerChildren';
 
@@ -10,7 +11,8 @@ interface Props {
 }
 
 export default function Header({ customHeader }: Props) {
-  const hasHeaderChildren = (url: string) => location.pathname.match(url);
+  const router = useRouter();
+  const hasHeaderChildren = (url: string) => router.pathname.match(url);
 
   return (
     <header className={$.fixed}>

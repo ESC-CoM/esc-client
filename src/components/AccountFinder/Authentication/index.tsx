@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
-import { useNavigate } from 'react-router-dom';
 
 import styles from './style.module.scss';
 
@@ -36,7 +36,7 @@ const PAGE_DATA = {
 
 export default function Authentication({ className, type }: Props) {
   const [pageData, setPageData] = useState<PageData>(PAGE_DATA.email);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     if (type === 'email') {
@@ -84,7 +84,7 @@ export default function Authentication({ className, type }: Props) {
         className={styles.submit}
         type="submit"
         aria-label="인증하기"
-        onClick={() => navigate('./confirm')}
+        onClick={() => router.push('./confirm')}
       >
         인증하기
       </button>

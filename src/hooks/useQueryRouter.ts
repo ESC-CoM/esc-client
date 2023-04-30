@@ -1,16 +1,16 @@
+import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import getUrlFullName from 'src/utils/getUrlFullName';
 
 function useQueryRouter(target: string) {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = router.pathname;
 
   return useCallback(
     (value: string) => {
-      navigate(getUrlFullName(target, value, location));
+      router.push(getUrlFullName(target, value, pathname));
     },
-    [target, location, navigate]
+    [target, pathname, router]
   );
 }
 

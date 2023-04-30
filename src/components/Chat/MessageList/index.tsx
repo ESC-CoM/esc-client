@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
-import PersonalProfilePage from 'src/pages/PersonalProfilePage';
+import PersonalProfile from 'src/components/PersonalProfile';
 import { Chat } from 'src/types/chat';
 
 import MessageCard from '../MessageCard';
@@ -124,7 +124,7 @@ function MessageList({ profileRef, chatList }: Props) {
           className={cx($['profile-active'], isOverHalf && $['profile-hidden'])}
           ref={profileRef}
         >
-          <PersonalProfilePage closeModal={closeModal} />
+          <PersonalProfile closeModal={closeModal} />
         </div>
       )}
 

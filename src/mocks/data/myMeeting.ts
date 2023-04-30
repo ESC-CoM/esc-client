@@ -129,7 +129,103 @@ const registerMeetingMocks: res.BoardListRegisteredByMeContent[] = [
       {
         nickname: '',
         profileImage:
-          'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+      },
+    ],
+    createdAt: '22.09.02',
+  },
+  {
+    id: 7,
+    kind: '미팅',
+    title: '전정대 여자 단체 과팅 올려요~',
+    message: '아무나 과팅 고고',
+    registerParticipants: [
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+      },
+    ],
+    createdAt: '22.09.02',
+  },
+  {
+    id: 8,
+    kind: '미팅',
+    title: '전정대 여자 단체 과팅 올려요~',
+    message: '아무나 과팅 고고',
+    registerParticipants: [
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+      },
+    ],
+    createdAt: '22.09.02',
+  },
+  {
+    id: 9,
+    kind: '미팅',
+    title: '전정대 여자 단체 과팅 올려요~',
+    message: '아무나 과팅 고고',
+    registerParticipants: [
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
+      },
+    ],
+    createdAt: '22.09.02',
+  },
+  {
+    id: 10,
+    kind: '미팅',
+    title: '전정대 여자 단체 과팅 올려요~',
+    message: '아무나 과팅 고고',
+    registerParticipants: [
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515813-d44a8ec7-ebb6-4575-99c9-e94d88f85074.jpeg',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://cphoto.asiae.co.kr/listimglink/6/2022022115112252412_1645423882.png',
+      },
+      {
+        nickname: '',
+        profileImage:
+          'https://user-images.githubusercontent.com/63364990/202515848-004cc95e-647d-429b-969e-9dc30cbfe5ee.jpeg',
       },
     ],
     createdAt: '22.09.02',
@@ -271,7 +367,7 @@ const requestMeetingMocks: res.RequestMeetingListByMeContent[] = [
       {
         nickname: '라이언',
         profileImage:
-          'https://data.ygosu.com/editor/attach/20180420/20180420132150_dovqlksp.jpg',
+          'https://user-images.githubusercontent.com/63364990/202516493-f395c20e-1794-4b10-a963-fc37fc3f4b38.jpeg',
       },
       {
         nickname: '라이언',

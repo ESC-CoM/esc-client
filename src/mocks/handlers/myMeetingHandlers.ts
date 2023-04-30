@@ -6,7 +6,7 @@ import {
   requestListForMeetingRegisteredMocks,
   requestMeetingMocks,
 } from '../data';
-import { pagination } from '../data/pagination';
+import { paginating, pagination } from '../data/pagination';
 
 export const getRequestListForMeetingRegistered = rest.get(
   `${API_SERVER_URL}api/board/:id/request`,
@@ -24,22 +24,40 @@ export const getRequestListForMeetingRegistered = rest.get(
 
 export const getMeetingRegisteredList = rest.get(
   `${API_SERVER_URL}api/board/me`,
-  (_, res, ctx) => {
+  (req, res, ctx) => {
+    const searchParams = req.url.searchParams;
+    const { itemList, ...reset } =
+      paginating<res.BoardListRegisteredByMeContent>(
+        searchParams,
+        registerMeetingMocks
+      );
     return res(
-      ctx.status(200),
-      ctx.delay(300),
-      ctx.json({ content: registerMeetingMocks, pageable: pagination })
+      ctx.status(500),
+      ctx.delay(1000)
+      // ctx.json({
+      //   content: itemList,
+      //   ...reset,
+      // })
     );
   }
 );
 
 export const getRequestMeetingList = rest.get(
   `${API_SERVER_URL}api/board/request/me`,
-  (_, res, ctx) => {
+  (req, res, ctx) => {
+    const searchParams = req.url.searchParams;
+    const { itemList, ...reset } =
+      paginating<res.RequestMeetingListByMeContent>(
+        searchParams,
+        requestMeetingMocks
+      );
     return res(
       ctx.status(200),
-      ctx.delay(300),
-      ctx.json({ content: requestMeetingMocks, pageable: pagination })
+      ctx.delay(1000),
+      ctx.json({
+        content: itemList,
+        ...reset,
+      })
     );
   }
 );

@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack';
 import cx from 'classnames';
-import { useNavigate } from 'react-router-dom';
 
 import styles from './style.module.scss';
 
@@ -9,13 +9,13 @@ interface Props {
 }
 
 function BackButton({ className }: Props) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <button
       className={cx(styles.button, className)}
       type="button"
-      onClick={() => navigate(-1)}
+      onClick={() => router.back()}
     >
       <IoIosArrowBack className={cx(styles.icon)} />
     </button>

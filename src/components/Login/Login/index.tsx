@@ -1,5 +1,5 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Logo, LogoOnlyIcon } from 'src/components/shared/Icon';
 import { useLogin } from 'src/hooks/api/auth';
 

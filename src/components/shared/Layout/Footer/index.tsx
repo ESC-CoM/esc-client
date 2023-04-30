@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { IoChatbubbleEllipses } from '@react-icons/all-files/io5/IoChatbubbleEllipses';
 import { IoChatbubbleEllipsesOutline } from '@react-icons/all-files/io5/IoChatbubbleEllipsesOutline';
 import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline';
@@ -7,13 +8,11 @@ import { IoHomeOutline } from '@react-icons/all-files/io5/IoHomeOutline';
 import { IoPerson } from '@react-icons/all-files/io5/IoPerson';
 import { IoPersonOutline } from '@react-icons/all-files/io5/IoPersonOutline';
 import cx from 'classnames';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 import style from './style.module.scss';
 
 export default function Footer() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
 
   const menus = [
     {
@@ -43,7 +42,7 @@ export default function Footer() {
     },
   ];
 
-  const handleClick = (url: string) => navigate(url);
+  const handleClick = (url: string) => router.push(url);
 
   return (
     <footer className={style.footer}>
@@ -51,13 +50,13 @@ export default function Footer() {
         {menus.map(({ icon, active, text, url, goto }) => (
           <div
             className={cx(style.menu, {
-              [style.active]: location.pathname.match(url),
+              [style.active]: router.pathname.match(url),
             })}
             key={text}
             onClick={() => handleClick(goto ? goto : url)}
           >
             <div className={style.icon}>
-              {location.pathname.match(url) ? active : icon}
+              {router.pathname.match(url) ? active : icon}
             </div>
             <span className={style.text}>{text}</span>
           </div>

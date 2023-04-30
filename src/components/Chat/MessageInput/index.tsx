@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
 import { IoImages } from '@react-icons/all-files/io5/IoImages';
 import { IoSend } from '@react-icons/all-files/io5/IoSend';
-import { socket } from 'src/pages/Chat/ChatRoom';
+// import useSocket from 'src/hooks/useSocket';
 import autosizeTextArea from 'src/utils/autosizeTextArea';
 
 import $ from './style.module.scss';
@@ -13,6 +13,8 @@ interface Props {
 export function MessageInput({ setAlbums }: Props) {
   const [newContent, setNewContent] = useState('');
   const contentRef = useRef<HTMLTextAreaElement>(null);
+
+  // const socket = useSocket('');
 
   const handleContentChange = useCallback(
     ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) => {
@@ -48,15 +50,15 @@ export function MessageInput({ setAlbums }: Props) {
         '0'
       );
 
-      socket().emit('board-chat', {
-        sender: {
-          id: 'loginid',
-          name: '나',
-          imagePath: '',
-        },
-        content: newContent,
-        date: `${amPmKr} ${hoursStr}:${minutes}`,
-      });
+      // socket?.emit('board-chat', {
+      //   sender: {
+      //     id: 'loginid',
+      //     name: '나',
+      //     imagePath: '',
+      //   },
+      //   content: newContent,
+      //   date: `${amPmKr} ${hoursStr}:${minutes}`,
+      // });
       setNewContent('');
     }
   };

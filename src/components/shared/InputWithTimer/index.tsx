@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from 'react';
-import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import cx from 'classnames';
 
 import Input from '../Input';
 import AuthTimer from './AuthTimer';

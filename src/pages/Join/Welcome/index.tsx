@@ -1,9 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import Button from 'src/components/shared/Button';
 import WelcomeIcon from 'src/components/shared/Icon/WelcomeIcon';
 import { PageLayout } from 'src/components/shared/Layout';
 import ParagraphList from 'src/components/shared/ParagraphList';
-import useStore from 'src/store/useStore';
 
 import $ from './style.module.scss';
 
@@ -14,11 +13,9 @@ const contents = [
 ];
 
 export default function WelcomePage() {
-  const { userInfo } = useStore();
-  console.log(userInfo);
-  const navigate = useNavigate();
+  const router = useRouter();
   const handleClick = () => {
-    navigate(NEXT_PATH);
+    router.push(NEXT_PATH);
   };
 
   return (
@@ -32,11 +29,9 @@ export default function WelcomePage() {
             contents={contents}
             fontSize={14}
           />
-          <Button
-            contentText="블루스프링 시작하기"
-            width="80%"
-            onClick={handleClick}
-          />
+          <Button width="80%" onClick={handleClick}>
+            블루스프링 시작하기
+          </Button>
         </div>
       </section>
     </PageLayout>

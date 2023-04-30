@@ -1,0 +1,13 @@
+@import '@styles/color';
+@import '@styles/mixin';
+
+@include rotate(spin);
+
+.spinner {
+  margin: auto;
+  .loading-icon {
+    color: $primary;
+    font-size: 2rem;
+    animation: spin 2s infinite;
+  }
+}

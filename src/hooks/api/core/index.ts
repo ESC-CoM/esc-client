@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from "react";
 import type {
   MutationFunction,
   QueryFunction,
@@ -9,16 +9,16 @@ import type {
   UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
-} from '@tanstack/react-query';
-import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
-import type { AxiosError } from 'axios';
+} from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
+import type { AxiosError } from "axios";
 
 export function useCoreQuery<T, U = null>(
   keyName: QueryKey,
   query: QueryFunction<T, QueryKey>,
   options?: Omit<
     UseQueryOptions<T, AxiosError, U extends null ? T : U>,
-    'queryKey' | 'queryFn'
+    "queryKey" | "queryFn"
   >
 ): UseQueryResult<U extends null ? T : U, AxiosError> {
   return useQuery(keyName, query, {
@@ -31,7 +31,7 @@ export function useCoreQuery<T, U = null>(
 
 export function useCoreMutation<T, U>(
   mutation: MutationFunction<T, U>,
-  options?: Omit<UseMutationOptions<T, AxiosError, U>, 'mutationKey'>
+  options?: Omit<UseMutationOptions<T, AxiosError, U>, "mutationKey">
 ): UseMutationResult<T, AxiosError, U> {
   return useMutation(mutation, {
     onError: (err) => {
@@ -43,12 +43,12 @@ export function useCoreMutation<T, U>(
 
 type UseInfiniteCustomResult<T, U> = Omit<
   UseInfiniteQueryResult<T, AxiosError>,
-  'hasNextPage' | 'fetchNextPage'
+  "hasNextPage" | "fetchNextPage"
 > & { getNextPage: () => void; itemList: U[] | undefined };
 
 type UseInfiniteCustomOptions<T, K> = Omit<
   UseInfiniteQueryOptions<T, AxiosError>,
-  'queryKey' | 'queryFn'
+  "queryKey" | "queryFn"
 > & { itemContainingProp?: K };
 
 const isItemList = <T, U, K extends keyof T>(
@@ -64,7 +64,7 @@ export function useCoreInfiniteQuery<T, U, K extends keyof T>(
   query: QueryFunction<T, QueryKey>,
   options?: UseInfiniteCustomOptions<T, K>
 ): UseInfiniteCustomResult<T, U> {
-  const { data, isFetching, hasNextPage, fetchNextPage, ...rest } =
+  const { data, isFetchingNextPage, hasNextPage, fetchNextPage, ...rest } =
     useInfiniteQuery(keyName, query, {
       onError: (err) => console.error(err),
       ...options,
@@ -72,14 +72,20 @@ export function useCoreInfiniteQuery<T, U, K extends keyof T>(
   const items = data?.pages;
   const prop = options?.itemContainingProp;
 
-  if (!isItemList<T, U, K>(items, prop))
-    throw new Error('item[prop] is not iterable'); // items, prop이 있는데 배열이 아니면 error throw
+  if (!isItemList<T, U, K>(items, prop)) throw new Error("item[prop] is not iterable"); // items, prop이 있는데 배열이 아니면 error throw
   const itemList =
     items && prop
       ? items.reduce((acc: U[], cur) => [...acc, ...cur[prop]], [])
       : undefined;
   const getNextPage = useCallback(() => {
-    if (hasNextPage && !isFetching) fetchNextPage();
-  }, [hasNextPage, fetchNextPage]);
-  return { ...rest, data, itemList, isFetching, getNextPage };
+    if (hasNextPage && !isFetchingNextPage) fetchNextPage();
+  }, [hasNextPage, isFetchingNextPage]);
+
+  return {
+    ...rest,
+    data,
+    itemList,
+    isFetchingNextPage,
+    getNextPage,
+  };
 }

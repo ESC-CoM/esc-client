@@ -1,11 +1,12 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { terms } from '@mocks/data';
 import { FiCheck } from '@react-icons/all-files/fi/FiCheck';
 import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight';
 import cx from 'classnames';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import ErrorMessage from 'src/components/shared/ErrorMessage';
 import useStore from 'src/store/useStore';
 import { TermSchema } from 'src/types/join';
@@ -21,7 +22,7 @@ export type Props = {
 const NEXT_PATH = '/join/profile-image';
 
 export default function Term() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const {
     watch,
     handleSubmit,
@@ -72,7 +73,7 @@ export default function Term() {
   const onSubmit = () => {
     if (allChecked) {
       setJoinInfo({ isAgree: true });
-      navigate(NEXT_PATH);
+      router.push(NEXT_PATH);
     }
   };
 
@@ -110,9 +111,9 @@ export default function Term() {
                 <FiCheck />
               </span>
               <strong className={$.title}>{title}</strong>
-              <a href={url} className={$.url}>
+              <Link href={url} className={$.url}>
                 <FiChevronRight />
-              </a>
+              </Link>
             </li>
           );
         })}

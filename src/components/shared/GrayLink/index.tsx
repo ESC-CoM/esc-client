@@ -1,5 +1,5 @@
-import cx from 'classnames';
 import { Link } from 'react-router-dom';
+import cx from 'classnames';
 
 import styles from './style.module.scss';
 

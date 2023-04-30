@@ -27,6 +27,7 @@ export const useGetMeetingListRegisteredByMeQuery = (
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
       itemContainingProp: 'content',
+      suspense: true,
     }
   );
 };
@@ -105,6 +106,7 @@ export const useGetRequestListForMeetingRegisteredByMe = ({
         last ? undefined : pageNumber + 1,
       enabled: boardId > -1,
       itemContainingProp: 'content',
+      suspense: true,
     }
   );
 };
@@ -124,6 +126,7 @@ export const useGetMeetingListRequestedByMe = (
       getNextPageParam: ({ pageable: { pageNumber }, last }) =>
         last ? undefined : pageNumber + 1,
       itemContainingProp: 'content',
+      suspense: true,
     }
   );
 };

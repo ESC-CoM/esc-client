@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import cx from 'classnames';
-import { NavLink } from 'react-router-dom';
 import { useSearch } from 'src/hooks';
 
 import $ from './style.module.scss';
@@ -25,9 +25,9 @@ export default function ChildrenCategory({ target, category }: Props) {
             [$['item-active']]: keyword?.match(path),
           })}
         >
-          <NavLink to={to}>
+          <Link href={to}>
             <span className={$['path-name']}>{name}</span>
-          </NavLink>
+          </Link>
         </li>
       ))}
     </ul>

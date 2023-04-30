@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import cx from 'classnames';
 import { FieldError, UseFormSetValue } from 'react-hook-form';
+import cx from 'classnames';
 import Label from 'src/components/shared/Label';
 import { gender } from 'src/constants/config';
 import { More1Type } from 'src/types/join';

@@ -1,4 +1,3 @@
-
 import Authentication from '../Authentication';
 import styles from './style.module.scss';
 
