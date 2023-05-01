@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import cx from 'classnames';
-import { useSearch } from 'src/hooks';
 
 import $ from './style.module.scss';
 
@@ -14,7 +14,8 @@ type Props = {
 };
 
 export default function ChildrenCategory({ target, category }: Props) {
-  const keyword = useSearch(target);
+  const router = useRouter();
+  const pathname = router.pathname;
 
   return (
     <ul className={$['nav-list']}>
@@ -22,7 +23,7 @@ export default function ChildrenCategory({ target, category }: Props) {
         <li
           key={`nav-item-${index}`}
           className={cx($['nav-item'], {
-            [$['item-active']]: keyword?.match(path),
+            [$['item-active']]: pathname?.match(path),
           })}
         >
           <Link href={to}>

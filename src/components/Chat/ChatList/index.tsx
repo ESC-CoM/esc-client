@@ -1,10 +1,11 @@
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 
 import $ from './style.module.scss';
 
 interface Props {
+  id: number;
   roomImage: {
     name: string;
     imageUrl: string;
@@ -16,13 +17,14 @@ interface Props {
 }
 
 export default function ChatList({
+  id,
   roomImage,
   title,
   content,
   time,
   count,
 }: Props) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const profileList = useMemo(
     () =>
       roomImage
@@ -37,7 +39,7 @@ export default function ChatList({
   );
 
   const fetchChatRoom = () => {
-    navigate('./room');
+    router.push('/chat/' + id);
   };
   return (
     <li className={$['chat-list']} onClick={() => fetchChatRoom()}>

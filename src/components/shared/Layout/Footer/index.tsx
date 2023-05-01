@@ -26,7 +26,7 @@ export default function Footer() {
       active: <IoHeartSharp />,
       text: 'MY 과팅',
       url: '/mymeeting',
-      goto: '/mymeeting?status=register',
+      goto: '/mymeeting/register',
     },
     {
       icon: <IoChatbubbleEllipsesOutline />,

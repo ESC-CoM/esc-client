@@ -1,0 +1,18 @@
+@import '@styles/main';
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+
+  .content-box {
+    min-height: 200px;
+    padding: 15px;
+    background-color: $white;
+    font-size: 16px;
+    h2 {
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 23px;
+    }
+  }
+}

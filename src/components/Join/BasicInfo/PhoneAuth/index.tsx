@@ -49,6 +49,8 @@ export default function PhoneAuth({
       setValue('isReceivedAuthNum', true);
       setFocus('authNumber');
       setBtnClickCount((prev) => prev + 1);
+    } else {
+      setValue('isReceivedAuthNum', false);
     }
   };
 

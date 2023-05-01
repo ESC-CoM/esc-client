@@ -47,8 +47,11 @@ const menusLeft = (router: NextRouter): MenuType[] => {
     },
     {
       icon: <Logo />,
-      url: '/mymeeting',
-      isPathBeIncluded: false,
+      url: '/mymeeting/register',
+    },
+    {
+      icon: <Logo />,
+      url: '/mymeeting/request',
     },
     {
       icon: <Logo />,
@@ -57,7 +60,7 @@ const menusLeft = (router: NextRouter): MenuType[] => {
     },
     {
       icon: <IoChevronBackOutline />,
-      url: '/mymeeting/detail',
+      url: '/mymeeting/register/',
       isPathBeIncluded: true,
       onClick: () => router.back(),
     },

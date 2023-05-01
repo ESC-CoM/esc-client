@@ -37,12 +37,17 @@ export default function PhoneAuthPage() {
   const [authNum, setAuthNum] = useState(0);
   // const { isSuccess } = useAuthNumQuery(authNum);
 
-  const sendAuthNum = () => {
-    router.push(NEXT_PATH);
-    // if (isPhoneDuplicated) {
-    //   setAuthNum(+authNumber);
-    //   setValue("isAuthed", true);
-    // }
+  const handleAuthBtn = () => {
+    if (isPhoneDuplicated) {
+      setAuthNum(+authNumber);
+      setValue('isReceivedAuthNum', true);
+    }
+  };
+
+  const handleNextBtn = () => {
+    if (isAuthed) {
+      router.push(NEXT_PATH);
+    }
   };
 
   const { authCode } = usePhoneStore();
@@ -76,7 +81,7 @@ export default function PhoneAuthPage() {
         <FooterButton
           text={isAuthed ? '다음' : '인증하기'}
           type={isAuthed ? 'submit' : 'button'}
-          onClick={sendAuthNum}
+          onClick={isAuthed ? handleNextBtn : handleAuthBtn}
         />
       </form>
     </PageLayout>

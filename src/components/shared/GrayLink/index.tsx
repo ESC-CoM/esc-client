@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import cx from 'classnames';
 
 import styles from './style.module.scss';
@@ -11,7 +11,7 @@ interface Props {
 
 function GrayLink({ className, textContent, href }: Props) {
   return (
-    <Link className={cx(styles.link, className)} to={href}>
+    <Link className={cx(styles.link, className)} href={href}>
       {textContent}
     </Link>
   );

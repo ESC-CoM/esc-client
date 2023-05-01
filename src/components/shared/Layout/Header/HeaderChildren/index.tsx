@@ -37,7 +37,7 @@ export default function HeaderChildren() {
               isStringArrUrl(menu.url)
             )
               return (
-                <Link href={menu.to || ''} key={`header-${index1}-${index2}`}>
+                <Link href={menu.to || ':'} key={`header-${index1}-${index2}`}>
                   <div className={$['icon-box']}>
                     <span onClick={menu.onClick}>{menu.icon}</span>
                     {menu.text && <em>{menu.text}</em>}

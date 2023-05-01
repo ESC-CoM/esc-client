@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import $ from './style.module.scss';
 
@@ -20,7 +20,7 @@ export default function ChangeInfoItem({
       <h1 className={$['information-name']}>{title}</h1>
       <div className={$['information-box']}>
         <span className={$.information}>{value}</span>
-        <Link className={$['change-link']} to={href}>
+        <Link className={$['change-link']} href={href}>
           변경
         </Link>
       </div>
