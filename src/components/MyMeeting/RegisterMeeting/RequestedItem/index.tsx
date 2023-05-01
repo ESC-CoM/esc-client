@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router';
 import { memo, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 
 import $ from './style.module.scss';
@@ -12,7 +12,7 @@ type Props = res.RequestListForMeetingRegisteredByMeContent & {
 function RequestedItem(props: Props) {
   const { requestBoardId, title, createdAt, requestParticipants } = props;
   const { onAllowClick, onRejectClick } = props;
-  const navigate = useNavigate();
+  const router = useRouter();
   const profileList = useMemo(
     () =>
       requestParticipants
@@ -25,7 +25,7 @@ function RequestedItem(props: Props) {
   );
 
   const getProfileInfo = () => {
-    navigate('/home/detail/' + requestBoardId);
+    router.push('/home/detail/' + requestBoardId);
   };
 
   const clickAcceptBtn = (e: React.MouseEvent<HTMLButtonElement>) => {

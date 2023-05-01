@@ -3,7 +3,7 @@ import { http } from '../core';
 export const getMeetingListRegisteredByMe = async (
   params?: req.BoardListRegisteredByMe
 ): Promise<res.BoardListRegisteredByMe> => {
-  const { data } = await http.get('api/board/me', {
+  const { data } = await http.get('/api/board/me', {
     params,
   });
   return data;
@@ -35,7 +35,7 @@ export const getRequestListForMeetingRegisteredByMe = async ({
 export const getMeetingListRequestedByMe = async (
   params?: req.RequestMeetingByMe
 ): Promise<res.RequestMeetingListByMe> => {
-  const { data } = await http.get('api/board/request/me', {
+  const { data } = await http.get('/api/board/request/me', {
     params,
   });
   return data;

@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router';
 import { memo, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 
 import StateBadge from '../StateBadge';
@@ -19,7 +19,7 @@ type Props = Pick<
 function RequestMeeting(props: Props) {
   const { boardId, title, participantStatus, createdAt } = props;
   const { requestParticipants, onDeleteClick } = props;
-  const navigate = useNavigate();
+  const router = useRouter();
   const profileList = useMemo(
     () =>
       requestParticipants
@@ -32,7 +32,7 @@ function RequestMeeting(props: Props) {
   );
 
   const getRequestedPosting = () => {
-    navigate('/home/detail/' + boardId);
+    router.push('/home/detail/' + boardId);
   };
 
   const handleRefuseRequest = (e: React.MouseEvent<HTMLButtonElement>) => {

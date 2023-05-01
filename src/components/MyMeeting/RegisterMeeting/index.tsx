@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router';
 import { memo, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MutiProfile from 'src/components/shared/MultiProfile';
 import { MyMeetingType } from 'src/types/myMeeting';
 
@@ -13,7 +13,7 @@ function RegisterMeeting({
   friends,
   date,
 }: MyMeetingType) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const profileList = useMemo(
     () =>
       friends
@@ -27,7 +27,7 @@ function RegisterMeeting({
 
   const getRequestList = () => {
     // 요청 리스트 fetch
-    navigate('/mymeeting/register/detail');
+    router.push('/mymeeting/register/detail');
   };
 
   return (

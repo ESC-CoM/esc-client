@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useExtractColleges, useIntersect } from 'src/hooks';
 import { MeetingType } from 'src/types/meeting';
 
@@ -15,7 +15,7 @@ interface Props {
 export default function Meeting({
   meeting: { id, title, gender, headCount, college, profiles },
 }: Props) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const imgRef = useRef<HTMLImageElement>(null);
 
   const url = profiles[0];
@@ -37,7 +37,7 @@ export default function Meeting({
   });
 
   return (
-    <li className={$.meeting} onClick={() => navigate(`./detail/${id}`)}>
+    <li className={$.meeting} onClick={() => router.push(`/home/detail/${id}`)}>
       <div className={$.profileImg} ref={imgListRef}>
         <img
           data-src={url}
