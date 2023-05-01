@@ -6,38 +6,45 @@ import {
   requestListForMeetingRegisteredMocks,
   requestMeetingMocks,
 } from '../data';
-import { paginating, pagination } from '../data/pagination';
+import { paginating } from '../data/pagination';
 
 export const getRequestListForMeetingRegistered = rest.get(
   `${API_SERVER_URL}api/board/:id/request`,
-  (_, res, ctx) => {
+  (req, res, ctx) => {
+    const searchParams = req.url.searchParams;
+    const { itemList, ...rest } =
+      paginating<res.RequestListForMeetingRegisteredByMeContent>(
+        searchParams,
+        requestListForMeetingRegisteredMocks
+      );
+
     return res(
       ctx.status(200),
       ctx.delay(300),
       ctx.json({
-        content: requestListForMeetingRegisteredMocks,
-        pageable: pagination,
+        content: itemList,
+        ...rest,
       })
     );
   }
 );
 
 export const getMeetingRegisteredList = rest.get(
-  `${API_SERVER_URL}api/board/me`,
+  `*/api/board/me`,
   (req, res, ctx) => {
     const searchParams = req.url.searchParams;
-    const { itemList, ...reset } =
+    const { itemList, ...rest } =
       paginating<res.BoardListRegisteredByMeContent>(
         searchParams,
         registerMeetingMocks
       );
     return res(
-      ctx.status(500),
-      ctx.delay(1000)
-      // ctx.json({
-      //   content: itemList,
-      //   ...reset,
-      // })
+      ctx.status(200),
+      ctx.delay(1000),
+      ctx.json({
+        content: itemList,
+        ...rest,
+      })
     );
   }
 );
@@ -46,17 +53,16 @@ export const getRequestMeetingList = rest.get(
   `${API_SERVER_URL}api/board/request/me`,
   (req, res, ctx) => {
     const searchParams = req.url.searchParams;
-    const { itemList, ...reset } =
-      paginating<res.RequestMeetingListByMeContent>(
-        searchParams,
-        requestMeetingMocks
-      );
+    const { itemList, ...rest } = paginating<res.RequestMeetingListByMeContent>(
+      searchParams,
+      requestMeetingMocks
+    );
     return res(
       ctx.status(200),
       ctx.delay(1000),
       ctx.json({
         content: itemList,
-        ...reset,
+        ...rest,
       })
     );
   }
