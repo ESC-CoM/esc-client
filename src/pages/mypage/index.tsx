@@ -1,19 +1,25 @@
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { getMyInfo } from 'src/api/user';
 import { CardBox } from 'src/components/MyPage';
-import { useMyInfo } from 'src/hooks/api/user';
+import { queryKey } from 'src/constants/queryKey';
 
 import { PageLayout } from '../../components/shared/Layout';
 
 export default function MyPage() {
-  const { data, isLoading, isError } = useMyInfo();
-
-  // TODO: 로딩, 에러 처리
-  if (isLoading) return <div>유저 정보 불러오는중</div>;
-  if (isError) return <div>유저 정보 불러오기 실패</div>;
-  if (!data) return <div>유저 정보 없음</div>;
-
   return (
     <PageLayout isNeedFooter={true} headerHeight={44}>
-      <CardBox userInfo={data} />
+      <CardBox />
     </PageLayout>
   );
+}
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+  await queryClient.fetchQuery(queryKey.myInfo, () => getMyInfo());
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
 }
