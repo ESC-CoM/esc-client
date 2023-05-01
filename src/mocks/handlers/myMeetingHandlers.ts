@@ -1,5 +1,4 @@
 import { rest } from 'msw';
-import { API_SERVER_URL } from 'src/constants/env';
 
 import {
   registerMeetingMocks,
@@ -9,7 +8,7 @@ import {
 import { paginating } from '../data/pagination';
 
 export const getRequestListForMeetingRegistered = rest.get(
-  `${API_SERVER_URL}api/board/:id/request`,
+  `*/api/board/:id/request`,
   (req, res, ctx) => {
     const searchParams = req.url.searchParams;
     const { itemList, ...rest } =
@@ -50,7 +49,7 @@ export const getMeetingRegisteredList = rest.get(
 );
 
 export const getRequestMeetingList = rest.get(
-  `${API_SERVER_URL}api/board/request/me`,
+  `*/api/board/request/me`,
   (req, res, ctx) => {
     const searchParams = req.url.searchParams;
     const { itemList, ...rest } = paginating<res.RequestMeetingListByMeContent>(
