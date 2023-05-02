@@ -20,6 +20,7 @@ export const useMeetingItemListQuery = (params: req.Home) => {
     {
       getNextPageParam: ({ page, last }) => (last ? undefined : page + 1),
       itemContainingProp: 'boardListDtos',
+      suspense: true,
     }
   );
 };

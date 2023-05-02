@@ -12,7 +12,7 @@ interface Props {
   meeting: MeetingType;
 }
 
-export default function Meeting({
+export default function MeetingHomeItem({
   meeting: { id, title, gender, headCount, college, profiles },
 }: Props) {
   const router = useRouter();
