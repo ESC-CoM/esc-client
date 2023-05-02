@@ -28,10 +28,8 @@ declare namespace res {
   export type MeetingSummary = {
     id: number;
     title: string;
-    content: string;
     headCount: number; // 미팅을 주선하는 쪽의 인원수
     gender: string;
-    meetingStatus: string;
     university: string[];
     createdAt: string;
     profileImages: string[];
