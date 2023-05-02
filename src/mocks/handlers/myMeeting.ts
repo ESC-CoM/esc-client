@@ -31,6 +31,7 @@ export const getRequestListForMeetingRegistered = rest.get(
 export const getMeetingRegisteredList = rest.get(
   `*/api/board/me`,
   (req, res, ctx) => {
+    console.log('등록된 미팅 핸들러 실행');
     const searchParams = req.url.searchParams;
     const { itemList, ...rest } =
       paginating<res.BoardListRegisteredByMeContent>(
