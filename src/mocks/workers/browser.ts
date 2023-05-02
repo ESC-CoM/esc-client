@@ -1,4 +1,5 @@
-import { setupWorker, SetupWorkerApi } from 'msw';
+import { setupWorker } from 'msw';
 
 import { handlers } from '../handlers';
-export const browserWorker: SetupWorkerApi = setupWorker(...handlers);
+
+export const browser = setupWorker(...handlers);
