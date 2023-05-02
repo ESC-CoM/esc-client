@@ -1,14 +1,15 @@
+import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import {
-  registerMeetingMocks,
-  requestListForMeetingRegisteredMocks,
-} from '@mocks/data';
+import { registerMeetingMocks } from '@mocks/data';
+import { QueryClient } from '@tanstack/react-query';
+import { getRequestListForMeetingRegisteredByMe } from 'src/api/board';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import AsyncWrapper from 'src/components/shared/AsyncWrapper';
 import ErrorFallback from 'src/components/shared/ErrorFallback';
 import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
 import Spinner from 'src/components/shared/Spinner';
+import { queryKey } from 'src/constants/queryKey';
 import {
   usePatchAllowRequest,
   usePatchRejectRequest,
@@ -19,7 +20,7 @@ const { id, kind, title, message, registerParticipants, createdAt } =
   registerMeetingMocks[0];
 const detailInfo = { badge: kind, title, content: message, date: createdAt };
 
-export default function RegisterDetailPage() {
+export default function RegisterDetailPage({ id }: { id: string }) {
   const router = useRouter();
   const boardId = +id;
 
@@ -59,7 +60,7 @@ export default function RegisterDetailPage() {
 
           <InfiniteScroll trigger={getNextPage}>
             <ul>
-              {requestListForMeetingRegisteredMocks?.map((item, index) => (
+              {itemList?.map((item, index) => (
                 <RequestedList
                   key={`requested-list-${index}`}
                   {...{
@@ -80,25 +81,25 @@ export default function RegisterDetailPage() {
   );
 }
 
-// export async function getServerSideProps({
-//   params,
-// }: GetServerSidePropsContext) {
-//   const queryClient = new QueryClient();
-//   const id = params?.id || '0';
-//   const boardId = +id;
+export async function getServerSideProps({
+  params,
+}: GetServerSidePropsContext) {
+  const queryClient = new QueryClient();
+  const id = params?.id || '0';
+  const boardId = +id;
 
-//   await queryClient.fetchInfiniteQuery(
-//     queryKey.requestListForMeetingRegisteredByMe(boardId),
-//     () =>
-//       getRequestListForMeetingRegisteredByMe({
-//         boardId,
-//         params: { size: 10 },
-//       })
-//   );
+  await queryClient.fetchInfiniteQuery(
+    queryKey.requestListForMeetingRegisteredByMe(boardId),
+    () =>
+      getRequestListForMeetingRegisteredByMe({
+        boardId,
+        params: { size: 10 },
+      })
+  );
 
-//   return {
-//     props: {
-//       id,
-//     },
-//   };
-// }
+  return {
+    props: {
+      id,
+    },
+  };
+}
