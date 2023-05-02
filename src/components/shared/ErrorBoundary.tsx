@@ -2,12 +2,14 @@ import { Component, ComponentType, ReactElement } from 'react';
 
 type ErrorFallbackProps = {
   reset: () => void;
+  errorMessage?: string;
 };
 
 type Props = {
   children: ReactElement;
   fallbackUI: ComponentType<ErrorFallbackProps>;
   onReset: () => void;
+  errorMessage?: string;
 };
 
 interface State {
@@ -35,10 +37,10 @@ class ErrorBoundary extends Component<Props, State> {
 
   render() {
     const { hasError, error } = this.state;
-    const { children, fallbackUI: FallbackUI } = this.props;
+    const { children, fallbackUI: FallbackUI, errorMessage } = this.props;
 
     if (hasError && error) {
-      return <FallbackUI reset={this.resetQuery} />;
+      return <FallbackUI reset={this.resetQuery} errorMessage={errorMessage} />;
     }
 
     return children;

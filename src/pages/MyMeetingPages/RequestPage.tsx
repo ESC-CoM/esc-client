@@ -9,10 +9,12 @@ export default function RequestPage() {
   });
   const { mutate: deleteRequest } = useDeleteRequestByMe();
 
+  if (!itemList) return null;
+
   return (
     <InfiniteScroll trigger={getNextPage}>
       <ul>
-        {itemList?.map((item) => (
+        {itemList.map((item) => (
           <RequestMeeting
             key={item.boardId}
             {...{
