@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import { registerMeetingMocks } from '@mocks/data';
-import { QueryClient } from '@tanstack/react-query';
+import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getRequestListForMeetingRegisteredByMe } from 'src/api/board';
 import { PostCard, RequestedList } from 'src/components/MyMeeting';
 import AsyncWrapper from 'src/components/shared/AsyncWrapper';
@@ -28,7 +28,7 @@ export default function RegisterDetailPage({ id }: { id: string }) {
   const { mutate: rejectRequest } = usePatchRejectRequest(boardId);
   const { itemList, getNextPage } = useGetRequestListForMeetingRegisteredByMe({
     boardId,
-    params: { size: 10 },
+    params: { size: 7 },
   });
 
   const profileList = useMemo(
@@ -93,13 +93,14 @@ export async function getServerSideProps({
     () =>
       getRequestListForMeetingRegisteredByMe({
         boardId,
-        params: { size: 10 },
+        params: { size: 7 }, // TODO: 테스트를 위해 9개 중 7개만 불러오도록 설정
       })
   );
 
   return {
     props: {
       id,
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
     },
   };
 }
