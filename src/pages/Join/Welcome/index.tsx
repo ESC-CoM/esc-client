@@ -32,11 +32,9 @@ export default function WelcomePage() {
             contents={contents}
             fontSize={14}
           />
-          <Button
-            contentText="블루스프링 시작하기"
-            width="80%"
-            onClick={handleClick}
-          />
+          <Button width="80%" onClick={handleClick}>
+            블루스프링 시작하기
+          </Button>
         </div>
       </section>
     </PageLayout>

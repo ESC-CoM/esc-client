@@ -1,20 +1,21 @@
+import { ButtonHTMLAttributes } from 'react';
 import cx from 'classnames';
 import { StyleProps } from 'src/types/props';
 
 import $ from './style.module.scss';
 
-interface Props extends StyleProps {
-  type?: 'button' | 'submit' | 'reset';
-  contentText: string;
-  width?: string;
-  fontSize?: number;
-  backgroundColor?: string;
-  color?: string;
-  onClick?: () => void;
-}
+type Props = StyleProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    type?: 'button' | 'submit' | 'reset';
+    width?: string;
+    fontSize?: number;
+    backgroundColor?: string;
+    color?: string;
+    onClick?: () => void;
+  };
 
 export default function Button(buttonProps: Props) {
-  const { type = 'button', contentText, width } = buttonProps;
+  const { type = 'button', width, children } = buttonProps;
   const { fontSize, onClick, backgroundColor, color } = buttonProps;
   const { className, style } = buttonProps;
   const handleClick = () => {
@@ -28,7 +29,7 @@ export default function Button(buttonProps: Props) {
       style={{ ...style, width, fontSize, backgroundColor, color }}
       onClick={handleClick}
     >
-      {contentText}
+      {children}
     </button>
   );
 }

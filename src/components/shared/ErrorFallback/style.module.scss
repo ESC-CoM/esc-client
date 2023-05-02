@@ -1,0 +1,18 @@
+@import '@styles/color';
+
+.error-fallback {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin: auto;
+
+  .error-message {
+    margin-bottom: 15px;
+  }
+  .go-to-main-btn {
+    color: $white;
+    background-color: $primary-blue;
+    font-weight: 700;
+  }
+}

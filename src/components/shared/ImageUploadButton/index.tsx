@@ -31,11 +31,9 @@ export default function ImageUploadButton({
         accept="image/*,.webp,.heif,.heic,.bmp"
         id="input-file"
       />
-      <Button
-        width="100px"
-        contentText={buttonText}
-        onClick={handleClickButton}
-      />
+      <Button width="100px" onClick={handleClickButton}>
+        {buttonText}
+      </Button>
     </label>
   );
 }
