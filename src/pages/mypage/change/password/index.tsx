@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { passwordYup } from 'src/components/MyPage/yup';
 import FooterButton from 'src/components/shared/FooterButton';
 import { PageLayout } from 'src/components/shared/Layout';
 import PasswordInput from 'src/components/shared/PasswordInput';
 
 import $ from './style.module.scss';
-import schema from './yup';
 
 type FormData = {
   oldPassword: string;
@@ -18,7 +18,7 @@ export default function ChangePasswordPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: yupResolver(schema) });
+  } = useForm<FormData>({ resolver: yupResolver(passwordYup) });
 
   const onSubmit = handleSubmit((data) => console.log(data));
 

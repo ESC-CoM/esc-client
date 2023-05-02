@@ -10,8 +10,8 @@ import { PageLayout } from 'src/components/shared/Layout';
 import Spinner from 'src/components/shared/Spinner';
 import { useQueryRouter, useSearch } from 'src/hooks';
 import useDetectScroll from 'src/hooks/useDetectScroll';
+import { meetingOptions } from 'src/mocks/data/home';
 
-import { meetingOptions } from './constants';
 import $ from './style.module.scss';
 
 function MeetingHomePage() {

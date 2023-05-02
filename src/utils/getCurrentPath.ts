@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 type Routes = {
   index?: boolean;
@@ -7,9 +7,7 @@ type Routes = {
 }[];
 
 export const getCurrentPath = (routes: Routes) => {
-  const location = useLocation();
+  const router = useRouter();
 
-  return routes.findIndex(
-    ({ path }) => path && location.pathname.includes(path)
-  );
+  return routes.findIndex(({ path }) => path && router.pathname.includes(path));
 };
