@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { ChangeEventHandler, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { MOCK_URL } from '@mocks/data';
+import { mypageMocks } from '@mocks/data';
 import { AiFillCamera } from '@react-icons/all-files/ai/AiFillCamera';
 import DrinkInput from 'src/components/shared/DrinkInput';
 import FooterButton from 'src/components/shared/FooterButton';
@@ -29,7 +29,7 @@ type FormData = {
 };
 
 const ADDITIONAL_INFO_MOCKS = {
-  profileImageURL: MOCK_URL,
+  profileImageURL: mypageMocks.userInfo.profileImage,
   nickName: '블루스',
   birthYear: 2000,
   MBTI: 'ISTJ' as const,
