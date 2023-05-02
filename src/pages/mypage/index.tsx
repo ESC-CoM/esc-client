@@ -1,25 +1,19 @@
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { getMyInfo } from 'src/api/user';
 import { CardBox } from 'src/components/MyPage';
-import { queryKey } from 'src/constants/queryKey';
+import AsyncWrapper from 'src/components/shared/AsyncWrapper';
+import ErrorFallback from 'src/components/shared/ErrorFallback';
+import Spinner from 'src/components/shared/Spinner';
 
 import { PageLayout } from '../../components/shared/Layout';
 
 export default function MyPage() {
   return (
     <PageLayout isNeedFooter={true} headerHeight={44}>
-      <CardBox />
+      <AsyncWrapper
+        errorFallback={ErrorFallback}
+        suspenseFallback={<Spinner />}
+      >
+        <CardBox />
+      </AsyncWrapper>
     </PageLayout>
   );
-}
-
-export async function getServerSideProps() {
-  const queryClient = new QueryClient();
-  await queryClient.fetchQuery(queryKey.myInfo, () => getMyInfo());
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
 }

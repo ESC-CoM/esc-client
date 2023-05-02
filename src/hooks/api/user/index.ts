@@ -15,5 +15,5 @@ export const useGetUserDetailInformation = (id: number) => {
 
 export const useMyInfo = () => {
   // TODO api my로 변경
-  return useCoreQuery(queryKey.myInfo, () => getMyInfo());
+  return useCoreQuery(queryKey.myInfo, () => getMyInfo(), { suspense: true });
 };
