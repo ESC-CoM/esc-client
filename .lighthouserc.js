@@ -5,7 +5,6 @@ module.exports = {
       url: [
         'http://localhost:3000',
         'http://localhost:3000/mymeeting/register',
-        'http://localhost:3000/mymeeting/register/1',
       ],
       numberOfRuns: 1,
     },
