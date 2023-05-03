@@ -19,7 +19,7 @@ export type Props = {
   onClose: () => void;
 };
 
-const NEXT_PATH = '/join/profile-image';
+const NEXT_PATH = '/join/profile-upload';
 
 export default function Term() {
   const router = useRouter();

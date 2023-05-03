@@ -11,7 +11,7 @@ import { toastError } from 'src/utils/toaster';
 
 import $ from './style.module.scss';
 
-const NEXT_PATH = '/join/student-card';
+const NEXT_PATH = '/join/std-card';
 
 export default function ProfileUploadPage() {
   const { userInfo, setJoinInfo } = useStore();
