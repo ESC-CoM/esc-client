@@ -6,7 +6,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { isServer } from 'src/constants/env';
+import { isDevEnv, isServer } from 'src/constants/env';
 
 import '@styles/reset.scss';
 
@@ -22,7 +22,7 @@ export const queryClient = new QueryClient({
   },
 });
 
-if (isServer) {
+if (isDevEnv && isServer) {
   (async () => {
     const { server } = await import('../mocks/workers/server');
     server.listen();
@@ -30,15 +30,16 @@ if (isServer) {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [shouldRender, setShouldRender] = useState(false);
+  const [shouldRender, setShouldRender] = useState(!isDevEnv);
 
   useEffect(() => {
+    if (!isDevEnv) return;
     async function initMocks() {
       const { browser } = await import('../mocks/workers/browser');
       await browser.start();
       setShouldRender(true);
     }
-    if (!shouldRender) initMocks();
+    initMocks();
   }, []);
 
   if (!shouldRender) {
