@@ -4,32 +4,20 @@ import { useMemo } from 'react';
 import { registerMeetingMocks } from '@mocks/data';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getRequestListForMeetingRegisteredByMe } from 'src/api/board';
-import { PostCard, RequestedList } from 'src/components/MyMeeting';
+import { PostCard } from 'src/components/MyMeeting';
+import RegisterMeetingDetail from 'src/components/MyMeeting/RegisterMeetingDetail';
 import AsyncWrapper from 'src/components/shared/AsyncWrapper';
 import ErrorFallback from 'src/components/shared/ErrorFallback';
-import { InfiniteScroll, PageLayout } from 'src/components/shared/Layout';
+import { PageLayout } from 'src/components/shared/Layout';
 import Spinner from 'src/components/shared/Spinner';
 import { queryKey } from 'src/constants/queryKey';
-import {
-  usePatchAllowRequest,
-  usePatchRejectRequest,
-} from 'src/hooks/api/board';
-import { useGetRequestListForMeetingRegisteredByMe } from 'src/hooks/api/board';
 
-const { id, kind, title, message, registerParticipants, createdAt } =
+const { kind, title, message, registerParticipants, createdAt } =
   registerMeetingMocks[0];
 const detailInfo = { badge: kind, title, content: message, date: createdAt };
 
-export default function RegisterDetailPage({ id }: { id: string }) {
+export default function RegisterDetailPage({ boardId }: { boardId: number }) {
   const router = useRouter();
-  const boardId = +id;
-
-  const { mutate: allowRequest } = usePatchAllowRequest(boardId);
-  const { mutate: rejectRequest } = usePatchRejectRequest(boardId);
-  const { itemList, getNextPage } = useGetRequestListForMeetingRegisteredByMe({
-    boardId,
-    params: { size: 7 },
-  });
 
   const profileList = useMemo(
     () =>
@@ -42,7 +30,7 @@ export default function RegisterDetailPage({ id }: { id: string }) {
     []
   );
 
-  const getProfileInfo = () => router.push('/home/detail/' + id);
+  const getProfileInfo = () => router.push('/home/detail/' + boardId);
 
   return (
     <PageLayout isNeedFooter={true} headerHeight={84}>
@@ -57,23 +45,7 @@ export default function RegisterDetailPage({ id }: { id: string }) {
           errorFallback={ErrorFallback}
           suspenseFallback={<Spinner />}
         >
-          <InfiniteScroll trigger={getNextPage}>
-            <ul>
-              {itemList?.map((item, index) => (
-                <RequestedList
-                  key={`requested-list-${index}`}
-                  {...{
-                    requestBoardId: item.requestBoardId,
-                    title: item.title,
-                    requestParticipants: item.requestParticipants,
-                    createdAt: item.createdAt,
-                    onAllowClick: () => allowRequest(item.requestBoardId),
-                    onRejectClick: () => rejectRequest(item.requestBoardId),
-                  }}
-                />
-              ))}
-            </ul>
-          </InfiniteScroll>
+          <RegisterMeetingDetail boardId={boardId} />
         </AsyncWrapper>
       </>
     </PageLayout>
@@ -84,8 +56,7 @@ export async function getServerSideProps({
   params,
 }: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
-  const id = params?.id || '0';
-  const boardId = +id;
+  const boardId = +(params?.id as string) || 0;
 
   await queryClient.fetchInfiniteQuery(
     queryKey.requestListForMeetingRegisteredByMe(boardId),
@@ -98,7 +69,7 @@ export async function getServerSideProps({
 
   return {
     props: {
-      id,
+      boardId,
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
     },
   };
