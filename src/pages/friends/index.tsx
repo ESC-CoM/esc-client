@@ -11,19 +11,19 @@ function useFriendData(kind: string | null) {
 }
 
 export default function FriendsListPage() {
-  const path = location.pathname;
   const kind = useSearch('kind');
   const router = useRouter();
+  const path = router.pathname;
   const { data } = useFriendData(kind);
   const friendData = data?.data || [];
 
   useEffect(() => {
     if (!kind) {
-      router.push('/friends/list?kind=myfriends');
+      router.push('/friends?kind=myfriends');
     }
   }, []);
 
-  if (path === '/friends/list' && kind === 'myfriends')
+  if (path === '/friends' && kind === 'myfriends')
     return (
       <FriendsList
         friends={friendData}
@@ -32,7 +32,7 @@ export default function FriendsListPage() {
         }}
       />
     );
-  if (path === '/friends/list' && kind === 'request')
+  if (path === '/friends' && kind === 'request')
     return (
       <FriendsList
         type="request"

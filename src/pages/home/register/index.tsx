@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { MeetingApplyTemplate } from 'src/components/shared/Templates';
 import { useCreateMeetingQuery } from 'src/hooks/api/home';
 
-const NEXT_PATH = '/mymeeting?status=register';
+const NEXT_PATH = '/mymeeting/register';
 
 export default function MeetingRegisterPage() {
   const router = useRouter();

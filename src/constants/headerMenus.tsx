@@ -73,7 +73,7 @@ const menusLeft = (router: NextRouter): MenuType[] => {
     {
       icon: <IoChevronBack />,
       text: '친구',
-      url: '/friends/list',
+      url: '/friends',
       onClick: () => router.back(),
     },
     {
@@ -179,12 +179,12 @@ const menusRight: MenuType[] = [
   {
     icon: <IoPeopleOutline />,
     url: '/mypage',
-    to: '/friends/list?kind=myfriends',
+    to: '/friends?kind=myfriends',
   },
   {
     icon: <IoPeopleOutline />,
     url: '/home',
-    to: '/friends/list?kind=myfriends',
+    to: '/friends?kind=myfriends',
   },
   {
     icon: <IoNotificationsOutline />,
@@ -202,12 +202,12 @@ const menusRight: MenuType[] = [
   },
   {
     icon: <BsPersonPlus style={{ marginRight: '20px' }} />,
-    url: '/friends/list',
+    url: '/friends',
     to: '/friends/add',
   },
   {
     icon: <BsPersonDash />,
-    url: '/friends/list',
+    url: '/friends',
     to: '/friends/delete',
   },
   { text: '모두 삭제', url: '/notice' },
