@@ -5,7 +5,6 @@ import { useMyInfo } from 'src/hooks/api/user';
 import MyInformationCard from '../MyInfomationCard';
 import $ from './style.module.scss';
 
-// { userInfo }: Props
 export default function CardBox() {
   const { data } = useMyInfo();
 

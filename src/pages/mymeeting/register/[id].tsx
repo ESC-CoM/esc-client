@@ -46,18 +46,17 @@ export default function RegisterDetailPage({ id }: { id: string }) {
 
   return (
     <PageLayout isNeedFooter={true} headerHeight={84}>
-      <AsyncWrapper
-        errorFallback={ErrorFallback}
-        suspenseFallback={<Spinner />}
-      >
-        <>
-          <PostCard
-            className="detail"
-            profileList={profileList}
-            textInfo={detailInfo}
-            onClick={getProfileInfo}
-          />
-
+      <>
+        <PostCard
+          className="detail"
+          profileList={profileList}
+          textInfo={detailInfo}
+          onClick={getProfileInfo}
+        />
+        <AsyncWrapper
+          errorFallback={ErrorFallback}
+          suspenseFallback={<Spinner />}
+        >
           <InfiniteScroll trigger={getNextPage}>
             <ul>
               {itemList?.map((item, index) => (
@@ -75,8 +74,8 @@ export default function RegisterDetailPage({ id }: { id: string }) {
               ))}
             </ul>
           </InfiniteScroll>
-        </>
-      </AsyncWrapper>
+        </AsyncWrapper>
+      </>
     </PageLayout>
   );
 }

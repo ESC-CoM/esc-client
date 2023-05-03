@@ -6,6 +6,7 @@ type Routes = {
   path?: string;
 }[];
 
+// TODO: hook으로 분리
 export const getCurrentPath = (routes: Routes) => {
   const router = useRouter();
 

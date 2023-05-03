@@ -7,20 +7,20 @@ import $ from './style.module.scss';
 
 export default function HeaderChildren() {
   const router = useRouter();
+  const { pathname } = router;
   const headerMenus = useMemo(() => [menusLeft(router), menusRight], [router]);
 
   const isStringUrl = (url?: string | string[], isPathBeIncluded?: boolean) => {
     return (
       typeof url === 'string' &&
-      (router.pathname === url ||
-        (isPathBeIncluded && url && router.pathname.match(url)))
+      (pathname === url || (isPathBeIncluded && url && pathname.match(url)))
     );
   };
 
   const isStringArrUrl = (urlArr?: string | string[]) => {
     return (
       typeof urlArr !== 'string' &&
-      urlArr?.every((url) => router.pathname.includes(url))
+      urlArr?.every((url) => pathname.includes(url))
     );
   };
 

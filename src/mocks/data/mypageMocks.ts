@@ -26,37 +26,3 @@ export const mypageMocks = {
     agree: true,
   },
 };
-// nickname,
-//       birth,
-//       profileImage,
-//       schoolInfo,
-//       otherInfo: { amountOfAlchol, mbti, gender },
-//       physicalInfo: { height, weight },
-
-// export type UserInfoDetailSuccess = {
-//   id: number;
-//   email:  '',
-//   userInfo: {
-//     nickname:  '',
-//     phone:  '',
-//     birth:  '',
-//     profileImage:  '',
-//     schoolInfo: {
-//       university:  '',
-//       major:  '',
-//       studentId:  '',
-//     };
-//     physicalInfo: {
-//       height: number;
-//       weight: number;
-//     };
-//     otherInfo: {
-//       gender: res.GENDERType;
-//       mbti:  '',
-//       amountOfAlchol: number;
-//     };
-//     mannerScore: number;
-//     studentIdAuthenticationKey:  '',
-//     agree: boolean;
-//   };
-// };
