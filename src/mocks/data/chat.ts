@@ -58,6 +58,7 @@ const messageInfoMocks = [
 
 const chatListMocks = [
   {
+    id: 1,
     roomImage: profileList,
     title: '소프트웨어학과 남자 3명',
     content: '채팅방이 생성되었어요!',
@@ -65,6 +66,7 @@ const chatListMocks = [
     count: '1',
   },
   {
+    id: 2,
     roomImage: profileList,
     title: '심리학과 남자 4명',
     content:
@@ -73,6 +75,7 @@ const chatListMocks = [
     count: '23',
   },
   {
+    id: 3,
     roomImage: profileList.slice(1).reverse(),
     title: '간호학과 남자 2명',
     content: '안녕하세용',
@@ -80,6 +83,7 @@ const chatListMocks = [
     count: '5',
   },
   {
+    id: 4,
     roomImage: profileList.reverse(),
     title: '화학과 남자 3명',
     content: '우와 :)',

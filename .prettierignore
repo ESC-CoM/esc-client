@@ -1,0 +1,12 @@
+.next
+.yarn
+.vscode
+.yarnrc.yml
+next-env.d.ts
+node_modules
+yarn.lock
+package-lock.json
+public
+.lighthouseci
+lhci_reports
+coverage

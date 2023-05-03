@@ -1,14 +1,14 @@
 import { ComponentProps, ReactElement, Suspense } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
+import { DefaultProps } from 'src/types/props';
 
 import ErrorBoundary from '../ErrorBoundary';
 
-interface Props {
-  children: ReactElement;
+type Props = {
   errorFallback: ComponentProps<typeof ErrorBoundary>['fallbackUI'];
   suspenseFallback: ReactElement;
   errorMessage?: string;
-}
+} & DefaultProps;
 
 function AsyncWrapper(props: Props) {
   const { children, errorFallback, suspenseFallback, errorMessage } = props;

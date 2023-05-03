@@ -11,6 +11,10 @@
 # production
 /build
 
+# next.js
+/.next/
+/out/
+
 # misc
 .DS_Store
 .env
@@ -25,3 +29,7 @@ yarn-error.log*
 
 # msw
 mockServiceWorker.js
+
+# lhci
+lhci_reports
+.lighthouseci

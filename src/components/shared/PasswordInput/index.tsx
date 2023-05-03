@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ChangeEventHandler } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import { IoEye } from '@react-icons/all-files/io5/IoEye';
 import { IoEyeOff } from '@react-icons/all-files/io5/IoEyeOff';
 import cx from 'classnames';
-import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from 'src/components/shared/Label';
 
 import $ from './style.module.scss';

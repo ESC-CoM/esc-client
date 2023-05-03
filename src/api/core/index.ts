@@ -16,7 +16,7 @@ const http: AxiosInstance = axios.create({
   timeout: 3000,
   headers: {
     'Content-Type': 'application/json',
-    [ACCESSTOKEN]: getAccessToken(),
+    // [ACCESSTOKEN]: getAccessToken(),
   },
 });
 
@@ -30,6 +30,7 @@ export const refreshAccessToken = async (err: AxiosError) => {
   const accessToken = getAccessToken();
   const refreshToken = getRefreshToken();
   try {
+    // TODO: Login 다시 짜기
     const response = await authRefresh({ accessToken, refreshToken });
     const { data } = response;
     setAccessToken(data);
@@ -45,13 +46,13 @@ export const refreshAccessToken = async (err: AxiosError) => {
   }
 };
 
-http.interceptors.request.use((config) => {
-  const token = getAccessToken();
-  if (token && config.headers) {
-    config.headers[ACCESSTOKEN] = token;
-  }
-  return config;
-});
+// http.interceptors.request.use((config) => {
+//   const token = getAccessToken();
+//   if (token && config.headers) {
+//     config.headers[ACCESSTOKEN] = token;
+//   }
+//   return config;
+// });
 
 http.interceptors.response.use(
   // TODO: test 필요

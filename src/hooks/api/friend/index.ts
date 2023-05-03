@@ -8,7 +8,7 @@ import {
 } from 'src/api/friend';
 import { getFriendRequests, getSearchedFriend } from 'src/api/friend/index';
 import { queryKey } from 'src/constants/queryKey';
-import { queryClient } from 'src/index';
+import { queryClient } from 'src/pages/_app';
 import { toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation, useCoreQuery } from '../core';

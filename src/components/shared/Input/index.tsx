@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from 'react';
-import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import cx from 'classnames';
 
 import ErrorMessage from '../ErrorMessage';
 import Label from '../Label';

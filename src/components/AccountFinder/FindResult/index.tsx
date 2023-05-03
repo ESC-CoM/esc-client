@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
-import { useNavigate } from 'react-router-dom';
 import { SaparateLine } from 'src/components/Login/atoms';
 
 import styles from './style.module.scss';
@@ -30,7 +30,7 @@ const PAGE_DATA = {
 
 export default function FindResult({ type }: Props) {
   const [pageData, setPageData] = useState<PageData>(PAGE_DATA.email);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     if (type === 'email') {
@@ -59,7 +59,7 @@ export default function FindResult({ type }: Props) {
             className={cx(styles.primaryButton, styles.button)}
             type="button"
             aria-label="로그인으로 이동하기"
-            onClick={() => navigate('/login')}
+            onClick={() => router.push('/login')}
           >
             로그인하러 가기
           </button>
@@ -67,7 +67,7 @@ export default function FindResult({ type }: Props) {
             className={cx(styles.grayButton, styles.button)}
             type="button"
             aria-label={pageData.secondButtonAction}
-            onClick={() => navigate(pageData.url)}
+            onClick={() => router.push(pageData.url)}
           >
             {pageData.secondButtonAction}
           </button>

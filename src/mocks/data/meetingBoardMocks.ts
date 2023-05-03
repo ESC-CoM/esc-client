@@ -8,6 +8,7 @@ const meetingBoardMocks = [
     profileImages: [
       'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fbb%2F9e%2F97%2Fbb9e9797405cf5b0ca8836fb909aa15b.jpg&type=a340',
     ],
+    createdAt: '2022-09-12',
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const meetingBoardMocks = [
     profileImages: [
       'https://media.istockphoto.com/photos/colorful-panoramic-mountain-view-at-sunrise-picture-id1129473522?b=1&k=20&m=1129473522&s=170667a&w=0&h=BUuwJYJXKx1nBZtKhddIFe0dfwJzeMyq7IcvSkewyOE=',
     ],
+    createdAt: '2022-09-12',
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const meetingBoardMocks = [
     profileImages: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Gy4TWzXK9mthmZverUNaENrwD8TfoHvykQ&usqp=CAU',
     ],
+    createdAt: '2022-09-12',
   },
   {
     id: 4,
@@ -36,6 +39,7 @@ const meetingBoardMocks = [
     headCount: 3,
     university: ['공과대학'],
     profileImages: ['https://vistapointe.net/images/beautiful-2.jpg'],
+    createdAt: '2022-09-12',
   },
   {
     id: 5,
@@ -46,6 +50,7 @@ const meetingBoardMocks = [
     profileImages: [
       'https://www.thegoodmorningpics.com/wp-content/uploads/2021/06/Beautiful-Good-Morning-Images-wallpaper-for-download-with-rising-sun-scenery.jpg',
     ],
+    createdAt: '2022-09-12',
   },
   {
     id: 6,
@@ -56,6 +61,7 @@ const meetingBoardMocks = [
     profileImages: [
       'https://c8.alamy.com/comp/CBR3BP/billboard-at-gas-station-in-namibia-CBR3BP.jpg',
     ],
+    createdAt: '2022-09-12',
   },
   {
     id: 7,
@@ -66,6 +72,40 @@ const meetingBoardMocks = [
     profileImages: [
       'https://thumbs.dreamstime.com/b/thank-you-gratitude-concept-thank-you-gratitude-concept-beautiful-card-word-written-sand-beach-113681777.jpg',
     ],
+    createdAt: '2022-09-12',
+  },
+  {
+    id: 8,
+    title: '남자 3명이랑 친해지실 분 구해요!',
+    gender: '남자',
+    headCount: 3,
+    university: ['전자정보대학'],
+    profileImages: [
+      'https://thumbs.dreamstime.com/b/thank-you-gratitude-concept-thank-you-gratitude-concept-beautiful-card-word-written-sand-beach-113681777.jpg',
+    ],
+    createdAt: '2022-09-12',
+  },
+  {
+    id: 9,
+    title: '남자 3명이랑 친해지실 분 구해요!',
+    gender: '남자',
+    headCount: 3,
+    university: ['전자정보대학'],
+    profileImages: [
+      'https://thumbs.dreamstime.com/b/thank-you-gratitude-concept-thank-you-gratitude-concept-beautiful-card-word-written-sand-beach-113681777.jpg',
+    ],
+    createdAt: '2022-09-12',
+  },
+  {
+    id: 10,
+    title: '남자 3명이랑 친해지실 분 구해요!',
+    gender: '남자',
+    headCount: 3,
+    university: ['전자정보대학'],
+    profileImages: [
+      'https://thumbs.dreamstime.com/b/thank-you-gratitude-concept-thank-you-gratitude-concept-beautiful-card-word-written-sand-beach-113681777.jpg',
+    ],
+    createdAt: '2022-09-12',
   },
 ];
 

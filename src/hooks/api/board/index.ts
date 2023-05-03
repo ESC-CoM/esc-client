@@ -6,7 +6,7 @@ import {
   patchAllowOrRejectRequest,
 } from 'src/api/board';
 import { queryKey } from 'src/constants/queryKey';
-import { queryClient } from 'src/index';
+import { queryClient } from 'src/pages/_app';
 import { toastError, toastSuccess } from 'src/utils/toaster';
 
 import { useCoreMutation } from '../core';

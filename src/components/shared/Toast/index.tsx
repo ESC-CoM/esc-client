@@ -1,5 +1,5 @@
-import { IoClose } from '@react-icons/all-files/io5/IoClose';
 import { toast, ToastBar, Toaster } from 'react-hot-toast';
+import { IoClose } from '@react-icons/all-files/io5/IoClose';
 
 import $ from './style.module.scss';
 

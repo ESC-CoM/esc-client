@@ -24,7 +24,7 @@ export type PhoneAuthType = {
   isAuthed: boolean;
 };
 
-export type MBTIType = typeof MBTI_LIST[number];
+export type MBTIType = (typeof MBTI_LIST)[number];
 
 export type More1Type = {
   nickName: string;

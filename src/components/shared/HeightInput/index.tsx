@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import cx from 'classnames';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import cx from 'classnames';
 import Label from 'src/components/shared/Label';
 
 import heightInfo from './heightInfo';

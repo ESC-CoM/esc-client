@@ -8,7 +8,7 @@ import {
   StdCardType,
   TermType,
 } from 'src/types/join';
-import create from 'zustand';
+import { create } from 'zustand';
 
 export type UserStoreInfo = Pick<PhoneAuthType, 'phoneNumber' | 'authNumber'> &
   Pick<EmailPasswordType, 'email' | 'password'> &
