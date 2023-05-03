@@ -29,3 +29,7 @@ yarn-error.log*
 
 # msw
 mockServiceWorker.js
+
+# lhci
+lhci_reports
+.lighthouseci
