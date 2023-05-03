@@ -27,7 +27,16 @@ const nextConfig = {
         destination: '/join/phone',
         permanent: true,
       },
+      {
+        source: '/mymeeting',
+        destination: '/mymeeting/register',
+        permanent: true,
+      },
     ];
+  },
+  env: {
+    APP_API_URL: process.env.APP_API_URL,
+    LOCAL_API_URL: process.env.LOCAL_API_URL,
   },
   images: {
     domains: [
